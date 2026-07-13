@@ -17,6 +17,9 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Architecture decisions](docs/DECISIONS.md)
 - [Pack format v1](docs/PACK_FORMAT.md)
 - [Mascot generation and batch pipeline](docs/CONTENT_PIPELINE.md)
+- [0.1.0 release notes](docs/RELEASE_0.1.0.md)
+- [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
+- [Pipeline benchmarks](docs/BENCHMARKS.md)
 - [Current status](docs/STATUS.md)
 
 The original v0.1 SDD is retained unchanged as the review baseline.
@@ -32,8 +35,9 @@ The current implementation proves the distribution and graphics path:
 5. Pack-local font loading, text fitting, and 512/256 pixel text rendering are
    covered by the unit suite.
 
-The next critical path is M3 balanced wrapping, outline/stroke, and golden text
-coverage.
+Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
+remaining release path is hosted compiler/sanitizer verification, owner license
+text, and selection of a writable Conan remote.
 
 ## Generate a demo sticker bundle
 
@@ -46,7 +50,7 @@ python3 tools/generate_mascot_packs.py \
 python3 tools/render_mascot_packs.py \
   --input generated/mascots \
   --output generated/bundle \
-  --mascotrender build/build/Release/mascotrender \
+  --mascotrender build/Release/mascotrender \
   --force
 ```
 
@@ -135,12 +139,12 @@ ctest --preset conan-release --output-on-failure
 Render the sample from the CLI:
 
 ```bash
-build/build/Release/mascotrender render-sample --output sample.webp
-build/build/Release/mascotrender render \
+build/Release/mascotrender render-sample --output sample.webp
+build/Release/mascotrender render \
   --pack examples/cat/pack.json \
   --sticker examples/cat/stickers/text-sample.json \
   --output sample-from-pack.webp
-build/build/Release/mascotrender validate \
+build/Release/mascotrender validate \
   --pack examples/cat/pack.json \
   --sticker examples/cat/stickers/text-sample.json
 ```

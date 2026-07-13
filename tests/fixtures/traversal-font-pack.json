@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "pack_id": "traversal-font-pack",
+  "canvas": { "width": 512, "height": 512 },
+  "layers": [
+    { "id": "body", "source": "missing.svg", "z": 1 }
+  ],
+  "base_layers": ["body"],
+  "expressions": { "happy": [] },
+  "poses": { "front": [] },
+  "provenance": {
+    "creator": "MascotRender tests",
+    "license": "Internal test fixture",
+    "source": "Authored for traversal validation"
+  },
+  "anchors": {},
+  "pivots": {},
+  "fonts": [
+    {
+      "id": "display",
+      "source": "../../examples/cat/fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "../../examples/cat/fonts/changa-one/OFL.txt"
+    }
+  ]
+}

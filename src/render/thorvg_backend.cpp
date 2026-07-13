@@ -1,0 +1,311 @@
+#include "render/thorvg_backend.hpp"
+#include "render/text_layout.hpp"
+
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <filesystem>
+#include <limits>
+#include <memory>
+#include <optional>
+#include <string>
+#include <utility>
+#include <vector>
+
+#include <thorvg.h>
+
+namespace mascotrender::detail {
+namespace {
+
+[[nodiscard]] Error render_error(std::string message) {
+  return Error{ErrorCode::render_failed, std::move(message)};
+}
+
+[[nodiscard]] bool succeeded(tvg::Result result) {
+  return result == tvg::Result::Success;
+}
+
+[[nodiscard]] std::unique_ptr<tvg::Shape>
+circle(float cx, float cy, float rx, float ry, std::uint8_t red,
+       std::uint8_t green, std::uint8_t blue, std::uint8_t alpha = 255) {
+  auto shape = tvg::Shape::gen();
+  if (!shape || !succeeded(shape->appendCircle(cx, cy, rx, ry)) ||
+      !succeeded(shape->fill(red, green, blue, alpha))) {
+    return nullptr;
+  }
+  return shape;
+}
+
+[[nodiscard]] std::unique_ptr<tvg::Shape>
+rounded_rect(float x, float y, float width, float height, float radius,
+             std::uint8_t red, std::uint8_t green, std::uint8_t blue,
+             std::uint8_t alpha = 255) {
+  auto shape = tvg::Shape::gen();
+  if (!shape ||
+      !succeeded(shape->appendRect(x, y, width, height, radius, radius)) ||
+      !succeeded(shape->fill(red, green, blue, alpha))) {
+    return nullptr;
+  }
+  return shape;
+}
+
+[[nodiscard]] std::unique_ptr<tvg::Shape>
+triangle(float x1, float y1, float x2, float y2, float x3, float y3,
+         std::uint8_t red, std::uint8_t green, std::uint8_t blue) {
+  auto shape = tvg::Shape::gen();
+  if (!shape || !succeeded(shape->moveTo(x1, y1)) ||
+      !succeeded(shape->lineTo(x2, y2)) || !succeeded(shape->lineTo(x3, y3)) ||
+      !succeeded(shape->close()) || !succeeded(shape->fill(red, green, blue))) {
+    return nullptr;
+  }
+  return shape;
+}
+
+[[nodiscard]] bool push(tvg::SwCanvas &canvas,
+                        std::unique_ptr<tvg::Paint> paint) {
+  return paint && succeeded(canvas.push(std::move(paint)));
+}
+
+[[nodiscard]] std::unique_ptr<tvg::Text>
+make_text(const TextBlock &block, const std::string &line, float font_size,
+          const Color &color, TextMetrics *metrics = nullptr) {
+  auto text = tvg::Text::gen();
+  const auto font_key = block.font.string();
+  if (!text || !succeeded(text->font(font_key.c_str(), font_size)) ||
+      !succeeded(text->text(line.c_str())) ||
+      !succeeded(text->fill(color.red, color.green, color.blue))) {
+    return nullptr;
+  }
+  if (metrics &&
+      !succeeded(text->bounds(&metrics->x, &metrics->y, &metrics->width,
+                              &metrics->height, false))) {
+    return nullptr;
+  }
+  return text;
+}
+
+[[nodiscard]] std::optional<Error> push_text(tvg::SwCanvas &canvas,
+                                             const TextBlock &block,
+                                             float scale_x, float scale_y) {
+  const auto font_key = block.font.string();
+  if (!succeeded(tvg::Text::load(font_key))) {
+    return render_error("ThorVG could not load TTF font: " + font_key);
+  }
+
+  const Rect area{block.safe_area.x * scale_x, block.safe_area.y * scale_y,
+                  block.safe_area.width * scale_x,
+                  block.safe_area.height * scale_y};
+  const auto scale = std::min(scale_x, scale_y);
+  const auto outline_width = block.outline_width * scale;
+  const auto fitted = fit_text_balanced(
+      block.content, area.width, area.height, block.min_font_size * scale,
+      block.max_font_size * scale, block.max_lines, outline_width,
+      [&block](std::string_view line,
+               float font_size) -> std::optional<TextMetrics> {
+        TextMetrics metrics;
+        if (!make_text(block, std::string{line}, font_size, block.fill,
+                       &metrics)) {
+          return std::nullopt;
+        }
+        return metrics;
+      });
+  if (!fitted) {
+    return render_error(
+        "Sticker text does not fit its safe area at the minimum font size");
+  }
+
+  const auto total_height =
+      fitted->line_height * static_cast<float>(fitted->lines.size());
+  const auto first_y = area.y + (area.height - total_height) * 0.5F;
+  for (std::size_t index = 0; index < fitted->lines.size(); ++index) {
+    const auto &metrics = fitted->metrics[index];
+    const auto x = area.x + (area.width - metrics.width) * 0.5F - metrics.x;
+    const auto line_y =
+        first_y + static_cast<float>(index) * fitted->line_height;
+    const auto y =
+        line_y + (fitted->line_height - metrics.height) * 0.5F - metrics.y;
+    if (outline_width > 0.0F) {
+      constexpr float diagonal = 0.70710678118F;
+      const std::pair<float, float> offsets[] = {
+          {-outline_width, 0.0F},
+          {outline_width, 0.0F},
+          {0.0F, -outline_width},
+          {0.0F, outline_width},
+          {-outline_width * diagonal, -outline_width * diagonal},
+          {outline_width * diagonal, -outline_width * diagonal},
+          {-outline_width * diagonal, outline_width * diagonal},
+          {outline_width * diagonal, outline_width * diagonal}};
+      for (const auto &[offset_x, offset_y] : offsets) {
+        auto outline = make_text(block, fitted->lines[index], fitted->font_size,
+                                 block.outline, nullptr);
+        if (!outline ||
+            !succeeded(outline->translate(x + offset_x, y + offset_y)) ||
+            !push(canvas, std::move(outline))) {
+          return render_error("ThorVG could not construct text outline");
+        }
+      }
+    }
+    auto text = make_text(block, fitted->lines[index], fitted->font_size,
+                          block.fill, nullptr);
+    if (!text || !succeeded(text->translate(x, y)) ||
+        !push(canvas, std::move(text))) {
+      return render_error("ThorVG could not position sticker text");
+    }
+  }
+  return std::nullopt;
+}
+
+[[nodiscard]] PixelBuffer copy_target(const std::vector<std::uint32_t> &target,
+                                      std::uint32_t width,
+                                      std::uint32_t height) {
+  PixelBuffer output;
+  output.width = width;
+  output.height = height;
+  output.stride_bytes = width * 4U;
+  output.pixels.resize(static_cast<std::size_t>(output.stride_bytes) * height);
+
+  // ThorVG's ARGB8888S is a numeric AARRGGBB value. Extracting channels
+  // explicitly makes the public BGRA byte layout independent of host
+  // endianness.
+  for (std::size_t index = 0; index < target.size(); ++index) {
+    const auto pixel = target[index];
+    const auto offset = index * 4U;
+    output.pixels[offset] = static_cast<std::byte>(pixel & 0xffU);
+    output.pixels[offset + 1U] = static_cast<std::byte>((pixel >> 8U) & 0xffU);
+    output.pixels[offset + 2U] = static_cast<std::byte>((pixel >> 16U) & 0xffU);
+    output.pixels[offset + 3U] = static_cast<std::byte>((pixel >> 24U) & 0xffU);
+  }
+  return output;
+}
+
+} // namespace
+
+ThorvgBackend::ThorvgBackend() {
+  const auto result = tvg::Initializer::init(tvg::CanvasEngine::Sw, 0);
+  if (!succeeded(result)) {
+    initialization_error_ =
+        Error{ErrorCode::renderer_initialization_failed,
+              "ThorVG software renderer initialization failed"};
+  }
+}
+
+ThorvgBackend::~ThorvgBackend() {
+  if (!initialization_error_) {
+    static_cast<void>(tvg::Initializer::term(tvg::CanvasEngine::Sw));
+  }
+}
+
+Result<PixelBuffer> ThorvgBackend::render_sample(std::uint32_t width,
+                                                 std::uint32_t height) const {
+  if (initialization_error_) {
+    return Result<PixelBuffer>::failure(*initialization_error_);
+  }
+  if (width == 0 || height == 0 ||
+      static_cast<std::uint64_t>(width) * height >
+          std::numeric_limits<std::size_t>::max() / sizeof(std::uint32_t)) {
+    return Result<PixelBuffer>::failure(
+        render_error("Invalid or unsupported render dimensions"));
+  }
+
+  std::vector<std::uint32_t> target(static_cast<std::size_t>(width) * height,
+                                    0U);
+  auto canvas = tvg::SwCanvas::gen();
+  if (!canvas) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG could not allocate a software canvas"));
+  }
+  if (!succeeded(canvas->mempool(tvg::SwCanvas::MempoolPolicy::Individual)) ||
+      !succeeded(canvas->target(target.data(), width, width, height,
+                                tvg::SwCanvas::ARGB8888S))) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG could not configure the render target"));
+  }
+
+  const float sx = static_cast<float>(width) / 512.0F;
+  const float sy = static_cast<float>(height) / 512.0F;
+  const auto px = [sx](float value) { return value * sx; };
+  const auto py = [sy](float value) { return value * sy; };
+
+  // A small deterministic mascot scene. The transparent canvas is intentional.
+  if (!push(*canvas,
+            circle(px(264), py(420), px(154), py(28), 32, 45, 72, 48)) ||
+      !push(*canvas, triangle(px(142), py(180), px(185), py(73), px(235),
+                              py(176), 243, 139, 55)) ||
+      !push(*canvas, triangle(px(277), py(176), px(327), py(73), px(370),
+                              py(180), 243, 139, 55)) ||
+      !push(*canvas, rounded_rect(px(123), py(145), px(266), py(272), px(112),
+                                  247, 155, 67)) ||
+      !push(*canvas, circle(px(209), py(257), px(24), py(31), 35, 48, 70)) ||
+      !push(*canvas, circle(px(303), py(257), px(24), py(31), 35, 48, 70)) ||
+      !push(*canvas, circle(px(216), py(248), px(7), py(9), 255, 255, 255)) ||
+      !push(*canvas, circle(px(310), py(248), px(7), py(9), 255, 255, 255)) ||
+      !push(*canvas, triangle(px(241), py(306), px(271), py(306), px(256),
+                              py(323), 214, 90, 94)) ||
+      !push(*canvas, circle(px(256), py(350), px(48), py(24), 255, 231, 205))) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG could not construct the sample scene"));
+  }
+
+  if (!succeeded(canvas->draw()) || !succeeded(canvas->sync())) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG failed while drawing the sample scene"));
+  }
+
+  return Result<PixelBuffer>::success(copy_target(target, width, height));
+}
+
+Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
+                                                std::uint32_t width,
+                                                std::uint32_t height) const {
+  if (initialization_error_) {
+    return Result<PixelBuffer>::failure(*initialization_error_);
+  }
+  if (scene.layers.empty() || scene.width == 0 || scene.height == 0 ||
+      width == 0 || height == 0 ||
+      static_cast<std::uint64_t>(width) * height >
+          std::numeric_limits<std::size_t>::max() / sizeof(std::uint32_t)) {
+    return Result<PixelBuffer>::failure(
+        render_error("Invalid layer scene or render dimensions"));
+  }
+
+  std::vector<std::uint32_t> target(static_cast<std::size_t>(width) * height,
+                                    0U);
+  auto canvas = tvg::SwCanvas::gen();
+  if (!canvas ||
+      !succeeded(canvas->mempool(tvg::SwCanvas::MempoolPolicy::Individual)) ||
+      !succeeded(canvas->target(target.data(), width, width, height,
+                                tvg::SwCanvas::ARGB8888S))) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG could not configure the SVG render target"));
+  }
+
+  for (const auto &layer : scene.layers) {
+    auto picture = tvg::Picture::gen();
+    if (!picture || !succeeded(picture->load(layer.string())) ||
+        !succeeded(picture->size(static_cast<float>(width),
+                                 static_cast<float>(height))) ||
+        !push(*canvas, std::move(picture))) {
+      return Result<PixelBuffer>::failure(
+          render_error("ThorVG could not load SVG layer: " + layer.string()));
+    }
+  }
+
+  const auto scale_x =
+      static_cast<float>(width) / static_cast<float>(scene.width);
+  const auto scale_y =
+      static_cast<float>(height) / static_cast<float>(scene.height);
+  for (const auto &text : scene.text) {
+    if (auto error = push_text(*canvas, text, scale_x, scale_y)) {
+      return Result<PixelBuffer>::failure(std::move(*error));
+    }
+  }
+
+  if (!succeeded(canvas->draw()) || !succeeded(canvas->sync())) {
+    return Result<PixelBuffer>::failure(
+        render_error("ThorVG failed while drawing SVG layers"));
+  }
+  return Result<PixelBuffer>::success(copy_target(target, width, height));
+}
+
+} // namespace mascotrender::detail

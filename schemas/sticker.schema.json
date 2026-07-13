@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/sticker-v1.json",
+  "title": "MascotRender sticker specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sticker_id",
+    "pack_id",
+    "expression",
+    "pose"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "sticker_id": { "type": "string", "minLength": 1 },
+    "pack_id": { "type": "string", "minLength": 1 },
+    "alt_text": { "type": "string" },
+    "expression": { "type": "string", "minLength": 1 },
+    "pose": { "type": "string", "minLength": 1 },
+    "seed": { "type": "integer", "minimum": 0 },
+    "layers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "text": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "style"],
+      "properties": {
+        "content": { "type": "string", "minLength": 1, "maxLength": 280 },
+        "style": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

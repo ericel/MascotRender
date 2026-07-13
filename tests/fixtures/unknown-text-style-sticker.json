@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "sticker_id": "unknown-text-style",
+  "pack_id": "mascotrender-cat",
+  "expression": "happy",
+  "pose": "front",
+  "text": {
+    "content": "HELLO",
+    "style": "not-declared"
+  }
+}

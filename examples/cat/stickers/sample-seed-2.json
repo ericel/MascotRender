@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "sticker_id": "sample-cat-seed-2",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat mascot with an alternate sparkle",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 2
+}

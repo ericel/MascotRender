@@ -1,0 +1,23 @@
+#pragma once
+
+#include <cstdint>
+
+#include <mascotrender/export.hpp>
+
+namespace mascotrender {
+
+struct Version final {
+    std::uint32_t major;
+    std::uint32_t minor;
+    std::uint32_t patch;
+};
+
+inline constexpr Version library_version{
+    @PROJECT_VERSION_MAJOR@,
+    @PROJECT_VERSION_MINOR@,
+    @PROJECT_VERSION_PATCH@,
+};
+
+[[nodiscard]] MASCOTRENDER_API const char* version_string() noexcept;
+
+}  // namespace mascotrender
