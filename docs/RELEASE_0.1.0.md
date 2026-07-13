@@ -48,11 +48,11 @@ tolerance.
 
 ## Install and consume
 
-Add the hosted remote and authenticate with JFrog read credentials:
+Add the public hosted remote; consumer credentials are not required:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan remote login mascotrender <jfrog-username>
+conan install --requires=mascotrender/0.1.0 --build=never
 ```
 
 Then require the package from the consuming recipe:
