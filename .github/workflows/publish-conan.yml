@@ -56,7 +56,7 @@ jobs:
       CONAN_REMOTE_NAME: mascotrender
       CONAN_REMOTE_URL: ${{ secrets.CONAN_URL }}
       CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
-      CONAN_USERNAME: ${{ vars.CONAN_USERNAME || github.repository_owner }}
+      CONAN_USERNAME: ${{ secrets.CONAN_USER }}
     steps:
       - name: Check out source
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0

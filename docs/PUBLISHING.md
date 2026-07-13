@@ -10,9 +10,7 @@ The workflow requires these GitHub Actions repository secrets:
 
 - `CONAN_URL`: writable Conan 2 remote URL.
 - `CONAN_PASSWORD`: API token or password for the remote.
-
-The non-sensitive repository variable `CONAN_USERNAME` is optional. When it is
-absent, the workflow uses the GitHub repository owner (`ericel`).
+- `CONAN_USER`: username for the remote account.
 
 ## Published configurations
 
