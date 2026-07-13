@@ -1,9 +1,12 @@
 # MascotRender
 
+Licensed under the [MIT License](LICENSE).
+
 MascotRender is a local-first C++20 library and CLI for compiling structured
 mascot packs into deterministic static sticker assets.
 
-The project has completed the local M1/M2 vertical slices and started M3 text.
+The project has completed the C++20 static-rendering MVP and is extending its
+backend-neutral scene model toward positioned text, animation, 2.5D, and 3D.
 The current pre-release package is `mascotrender/0.1.0`, consumable from Conan 2
 and CMake as `MascotRender::MascotRender`. It composes versioned JSON-selected
 SVG layers and optional pack-declared static TTF text through ThorVG, then
@@ -21,6 +24,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
 - [Current status](docs/STATUS.md)
+- [Scene, animation, and 3D expansion plan](docs/ROADMAP_3D_ANIMATION.md)
 
 The original v0.1 SDD is retained unchanged as the review baseline.
 
@@ -36,8 +40,13 @@ The current implementation proves the distribution and graphics path:
    covered by the unit suite.
 
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
-remaining release path is hosted compiler/sanitizer verification, owner license
-text, and selection of a writable Conan remote.
+hosted compiler/sanitizer matrix is green. Selection of a writable Conan remote
+is the remaining package-publication gate.
+
+Pack v1 also supports backward-compatible named text slots. Stickers can select
+an explicit slot such as `top` or request deterministic `auto` placement with
+an ordered preference list. This is the first stable contract in the planned
+scene/timeline/2.5D/optional-Filament expansion.
 
 ## Generate a demo sticker bundle
 

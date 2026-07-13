@@ -200,3 +200,44 @@ offsets before the fill pass. Outline width is expressed in canvas units, scales
 with output dimensions, is limited to 0 through 32, and is included in safe-area
 fitting. A future native glyph-stroke implementation may replace the multi-pass
 method only with a renderer-version decision and updated golden review.
+
+## ADR-015: Named text slots and deterministic auto placement
+
+- Status: Accepted
+- Date: 2026-07-13
+
+Pack format v1 gains optional named `text_slots`. Sticker text may retain the
+style `safe_area`, select one slot, or request `auto` with an ordered preference
+list. Auto placement chooses the candidate with the largest fitted font, then
+the fewest lines, then the earliest preference. When no preference is supplied,
+slot IDs are considered in lexicographic order. These optional fields are
+backward compatible and do not alter output for existing stickers.
+
+Collision masks, avoid regions, rotated/path text, character anchors, and
+animation-wide occupancy scoring require additional renderer work and are not
+claimed by this first slice.
+
+## ADR-016: Time-sampled backend-neutral scene expansion
+
+- Status: Accepted
+- Date: 2026-07-13
+
+Animation, 2.5D, and 3D will share a scene graph, typed keyframe timeline, text
+layout contract, owned RGBA frame transport, and animation encoder interface.
+Static rendering is the sample at `t = 0`. Existing SVG layers become flat
+scene nodes; a future Filament backend consumes GLB/glTF 2.0 behind an optional
+Conan feature and cannot leak Filament types into the public API.
+
+Expansion order is fixed: layout/scene foundations, animated current 2D packs,
+layered 2.5D, then one true-3D robot proof. Product clients consume pre-rendered
+animated WebP and static thumbnails rather than embedding a 3D runtime.
+
+## ADR-017: MIT project license
+
+- Status: Accepted
+- Date: 2026-07-13
+
+MascotRender source and bundled project-owned sample content are distributed
+under the MIT License with copyright held by `ericel`. The Conan recipe declares
+`MIT`; CMake and Conan packages ship the complete root license. Dependency,
+font, and separately generated-content licenses remain independently binding.

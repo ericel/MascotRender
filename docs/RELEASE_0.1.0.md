@@ -1,7 +1,7 @@
 # MascotRender 0.1.0 release notes
 
 Status: release candidate; public Conan upload is blocked until the owner
-selects a writable remote and supplies the project license text.
+selects and authenticates a writable remote. MascotRender is MIT-licensed.
 
 ## Supported package configurations
 
@@ -20,7 +20,8 @@ selects a writable remote and supplies the project license text.
 - Pack-local SVG composition, named expressions and poses, and seeded effects.
 - Approved pack-local static TTF loading with no platform font lookup.
 - Largest-valid whole-point text fitting, balanced wrapping, configurable
-  outlined glyphs, and safe-area enforcement.
+  outlined glyphs, named text slots, deterministic auto placement, and
+  safe-area enforcement.
 - Transparent deterministic WebP assets and thumbnails.
 - Deterministic pack generation and staged batch bundle scripts.
 - Decoded-pixel golden regression coverage and external Conan consumer tests.
@@ -35,7 +36,9 @@ scope. Complex shaping, fallback fonts, bidirectional text, animation, and
 runtime network fetching are not supported.
 
 Pack schema version 1 is stable for 0.1. The optional text `outline` field is
-backward compatible: omitted outlines have width zero. Rendered bytes are
+backward compatible: omitted outlines have width zero. Optional `text_slots`,
+`placement`, and `preferred_slots` are also backward compatible; omitting them
+retains the style safe area. Rendered bytes are
 deterministic for identical sources, options, locked dependencies, and target
 profile. Cross-platform golden checks compare decoded pixels with a documented
 tolerance.

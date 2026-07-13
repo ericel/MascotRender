@@ -129,7 +129,9 @@ install(
 )
 install(
     FILES
+        LICENSE
         docs/RELEASE_0.1.0.md
+        docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
 )

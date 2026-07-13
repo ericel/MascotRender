@@ -4,10 +4,10 @@ Updated: 2026-07-13
 
 ## Current milestone
 
-M5 — Engine 0.1 release candidate. M0-M4 are implemented locally. Hosted
-Linux/Windows/Clang execution, owner license text, and a writable Conan remote
-remain release gates. Product/Design approval of the full 50-sticker art set is
-the separate M6 gate.
+M5 — Engine 0.1 release candidate. M0-M4 are implemented, the hosted compiler
+and sanitizer matrix is green, and the project is MIT-licensed. A writable
+Conan remote remains the publication gate. Product/Design approval of the full
+50-sticker art set is the separate M6 gate.
 
 ## Completed locally
 
@@ -22,6 +22,8 @@ the separate M6 gate.
 - Approved pack-local Changa One static TTF and complete SIL OFL/provenance.
 - Largest-valid whole-point text sizing, dynamic-programming balanced wrapping,
   configurable eight-pass outlined glyphs, and outline-aware safe-area fitting.
+- Backward-compatible named text slots with explicit or deterministic
+  preference-based auto placement.
 - 512 x 512 assets, 256 x 256 thumbnails, alpha/dimension checks, and CLI
   `render`, `render-sample`, and `validate` commands.
 - Deterministic procedural generator for cat, bear, bunny, robot, and alien
@@ -33,10 +35,11 @@ the separate M6 gate.
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
   Windows MSVC static/shared Release, plus Linux Clang 18 ASan/UBSan.
+- MIT project license shipped by CMake and Conan.
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 18 CTest tests pass.
+- AppleClang 21 Release build is warning-clean and all 20 CTest tests pass.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles.
 - Static-with-CLI and shared-without-CLI Conan packages pass the external
@@ -63,13 +66,9 @@ workaround to be audited when ThorVG is upgraded.
 
 ## Remaining release gates
 
-1. Push the release-candidate source and obtain passing hosted Linux, Windows,
-   GCC, Clang, MSVC, ASan, and UBSan checks.
-2. Supply the owner-approved MascotRender project license file. The recipe is
-   intentionally still marked `Proprietary`.
-3. Select and authenticate a writable Conan remote. Only Conan Center is
+1. Select and authenticate a writable Conan remote. Only Conan Center is
    configured locally and it is not the project binary publishing destination.
-4. After the remote is selected, upload the tested recipe/binaries, verify a
+2. After the remote is selected, upload the tested recipe/binaries, verify a
    clean remote consumer, tag `v0.1.0`, and record immutable recipe/package
    revisions.
 
@@ -79,3 +78,7 @@ The engineering golden is approved as a regression baseline, not as final
 Product/Design approval of all generated art. M6 still requires full 50-sticker
 coherence review. Matcher boundary/collision behavior belongs to the product
 integration unless a reusable matcher is deliberately added to the engine.
+
+The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`:
+stabilize scene/text contracts, add deterministic animation to current 2D packs,
+advance to layered 2.5D, and only then add an optional Filament/GLB backend.

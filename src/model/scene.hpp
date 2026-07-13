@@ -25,7 +25,7 @@ struct Rect {
 struct TextBlock {
   std::filesystem::path font;
   std::string content;
-  Rect safe_area;
+  std::vector<Rect> candidate_areas;
   float min_font_size{};
   float max_font_size{};
   std::uint32_t max_lines{};

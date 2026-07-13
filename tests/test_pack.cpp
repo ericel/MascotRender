@@ -148,6 +148,32 @@ TEST_CASE("pack-declared TTF renders deterministic fitted sticker text") {
   REQUIRE(thumbnail.value().height == 256);
 }
 
+TEST_CASE("named text slots place captions in different canvas regions") {
+  mascotrender::Engine engine;
+
+  auto top = engine.render(example_request("text-top.json"));
+  REQUIRE(top);
+  auto automatic = engine.render(example_request("text-auto.json"));
+  REQUIRE(automatic);
+  auto bottom = engine.render(example_request("text-sample.json"));
+  REQUIRE(bottom);
+  REQUIRE(automatic.value().bytes == top.value().bytes);
+  REQUIRE(top.value().bytes != bottom.value().bytes);
+
+  const auto top_pixels = decode(top.value());
+  const auto bottom_pixels = decode(bottom.value());
+  bool top_has_new_pixels = false;
+  for (std::uint32_t y = 12; y < 108; ++y) {
+    for (std::uint32_t x = 40; x < 472; ++x) {
+      const auto top_pixel = pixel_at(top_pixels, 512, x, y);
+      const auto bottom_pixel = pixel_at(bottom_pixels, 512, x, y);
+      top_has_new_pixels = top_has_new_pixels ||
+                           (top_pixel.alpha != 0 && bottom_pixel.alpha == 0);
+    }
+  }
+  REQUIRE(top_has_new_pixels);
+}
+
 TEST_CASE("reviewed text mascot remains within the decoded-pixel golden") {
   mascotrender::Engine engine;
   auto request = example_request("text-sample.json");
@@ -310,4 +336,17 @@ TEST_CASE("unknown sticker text style reports its JSON location") {
   REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
   REQUIRE(result.error().source == request.sticker_file.string());
   REQUIRE(result.error().location == "$.text.style");
+}
+
+TEST_CASE("unknown sticker text slot reports its JSON location") {
+  mascotrender::Engine engine;
+  auto request = example_request();
+  request.sticker_file =
+      source_root / "tests" / "fixtures" / "unknown-text-slot-sticker.json";
+
+  auto result = engine.render(request);
+  REQUIRE_FALSE(result);
+  REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
+  REQUIRE(result.error().source == request.sticker_file.string());
+  REQUIRE(result.error().location == "$.text.placement");
 }

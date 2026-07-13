@@ -30,7 +30,7 @@
   },
   "provenance": {
     "creator": "MascotRender project",
-    "license": "Proprietary sample asset",
+    "license": "MIT",
     "source": "Procedurally authored for the MascotRender test pack"
   },
   "anchors": {
@@ -40,6 +40,12 @@
   },
   "pivots": {
     "head": { "x": 256, "y": 281 }
+  },
+  "text_slots": {
+    "top": { "x": 40, "y": 12, "width": 432, "height": 96 },
+    "bottom": { "x": 72, "y": 382, "width": 368, "height": 104 },
+    "left": { "x": 8, "y": 150, "width": 128, "height": 170 },
+    "right": { "x": 376, "y": 150, "width": 128, "height": 170 }
   },
   "fonts": [
     {

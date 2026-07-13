@@ -25,6 +25,6 @@ Build-only tools such as CMake, Meson, Ninja, and pkgconf are not linked into or
 redistributed by the MascotRender library package. Conan records and distributes
 their licenses with their own packages.
 
-MascotRender itself is currently marked `Proprietary` in the Conan recipe. A
-project license file must be supplied by the owner before public binary
-distribution; this notice does not grant a license to MascotRender source code.
+MascotRender itself is distributed under the MIT License. The complete project
+license is shipped at the package root and under the Conan `licenses`
+directory. Third-party components and content remain under their listed terms.

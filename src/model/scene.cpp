@@ -145,6 +145,25 @@ resolve_asset(const std::filesystem::path &root,
   return value ^ (value >> 31U);
 }
 
+[[nodiscard]] Result<Rect>
+parse_rect(const Json &value, std::uint32_t canvas_width,
+           std::uint32_t canvas_height, const std::filesystem::path &source,
+           std::string location, std::string_view kind) {
+  const Rect area{value.at("x").get<float>(), value.at("y").get<float>(),
+                  value.at("width").get<float>(),
+                  value.at("height").get<float>()};
+  if (!std::isfinite(area.x) || !std::isfinite(area.y) ||
+      !std::isfinite(area.width) || !std::isfinite(area.height) ||
+      area.x < 0.0F || area.y < 0.0F || area.width <= 0.0F ||
+      area.height <= 0.0F || area.x + area.width > canvas_width ||
+      area.y + area.height > canvas_height) {
+    return Result<Rect>::failure(document_error(
+        std::string{kind} + " must be finite, positive, and inside the canvas",
+        source, std::move(location)));
+  }
+  return Result<Rect>::success(area);
+}
+
 [[nodiscard]] Result<Scene>
 parse_scene(const Json &pack, const Json &sticker,
             const std::filesystem::path &pack_file,
@@ -245,6 +264,24 @@ parse_scene(const Json &pack, const Json &sticker,
       }
     }
 
+    std::map<std::string, Rect, std::less<>> text_slots;
+    if (pack.contains("text_slots")) {
+      for (auto item = pack.at("text_slots").begin();
+           item != pack.at("text_slots").end(); ++item) {
+        const auto location = "$.text_slots." + item.key();
+        if (item.key().empty()) {
+          return Result<Scene>::failure(document_error(
+              "Text slot IDs must be non-empty", pack_file, location));
+        }
+        auto area = parse_rect(item.value(), scene.width, scene.height,
+                               pack_file, location, "Text slot");
+        if (!area) {
+          return Result<Scene>::failure(area.error());
+        }
+        text_slots.emplace(item.key(), std::move(area).value());
+      }
+    }
+
     std::map<std::string, TextStyle, std::less<>> text_styles;
     if (pack.contains("text_styles")) {
       for (auto item = pack.at("text_styles").begin();
@@ -262,21 +299,13 @@ parse_scene(const Json &pack, const Json &sticker,
                              location + ".font"));
         }
 
-        const auto &area = item.value().at("safe_area");
-        const Rect safe_area{
-            area.at("x").get<float>(), area.at("y").get<float>(),
-            area.at("width").get<float>(), area.at("height").get<float>()};
-        if (!std::isfinite(safe_area.x) || !std::isfinite(safe_area.y) ||
-            !std::isfinite(safe_area.width) ||
-            !std::isfinite(safe_area.height) || safe_area.x < 0.0F ||
-            safe_area.y < 0.0F || safe_area.width <= 0.0F ||
-            safe_area.height <= 0.0F ||
-            safe_area.x + safe_area.width > scene.width ||
-            safe_area.y + safe_area.height > scene.height) {
-          return Result<Scene>::failure(document_error(
-              "Text safe area must be finite, positive, and inside the canvas",
-              pack_file, location + ".safe_area"));
+        auto parsed_safe_area =
+            parse_rect(item.value().at("safe_area"), scene.width, scene.height,
+                       pack_file, location + ".safe_area", "Text safe area");
+        if (!parsed_safe_area) {
+          return Result<Scene>::failure(parsed_safe_area.error());
         }
+        const auto safe_area = std::move(parsed_safe_area).value();
 
         const auto min_size = item.value().at("min_font_size").get<float>();
         const auto max_size = item.value().at("max_font_size").get<float>();
@@ -487,10 +516,64 @@ parse_scene(const Json &pack, const Json &sticker,
       }
 
       const auto &style = text_styles.at(style_id);
-      scene.text.push_back(
-          TextBlock{fonts.at(style.font).source, content, style.safe_area,
-                    style.min_font_size, style.max_font_size, style.max_lines,
-                    style.fill, style.outline, style.outline_width});
+      std::vector<Rect> candidate_areas;
+      if (!text.contains("placement")) {
+        if (text.contains("preferred_slots")) {
+          return Result<Scene>::failure(
+              document_error("preferred_slots requires auto placement",
+                             sticker_file, "$.text.preferred_slots"));
+        }
+        candidate_areas.push_back(style.safe_area);
+      } else {
+        const auto placement = text.at("placement").get<std::string>();
+        if (placement == "auto") {
+          if (text.contains("preferred_slots")) {
+            std::set<std::string, std::less<>> seen;
+            std::size_t index = 0;
+            for (const auto &candidate : text.at("preferred_slots")) {
+              const auto slot = candidate.get<std::string>();
+              if (!text_slots.contains(slot)) {
+                return Result<Scene>::failure(document_error(
+                    "Unknown text slot: " + slot, sticker_file,
+                    "$.text.preferred_slots[" + std::to_string(index) + "]"));
+              }
+              if (!seen.insert(slot).second) {
+                return Result<Scene>::failure(document_error(
+                    "Preferred text slots must be unique", sticker_file,
+                    "$.text.preferred_slots[" + std::to_string(index) + "]"));
+              }
+              candidate_areas.push_back(text_slots.at(slot));
+              ++index;
+            }
+          } else {
+            for (const auto &[id, area] : text_slots) {
+              static_cast<void>(id);
+              candidate_areas.push_back(area);
+            }
+          }
+          if (candidate_areas.empty()) {
+            return Result<Scene>::failure(document_error(
+                "Auto text placement requires at least one pack text slot",
+                sticker_file, "$.text.placement"));
+          }
+        } else {
+          if (text.contains("preferred_slots")) {
+            return Result<Scene>::failure(document_error(
+                "preferred_slots is only valid with auto placement",
+                sticker_file, "$.text.preferred_slots"));
+          }
+          if (!text_slots.contains(placement)) {
+            return Result<Scene>::failure(
+                document_error("Unknown text slot: " + placement, sticker_file,
+                               "$.text.placement"));
+          }
+          candidate_areas.push_back(text_slots.at(placement));
+        }
+      }
+      scene.text.push_back(TextBlock{
+          fonts.at(style.font).source, content, std::move(candidate_areas),
+          style.min_font_size, style.max_font_size, style.max_lines, style.fill,
+          style.outline, style.outline_width});
     }
     return Result<Scene>::success(std::move(scene));
   } catch (const Json::exception &exception) {

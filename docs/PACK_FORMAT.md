@@ -33,6 +33,10 @@ The normative machine-readable files are
   },
   "anchors": { "face_center": { "x": 256, "y": 280 } },
   "pivots": { "head": { "x": 256, "y": 280 } },
+  "text_slots": {
+    "top": { "x": 40, "y": 12, "width": 432, "height": 96 },
+    "bottom": { "x": 72, "y": 382, "width": 368, "height": 104 }
+  },
   "fonts": [
     {
       "id": "display",
@@ -79,6 +83,9 @@ The normative machine-readable files are
 - Text styles reference declared font IDs and define a canvas-relative safe
   area, minimum and maximum size, one to three lines, an RGB fill, and an
   optional 0-to-32 canvas-unit outline with its own RGB color.
+- `text_slots` optionally declares reusable named canvas rectangles. Slot IDs
+  are pack-local and each rectangle must be finite, positive, and contained by
+  the canvas.
 
 ## Sticker
 
@@ -94,14 +101,20 @@ The normative machine-readable files are
   "layers": [],
   "text": {
     "content": "YOU GOT THIS!",
-    "style": "caption"
+    "style": "caption",
+    "placement": "auto",
+    "preferred_slots": ["bottom", "top"]
   }
 }
 ```
 
 `expression` and `pose` must name entries declared by the pack. `layers` is an
 optional list for sticker-specific effects. `text` is optional; its style must
-name a pack text style, and content is limited to 280 UTF-8 bytes. The C++ caller
+name a pack text style, and content is limited to 280 UTF-8 bytes. Omitted
+`placement` preserves the style's legacy `safe_area`. A named placement selects
+that pack slot. `auto` considers `preferred_slots` in order, or all slots in
+lexicographic ID order when no preference is supplied. Unknown and duplicate
+slot references are rejected with JSON-path diagnostics. The C++ caller
 supplies output dimensions and WebP settings with `RenderOptions`; these are
 build settings rather than authored pack content.
 
@@ -112,9 +125,12 @@ and fallback are never used. ASCII whitespace is normalized at wrap boundaries.
 The renderer searches downward from `max_font_size` for the largest whole-point
 size that fits, chooses the fewest valid lines, and balances them by minimizing
 squared unused line width. An outline is rendered as eight deterministic glyph
-passes around the fill and participates in safe-area fitting. Text is centered
-above the selected SVG layers. Explicit newline preservation, fallback fonts,
-shaping, and bidirectional text remain later work.
+passes around the fill and participates in safe-area fitting. For auto
+placement, the renderer chooses the candidate yielding the largest font, then
+the fewest lines, then the earliest authored preference. Text is centered above
+the selected SVG layers. Explicit newline preservation, collision masks,
+rotation, paths, fallback fonts, shaping, and bidirectional text remain later
+work.
 
 ## Deterministic variation
 

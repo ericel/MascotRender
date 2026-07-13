@@ -93,38 +93,52 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
     return render_error("ThorVG could not load TTF font: " + font_key);
   }
 
-  const Rect area{block.safe_area.x * scale_x, block.safe_area.y * scale_y,
-                  block.safe_area.width * scale_x,
-                  block.safe_area.height * scale_y};
   const auto scale = std::min(scale_x, scale_y);
   const auto outline_width = block.outline_width * scale;
-  const auto fitted = fit_text_balanced(
-      block.content, area.width, area.height, block.min_font_size * scale,
-      block.max_font_size * scale, block.max_lines, outline_width,
-      [&block](std::string_view line,
-               float font_size) -> std::optional<TextMetrics> {
-        TextMetrics metrics;
-        if (!make_text(block, std::string{line}, font_size, block.fill,
-                       &metrics)) {
-          return std::nullopt;
-        }
-        return metrics;
-      });
-  if (!fitted) {
-    return render_error(
-        "Sticker text does not fit its safe area at the minimum font size");
+  const auto measure = [&block](std::string_view line,
+                                float font_size) -> std::optional<TextMetrics> {
+    TextMetrics metrics;
+    if (!make_text(block, std::string{line}, font_size, block.fill, &metrics)) {
+      return std::nullopt;
+    }
+    return metrics;
+  };
+
+  std::optional<Rect> selected_area;
+  std::optional<FittedText> selected_text;
+  for (const auto &candidate : block.candidate_areas) {
+    const Rect area{candidate.x * scale_x, candidate.y * scale_y,
+                    candidate.width * scale_x, candidate.height * scale_y};
+    auto fitted = fit_text_balanced(
+        block.content, area.width, area.height, block.min_font_size * scale,
+        block.max_font_size * scale, block.max_lines, outline_width, measure);
+    if (!fitted) {
+      continue;
+    }
+    if (!selected_text || fitted->font_size > selected_text->font_size ||
+        (fitted->font_size == selected_text->font_size &&
+         fitted->lines.size() < selected_text->lines.size())) {
+      selected_area = area;
+      selected_text = std::move(fitted);
+    }
   }
+  if (!selected_area || !selected_text) {
+    return render_error("Sticker text does not fit any candidate area at the "
+                        "minimum font size");
+  }
+  const auto &area = *selected_area;
+  const auto &fitted = *selected_text;
 
   const auto total_height =
-      fitted->line_height * static_cast<float>(fitted->lines.size());
+      fitted.line_height * static_cast<float>(fitted.lines.size());
   const auto first_y = area.y + (area.height - total_height) * 0.5F;
-  for (std::size_t index = 0; index < fitted->lines.size(); ++index) {
-    const auto &metrics = fitted->metrics[index];
+  for (std::size_t index = 0; index < fitted.lines.size(); ++index) {
+    const auto &metrics = fitted.metrics[index];
     const auto x = area.x + (area.width - metrics.width) * 0.5F - metrics.x;
     const auto line_y =
-        first_y + static_cast<float>(index) * fitted->line_height;
+        first_y + static_cast<float>(index) * fitted.line_height;
     const auto y =
-        line_y + (fitted->line_height - metrics.height) * 0.5F - metrics.y;
+        line_y + (fitted.line_height - metrics.height) * 0.5F - metrics.y;
     if (outline_width > 0.0F) {
       constexpr float diagonal = 0.70710678118F;
       const std::pair<float, float> offsets[] = {
@@ -137,7 +151,7 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
           {-outline_width * diagonal, outline_width * diagonal},
           {outline_width * diagonal, outline_width * diagonal}};
       for (const auto &[offset_x, offset_y] : offsets) {
-        auto outline = make_text(block, fitted->lines[index], fitted->font_size,
+        auto outline = make_text(block, fitted.lines[index], fitted.font_size,
                                  block.outline, nullptr);
         if (!outline ||
             !succeeded(outline->translate(x + offset_x, y + offset_y)) ||
@@ -146,7 +160,7 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
         }
       }
     }
-    auto text = make_text(block, fitted->lines[index], fitted->font_size,
+    auto text = make_text(block, fitted.lines[index], fitted.font_size,
                           block.fill, nullptr);
     if (!text || !succeeded(text->translate(x, y)) ||
         !push(canvas, std::move(text))) {

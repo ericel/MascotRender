@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = 2
+GENERATOR_VERSION = 3
 MASK64 = (1 << 64) - 1
 
 
@@ -240,6 +240,10 @@ def pack_document(pack_id: str, species: str) -> dict[str, object]:
             "effect_right": {"x": 434, "y": 236},
         },
         "pivots": {"body": {"x": 256, "y": 260}},
+        "text_slots": {
+            "top": {"x": 48, "y": 12, "width": 416, "height": 94},
+            "bottom": {"x": 58, "y": 394, "width": 396, "height": 94},
+        },
         "fonts": [
             {
                 "id": "display",
@@ -286,7 +290,14 @@ def sticker_document(
         "expression": expression,
         "pose": pose,
         "seed": splitmix64(seed + mascot_number * 1000 + phrase_index),
-        "text": {"content": content, "style": "caption"},
+        "text": {
+            "content": content,
+            "style": "caption",
+            "placement": "auto",
+            "preferred_slots": ["top", "bottom"]
+            if phrase_index % 2 == 0
+            else ["bottom", "top"],
+        },
     }
 
 

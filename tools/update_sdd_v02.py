@@ -161,7 +161,7 @@ def main() -> None:
         ("C++20 library, build/validate CLI, and Conan 2 package", "Full graphical authoring studio"),
         ("One original trusted layered SVG example pack", "Untrusted third-party pack ingestion and marketplace"),
         ("JSON sticker/pack input; WebP output and thumbnails", "CSV authoring workflow and binary Trie/FST"),
-        ("Expressions, poses, effects, palettes, deterministic seed", "3D rendering, physics, and animation"),
+        ("Expressions, poses, effects, palettes, deterministic seed", "Filament/GLB rendering, physics, and animation (expansion track)"),
         ("Exact English/Pidgin text with packaged font and fitting", "Full multilingual shaping, fallback, bidi, and Korean launch support"),
         ("Catalogue, dictionary, build report, validation", "Incremental cache, OpenCV similarity, and contact-sheet tooling"),
         ("Installable API plus external consumer test", "Drogon delivery, React tray, MLS integration, and product telemetry"),
@@ -190,6 +190,8 @@ def main() -> None:
     append_requirement(functional, "FR-22", "SHOULD", "Add CSV import by converting operator-friendly rows into the canonical JSON/StickerSpec model during M6.")
     append_requirement(functional, "FR-23", "MUST", "Distribute mascotrender/0.1.0 with Conan 2 and install a relocatable CMake config exposing MascotRender::MascotRender.")
     append_requirement(functional, "FR-24", "MUST", "Provide an in-memory render API and a separate Conan test_package that compiles, links, and renders using only packaged artifacts.")
+    append_requirement(functional, "FR-25", "MUST", "Support backward-compatible named text slots, explicit placement, and deterministic preference-based automatic placement.")
+    append_requirement(functional, "FR-26", "SHOULD", "Evolve through a backend-neutral scene graph and typed timeline so static 2D, animated 2D, layered 2.5D, and optional 3D share one semantic recipe.")
 
     nonfunctional = document.tables[9]
     update_requirement(nonfunctional, "NFR-02", "Determinism", "Byte-identical output is required within the same pinned Conan profiles, lockfile, fonts, renderer settings, and inputs. Other supported profiles require visual equivalence.")
@@ -459,10 +461,10 @@ def main() -> None:
         ("M6", "CSV importer, incremental cache, contact-sheet review, optional perceptual similarity, and 50-sticker art-system validation."),
         ("M6+", "HarfBuzz/FreeType shaping, fallback fonts, Korean corpus, Unicode normalization, bidi, and locale-specific safe areas."),
         ("M7", "Drogon/CDN delivery, React local matching, MLS attachment integration, rollback, and approved pilot telemetry."),
-        ("Post-pilot", "Animated WebP/APNG/Lottie export from pose keyframes and procedural effects."),
-        ("Post-pilot", "Additional mascot packs, seasonal themes, category lazy loading, and compact Trie/FST."),
-        ("Later", "WASM preview, controlled personalization, and offline ML-assisted trigger expansion."),
-        ("Later", "Technical-artist desktop editor built on the same scene graph and schemas."),
+        ("E1", "Named/automatic text placement, avoid regions, and backend-neutral parented scene nodes."),
+        ("E2", "Typed timeline, deterministic 2D animation overlays, and animated WebP with a static thumbnail."),
+        ("E3", "Layered 2.5D parallax, squash/stretch, shadows, and camera motion on the robot pack."),
+        ("E4", "Optional Filament/GLB robot proof after the scene and timeline contracts stabilize."),
     ]
     for index, values in enumerate(roadmap_rows, start=1):
         set_row(roadmap, index, values)
@@ -549,15 +551,44 @@ def main() -> None:
         "five deterministic mascot identities and 50 stickers through the C++20 "
         "library, with 512px assets, thumbnails, catalogue, dictionary, build "
         "report, balanced text, outlined glyphs, and a decoded-pixel golden. The "
-        "AppleClang Release suite passes 18 tests, and external static/shared Conan "
+        "AppleClang Release suite passes 20 tests, and external static/shared Conan "
         "consumers pass. The 50-sticker render baseline is 4.84 seconds on the "
         "recorded macOS arm64 workstation."
     )
     document.add_paragraph(
-        "The remaining M5 release gates are passing hosted GCC, Clang, MSVC, ASan, "
-        "and UBSan jobs; owner-supplied project license text; and selection plus "
-        "authentication of a writable Conan remote. Product and Design approval of "
+        "The hosted GCC, Clang, MSVC, ASan, and UBSan jobs pass and the project is "
+        "distributed under the MIT License. The remaining M5 publication gate is "
+        "selection and authentication of a writable Conan remote. Product and Design approval of "
         "the complete generated art set remains the independent M6 coherence gate."
+    )
+
+    document.add_heading("Appendix F — Scene, Animation, and 3D Expansion", level=1)
+    document.add_paragraph(
+        "MascotRender evolves through one time-sampled, backend-neutral scene contract: "
+        "sticker recipe to scene compiler, text solver, and typed animation timeline; "
+        "then ThorVG 2D, layered 2.5D, or optional Filament 3D; then 2D text/effect "
+        "composition and static or animated WebP encoding. Static rendering is the "
+        "sample at t = 0 and remains the compatibility baseline."
+    )
+    expansion = document.add_table(rows=1, cols=3)
+    expansion.style = "Table Grid"
+    set_row(expansion, 0, ("Track", "Deliverable", "Gate"))
+    for phase, deliverable, gate in [
+        ("E1", "Named/auto text slots, avoid regions, parented scene nodes, screen and character anchors", "Existing static golden remains within tolerance"),
+        ("E2", "Keyframes, easing, overlays, deterministic frame sampling, animated WebP", "One current mascot animates with stable text placement"),
+        ("E3", "Layered 2.5D depth, parallax, squash/stretch, shadows, camera motion", "Robot 2.5D animation golden passes"),
+        ("E4", "Optional Filament backend and one semantic GLB robot contract", "Same recipe renders in 2D, 2.5D, and 3D"),
+    ]:
+        row = expansion.add_row()
+        set_cell(row.cells[0], phase)
+        set_cell(row.cells[1], deliverable)
+        set_cell(row.cells[2], gate)
+    document.add_paragraph(
+        "Filament is not added before the scene and timeline tests pass. The normal "
+        "Conan package remains free of 3D dependencies unless the consumer enables "
+        "the feature. Blender is an offline authoring/validation tool, GLB/glTF 2.0 "
+        "is the exchange format, and product clients consume pre-rendered animated "
+        "WebP rather than embedding the 3D runtime."
     )
 
     # Header and core properties.

@@ -157,14 +157,14 @@ Goal: publish a package other C++ applications can safely adopt.
 ### Backlog
 
 - `MR-050` **Done:** public API documentation, release notes, and consumer example.
-- `MR-051` Run warning-clean GCC, Clang, AppleClang, and MSVC builds.
-- `MR-052` **CI configured:** run ASan/UBSan on Linux; hosted result pending.
-- `MR-053` **Partial:** dependency/font inventory and notices are packaged;
-  owner project-license text remains required for public distribution.
+- `MR-051` **Done:** warning-clean GCC, Clang, AppleClang, and MSVC builds.
+- `MR-052` **Done:** Linux Clang 18 ASan/UBSan suite passes in hosted CI.
+- `MR-053` **Done:** MIT project license, dependency/font inventory, and notices
+  are packaged.
 - `MR-054` Pin Conan profiles, lockfiles, recipe revision, and dependency options.
-- `MR-055` **Local partial:** static Release and shared Debug pass on macOS;
-  hosted Linux variants and Windows static/shared Release remain. ThorVG's
-  pinned recipe explicitly rejects MSVC Debug.
+- `MR-055` **Done for supported matrix:** static Release/shared Debug pass on
+  macOS and hosted Linux; Windows static/shared Release pass. ThorVG's pinned
+  recipe explicitly rejects MSVC Debug.
 - `MR-056` **Done:** ten- and fifty-sticker local baselines are recorded.
 - `MR-057` Tag and publish `mascotrender/0.1.0` to the approved Conan remote.
 
@@ -198,6 +198,41 @@ phrase extraction, deterministic ranking, MLS attachment metadata, receiving
 client fallback, content QA, and pilot telemetry under an approved privacy
 policy.
 
+## Engine expansion track: animation, 2.5D, and 3D
+
+This track may proceed after the 0.1 static contract is stable. It must preserve
+the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
+
+### E1: Layout and scene foundations — 4-7 days
+
+- `MR-080` **Done:** backward-compatible named text slots and explicit placement.
+- `MR-081` **Done:** deterministic preference-based auto slot selection.
+- `MR-082` Add avoid regions and occupancy/collision scoring.
+- `MR-083` Add internal parented scene nodes with position, rotation, scale,
+  opacity, pivot, and depth; static output is the `t = 0` compatibility test.
+- `MR-084` Add screen-fixed and character-anchor text placement.
+
+### E2: Animated current 2D packs — 7-10 days
+
+- `MR-090` Typed keyframes, fixed easing formulas, and loop policies.
+- `MR-091` Deterministic frame sampling with bounded FPS, duration, and frames.
+- `MR-092` Blink, bounce, sparkle, and text-pop procedural overlays.
+- `MR-093` Animated WebP encoder plus static first-frame thumbnail.
+
+### E3: Layered 2.5D — 10-15 days
+
+- `MR-100` Parented mascot parts, pivots, depth, and parallax.
+- `MR-101` Squash/stretch, delayed child motion, shadows, and camera motion.
+- `MR-102` Robot 2.5D acceptance pack and deterministic animation golden.
+
+### E4: Optional Filament/GLB proof — 15-25 days plus art
+
+- `MR-110` Optional Conan/CMake Filament feature with no default dependency.
+- `MR-111` GLB loader, semantic bone/anchor map, orthographic camera, and toon
+  lighting behind the backend-neutral renderer interface.
+- `MR-112` One robot with four clips and six facial morph targets.
+- `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
+
 ## First execution batch
 
 Start these items immediately:
@@ -207,8 +242,8 @@ Start these items immediately:
 3. The M2 example-pack art dependency in parallel with M0.
 4. Font licensing and text-limit decisions before M3 begins.
 
-Do not start incremental caching, CSV, animation, OpenCV, runtime integration,
-or 200-sticker production until their preceding exit gates pass.
+Do not add Filament until the sampled-scene/timeline contracts and animated 2D
+tests pass. Do not scale to 200 stickers until the M6 coherence gate passes.
 
 ## Project controls
 

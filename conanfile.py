@@ -12,7 +12,7 @@ class MascotRenderRecipe(ConanFile):
     version = "0.1.0"
     package_type = "library"
     description = "Procedural mascot and sticker rendering engine"
-    license = "Proprietary"
+    license = "MIT"
     settings = "os", "arch", "compiler", "build_type"
     options = {
         "shared": [True, False],
@@ -28,6 +28,7 @@ class MascotRenderRecipe(ConanFile):
     }
     exports_sources = (
         "CMakeLists.txt",
+        "LICENSE",
         "cmake/*",
         "include/*",
         "src/*",
