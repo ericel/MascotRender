@@ -23,7 +23,8 @@ Sticker recipe
   `t = 0` must reproduce the static result.
 - Named text slots and placement modes. Version 1 currently supports legacy
   style safe areas, explicit named slots, and deterministic `auto` selection.
-  Avoid regions, character anchors, rotation, paths, and animation-wide
+  Authored avoid-region scoring is implemented; character anchors, rotation,
+  paths, and animation-wide
   occupancy masks follow without changing authored wording.
 - A frame transport and animation encoder contract based on owned RGBA pixels
   and integer millisecond timestamps.
@@ -32,11 +33,12 @@ Sticker recipe
 
 ### E1 — Layout and scene foundations
 
-Status: started. Named text slots and deterministic preference-based auto
-placement are implemented without breaking existing pack files.
+Status: in progress. Named text slots, deterministic preference-based auto
+placement, and authored avoid-region scoring are implemented without breaking
+existing pack files.
 
-Next: add avoid rectangles and occupancy scoring; introduce internal scene
-nodes and parent-child transforms; add screen-fixed and character-anchor text;
+Next: introduce internal scene nodes and parent-child transforms; add
+screen-fixed and character-anchor text;
 then add rotated/path text after HarfBuzz shaping is available.
 
 Exit: one recipe renders unchanged at `t = 0`; top, bottom, left, right, and
@@ -44,12 +46,13 @@ speech placements are deterministic at both 512 and 256 pixels.
 
 ### E2 — Animated existing 2D packs
 
-Add keyframe tracks, easing, loop policy, blink/bounce/sparkle/text-pop
-overlays, frame sampling, and libwebp `WebPAnimEncoder` output. Text placement
-is solved once against the union of occupied regions across the animation.
+Status: first vertical slice complete. Typed scalar tracks, fixed easing, loop
+policy, body bounce, text pop, bounded frame sampling, animated WebP, and static
+poster thumbnails are implemented. Next add blink/sparkle tracks and solve text
+against the union of occupied regions across the animation.
 
-Exit: one existing mascot produces a deterministic 15 FPS animated WebP plus
-a static first-frame thumbnail, with bounded duration/frame count and no text
+Exit: one existing mascot produces a deterministic animated WebP plus
+a stable static poster thumbnail, with bounded duration/frame count and no text
 jumping.
 
 ### E3 — Layered 2.5D

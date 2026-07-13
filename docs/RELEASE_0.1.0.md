@@ -21,8 +21,10 @@ selects and authenticates a writable remote. MascotRender is MIT-licensed.
 - Approved pack-local static TTF loading with no platform font lookup.
 - Largest-valid whole-point text fitting, balanced wrapping, configurable
   outlined glyphs, named text slots, deterministic auto placement, and
-  safe-area enforcement.
-- Transparent deterministic WebP assets and thumbnails.
+  avoid-region-aware safe-area enforcement.
+- Transparent deterministic static or animated WebP assets and static poster
+  thumbnails, with bounded timelines, body bounce, text pop, and a 256 MiB
+  retained BGRA frame-buffer safety ceiling.
 - Deterministic pack generation and staged batch bundle scripts.
 - Decoded-pixel golden regression coverage and external Conan consumer tests.
 
@@ -32,13 +34,14 @@ Version 0.1 accepts trusted local pack content. Canonical path containment and
 schema checks are defense-in-depth, not a promise that hostile SVG/font inputs
 are safe to process. Run third-party content in an application-controlled
 sandbox. Only local static `.ttf` fonts and the documented SVG subset are in
-scope. Complex shaping, fallback fonts, bidirectional text, animation, and
-runtime network fetching are not supported.
+scope. Complex shaping, fallback fonts, bidirectional text, authored skeletal
+clips, 2.5D/3D, and runtime network fetching are not supported.
 
 Pack schema version 1 is stable for 0.1. The optional text `outline` field is
 backward compatible: omitted outlines have width zero. Optional `text_slots`,
 `placement`, and `preferred_slots` are also backward compatible; omitting them
-retains the style safe area. Rendered bytes are
+retains the style safe area. Optional avoid regions and animation declarations
+are likewise additive. Rendered bytes are
 deterministic for identical sources, options, locked dependencies, and target
 profile. Cross-platform golden checks compare decoded pixels with a documented
 tolerance.

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "sticker_id": "unknown-animation-overlay",
+  "pack_id": "mascotrender-cat",
+  "expression": "happy",
+  "pose": "front",
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "overlays": ["not-supported"]
+  }
+}

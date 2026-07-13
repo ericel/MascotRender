@@ -2,10 +2,9 @@
 
 #include <cstdint>
 #include <filesystem>
-#include <vector>
-
 #include <mascotrender/image.hpp>
 #include <mascotrender/result.hpp>
+#include <vector>
 
 #include "model/scene.hpp"
 
@@ -19,8 +18,8 @@ public:
         std::uint32_t width, std::uint32_t height) const = 0;
 
     [[nodiscard]] virtual Result<PixelBuffer> render_scene(
-        const Scene& scene,
-        std::uint32_t width, std::uint32_t height) const = 0;
+        const Scene& scene, std::uint32_t width, std::uint32_t height,
+        const FrameState& frame) const = 0;
 };
 
 }  // namespace mascotrender::detail

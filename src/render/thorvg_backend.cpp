@@ -1,5 +1,6 @@
 #include "render/thorvg_backend.hpp"
-#include "render/text_layout.hpp"
+
+#include <thorvg.h>
 
 #include <algorithm>
 #include <cmath>
@@ -13,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-#include <thorvg.h>
+#include "render/text_layout.hpp"
 
 namespace mascotrender::detail {
 namespace {
@@ -67,6 +68,16 @@ triangle(float x1, float y1, float x2, float y2, float x3, float y3,
   return paint && succeeded(canvas.push(std::move(paint)));
 }
 
+[[nodiscard]] float overlap_area(const Rect &left, const Rect &right) {
+  const auto width =
+      std::max(0.0F, std::min(left.x + left.width, right.x + right.width) -
+                         std::max(left.x, right.x));
+  const auto height =
+      std::max(0.0F, std::min(left.y + left.height, right.y + right.height) -
+                         std::max(left.y, right.y));
+  return width * height;
+}
+
 [[nodiscard]] std::unique_ptr<tvg::Text>
 make_text(const TextBlock &block, const std::string &line, float font_size,
           const Color &color, TextMetrics *metrics = nullptr) {
@@ -85,9 +96,38 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
   return text;
 }
 
+[[nodiscard]] bool position_text(tvg::Text &text, float x, float y,
+                                 const Rect &area, const FrameState &frame) {
+  if (frame.text_scale == 1.0F) {
+    if (!succeeded(text.translate(x, y))) {
+      return false;
+    }
+  } else {
+    const auto center_x = area.x + area.width * 0.5F;
+    const auto center_y = area.y + area.height * 0.5F;
+    const tvg::Matrix transform{
+        frame.text_scale,
+        0.0F,
+        frame.text_scale * x + (1.0F - frame.text_scale) * center_x,
+        0.0F,
+        frame.text_scale,
+        frame.text_scale * y + (1.0F - frame.text_scale) * center_y,
+        0.0F,
+        0.0F,
+        1.0F};
+    if (!succeeded(text.transform(transform))) {
+      return false;
+    }
+  }
+  const auto opacity = static_cast<std::uint8_t>(
+      std::lround(std::clamp(frame.text_opacity, 0.0F, 1.0F) * 255.0F));
+  return opacity == 255U || succeeded(text.opacity(opacity));
+}
+
 [[nodiscard]] std::optional<Error> push_text(tvg::SwCanvas &canvas,
                                              const TextBlock &block,
-                                             float scale_x, float scale_y) {
+                                             float scale_x, float scale_y,
+                                             const FrameState &frame) {
   const auto font_key = block.font.string();
   if (!succeeded(tvg::Text::load(font_key))) {
     return render_error("ThorVG could not load TTF font: " + font_key);
@@ -106,6 +146,8 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
 
   std::optional<Rect> selected_area;
   std::optional<FittedText> selected_text;
+  auto selected_score = std::numeric_limits<float>::infinity();
+  std::size_t candidate_index = 0;
   for (const auto &candidate : block.candidate_areas) {
     const Rect area{candidate.x * scale_x, candidate.y * scale_y,
                     candidate.width * scale_x, candidate.height * scale_y};
@@ -115,12 +157,22 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
     if (!fitted) {
       continue;
     }
-    if (!selected_text || fitted->font_size > selected_text->font_size ||
-        (fitted->font_size == selected_text->font_size &&
-         fitted->lines.size() < selected_text->lines.size())) {
+    float score = 0.0F;
+    if (block.auto_placement) {
+      for (const auto &avoid : block.avoid_regions) {
+        score += overlap_area(candidate, avoid) * 20.0F;
+      }
+      const auto source_font_size = fitted->font_size / scale;
+      score += (block.max_font_size - source_font_size) * 10.0F;
+      score += static_cast<float>(fitted->lines.size()) * 5.0F;
+      score += static_cast<float>(candidate_index) * 3.0F;
+    }
+    if (!selected_text || score < selected_score) {
       selected_area = area;
       selected_text = std::move(fitted);
+      selected_score = score;
     }
+    ++candidate_index;
   }
   if (!selected_area || !selected_text) {
     return render_error("Sticker text does not fit any candidate area at the "
@@ -154,7 +206,7 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
         auto outline = make_text(block, fitted.lines[index], fitted.font_size,
                                  block.outline, nullptr);
         if (!outline ||
-            !succeeded(outline->translate(x + offset_x, y + offset_y)) ||
+            !position_text(*outline, x + offset_x, y + offset_y, area, frame) ||
             !push(canvas, std::move(outline))) {
           return render_error("ThorVG could not construct text outline");
         }
@@ -162,7 +214,7 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
     }
     auto text = make_text(block, fitted.lines[index], fitted.font_size,
                           block.fill, nullptr);
-    if (!text || !succeeded(text->translate(x, y)) ||
+    if (!text || !position_text(*text, x, y, area, frame) ||
         !push(canvas, std::move(text))) {
       return render_error("ThorVG could not position sticker text");
     }
@@ -241,7 +293,8 @@ Result<PixelBuffer> ThorvgBackend::render_sample(std::uint32_t width,
   const auto px = [sx](float value) { return value * sx; };
   const auto py = [sy](float value) { return value * sy; };
 
-  // A small deterministic mascot scene. The transparent canvas is intentional.
+  // A small deterministic mascot scene. The transparent canvas is
+  // intentional.
   if (!push(*canvas,
             circle(px(264), py(420), px(154), py(28), 32, 45, 72, 48)) ||
       !push(*canvas, triangle(px(142), py(180), px(185), py(73), px(235),
@@ -271,7 +324,8 @@ Result<PixelBuffer> ThorvgBackend::render_sample(std::uint32_t width,
 
 Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
                                                 std::uint32_t width,
-                                                std::uint32_t height) const {
+                                                std::uint32_t height,
+                                                const FrameState &frame) const {
   if (initialization_error_) {
     return Result<PixelBuffer>::failure(*initialization_error_);
   }
@@ -294,23 +348,49 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
         render_error("ThorVG could not configure the SVG render target"));
   }
 
-  for (const auto &layer : scene.layers) {
-    auto picture = tvg::Picture::gen();
-    if (!picture || !succeeded(picture->load(layer.string())) ||
-        !succeeded(picture->size(static_cast<float>(width),
-                                 static_cast<float>(height))) ||
-        !push(*canvas, std::move(picture))) {
-      return Result<PixelBuffer>::failure(
-          render_error("ThorVG could not load SVG layer: " + layer.string()));
-    }
-  }
-
   const auto scale_x =
       static_cast<float>(width) / static_cast<float>(scene.width);
   const auto scale_y =
       static_cast<float>(height) / static_cast<float>(scene.height);
+  const auto animated_mascot =
+      frame.mascot_scale != 1.0F || frame.mascot_offset_y != 0.0F;
+  for (const auto &layer : scene.layers) {
+    auto picture = tvg::Picture::gen();
+    if (!picture || !succeeded(picture->load(layer.string()))) {
+      return Result<PixelBuffer>::failure(
+          render_error("ThorVG could not load SVG layer: " + layer.string()));
+    }
+    if (animated_mascot) {
+      const auto center_x = static_cast<float>(scene.width) * 0.5F;
+      const auto center_y = static_cast<float>(scene.height) * 0.5F;
+      const tvg::Matrix transform{
+          scale_x * frame.mascot_scale,
+          0.0F,
+          scale_x * (1.0F - frame.mascot_scale) * center_x,
+          0.0F,
+          scale_y * frame.mascot_scale,
+          scale_y *
+              ((1.0F - frame.mascot_scale) * center_y + frame.mascot_offset_y),
+          0.0F,
+          0.0F,
+          1.0F};
+      if (!succeeded(picture->transform(transform))) {
+        return Result<PixelBuffer>::failure(render_error(
+            "ThorVG could not animate SVG layer: " + layer.string()));
+      }
+    } else if (!succeeded(picture->size(static_cast<float>(width),
+                                        static_cast<float>(height)))) {
+      return Result<PixelBuffer>::failure(
+          render_error("ThorVG could not size SVG layer: " + layer.string()));
+    }
+    if (!push(*canvas, std::move(picture))) {
+      return Result<PixelBuffer>::failure(
+          render_error("ThorVG could not queue SVG layer: " + layer.string()));
+    }
+  }
+
   for (const auto &text : scene.text) {
-    if (auto error = push_text(*canvas, text, scale_x, scale_y)) {
+    if (auto error = push_text(*canvas, text, scale_x, scale_y, frame)) {
       return Result<PixelBuffer>::failure(std::move(*error));
     }
   }

@@ -45,8 +45,11 @@ is the remaining package-publication gate.
 
 Pack v1 also supports backward-compatible named text slots. Stickers can select
 an explicit slot such as `top` or request deterministic `auto` placement with
-an ordered preference list. This is the first stable contract in the planned
-scene/timeline/2.5D/optional-Filament expansion.
+an ordered preference list; authored avoid regions keep captions off important
+art. Optional bounded timelines now drive body-bounce and text-pop overlays into
+deterministic animated WebP, while batch thumbnails remain static posters. These
+are the first stable contracts in the planned scene/2.5D/optional-Filament
+expansion.
 
 ## Generate a demo sticker bundle
 

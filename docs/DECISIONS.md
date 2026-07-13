@@ -213,9 +213,10 @@ the fewest lines, then the earliest preference. When no preference is supplied,
 slot IDs are considered in lexicographic order. These optional fields are
 backward compatible and do not alter output for existing stickers.
 
-Collision masks, avoid regions, rotated/path text, character anchors, and
+Alpha/path collision masks, rotated/path text, character anchors, and
 animation-wide occupancy scoring require additional renderer work and are not
-claimed by this first slice.
+claimed by this first slice. Rectangle avoid regions were added by the later
+animation vertical slice recorded in ADR-018.
 
 ## ADR-016: Time-sampled backend-neutral scene expansion
 
@@ -241,3 +242,21 @@ MascotRender source and bundled project-owned sample content are distributed
 under the MIT License with copyright held by `ericel`. The Conan recipe declares
 `MIT`; CMake and Conan packages ship the complete root license. Dependency,
 font, and separately generated-content licenses remain independently binding.
+
+## ADR-018: Bounded deterministic 2D animation vertical slice
+
+- Status: Accepted
+- Date: 2026-07-13
+
+Sticker format v1 gains optional bounded animation declarations: duration,
+frame rate, loop policy, and a fixed set of procedural overlays. The first
+overlay set is body bounce plus text pop. An internal timeline samples owned
+frame state with fixed easing formulas; no animation implementation type enters
+the public API.
+
+Animated stickers encode through libwebp's animation API with explicit encoder
+settings and loop count. Batch output keeps the full animation as the primary
+asset and renders a stable static poster for its thumbnail. Encoders may merge
+identical consecutive resting frames, so acceptance is based on deterministic
+bytes, timing, canvas, loop metadata, and decoded frame changes rather than an
+exact encoded-frame count.

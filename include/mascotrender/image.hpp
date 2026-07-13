@@ -31,6 +31,9 @@ struct RenderOptions {
     std::uint32_t height{512};
     float webp_quality{90.0F};
     bool lossless{false};
+    // When a sticker declares animation, render only its stable poster frame.
+    // Batch pipelines use this for static thumbnails.
+    bool animation_first_frame_only{false};
 };
 
 }  // namespace mascotrender

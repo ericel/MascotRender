@@ -1,11 +1,12 @@
-#include <mascotrender/engine.hpp>
-
 #include <cmath>
+#include <mascotrender/engine.hpp>
 #include <memory>
 #include <optional>
 #include <string>
 #include <utility>
+#include <vector>
 
+#include "animation/timeline.hpp"
 #include "export/webp_encoder.hpp"
 #include "model/scene.hpp"
 #include "render/thorvg_backend.hpp"
@@ -52,12 +53,43 @@ public:
             return Result<EncodedImage>::failure(std::move(*error));
         }
 
-        auto scene = detail::load_scene(request.pack_file, request.sticker_file);
+        auto scene =
+            detail::load_scene(request.pack_file, request.sticker_file);
         if (!scene) {
             return Result<EncodedImage>::failure(scene.error());
         }
+        if (scene.value().animation && !options.animation_first_frame_only) {
+            const auto samples =
+                detail::sample_animation(*scene.value().animation);
+            constexpr std::uint64_t max_animation_buffer_bytes =
+                256ULL * 1024ULL * 1024ULL;
+            const auto required_buffer_bytes =
+                static_cast<std::uint64_t>(options.width) * options.height *
+                4U * samples.size();
+            if (required_buffer_bytes > max_animation_buffer_bytes) {
+                return Result<EncodedImage>::failure(Error{
+                    ErrorCode::invalid_argument,
+                    "Animation frame buffer exceeds the 256 MiB safety limit"});
+            }
+            std::vector<detail::AnimationFrame> frames;
+            frames.reserve(samples.size());
+            for (const auto& sample : samples) {
+                auto pixels = backend_.render_scene(
+                    scene.value(), options.width, options.height, sample.state);
+                if (!pixels) {
+                    return Result<EncodedImage>::failure(pixels.error());
+                }
+                frames.push_back(detail::AnimationFrame{
+                    sample.timestamp_ms, std::move(pixels).value()});
+            }
+            return detail::encode_animated_webp(
+                frames, scene.value().animation->duration_ms,
+                detail::animation_loop_count(scene.value().animation->loop),
+                options);
+        }
+
         auto pixels = backend_.render_scene(
-            scene.value(), options.width, options.height);
+            scene.value(), options.width, options.height, detail::FrameState{});
         if (!pixels) {
             return Result<EncodedImage>::failure(pixels.error());
         }

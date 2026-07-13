@@ -2,6 +2,7 @@ add_executable(
     mascotrender_unit_tests
     test_pack.cpp
     test_render.cpp
+    test_timeline.cpp
     test_text_layout.cpp
     test_version.cpp
 )

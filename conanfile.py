@@ -37,6 +37,8 @@ class MascotRenderRecipe(ConanFile):
         "tests/*",
         "schemas/*",
         "examples/*",
+        "!examples/*/.DS_Store",
+        "!examples/**/.DS_Store",
         "tools/*",
         "!tools/__pycache__/*",
         "!tests/__pycache__/*",

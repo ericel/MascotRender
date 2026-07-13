@@ -126,7 +126,8 @@ def main() -> None:
         "M0-M5 deliver an installable build-time C++20 engine. M6 validates a "
         "50-sticker art system. M7 delivers the approximately 200-sticker product "
         "pilot and runtime integration. CSV, full multilingual shaping, incremental "
-        "builds, OpenCV QA, animation, Drogon, and React do not block engine 0.1.0."
+        "builds, OpenCV QA, advanced authored animation, 2.5D/3D, Drogon, and "
+        "React do not block engine 0.1.0."
     )
 
     # Executive summary and scope.
@@ -161,7 +162,7 @@ def main() -> None:
         ("C++20 library, build/validate CLI, and Conan 2 package", "Full graphical authoring studio"),
         ("One original trusted layered SVG example pack", "Untrusted third-party pack ingestion and marketplace"),
         ("JSON sticker/pack input; WebP output and thumbnails", "CSV authoring workflow and binary Trie/FST"),
-        ("Expressions, poses, effects, palettes, deterministic seed", "Filament/GLB rendering, physics, and animation (expansion track)"),
+        ("Expressions, poses, effects, palettes, deterministic seed", "Filament/GLB rendering, skeletal animation, physics, and layered 2.5D (expansion track)"),
         ("Exact English/Pidgin text with packaged font and fitting", "Full multilingual shaping, fallback, bidi, and Korean launch support"),
         ("Catalogue, dictionary, build report, validation", "Incremental cache, OpenCV similarity, and contact-sheet tooling"),
         ("Installable API plus external consumer test", "Drogon delivery, React tray, MLS integration, and product telemetry"),
@@ -192,6 +193,7 @@ def main() -> None:
     append_requirement(functional, "FR-24", "MUST", "Provide an in-memory render API and a separate Conan test_package that compiles, links, and renders using only packaged artifacts.")
     append_requirement(functional, "FR-25", "MUST", "Support backward-compatible named text slots, explicit placement, and deterministic preference-based automatic placement.")
     append_requirement(functional, "FR-26", "SHOULD", "Evolve through a backend-neutral scene graph and typed timeline so static 2D, animated 2D, layered 2.5D, and optional 3D share one semantic recipe.")
+    append_requirement(functional, "FR-27", "SHOULD", "Render bounded deterministic body-bounce and text-pop overlays to animated WebP while retaining a static poster mode for thumbnails and non-animated consumers.")
 
     nonfunctional = document.tables[9]
     update_requirement(nonfunctional, "NFR-02", "Determinism", "Byte-identical output is required within the same pinned Conan profiles, lockfile, fonts, renderer settings, and inputs. Other supported profiles require visual equivalence.")
@@ -206,7 +208,7 @@ def main() -> None:
         ("CLI", "CLI11", "Small subcommand layer; only build and validate block engine 0.1."),
         ("Vector / Raster", "ThorVG 0.15.16 software backend", "Available through Conan Center and sufficient for SVG, vector primitives, transforms, text, and RGBA rendering."),
         ("Text", "ThorVG text + packaged static TTF for 0.1", "Exact English/Pidgin text, balanced wrapping, largest-valid whole-point fitting, and deterministic outlined glyph passes; shaping and fallback remain deferred."),
-        ("WebP export", "libwebp 1.6.0", "Direct control of alpha and explicit deterministic encoding settings."),
+        ("WebP export", "libwebp 1.6.0", "Direct control of alpha and explicit deterministic static and animated encoding settings."),
         ("JSON", "nlohmann_json", "Simple schema/config parsing; parsing throughput is not an MVP bottleneck."),
         ("Image QA", "Owned basic validators", "Bounds, alpha, dimensions, and text checks without OpenCV; similarity analysis follows in M6."),
     ]
@@ -550,9 +552,11 @@ def main() -> None:
         "As of 13 July 2026, M0-M4 are implemented locally. The engine renders "
         "five deterministic mascot identities and 50 stickers through the C++20 "
         "library, with 512px assets, thumbnails, catalogue, dictionary, build "
-        "report, balanced text, outlined glyphs, and a decoded-pixel golden. The "
-        "AppleClang Release suite passes 20 tests, and external static/shared Conan "
-        "consumers pass. The 50-sticker render baseline is 4.84 seconds on the "
+        "report, balanced text, outlined glyphs, avoid-aware text placement, bounded "
+        "2D timelines, animated WebP, static poster thumbnails, and a decoded-pixel "
+        "golden. The AppleClang Release suite passes 24 tests, and external static/shared Conan "
+        "consumers pass. The 50-sticker render baseline is 6.21 seconds, including "
+        "20 animated primary assets and 50 static poster thumbnails, on the "
         "recorded macOS arm64 workstation."
     )
     document.add_paragraph(
@@ -569,6 +573,13 @@ def main() -> None:
         "then ThorVG 2D, layered 2.5D, or optional Filament 3D; then 2D text/effect "
         "composition and static or animated WebP encoding. Static rendering is the "
         "sample at t = 0 and remains the compatibility baseline."
+    )
+    document.add_paragraph(
+        "The first E1/E2 vertical slice is implemented: authored rectangle avoid "
+        "regions, deterministic collision scoring, bounded frame sampling, body-bounce "
+        "and text-pop overlays, animated WebP, and stable static poster rendering. "
+        "Parented nodes, animation-wide alpha occupancy, blink, sparkle, and layered "
+        "2.5D remain follow-up work."
     )
     expansion = document.add_table(rows=1, cols=3)
     expansion.style = "Table Grid"

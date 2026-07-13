@@ -24,6 +24,7 @@ stickers each. Every pack contains:
 - happy, sleepy, and surprised expressions;
 - seeded left/right effects;
 - ten English/Pidgin phrases with punctuation and longer text;
+- named top/bottom slots, avoid regions, and four animated phrases per mascot;
 - the approved pack-local Changa One static TTF and complete OFL license;
 - a schema-v1 `pack.json` and ten sticker JSON specifications.
 
@@ -31,7 +32,7 @@ stickers each. Every pack contains:
 palette values, font hash, and counts. The same inputs produce byte-identical
 pack directories.
 
-## 2. Build the static sticker bundle
+## 2. Build the sticker bundle
 
 ```bash
 python3 tools/render_mascot_packs.py \
@@ -42,9 +43,9 @@ python3 tools/render_mascot_packs.py \
 ```
 
 The batch builder validates every pack/sticker pair through the CLI, renders a
-512 x 512 WebP and 256 x 256 thumbnail, and publishes through a staging
-directory. A failed command removes staging and cannot replace the last
-successful bundle.
+512 x 512 static or animated WebP and a 256 x 256 static poster thumbnail, and
+publishes through a staging directory. A failed command removes staging and
+cannot replace the last successful bundle.
 
 The bundle contains:
 
@@ -58,7 +59,7 @@ bundle/
 ```
 
 `catalogue.json` contains exact authored text, alt text, expression, pose, seed,
-dimensions, byte size, relative paths, and SHA-256 hashes. `dictionary.json`
+animation metadata, dimensions, byte size, relative paths, and SHA-256 hashes. `dictionary.json`
 contains case-folded full-phrase triggers and declares Unicode word-boundary
 matching so a trigger cannot match inside a larger word. Repeated phrases across
 mascot identities intentionally map to a stable ordered list. `build-report.json`
@@ -70,7 +71,8 @@ wall-clock timestamps.
 - `--count` accepts 1 through 50 identities.
 - `--seed` accepts an unsigned 64-bit integer.
 - `--width`, `--height`, `--thumbnail-size`, `--quality`, and `--lossless`
-  control the static bundle render.
+  control bundle rendering. Animated main assets always receive static poster
+  thumbnails through the engine's first-frame-only option.
 - Omit `--force` in automation when overwriting an existing result should be an
   error.
 

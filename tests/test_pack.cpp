@@ -1,14 +1,14 @@
+#include <webp/decode.h>
+#include <webp/demux.h>
+
+#include <catch2/catch_test_macros.hpp>
 #include <cstddef>
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
 #include <iterator>
-#include <vector>
-
-#include <catch2/catch_test_macros.hpp>
-#include <webp/decode.h>
-
 #include <mascotrender/mascotrender.hpp>
+#include <vector>
 
 namespace {
 
@@ -155,9 +155,12 @@ TEST_CASE("named text slots place captions in different canvas regions") {
   REQUIRE(top);
   auto automatic = engine.render(example_request("text-auto.json"));
   REQUIRE(automatic);
+  auto collision_aware = engine.render(example_request("text-auto-avoid.json"));
+  REQUIRE(collision_aware);
   auto bottom = engine.render(example_request("text-sample.json"));
   REQUIRE(bottom);
   REQUIRE(automatic.value().bytes == top.value().bytes);
+  REQUIRE(collision_aware.value().bytes == top.value().bytes);
   REQUIRE(top.value().bytes != bottom.value().bytes);
 
   const auto top_pixels = decode(top.value());
@@ -172,6 +175,71 @@ TEST_CASE("named text slots place captions in different canvas regions") {
     }
   }
   REQUIRE(top_has_new_pixels);
+}
+
+TEST_CASE("timeline overlays encode a deterministic animated WebP") {
+  mascotrender::Engine engine;
+  auto request = example_request("animated-bounce.json");
+
+  auto first = engine.render(request);
+  REQUIRE(first);
+  auto second = engine.render(request);
+  REQUIRE(second);
+  REQUIRE(first.value().bytes == second.value().bytes);
+
+  const auto *encoded =
+      reinterpret_cast<const std::uint8_t *>(first.value().bytes.data());
+  WebPBitstreamFeatures features{};
+  REQUIRE(WebPGetFeatures(encoded, first.value().bytes.size(), &features) ==
+          VP8_STATUS_OK);
+  REQUIRE(features.has_animation == 1);
+
+  const WebPData data{encoded, first.value().bytes.size()};
+  auto *decoder = WebPAnimDecoderNew(&data, nullptr);
+  REQUIRE(decoder != nullptr);
+  WebPAnimInfo info{};
+  REQUIRE(WebPAnimDecoderGetInfo(decoder, &info) != 0);
+  REQUIRE(info.canvas_width == 512U);
+  REQUIRE(info.canvas_height == 512U);
+  REQUIRE(info.frame_count >= 2U);
+  REQUIRE(info.loop_count == 0U);
+
+  std::vector<std::uint8_t> first_frame;
+  std::vector<std::uint8_t> second_frame;
+  std::uint8_t *frame = nullptr;
+  int timestamp = 0;
+  std::uint32_t frame_index = 0U;
+  while (WebPAnimDecoderHasMoreFrames(decoder) != 0) {
+    REQUIRE(WebPAnimDecoderGetNext(decoder, &frame, &timestamp) != 0);
+    if (frame_index == 0U) {
+      first_frame.assign(frame, frame + 512U * 512U * 4U);
+    } else if (frame_index == 1U) {
+      second_frame.assign(frame, frame + 512U * 512U * 4U);
+    }
+    ++frame_index;
+  }
+  REQUIRE(frame_index == info.frame_count);
+  REQUIRE(timestamp == 800);
+  REQUIRE(first_frame != second_frame);
+  WebPAnimDecoderDelete(decoder);
+
+  request.options.animation_first_frame_only = true;
+  auto poster = engine.render(request);
+  REQUIRE(poster);
+  WebPBitstreamFeatures poster_features{};
+  const auto *poster_encoded =
+      reinterpret_cast<const std::uint8_t *>(poster.value().bytes.data());
+  REQUIRE(WebPGetFeatures(poster_encoded, poster.value().bytes.size(),
+                          &poster_features) == VP8_STATUS_OK);
+  REQUIRE(poster_features.has_animation == 0);
+
+  request.options.animation_first_frame_only = false;
+  request.options.width = 4096U;
+  request.options.height = 4096U;
+  auto oversized = engine.render(request);
+  REQUIRE_FALSE(oversized);
+  REQUIRE(oversized.error().code == mascotrender::ErrorCode::invalid_argument);
+  REQUIRE(oversized.error().message.find("256 MiB") != std::string::npos);
 }
 
 TEST_CASE("reviewed text mascot remains within the decoded-pixel golden") {
@@ -349,4 +417,17 @@ TEST_CASE("unknown sticker text slot reports its JSON location") {
   REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
   REQUIRE(result.error().source == request.sticker_file.string());
   REQUIRE(result.error().location == "$.text.placement");
+}
+
+TEST_CASE("unknown animation overlay reports its JSON location") {
+  mascotrender::Engine engine;
+  auto request = example_request();
+  request.sticker_file = source_root / "tests" / "fixtures" /
+                         "unknown-animation-overlay-sticker.json";
+
+  auto result = engine.render(request);
+  REQUIRE_FALSE(result);
+  REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
+  REQUIRE(result.error().source == request.sticker_file.string());
+  REQUIRE(result.error().location == "$.animation.overlays[0]");
 }

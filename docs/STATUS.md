@@ -23,7 +23,9 @@ Conan remote remains the publication gate. Product/Design approval of the full
 - Largest-valid whole-point text sizing, dynamic-programming balanced wrapping,
   configurable eight-pass outlined glyphs, and outline-aware safe-area fitting.
 - Backward-compatible named text slots with explicit or deterministic
-  preference-based auto placement.
+  preference-based auto placement and authored avoid-region collision scoring.
+- Bounded deterministic timelines for body-bounce and text-pop overlays,
+  animated WebP assets, and static poster thumbnails.
 - 512 x 512 assets, 256 x 256 thumbnails, alpha/dimension checks, and CLI
   `render`, `render-sample`, and `validate` commands.
 - Deterministic procedural generator for cat, bear, bunny, robot, and alien
@@ -39,20 +41,22 @@ Conan remote remains the publication gate. Product/Design approval of the full
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 20 CTest tests pass.
+- AppleClang 21 Release build is warning-clean and all 24 CTest tests pass.
 - The deterministic integration test independently generates and byte-compares
-  two 20-sticker/40-asset bundles.
+  two 20-sticker/40-asset bundles, including eight animated assets and static
+  poster thumbnails.
 - Static-with-CLI and shared-without-CLI Conan packages pass the external
   consumer; installed scripts generate and render a real bundle.
 - The current generated review set contains 5 packs, 50 stickers, 100 WebPs,
-  exact authored metadata, and 1,305,940 encoded bytes.
+  20 animated primary assets, exact authored metadata, and 3,057,496 encoded
+  bytes.
 - Representative cat, bear, bunny, robot, and alien outputs were visually
   inspected after balanced layout/outline changes; transparency, punctuation,
   margins, and outline weight are coherent.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
-- Local render baselines: 1.03 seconds for 10 stickers and 4.84 seconds for 50
-  stickers, including matching thumbnails.
+- Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50
+  stickers, including animated primary assets and matching poster thumbnails.
 - Pack/sticker schemas and generated manifests/catalogues validate as JSON.
 - Current-recipe static Release with CLI and shared Debug without CLI both pass
   the macOS external consumer. MSVC Debug is unsupported by the pinned ThorVG
@@ -79,6 +83,6 @@ Product/Design approval of all generated art. M6 still requires full 50-sticker
 coherence review. Matcher boundary/collision behavior belongs to the product
 integration unless a reusable matcher is deliberately added to the engine.
 
-The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`:
-stabilize scene/text contracts, add deterministic animation to current 2D packs,
-advance to layered 2.5D, and only then add an optional Filament/GLB backend.
+The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
+The first deterministic 2D animation slice is working; the next major engine
+step is layered 2.5D, followed by an optional Filament/GLB backend.

@@ -1,18 +1,15 @@
+#include <CLI/CLI.hpp>
 #include <cstddef>
 #include <cstdint>
 #include <fstream>
 #include <iostream>
-#include <string>
-
-#include <CLI/CLI.hpp>
-
 #include <mascotrender/mascotrender.hpp>
+#include <string>
 
 namespace {
 
-int write_image(
-    const mascotrender::Result<mascotrender::EncodedImage>& result,
-    const std::string& output_path) {
+int write_image(const mascotrender::Result<mascotrender::EncodedImage>& result,
+                const std::string& output_path) {
     if (!result) {
         std::cerr << "render failed: " << result.error().message << '\n';
         if (!result.error().source.empty()) {
@@ -42,11 +39,16 @@ int write_image(
     return 0;
 }
 
-void add_render_options(CLI::App& command, mascotrender::RenderOptions& options) {
+void add_render_options(CLI::App& command,
+                        mascotrender::RenderOptions& options) {
     command.add_option("--width", options.width, "Output width in pixels");
     command.add_option("--height", options.height, "Output height in pixels");
-    command.add_option("--quality", options.webp_quality, "WebP quality (0-100)");
-    command.add_flag("--lossless", options.lossless, "Use lossless WebP encoding");
+    command.add_option("--quality", options.webp_quality,
+                       "WebP quality (0-100)");
+    command.add_flag("--lossless", options.lossless,
+                     "Use lossless WebP encoding");
+    command.add_flag("--first-frame-only", options.animation_first_frame_only,
+                     "Render an animation's stable poster frame only");
 }
 
 }  // namespace
@@ -68,8 +70,10 @@ int main(int argc, char** argv) {
     std::string pack_output_path;
     mascotrender::RenderOptions pack_options;
     auto* render_pack = app.add_subcommand(
-        "render", "Render a versioned mascot pack and sticker JSON specification");
-    render_pack->add_option("--pack", pack_path, "Path to pack.json")->required();
+        "render",
+        "Render a versioned mascot pack and sticker JSON specification");
+    render_pack->add_option("--pack", pack_path, "Path to pack.json")
+        ->required();
     render_pack->add_option("--sticker", sticker_path, "Path to sticker JSON")
         ->required();
     render_pack->add_option("-o,--output", pack_output_path, "Output WebP path")
@@ -79,10 +83,12 @@ int main(int argc, char** argv) {
     std::string validate_pack_path;
     std::string validate_sticker_path;
     auto* validate = app.add_subcommand(
-        "validate", "Validate and render-check a pack and sticker specification");
+        "validate",
+        "Validate and render-check a pack and sticker specification");
     validate->add_option("--pack", validate_pack_path, "Path to pack.json")
         ->required();
-    validate->add_option("--sticker", validate_sticker_path, "Path to sticker JSON")
+    validate
+        ->add_option("--sticker", validate_sticker_path, "Path to sticker JSON")
         ->required();
 
     CLI11_PARSE(app, argc, argv);
@@ -94,8 +100,8 @@ int main(int argc, char** argv) {
 
     if (*render_pack) {
         mascotrender::Engine engine;
-        const mascotrender::RenderRequest request{
-            pack_path, sticker_path, pack_options};
+        const mascotrender::RenderRequest request{pack_path, sticker_path,
+                                                  pack_options};
         return write_image(engine.render(request), pack_output_path);
     }
 
@@ -105,7 +111,8 @@ int main(int argc, char** argv) {
             validate_pack_path, validate_sticker_path, {}};
         const auto result = engine.render(request);
         if (!result) {
-            std::cerr << "validation failed: " << result.error().message << '\n';
+            std::cerr << "validation failed: " << result.error().message
+                      << '\n';
             if (!result.error().source.empty()) {
                 std::cerr << "  source: " << result.error().source;
                 if (!result.error().location.empty()) {
@@ -116,8 +123,8 @@ int main(int argc, char** argv) {
             return 1;
         }
         std::cout << "valid: " << result.value().width << 'x'
-                  << result.value().height << ", " << result.value().bytes.size()
-                  << " encoded bytes\n";
+                  << result.value().height << ", "
+                  << result.value().bytes.size() << " encoded bytes\n";
         return 0;
     }
 

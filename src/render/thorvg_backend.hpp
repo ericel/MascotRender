@@ -18,8 +18,8 @@ public:
         std::uint32_t width, std::uint32_t height) const override;
 
     [[nodiscard]] Result<PixelBuffer> render_scene(
-        const Scene& scene,
-        std::uint32_t width, std::uint32_t height) const override;
+        const Scene& scene, std::uint32_t width, std::uint32_t height,
+        const FrameState& frame) const override;
 
 private:
     std::optional<Error> initialization_error_;

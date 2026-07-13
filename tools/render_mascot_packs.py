@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and batch-render generated MascotRender packs into a static bundle."""
+"""Validate and batch-render generated MascotRender packs into a WebP bundle."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ import tempfile
 from pathlib import Path
 
 
-BUNDLE_VERSION = 1
+BUNDLE_VERSION = 2
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 STOP_WORDS = frozenset({"a", "an", "and", "he", "it", "of", "she", "the", "to"})
 
@@ -89,6 +89,7 @@ def render_one(
     height: int,
     quality: float,
     lossless: bool,
+    first_frame_only: bool,
 ) -> None:
     command = [
         str(executable),
@@ -108,6 +109,8 @@ def render_one(
     ]
     if lossless:
         command.append("--lossless")
+    if first_frame_only:
+        command.append("--first-frame-only")
     output.parent.mkdir(parents=True, exist_ok=True)
     run_cli(command)
 
@@ -197,6 +200,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                 args.height,
                 args.quality,
                 args.lossless,
+                False,
             )
             render_one(
                 executable,
@@ -207,7 +211,11 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                 args.thumbnail_size,
                 args.quality,
                 args.lossless,
+                True,
             )
+
+            animation = sticker.get("animation")
+            animation_metadata = animation if isinstance(animation, dict) else None
 
             trigger = normalize_trigger(content)
             if trigger and (len(trigger) < 3 or trigger in STOP_WORDS):
@@ -226,6 +234,8 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                     "expression": sticker.get("expression"),
                     "pose": sticker.get("pose"),
                     "seed": sticker.get("seed"),
+                    "animated": animation_metadata is not None,
+                    "animation": animation_metadata,
                     "media_type": "image/webp",
                     "width": args.width,
                     "height": args.height,
@@ -258,6 +268,9 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
             "bundle_version": BUNDLE_VERSION,
             "source_sha256": source_digest(input_root),
             "sticker_count": len(catalogue),
+            "animated_sticker_count": sum(
+                1 for sticker in catalogue if sticker["animated"]
+            ),
             "stickers": catalogue,
         },
     )
@@ -278,6 +291,9 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
             "status": "success",
             "pack_count": len(pack_files),
             "sticker_count": len(catalogue),
+            "animated_sticker_count": sum(
+                1 for sticker in catalogue if sticker["animated"]
+            ),
             "asset_count": len(catalogue) * 2,
             "encoded_bytes": total_bytes,
             "render": {

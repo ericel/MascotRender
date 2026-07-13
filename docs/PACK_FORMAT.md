@@ -37,6 +37,9 @@ The normative machine-readable files are
     "top": { "x": 40, "y": 12, "width": 432, "height": 96 },
     "bottom": { "x": 72, "y": 382, "width": 368, "height": 104 }
   },
+  "avoid_regions": [
+    { "name": "face", "x": 123, "y": 145, "width": 266, "height": 272 }
+  ],
   "fonts": [
     {
       "id": "display",
@@ -86,6 +89,8 @@ The normative machine-readable files are
 - `text_slots` optionally declares reusable named canvas rectangles. Slot IDs
   are pack-local and each rectangle must be finite, positive, and contained by
   the canvas.
+- `avoid_regions` declares named rectangles that automatic text should not
+  cover. Names must be unique and rectangles must remain inside the canvas.
 
 ## Sticker
 
@@ -104,6 +109,12 @@ The normative machine-readable files are
     "style": "caption",
     "placement": "auto",
     "preferred_slots": ["bottom", "top"]
+  },
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "overlays": ["body_bounce", "text_pop"]
   }
 }
 ```
@@ -127,10 +138,29 @@ size that fits, chooses the fewest valid lines, and balances them by minimizing
 squared unused line width. An outline is rendered as eight deterministic glyph
 passes around the fill and participates in safe-area fitting. For auto
 placement, the renderer chooses the candidate yielding the largest font, then
-the fewest lines, then the earliest authored preference. Text is centered above
-the selected SVG layers. Explicit newline preservation, collision masks,
-rotation, paths, fallback fonts, shaping, and bidirectional text remain later
-work.
+the fewest lines, then the earliest authored preference. Authored avoid-region
+overlap is the strongest penalty, so automatic captions do not cover declared
+faces or silhouettes. Text is centered above the selected SVG layers. Explicit
+newline preservation, pixel occupancy masks, rotation, paths, fallback fonts,
+shaping, and bidirectional text remain later work.
+
+## Animation behavior in 0.1
+
+An optional sticker `animation` renders a time-sampled scene and encodes it with
+libwebp's animated WebP encoder. `duration_ms` is 100 through 10000, `fps` is 1
+through 30, and the combination is limited to 2 through 300 logical frames.
+Supported loop policies are `once`, `loop`, `ping_pong`, and
+`hold_last_frame`. The first procedural overlays are `body_bounce` and
+`text_pop`; unknown or duplicate overlays fail with a JSON-path diagnostic.
+
+Frame timestamps, easing functions, transforms, encoder settings, and overlay
+order are fixed. A render is rejected before frame allocation if its retained
+BGRA frame buffers would exceed the 256 MiB safety ceiling.
+`RenderOptions::animation_first_frame_only` and the CLI
+`--first-frame-only` flag produce a stable static poster; the batch pipeline
+uses that path for thumbnails. libwebp may merge identical resting frames, so
+the encoded frame count can be lower than the logical sample count without
+changing duration or playback.
 
 ## Deterministic variation
 

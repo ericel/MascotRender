@@ -7,13 +7,14 @@ at quality 90 plus 256 x 256 thumbnails. Times are wall-clock measurements from
 
 | Workload | Generate | Validate and render | Assets | Encoded bytes |
 |---|---:|---:|---:|---:|
-| 1 identity / 10 stickers | 0.57 s | 1.03 s | 20 | 259,663 |
-| 5 identities / 50 stickers | 0.30 s | 4.84 s | 100 | 1,305,940 |
+| 1 identity / 10 stickers (4 animated) | 0.39 s | 1.37 s | 20 | 599,174 |
+| 5 identities / 50 stickers (20 animated) | 0.41 s | 6.21 s | 100 | 3,057,496 |
 
-Generation time is dominated by filesystem startup and font copies, so the
-larger run can be faster after the filesystem cache is warm. The render baseline
-is approximately 10.3 stickers/second or 20.7 encoded assets/second. These
-numbers establish a regression reference, not a cross-machine performance SLA.
+Generation time is dominated by filesystem startup and font copies. The render
+baseline is approximately 8.1 stickers/second or 16.1 encoded assets/second;
+animated primary assets contain an 800 ms timeline while their thumbnails are
+static posters. These numbers establish a regression reference, not a
+cross-machine performance SLA.
 
 Reproduce the 50-sticker run:
 

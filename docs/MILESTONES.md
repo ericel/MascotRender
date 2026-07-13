@@ -207,17 +207,22 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
 
 - `MR-080` **Done:** backward-compatible named text slots and explicit placement.
 - `MR-081` **Done:** deterministic preference-based auto slot selection.
-- `MR-082` Add avoid regions and occupancy/collision scoring.
+- `MR-082` **Done for rectangle regions:** authored avoid regions and
+  deterministic overlap scoring. Alpha/path occupancy remains future work.
 - `MR-083` Add internal parented scene nodes with position, rotation, scale,
   opacity, pivot, and depth; static output is the `t = 0` compatibility test.
 - `MR-084` Add screen-fixed and character-anchor text placement.
 
 ### E2: Animated current 2D packs — 7-10 days
 
-- `MR-090` Typed keyframes, fixed easing formulas, and loop policies.
-- `MR-091` Deterministic frame sampling with bounded FPS, duration, and frames.
-- `MR-092` Blink, bounce, sparkle, and text-pop procedural overlays.
-- `MR-093` Animated WebP encoder plus static first-frame thumbnail.
+- `MR-090` **Done for scalar overlays:** typed internal keyframes, fixed easing
+  formulas, and once/loop/ping-pong/hold-last loop policies.
+- `MR-091` **Done:** deterministic frame sampling with bounded FPS, duration,
+  and frames.
+- `MR-092` **Partial:** body-bounce and text-pop overlays are complete; blink
+  and sparkle remain future additions.
+- `MR-093` **Done:** deterministic animated WebP encoder plus static poster
+  thumbnail mode.
 
 ### E3: Layered 2.5D — 10-15 days
 

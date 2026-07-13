@@ -20,6 +20,7 @@ find_package(nlohmann_json CONFIG REQUIRED)
 add_library(
     MascotRender
     src/engine.cpp
+    src/animation/timeline.cpp
     src/export/webp_encoder.cpp
     src/model/scene.cpp
     src/render/text_layout.cpp
@@ -126,6 +127,7 @@ install(
 install(
     DIRECTORY schemas examples
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
+    PATTERN ".DS_Store" EXCLUDE
 )
 install(
     FILES

@@ -44,9 +44,13 @@
   "text_slots": {
     "top": { "x": 40, "y": 12, "width": 432, "height": 96 },
     "bottom": { "x": 72, "y": 382, "width": 368, "height": 104 },
+    "center": { "x": 72, "y": 206, "width": 368, "height": 104 },
     "left": { "x": 8, "y": 150, "width": 128, "height": 170 },
     "right": { "x": 376, "y": 150, "width": 128, "height": 170 }
   },
+  "avoid_regions": [
+    { "name": "face", "x": 123, "y": 145, "width": 266, "height": 272 }
+  ],
   "fonts": [
     {
       "id": "display",

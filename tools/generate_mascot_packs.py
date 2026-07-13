@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = 3
+GENERATOR_VERSION = 4
 MASK64 = (1 << 64) - 1
 
 
@@ -244,6 +244,9 @@ def pack_document(pack_id: str, species: str) -> dict[str, object]:
             "top": {"x": 48, "y": 12, "width": 416, "height": 94},
             "bottom": {"x": 58, "y": 394, "width": 396, "height": 94},
         },
+        "avoid_regions": [
+            {"name": "mascot", "x": 120, "y": 110, "width": 272, "height": 272}
+        ],
         "fonts": [
             {
                 "id": "display",
@@ -282,7 +285,7 @@ def sticker_document(
     seed: int,
 ) -> dict[str, object]:
     slug, content, expression, pose = phrase
-    return {
+    sticker: dict[str, object] = {
         "schema_version": 1,
         "sticker_id": f"{pack_id}-{slug}",
         "pack_id": pack_id,
@@ -299,6 +302,14 @@ def sticker_document(
             else ["bottom", "top"],
         },
     }
+    if phrase_index in {0, 2, 6, 8}:
+        sticker["animation"] = {
+            "duration_ms": 800,
+            "fps": 10,
+            "loop": "loop",
+            "overlays": ["body_bounce", "text_pop"],
+        }
+    return sticker
 
 
 def copy_font(font_source: Path, pack_dir: Path) -> str:
@@ -342,6 +353,7 @@ def generate_pack(root: Path, number: int, seed: int, font_source: Path) -> dict
         "palette": palette.__dict__,
         "pack": f"{pack_id}/pack.json",
         "sticker_count": len(PHRASES),
+        "animated_sticker_count": 4,
         "font_sha256": font_sha256,
     }
 
@@ -401,6 +413,7 @@ def main(argv: list[str] | None = None) -> int:
             "seed": args.seed,
             "pack_count": len(packs),
             "sticker_count": len(packs) * len(PHRASES),
+            "animated_sticker_count": len(packs) * 4,
             "packs": packs,
         }
         write_json(staging / "generation-manifest.json", manifest)

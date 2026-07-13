@@ -71,6 +71,12 @@ def main() -> int:
             str(args.cli),
             "--quality",
             "90",
+            "--width",
+            "128",
+            "--height",
+            "128",
+            "--thumbnail-size",
+            "64",
         ]
         run(render_base + ["--input", str(generated_a), "--output", str(bundle_a)])
         run(render_base + ["--input", str(generated_b), "--output", str(bundle_b)])
@@ -81,13 +87,45 @@ def main() -> int:
         catalogue = json.loads((bundle_a / "catalogue.json").read_text())
         dictionary = json.loads((bundle_a / "dictionary.json").read_text())
         report = json.loads((bundle_a / "build-report.json").read_text())
-        if manifest["pack_count"] != 2 or manifest["sticker_count"] != 20:
+        if (
+            manifest["pack_count"] != 2
+            or manifest["sticker_count"] != 20
+            or manifest["animated_sticker_count"] != 8
+        ):
             raise AssertionError("unexpected generation manifest counts")
-        if catalogue["sticker_count"] != 20 or len(catalogue["stickers"]) != 20:
+        if (
+            catalogue["sticker_count"] != 20
+            or catalogue["animated_sticker_count"] != 8
+            or len(catalogue["stickers"]) != 20
+        ):
             raise AssertionError("unexpected catalogue counts")
+        animated = [item for item in catalogue["stickers"] if item["animated"]]
+        if len(animated) != 8:
+            raise AssertionError(f"expected 8 animated stickers, got {len(animated)}")
+        for item in animated:
+            asset = bundle_a / item["path"]
+            thumbnail = bundle_a / item["thumbnail"]["path"]
+            if b"ANIM" not in asset.read_bytes():
+                raise AssertionError(f"animated asset has no ANIM chunk: {asset}")
+            if b"ANIM" in thumbnail.read_bytes():
+                raise AssertionError(f"thumbnail must be a static poster: {thumbnail}")
+            if item["animation"]["duration_ms"] != 800:
+                raise AssertionError("unexpected animation metadata")
+        if any(
+            item["width"] != 128
+            or item["height"] != 128
+            or item["thumbnail"]["width"] != 64
+            or item["thumbnail"]["height"] != 64
+            for item in catalogue["stickers"]
+        ):
+            raise AssertionError("unexpected integration-test output dimensions")
         if dictionary["trigger_count"] != 10 or len(dictionary["entries"]) != 10:
             raise AssertionError("unexpected dictionary counts")
-        if report["asset_count"] != 40 or report["status"] != "success":
+        if (
+            report["asset_count"] != 40
+            or report["animated_sticker_count"] != 8
+            or report["status"] != "success"
+        ):
             raise AssertionError("unexpected build report")
 
         webps = sorted(bundle_a.rglob("*.webp"))

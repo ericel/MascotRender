@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <fstream>
 #include <map>
+#include <nlohmann/json.hpp>
 #include <optional>
 #include <set>
 #include <sstream>
@@ -14,8 +15,6 @@
 #include <system_error>
 #include <utility>
 #include <vector>
-
-#include <nlohmann/json.hpp>
 
 namespace mascotrender::detail {
 namespace {
@@ -216,7 +215,8 @@ parse_scene(const Json &pack, const Json &sticker,
         if (!std::isfinite(x) || !std::isfinite(y) || x < 0.0 || y < 0.0 ||
             x > scene.width || y > scene.height) {
           return document_error(
-              "Anchor and pivot points must be finite and inside the canvas",
+              "Anchor and pivot points must be finite and inside the "
+              "canvas",
               pack_file, location + "." + item.key());
         }
       }
@@ -282,6 +282,28 @@ parse_scene(const Json &pack, const Json &sticker,
       }
     }
 
+    std::vector<Rect> avoid_regions;
+    if (pack.contains("avoid_regions")) {
+      std::set<std::string, std::less<>> names;
+      std::size_t index = 0;
+      for (const auto &item : pack.at("avoid_regions")) {
+        const auto location = "$.avoid_regions[" + std::to_string(index) + "]";
+        const auto name = item.at("name").get<std::string>();
+        if (name.empty() || !names.insert(name).second) {
+          return Result<Scene>::failure(
+              document_error("Avoid-region names must be non-empty and unique",
+                             pack_file, location + ".name"));
+        }
+        auto area = parse_rect(item, scene.width, scene.height, pack_file,
+                               location, "Avoid region");
+        if (!area) {
+          return Result<Scene>::failure(area.error());
+        }
+        avoid_regions.push_back(std::move(area).value());
+        ++index;
+      }
+    }
+
     std::map<std::string, TextStyle, std::less<>> text_styles;
     if (pack.contains("text_styles")) {
       for (auto item = pack.at("text_styles").begin();
@@ -343,7 +365,8 @@ parse_scene(const Json &pack, const Json &sticker,
           if (!std::isfinite(outline_width) || outline_width < 0.0F ||
               outline_width > 32.0F) {
             return Result<Scene>::failure(document_error(
-                "Text outline width must be finite and between 0 and 32",
+                "Text outline width must be finite and between 0 "
+                "and 32",
                 pack_file, location + ".outline.width"));
           }
           const auto &color = configured.at("color");
@@ -517,6 +540,7 @@ parse_scene(const Json &pack, const Json &sticker,
 
       const auto &style = text_styles.at(style_id);
       std::vector<Rect> candidate_areas;
+      bool auto_placement = false;
       if (!text.contains("placement")) {
         if (text.contains("preferred_slots")) {
           return Result<Scene>::failure(
@@ -527,6 +551,7 @@ parse_scene(const Json &pack, const Json &sticker,
       } else {
         const auto placement = text.at("placement").get<std::string>();
         if (placement == "auto") {
+          auto_placement = true;
           if (text.contains("preferred_slots")) {
             std::set<std::string, std::less<>> seen;
             std::size_t index = 0;
@@ -552,9 +577,10 @@ parse_scene(const Json &pack, const Json &sticker,
             }
           }
           if (candidate_areas.empty()) {
-            return Result<Scene>::failure(document_error(
-                "Auto text placement requires at least one pack text slot",
-                sticker_file, "$.text.placement"));
+            return Result<Scene>::failure(
+                document_error("Auto text placement requires at "
+                               "least one pack text slot",
+                               sticker_file, "$.text.placement"));
           }
         } else {
           if (text.contains("preferred_slots")) {
@@ -570,10 +596,83 @@ parse_scene(const Json &pack, const Json &sticker,
           candidate_areas.push_back(text_slots.at(placement));
         }
       }
-      scene.text.push_back(TextBlock{
-          fonts.at(style.font).source, content, std::move(candidate_areas),
-          style.min_font_size, style.max_font_size, style.max_lines, style.fill,
-          style.outline, style.outline_width});
+      scene.text.push_back(
+          TextBlock{fonts.at(style.font).source, content,
+                    std::move(candidate_areas), avoid_regions, auto_placement,
+                    style.min_font_size, style.max_font_size, style.max_lines,
+                    style.fill, style.outline, style.outline_width});
+    }
+
+    if (sticker.contains("animation")) {
+      const auto &configured = sticker.at("animation");
+      const auto duration_ms =
+          configured.at("duration_ms").get<std::uint32_t>();
+      const auto fps = configured.at("fps").get<std::uint32_t>();
+      const auto frame_count =
+          (static_cast<std::uint64_t>(duration_ms) * fps + 999U) / 1000U;
+      if (duration_ms < 100U || duration_ms > 10000U) {
+        return Result<Scene>::failure(document_error(
+            "Animation duration_ms must be between 100 and 10000", sticker_file,
+            "$.animation.duration_ms"));
+      }
+      if (fps == 0U || fps > 30U || frame_count < 2U || frame_count > 300U) {
+        return Result<Scene>::failure(
+            document_error("Animation fps must produce between 2 and 300 "
+                           "frames at 1 to 30 FPS",
+                           sticker_file, "$.animation.fps"));
+      }
+
+      const auto loop_name = configured.at("loop").get<std::string>();
+      AnimationLoop loop;
+      if (loop_name == "once") {
+        loop = AnimationLoop::once;
+      } else if (loop_name == "loop") {
+        loop = AnimationLoop::loop;
+      } else if (loop_name == "ping_pong") {
+        loop = AnimationLoop::ping_pong;
+      } else if (loop_name == "hold_last_frame") {
+        loop = AnimationLoop::hold_last_frame;
+      } else {
+        return Result<Scene>::failure(
+            document_error("Unknown animation loop mode: " + loop_name,
+                           sticker_file, "$.animation.loop"));
+      }
+
+      bool body_bounce = false;
+      bool text_pop = false;
+      std::set<std::string, std::less<>> overlays;
+      std::size_t index = 0;
+      const auto &configured_overlays = configured.at("overlays");
+      if (configured_overlays.empty()) {
+        return Result<Scene>::failure(
+            document_error("Animation overlays must not be empty", sticker_file,
+                           "$.animation.overlays"));
+      }
+      for (const auto &item : configured_overlays) {
+        const auto name = item.get<std::string>();
+        const auto location =
+            "$.animation.overlays[" + std::to_string(index) + "]";
+        if (!overlays.insert(name).second) {
+          return Result<Scene>::failure(document_error(
+              "Animation overlays must be unique", sticker_file, location));
+        }
+        if (name == "body_bounce") {
+          body_bounce = true;
+        } else if (name == "text_pop") {
+          text_pop = true;
+        } else {
+          return Result<Scene>::failure(document_error(
+              "Unknown animation overlay: " + name, sticker_file, location));
+        }
+        ++index;
+      }
+      if (text_pop && scene.text.empty()) {
+        return Result<Scene>::failure(
+            document_error("text_pop requires sticker text", sticker_file,
+                           "$.animation.overlays"));
+      }
+      scene.animation =
+          AnimationSpec{duration_ms, fps, loop, body_bounce, text_pop};
     }
     return Result<Scene>::success(std::move(scene));
   } catch (const Json::exception &exception) {
