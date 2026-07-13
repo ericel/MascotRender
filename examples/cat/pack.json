@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "pack_id": "mascotrender-cat",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0 },
+    { "id": "ears", "source": "layers/10-ears.svg", "z": 10 },
+    { "id": "head", "source": "layers/20-head.svg", "z": 20 },
+    { "id": "eyes-happy", "source": "layers/30-eyes.svg", "z": 30 },
+    { "id": "eyes-sleepy", "source": "layers/31-eyes-sleepy.svg", "z": 31 },
+    { "id": "eyes-surprised", "source": "layers/32-eyes-surprised.svg", "z": 32 },
+    { "id": "face-happy", "source": "layers/40-face.svg", "z": 40 },
+    { "id": "face-sleepy", "source": "layers/41-face-sleepy.svg", "z": 41 },
+    { "id": "face-surprised", "source": "layers/42-face-surprised.svg", "z": 42 },
+    { "id": "spark-left", "source": "layers/50-spark-left.svg", "z": 50 },
+    { "id": "spark-right", "source": "layers/51-spark-right.svg", "z": 51 }
+  ],
+  "base_layers": ["shadow"],
+  "expressions": {
+    "happy": ["eyes-happy", "face-happy"],
+    "sleepy": ["eyes-sleepy", "face-sleepy"],
+    "surprised": ["eyes-surprised", "face-surprised"]
+  },
+  "poses": {
+    "front": ["ears", "head"],
+    "round": ["head"]
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "Procedurally authored for the MascotRender test pack"
+  },
+  "anchors": {
+    "face_center": { "x": 256, "y": 280 },
+    "effect_left": { "x": 87, "y": 247 },
+    "effect_right": { "x": 425, "y": 247 }
+  },
+  "pivots": {
+    "head": { "x": 256, "y": 281 }
+  },
+  "text_slots": {
+    "top": { "x": 40, "y": 12, "width": 432, "height": 96 },
+    "bottom": { "x": 72, "y": 382, "width": 368, "height": 104 },
+    "center": { "x": 72, "y": 206, "width": 368, "height": 104 },
+    "left": { "x": 8, "y": 150, "width": 128, "height": 170 },
+    "right": { "x": 376, "y": 150, "width": 128, "height": 170 }
+  },
+  "avoid_regions": [
+    { "name": "face", "x": 123, "y": 145, "width": 266, "height": 272 }
+  ],
+  "fonts": [
+    {
+      "id": "display",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "caption": {
+      "font": "display",
+      "safe_area": { "x": 72, "y": 382, "width": 368, "height": 104 },
+      "min_font_size": 24,
+      "max_font_size": 54,
+      "max_lines": 2,
+      "fill": { "r": 255, "g": 255, "b": 255 },
+      "outline": {
+        "width": 4,
+        "color": { "r": 30, "g": 37, "b": 58 }
+      }
+    }
+  },
+  "variation_groups": [
+    {
+      "id": "spark-position",
+      "choices": [["spark-left"], ["spark-right"]]
+    }
+  ]
+}

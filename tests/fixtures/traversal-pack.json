@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "pack_id": "invalid-pack",
+  "canvas": { "width": 512, "height": 512 },
+  "layers": [
+    { "id": "escape", "source": "../../examples/cat/layers/20-head.svg", "z": 0 }
+  ],
+  "base_layers": ["escape"],
+  "expressions": { "invalid": [] },
+  "poses": { "invalid": [] },
+  "provenance": {
+    "creator": "test",
+    "license": "test-only",
+    "source": "traversal fixture"
+  },
+  "anchors": {},
+  "pivots": {}
+}

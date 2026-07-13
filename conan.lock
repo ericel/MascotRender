@@ -1,0 +1,22 @@
+{
+    "version": "0.5",
+    "requires": [
+        "zlib/1.3.1#b8bc2603263cf7eccbd6e17e66b0ed76%1733936244.862",
+        "thorvg/0.15.16#39648237bc6258a8ac2d81f1d0a9fc6e%1769064537.278",
+        "nlohmann_json/3.12.0#2d634ab0ec8d9f56353e5ccef6d6612c%1744735883.94",
+        "libwebp/1.6.0#eb5f8e35fc95980e32b5544a33a270b4%1754386366.205",
+        "libpng/1.6.47#d7ad969de6b0a72704cf03d6ef17648b%1740028982.292",
+        "libjpeg-turbo/3.1.4.1#d405057c37eebec9be5a5f0a3e1fa560%1776945986.011",
+        "cli11/2.6.2#312ccb795ff5b571d9f4b1a3637b1eee%1776949795.774",
+        "catch2/3.15.2#b16b3826eda0625d87c766722c6a43f4%1783695959.434"
+    ],
+    "build_requires": [
+        "pkgconf/2.2.0#6462942a22803086372db44689ba825f%1713364853.749",
+        "ninja/1.12.1#fd583651bf0c6a901943495d49878803%1724079877.609",
+        "meson/1.4.1#43b753adf9a089cadfa17c8034f5c897%1726730117.486",
+        "meson/1.2.2#21b73818ba96d9eea465b310b5bbc993%1726730120.212",
+        "cmake/3.31.6#ed0e6c1d49bd564ce6fed1a19653b86d%1740594968.467"
+    ],
+    "python_requires": [],
+    "config_requires": []
+}

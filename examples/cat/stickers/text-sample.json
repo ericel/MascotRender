@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "sticker_id": "text-sample-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat saying YOU GOT THIS!",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "text": {
+    "content": "YOU GOT THIS!",
+    "style": "caption"
+  }
+}

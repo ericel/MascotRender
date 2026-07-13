@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "sticker_id": "animated-bounce-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat bouncing under YOU GOT THIS!",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "text": {
+    "content": "YOU GOT THIS!",
+    "style": "caption",
+    "placement": "auto",
+    "preferred_slots": ["top", "bottom"]
+  },
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "overlays": ["body_bounce", "text_pop"]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "sticker_id": "text-auto-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat with automatically placed HELLO! text",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "text": {
+    "content": "HELLO!",
+    "style": "caption",
+    "placement": "auto",
+    "preferred_slots": ["top", "bottom"]
+  }
+}

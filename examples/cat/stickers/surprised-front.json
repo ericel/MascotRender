@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "sticker_id": "surprised-front-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A surprised orange cat mascot",
+  "expression": "surprised",
+  "pose": "front",
+  "seed": 1
+}

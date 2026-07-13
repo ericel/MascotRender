@@ -1,0 +1,11 @@
+/build/
+/build-*/
+/test_package/build/
+/test_package/CMakeUserPresets.json
+/cmake-build-*/
+/CMakeUserPresets.json
+/.conan/
+/.DS_Store
+*.pyc
+__pycache__/
+/generated/
