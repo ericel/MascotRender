@@ -133,6 +133,5 @@ jobs:
             -pr:b default \
             --lockfile="$CONSUMER_LOCKFILE" \
             --build=never \
-            --remote "$CONAN_REMOTE_NAME" \
             -o "&:shared=${{ matrix.shared }}" \
             -o "&:with_cli=${{ matrix.cli }}"
