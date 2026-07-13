@@ -48,7 +48,14 @@ tolerance.
 
 ## Install and consume
 
-Once uploaded to an approved Conan remote:
+Add the public hosted remote; consumer credentials are not required:
+
+```bash
+conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
+conan install --requires=mascotrender/0.1.0 --build=never
+```
+
+Then require the package from the consuming recipe:
 
 ```python
 def requirements(self):

@@ -29,7 +29,7 @@ successful merely because upload completed.
 1. Merge a green release-candidate pull request into protected `main`.
 2. Manually dispatch `Publish Conan package` for the exact recipe version.
 3. Record recipe and package revisions from the successful run.
-4. Verify a separate consumer can resolve the public remote URL.
+4. Verify a separate anonymous consumer can resolve the hosted remote.
 5. Create the matching `vX.Y.Z` tag and GitHub release.
 
 Pushing a `v*` tag runs the same publication workflow. The tag version must
@@ -38,6 +38,11 @@ match `conanfile.py`; a mismatch fails before authentication or upload.
 Consumers configure the remote and install normally:
 
 ```bash
-conan remote add mascotrender <remote-url>
-conan install --requires=mascotrender/0.1.0 --remote=mascotrender --build=never
+conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
+conan install --requires=mascotrender/0.1.0 --build=never
 ```
+
+The JFrog repository permits anonymous reads but requires authenticated writes.
+The install command leaves all configured remotes enabled so locked public
+dependencies can resolve from Conan Center while MascotRender resolves from
+the hosted JFrog remote.
