@@ -27,6 +27,7 @@ class MascotRenderRecipe(ConanFile):
         "libwebp/*:shared": False,
     }
     exports_sources = (
+        ".gitattributes",
         "CMakeLists.txt",
         "LICENSE",
         "cmake/*",

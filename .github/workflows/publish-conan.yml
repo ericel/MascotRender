@@ -102,22 +102,36 @@ jobs:
           --build=missing
           -o "&:shared=${{ matrix.shared }}"
           -o "&:with_cli=${{ matrix.cli }}"
+      - name: Pin published package identity
+        shell: bash
+        run: |
+          recipe_revision="$(
+            conan list "$PACKAGE_REFERENCE#latest" --format=json |
+              python -c 'import json, sys; data = json.load(sys.stdin)["Local Cache"]; print(next(iter(data["mascotrender/0.1.0"]["revisions"])))'
+          )"
+          recipe_reference="$PACKAGE_REFERENCE#$recipe_revision"
+          consumer_lockfile="$PWD/mascotrender-consumer.lock"
+          conan lock add \
+            --lockfile="${{ matrix.lockfile }}" \
+            --requires="$recipe_reference" \
+            --lockfile-out="$consumer_lockfile"
+          echo "PACKAGE_RECIPE_REFERENCE=$recipe_reference" >> "$GITHUB_ENV"
+          echo "CONSUMER_LOCKFILE=$consumer_lockfile" >> "$GITHUB_ENV"
       - name: Upload recipe and binary
         shell: bash
         run: >-
-          conan upload "$PACKAGE_REFERENCE"
+          conan upload "$PACKAGE_RECIPE_REFERENCE"
           --remote "$CONAN_REMOTE_NAME"
           --check
           --confirm
       - name: Verify clean remote consumer
         shell: bash
         run: |
-          conan remove "$PACKAGE_REFERENCE" --confirm
-          conan test test_package "$PACKAGE_REFERENCE" \
+          conan remove "$PACKAGE_RECIPE_REFERENCE" --confirm
+          conan test test_package "$PACKAGE_RECIPE_REFERENCE" \
             -pr:h "${{ matrix.profile }}" \
             -pr:b default \
-            --lockfile="${{ matrix.lockfile }}" \
-            --lockfile-partial \
+            --lockfile="$CONSUMER_LOCKFILE" \
             --build=never \
             --remote "$CONAN_REMOTE_NAME" \
             -o "&:shared=${{ matrix.shared }}" \
