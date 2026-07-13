@@ -48,7 +48,14 @@ tolerance.
 
 ## Install and consume
 
-Once uploaded to an approved Conan remote:
+Add the hosted remote and authenticate with JFrog read credentials:
+
+```bash
+conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
+conan remote login mascotrender <jfrog-username>
+```
+
+Then require the package from the consuming recipe:
 
 ```python
 def requirements(self):
