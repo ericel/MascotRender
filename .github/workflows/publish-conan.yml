@@ -117,6 +117,7 @@ jobs:
             -pr:h "${{ matrix.profile }}" \
             -pr:b default \
             --lockfile="${{ matrix.lockfile }}" \
+            --lockfile-partial \
             --build=never \
             --remote "$CONAN_REMOTE_NAME" \
             -o "&:shared=${{ matrix.shared }}" \
