@@ -67,7 +67,10 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   anchors, exact approved palette pixels, correct antenna-up orientation,
   independent hop-shadow contraction, and distinct pixels for every sampled
   clip. The review tool emits five lossless 512 px WebPs, an upright
-  white-background PNG, a contact sheet, and machine-readable validation.
+  white-background PNG, four real 13-frame looping animated WebPs, pose and
+  motion sheets, a browser playback page, and machine-readable validation.
+  Product/Design approved the corrected static visual gate on 2026-07-14;
+  human playback review is the last MR-112 closure item.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.

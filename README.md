@@ -154,7 +154,8 @@ four clips (`idle`, `hello`, `hop`, `celebrate`), six named facial morphs, and a
 caption anchor. The authored rounded-square model uses the approved 2D/2.5D
 gold, orange, mint, cream, and navy visual contract. Filament development
 builds can generate five lossless review frames, an upright white-background
-PNG, a contact sheet, and machine-checked review metadata with:
+PNG, four 13-frame looping animated WebPs, pose/motion sheets, a browser
+playback page, and machine-checked review metadata with:
 
 ```bash
 python tools/render_robot_glb_review.py \

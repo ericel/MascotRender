@@ -274,8 +274,12 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   sampling, and review generation are implemented. The failed placeholder-art
   review was corrected with the approved rounded-square silhouette and palette,
   curved facial language, pivoted arms, independent hop shadow, deterministic
-  white PNG/contact sheet generation, and orientation/palette guards. Hosted
-  Filament validation and Product/Design re-review remain.
+  white PNG/contact sheet generation, and orientation/palette guards.
+  Product/Design approved the corrected static visual gate on 2026-07-14. Four
+  real 13-frame looping WebPs, a browser playback page, a five-sample motion
+  sheet, decoded-frame hashes, non-static-motion checks, and exact loop-closure
+  checks now cover the remaining timing caveat. Hosted Filament validation and
+  final human playback review remain.
 - `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
 
 ## First execution batch

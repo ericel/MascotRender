@@ -108,6 +108,12 @@ PNG and contact sheet, cleans stale debug outputs, and rejects palette or
 orientation regressions. The generator does not require Blender, while the GLB
 remains editable in Blender for a later art-quality pass.
 
+Product/Design approved the corrected static MR-112 gate on 2026-07-14. The
+remaining playback gate is represented directly by four looping animated
+WebPs and an HTML playback page. CI decodes every animation, requires 13 frames,
+checks that at least half the frame transitions move, records per-transition
+channel deltas and decoded hashes, and requires exact first/last loop closure.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.

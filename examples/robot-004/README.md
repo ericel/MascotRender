@@ -30,10 +30,12 @@ python tools/generate_robot_glb.py \
   --output examples/robot-004/robot-004.glb --check
 ```
 
-The review script requires Pillow and writes five transparent WebPs, a
-white-background rest PNG, a labelled contact sheet, and a JSON manifest. It
-cleans legacy review names before rendering and rejects missing brand colors or
-an antenna that appears below the character:
+The review script requires Pillow and writes five transparent pose WebPs, four
+real 13-frame looping animated WebPs, a white-background rest PNG, labelled
+pose and motion sheets, a browser playback page, and a JSON manifest. It cleans
+legacy review names before rendering and rejects missing brand colors, an
+antenna that appears below the character, a static clip, a missing animated
+WebP chunk, a wrong frame count, or a loop that does not close:
 
 ```bash
 python tools/render_robot_glb_review.py \
