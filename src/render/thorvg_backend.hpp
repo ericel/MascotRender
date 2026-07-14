@@ -21,6 +21,12 @@ public:
         const Scene& scene, std::uint32_t width, std::uint32_t height,
         const FrameState& frame) const override;
 
+    // Renders only the screen-space caption layer on transparent pixels. This
+    // is the shared 2D compositor input for both vector and Filament scenes.
+    [[nodiscard]] Result<PixelBuffer> render_caption_overlay(
+        const Scene& scene, std::uint32_t width, std::uint32_t height,
+        const FrameState& frame = {}) const;
+
 private:
     std::optional<Error> initialization_error_;
 };

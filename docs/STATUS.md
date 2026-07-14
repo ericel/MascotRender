@@ -4,7 +4,8 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E4 — optional Filament/GLB proof. MR-110 is complete; MR-111 is active. M0-M6
+E4 — optional Filament/GLB proof. MR-110, MR-112, and MR-113 are complete;
+MR-111 cross-platform wrapper publication remains active. M0-M6
 and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
@@ -47,6 +48,8 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 - Reviewed lossless cat/text golden with decoded-pixel regression tolerance.
 - Approved lossless robot 2.5D animation golden with frame/timestamp metadata
   and decoded RGBA regression tolerance.
+- Backend-neutral caption resolution with one collision score/slot/line layout
+  shared by 2D, 2.5D, and the post-Filament screen-space compositor.
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
@@ -56,8 +59,8 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 32 CTest tests pass.
-- The opt-in Filament graph passes the complete 40-test local configuration,
+- AppleClang 21 Release build is warning-clean and all 34 CTest tests pass.
+- The opt-in Filament graph passes the complete 44-test local configuration,
   including real Metal engine/gltfio lifecycle, semantic anchor loading,
   missing-anchor failure, bounded output, and non-empty headless RGBA rendering
   through a fixed orthographic camera and toon-style key light.
@@ -69,8 +72,12 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   clip. The review tool emits five lossless 512 px WebPs, an upright
   white-background PNG, four real 13-frame looping animated WebPs, pose and
   motion sheets, a browser playback page, and machine-readable validation.
-  Product/Design approved the corrected static visual gate on 2026-07-14;
-  human playback review is the last MR-112 closure item.
+  Product/Design approved both the corrected static gate and animated playback
+  proof on 2026-07-14, closing MR-112.
+- MR-113 renders one collision-aware `NICE ONE!` recipe through flat 2D,
+  layered 2.5D, and GLB/Filament. Flat and layered files are byte-identical;
+  the repeatable review tool validates caption pixels on every backend and
+  emits a three-column contact sheet plus SHA-256 manifest.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
@@ -122,11 +129,11 @@ publication credentials remain confined to repository secrets.
 ## Next execution track
 
 The approved generator-v6 contact sheet is the M6 visual regression baseline,
-and the corrected robot hop is the MR-102 layered-animation baseline. E3 is
-closed. The next engine track is E4: an optional Filament/GLB proof that leaves
-the default C++20/Conan package free of 3D dependencies. Matcher boundary and
-collision behavior remains part of M7 unless a reusable matcher is deliberately
-added to the engine.
+the corrected robot hop is the MR-102 layered-animation baseline, and the
+MR-113 sheet is the shared-caption backend baseline. The next E4 work is the
+remaining MR-111 Linux/Windows Filament-wrapper validation and remote optional
+package publication. Matcher boundary and collision behavior remains part of
+M7 unless a reusable matcher is deliberately added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The deterministic 2D and layered 2.5D slices are complete. The next major

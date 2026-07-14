@@ -32,6 +32,7 @@ add_library(
     src/animation/timeline.cpp
     src/export/webp_encoder.cpp
     src/model/scene.cpp
+    src/render/caption_layout.cpp
     src/render/text_layout.cpp
     src/render/thorvg_backend.cpp
     src/version.cpp
@@ -75,7 +76,12 @@ target_link_libraries(
 )
 
 if(MASCOTRENDER_WITH_FILAMENT)
-    target_sources(MascotRender PRIVATE src/render/filament_backend.cpp)
+    target_sources(
+        MascotRender
+        PRIVATE
+            src/render/caption_compositor.cpp
+            src/render/filament_backend.cpp
+    )
     target_link_libraries(MascotRender PRIVATE filament::gltfio)
     target_compile_definitions(MascotRender PRIVATE MASCOTRENDER_WITH_FILAMENT=1)
 endif()
@@ -190,6 +196,7 @@ install(
     PROGRAMS
         tools/generate_robot_glb.py
         tools/generate_mascot_packs.py
+        tools/render_caption_backend_review.py
         tools/render_robot_glb_review.py
         tools/render_mascot_packs.py
         tools/build_sticker_review.py

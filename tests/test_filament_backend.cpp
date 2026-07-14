@@ -1,4 +1,7 @@
 #include "render/filament_backend.hpp"
+#include "model/scene.hpp"
+#include "render/caption_compositor.hpp"
+#include "render/thorvg_backend.hpp"
 
 #include <catch2/catch_test_macros.hpp>
 
@@ -236,6 +239,46 @@ TEST_CASE("Filament render bounds reject unsafe output sizes") {
   REQUIRE_FALSE(invalid_center);
   REQUIRE(invalid_center.error().code ==
           mascotrender::ErrorCode::invalid_argument);
+}
+
+TEST_CASE("Filament uses the shared screen-space caption compositor") {
+  constexpr std::uint32_t size = 256U;
+  auto rendered = mascotrender::detail::render_filament_glb(
+      robot_glb,
+      {.width = size,
+       .height = size,
+       .vertical_span = 4.4F,
+       .vertical_center = 0.35F});
+  REQUIRE(rendered);
+  const auto base_hash = frame_hash(rendered.value().rgba);
+
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  auto scene = mascotrender::detail::load_scene(
+      pack / "pack.json", pack / "stickers" / "caption-proof.json");
+  REQUIRE(scene);
+  mascotrender::detail::ThorvgBackend caption_renderer;
+  auto caption =
+      caption_renderer.render_caption_overlay(scene.value(), size, size);
+  REQUIRE(caption);
+  auto composited = mascotrender::detail::composite_caption(
+      std::move(rendered.value()), caption.value());
+  REQUIRE(composited);
+  REQUIRE(frame_hash(composited.value().rgba) != base_hash);
+
+  std::size_t white_caption_pixels = 0U;
+  for (std::uint32_t y = 219U; y < size; ++y) {
+    for (std::uint32_t x = 0U; x < size; ++x) {
+      const auto index = (static_cast<std::size_t>(y) * size + x) * 4U;
+      white_caption_pixels +=
+          composited.value().rgba[index] > 245U &&
+                  composited.value().rgba[index + 1U] > 245U &&
+                  composited.value().rgba[index + 2U] > 245U &&
+                  composited.value().rgba[index + 3U] > 245U
+              ? 1U
+              : 0U;
+    }
+  }
+  REQUIRE(white_caption_pixels > 100U);
 }
 
 TEST_CASE("authored robot GLB exposes four clips and six facial morphs") {

@@ -269,7 +269,7 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   anchor validation are implemented. A headless RGBA proof now exercises a
   fixed orthographic camera and hard toon-style key light. Linux/Windows
   wrapper validation and final remote publication remain.
-- `MR-112` **In progress:** Deterministic `robot-004.glb`, semantic anchors,
+- `MR-112` **Done:** Deterministic `robot-004.glb`, semantic anchors,
   `idle`/`hello`/`hop`/`celebrate` clips, six named facial morphs, animation
   sampling, and review generation are implemented. The failed placeholder-art
   review was corrected with the approved rounded-square silhouette and palette,
@@ -279,8 +279,12 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   real 13-frame looping WebPs, a browser playback page, a five-sample motion
   sheet, decoded-frame hashes, non-static-motion checks, and exact loop-closure
   checks now cover the remaining timing caveat. Hosted Filament validation and
-  final human playback review remain.
-- `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
+  Product/Design accepted the animated playback proof on 2026-07-14.
+- `MR-113` **Done:** One backend-neutral caption resolver now owns fitting,
+  collision scoring, safe-slot selection, and line coordinates. Flat 2D and
+  layered 2.5D produce byte-identical captioned posters, while Filament
+  composites the same transparent screen-space caption over the real GLB frame.
+  Tests and a reproducible three-backend review sheet lock the boundary.
 
 ## First execution batch
 

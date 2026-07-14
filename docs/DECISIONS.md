@@ -299,3 +299,20 @@ Camera tracks add to the sticker's static view and reuse resolved node depth for
 parallax. Looping tracks must return to their initial value. The existing
 procedural overlays remain supported, omitted tracks remain identity, and static
 poster mode renders the same byte-stable `t = 0` scene as MR-100.
+
+## ADR-021: Shared screen-space caption composition across render backends
+
+- Status: Accepted
+- Date: 2026-07-14
+
+Caption fitting, collision scoring, selected-area choice, and per-line
+coordinates resolve once through a backend-neutral contract. ThorVG consumes
+that result for existing 2D/2.5D scenes and can render the caption alone into a
+transparent straight-alpha BGRA frame. The optional Filament boundary converts
+that same overlay onto its straight-alpha RGBA frame after the 3D render.
+
+Captions remain screen-fixed and are not GLB meshes, textures, or Filament
+entities. This keeps typography deterministic, crisp, pack-font licensed, and
+independent of camera depth while leaving the default Conan graph free of
+Filament. Existing 2D text goldens must remain pixel-stable; flat and layered
+captioned `t = 0` output must be byte-identical.

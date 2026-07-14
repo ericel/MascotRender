@@ -22,7 +22,15 @@
       "depth": 0.25,
       "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 238 }
     },
-    { "id": "antenna", "source": "layers/25-antenna.svg", "z": 25, "parent": "head", "pivot": "antenna", "depth": 0.25 },
+    {
+      "id": "antenna",
+      "source": "layers/25-antenna.svg",
+      "z": 25,
+      "parent": "head",
+      "pivot": "antenna",
+      "depth": 0.25,
+      "collision_bounds": { "x": 238, "y": 50, "width": 36, "height": 78 }
+    },
     { "id": "face", "source": "layers/30-face.svg", "z": 30, "parent": "head", "pivot": "head", "depth": 0.2 },
     { "id": "spark", "source": "layers/40-spark.svg", "z": 40, "depth": 0.8 }
   ],
@@ -40,5 +48,31 @@
     "body": { "x": 256, "y": 360 },
     "head": { "x": 256, "y": 246 },
     "antenna": { "x": 256, "y": 128 }
+  },
+  "text_slots": {
+    "top": { "x": 52, "y": 12, "width": 408, "height": 92 },
+    "bottom": { "x": 72, "y": 438, "width": 368, "height": 62 }
+  },
+  "text_clearance": 12,
+  "fonts": [
+    {
+      "id": "display",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "caption": {
+      "font": "display",
+      "safe_area": { "x": 72, "y": 438, "width": 368, "height": 62 },
+      "min_font_size": 24,
+      "max_font_size": 40,
+      "max_lines": 1,
+      "fill": { "r": 255, "g": 255, "b": 255 },
+      "outline": {
+        "width": 4,
+        "color": { "r": 30, "g": 37, "b": 58 }
+      }
+    }
   }
 }

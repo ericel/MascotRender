@@ -164,6 +164,20 @@ python tools/render_robot_glb_review.py \
   --output generated/robot-004-review
 ```
 
+MR-113 keeps captions as a shared, screen-space 2D composition pass. The same
+pack/sticker recipe and collision-aware resolved layout are used by flat 2D,
+layered 2.5D, and Filament 3D. Generate the three-backend acceptance sheet with:
+
+```bash
+python tools/render_caption_backend_review.py \
+  --renderer-2d build/Release/mascotrender \
+  --renderer-3d build/filament/cmake/mascotrender-glb-preview \
+  --output generated/mr113-caption-review
+```
+
+The review fails if flat and layered `t = 0` pixels differ or if any backend
+does not render the caption inside the selected safe area.
+
 ## Use from another Conan project
 
 Add the package requirement to the consuming recipe:
