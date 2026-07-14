@@ -157,6 +157,12 @@ semantic anchors, and reads transparent RGBA pixels from a fixed orthographic
 camera. The default `with_filament=False` graph remains fully installable from
 public dependencies and does not download or link Filament.
 
+Hosted macOS and Linux jobs execute the pixel-rendering tests through Metal and
+Mesa/Vulkan respectively. The hosted Windows image has no Vulkan ICD, so its
+job validates archive integrity, MSVC compile/link, Filament's NOOP runtime,
+and the installed preview executable; real Windows rendering requires a
+Vulkan-capable driver on the consumer machine.
+
 MR-112 includes the deterministic `examples/robot-004/robot-004.glb` proof with
 four clips (`idle`, `hello`, `hop`, `celebrate`), six named facial morphs, and a
 caption anchor. The authored rounded-square model uses the approved 2D/2.5D

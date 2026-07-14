@@ -232,10 +232,16 @@ jobs:
         if: runner.os == 'Linux'
         shell: bash
         run: xvfb-run -a ctest --preset conan-release --output-on-failure
-      - name: Test GLB loader and existing engine
-        if: runner.os != 'Linux'
+      - name: Test GLB loader and existing engine on macOS
+        if: runner.os == 'macOS'
         shell: bash
         run: ctest --preset conan-release --output-on-failure
+      - name: Test package and non-GPU engine paths on Windows
+        if: runner.os == 'Windows'
+        shell: bash
+        run: >-
+          ctest --preset conan-release --output-on-failure
+          -E "Filament|authored robot"
       - name: Render robot GLB review
         if: matrix.review
         shell: bash
