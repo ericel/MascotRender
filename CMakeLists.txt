@@ -111,6 +111,34 @@ if(MASCOTRENDER_BUILD_CLI)
     )
 endif()
 
+if(
+    MASCOTRENDER_WITH_FILAMENT
+    AND (MASCOTRENDER_BUILD_CLI OR MASCOTRENDER_BUILD_TESTS)
+)
+    add_executable(
+        mascotrender_glb_preview
+        apps/mascotrender/glb_preview.cpp
+    )
+    set_target_properties(
+        mascotrender_glb_preview
+        PROPERTIES
+            CXX_EXTENSIONS OFF
+            CXX_STANDARD 20
+            CXX_STANDARD_REQUIRED ON
+            OUTPUT_NAME mascotrender-glb-preview
+    )
+    target_include_directories(
+        mascotrender_glb_preview
+        PRIVATE "${PROJECT_SOURCE_DIR}/src"
+    )
+    target_link_libraries(
+        mascotrender_glb_preview
+        PRIVATE
+            MascotRender::MascotRender
+            libwebp::libwebp
+    )
+endif()
+
 if(MASCOTRENDER_BUILD_TESTS)
     enable_testing()
     find_package(Catch2 3 CONFIG REQUIRED)
@@ -128,6 +156,12 @@ install(
 
 if(MASCOTRENDER_BUILD_CLI)
     install(TARGETS mascotrender_cli RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+    if(MASCOTRENDER_WITH_FILAMENT)
+        install(
+            TARGETS mascotrender_glb_preview
+            RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+        )
+    endif()
 endif()
 
 install(
@@ -154,7 +188,9 @@ install(
 )
 install(
     PROGRAMS
+        tools/generate_robot_glb.py
         tools/generate_mascot_packs.py
+        tools/render_robot_glb_review.py
         tools/render_mascot_packs.py
         tools/build_sticker_review.py
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/tools"

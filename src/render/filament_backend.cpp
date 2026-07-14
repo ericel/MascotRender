@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <fstream>
 #include <iterator>
 #include <limits>
@@ -186,8 +187,10 @@ inspect_filament_glb(const std::filesystem::path &path,
               "Filament could not create a GLB loader", path.string()});
   }
 
-  auto *loaded = loader->createAsset(
-      bytes.value().data(), static_cast<std::uint32_t>(bytes.value().size()));
+  filament::gltfio::FilamentInstance *primary_instance = nullptr;
+  auto *loaded = loader->createInstancedAsset(
+      bytes.value().data(), static_cast<std::uint32_t>(bytes.value().size()),
+      &primary_instance, 1U);
   std::unique_ptr<filament::gltfio::FilamentAsset, AssetDeleter> asset{
       loaded, AssetDeleter{loader.get()}};
   if (!asset) {
@@ -219,17 +222,47 @@ inspect_filament_glb(const std::filesystem::path &path,
         Error{ErrorCode::invalid_document, message.str(), path.string()});
   }
 
+  const auto glb_path = path.string();
+  filament::gltfio::ResourceLoader resources{
+      {engine.get(), glb_path.c_str(), true}};
+  if (!resources.loadResources(asset.get())) {
+    return Result<GlbAssetInfo>::failure(
+        Error{ErrorCode::invalid_document,
+              "Filament could not upload the GLB resources", path.string()});
+  }
+  asset->releaseSourceData();
+
   std::size_t morph_targets = 0U;
+  std::vector<std::string> morph_target_names;
   const auto *renderables = asset->getRenderableEntities();
   for (std::size_t index = 0; index < asset->getRenderableEntityCount();
        ++index) {
-    morph_targets += asset->getMorphTargetCountAt(renderables[index]);
+    const auto target_count = asset->getMorphTargetCountAt(renderables[index]);
+    morph_targets += target_count;
+    for (std::size_t target = 0; target < target_count; ++target) {
+      const auto *name =
+          asset->getMorphTargetNameAt(renderables[index], target);
+      if (name != nullptr && name[0] != '\0' &&
+          std::find(morph_target_names.begin(), morph_target_names.end(),
+                    name) == morph_target_names.end()) {
+        morph_target_names.emplace_back(name);
+      }
+    }
   }
 
   std::size_t animations = 0U;
-  if (auto *instance = asset->getInstance(); instance != nullptr) {
-    if (auto *animator = instance->getAnimator(); animator != nullptr) {
+  std::vector<std::string> animation_names;
+  std::vector<float> animation_durations;
+  if (primary_instance != nullptr) {
+    if (auto *animator = primary_instance->getAnimator(); animator != nullptr) {
       animations = animator->getAnimationCount();
+      animation_names.reserve(animations);
+      animation_durations.reserve(animations);
+      for (std::size_t index = 0; index < animations; ++index) {
+        const auto *name = animator->getAnimationName(index);
+        animation_names.emplace_back(name != nullptr ? name : "");
+        animation_durations.push_back(animator->getAnimationDuration(index));
+      }
     }
   }
 
@@ -239,7 +272,9 @@ inspect_filament_glb(const std::filesystem::path &path,
       static_cast<std::uint32_t>(asset->getCameraEntityCount()),
       static_cast<std::uint32_t>(asset->getLightEntityCount()),
       static_cast<std::uint32_t>(animations),
-      static_cast<std::uint32_t>(morph_targets), required_anchors});
+      static_cast<std::uint32_t>(morph_targets), required_anchors,
+      std::move(animation_names), std::move(animation_durations),
+      std::move(morph_target_names)});
 }
 
 Result<FilamentFrame>
@@ -247,7 +282,8 @@ render_filament_glb(const std::filesystem::path &path,
                     const FilamentRenderOptions &options) {
   if (options.width < min_render_extent || options.width > max_render_extent ||
       options.height < min_render_extent ||
-      options.height > max_render_extent || options.vertical_span <= 0.0F) {
+      options.height > max_render_extent ||
+      !std::isfinite(options.vertical_span) || options.vertical_span <= 0.0F) {
     return Result<FilamentFrame>::failure(
         Error{ErrorCode::invalid_argument,
               "Filament output must be 16..2048 pixels with a positive span",
@@ -288,8 +324,10 @@ render_filament_glb(const std::filesystem::path &path,
               "Filament could not create a GLB loader", path.string()});
   }
 
-  auto *loaded = loader->createAsset(
-      bytes.value().data(), static_cast<std::uint32_t>(bytes.value().size()));
+  filament::gltfio::FilamentInstance *primary_instance = nullptr;
+  auto *loaded = loader->createInstancedAsset(
+      bytes.value().data(), static_cast<std::uint32_t>(bytes.value().size()),
+      &primary_instance, 1U);
   std::unique_ptr<filament::gltfio::FilamentAsset, AssetDeleter> asset{
       loaded, AssetDeleter{loader.get()}};
   if (!asset) {
@@ -307,6 +345,35 @@ render_filament_glb(const std::filesystem::path &path,
               "Filament could not upload the GLB resources", path.string()});
   }
   asset->releaseSourceData();
+
+  if (!options.animation_name.empty()) {
+    auto *animator =
+        primary_instance != nullptr ? primary_instance->getAnimator() : nullptr;
+    if (animator == nullptr || !std::isfinite(options.animation_time_seconds) ||
+        options.animation_time_seconds < 0.0F) {
+      return Result<FilamentFrame>::failure(
+          Error{ErrorCode::invalid_argument,
+                "Filament animation time must be finite and non-negative",
+                path.string()});
+    }
+    std::size_t selected = animator->getAnimationCount();
+    for (std::size_t index = 0; index < animator->getAnimationCount();
+         ++index) {
+      const auto *name = animator->getAnimationName(index);
+      if (name != nullptr && options.animation_name == name) {
+        selected = index;
+        break;
+      }
+    }
+    if (selected == animator->getAnimationCount()) {
+      return Result<FilamentFrame>::failure(
+          Error{ErrorCode::invalid_argument,
+                "GLB does not contain animation: " + options.animation_name,
+                path.string()});
+    }
+    animator->applyAnimation(selected, options.animation_time_seconds);
+    animator->updateBoneMatrices();
+  }
 
   FilamentRenderResources render{engine.get()};
   render.swap_chain = engine->createSwapChain(options.width, options.height);
@@ -340,7 +407,7 @@ render_filament_glb(const std::filesystem::path &path,
   render.light_entity = entities.create();
   const auto light_result =
       filament::LightManager::Builder{filament::LightManager::Type::DIRECTIONAL}
-          .direction({0.304F, -0.391F, -0.868F})
+          .direction({-0.304F, 0.391F, 0.868F})
           .color({1.0F, 0.92F, 0.82F})
           .intensity(65000.0F)
           .castShadows(false)

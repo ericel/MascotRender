@@ -17,12 +17,17 @@ struct GlbAssetInfo {
   std::uint32_t animation_count{};
   std::uint32_t morph_target_count{};
   std::vector<std::string> semantic_anchors;
+  std::vector<std::string> animation_names;
+  std::vector<float> animation_durations_seconds;
+  std::vector<std::string> morph_target_names;
 };
 
 struct FilamentRenderOptions {
   std::uint32_t width{256U};
   std::uint32_t height{256U};
   float vertical_span{2.5F};
+  std::string animation_name;
+  float animation_time_seconds{0.0F};
 };
 
 struct FilamentFrame {

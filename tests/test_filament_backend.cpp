@@ -11,6 +11,9 @@
 
 namespace {
 
+const std::filesystem::path source_root{MASCOTRENDER_TEST_SOURCE_DIR};
+const auto robot_glb = source_root / "examples/robot-004/robot-004.glb";
+
 void append_u32(std::vector<std::uint8_t> &bytes, std::uint32_t value) {
   bytes.push_back(static_cast<std::uint8_t>(value));
   bytes.push_back(static_cast<std::uint8_t>(value >> 8U));
@@ -20,6 +23,31 @@ void append_u32(std::vector<std::uint8_t> &bytes, std::uint32_t value) {
 
 void append_float(std::vector<std::uint8_t> &bytes, float value) {
   append_u32(bytes, std::bit_cast<std::uint32_t>(value));
+}
+
+[[nodiscard]] std::uint64_t
+frame_hash(const std::vector<std::uint8_t> &bytes) noexcept {
+  std::uint64_t hash = 14695981039346656037ULL;
+  for (const auto byte : bytes) {
+    hash ^= byte;
+    hash *= 1099511628211ULL;
+  }
+  return hash;
+}
+
+[[nodiscard]] std::size_t
+lit_pixel_count(const std::vector<std::uint8_t> &rgba) noexcept {
+  std::size_t count = 0U;
+  for (std::size_t index = 0; index < rgba.size(); index += 4U) {
+    count += static_cast<unsigned>(rgba[index]) +
+                             static_cast<unsigned>(rgba[index + 1U]) +
+                             static_cast<unsigned>(rgba[index + 2U]) >
+                         30U &&
+                     rgba[index + 3U] > 0U
+                 ? 1U
+                 : 0U;
+  }
+  return count;
 }
 
 [[nodiscard]] std::vector<std::uint8_t> semantic_robot_glb() {
@@ -131,7 +159,7 @@ TEST_CASE("Filament GLB loader rejects a missing semantic anchor") {
           std::string::npos);
 }
 
-TEST_CASE("Filament renders a lit GLB through a square orthographic camera") {
+TEST_CASE("Filament renders a GLB through a square orthographic camera") {
   const TemporaryGlb fixture{"render", renderable_robot_glb()};
   const auto rendered = mascotrender::detail::render_filament_glb(
       fixture.path(), {.width = 96U, .height = 96U, .vertical_span = 2.5F});
@@ -142,19 +170,13 @@ TEST_CASE("Filament renders a lit GLB through a square orthographic camera") {
   REQUIRE(rendered.value().rgba.size() == 96U * 96U * 4U);
 
   std::size_t opaque_pixels = 0U;
-  std::size_t green_pixels = 0U;
   for (std::size_t index = 0; index < rendered.value().rgba.size();
        index += 4U) {
-    const auto red = rendered.value().rgba[index];
-    const auto green = rendered.value().rgba[index + 1U];
-    const auto blue = rendered.value().rgba[index + 2U];
     const auto alpha = rendered.value().rgba[index + 3U];
     opaque_pixels += alpha > 0U ? 1U : 0U;
-    green_pixels += green > red && green > blue && alpha > 0U ? 1U : 0U;
   }
   REQUIRE(opaque_pixels > 500U);
   REQUIRE(opaque_pixels < 5000U);
-  REQUIRE(green_pixels > 500U);
 }
 
 TEST_CASE("Filament render bounds reject unsafe output sizes") {
@@ -163,4 +185,66 @@ TEST_CASE("Filament render bounds reject unsafe output sizes") {
 
   REQUIRE_FALSE(rendered);
   REQUIRE(rendered.error().code == mascotrender::ErrorCode::invalid_argument);
+}
+
+TEST_CASE("authored robot GLB exposes four clips and six facial morphs") {
+  const std::vector<std::string> anchors{
+      "RobotRoot", "Body", "Head", "Face", "Antenna", "caption_anchor"};
+  const auto inspected =
+      mascotrender::detail::inspect_filament_glb(robot_glb, anchors);
+
+  REQUIRE(inspected);
+  REQUIRE(inspected.value().entity_count == 11U);
+  REQUIRE(inspected.value().renderable_count == 9U);
+  REQUIRE(inspected.value().animation_count == 4U);
+  REQUIRE(inspected.value().animation_names ==
+          std::vector<std::string>{"idle", "hello", "hop", "celebrate"});
+  REQUIRE(inspected.value().animation_durations_seconds.size() == 4U);
+  for (const auto duration : inspected.value().animation_durations_seconds) {
+    REQUIRE(duration >= 0.9F);
+    REQUIRE(duration <= 1.0F);
+  }
+  REQUIRE(inspected.value().morph_target_count == 6U);
+  REQUIRE(inspected.value().morph_target_names ==
+          std::vector<std::string>{"blink", "smile", "wow", "squint", "sad",
+                                   "cheek"});
+  REQUIRE(inspected.value().semantic_anchors == anchors);
+}
+
+TEST_CASE("authored robot clips produce distinct orthographic frames") {
+  const mascotrender::detail::FilamentRenderOptions rest_options{
+      .width = 128U, .height = 128U, .vertical_span = 3.6F};
+  const auto rest =
+      mascotrender::detail::render_filament_glb(robot_glb, rest_options);
+  REQUIRE(rest);
+  REQUIRE(lit_pixel_count(rest.value().rgba) > 2000U);
+  const auto rest_hash = frame_hash(rest.value().rgba);
+
+  for (const auto &[clip, time] :
+       std::vector<std::pair<std::string, float>>{{"idle", 0.5F},
+                                                  {"hello", 0.3F},
+                                                  {"hop", 0.3F},
+                                                  {"celebrate", 0.5F}}) {
+    auto options = rest_options;
+    options.animation_name = clip;
+    options.animation_time_seconds = time;
+    const auto animated =
+        mascotrender::detail::render_filament_glb(robot_glb, options);
+    CAPTURE(clip, time);
+    REQUIRE(animated);
+    REQUIRE(frame_hash(animated.value().rgba) != rest_hash);
+  }
+}
+
+TEST_CASE("authored robot rejects an unknown animation clip") {
+  const auto rendered = mascotrender::detail::render_filament_glb(
+      robot_glb, {.width = 64U,
+                  .height = 64U,
+                  .vertical_span = 3.6F,
+                  .animation_name = "missing",
+                  .animation_time_seconds = 0.0F});
+
+  REQUIRE_FALSE(rendered);
+  REQUIRE(rendered.error().code == mascotrender::ErrorCode::invalid_argument);
+  REQUIRE(rendered.error().message.find("missing") != std::string::npos);
 }

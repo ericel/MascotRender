@@ -8,6 +8,15 @@ add_executable(
 )
 if(MASCOTRENDER_WITH_FILAMENT)
     target_sources(mascotrender_unit_tests PRIVATE test_filament_backend.cpp)
+    find_package(Python3 COMPONENTS Interpreter REQUIRED)
+    add_test(
+        NAME robot_004_glb_is_deterministic
+        COMMAND
+            "${Python3_EXECUTABLE}"
+            "${PROJECT_SOURCE_DIR}/tools/generate_robot_glb.py"
+            --output "${PROJECT_SOURCE_DIR}/examples/robot-004/robot-004.glb"
+            --check
+    )
 endif()
 target_link_libraries(
     mascotrender_unit_tests
