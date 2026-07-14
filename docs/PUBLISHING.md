@@ -14,15 +14,21 @@ The workflow requires these GitHub Actions repository secrets:
 
 ## Published configurations
 
+- macOS arm64 AppleClang 21 Release, static library with CLI.
 - Linux x86-64 GCC 13 Release, static library with CLI.
 - Linux x86-64 GCC 13 Release, shared library without CLI.
 - Windows x86-64 MSVC 19.4x Release, static library with CLI.
 - Windows x86-64 MSVC 19.4x Release, shared library without CLI.
+- macOS arm64, Linux x86-64, and Windows x86-64 static packages with the
+  optional Filament GLB renderer and CLI enabled.
 
-Every matrix job creates and runs the package consumer, uploads the recipe and
-its binary, removes `mascotrender` from the runner cache, and runs the external
-consumer again with `--build=never` against the configured remote. A job is not
-successful merely because upload completed.
+The Filament publication jobs first publish the checksum-pinned
+`filament/1.74.0` wrapper for their platform, then publish the matching
+Filament-enabled MascotRender binary. Every matrix job logs out, removes the
+published packages from its runner cache, and runs the external consumer again
+with `--build=never`. This verifies that anonymous users can download the exact
+published binary rather than rebuilding it locally. A job is not successful
+merely because upload completed.
 
 ## Release sequence
 
