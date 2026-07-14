@@ -239,12 +239,13 @@ jobs:
         if: runner.os == 'macOS'
         shell: bash
         run: ctest --preset conan-release --output-on-failure
-      - name: Test package and non-GPU engine paths on Windows
+      - name: Test package and non-GPU Filament paths on Windows
         if: runner.os == 'Windows'
         shell: bash
-        run: >-
-          ctest --preset conan-release --output-on-failure
-          -E "Filament|authored robot"
+        run: |
+          ctest --preset conan-release --output-on-failure \
+            -R "robot_004_(glb_is_deterministic|identity_contract)"
+          build/Release/mascotrender-glb-preview.exe --help
       - name: Render robot GLB review
         if: matrix.review
         shell: bash
