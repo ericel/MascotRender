@@ -4,7 +4,7 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E3 — layered 2.5D. M0-M6 are complete, release `v0.1.0` is published, and
+E4 — optional Filament/GLB proof. M0-M6 and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
 2026-07-14. M7 remains a separate product-integration pilot.
@@ -44,6 +44,8 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   summary after independently verifying paths, sizes, hashes, WebP structure,
   animation metadata, and report totals.
 - Reviewed lossless cat/text golden with decoded-pixel regression tolerance.
+- Approved lossless robot 2.5D animation golden with frame/timestamp metadata
+  and decoded RGBA regression tolerance.
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
@@ -52,7 +54,7 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 31 CTest tests pass.
+- AppleClang 21 Release build is warning-clean and all 32 CTest tests pass.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
@@ -73,6 +75,9 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   `d16f85b60f707a4559b3a36bca9e8e82dc44b37dbfc8eb24389077799565a57f`.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
+- Golden `robot-2_5d-animated-hop.webp` is an approved lossless 512 x 512,
+  1200 ms, 15-frame looping WebP with SHA-256
+  `61e255a91dbdb2dc8005d646d28cef6b4de2f64bcaa1781775b0152578465873`.
 - Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50
   stickers, including animated primary assets and matching poster thumbnails.
 - Pack/sticker schemas and generated manifests/catalogues validate as JSON.
@@ -95,12 +100,13 @@ publication credentials remain confined to repository secrets.
 
 ## Next execution track
 
-The approved generator-v6 contact sheet is the M6 visual regression baseline.
-MR-100 parented parts/static parallax and MR-101 typed 2.5D motion are complete.
-MR-102 now reviews and locks the robot animation golden. Matcher
-boundary/collision behavior remains part of M7 unless a reusable matcher is
-deliberately added to the engine.
+The approved generator-v6 contact sheet is the M6 visual regression baseline,
+and the corrected robot hop is the MR-102 layered-animation baseline. E3 is
+closed. The next engine track is E4: an optional Filament/GLB proof that leaves
+the default C++20/Conan package free of 3D dependencies. Matcher boundary and
+collision behavior remains part of M7 unless a reusable matcher is deliberately
+added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
-The first deterministic 2D animation slice is working; the next major engine
-step is layered 2.5D, followed by an optional Filament/GLB backend.
+The deterministic 2D and layered 2.5D slices are complete. The next major
+engine step is the optional Filament/GLB backend proof.
