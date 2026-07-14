@@ -25,6 +25,10 @@ stickers each. Every pack contains:
 - seeded left/right effects;
 - ten English/Pidgin phrases with punctuation and longer text;
 - named top/bottom slots, avoid regions, and four animated phrases per mascot;
+- a species-specific primary palette and silhouette; alien additionally uses a
+  narrow oval body and a three-eye expression rig;
+- normalized accessory headroom, antenna-aware bottom-only captions for alien
+  and robot, and a 48 px bottom safe-area inset;
 - the approved pack-local Changa One static TTF and complete OFL license;
 - a schema-v1 `pack.json` and ten sticker JSON specifications.
 

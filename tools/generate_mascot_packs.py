@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = 4
+GENERATOR_VERSION = 5
 MASK64 = (1 << 64) - 1
 
 
@@ -41,6 +41,14 @@ PALETTES = (
 )
 
 SPECIES = ("cat", "bear", "bunny", "robot", "alien")
+
+SPECIES_PALETTES = {
+    "cat": PALETTES[3],
+    "bear": PALETTES[0],
+    "bunny": PALETTES[2],
+    "robot": PALETTES[5],
+    "alien": PALETTES[1],
+}
 
 PHRASES = (
     ("hello", "HELLO!", "happy", "front"),
@@ -98,33 +106,33 @@ def body_layer(species: str, palette: Palette, round_pose: bool) -> str:
     if species == "cat":
         parts.extend(
             (
-                f'<path d="M{x + 24} 178 L{x + 62} 72 L{x + 114} 164 Z" fill="{palette.secondary}"/>',
-                f'<path d="M{x + width - 114} 164 L{x + width - 62} 72 L{x + width - 24} 178 Z" fill="{palette.secondary}"/>',
+                f'<path d="M{x + 24} 178 L{x + 62} 78 L{x + 114} 164 Z" fill="{palette.secondary}"/>',
+                f'<path d="M{x + width - 114} 164 L{x + width - 62} 78 L{x + width - 24} 178 Z" fill="{palette.secondary}"/>',
             )
         )
     elif species == "bear":
         parts.extend(
             (
-                f'<circle cx="{x + 48}" cy="142" r="50" fill="{palette.secondary}"/>',
-                f'<circle cx="{x + width - 48}" cy="142" r="50" fill="{palette.secondary}"/>',
-                f'<circle cx="{x + 48}" cy="142" r="24" fill="{palette.light}"/>',
-                f'<circle cx="{x + width - 48}" cy="142" r="24" fill="{palette.light}"/>',
+                f'<circle cx="{x + 48}" cy="132" r="54" fill="{palette.secondary}"/>',
+                f'<circle cx="{x + width - 48}" cy="132" r="54" fill="{palette.secondary}"/>',
+                f'<circle cx="{x + 48}" cy="132" r="26" fill="{palette.light}"/>',
+                f'<circle cx="{x + width - 48}" cy="132" r="26" fill="{palette.light}"/>',
             )
         )
     elif species == "bunny":
         parts.extend(
             (
-                f'<rect x="{x + 42}" y="48" width="58" height="152" rx="29" fill="{palette.secondary}"/>',
-                f'<rect x="{x + width - 100}" y="48" width="58" height="152" rx="29" fill="{palette.secondary}"/>',
-                f'<rect x="{x + 60}" y="70" width="22" height="105" rx="11" fill="{palette.light}"/>',
-                f'<rect x="{x + width - 82}" y="70" width="22" height="105" rx="11" fill="{palette.light}"/>',
+                f'<rect x="{x + 42}" y="64" width="58" height="136" rx="29" fill="{palette.secondary}"/>',
+                f'<rect x="{x + width - 100}" y="64" width="58" height="136" rx="29" fill="{palette.secondary}"/>',
+                f'<rect x="{x + 60}" y="82" width="22" height="93" rx="11" fill="{palette.light}"/>',
+                f'<rect x="{x + width - 82}" y="82" width="22" height="93" rx="11" fill="{palette.light}"/>',
             )
         )
     elif species == "robot":
         parts.extend(
             (
-                f'<rect x="248" y="62" width="16" height="68" rx="8" fill="{palette.dark}"/>',
-                f'<circle cx="256" cy="55" r="19" fill="{palette.accent}"/>',
+                f'<rect x="248" y="88" width="16" height="42" rx="8" fill="{palette.dark}"/>',
+                f'<circle cx="256" cy="80" r="16" fill="{palette.accent}"/>',
                 f'<rect x="{x - 16}" y="190" width="32" height="84" rx="16" fill="{palette.secondary}"/>',
                 f'<rect x="{x + width}" y="190" width="32" height="84" rx="16" fill="{palette.secondary}"/>',
             )
@@ -132,18 +140,32 @@ def body_layer(species: str, palette: Palette, round_pose: bool) -> str:
     elif species == "alien":
         parts.extend(
             (
-                f'<path d="M180 150 Q150 92 126 85" fill="none" stroke="{palette.dark}" stroke-width="14" stroke-linecap="round"/>',
-                f'<path d="M332 150 Q362 92 386 85" fill="none" stroke="{palette.dark}" stroke-width="14" stroke-linecap="round"/>',
-                f'<circle cx="126" cy="85" r="22" fill="{palette.accent}"/>',
-                f'<circle cx="386" cy="85" r="22" fill="{palette.accent}"/>',
+                f'<path d="M188 154 Q160 104 142 88" fill="none" stroke="{palette.dark}" stroke-width="13" stroke-linecap="round"/>',
+                f'<path d="M324 154 Q352 104 370 88" fill="none" stroke="{palette.dark}" stroke-width="13" stroke-linecap="round"/>',
+                f'<circle cx="142" cy="88" r="18" fill="{palette.accent}"/>',
+                f'<circle cx="370" cy="88" r="18" fill="{palette.accent}"/>',
             )
         )
 
-    radius = 82 if species == "robot" else 112
-    parts.append(
-        f'<rect x="{x}" y="{top}" width="{width}" height="{height}" '
-        f'rx="{radius}" fill="{palette.primary}"/>'
-    )
+    if species == "alien":
+        alien_rx = 108 if round_pose else 116
+        alien_ry = 130 if round_pose else 136
+        parts.append(
+            f'<ellipse cx="256" cy="254" rx="{alien_rx}" ry="{alien_ry}" '
+            f'fill="{palette.primary}"/>'
+        )
+        parts.extend(
+            (
+                f'<circle cx="242" cy="166" r="6" fill="{palette.accent}"/>',
+                f'<circle cx="270" cy="166" r="6" fill="{palette.accent}"/>',
+            )
+        )
+    else:
+        radius = 82 if species == "robot" else 112
+        parts.append(
+            f'<rect x="{x}" y="{top}" width="{width}" height="{height}" '
+            f'rx="{radius}" fill="{palette.primary}"/>'
+        )
     if species == "robot":
         parts.extend(
             (
@@ -151,14 +173,42 @@ def body_layer(species: str, palette: Palette, round_pose: bool) -> str:
                 f'<circle cx="256" cy="346" r="18" fill="{palette.accent}"/>',
             )
         )
-    else:
+    elif species != "alien":
         parts.append(
             f'<ellipse cx="256" cy="330" rx="72" ry="48" fill="{palette.light}" fill-opacity="0.72"/>'
         )
     return svg("\n".join(parts))
 
 
-def eyes_layer(expression: str, palette: Palette) -> str:
+def eyes_layer(expression: str, palette: Palette, species: str) -> str:
+    if species == "alien":
+        eye_centers = (190, 256, 322)
+        if expression == "happy":
+            body = "\n".join(
+                f'<path d="M{center - 17} 246 Q{center} 226 {center + 17} 246" '
+                f'fill="none" stroke="{palette.dark}" stroke-width="11" '
+                'stroke-linecap="round"/>'
+                for center in eye_centers
+            )
+        elif expression == "sleepy":
+            body = "\n".join(
+                f'<path d="M{center - 17} 242 Q{center} 254 {center + 17} 242" '
+                f'fill="none" stroke="{palette.dark}" stroke-width="10" '
+                'stroke-linecap="round"/>'
+                for center in eye_centers
+            )
+        else:
+            body = "\n".join(
+                (
+                    f'<ellipse cx="{center}" cy="242" rx="21" ry="28" '
+                    f'fill="{palette.light}"/>\n'
+                    f'<circle cx="{center}" cy="246" r="10" fill="{palette.dark}"/>\n'
+                    f'<circle cx="{center - 4}" cy="240" r="4" fill="#FFFFFF"/>'
+                )
+                for center in eye_centers
+            )
+        return svg(body)
+
     if expression == "happy":
         body = (
             f'<path d="M184 246 Q210 218 236 246" fill="none" stroke="{palette.dark}" stroke-width="14" stroke-linecap="round"/>\n'
@@ -181,7 +231,20 @@ def eyes_layer(expression: str, palette: Palette) -> str:
     return svg(body)
 
 
-def face_layer(expression: str, palette: Palette) -> str:
+def face_layer(expression: str, palette: Palette, species: str) -> str:
+    if species == "alien":
+        if expression == "happy":
+            mouth = f'<path d="M222 306 Q256 340 290 306" fill="none" stroke="{palette.dark}" stroke-width="10" stroke-linecap="round"/>'
+        elif expression == "sleepy":
+            mouth = f'<path d="M238 316 Q256 306 274 316" fill="none" stroke="{palette.dark}" stroke-width="9" stroke-linecap="round"/>'
+        else:
+            mouth = f'<ellipse cx="256" cy="320" rx="20" ry="27" fill="{palette.dark}"/>'
+        cheeks = (
+            f'<circle cx="205" cy="292" r="8" fill="{palette.accent}" fill-opacity="0.65"/>\n'
+            f'<circle cx="307" cy="292" r="8" fill="{palette.accent}" fill-opacity="0.65"/>'
+        )
+        return svg(cheeks + "\n" + mouth)
+
     nose = f'<path d="M242 282 L270 282 L256 298 Z" fill="{palette.accent}"/>'
     if expression == "happy":
         mouth = f'<path d="M220 310 Q256 346 292 310" fill="none" stroke="{palette.dark}" stroke-width="11" stroke-linecap="round"/>'
@@ -205,6 +268,18 @@ def effect_layer(side: str, palette: Palette) -> str:
 
 
 def pack_document(pack_id: str, species: str) -> dict[str, object]:
+    avoid_regions: list[dict[str, object]] = [
+        {"name": "mascot", "x": 120, "y": 110, "width": 272, "height": 272}
+    ]
+    if species == "alien":
+        avoid_regions.append(
+            {"name": "antennae", "x": 118, "y": 64, "width": 276, "height": 96}
+        )
+    elif species == "robot":
+        avoid_regions.append(
+            {"name": "antenna", "x": 230, "y": 60, "width": 52, "height": 72}
+        )
+
     return {
         "schema_version": 1,
         "pack_id": pack_id,
@@ -242,11 +317,9 @@ def pack_document(pack_id: str, species: str) -> dict[str, object]:
         "pivots": {"body": {"x": 256, "y": 260}},
         "text_slots": {
             "top": {"x": 48, "y": 12, "width": 416, "height": 94},
-            "bottom": {"x": 58, "y": 394, "width": 396, "height": 94},
+            "bottom": {"x": 66, "y": 376, "width": 380, "height": 88},
         },
-        "avoid_regions": [
-            {"name": "mascot", "x": 120, "y": 110, "width": 272, "height": 272}
-        ],
+        "avoid_regions": avoid_regions,
         "fonts": [
             {
                 "id": "display",
@@ -257,7 +330,7 @@ def pack_document(pack_id: str, species: str) -> dict[str, object]:
         "text_styles": {
             "caption": {
                 "font": "display",
-                "safe_area": {"x": 58, "y": 394, "width": 396, "height": 94},
+                "safe_area": {"x": 66, "y": 376, "width": 380, "height": 88},
                 "min_font_size": 22,
                 "max_font_size": 52,
                 "max_lines": 2,
@@ -283,6 +356,7 @@ def sticker_document(
     phrase_index: int,
     phrase: tuple[str, str, str, str],
     seed: int,
+    species: str,
 ) -> dict[str, object]:
     slug, content, expression, pose = phrase
     sticker: dict[str, object] = {
@@ -297,9 +371,15 @@ def sticker_document(
             "content": content,
             "style": "caption",
             "placement": "auto",
-            "preferred_slots": ["top", "bottom"]
-            if phrase_index % 2 == 0
-            else ["bottom", "top"],
+            "preferred_slots": (
+                ["bottom"]
+                if species in {"alien", "robot"}
+                else (
+                    ["top", "bottom"]
+                    if phrase_index % 2 == 0
+                    else ["bottom", "top"]
+                )
+            ),
         },
     }
     if phrase_index in {0, 2, 6, 8}:
@@ -325,9 +405,8 @@ def copy_font(font_source: Path, pack_dir: Path) -> str:
 
 
 def generate_pack(root: Path, number: int, seed: int, font_source: Path) -> dict[str, object]:
-    state = splitmix64(seed + number)
     species = SPECIES[(number - 1) % len(SPECIES)]
-    palette = PALETTES[state % len(PALETTES)]
+    palette = SPECIES_PALETTES[species]
     pack_id = f"generated-{species}-{number:03d}"
     pack_dir = root / pack_id
     layers = pack_dir / "layers"
@@ -336,15 +415,23 @@ def generate_pack(root: Path, number: int, seed: int, font_source: Path) -> dict
     write_text(layers / "10-body-front.svg", body_layer(species, palette, False))
     write_text(layers / "11-body-round.svg", body_layer(species, palette, True))
     for index, expression in enumerate(("happy", "sleepy", "surprised"), start=20):
-        write_text(layers / f"{index:02d}-eyes-{expression}.svg", eyes_layer(expression, palette))
-        write_text(layers / f"{index + 10:02d}-face-{expression}.svg", face_layer(expression, palette))
+        write_text(
+            layers / f"{index:02d}-eyes-{expression}.svg",
+            eyes_layer(expression, palette, species),
+        )
+        write_text(
+            layers / f"{index + 10:02d}-face-{expression}.svg",
+            face_layer(expression, palette, species),
+        )
     write_text(layers / "40-effect-left.svg", effect_layer("left", palette))
     write_text(layers / "41-effect-right.svg", effect_layer("right", palette))
 
     font_sha256 = copy_font(font_source, pack_dir)
     write_json(pack_dir / "pack.json", pack_document(pack_id, species))
     for phrase_index, phrase in enumerate(PHRASES):
-        sticker = sticker_document(pack_id, number, phrase_index, phrase, seed)
+        sticker = sticker_document(
+            pack_id, number, phrase_index, phrase, seed, species
+        )
         write_json(pack_dir / "stickers" / f"{phrase[0]}.json", sticker)
 
     return {

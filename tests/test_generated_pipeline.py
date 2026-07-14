@@ -55,6 +55,7 @@ def main() -> int:
         root = Path(temporary)
         generated_a = root / "generated-a"
         generated_b = root / "generated-b"
+        generated_species = root / "generated-species"
         bundle_a = root / "bundle-a"
         bundle_b = root / "bundle-b"
 
@@ -72,6 +73,60 @@ def main() -> int:
         run(generate_base + ["--output", str(generated_b)])
         if tree_digest(generated_a) != tree_digest(generated_b):
             raise AssertionError("same seed did not generate byte-identical mascot packs")
+
+        run(
+            [
+                args.python,
+                str(args.generator),
+                "--count",
+                "5",
+                "--seed",
+                "20260713",
+                "--font-source",
+                str(args.font_source),
+                "--output",
+                str(generated_species),
+            ]
+        )
+        species_manifest = json.loads(
+            (generated_species / "generation-manifest.json").read_text()
+        )
+        if species_manifest["generator_version"] != 5:
+            raise AssertionError("unexpected mascot generator version")
+        primary_colors = {
+            item["palette"]["primary"] for item in species_manifest["packs"]
+        }
+        if len(primary_colors) != 5:
+            raise AssertionError("canonical species must have distinct primary colors")
+        for species, number in (("robot", 4), ("alien", 5)):
+            pack_root = generated_species / f"generated-{species}-{number:03d}"
+            pack = json.loads((pack_root / "pack.json").read_text())
+            avoid_names = {region["name"] for region in pack["avoid_regions"]}
+            if "antenna" not in " ".join(avoid_names):
+                raise AssertionError(f"{species} pack has no antenna avoid region")
+            bottom = pack["text_slots"]["bottom"]
+            if bottom["y"] + bottom["height"] > 464:
+                raise AssertionError(f"{species} bottom caption lacks safe margin")
+            for sticker_path in (pack_root / "stickers").glob("*.json"):
+                sticker = json.loads(sticker_path.read_text())
+                if sticker["text"]["preferred_slots"] != ["bottom"]:
+                    raise AssertionError(
+                        f"{species} caption may collide with its antenna"
+                    )
+        alien_eyes = (
+            generated_species
+            / "generated-alien-005"
+            / "layers"
+            / "22-eyes-surprised.svg"
+        ).read_text()
+        bunny_eyes = (
+            generated_species
+            / "generated-bunny-003"
+            / "layers"
+            / "22-eyes-surprised.svg"
+        ).read_text()
+        if alien_eyes.count("<ellipse") != 3 or bunny_eyes.count("<ellipse") != 2:
+            raise AssertionError("alien and bunny expression rigs are not distinct")
 
         render_base = [
             args.python,
