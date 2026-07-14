@@ -88,6 +88,11 @@ remain crisp 2D overlays by default.
 Exit: the same recipe renders through 2D, 2.5D, and Filament backends; a normal
 consumer that does not enable 3D does not download or link Filament.
 
+Status: MR-110 is complete. `with_filament=False` remains the default Conan
+graph, while `with_filament=True` selects the matching CMake feature and pins
+`filament/1.74.0`. Filament has no ConanCenter recipe, so MR-111 must wrap and
+publish the official desktop archives before implementing the GLB backend.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.

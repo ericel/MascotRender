@@ -125,10 +125,26 @@ conan create . \
   --build=missing
 ```
 
-Checked-in Release profiles cover macOS arm64/AppleClang 21, Linux
-x86-64/GCC 13, and Windows x86-64/MSVC 19.4x. The GitHub Actions smoke workflow
-uses the Linux and Windows profiles and their platform-specific lockfiles; the
-root `conan.lock` is the locally verified macOS graph.
+Checked-in Release profiles and hosted package-consumer jobs cover macOS
+arm64/AppleClang 21, Linux x86-64/GCC 13, and Windows x86-64/MSVC 19.4x. The
+root `conan.lock` is the macOS graph; Linux and Windows use the lockfiles under
+`locks/`.
+
+## Optional Filament boundary
+
+The default package has no 3D dependency. The first E4 slice reserves an
+explicit opt-in package identity and CMake switch:
+
+```bash
+conan install . -o "&:with_filament=True" --build=missing
+```
+
+That option requires the pinned `filament/1.74.0` package and sets
+`MASCOTRENDER_WITH_FILAMENT=ON`. Filament is not currently available from
+ConanCenter; MR-111 will package the official desktop archives in the
+MascotRender Conan remote before the option is advertised to consumers. The
+default `with_filament=False` graph remains fully installable from public
+dependencies and does not download or link Filament.
 
 ## Use from another Conan project
 

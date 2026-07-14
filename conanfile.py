@@ -18,11 +18,13 @@ class MascotRenderRecipe(ConanFile):
         "shared": [True, False],
         "fPIC": [True, False],
         "with_cli": [True, False],
+        "with_filament": [True, False],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
         "with_cli": True,
+        "with_filament": False,
         "thorvg/*:shared": False,
         "libwebp/*:shared": False,
     }
@@ -51,6 +53,8 @@ class MascotRenderRecipe(ConanFile):
         self.requires("nlohmann_json/3.12.0")
         if self.options.with_cli:
             self.requires("cli11/2.6.2")
+        if self.options.with_filament:
+            self.requires("filament/1.74.0")
 
     def build_requirements(self):
         self.test_requires("catch2/3.15.2")
@@ -82,6 +86,9 @@ class MascotRenderRecipe(ConanFile):
         toolchain.variables["BUILD_SHARED_LIBS"] = bool(self.options.shared)
         toolchain.variables["MASCOTRENDER_BUILD_CLI"] = bool(self.options.with_cli)
         toolchain.variables["MASCOTRENDER_BUILD_TESTS"] = False
+        toolchain.variables["MASCOTRENDER_WITH_FILAMENT"] = bool(
+            self.options.with_filament
+        )
         toolchain.generate()
 
     def build(self):

@@ -262,7 +262,8 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
 
 ### E4: Optional Filament/GLB proof — 15-25 days plus art
 
-- `MR-110` Optional Conan/CMake Filament feature with no default dependency.
+- `MR-110` **Done:** Optional Conan/CMake Filament feature with no default
+  dependency. Hosted macOS arm64 package-consumer coverage is also restored.
 - `MR-111` GLB loader, semantic bone/anchor map, orthographic camera, and toon
   lighting behind the backend-neutral renderer interface.
 - `MR-112` One robot with four clips and six facial morph targets.
