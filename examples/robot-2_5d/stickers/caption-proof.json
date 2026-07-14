@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "sticker_id": "robot-2_5d-caption-proof",
+  "pack_id": "robot-2_5d",
+  "alt_text": "Approved yellow robot with collision-aware NICE ONE caption",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 42,
+  "text": {
+    "content": "NICE ONE!",
+    "style": "caption",
+    "placement": "auto",
+    "preferred_slots": ["top", "bottom"]
+  }
+}

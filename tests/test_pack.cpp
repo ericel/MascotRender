@@ -125,6 +125,19 @@ TEST_CASE("parented 2.5D nodes preserve the flat t0 render") {
   REQUIRE(scene.value().view_offset_y == 0.0F);
 }
 
+TEST_CASE("flat and layered robots share an identical captioned poster") {
+  mascotrender::Engine engine;
+  auto layered =
+      engine.render(robot_2_5d_request("pack.json", "caption-proof.json"));
+  REQUIRE(layered);
+  auto flat = engine.render(
+      robot_2_5d_request("pack-flat.json", "caption-proof.json"));
+  REQUIRE(flat);
+  REQUIRE(layered.value().bytes == flat.value().bytes);
+  REQUIRE(layered.value().bytes !=
+          engine.render(robot_2_5d_request()).value().bytes);
+}
+
 TEST_CASE(
     "parent transforms depth and opacity resolve through the scene graph") {
   const auto pack = source_root / "examples" / "robot-2_5d";

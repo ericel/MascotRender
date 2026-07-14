@@ -1,9 +1,12 @@
+#include <filesystem>
 #include <optional>
 #include <string>
 #include <string_view>
 
 #include <catch2/catch_test_macros.hpp>
 
+#include "model/scene.hpp"
+#include "render/caption_layout.hpp"
 #include "render/text_layout.hpp"
 
 namespace {
@@ -45,4 +48,34 @@ TEST_CASE("outline inset participates in fitting") {
   REQUIRE(no_outline->lines.size() == 1U);
   REQUIRE(outlined);
   REQUIRE(outlined->lines.size() == 2U);
+}
+
+TEST_CASE("one collision-aware caption layout resolves for flat and layered scenes") {
+  const std::filesystem::path source_root{MASCOTRENDER_TEST_SOURCE_DIR};
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  const auto sticker = pack / "stickers" / "caption-proof.json";
+  const auto layered =
+      mascotrender::detail::load_scene(pack / "pack.json", sticker);
+  const auto flat =
+      mascotrender::detail::load_scene(pack / "pack-flat.json", sticker);
+  REQUIRE(layered);
+  REQUIRE(flat);
+  REQUIRE(layered.value().text.size() == 1U);
+  REQUIRE(flat.value().text.size() == 1U);
+
+  const auto layered_caption = mascotrender::detail::resolve_caption(
+      layered.value().text.front(), 1.0F, 1.0F, monospace_measure);
+  const auto flat_caption = mascotrender::detail::resolve_caption(
+      flat.value().text.front(), 1.0F, 1.0F, monospace_measure);
+  REQUIRE(layered_caption);
+  REQUIRE(flat_caption);
+  REQUIRE(layered_caption->candidate_index == 1U);
+  REQUIRE(flat_caption->candidate_index == layered_caption->candidate_index);
+  REQUIRE(flat_caption->area.x == layered_caption->area.x);
+  REQUIRE(flat_caption->area.y == layered_caption->area.y);
+  REQUIRE(flat_caption->fitted.lines == layered_caption->fitted.lines);
+  REQUIRE(flat_caption->positions.front().x ==
+          layered_caption->positions.front().x);
+  REQUIRE(flat_caption->positions.front().y ==
+          layered_caption->positions.front().y);
 }

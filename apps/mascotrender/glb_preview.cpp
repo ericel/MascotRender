@@ -1,4 +1,7 @@
+#include "model/scene.hpp"
+#include "render/caption_compositor.hpp"
 #include "render/filament_backend.hpp"
+#include "render/thorvg_backend.hpp"
 
 #include <webp/encode.h>
 
@@ -8,6 +11,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <utility>
 
 namespace {
 
@@ -24,7 +28,9 @@ void print_help() {
                "frame.webp\n"
                "       [--width 256] [--height 256] [--span 3.6] "
                "[--center-y 0.0]\n"
-               "       [--animation clip] [--time seconds]\n";
+               "       [--animation clip] [--time seconds]\n"
+               "       [--caption-pack pack.json --caption-sticker "
+               "sticker.json]\n";
 }
 
 } // namespace
@@ -32,6 +38,8 @@ void print_help() {
 int main(int argc, char **argv) {
   std::filesystem::path input;
   std::filesystem::path output;
+  std::filesystem::path caption_pack;
+  std::filesystem::path caption_sticker;
   mascotrender::detail::FilamentRenderOptions options;
   try {
     for (int index = 1; index < argc; ++index) {
@@ -55,6 +63,10 @@ int main(int argc, char **argv) {
       } else if (argument == "--time") {
         options.animation_time_seconds =
             std::stof(next_value(index, argc, argv));
+      } else if (argument == "--caption-pack") {
+        caption_pack = next_value(index, argc, argv);
+      } else if (argument == "--caption-sticker") {
+        caption_sticker = next_value(index, argc, argv);
       } else if (argument == "--help" || argument == "-h") {
         print_help();
         return 0;
@@ -71,6 +83,10 @@ int main(int argc, char **argv) {
     print_help();
     return 2;
   }
+  if (caption_pack.empty() != caption_sticker.empty()) {
+    std::cerr << "--caption-pack and --caption-sticker must be used together\n";
+    return 2;
+  }
 
   auto rendered = mascotrender::detail::render_filament_glb(input, options);
   if (!rendered) {
@@ -78,7 +94,29 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  const auto &frame = rendered.value();
+  auto frame = std::move(rendered.value());
+  if (!caption_pack.empty()) {
+    auto scene = mascotrender::detail::load_scene(caption_pack, caption_sticker);
+    if (!scene) {
+      std::cerr << "caption scene failed: " << scene.error().message << '\n';
+      return 1;
+    }
+    mascotrender::detail::ThorvgBackend caption_renderer;
+    auto overlay = caption_renderer.render_caption_overlay(
+        scene.value(), options.width, options.height);
+    if (!overlay) {
+      std::cerr << "caption render failed: " << overlay.error().message << '\n';
+      return 1;
+    }
+    auto composited = mascotrender::detail::composite_caption(
+        std::move(frame), overlay.value());
+    if (!composited) {
+      std::cerr << "caption composite failed: " << composited.error().message
+                << '\n';
+      return 1;
+    }
+    frame = std::move(composited.value());
+  }
   const auto stride = static_cast<std::size_t>(frame.width) * 4U;
 
   std::uint8_t *encoded = nullptr;

@@ -114,6 +114,14 @@ WebPs and an HTML playback page. CI decodes every animation, requires 13 frames,
 checks that at least half the frame transitions move, records per-transition
 channel deltas and decoded hashes, and requires exact first/last loop closure.
 
+MR-113 completes the same-recipe exit proof. Caption fitting and collision
+placement resolve once outside ThorVG; 2D and 2.5D consume the result directly,
+and Filament receives the same transparent 2D overlay after rendering the GLB.
+The acceptance fixture deliberately prefers a colliding top slot before a safe
+bottom slot, proving the general antenna-aware collision rule. Flat and layered
+captioned posters are byte-identical, and the three-backend review is generated
+by `tools/render_caption_backend_review.py`.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.
