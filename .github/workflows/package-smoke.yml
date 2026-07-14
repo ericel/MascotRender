@@ -163,16 +163,19 @@ jobs:
             runner: macos-26
             profile: profiles/macos-armv8-release
             lockfile: locks/macos-armv8-filament-release.lock
+            configure_preset: conan-release
             review: true
           - name: Linux Clang 18 libc++ Filament GLB
             runner: ubuntu-24.04
             profile: profiles/linux-x86_64-clang18-libcxx-release
             lockfile: locks/linux-x86_64-filament-release.lock
+            configure_preset: conan-release
             review: false
           - name: Windows MSVC 19.4x Filament GLB
             runner: windows-2022
             profile: profiles/windows-x86_64-msvc194-release
             lockfile: locks/windows-x86_64-filament-release.lock
+            configure_preset: conan-default
             review: false
 
     runs-on: ${{ matrix.runner }}
@@ -223,7 +226,7 @@ jobs:
       - name: Configure Filament build
         shell: bash
         run: >-
-          cmake --preset conan-release
+          cmake --preset "${{ matrix.configure_preset }}"
           -DMASCOTRENDER_BUILD_TESTS=ON
       - name: Build
         shell: bash
