@@ -266,8 +266,9 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   dependency. Hosted macOS arm64 package-consumer coverage is also restored.
 - `MR-111` **In progress:** The checksum-pinned official Filament binary
   wrapper, macOS Metal lifecycle test, bounded GLB v2 loader, and semantic
-  anchor validation are implemented. Orthographic camera, toon lighting, and
-  Linux/Windows wrapper validation remain.
+  anchor validation are implemented. A headless RGBA proof now exercises a
+  fixed orthographic camera and hard toon-style key light. Linux/Windows
+  wrapper validation and final remote publication remain.
 - `MR-112` One robot with four clips and six facial morph targets.
 - `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
 

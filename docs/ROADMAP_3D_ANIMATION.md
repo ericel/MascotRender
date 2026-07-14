@@ -92,8 +92,10 @@ Status: MR-110 is complete. `with_filament=False` remains the default Conan
 graph, while `with_filament=True` selects the matching CMake feature and pins
 `filament/1.74.0`. MR-111 now includes a checksum-pinned wrapper for the
 official desktop archives and a real gltfio loader that validates semantic
-anchors without exposing Filament types. Orthographic camera, toon lighting,
-cross-platform wrapper validation, and final remote publication remain.
+anchors without exposing Filament types. A headless Metal proof loads mesh
+resources and reads transparent RGBA output through a fixed orthographic camera
+and hard toon-style key light. Cross-platform wrapper validation and final
+remote publication remain.
 
 ## Guardrails
 
