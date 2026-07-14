@@ -141,6 +141,7 @@ install(
     PROGRAMS
         tools/generate_mascot_packs.py
         tools/render_mascot_packs.py
+        tools/build_sticker_review.py
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/tools"
 )
 

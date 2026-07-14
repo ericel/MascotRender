@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -18,6 +20,12 @@ def run(command: list[str]) -> None:
             f"command failed ({completed.returncode}): {' '.join(command)}\n"
             f"{completed.stdout}\n{completed.stderr}"
         )
+
+
+def run_expect_failure(command: list[str]) -> None:
+    completed = subprocess.run(command, text=True, capture_output=True, check=False)
+    if completed.returncode == 0:
+        raise AssertionError(f"command unexpectedly succeeded: {' '.join(command)}")
 
 
 def tree_digest(root: Path) -> str:
@@ -35,6 +43,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--python", required=True)
     parser.add_argument("--generator", type=Path, required=True)
     parser.add_argument("--renderer", type=Path, required=True)
+    parser.add_argument("--reviewer", type=Path, required=True)
     parser.add_argument("--cli", type=Path, required=True)
     parser.add_argument("--font-source", type=Path, required=True)
     return parser.parse_args()
@@ -83,10 +92,32 @@ def main() -> int:
         if tree_digest(bundle_a) != tree_digest(bundle_b):
             raise AssertionError("same generated input did not render a byte-identical bundle")
 
+        review_a = bundle_a / "review"
+        review_b = bundle_b / "review"
+        review_base = [
+            args.python,
+            str(args.reviewer),
+            "--expected-count",
+            "20",
+        ]
+        run(review_base + ["--input", str(bundle_a)])
+        run(review_base + ["--input", str(bundle_b)])
+        if tree_digest(review_a) != tree_digest(review_b):
+            raise AssertionError("same bundle did not produce a byte-identical review")
+
         manifest = json.loads((generated_a / "generation-manifest.json").read_text())
         catalogue = json.loads((bundle_a / "catalogue.json").read_text())
         dictionary = json.loads((bundle_a / "dictionary.json").read_text())
         report = json.loads((bundle_a / "build-report.json").read_text())
+        review_summary = json.loads((review_a / "review-summary.json").read_text())
+
+        corrupt_bundle = root / "bundle-corrupt"
+        shutil.copytree(bundle_a, corrupt_bundle)
+        first_thumbnail = corrupt_bundle / catalogue["stickers"][0]["thumbnail"]["path"]
+        corrupted = bytearray(first_thumbnail.read_bytes())
+        corrupted[-1] ^= 0x01
+        first_thumbnail.write_bytes(corrupted)
+        run_expect_failure(review_base + ["--input", str(corrupt_bundle), "--force"])
         if (
             manifest["pack_count"] != 2
             or manifest["sticker_count"] != 20
@@ -127,6 +158,33 @@ def main() -> int:
             or report["status"] != "success"
         ):
             raise AssertionError("unexpected build report")
+        if (
+            review_summary["verification_status"] != "success"
+            or review_summary["review_status"]
+            != "awaiting_design_product_approval"
+            or review_summary["pack_count"] != 2
+            or review_summary["sticker_count"] != 20
+            or review_summary["animated_sticker_count"] != 8
+            or review_summary["asset_count"] != 40
+        ):
+            raise AssertionError("unexpected review summary")
+
+        with (review_a / "checklist.csv").open(encoding="utf-8", newline="") as source:
+            checklist = list(csv.DictReader(source))
+        if len(checklist) != 20:
+            raise AssertionError("review checklist does not contain every sticker")
+        expected_keys = {
+            (str(item["pack_id"]), str(item["sticker_id"]))
+            for item in catalogue["stickers"]
+        }
+        checklist_keys = {(row["pack_id"], row["sticker_id"]) for row in checklist}
+        if checklist_keys != expected_keys:
+            raise AssertionError("review checklist entries do not match the catalogue")
+        gallery = (review_a / "index.html").read_text(encoding="utf-8")
+        if gallery.count('<article class="card"') != 20:
+            raise AssertionError("review gallery does not contain every sticker")
+        if gallery.count('<span class="badge animated">') != 8:
+            raise AssertionError("review gallery has incorrect animation badges")
 
         webps = sorted(bundle_a.rglob("*.webp"))
         if len(webps) != 40:

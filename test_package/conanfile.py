@@ -46,6 +46,9 @@ class MascotRenderTestPackage(ConanFile):
             renderer = os.path.join(
                 resources, "tools", "render_mascot_packs.py"
             )
+            reviewer = os.path.join(
+                resources, "tools", "build_sticker_review.py"
+            )
             cli_name = (
                 "mascotrender.exe"
                 if str(self.settings.os) == "Windows"
@@ -62,4 +65,8 @@ class MascotRenderTestPackage(ConanFile):
             self.run(
                 f'"{sys.executable}" "{renderer}" --input "{generated}" '
                 f'--output "{bundle}" --mascotrender "{cli}"'
+            )
+            self.run(
+                f'"{sys.executable}" "{reviewer}" --input "{bundle}" '
+                f'--expected-count 10'
             )

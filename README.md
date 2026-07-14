@@ -66,11 +66,20 @@ python3 tools/render_mascot_packs.py \
   --output generated/bundle \
   --mascotrender build/Release/mascotrender \
   --force
+
+python3 tools/build_sticker_review.py \
+  --input generated/bundle \
+  --expected-count 50 \
+  --force
 ```
 
 The result includes 512 px assets, 256 px thumbnails, a SHA-256 catalogue,
-phrase dictionary, and deterministic build report. Both scripts are installed
-under `share/mascotrender/tools` by CMake and Conan.
+phrase dictionary, deterministic build report, and a verified review gallery
+at `generated/bundle/review/index.html`. The review directory also contains a
+50-row CSV sign-off checklist and machine-readable verification summary. All
+three scripts are installed under `share/mascotrender/tools` by CMake and
+Conan. Pull-request CI uploads the complete bundle and gallery as a downloadable
+14-day artifact.
 
 ## Bootstrap build
 
