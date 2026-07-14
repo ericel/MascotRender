@@ -52,8 +52,14 @@ Add the public hosted remote; consumer credentials are not required:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.1.0 --build=never
+conan install --requires=mascotrender/0.1.0 --build=missing
 ```
+
+MascotRender's matching binary downloads from the public remote without
+credentials. `--build=missing` lets Conan build any public third-party
+dependency for which ConanCenter has no binary matching the consumer's compiler
+profile. Consumers with those dependencies already cached may use
+`--build=never` to require an entirely binary-only resolution.
 
 Then require the package from the consuming recipe:
 

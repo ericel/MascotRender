@@ -149,9 +149,11 @@ Release `v0.1.0` and its tested Conan binaries are published. Anonymous
 consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
 publication credentials remain confined to repository secrets. The default
-package matrix and optional Filament wrapper/MascotRender packages passed clean,
-logged-out `--build=never` consumer verification on macOS arm64, Linux x86-64,
-and Windows x86-64 in publication run `29335668526`.
+package matrix and optional Filament wrapper/MascotRender packages passed
+logged-out exact-package re-downloads with `--build=never` on macOS arm64,
+Linux x86-64, and Windows x86-64 in publication run `29335668526`. Fresh caches
+use `--build=missing` for public dependencies without matching ConanCenter
+binaries.
 
 ## Next execution track
 
