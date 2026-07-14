@@ -43,8 +43,10 @@ The current implementation proves the distribution and graphics path:
 
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
 hosted compiler/sanitizer matrix is green. The protected Conan publication
-workflow uploads and then proves a clean anonymous remote consumer; release
-`v0.1.0` and its tested binaries are public.
+workflow uploads and then proves a logged-out exact-package re-download;
+release `v0.1.0` and its tested binaries are public. A fresh Conan cache may
+build public third-party dependencies that ConanCenter does not provide as
+matching binaries.
 
 Pack v1 also supports backward-compatible named text slots. Stickers can select
 an explicit slot such as `top` or request deterministic `auto` placement with

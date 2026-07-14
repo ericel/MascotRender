@@ -50,10 +50,15 @@ Consumers configure the remote and install normally:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.1.0 --build=never
+conan install --requires=mascotrender/0.1.0 --build=missing
 ```
 
 The JFrog repository permits anonymous reads but requires authenticated writes.
 The install command leaves all configured remotes enabled so locked public
 dependencies can resolve from Conan Center while MascotRender resolves from
-the hosted JFrog remote.
+the hosted JFrog remote. `--build=missing` is required for a genuinely fresh
+cache when ConanCenter lacks third-party binaries matching the selected
+compiler profile. Publication CI uses `--build=never` only after building the
+dependency graph, then evicts the just-published MascotRender/Filament packages
+and logs out; that specifically proves the hosted package binaries can be
+downloaded anonymously without silently rebuilding them.

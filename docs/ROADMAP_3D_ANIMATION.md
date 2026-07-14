@@ -97,8 +97,8 @@ load mesh resources and read transparent RGBA output through a fixed
 orthographic camera and hard toon-style key light. Windows CI validates the
 official archive, MSVC compile/link, Filament NOOP runtime, and backend-neutral
 paths because the hosted runner has no Vulkan ICD. MR-111 is complete: all
-three platform packages are published and passed anonymous `--build=never`
-consumer verification on 2026-07-14.
+three platform packages are published and passed logged-out exact-package
+`--build=never` re-download verification on 2026-07-14.
 
 MR-112 now has a reproducible, Khronos-valid `robot-004.glb`. Its semantic
 hierarchy contains `RobotRoot`, body/head/face/antenna nodes, and

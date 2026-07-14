@@ -270,8 +270,8 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   Linux Vulkan execute the headless RGBA proof; hosted Windows validates MSVC
   compile/link, archive integrity, the NOOP runtime, and backend-neutral paths
   without claiming unavailable GPU coverage. Wrapper and Filament-enabled
-  MascotRender binaries are published, and logged-out `--build=never` consumers
-  passed on all three platforms on 2026-07-14.
+  MascotRender binaries are published, and logged-out exact-package
+  `--build=never` re-downloads passed on all three platforms on 2026-07-14.
 - `MR-112` **Done:** Deterministic `robot-004.glb`, semantic anchors,
   `idle`/`hello`/`hop`/`celebrate` clips, six named facial morphs, animation
   sampling, and review generation are implemented. The failed placeholder-art
