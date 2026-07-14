@@ -75,6 +75,12 @@ jobs:
             lockfile: locks/linux-x86_64-gcc13-release.lock
             shared: "True"
             cli: "False"
+          - name: macOS arm64 AppleClang 21 static Release + CLI
+            runner: macos-26
+            profile: profiles/macos-armv8-release
+            lockfile: conan.lock
+            shared: "False"
+            cli: "True"
           - name: Windows MSVC 19.4x static Release + CLI
             runner: windows-2022
             profile: profiles/windows-x86_64-msvc194-release

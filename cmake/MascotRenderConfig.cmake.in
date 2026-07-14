@@ -5,6 +5,11 @@ find_dependency(thorvg CONFIG)
 find_dependency(WebP CONFIG)
 find_dependency(nlohmann_json CONFIG)
 
+set(MascotRender_WITH_FILAMENT @MASCOTRENDER_WITH_FILAMENT@)
+if(MascotRender_WITH_FILAMENT)
+    find_dependency(filament CONFIG)
+endif()
+
 include("${CMAKE_CURRENT_LIST_DIR}/MascotRenderTargets.cmake")
 
 check_required_components(MascotRender)

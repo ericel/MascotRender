@@ -4,7 +4,8 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E4 — optional Filament/GLB proof. M0-M6 and E1-E3 are complete, release `v0.1.0` is published, and
+E4 — optional Filament/GLB proof. MR-110 is complete; MR-111 is active. M0-M6
+and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
 2026-07-14. M7 remains a separate product-integration pilot.
@@ -109,4 +110,7 @@ added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The deterministic 2D and layered 2.5D slices are complete. The next major
-engine step is the optional Filament/GLB backend proof.
+engine step is the optional Filament/GLB backend proof. The default Conan graph
+now explicitly keeps Filament disabled, and hosted CI covers macOS arm64 in
+addition to Linux and Windows. MR-111 will package the official Filament 1.74.0
+desktop archive because ConanCenter does not currently provide Filament.

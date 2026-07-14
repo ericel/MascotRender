@@ -12,10 +12,19 @@ include(GNUInstallDirs)
 
 option(MASCOTRENDER_BUILD_CLI "Build the mascotrender command-line application" ON)
 option(MASCOTRENDER_BUILD_TESTS "Build MascotRender unit tests" OFF)
+option(
+    MASCOTRENDER_WITH_FILAMENT
+    "Enable the optional Filament 3D backend dependency"
+    OFF
+)
 
 find_package(thorvg CONFIG REQUIRED)
 find_package(WebP CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+
+if(MASCOTRENDER_WITH_FILAMENT)
+    find_package(filament CONFIG REQUIRED)
+endif()
 
 add_library(
     MascotRender
@@ -64,6 +73,11 @@ target_link_libraries(
         libwebp::libwebp
         nlohmann_json::nlohmann_json
 )
+
+if(MASCOTRENDER_WITH_FILAMENT)
+    target_link_libraries(MascotRender PRIVATE filament::filament)
+    target_compile_definitions(MascotRender PRIVATE MASCOTRENDER_WITH_FILAMENT=1)
+endif()
 
 target_compile_definitions(MascotRender PRIVATE MASCOTRENDER_BUILDING_LIBRARY)
 if(BUILD_SHARED_LIBS)
