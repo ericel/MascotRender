@@ -51,6 +51,25 @@ namespace {
                      0.0F,          0.0F,          1.0F};
 }
 
+[[nodiscard]] AffineTransform animation_transform(const NodeFrameState &state,
+                                                  const Point &pivot) {
+  constexpr float degrees_to_radians = 3.14159265358979323846F / 180.0F;
+  const auto angle = state.rotation_degrees * degrees_to_radians;
+  const auto cosine = std::cos(angle);
+  const auto sine = std::sin(angle);
+  const auto m11 = cosine * state.scale_x;
+  const auto m12 = -sine * state.scale_y;
+  const auto m21 = sine * state.scale_x;
+  const auto m22 = cosine * state.scale_y;
+  return AffineTransform{
+      m11,
+      m12,
+      m21,
+      m22,
+      state.translate_x + pivot.x - m11 * pivot.x - m12 * pivot.y,
+      state.translate_y + pivot.y - m21 * pivot.x - m22 * pivot.y};
+}
+
 [[nodiscard]] std::unique_ptr<tvg::Shape>
 circle(float cx, float cy, float rx, float ry, std::uint8_t red,
        std::uint8_t green, std::uint8_t blue, std::uint8_t alpha = 255) {
@@ -423,8 +442,22 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
           "ThorVG could not load SVG layer: " + layer.source.string()));
     }
     auto visual_transform = layer.transform;
-    visual_transform.translate_x -= scene.view_offset_x * layer.depth;
-    visual_transform.translate_y -= scene.view_offset_y * layer.depth;
+    auto animated_opacity = layer.opacity;
+    for (auto node = layer.animation_chain.rbegin();
+         node != layer.animation_chain.rend(); ++node) {
+      const auto state = std::find_if(
+          frame.nodes.begin(), frame.nodes.end(),
+          [&node](const auto &item) { return item.target == node->id; });
+      if (state != frame.nodes.end()) {
+        visual_transform = multiply(animation_transform(*state, node->pivot),
+                                    visual_transform);
+        animated_opacity *= state->opacity;
+      }
+    }
+    visual_transform.translate_x -=
+        (scene.view_offset_x + frame.view_offset_x) * layer.depth;
+    visual_transform.translate_y -=
+        (scene.view_offset_y + frame.view_offset_y) * layer.depth;
     if (animated_mascot) {
       visual_transform = multiply(mascot_transform, visual_transform);
     }
@@ -440,7 +473,7 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
           "ThorVG could not size SVG layer: " + layer.source.string()));
     }
     const auto opacity = static_cast<std::uint8_t>(
-        std::lround(std::clamp(layer.opacity, 0.0F, 1.0F) * 255.0F));
+        std::lround(std::clamp(animated_opacity, 0.0F, 1.0F) * 255.0F));
     if (opacity != 255U && !succeeded(picture->opacity(opacity))) {
       return Result<PixelBuffer>::failure(
           render_error("ThorVG could not apply SVG layer opacity: " +

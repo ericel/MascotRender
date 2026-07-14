@@ -162,6 +162,55 @@ TEST_CASE("layer depth produces deterministic parallax") {
   REQUIRE(pixel_at(parallax_pixels, 512, 60, 272).alpha == 255);
 }
 
+TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
+  mascotrender::Engine engine;
+  auto request = robot_2_5d_request("pack.json", "animated-hop.json");
+
+  auto first = engine.render(request);
+  REQUIRE(first);
+  auto second = engine.render(request);
+  REQUIRE(second);
+  REQUIRE(first.value().bytes == second.value().bytes);
+
+  const auto *encoded =
+      reinterpret_cast<const std::uint8_t *>(first.value().bytes.data());
+  const WebPData data{encoded, first.value().bytes.size()};
+  auto *decoder = WebPAnimDecoderNew(&data, nullptr);
+  REQUIRE(decoder != nullptr);
+  WebPAnimInfo info{};
+  REQUIRE(WebPAnimDecoderGetInfo(decoder, &info) != 0);
+  REQUIRE(info.canvas_width == 512U);
+  REQUIRE(info.canvas_height == 512U);
+  REQUIRE(info.frame_count >= 3U);
+  REQUIRE(info.loop_count == 0U);
+
+  std::vector<std::uint8_t> first_frame;
+  std::vector<std::uint8_t> changed_frame;
+  std::uint8_t *frame = nullptr;
+  int timestamp = 0;
+  std::uint32_t frame_index = 0U;
+  while (WebPAnimDecoderHasMoreFrames(decoder) != 0) {
+    REQUIRE(WebPAnimDecoderGetNext(decoder, &frame, &timestamp) != 0);
+    if (frame_index == 0U) {
+      first_frame.assign(frame, frame + 512U * 512U * 4U);
+    } else if (frame_index == info.frame_count / 2U) {
+      changed_frame.assign(frame, frame + 512U * 512U * 4U);
+    }
+    ++frame_index;
+  }
+  REQUIRE(timestamp == 1200);
+  REQUIRE_FALSE(changed_frame.empty());
+  REQUIRE(first_frame != changed_frame);
+  WebPAnimDecoderDelete(decoder);
+
+  request.options.animation_first_frame_only = true;
+  auto poster = engine.render(request);
+  REQUIRE(poster);
+  auto flat = engine.render(robot_2_5d_request());
+  REQUIRE(flat);
+  REQUIRE(poster.value().bytes == flat.value().bytes);
+}
+
 TEST_CASE("layer parent cycles report their pack location") {
   mascotrender::Engine engine;
   auto request = example_request();
@@ -528,4 +577,17 @@ TEST_CASE("unknown animation overlay reports its JSON location") {
   REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
   REQUIRE(result.error().source == request.sticker_file.string());
   REQUIRE(result.error().location == "$.animation.overlays[0]");
+}
+
+TEST_CASE("unknown animation node target reports its JSON location") {
+  mascotrender::Engine engine;
+  auto request = robot_2_5d_request();
+  request.sticker_file = source_root / "tests" / "fixtures" /
+                         "unknown-animation-target-sticker.json";
+
+  auto result = engine.render(request);
+  REQUIRE_FALSE(result);
+  REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
+  REQUIRE(result.error().source == request.sticker_file.string());
+  REQUIRE(result.error().location == "$.animation.tracks[0].target");
 }

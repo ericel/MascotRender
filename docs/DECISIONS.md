@@ -282,3 +282,20 @@ collision bounds follow the visible node.
 This contract deliberately stops before procedural squash/stretch, delayed
 child motion, shadow response, or camera timelines; those are MR-101 timeline
 features built on the resolved nodes rather than additional ad hoc render paths.
+
+## ADR-020: Typed node and camera tracks for layered 2.5D motion
+
+- Status: Accepted
+- Date: 2026-07-14
+
+Sticker animation gains bounded typed scalar tracks. A track targets a selected
+scene node or the reserved `$view` camera and owns strictly ordered integer-time
+keyframes with one of four fixed easing formulas. Node transforms compose around
+their resolved named pivots and affect the full descendant chain; child tracks
+compose afterward, enabling delayed follow-through without character-specific
+renderer branches. Animated opacity multiplies inherited pack opacity.
+
+Camera tracks add to the sticker's static view and reuse resolved node depth for
+parallax. Looping tracks must return to their initial value. The existing
+procedural overlays remain supported, omitted tracks remain identity, and static
+poster mode renders the same byte-stable `t = 0` scene as MR-100.

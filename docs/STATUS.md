@@ -30,6 +30,9 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   bounds, and byte-stable identity rendering.
 - Bounded deterministic timelines for body-bounce and text-pop overlays,
   animated WebP assets, and static poster thumbnails.
+- Bounded typed node and camera keyframes with four fixed easing modes,
+  subtree transform inheritance, squash/stretch, delayed child follow-through,
+  responsive shadow opacity/scale, and animated depth parallax.
 - 512 x 512 assets, 256 x 256 thumbnails, alpha/dimension checks, and CLI
   `render`, `render-sample`, and `validate` commands.
 - Deterministic procedural generator for cat, bear, bunny, robot, and alien
@@ -49,7 +52,7 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 28 CTest tests pass.
+- AppleClang 21 Release build is warning-clean and all 31 CTest tests pass.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
@@ -93,9 +96,8 @@ publication credentials remain confined to repository secrets.
 ## Next execution track
 
 The approved generator-v6 contact sheet is the M6 visual regression baseline.
-MR-100 parented parts, pivots, depth, and static parallax are complete. MR-101
-adds squash/stretch, delayed child motion, shadow response, and camera motion;
-MR-102 then locks the reviewed robot animation golden. Matcher
+MR-100 parented parts/static parallax and MR-101 typed 2.5D motion are complete.
+MR-102 now reviews and locks the robot animation golden. Matcher
 boundary/collision behavior remains part of M7 unless a reusable matcher is
 deliberately added to the engine.
 

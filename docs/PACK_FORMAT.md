@@ -150,7 +150,16 @@ layered pack with shadow, body, head, face, antenna, and effect depths.
     "duration_ms": 800,
     "fps": 10,
     "loop": "loop",
-    "overlays": ["body_bounce", "text_pop"]
+    "overlays": ["text_pop"],
+    "tracks": [{
+      "target": "body",
+      "property": "scale_y",
+      "keyframes": [
+        { "at_ms": 0, "value": 1, "easing": "ease_out" },
+        { "at_ms": 300, "value": 1.08, "easing": "ease_in_out" },
+        { "at_ms": 800, "value": 1 }
+      ]
+    }]
   }
 }
 ```
@@ -196,6 +205,20 @@ through 30, and the combination is limited to 2 through 300 logical frames.
 Supported loop policies are `once`, `loop`, `ping_pong`, and
 `hold_last_frame`. The first procedural overlays are `body_bounce` and
 `text_pop`; unknown or duplicate overlays fail with a JSON-path diagnostic.
+
+An animation may instead, or additionally, contain typed `tracks`. Node targets
+name a selected layer and support `translate_x`, `translate_y`, `scale_x`,
+`scale_y`, `rotation_degrees`, and multiplicative `opacity`. The reserved
+`$view` target supports `view_x` and `view_y`, which animate depth parallax while
+screen-fixed text remains stable. A node track affects that node's full subtree,
+so a body scale moves its parented head while a later head or antenna track adds
+deterministic follow-through. Easing is `linear`, `ease_out`, `ease_in_out`, or
+`back_out`.
+
+Tracks require at least two strictly increasing keyframes, beginning at zero and
+ending at `duration_ms`. Values are finite and property-bounded. A `loop` track
+must end at its starting value; duplicate target/property pairs, unknown nodes,
+and invalid camera targets fail with an exact JSON location.
 
 Frame timestamps, easing functions, transforms, encoder settings, and overlay
 order are fixed. Repeating timelines normalize their final logical sample to
