@@ -1,7 +1,8 @@
 # MascotRender 0.1.0 release notes
 
-Status: release candidate; public Conan upload is blocked until the owner
-selects and authenticates a writable remote. MascotRender is MIT-licensed.
+Status: published. Release `v0.1.0`, the default desktop package matrix, and
+optional Filament/GLB packages are available from the public MascotRender Conan
+remote without consumer credentials. MascotRender is MIT-licensed.
 
 ## Supported package configurations
 
@@ -13,6 +14,8 @@ selects and authenticates a writable remote. MascotRender is MIT-licensed.
   Debug is supported on macOS and Linux. The pinned ThorVG 0.15.16 Conan recipe
   explicitly rejects MSVC Debug.
 - Optional `mascotrender` CLI through the `with_cli` Conan option.
+- Optional Filament/GLB rendering through the `with_filament` Conan option on
+  macOS arm64, Linux x86-64, and Windows x86-64.
 
 ## Included MVP capabilities
 
@@ -34,8 +37,10 @@ Version 0.1 accepts trusted local pack content. Canonical path containment and
 schema checks are defense-in-depth, not a promise that hostile SVG/font inputs
 are safe to process. Run third-party content in an application-controlled
 sandbox. Only local static `.ttf` fonts and the documented SVG subset are in
-scope. Complex shaping, fallback fonts, bidirectional text, authored skeletal
-clips, 2.5D/3D, and runtime network fetching are not supported.
+scope. Complex shaping, fallback fonts, bidirectional text, and runtime network
+fetching are not supported. Layered 2.5D timelines and the optional bounded GLB
+pipeline are supported through the documented schemas; arbitrary untrusted 3D
+content and general-purpose scene authoring are not.
 
 Pack schema version 1 is stable for 0.1. The optional text `outline` field is
 backward compatible: omitted outlines have width zero. Optional `text_slots`,
