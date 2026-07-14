@@ -120,6 +120,7 @@
           "parent": { "type": "string", "minLength": 1 },
           "pivot": { "type": "string", "minLength": 1 },
           "depth": { "type": "number", "minimum": -4, "maximum": 4 },
+          "screen_space": { "type": "boolean" },
           "transform": { "$ref": "#/$defs/layerTransform" }
         }
       }

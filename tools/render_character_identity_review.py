@@ -30,6 +30,32 @@ def changed_pixel_count(left: Path, right: Path) -> int:
     )
 
 
+def color_channels(color: str) -> tuple[int, int, int]:
+    return tuple(int(color[index : index + 2], 16) for index in (1, 3, 5))
+
+
+def sparkle_bounds(path: Path, color: tuple[int, int, int]) -> tuple[int, int, int, int]:
+    image = Image.open(path).convert("RGBA")
+    points = [
+        (x, y)
+        for y in range(image.height)
+        for x in range(round(image.width * 0.32))
+        if image.getpixel((x, y))[3] > 240
+        and all(
+            abs(actual - expected) <= 3
+            for actual, expected in zip(image.getpixel((x, y))[:3], color)
+        )
+    ]
+    if not points:
+        raise RuntimeError(f"screen-space sparkle is missing from {path}")
+    return (
+        min(x for x, _ in points),
+        min(y for _, y in points),
+        max(x for x, _ in points) + 1,
+        max(y for _, y in points) + 1,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--renderer-2d", type=Path, required=True)
@@ -84,12 +110,43 @@ def main() -> None:
             "3.85",
             "--center-y",
             "0.15",
+            "--screen-effects-pack",
+            str(pack_root / "pack.json"),
+            "--screen-effects-sticker",
+            str(flat_sticker),
             "--caption-pack",
             str(pack_root / "pack.json"),
             "--caption-sticker",
             str(flat_sticker),
         ]
     )
+
+    camera_proofs = {
+        "near": args.output / "robot-glb-sparkle-near.webp",
+        "far": args.output / "robot-glb-sparkle-far.webp",
+    }
+    for span, destination in (("3.3", camera_proofs["near"]), ("4.6", camera_proofs["far"])):
+        run(
+            [
+                str(args.renderer_3d),
+                "--input",
+                str(robot_root / "robot-004.glb"),
+                "--output",
+                str(destination),
+                "--width",
+                "512",
+                "--height",
+                "512",
+                "--span",
+                span,
+                "--center-y",
+                "0.15",
+                "--screen-effects-pack",
+                str(pack_root / "pack.json"),
+                "--screen-effects-sticker",
+                str(flat_sticker),
+            ]
+        )
 
     identity_report = args.output / "identity-validation.json"
     validator = root / "tools" / "validate_character_identity.py"
@@ -140,13 +197,43 @@ def main() -> None:
         pack_root / "fonts" / "changa-one" / "ChangaOne-Regular.ttf",
     )
     contract = robot_root / "identity.json"
+    identity = json.loads(contract.read_text(encoding="utf-8"))["identity"]
+    sparkle_color = color_channels(identity["sparkle"]["color"])
+    all_sparkle_bounds = {
+        name: sparkle_bounds(path, sparkle_color) for name, path in outputs.items()
+    }
+    camera_sparkle_bounds = {
+        name: sparkle_bounds(path, sparkle_color)
+        for name, path in camera_proofs.items()
+    }
+    expected_size = round(512 * float(identity["sparkle"]["screenSizeRatio"]))
+    if len(set(all_sparkle_bounds.values())) != 1:
+        raise RuntimeError(f"backends disagree on sparkle bounds: {all_sparkle_bounds}")
+    if len(set(camera_sparkle_bounds.values())) != 1:
+        raise RuntimeError(
+            f"sparkle size changed with camera span: {camera_sparkle_bounds}"
+        )
+    sparkle_box = next(iter(all_sparkle_bounds.values()))
+    rasterized_size = max(
+        sparkle_box[2] - sparkle_box[0], sparkle_box[3] - sparkle_box[1]
+    )
+    if abs(rasterized_size - expected_size) > 5:
+        raise RuntimeError(
+            f"sparkle is not approximately {expected_size}px at 512px output: "
+            f"{sparkle_box}"
+        )
     manifest = {
-        "milestone": "MR-114",
+        "milestone": "MR-115",
         "characterId": "robot-004",
         "identityContract": str(contract.relative_to(root)),
         "identitySha256": hashlib.sha256(contract.read_bytes()).hexdigest(),
         "dimensionalChangedPixels": changed_pixels,
         "captionWhitePixelCounts": caption_counts,
+        "sparkleBounds": all_sparkle_bounds,
+        "sparkleCameraSpanProof": {
+            "bounds": camera_sparkle_bounds,
+            "outputs": {name: record(path) for name, path in camera_proofs.items()},
+        },
         "outputs": {name: record(path) for name, path in outputs.items()},
         "identityValidation": record(identity_report),
         "contactSheet": record(sheet),

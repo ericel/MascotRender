@@ -18,27 +18,28 @@ namespace {
 
 } // namespace
 
-Result<FilamentFrame> composite_caption(FilamentFrame base,
-                                        const PixelBuffer &caption) {
+Result<FilamentFrame> composite_overlay(FilamentFrame base,
+                                        const PixelBuffer &overlay) {
   const auto expected_stride = base.width * 4U;
   const auto expected_size = static_cast<std::size_t>(expected_stride) *
                              static_cast<std::size_t>(base.height);
   if (base.width == 0U || base.height == 0U ||
-      base.rgba.size() != expected_size || caption.width != base.width ||
-      caption.height != base.height || caption.stride_bytes < expected_stride ||
-      caption.pixels.size() <
-          static_cast<std::size_t>(caption.stride_bytes) * caption.height) {
+      base.rgba.size() != expected_size || overlay.width != base.width ||
+      overlay.height != base.height || overlay.stride_bytes < expected_stride ||
+      overlay.pixels.size() <
+          static_cast<std::size_t>(overlay.stride_bytes) * overlay.height) {
     return Result<FilamentFrame>::failure(
-        composite_error("Caption and Filament frame dimensions must match"));
+        composite_error("Overlay and Filament frame dimensions must match"));
   }
 
   for (std::uint32_t y = 0U; y < base.height; ++y) {
     for (std::uint32_t x = 0U; x < base.width; ++x) {
       const auto base_index =
           (static_cast<std::size_t>(y) * base.width + x) * 4U;
-      const auto caption_index =
-          static_cast<std::size_t>(y) * caption.stride_bytes + x * 4U;
-      const std::uint32_t overlay_alpha = byte(caption.pixels[caption_index + 3U]);
+      const auto overlay_index =
+          static_cast<std::size_t>(y) * overlay.stride_bytes + x * 4U;
+      const std::uint32_t overlay_alpha =
+          byte(overlay.pixels[overlay_index + 3U]);
       if (overlay_alpha == 0U) {
         continue;
       }
@@ -47,11 +48,11 @@ Result<FilamentFrame> composite_caption(FilamentFrame base,
       const std::uint32_t output_alpha =
           overlay_alpha + (base_alpha * inverse_alpha + 127U) / 255U;
 
-      // Caption storage is BGRA; Filament storage is RGBA.
+      // ThorVG storage is BGRA; Filament storage is RGBA.
       const std::uint8_t overlay_channels[3] = {
-          byte(caption.pixels[caption_index + 2U]),
-          byte(caption.pixels[caption_index + 1U]),
-          byte(caption.pixels[caption_index])};
+          byte(overlay.pixels[overlay_index + 2U]),
+          byte(overlay.pixels[overlay_index + 1U]),
+          byte(overlay.pixels[overlay_index])};
       for (std::size_t channel = 0U; channel < 3U; ++channel) {
         const std::uint32_t premultiplied =
             static_cast<std::uint32_t>(overlay_channels[channel]) *

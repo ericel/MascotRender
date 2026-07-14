@@ -202,10 +202,14 @@ python tools/validate_character_identity.py \
 python tools/render_character_identity_review.py \
   --renderer-2d build/Release/mascotrender \
   --renderer-3d build/filament/cmake/mascotrender-glb-preview \
-  --output generated/mr114-identity-review
+  --output generated/mr115-parity-review
 ```
 
 Captions remain one separate screen-space layer in all three outputs.
+MR-115 evolves the contract to version 2 with explicit antenna, eye, body-frame,
+and sparkle subcontracts. The sparkle is no longer GLB geometry: packs mark it
+`screen_space`, and the Filament preview composites the same SVG after the 3D
+pass, keeping identical bounds as camera span changes.
 
 ## Use from another Conan project
 

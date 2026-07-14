@@ -339,3 +339,22 @@ ADR-021. Layered 2.5D may add review-only shading, rim light, shadow, depth, and
 view offsets, but must preserve the original flat pose as a compatibility
 control. Identity-driven art revisions may update a golden only with recorded
 review evidence and unchanged motion acceptance checks.
+
+## ADR-023: Screen-space semantic effects and identity contract v2
+
+- Status: Accepted
+- Date: 2026-07-14
+
+Character effects whose apparent size is part of identity are screen-space
+composition, not GLB geometry. Pack layers may opt into `screen_space`; these
+unparented layers draw after character nodes and ignore mascot transforms and
+view parallax. The optional Filament preview renders the same selected SVG into
+a transparent overlay and composites it after the GLB pass. Caption composition
+remains separate but shares the generic straight-alpha overlay boundary.
+
+The `robot-004` identity contract advances to version 2. It adds explicit
+antenna, eye, body-frame/inset, and sparkle subcontracts. Validation measures
+the actual SVG and GLB meshes/material assignments, rejects any GLB sparkle
+mesh, and requires its embedded screen-space effect declaration to match the
+contract. Review acceptance compares sparkle pixel bounds across 2D, 2.5D,
+Filament, and multiple orthographic camera spans.

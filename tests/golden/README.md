@@ -20,3 +20,7 @@ aligns the robot palette and normalized geometry with
 `examples/robot-004/identity.json`; the approved motion, responsive shadow,
 side-panel continuity, and loop timing remain unchanged. CTest compares all
 decoded frames and metadata.
+
+The MR-115 contract-v2 revision locks the thinner continuous antenna, normalized
+eyes, and the screen-fixed sparkle. The animation test now also checks the
+sparkle center in every decoded frame.

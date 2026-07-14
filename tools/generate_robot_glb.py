@@ -380,19 +380,38 @@ def build_document(
     contract: dict[str, object], contract_sha256: str
 ) -> tuple[dict[str, object], bytes]:
     identity = contract["identity"]
+    antenna_identity = identity["antenna"]
+    eye_identity = identity["eyes"]
+    body_identity = identity["body"]
+    sparkle_identity = identity["sparkle"]
     head_width = 2.0
     head_height = head_width / float(identity["headAspectRatio"])
-    body_height = head_height / float(identity["headToBodyRatio"])
-    eye_center_x = head_width * float(identity["eyeSpacingRatio"]) * 0.5
-    eye_center_y = head_height * (0.5 - float(identity["eyeVerticalRatio"]))
+    body_width = head_width * float(body_identity["frameWidthToHeadRatio"])
+    body_inset_width = body_width * float(body_identity["insetWidthToFrameRatio"])
+    body_inset_height = head_height / float(identity["headToBodyRatio"])
+    body_height = body_inset_height / float(
+        body_identity["insetHeightToFrameRatio"]
+    )
+    body_y = -1.08 + body_height * 0.5
+    eye_center_x = (
+        head_width * float(eye_identity["horizontalSpacingRatio"]) * 0.5
+    )
+    eye_center_y = head_height * (
+        0.5 - float(eye_identity["verticalCenterRatio"])
+    )
+    eye_radius_x = head_width * float(eye_identity["widthToHeadRatio"]) * 0.5
+    eye_radius_y = head_height * float(eye_identity["heightToHeadRatio"]) * 0.5
     mouth_y = head_height * (0.5 - float(identity["mouthVerticalRatio"]))
-    antenna_extension = head_height * float(identity["antennaHeightRatio"])
-    antenna_tip_radius = 0.17
+    antenna_extension = head_height * float(antenna_identity["totalHeightRatio"])
+    antenna_tip_radius = (
+        head_width * float(antenna_identity["tipDiameterRatio"]) * 0.5
+    )
     antenna_tip_y = head_height * 0.5 + antenna_extension - antenna_tip_radius
-    antenna_stem_bottom = head_height * 0.5 - 0.02
-    antenna_stem_top = antenna_tip_y - antenna_tip_radius
+    antenna_stem_bottom = head_height * 0.5 - 0.01
+    antenna_stem_top = antenna_tip_y - antenna_tip_radius + 0.01
     antenna_stem_y = (antenna_stem_bottom + antenna_stem_top) * 0.5
-    antenna_stem_half_height = (antenna_stem_top - antenna_stem_bottom) * 0.5
+    antenna_stem_height = antenna_stem_top - antenna_stem_bottom
+    antenna_stem_width = head_width * float(antenna_identity["stemWidthRatio"])
 
     buffer = GlbBuffer()
     sphere_positions, sphere_normals, sphere_indices = uv_sphere()
@@ -416,14 +435,27 @@ def build_document(
     panel_accessors = mesh_accessors(
         rounded_rect_prism(1.76, head_height - 0.24, 0.08, 0.28)
     )
-    body_accessors = mesh_accessors(
-        rounded_rect_prism(1.48, body_height, 0.58, 0.22)
+    body_frame_accessors = mesh_accessors(
+        rounded_rect_prism(body_width, body_height, 0.58, 0.22)
+    )
+    body_inset_accessors = mesh_accessors(
+        rounded_rect_prism(
+            body_inset_width, body_inset_height, 0.08, body_inset_height * 0.35
+        )
+    )
+    antenna_stem_accessors = mesh_accessors(
+        rounded_rect_prism(
+            antenna_stem_width,
+            antenna_stem_height,
+            0.12,
+            antenna_stem_width * 0.5,
+        )
     )
     side_ear_accessors = mesh_accessors(
         rounded_rect_prism(0.34, 0.72, 0.42, 0.15)
     )
     white_eye_accessors = mesh_accessors(
-        eye_geometry(0.18, 0.235, eye_center_x, eye_center_y)
+        eye_geometry(eye_radius_x, eye_radius_y, eye_center_x, eye_center_y)
     )
     face_positions, face_normals, face_indices, face_targets = face_ink_geometry(
         eye_center_x, eye_center_y
@@ -439,8 +471,6 @@ def build_document(
     ]
     curve_accessors = mesh_accessors(mouth_curve_geometry(mouth_y))
     nose_accessors = mesh_accessors(triangle_geometry())
-    star_accessors = mesh_accessors(star_geometry())
-
     materials = [
         unlit_material("robot-gold", identity["primaryColor"]),
         unlit_material("robot-orange-trim", identity["secondaryColor"]),
@@ -448,6 +478,7 @@ def build_document(
         unlit_material("face-ink", identity["outlineColor"]),
         unlit_material("eye-cream", "#FFF7DA"),
         unlit_material("contact-shadow", identity["outlineColor"], 0.24),
+        unlit_material("antenna-tip", antenna_identity["tipColor"]),
     ]
 
     def primitive(accessors, material, targets=None):
@@ -465,10 +496,10 @@ def build_document(
     meshes = [
         {"name": "HeadShell", "primitives": [primitive(head_accessors, 1)]},
         {"name": "FacePlate", "primitives": [primitive(panel_accessors, 0)]},
-        {"name": "BodyShell", "primitives": [primitive(body_accessors, 0)]},
-        {"name": "OrangePart", "primitives": [primitive(sphere_accessors, 1)]},
-        {"name": "MintPart", "primitives": [primitive(sphere_accessors, 2)]},
-        {"name": "DarkPart", "primitives": [primitive(sphere_accessors, 3)]},
+        {"name": "BodyFrame", "primitives": [primitive(body_frame_accessors, 1)]},
+        {"name": "BodyInset", "primitives": [primitive(body_inset_accessors, 0)]},
+        {"name": "AntennaStem", "primitives": [primitive(antenna_stem_accessors, 3)]},
+        {"name": "AntennaTip", "primitives": [primitive(sphere_accessors, 6)]},
         {"name": "EyeWhites", "primitives": [primitive(white_eye_accessors, 4)]},
         {
             "name": "FaceRig",
@@ -478,7 +509,6 @@ def build_document(
         },
         {"name": "MouthCurve", "primitives": [primitive(curve_accessors, 3)]},
         {"name": "MintNose", "primitives": [primitive(nose_accessors, 2)]},
-        {"name": "Sparkle", "primitives": [primitive(star_accessors, 2)]},
         {"name": "ContactShadow", "primitives": [primitive(sphere_accessors, 5)]},
         {"name": "SideEar", "primitives": [primitive(side_ear_accessors, 1)]},
     ]
@@ -493,8 +523,14 @@ def build_document(
     body = node(
         "Body",
         mesh=2,
-        translation=[0.0, -0.78, -0.04],
-        extras={"identityFeature": "core_body"},
+        translation=[0.0, body_y, -0.04],
+        extras={"identityFeature": "orange_body_frame"},
+    )
+    body_inset = node(
+        "BodyInset",
+        mesh=3,
+        translation=[0.0, 0.02, 0.33],
+        extras={"identityFeature": "inset_body_panel"},
     )
     head = node(
         "Head",
@@ -524,14 +560,13 @@ def build_document(
     )
     antenna = node(
         "Antenna",
-        mesh=5,
+        mesh=4,
         translation=[0.0, antenna_stem_y, 0.0],
-        scale=[0.065, antenna_stem_half_height, 0.065],
         extras={"identityFeature": "single_antenna"},
     )
     antenna_tip = node(
         "AntennaTip",
-        mesh=4,
+        mesh=5,
         translation=[0.0, antenna_tip_y, 0.0],
         scale=[antenna_tip_radius, antenna_tip_radius, antenna_tip_radius],
         extras={"identityFeature": "teal_antenna_tip"},
@@ -539,28 +574,22 @@ def build_document(
     left_arm_pivot = node("LeftArmPivot", translation=[-1.0, 0.12, 0.0])
     left_arm = node(
         "LeftArm",
-        mesh=12,
+        mesh=11,
         translation=[-0.02, -0.28, 0.0],
         extras={"identityFeature": "orange_side_ears"},
     )
     right_arm_pivot = node("RightArmPivot", translation=[1.0, 0.12, 0.0])
     right_arm = node(
         "RightArm",
-        mesh=12,
+        mesh=11,
         translation=[0.02, -0.28, 0.0],
         extras={"identityFeature": "orange_side_ears"},
     )
     shadow = node(
         "GroundShadow",
-        mesh=11,
+        mesh=10,
         translation=[0.0, -1.19, -0.24],
         scale=[1.04, 0.12, 0.3],
-    )
-    sparkle = node(
-        "Sparkle",
-        mesh=10,
-        translation=[-1.34, 0.2, 0.1],
-        scale=[0.85, 0.85, 0.85],
     )
     caption_anchor = node("caption_anchor", translation=[0.0, 1.88, 0.0])
 
@@ -570,6 +599,7 @@ def build_document(
         left_arm_pivot,
         right_arm_pivot,
     ]
+    nodes[body]["children"] = [body_inset]
     nodes[head]["children"] = [face_panel, face, antenna, antenna_tip]
     nodes[face]["children"] = [eye_group, mouth, nose]
     nodes[eye_group]["children"] = [eye_whites, face_rig]
@@ -584,29 +614,41 @@ def build_document(
                 "mascot": contract["characterId"],
                 "clips": CLIP_NAMES,
                 "facialMorphTargets": MORPH_NAMES,
-                "visualContract": "robot-004-identity-v1",
+                "visualContract": "robot-004-identity-v2",
                 "characterIdentity": {
                     "characterId": contract["characterId"],
                     "contractVersion": contract["schema_version"],
                     "contractSha256": contract_sha256,
                     "requiredFeatures": identity["requiredFeatures"],
                     "metrics": {
-                        name: identity[name]
-                        for name in (
-                            "headAspectRatio",
-                            "headToBodyRatio",
-                            "eyeSpacingRatio",
-                            "eyeVerticalRatio",
-                            "mouthVerticalRatio",
-                            "antennaHeightRatio",
-                        )
+                        "headAspectRatio": identity["headAspectRatio"],
+                        "headToBodyRatio": identity["headToBodyRatio"],
+                        "mouthVerticalRatio": identity["mouthVerticalRatio"],
+                        "antennaStemWidthRatio": antenna_identity["stemWidthRatio"],
+                        "antennaTotalHeightRatio": antenna_identity["totalHeightRatio"],
+                        "antennaTipDiameterRatio": antenna_identity["tipDiameterRatio"],
+                        "eyesWidthToHeadRatio": eye_identity["widthToHeadRatio"],
+                        "eyesHeightToHeadRatio": eye_identity["heightToHeadRatio"],
+                        "eyesHorizontalSpacingRatio": eye_identity["horizontalSpacingRatio"],
+                        "eyesVerticalCenterRatio": eye_identity["verticalCenterRatio"],
+                        "bodyFrameWidthToHeadRatio": body_identity["frameWidthToHeadRatio"],
+                        "bodyInsetWidthToFrameRatio": body_identity["insetWidthToFrameRatio"],
+                        "bodyInsetHeightToFrameRatio": body_identity["insetHeightToFrameRatio"],
+                        "sparkleScreenSizeRatio": sparkle_identity["screenSizeRatio"],
                     },
+                },
+                "screenSpaceEffects": {
+                    "sparkle": {
+                        **sparkle_identity,
+                        "identityFeature": "screen_space_sparkle",
+                    }
                 },
                 "palette": {
                     "gold": identity["primaryColor"],
                     "orange": identity["secondaryColor"],
                     "mint": identity["accentColor"],
                     "ink": identity["outlineColor"],
+                    "antennaTip": antenna_identity["tipColor"],
                     "cream": "#FFF7DA",
                 },
             },
@@ -616,7 +658,7 @@ def build_document(
         "scenes": [
             {
                 "name": "RobotSticker",
-                "nodes": [robot_root, shadow, sparkle, caption_anchor],
+                "nodes": [robot_root, shadow, caption_anchor],
             }
         ],
         "nodes": nodes,
@@ -672,7 +714,6 @@ def build_document(
             (eye_group, "scale", [0.0, 0.5, 1.0], [[1, 1, 1], [1, 0.62, 1], [1, 1, 1]], "VEC3"),
             (left_arm_pivot, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(-118), z_rotation(-132), z_rotation(-124), z_rotation(0)], "VEC4"),
             (right_arm_pivot, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(118), z_rotation(132), z_rotation(124), z_rotation(0)], "VEC4"),
-            (sparkle, "scale", [0.0, 0.25, 0.5, 0.75, 1.0], [[0.85, 0.85, 0.85], [1.25, 1.25, 1.25], [0.7, 0.7, 0.7], [1.15, 1.15, 1.15], [0.85, 0.85, 0.85]], "VEC3"),
         ],
     )
 
