@@ -4,7 +4,7 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E4 — optional Filament/GLB proof. MR-110, MR-112, and MR-113 are complete;
+E4 — optional Filament/GLB proof. MR-110 and MR-112 through MR-114 are complete;
 MR-111 cross-platform wrapper publication remains active. M0-M6
 and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
@@ -50,6 +50,12 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   and decoded RGBA regression tolerance.
 - Backend-neutral caption resolution with one collision score/slot/line layout
   shared by 2D, 2.5D, and the post-Filament screen-space compositor.
+- Versioned `robot-004` identity contract shared by flat SVG, layered SVG, and
+  GLB, with exact palette, required features, six normalized measurements, and
+  validation against actual SVG XML and GLB geometry/material data.
+- Review-only dimensional 2.5D pose with stronger cast shadow, warm side-plane
+  shading, face gradient, rim light, explicit layer depth, and parallax; the
+  flat `front` compatibility pose is retained.
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
@@ -59,8 +65,8 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 34 CTest tests pass.
-- The opt-in Filament graph passes the complete 44-test local configuration,
+- AppleClang 21 Release build is warning-clean and all 36 CTest tests pass.
+- The opt-in Filament graph passes the complete 46-test local configuration,
   including real Metal engine/gltfio lifecycle, semantic anchor loading,
   missing-anchor failure, bounded output, and non-empty headless RGBA rendering
   through a fixed orthographic camera and toon-style key light.
@@ -78,6 +84,11 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   layered 2.5D, and GLB/Filament. Flat and layered files are byte-identical;
   the repeatable review tool validates caption pixels on every backend and
   emits a three-column contact sheet plus SHA-256 manifest.
+- MR-114 independently validates both SVG packs and the generated GLB against
+  contract SHA-256
+  `a0b0446cad9dda50e503cca18175db9a69156963c0a6776069e4ccd0ee4496a7`.
+  Its three-backend review changes 64,302 pixels between flat and dimensional
+  2.5D while preserving 4,558 caption fill pixels in each output.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
@@ -100,7 +111,7 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
 - Golden `robot-2_5d-animated-hop.webp` is an approved lossless 512 x 512,
   1200 ms, 15-frame looping WebP with SHA-256
-  `61e255a91dbdb2dc8005d646d28cef6b4de2f64bcaa1781775b0152578465873`.
+  `84785d86bf309cb4c1f24e10d0374131908ab28fd9cae1f4d090363836c18f0a`.
 - Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50
   stickers, including animated primary assets and matching poster thumbnails.
 - Pack/sticker schemas and generated manifests/catalogues validate as JSON.
@@ -129,8 +140,9 @@ publication credentials remain confined to repository secrets.
 ## Next execution track
 
 The approved generator-v6 contact sheet is the M6 visual regression baseline,
-the corrected robot hop is the MR-102 layered-animation baseline, and the
-MR-113 sheet is the shared-caption backend baseline. The next E4 work is the
+the identity-aligned robot hop is the MR-102 layered-animation baseline, the
+MR-113 sheet is the shared-caption backend baseline, and the MR-114 sheet is
+the cross-backend identity baseline. The next E4 work is the
 remaining MR-111 Linux/Windows Filament-wrapper validation and remote optional
 package publication. Matcher boundary and collision behavior remains part of
 M7 unless a reusable matcher is deliberately added to the engine.

@@ -16,6 +16,12 @@ The normative machine-readable files are
 {
   "schema_version": 1,
   "pack_id": "example-pack",
+  "character_identity": {
+    "character_id": "robot-004",
+    "contract_version": 1,
+    "contract_sha256": "<64 lowercase hexadecimal characters>",
+    "required_features": ["rounded_square_head", "single_antenna"]
+  },
   "canvas": { "width": 512, "height": 512 },
   "layers": [
     {
@@ -80,6 +86,10 @@ The normative machine-readable files are
 
 - `schema_version` must be `1`.
 - `pack_id`, layer IDs, z values, and variation-group IDs must be unique.
+- `character_identity` is optional. When present, it pins the pack to a
+  versioned external identity contract by character ID, contract version,
+  SHA-256, and required feature list. MascotRender preserves this declaration;
+  project validation may additionally inspect SVG or GLB geometry against it.
 - Canvas dimensions must be between 1 and 4096 pixels.
 - A source must be a relative `.svg` path resolving inside the pack directory.
 - Absolute paths, URLs, missing files, symlink escapes, and non-SVG sources are

@@ -122,6 +122,15 @@ bottom slot, proving the general antenna-aware collision rule. Flat and layered
 captioned posters are byte-identical, and the three-backend review is generated
 by `tools/render_caption_backend_review.py`.
 
+MR-114 closes the cross-backend character-drift gap. The canonical
+`examples/robot-004/identity.json` fixes exact colors, required features, and
+normalized proportions. The SVG packs pin its SHA-256, the GLB generator
+derives geometry and materials from it, and the validator measures real SVG
+and GLB data. Its review-only layered pose adds visible cast-shadow, side-plane,
+gradient, rim-light, depth, and parallax cues while retaining `front` as the
+unchanged flat compatibility pose. Generate the acceptance contact sheet with
+`tools/render_character_identity_review.py`.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.

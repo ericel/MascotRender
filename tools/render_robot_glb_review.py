@@ -30,12 +30,22 @@ CLIPS = {
 ANIMATION_FRAME_COUNT = 13
 ANIMATION_SIZE = 320
 
-PALETTE = {
-    "gold": (255, 209, 102),
-    "orange": (228, 155, 54),
-    "mint": (122, 225, 210),
-    "ink": (60, 48, 66),
-}
+PALETTE: dict[str, tuple[int, int, int]] = {}
+
+
+def palette_from_identity(path: Path) -> dict[str, tuple[int, int, int]]:
+    identity = json.loads(path.read_text(encoding="utf-8"))["identity"]
+
+    def channels(name: str) -> tuple[int, int, int]:
+        color = identity[name]
+        return tuple(int(color[index : index + 2], 16) for index in (1, 3, 5))
+
+    return {
+        "gold": channels("primaryColor"),
+        "orange": channels("secondaryColor"),
+        "mint": channels("accentColor"),
+        "ink": channels("outlineColor"),
+    }
 
 
 def file_record(path: Path) -> dict[str, object]:
@@ -67,9 +77,9 @@ def render_command(
         "--height",
         str(size),
         "--span",
-        "4.4",
+        "3.85",
         "--center-y",
-        "0.35",
+        "0.15",
     ]
     if animation:
         command.extend(["--animation", animation, "--time", str(time)])
@@ -309,11 +319,15 @@ def write_animation_review(
 
 
 def main() -> None:
+    global PALETTE
     parser = argparse.ArgumentParser()
     parser.add_argument("--renderer", type=Path, required=True)
     parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--identity", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    identity_path = args.identity or args.input.with_name("identity.json")
+    PALETTE = palette_from_identity(identity_path)
     args.output.mkdir(parents=True, exist_ok=True)
 
     # Review directories are reproducible outputs. Remove current and legacy
@@ -323,7 +337,12 @@ def main() -> None:
             if stale.is_file():
                 stale.unlink()
 
-    manifest = {"asset": str(args.input), "samples": []}
+    manifest = {
+        "asset": str(args.input),
+        "identity_contract": str(identity_path),
+        "identity_sha256": hashlib.sha256(identity_path.read_bytes()).hexdigest(),
+        "samples": [],
+    }
     rendered: list[tuple[str, Path]] = []
     for label, animation, time in SAMPLES:
         destination = args.output / f"robot-004-{label}.webp"

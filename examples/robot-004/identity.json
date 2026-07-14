@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "characterId": "robot-004",
+  "identity": {
+    "primaryColor": "#FFD166",
+    "secondaryColor": "#E99A20",
+    "accentColor": "#63D9CF",
+    "outlineColor": "#263451",
+    "headAspectRatio": 1.08,
+    "headToBodyRatio": 3.2,
+    "eyeSpacingRatio": 0.31,
+    "eyeVerticalRatio": 0.42,
+    "mouthVerticalRatio": 0.68,
+    "antennaHeightRatio": 0.32,
+    "requiredFeatures": [
+      "rounded_square_head",
+      "single_antenna",
+      "teal_antenna_tip",
+      "triangular_teal_nose",
+      "orange_side_ears"
+    ]
+  },
+  "validation": {
+    "ratioTolerance": 0.02,
+    "measurements": {
+      "headAspectRatio": "outer head width divided by outer head height",
+      "headToBodyRatio": "outer head height divided by core body height",
+      "eyeSpacingRatio": "eye center distance divided by outer head width",
+      "eyeVerticalRatio": "head-top to eye-center distance divided by outer head height",
+      "mouthVerticalRatio": "head-top to mouth-anchor distance divided by outer head height",
+      "antennaHeightRatio": "head-top to antenna-tip-top distance divided by outer head height"
+    }
+  }
+}

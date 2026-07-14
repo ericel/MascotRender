@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -252,27 +253,32 @@ def combine_geometry(parts):
     return positions, normals, indices
 
 
-def eye_geometry(radius_x: float, radius_y: float):
+def eye_geometry(
+    radius_x: float, radius_y: float, center_x: float, center_y: float
+):
     return combine_geometry(
         [
-            ellipse_geometry(-0.34, 0.18, radius_x, radius_y),
-            ellipse_geometry(0.34, 0.18, radius_x, radius_y),
+            ellipse_geometry(-center_x, center_y, radius_x, radius_y),
+            ellipse_geometry(center_x, center_y, radius_x, radius_y),
         ]
     )
 
 
-def face_ink_geometry():
-    pupil_positions, pupil_normals, pupil_indices = eye_geometry(0.07, 0.105)
+def face_ink_geometry(eye_center_x: float, eye_center_y: float):
+    pupil_positions, pupil_normals, pupil_indices = eye_geometry(
+        0.075, 0.075, eye_center_x, eye_center_y
+    )
     targets: list[list[list[float]]] = []
     for name in MORPH_NAMES:
         delta: list[list[float]] = []
         for x, y, _ in pupil_positions:
-            eye_center_y = 0.18
             if name == "blink":
                 delta.append([0.0, (eye_center_y - y) * 0.88, 0.0])
             elif name == "wow":
-                eye_center_x = -0.34 if x < 0.0 else 0.34
-                delta.append([(x - eye_center_x) * 0.35, (y - eye_center_y) * 0.35, 0.0])
+                center_x = -eye_center_x if x < 0.0 else eye_center_x
+                delta.append(
+                    [(x - center_x) * 0.35, (y - eye_center_y) * 0.35, 0.0]
+                )
             elif name == "squint":
                 delta.append([0.0, (eye_center_y - y) * 0.58, 0.0])
             elif name == "sad":
@@ -285,22 +291,12 @@ def face_ink_geometry():
     return pupil_positions, pupil_normals, pupil_indices, targets
 
 
-def facial_curve_geometry():
-    return combine_geometry(
-        [
-            curve_geometry(
-                quadratic_curve((-0.52, 0.37), (-0.34, 0.57), (-0.16, 0.37)),
-                0.075,
-            ),
-            curve_geometry(
-                quadratic_curve((0.16, 0.37), (0.34, 0.57), (0.52, 0.37)),
-                0.075,
-            ),
-            curve_geometry(
-                quadratic_curve((-0.38, -0.22), (0.0, -0.62), (0.38, -0.22)),
-                0.075,
-            ),
-        ]
+def mouth_curve_geometry(mouth_y: float):
+    return curve_geometry(
+        quadratic_curve(
+            (-0.34, mouth_y), (0.0, mouth_y - 0.34), (0.34, mouth_y)
+        ),
+        0.075,
     )
 
 
@@ -380,7 +376,24 @@ def add_animation(
     )
 
 
-def build_document() -> tuple[dict[str, object], bytes]:
+def build_document(
+    contract: dict[str, object], contract_sha256: str
+) -> tuple[dict[str, object], bytes]:
+    identity = contract["identity"]
+    head_width = 2.0
+    head_height = head_width / float(identity["headAspectRatio"])
+    body_height = head_height / float(identity["headToBodyRatio"])
+    eye_center_x = head_width * float(identity["eyeSpacingRatio"]) * 0.5
+    eye_center_y = head_height * (0.5 - float(identity["eyeVerticalRatio"]))
+    mouth_y = head_height * (0.5 - float(identity["mouthVerticalRatio"]))
+    antenna_extension = head_height * float(identity["antennaHeightRatio"])
+    antenna_tip_radius = 0.17
+    antenna_tip_y = head_height * 0.5 + antenna_extension - antenna_tip_radius
+    antenna_stem_bottom = head_height * 0.5 - 0.02
+    antenna_stem_top = antenna_tip_y - antenna_tip_radius
+    antenna_stem_y = (antenna_stem_bottom + antenna_stem_top) * 0.5
+    antenna_stem_half_height = (antenna_stem_top - antenna_stem_bottom) * 0.5
+
     buffer = GlbBuffer()
     sphere_positions, sphere_normals, sphere_indices = uv_sphere()
     sphere_position = buffer.floats(
@@ -397,11 +410,24 @@ def build_document() -> tuple[dict[str, object], bytes]:
             buffer.indices(indices),
         )
 
-    head_accessors = mesh_accessors(rounded_rect_prism(2.0, 1.85, 0.68, 0.37))
-    panel_accessors = mesh_accessors(rounded_rect_prism(1.7, 1.52, 0.08, 0.28))
-    body_accessors = mesh_accessors(rounded_rect_prism(1.18, 0.62, 0.58, 0.22))
-    white_eye_accessors = mesh_accessors(eye_geometry(0.15, 0.23))
-    face_positions, face_normals, face_indices, face_targets = face_ink_geometry()
+    head_accessors = mesh_accessors(
+        rounded_rect_prism(head_width, head_height, 0.68, 0.37)
+    )
+    panel_accessors = mesh_accessors(
+        rounded_rect_prism(1.76, head_height - 0.24, 0.08, 0.28)
+    )
+    body_accessors = mesh_accessors(
+        rounded_rect_prism(1.48, body_height, 0.58, 0.22)
+    )
+    side_ear_accessors = mesh_accessors(
+        rounded_rect_prism(0.34, 0.72, 0.42, 0.15)
+    )
+    white_eye_accessors = mesh_accessors(
+        eye_geometry(0.18, 0.235, eye_center_x, eye_center_y)
+    )
+    face_positions, face_normals, face_indices, face_targets = face_ink_geometry(
+        eye_center_x, eye_center_y
+    )
     face_accessors = (
         buffer.floats(face_positions, "VEC3", target=34962, bounds=True),
         buffer.floats(face_normals, "VEC3", target=34962),
@@ -411,17 +437,17 @@ def build_document() -> tuple[dict[str, object], bytes]:
         buffer.floats(target, "VEC3", target=34962, bounds=True)
         for target in face_targets
     ]
-    curve_accessors = mesh_accessors(facial_curve_geometry())
+    curve_accessors = mesh_accessors(mouth_curve_geometry(mouth_y))
     nose_accessors = mesh_accessors(triangle_geometry())
     star_accessors = mesh_accessors(star_geometry())
 
     materials = [
-        unlit_material("robot-gold", "#FFD166"),
-        unlit_material("robot-orange-trim", "#E49B36"),
-        unlit_material("robot-mint", "#7AE1D2"),
-        unlit_material("face-ink", "#3C3042"),
+        unlit_material("robot-gold", identity["primaryColor"]),
+        unlit_material("robot-orange-trim", identity["secondaryColor"]),
+        unlit_material("robot-mint", identity["accentColor"]),
+        unlit_material("face-ink", identity["outlineColor"]),
         unlit_material("eye-cream", "#FFF7DA"),
-        unlit_material("contact-shadow", "#3C3042", 0.24),
+        unlit_material("contact-shadow", identity["outlineColor"], 0.24),
     ]
 
     def primitive(accessors, material, targets=None):
@@ -450,10 +476,11 @@ def build_document() -> tuple[dict[str, object], bytes]:
             "extras": {"targetNames": MORPH_NAMES},
             "primitives": [primitive(face_accessors, 3, morph_accessors)],
         },
-        {"name": "FacialCurves", "primitives": [primitive(curve_accessors, 3)]},
+        {"name": "MouthCurve", "primitives": [primitive(curve_accessors, 3)]},
         {"name": "MintNose", "primitives": [primitive(nose_accessors, 2)]},
         {"name": "Sparkle", "primitives": [primitive(star_accessors, 2)]},
         {"name": "ContactShadow", "primitives": [primitive(sphere_accessors, 5)]},
+        {"name": "SideEar", "primitives": [primitive(side_ear_accessors, 1)]},
     ]
 
     nodes: list[dict[str, object]] = []
@@ -463,52 +490,65 @@ def build_document() -> tuple[dict[str, object], bytes]:
         return len(nodes) - 1
 
     robot_root = node("RobotRoot")
-    body = node("Body", mesh=2, translation=[0.0, -0.78, -0.04])
-    head = node("Head", mesh=0, translation=[0.0, 0.2, 0.0])
+    body = node(
+        "Body",
+        mesh=2,
+        translation=[0.0, -0.78, -0.04],
+        extras={"identityFeature": "core_body"},
+    )
+    head = node(
+        "Head",
+        mesh=0,
+        translation=[0.0, 0.2, 0.0],
+        extras={"identityFeature": "rounded_square_head"},
+    )
     face_panel = node("FacePlate", mesh=1, translation=[0.0, 0.0, 0.37])
     face = node("Face", translation=[0.0, 0.0, 0.425])
     eye_group = node("EyeGroup")
     eye_whites = node("EyeWhites", mesh=6)
     face_rig = node("FaceRig", mesh=7)
-    facial_curves = node("FacialCurves", mesh=8, translation=[0.0, 0.0, 0.012])
-    nose = node("Nose", mesh=9, translation=[0.0, 0.0, 0.018])
+    mouth = node(
+        "Mouth",
+        mesh=8,
+        translation=[0.0, 0.0, 0.012],
+        extras={
+            "identityFeature": "friendly_smile",
+            "mouthVerticalRatio": identity["mouthVerticalRatio"],
+        },
+    )
+    nose = node(
+        "Nose",
+        mesh=9,
+        translation=[0.0, 0.0, 0.018],
+        extras={"identityFeature": "triangular_teal_nose"},
+    )
     antenna = node(
         "Antenna",
         mesh=5,
-        translation=[0.0, 1.08, 0.0],
-        scale=[0.065, 0.3, 0.065],
+        translation=[0.0, antenna_stem_y, 0.0],
+        scale=[0.065, antenna_stem_half_height, 0.065],
+        extras={"identityFeature": "single_antenna"},
     )
     antenna_tip = node(
         "AntennaTip",
         mesh=4,
-        translation=[0.0, 1.38, 0.0],
-        scale=[0.16, 0.16, 0.16],
+        translation=[0.0, antenna_tip_y, 0.0],
+        scale=[antenna_tip_radius, antenna_tip_radius, antenna_tip_radius],
+        extras={"identityFeature": "teal_antenna_tip"},
     )
     left_arm_pivot = node("LeftArmPivot", translation=[-1.0, 0.12, 0.0])
     left_arm = node(
         "LeftArm",
-        mesh=3,
-        translation=[-0.02, -0.34, 0.0],
-        scale=[0.17, 0.4, 0.18],
+        mesh=12,
+        translation=[-0.02, -0.28, 0.0],
+        extras={"identityFeature": "orange_side_ears"},
     )
     right_arm_pivot = node("RightArmPivot", translation=[1.0, 0.12, 0.0])
     right_arm = node(
         "RightArm",
-        mesh=3,
-        translation=[0.02, -0.34, 0.0],
-        scale=[0.17, 0.4, 0.18],
-    )
-    left_foot = node(
-        "LeftFoot",
-        mesh=5,
-        translation=[-0.37, -1.09, 0.05],
-        scale=[0.32, 0.14, 0.28],
-    )
-    right_foot = node(
-        "RightFoot",
-        mesh=5,
-        translation=[0.37, -1.09, 0.05],
-        scale=[0.32, 0.14, 0.28],
+        mesh=12,
+        translation=[0.02, -0.28, 0.0],
+        extras={"identityFeature": "orange_side_ears"},
     )
     shadow = node(
         "GroundShadow",
@@ -529,11 +569,9 @@ def build_document() -> tuple[dict[str, object], bytes]:
         head,
         left_arm_pivot,
         right_arm_pivot,
-        left_foot,
-        right_foot,
     ]
     nodes[head]["children"] = [face_panel, face, antenna, antenna_tip]
-    nodes[face]["children"] = [eye_group, facial_curves, nose]
+    nodes[face]["children"] = [eye_group, mouth, nose]
     nodes[eye_group]["children"] = [eye_whites, face_rig]
     nodes[left_arm_pivot]["children"] = [left_arm]
     nodes[right_arm_pivot]["children"] = [right_arm]
@@ -543,15 +581,32 @@ def build_document() -> tuple[dict[str, object], bytes]:
             "version": "2.0",
             "generator": "MascotRender deterministic robot generator",
             "extras": {
-                "mascot": "robot-004",
+                "mascot": contract["characterId"],
                 "clips": CLIP_NAMES,
                 "facialMorphTargets": MORPH_NAMES,
-                "visualContract": "approved-2d-2.5d-robot-v3",
+                "visualContract": "robot-004-identity-v1",
+                "characterIdentity": {
+                    "characterId": contract["characterId"],
+                    "contractVersion": contract["schema_version"],
+                    "contractSha256": contract_sha256,
+                    "requiredFeatures": identity["requiredFeatures"],
+                    "metrics": {
+                        name: identity[name]
+                        for name in (
+                            "headAspectRatio",
+                            "headToBodyRatio",
+                            "eyeSpacingRatio",
+                            "eyeVerticalRatio",
+                            "mouthVerticalRatio",
+                            "antennaHeightRatio",
+                        )
+                    },
+                },
                 "palette": {
-                    "gold": "#FFD166",
-                    "orange": "#E49B36",
-                    "mint": "#7AE1D2",
-                    "ink": "#3C3042",
+                    "gold": identity["primaryColor"],
+                    "orange": identity["secondaryColor"],
+                    "mint": identity["accentColor"],
+                    "ink": identity["outlineColor"],
                     "cream": "#FFF7DA",
                 },
             },
@@ -652,10 +707,25 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument(
+        "--identity",
+        type=Path,
+        default=(
+            Path(__file__).resolve().parents[1]
+            / "examples"
+            / "robot-004"
+            / "identity.json"
+        ),
+        help="robot character identity contract",
+    )
+    parser.add_argument(
         "--check", action="store_true", help="verify output instead of writing it"
     )
     args = parser.parse_args()
-    document, binary = build_document()
+    identity_bytes = args.identity.read_bytes()
+    contract = json.loads(identity_bytes)
+    document, binary = build_document(
+        contract, hashlib.sha256(identity_bytes).hexdigest()
+    )
     output = encode_glb(document, binary)
     if args.check:
         if not args.output.is_file() or args.output.read_bytes() != output:

@@ -80,6 +80,22 @@
   "properties": {
     "schema_version": { "const": 1 },
     "pack_id": { "type": "string", "minLength": 1 },
+    "character_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_id", "contract_version", "contract_sha256", "required_features"],
+      "properties": {
+        "character_id": { "type": "string", "minLength": 1 },
+        "contract_version": { "type": "integer", "minimum": 1 },
+        "contract_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "required_features": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
     "canvas": {
       "type": "object",
       "additionalProperties": false,

@@ -1,6 +1,18 @@
 {
   "schema_version": 1,
   "pack_id": "robot-2_5d",
+  "character_identity": {
+    "character_id": "robot-004",
+    "contract_version": 1,
+    "contract_sha256": "a0b0446cad9dda50e503cca18175db9a69156963c0a6776069e4ccd0ee4496a7",
+    "required_features": [
+      "rounded_square_head",
+      "single_antenna",
+      "teal_antenna_tip",
+      "triangular_teal_nose",
+      "orange_side_ears"
+    ]
+  },
   "canvas": { "width": 512, "height": 512 },
   "layers": [
     { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0 },
@@ -15,7 +27,7 @@
       "id": "head",
       "source": "layers/20-head.svg",
       "z": 20,
-      "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 238 }
+      "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 230 }
     },
     {
       "id": "antenna",

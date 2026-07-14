@@ -1,9 +1,22 @@
 {
   "schema_version": 1,
   "pack_id": "robot-2_5d",
+  "character_identity": {
+    "character_id": "robot-004",
+    "contract_version": 1,
+    "contract_sha256": "a0b0446cad9dda50e503cca18175db9a69156963c0a6776069e4ccd0ee4496a7",
+    "required_features": [
+      "rounded_square_head",
+      "single_antenna",
+      "teal_antenna_tip",
+      "triangular_teal_nose",
+      "orange_side_ears"
+    ]
+  },
   "canvas": { "width": 512, "height": 512 },
   "layers": [
     { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0, "pivot": "shadow", "depth": -0.6 },
+    { "id": "dimensional-shadow", "source": "layers/01-dimensional-shadow.svg", "z": 1, "pivot": "shadow", "depth": -0.8 },
     {
       "id": "body",
       "source": "layers/10-body.svg",
@@ -13,6 +26,7 @@
       "collision_bounds": { "x": 136, "y": 276, "width": 240, "height": 138 }
     },
     { "id": "side-panels", "source": "layers/15-side-panels.svg", "z": 15, "parent": "body", "pivot": "body", "depth": 0.1 },
+    { "id": "side-shading", "source": "layers/16-side-shading.svg", "z": 16, "parent": "body", "pivot": "body", "depth": 0.16 },
     {
       "id": "head",
       "source": "layers/20-head.svg",
@@ -20,7 +34,7 @@
       "parent": "body",
       "pivot": "head",
       "depth": 0.25,
-      "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 238 }
+      "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 230 }
     },
     {
       "id": "antenna",
@@ -31,12 +45,17 @@
       "depth": 0.25,
       "collision_bounds": { "x": 238, "y": 50, "width": 36, "height": 78 }
     },
+    { "id": "face-shading", "source": "layers/27-face-shading.svg", "z": 27, "parent": "head", "pivot": "head", "depth": 0.28 },
     { "id": "face", "source": "layers/30-face.svg", "z": 30, "parent": "head", "pivot": "head", "depth": 0.2 },
+    { "id": "rim-light", "source": "layers/35-rim-light.svg", "z": 35, "parent": "head", "pivot": "head", "depth": 0.32 },
     { "id": "spark", "source": "layers/40-spark.svg", "z": 40, "depth": 0.8 }
   ],
   "base_layers": ["shadow", "body", "side-panels", "head", "antenna", "spark"],
   "expressions": { "happy": ["face"] },
-  "poses": { "front": [] },
+  "poses": {
+    "front": [],
+    "dimensional": ["dimensional-shadow", "side-shading", "face-shading", "rim-light"]
+  },
   "provenance": {
     "creator": "MascotRender project",
     "license": "MIT",

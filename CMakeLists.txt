@@ -197,7 +197,9 @@ install(
         tools/generate_robot_glb.py
         tools/generate_mascot_packs.py
         tools/render_caption_backend_review.py
+        tools/render_character_identity_review.py
         tools/render_robot_glb_review.py
+        tools/validate_character_identity.py
         tools/render_mascot_packs.py
         tools/build_sticker_review.py
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/tools"
