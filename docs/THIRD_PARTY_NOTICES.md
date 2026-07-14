@@ -14,6 +14,7 @@ derived from the locked Conan dependency graph.
 | nlohmann JSON | 3.12.0 | Private JSON parser | MIT |
 | CLI11 | 2.6.2 | Optional CLI dependency | BSD-3-Clause |
 | Catch2 | 3.15.2 | Test-only dependency | BSL-1.0 |
+| Filament | 1.74.0 | Optional private GLB/3D renderer | Apache-2.0 |
 
 The example and generated packs include Changa One Regular from the Google
 Fonts repository at revision `ec0464b978de222073645d6d3366f3fdf03376d8`.

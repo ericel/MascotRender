@@ -6,6 +6,9 @@ add_executable(
     test_text_layout.cpp
     test_version.cpp
 )
+if(MASCOTRENDER_WITH_FILAMENT)
+    target_sources(mascotrender_unit_tests PRIVATE test_filament_backend.cpp)
+endif()
 target_link_libraries(
     mascotrender_unit_tests
     PRIVATE

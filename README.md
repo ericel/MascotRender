@@ -141,10 +141,11 @@ conan install . -o "&:with_filament=True" --build=missing
 
 That option requires the pinned `filament/1.74.0` package and sets
 `MASCOTRENDER_WITH_FILAMENT=ON`. Filament is not currently available from
-ConanCenter; MR-111 will package the official desktop archives in the
-MascotRender Conan remote before the option is advertised to consumers. The
-default `with_filament=False` graph remains fully installable from public
-dependencies and does not download or link Filament.
+ConanCenter, so `recipes/filament` wraps the checksum-pinned official desktop
+archives and exposes `filament::filament` plus `filament::gltfio`. The wrapper
+is validated on macOS arm64 while Linux and Windows validation remains part of
+MR-111. The default `with_filament=False` graph remains fully installable from
+public dependencies and does not download or link Filament.
 
 ## Use from another Conan project
 
