@@ -99,67 +99,246 @@ def uv_sphere(latitudes: int = 12, longitudes: int = 16):
     return positions, normals, indices
 
 
-def face_geometry():
+def rounded_rect_prism(
+    width: float,
+    height: float,
+    depth: float,
+    radius: float,
+    corner_segments: int = 6,
+):
+    """Return a compact rounded-square prism with a flat sticker-friendly face."""
+    half_width = width * 0.5
+    half_height = height * 0.5
+    border: list[list[float]] = []
+    corners = [
+        (half_width - radius, -half_height + radius, -90.0),
+        (half_width - radius, half_height - radius, 0.0),
+        (-half_width + radius, half_height - radius, 90.0),
+        (-half_width + radius, -half_height + radius, 180.0),
+    ]
+    for center_x, center_y, start_angle in corners:
+        for step in range(corner_segments):
+            angle = math.radians(start_angle + 90.0 * step / corner_segments)
+            border.append(
+                [
+                    center_x + radius * math.cos(angle),
+                    center_y + radius * math.sin(angle),
+                ]
+            )
+
+    positions: list[list[float]] = []
+    normals: list[list[float]] = []
+    indices: list[int] = []
+    front = depth * 0.5
+    back = -front
+
+    front_center = len(positions)
+    positions.append([0.0, 0.0, front])
+    normals.append([0.0, 0.0, 1.0])
+    front_border = len(positions)
+    for x, y in border:
+        positions.append([x, y, front])
+        normals.append([0.0, 0.0, 1.0])
+    for index in range(len(border)):
+        next_index = (index + 1) % len(border)
+        indices.extend(
+            [front_center, front_border + index, front_border + next_index]
+        )
+
+    back_center = len(positions)
+    positions.append([0.0, 0.0, back])
+    normals.append([0.0, 0.0, -1.0])
+    back_border = len(positions)
+    for x, y in border:
+        positions.append([x, y, back])
+        normals.append([0.0, 0.0, -1.0])
+    for index in range(len(border)):
+        next_index = (index + 1) % len(border)
+        indices.extend(
+            [back_center, back_border + next_index, back_border + index]
+        )
+
+    for index, (x, y) in enumerate(border):
+        next_index = (index + 1) % len(border)
+        next_x, next_y = border[next_index]
+        midpoint_x = (x + next_x) * 0.5
+        midpoint_y = (y + next_y) * 0.5
+        length = math.hypot(midpoint_x / half_width, midpoint_y / half_height)
+        normal = [
+            midpoint_x / half_width / length,
+            midpoint_y / half_height / length,
+            0.0,
+        ]
+        start = len(positions)
+        positions.extend(
+            [[x, y, front], [x, y, back], [next_x, next_y, back], [next_x, next_y, front]]
+        )
+        normals.extend([normal] * 4)
+        indices.extend([start, start + 1, start + 2, start, start + 2, start + 3])
+    return positions, normals, indices
+
+
+def ellipse_geometry(
+    center_x: float,
+    center_y: float,
+    radius_x: float,
+    radius_y: float,
+    *,
+    segments: int = 20,
+):
+    positions = [[center_x, center_y, 0.0]]
+    positions.extend(
+        [
+            [
+                center_x + radius_x * math.cos(2.0 * math.pi * step / segments),
+                center_y + radius_y * math.sin(2.0 * math.pi * step / segments),
+                0.0,
+            ]
+            for step in range(segments)
+        ]
+    )
+    indices: list[int] = []
+    for step in range(segments):
+        indices.extend([0, 1 + step, 1 + ((step + 1) % segments)])
+    return positions, [[0.0, 0.0, 1.0] for _ in positions], indices
+
+
+def curve_geometry(points: list[list[float]], width: float):
     positions: list[list[float]] = []
     indices: list[int] = []
-
-    def quad(left: float, right: float, bottom: float, top: float) -> None:
+    half_width = width * 0.5
+    for start_point, end_point in zip(points, points[1:]):
+        delta_x = end_point[0] - start_point[0]
+        delta_y = end_point[1] - start_point[1]
+        length = math.hypot(delta_x, delta_y)
+        normal_x = -delta_y / length * half_width
+        normal_y = delta_x / length * half_width
         start = len(positions)
         positions.extend(
             [
-                [left, bottom, 1.02],
-                [right, bottom, 1.02],
-                [right, top, 1.02],
-                [left, top, 1.02],
+                [start_point[0] + normal_x, start_point[1] + normal_y, 0.0],
+                [start_point[0] - normal_x, start_point[1] - normal_y, 0.0],
+                [end_point[0] - normal_x, end_point[1] - normal_y, 0.0],
+                [end_point[0] + normal_x, end_point[1] + normal_y, 0.0],
             ]
         )
         indices.extend([start, start + 1, start + 2, start, start + 2, start + 3])
+    return positions, [[0.0, 0.0, 1.0] for _ in positions], indices
 
-    quad(-0.52, -0.18, 0.08, 0.35)
-    quad(0.18, 0.52, 0.08, 0.35)
-    quad(-0.28, 0.28, -0.34, -0.18)
-    normals = [[0.0, 0.0, 1.0] for _ in positions]
 
+def quadratic_curve(start, control, end, steps: int = 18):
+    return [
+        [
+            (1.0 - time) ** 2 * start[0]
+            + 2.0 * (1.0 - time) * time * control[0]
+            + time**2 * end[0],
+            (1.0 - time) ** 2 * start[1]
+            + 2.0 * (1.0 - time) * time * control[1]
+            + time**2 * end[1],
+        ]
+        for time in (step / steps for step in range(steps + 1))
+    ]
+
+
+def combine_geometry(parts):
+    positions: list[list[float]] = []
+    normals: list[list[float]] = []
+    indices: list[int] = []
+    for part_positions, part_normals, part_indices in parts:
+        offset = len(positions)
+        positions.extend(part_positions)
+        normals.extend(part_normals)
+        indices.extend(offset + index for index in part_indices)
+    return positions, normals, indices
+
+
+def eye_geometry(radius_x: float, radius_y: float):
+    return combine_geometry(
+        [
+            ellipse_geometry(-0.34, 0.18, radius_x, radius_y),
+            ellipse_geometry(0.34, 0.18, radius_x, radius_y),
+        ]
+    )
+
+
+def face_ink_geometry():
+    pupil_positions, pupil_normals, pupil_indices = eye_geometry(0.07, 0.105)
     targets: list[list[list[float]]] = []
     for name in MORPH_NAMES:
-        delta = [[0.0, 0.0, 0.0] for _ in positions]
-        if name == "blink":
-            for start in (0, 4):
-                for index in (start, start + 1):
-                    delta[index][1] += 0.11
-                for index in (start + 2, start + 3):
-                    delta[index][1] -= 0.11
-        elif name == "smile":
-            delta[8][1] += 0.02
-            delta[9][1] += 0.02
-            delta[10][1] += 0.13
-            delta[11][1] += 0.13
-        elif name == "wow":
-            for index in range(8, 12):
-                delta[index][0] = -positions[index][0] * 0.48
-            delta[8][1] -= 0.09
-            delta[9][1] -= 0.09
-            delta[10][1] += 0.13
-            delta[11][1] += 0.13
-        elif name == "squint":
-            delta[0][1] += 0.09
-            delta[2][1] -= 0.09
-            delta[4][1] -= 0.09
-            delta[6][1] += 0.09
-        elif name == "sad":
-            delta[8][1] -= 0.12
-            delta[9][1] -= 0.12
-            delta[10][1] -= 0.01
-            delta[11][1] -= 0.01
-        elif name == "cheek":
-            for index in range(0, 4):
-                delta[index][0] -= 0.07
-            for index in range(4, 8):
-                delta[index][0] += 0.07
-            for index in range(8, 12):
-                delta[index][0] = positions[index][0] * 0.18
+        delta: list[list[float]] = []
+        for x, y, _ in pupil_positions:
+            eye_center_y = 0.18
+            if name == "blink":
+                delta.append([0.0, (eye_center_y - y) * 0.88, 0.0])
+            elif name == "wow":
+                eye_center_x = -0.34 if x < 0.0 else 0.34
+                delta.append([(x - eye_center_x) * 0.35, (y - eye_center_y) * 0.35, 0.0])
+            elif name == "squint":
+                delta.append([0.0, (eye_center_y - y) * 0.58, 0.0])
+            elif name == "sad":
+                delta.append([0.0, -0.035, 0.0])
+            elif name == "cheek":
+                delta.append([-0.025 if x < 0.0 else 0.025, 0.0, 0.0])
+            else:
+                delta.append([0.0, 0.025, 0.0])
         targets.append(delta)
-    return positions, normals, indices, targets
+    return pupil_positions, pupil_normals, pupil_indices, targets
+
+
+def facial_curve_geometry():
+    return combine_geometry(
+        [
+            curve_geometry(
+                quadratic_curve((-0.52, 0.37), (-0.34, 0.57), (-0.16, 0.37)),
+                0.075,
+            ),
+            curve_geometry(
+                quadratic_curve((0.16, 0.37), (0.34, 0.57), (0.52, 0.37)),
+                0.075,
+            ),
+            curve_geometry(
+                quadratic_curve((-0.38, -0.22), (0.0, -0.62), (0.38, -0.22)),
+                0.075,
+            ),
+        ]
+    )
+
+
+def triangle_geometry():
+    positions = [[-0.1, -0.03, 0.0], [0.1, -0.03, 0.0], [0.0, -0.16, 0.0]]
+    return positions, [[0.0, 0.0, 1.0]] * 3, [0, 1, 2]
+
+
+def star_geometry():
+    positions = [[0.0, 0.0, 0.0]]
+    for point in range(8):
+        angle = math.pi * 0.5 - point * math.pi * 0.25
+        radius = 0.31 if point % 2 == 0 else 0.095
+        positions.append([radius * math.cos(angle), radius * math.sin(angle), 0.0])
+    indices: list[int] = []
+    for point in range(8):
+        indices.extend([0, 1 + point, 1 + ((point + 1) % 8)])
+    return positions, [[0.0, 0.0, 1.0] for _ in positions], indices
+
+
+def unlit_material(name: str, color: str, alpha: float = 1.0):
+    # Post-processing is deliberately disabled by the headless sticker renderer,
+    # so store display-space channels to preserve the approved SVG palette in
+    # the byte output instead of applying a second transfer curve.
+    channels = [int(color[index : index + 2], 16) / 255.0 for index in (1, 3, 5)]
+    material: dict[str, object] = {
+        "name": name,
+        "pbrMetallicRoughness": {
+            "baseColorFactor": [*channels, alpha],
+            "metallicFactor": 0.0,
+            "roughnessFactor": 1.0,
+        },
+        "extensions": {"KHR_materials_unlit": {}},
+        "doubleSided": True,
+    }
+    if alpha < 1.0:
+        material["alphaMode"] = "BLEND"
+    return material
 
 
 def z_rotation(degrees: float) -> list[float]:
@@ -210,141 +389,154 @@ def build_document() -> tuple[dict[str, object], bytes]:
     sphere_normal = buffer.floats(sphere_normals, "VEC3", target=34962)
     sphere_index = buffer.indices(sphere_indices)
 
-    face_positions, face_normals, face_indices, face_targets = face_geometry()
-    face_position = buffer.floats(face_positions, "VEC3", target=34962, bounds=True)
-    face_normal = buffer.floats(face_normals, "VEC3", target=34962)
-    face_index = buffer.indices(face_indices)
+    def mesh_accessors(geometry):
+        positions, normals, indices = geometry
+        return (
+            buffer.floats(positions, "VEC3", target=34962, bounds=True),
+            buffer.floats(normals, "VEC3", target=34962),
+            buffer.indices(indices),
+        )
+
+    head_accessors = mesh_accessors(rounded_rect_prism(2.0, 1.85, 0.68, 0.37))
+    panel_accessors = mesh_accessors(rounded_rect_prism(1.7, 1.52, 0.08, 0.28))
+    body_accessors = mesh_accessors(rounded_rect_prism(1.18, 0.62, 0.58, 0.22))
+    white_eye_accessors = mesh_accessors(eye_geometry(0.15, 0.23))
+    face_positions, face_normals, face_indices, face_targets = face_ink_geometry()
+    face_accessors = (
+        buffer.floats(face_positions, "VEC3", target=34962, bounds=True),
+        buffer.floats(face_normals, "VEC3", target=34962),
+        buffer.indices(face_indices),
+    )
     morph_accessors = [
         buffer.floats(target, "VEC3", target=34962, bounds=True)
         for target in face_targets
     ]
+    curve_accessors = mesh_accessors(facial_curve_geometry())
+    nose_accessors = mesh_accessors(triangle_geometry())
+    star_accessors = mesh_accessors(star_geometry())
 
     materials = [
-        {
-            "name": "robot-yellow",
-            "pbrMetallicRoughness": {
-                "baseColorFactor": [1.0, 0.61, 0.06, 1.0],
-                "metallicFactor": 0.0,
-                "roughnessFactor": 0.88,
-            },
-            "doubleSided": True,
-        },
-        {
-            "name": "robot-teal",
-            "pbrMetallicRoughness": {
-                "baseColorFactor": [0.03, 0.55, 0.66, 1.0],
-                "metallicFactor": 0.0,
-                "roughnessFactor": 0.9,
-            },
-            "doubleSided": True,
-        },
-        {
-            "name": "face-ink",
-            "pbrMetallicRoughness": {
-                "baseColorFactor": [0.025, 0.045, 0.075, 1.0],
-                "metallicFactor": 0.0,
-                "roughnessFactor": 1.0,
-            },
-            "extensions": {"KHR_materials_unlit": {}},
-            "doubleSided": True,
-        },
-        {
-            "name": "antenna-coral",
-            "pbrMetallicRoughness": {
-                "baseColorFactor": [1.0, 0.22, 0.31, 1.0],
-                "metallicFactor": 0.0,
-                "roughnessFactor": 0.8,
-            },
-            "doubleSided": True,
-        },
+        unlit_material("robot-gold", "#FFD166"),
+        unlit_material("robot-orange-trim", "#E49B36"),
+        unlit_material("robot-mint", "#7AE1D2"),
+        unlit_material("face-ink", "#3C3042"),
+        unlit_material("eye-cream", "#FFF7DA"),
+        unlit_material("contact-shadow", "#3C3042", 0.24),
     ]
 
-    sphere_primitive = {
-        "attributes": {"POSITION": sphere_position, "NORMAL": sphere_normal},
-        "indices": sphere_index,
-    }
-    meshes = []
-    for name, material in (
-        ("HeadShell", 0),
-        ("BodyShell", 1),
-        ("DarkPart", 2),
-        ("AccentPart", 3),
-    ):
-        primitive = dict(sphere_primitive)
-        primitive["material"] = material
-        meshes.append({"name": name, "primitives": [primitive]})
-    meshes.append(
+    def primitive(accessors, material, targets=None):
+        position, normal, index = accessors
+        result: dict[str, object] = {
+            "attributes": {"POSITION": position, "NORMAL": normal},
+            "indices": index,
+            "material": material,
+        }
+        if targets is not None:
+            result["targets"] = [{"POSITION": accessor} for accessor in targets]
+        return result
+
+    sphere_accessors = (sphere_position, sphere_normal, sphere_index)
+    meshes = [
+        {"name": "HeadShell", "primitives": [primitive(head_accessors, 1)]},
+        {"name": "FacePlate", "primitives": [primitive(panel_accessors, 0)]},
+        {"name": "BodyShell", "primitives": [primitive(body_accessors, 0)]},
+        {"name": "OrangePart", "primitives": [primitive(sphere_accessors, 1)]},
+        {"name": "MintPart", "primitives": [primitive(sphere_accessors, 2)]},
+        {"name": "DarkPart", "primitives": [primitive(sphere_accessors, 3)]},
+        {"name": "EyeWhites", "primitives": [primitive(white_eye_accessors, 4)]},
         {
             "name": "FaceRig",
             "weights": [0.0] * len(MORPH_NAMES),
             "extras": {"targetNames": MORPH_NAMES},
-            "primitives": [
-                {
-                    "attributes": {"POSITION": face_position, "NORMAL": face_normal},
-                    "indices": face_index,
-                    "material": 2,
-                    "targets": [
-                        {"POSITION": accessor} for accessor in morph_accessors
-                    ],
-                }
-            ],
-        }
-    )
-
-    nodes = [
-        {"name": "RobotRoot", "children": [1, 2, 6, 7, 8, 9, 10]},
-        {
-            "name": "Body",
-            "mesh": 1,
-            "translation": [0.0, -0.42, 0.0],
-            "scale": [0.7, 0.68, 0.46],
+            "primitives": [primitive(face_accessors, 3, morph_accessors)],
         },
-        {
-            "name": "Head",
-            "mesh": 0,
-            "translation": [0.0, 0.47, 0.0],
-            "scale": [1.0, 0.78, 0.55],
-            "children": [3, 4, 5],
-        },
-        {"name": "Face", "mesh": 4},
-        {
-            "name": "Antenna",
-            "mesh": 3,
-            "translation": [0.0, 1.12, 0.0],
-            "scale": [0.075, 0.43, 0.075],
-        },
-        {
-            "name": "AntennaTip",
-            "mesh": 3,
-            "translation": [0.0, 1.55, 0.0],
-            "scale": [0.17, 0.17, 0.17],
-        },
-        {
-            "name": "LeftArm",
-            "mesh": 1,
-            "translation": [-0.82, -0.32, 0.0],
-            "scale": [0.19, 0.52, 0.2],
-        },
-        {
-            "name": "RightArm",
-            "mesh": 1,
-            "translation": [0.82, -0.32, 0.0],
-            "scale": [0.19, 0.52, 0.2],
-        },
-        {
-            "name": "LeftFoot",
-            "mesh": 2,
-            "translation": [-0.34, -1.04, 0.03],
-            "scale": [0.3, 0.17, 0.34],
-        },
-        {
-            "name": "RightFoot",
-            "mesh": 2,
-            "translation": [0.34, -1.04, 0.03],
-            "scale": [0.3, 0.17, 0.34],
-        },
-        {"name": "caption_anchor", "translation": [0.0, 1.95, 0.0]},
+        {"name": "FacialCurves", "primitives": [primitive(curve_accessors, 3)]},
+        {"name": "MintNose", "primitives": [primitive(nose_accessors, 2)]},
+        {"name": "Sparkle", "primitives": [primitive(star_accessors, 2)]},
+        {"name": "ContactShadow", "primitives": [primitive(sphere_accessors, 5)]},
     ]
+
+    nodes: list[dict[str, object]] = []
+
+    def node(name: str, **properties) -> int:
+        nodes.append({"name": name, **properties})
+        return len(nodes) - 1
+
+    robot_root = node("RobotRoot")
+    body = node("Body", mesh=2, translation=[0.0, -0.78, -0.04])
+    head = node("Head", mesh=0, translation=[0.0, 0.2, 0.0])
+    face_panel = node("FacePlate", mesh=1, translation=[0.0, 0.0, 0.37])
+    face = node("Face", translation=[0.0, 0.0, 0.425])
+    eye_group = node("EyeGroup")
+    eye_whites = node("EyeWhites", mesh=6)
+    face_rig = node("FaceRig", mesh=7)
+    facial_curves = node("FacialCurves", mesh=8, translation=[0.0, 0.0, 0.012])
+    nose = node("Nose", mesh=9, translation=[0.0, 0.0, 0.018])
+    antenna = node(
+        "Antenna",
+        mesh=5,
+        translation=[0.0, 1.08, 0.0],
+        scale=[0.065, 0.3, 0.065],
+    )
+    antenna_tip = node(
+        "AntennaTip",
+        mesh=4,
+        translation=[0.0, 1.38, 0.0],
+        scale=[0.16, 0.16, 0.16],
+    )
+    left_arm_pivot = node("LeftArmPivot", translation=[-1.0, 0.12, 0.0])
+    left_arm = node(
+        "LeftArm",
+        mesh=3,
+        translation=[-0.02, -0.34, 0.0],
+        scale=[0.17, 0.4, 0.18],
+    )
+    right_arm_pivot = node("RightArmPivot", translation=[1.0, 0.12, 0.0])
+    right_arm = node(
+        "RightArm",
+        mesh=3,
+        translation=[0.02, -0.34, 0.0],
+        scale=[0.17, 0.4, 0.18],
+    )
+    left_foot = node(
+        "LeftFoot",
+        mesh=5,
+        translation=[-0.37, -1.09, 0.05],
+        scale=[0.32, 0.14, 0.28],
+    )
+    right_foot = node(
+        "RightFoot",
+        mesh=5,
+        translation=[0.37, -1.09, 0.05],
+        scale=[0.32, 0.14, 0.28],
+    )
+    shadow = node(
+        "GroundShadow",
+        mesh=11,
+        translation=[0.0, -1.19, -0.24],
+        scale=[1.04, 0.12, 0.3],
+    )
+    sparkle = node(
+        "Sparkle",
+        mesh=10,
+        translation=[-1.34, 0.2, 0.1],
+        scale=[0.85, 0.85, 0.85],
+    )
+    caption_anchor = node("caption_anchor", translation=[0.0, 1.88, 0.0])
+
+    nodes[robot_root]["children"] = [
+        body,
+        head,
+        left_arm_pivot,
+        right_arm_pivot,
+        left_foot,
+        right_foot,
+    ]
+    nodes[head]["children"] = [face_panel, face, antenna, antenna_tip]
+    nodes[face]["children"] = [eye_group, facial_curves, nose]
+    nodes[eye_group]["children"] = [eye_whites, face_rig]
+    nodes[left_arm_pivot]["children"] = [left_arm]
+    nodes[right_arm_pivot]["children"] = [right_arm]
 
     document: dict[str, object] = {
         "asset": {
@@ -354,11 +546,24 @@ def build_document() -> tuple[dict[str, object], bytes]:
                 "mascot": "robot-004",
                 "clips": CLIP_NAMES,
                 "facialMorphTargets": MORPH_NAMES,
+                "visualContract": "approved-2d-2.5d-robot-v3",
+                "palette": {
+                    "gold": "#FFD166",
+                    "orange": "#E49B36",
+                    "mint": "#7AE1D2",
+                    "ink": "#3C3042",
+                    "cream": "#FFF7DA",
+                },
             },
         },
         "extensionsUsed": ["KHR_materials_unlit"],
         "scene": 0,
-        "scenes": [{"name": "RobotSticker", "nodes": [0]}],
+        "scenes": [
+            {
+                "name": "RobotSticker",
+                "nodes": [robot_root, shadow, sparkle, caption_anchor],
+            }
+        ],
         "nodes": nodes,
         "materials": materials,
         "meshes": meshes,
@@ -374,8 +579,9 @@ def build_document() -> tuple[dict[str, object], bytes]:
         buffer,
         "idle",
         [
-            (2, "rotation", [0.0, 0.5, 1.0], [z_rotation(0), z_rotation(-3), z_rotation(0)], "VEC4"),
-            (3, "weights", [0.0, 0.46, 0.54, 1.0], [zeros, blink, blink, zeros], "SCALAR"),
+            (head, "rotation", [0.0, 0.5, 1.0], [z_rotation(0), z_rotation(-3), z_rotation(0)], "VEC4"),
+            (eye_group, "scale", [0.0, 0.44, 0.5, 0.56, 1.0], [[1, 1, 1], [1, 1, 1], [1, 0.08, 1], [1, 1, 1], [1, 1, 1]], "VEC3"),
+            (face_rig, "weights", [0.0, 0.46, 0.54, 1.0], [zeros, blink, blink, zeros], "SCALAR"),
         ],
     )
     add_animation(
@@ -383,8 +589,9 @@ def build_document() -> tuple[dict[str, object], bytes]:
         buffer,
         "hello",
         [
-            (6, "rotation", [0.0, 0.3, 0.6, 0.9], [z_rotation(0), z_rotation(38), z_rotation(-28), z_rotation(0)], "VEC4"),
-            (2, "rotation", [0.0, 0.45, 0.9], [z_rotation(0), z_rotation(-6), z_rotation(0)], "VEC4"),
+            (left_arm_pivot, "rotation", [0.0, 0.22, 0.46, 0.7, 0.9], [z_rotation(0), z_rotation(-118), z_rotation(-78), z_rotation(-124), z_rotation(0)], "VEC4"),
+            (head, "rotation", [0.0, 0.45, 0.9], [z_rotation(0), z_rotation(7), z_rotation(0)], "VEC4"),
+            (face_rig, "weights", [0.0, 0.45, 0.9], [zeros, smile, zeros], "SCALAR"),
         ],
     )
     add_animation(
@@ -392,8 +599,11 @@ def build_document() -> tuple[dict[str, object], bytes]:
         buffer,
         "hop",
         [
-            (0, "translation", [0.0, 0.3, 0.6, 0.9], [[0, 0, 0], [0, 0.32, 0], [0, 0.08, 0], [0, 0, 0]], "VEC3"),
-            (0, "scale", [0.0, 0.15, 0.3, 0.75, 0.9], [[1, 1, 1], [1.08, 0.9, 1], [0.95, 1.08, 1], [1.04, 0.94, 1], [1, 1, 1]], "VEC3"),
+            (robot_root, "translation", [0.0, 0.3, 0.6, 0.9], [[0, 0, 0], [0, 0.58, 0], [0, 0.16, 0], [0, 0, 0]], "VEC3"),
+            (robot_root, "scale", [0.0, 0.15, 0.3, 0.72, 0.9], [[1, 1, 1], [1.1, 0.9, 1], [0.92, 1.12, 1], [1.08, 0.92, 1], [1, 1, 1]], "VEC3"),
+            (shadow, "scale", [0.0, 0.3, 0.6, 0.9], [[1.04, 0.12, 0.3], [0.55, 0.07, 0.3], [0.86, 0.1, 0.3], [1.04, 0.12, 0.3]], "VEC3"),
+            (left_arm_pivot, "rotation", [0.0, 0.3, 0.9], [z_rotation(0), z_rotation(-28), z_rotation(0)], "VEC4"),
+            (right_arm_pivot, "rotation", [0.0, 0.3, 0.9], [z_rotation(0), z_rotation(28), z_rotation(0)], "VEC4"),
         ],
     )
     add_animation(
@@ -401,10 +611,13 @@ def build_document() -> tuple[dict[str, object], bytes]:
         buffer,
         "celebrate",
         [
-            (0, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(-7), z_rotation(7), z_rotation(-4), z_rotation(0)], "VEC4"),
-            (3, "weights", [0.0, 0.2, 0.55, 0.8, 1.0], [zeros, smile, smile, wow, zeros], "SCALAR"),
-            (6, "rotation", [0.0, 0.5, 1.0], [z_rotation(0), z_rotation(48), z_rotation(0)], "VEC4"),
-            (7, "rotation", [0.0, 0.5, 1.0], [z_rotation(0), z_rotation(-48), z_rotation(0)], "VEC4"),
+            (robot_root, "translation", [0.0, 0.22, 0.5, 0.78, 1.0], [[0, 0, 0], [0, 0.2, 0], [0, 0.05, 0], [0, 0.16, 0], [0, 0, 0]], "VEC3"),
+            (head, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(-9), z_rotation(9), z_rotation(-5), z_rotation(0)], "VEC4"),
+            (face_rig, "weights", [0.0, 0.2, 0.55, 0.8, 1.0], [zeros, smile, smile, wow, zeros], "SCALAR"),
+            (eye_group, "scale", [0.0, 0.5, 1.0], [[1, 1, 1], [1, 0.62, 1], [1, 1, 1]], "VEC3"),
+            (left_arm_pivot, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(-118), z_rotation(-132), z_rotation(-124), z_rotation(0)], "VEC4"),
+            (right_arm_pivot, "rotation", [0.0, 0.25, 0.5, 0.75, 1.0], [z_rotation(0), z_rotation(118), z_rotation(132), z_rotation(124), z_rotation(0)], "VEC4"),
+            (sparkle, "scale", [0.0, 0.25, 0.5, 0.75, 1.0], [[0.85, 0.85, 0.85], [1.25, 1.25, 1.25], [0.7, 0.7, 0.7], [1.15, 1.15, 1.15], [0.85, 0.85, 0.85]], "VEC3"),
         ],
     )
 

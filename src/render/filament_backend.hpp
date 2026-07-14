@@ -26,6 +26,7 @@ struct FilamentRenderOptions {
   std::uint32_t width{256U};
   std::uint32_t height{256U};
   float vertical_span{2.5F};
+  float vertical_center{0.0F};
   std::string animation_name;
   float animation_time_seconds{0.0F};
 };

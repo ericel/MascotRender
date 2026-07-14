@@ -271,8 +271,11 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   wrapper validation and final remote publication remain.
 - `MR-112` **In progress:** Deterministic `robot-004.glb`, semantic anchors,
   `idle`/`hello`/`hop`/`celebrate` clips, six named facial morphs, animation
-  sampling, and five-frame WebP review generation are implemented. Hosted
-  Filament validation and Product/Design review remain.
+  sampling, and review generation are implemented. The failed placeholder-art
+  review was corrected with the approved rounded-square silhouette and palette,
+  curved facial language, pivoted arms, independent hop shadow, deterministic
+  white PNG/contact sheet generation, and orientation/palette guards. Hosted
+  Filament validation and Product/Design re-review remain.
 - `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
 
 ## First execution batch

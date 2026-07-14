@@ -22,7 +22,8 @@ namespace {
 void print_help() {
   std::cout << "Usage: mascotrender-glb-preview --input model.glb --output "
                "frame.webp\n"
-               "       [--width 256] [--height 256] [--span 3.6]\n"
+               "       [--width 256] [--height 256] [--span 3.6] "
+               "[--center-y 0.0]\n"
                "       [--animation clip] [--time seconds]\n";
 }
 
@@ -47,6 +48,8 @@ int main(int argc, char **argv) {
             std::stoul(next_value(index, argc, argv)));
       } else if (argument == "--span") {
         options.vertical_span = std::stof(next_value(index, argc, argv));
+      } else if (argument == "--center-y") {
+        options.vertical_center = std::stof(next_value(index, argc, argv));
       } else if (argument == "--animation") {
         options.animation_name = next_value(index, argc, argv);
       } else if (argument == "--time") {

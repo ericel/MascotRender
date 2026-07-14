@@ -145,14 +145,16 @@ ConanCenter, so `recipes/filament` wraps the checksum-pinned official desktop
 archives and exposes `filament::filament` plus `filament::gltfio`. The wrapper
 is validated on macOS arm64. The internal proof loads GLB resources, validates
 semantic anchors, and reads transparent RGBA pixels from a fixed orthographic
-camera and hard key light. Linux and Windows wrapper validation remains part of
+camera. Linux and Windows wrapper validation remains part of
 MR-111. The default `with_filament=False` graph remains fully installable from
 public dependencies and does not download or link Filament.
 
 MR-112 includes the deterministic `examples/robot-004/robot-004.glb` proof with
 four clips (`idle`, `hello`, `hop`, `celebrate`), six named facial morphs, and a
-caption anchor. Filament development builds can generate five lossless review
-frames with:
+caption anchor. The authored rounded-square model uses the approved 2D/2.5D
+gold, orange, mint, cream, and navy visual contract. Filament development
+builds can generate five lossless review frames, an upright white-background
+PNG, a contact sheet, and machine-checked review metadata with:
 
 ```bash
 python tools/render_robot_glb_review.py \

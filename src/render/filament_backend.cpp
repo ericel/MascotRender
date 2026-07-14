@@ -283,10 +283,12 @@ render_filament_glb(const std::filesystem::path &path,
   if (options.width < min_render_extent || options.width > max_render_extent ||
       options.height < min_render_extent ||
       options.height > max_render_extent ||
-      !std::isfinite(options.vertical_span) || options.vertical_span <= 0.0F) {
+      !std::isfinite(options.vertical_span) || options.vertical_span <= 0.0F ||
+      !std::isfinite(options.vertical_center)) {
     return Result<FilamentFrame>::failure(
         Error{ErrorCode::invalid_argument,
-              "Filament output must be 16..2048 pixels with a positive span",
+              "Filament output must be 16..2048 pixels with a positive span "
+              "and finite center",
               path.string()});
   }
 
@@ -401,7 +403,8 @@ render_filament_glb(const std::filesystem::path &path,
   const auto half_width = half_height * aspect;
   camera->setProjection(filament::Camera::Projection::ORTHO, -half_width,
                         half_width, -half_height, half_height, 0.1, 100.0);
-  camera->lookAt({0.0, 0.0, 4.0}, {0.0, 0.0, 0.0}, {0.0, 1.0, 0.0});
+  const auto center = static_cast<double>(options.vertical_center);
+  camera->lookAt({0.0, center, 4.0}, {0.0, center, 0.0}, {0.0, 1.0, 0.0});
   camera->setExposure(16.0F, 1.0F / 125.0F, 100.0F);
 
   render.light_entity = entities.create();

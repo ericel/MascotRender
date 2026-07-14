@@ -2,10 +2,13 @@
 
 #include <catch2/catch_test_macros.hpp>
 
+#include <array>
 #include <bit>
 #include <cstdint>
+#include <cstdlib>
 #include <filesystem>
 #include <fstream>
+#include <limits>
 #include <string>
 #include <vector>
 
@@ -46,6 +49,44 @@ lit_pixel_count(const std::vector<std::uint8_t> &rgba) noexcept {
                      rgba[index + 3U] > 0U
                  ? 1U
                  : 0U;
+  }
+  return count;
+}
+
+[[nodiscard]] std::size_t
+color_pixel_count(const mascotrender::detail::FilamentFrame &frame,
+                  const std::array<std::uint8_t, 3> target,
+                  std::uint32_t first_row = 0U, std::uint32_t last_row = 0U,
+                  std::uint8_t tolerance = 3U) noexcept {
+  if (last_row == 0U) {
+    last_row = frame.height;
+  }
+  std::size_t count = 0U;
+  for (auto y = first_row; y < last_row; ++y) {
+    for (std::uint32_t x = 0U; x < frame.width; ++x) {
+      const auto index = (static_cast<std::size_t>(y) * frame.width + x) * 4U;
+      bool matches = frame.rgba[index + 3U] > 200U;
+      for (std::size_t channel = 0U; channel < target.size(); ++channel) {
+        const auto actual = static_cast<int>(frame.rgba[index + channel]);
+        const auto expected = static_cast<int>(target[channel]);
+        matches = matches && std::abs(actual - expected) <= tolerance;
+      }
+      count += matches ? 1U : 0U;
+    }
+  }
+  return count;
+}
+
+[[nodiscard]] std::size_t
+translucent_pixel_count(const mascotrender::detail::FilamentFrame &frame,
+                        std::uint32_t first_row) noexcept {
+  std::size_t count = 0U;
+  for (auto y = first_row; y < frame.height; ++y) {
+    for (std::uint32_t x = 0U; x < frame.width; ++x) {
+      const auto alpha =
+          frame.rgba[(static_cast<std::size_t>(y) * frame.width + x) * 4U + 3U];
+      count += alpha >= 90U && alpha <= 130U ? 1U : 0U;
+    }
   }
   return count;
 }
@@ -185,6 +226,16 @@ TEST_CASE("Filament render bounds reject unsafe output sizes") {
 
   REQUIRE_FALSE(rendered);
   REQUIRE(rendered.error().code == mascotrender::ErrorCode::invalid_argument);
+
+  const auto invalid_center = mascotrender::detail::render_filament_glb(
+      "unused.glb",
+      {.width = 96U,
+       .height = 96U,
+       .vertical_span = 2.5F,
+       .vertical_center = std::numeric_limits<float>::infinity()});
+  REQUIRE_FALSE(invalid_center);
+  REQUIRE(invalid_center.error().code ==
+          mascotrender::ErrorCode::invalid_argument);
 }
 
 TEST_CASE("authored robot GLB exposes four clips and six facial morphs") {
@@ -194,8 +245,8 @@ TEST_CASE("authored robot GLB exposes four clips and six facial morphs") {
       mascotrender::detail::inspect_filament_glb(robot_glb, anchors);
 
   REQUIRE(inspected);
-  REQUIRE(inspected.value().entity_count == 11U);
-  REQUIRE(inspected.value().renderable_count == 9U);
+  REQUIRE(inspected.value().entity_count == 21U);
+  REQUIRE(inspected.value().renderable_count == 15U);
   REQUIRE(inspected.value().animation_count == 4U);
   REQUIRE(inspected.value().animation_names ==
           std::vector<std::string>{"idle", "hello", "hop", "celebrate"});
@@ -218,6 +269,15 @@ TEST_CASE("authored robot clips produce distinct orthographic frames") {
       mascotrender::detail::render_filament_glb(robot_glb, rest_options);
   REQUIRE(rest);
   REQUIRE(lit_pixel_count(rest.value().rgba) > 2000U);
+  REQUIRE(color_pixel_count(rest.value(), {255U, 209U, 102U}) > 1000U);
+  REQUIRE(color_pixel_count(rest.value(), {228U, 155U, 54U}) > 500U);
+  REQUIRE(color_pixel_count(rest.value(), {122U, 225U, 210U}) > 100U);
+  REQUIRE(color_pixel_count(rest.value(), {60U, 48U, 66U}) > 100U);
+  const auto mint_on_top = color_pixel_count(rest.value(), {122U, 225U, 210U},
+                                             0U, rest.value().height / 4U);
+  const auto mint_on_bottom = color_pixel_count(
+      rest.value(), {122U, 225U, 210U}, rest.value().height * 3U / 4U);
+  REQUIRE(mint_on_top > mint_on_bottom);
   const auto rest_hash = frame_hash(rest.value().rgba);
 
   for (const auto &[clip, time] :
@@ -234,6 +294,24 @@ TEST_CASE("authored robot clips produce distinct orthographic frames") {
     REQUIRE(animated);
     REQUIRE(frame_hash(animated.value().rgba) != rest_hash);
   }
+}
+
+TEST_CASE("authored robot hop contracts its independent contact shadow") {
+  const mascotrender::detail::FilamentRenderOptions rest_options{
+      .width = 128U, .height = 128U, .vertical_span = 3.6F};
+  const auto rest =
+      mascotrender::detail::render_filament_glb(robot_glb, rest_options);
+  auto hop_options = rest_options;
+  hop_options.animation_name = "hop";
+  hop_options.animation_time_seconds = 0.3F;
+  const auto hop =
+      mascotrender::detail::render_filament_glb(robot_glb, hop_options);
+
+  REQUIRE(rest);
+  REQUIRE(hop);
+  const auto lower_quarter = rest.value().height * 3U / 4U;
+  REQUIRE(translucent_pixel_count(rest.value(), lower_quarter) >
+          translucent_pixel_count(hop.value(), lower_quarter));
 }
 
 TEST_CASE("authored robot rejects an unknown animation clip") {
