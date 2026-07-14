@@ -269,7 +269,10 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   anchor validation are implemented. A headless RGBA proof now exercises a
   fixed orthographic camera and hard toon-style key light. Linux/Windows
   wrapper validation and final remote publication remain.
-- `MR-112` One robot with four clips and six facial morph targets.
+- `MR-112` **In progress:** Deterministic `robot-004.glb`, semantic anchors,
+  `idle`/`hello`/`hop`/`celebrate` clips, six named facial morphs, animation
+  sampling, and five-frame WebP review generation are implemented. Hosted
+  Filament validation and Product/Design review remain.
 - `MR-113` Same-recipe 2D/2.5D/3D proof with 2D caption compositing.
 
 ## First execution batch

@@ -97,6 +97,12 @@ resources and reads transparent RGBA output through a fixed orthographic camera
 and hard toon-style key light. Cross-platform wrapper validation and final
 remote publication remain.
 
+MR-112 now has a reproducible, Khronos-valid `robot-004.glb`. Its semantic
+hierarchy contains `RobotRoot`, body/head/face/antenna nodes, and
+`caption_anchor`; its four clips and six face morphs are enumerated and sampled
+through Filament tests. The generator does not require Blender, while the GLB
+remains editable in Blender for a later art-quality pass.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.

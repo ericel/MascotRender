@@ -149,6 +149,18 @@ camera and hard key light. Linux and Windows wrapper validation remains part of
 MR-111. The default `with_filament=False` graph remains fully installable from
 public dependencies and does not download or link Filament.
 
+MR-112 includes the deterministic `examples/robot-004/robot-004.glb` proof with
+four clips (`idle`, `hello`, `hop`, `celebrate`), six named facial morphs, and a
+caption anchor. Filament development builds can generate five lossless review
+frames with:
+
+```bash
+python tools/render_robot_glb_review.py \
+  --renderer build/Release/mascotrender-glb-preview \
+  --input examples/robot-004/robot-004.glb \
+  --output generated/robot-004-review
+```
+
 ## Use from another Conan project
 
 Add the package requirement to the consuming recipe:

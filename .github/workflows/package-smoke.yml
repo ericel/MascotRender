@@ -190,3 +190,16 @@ jobs:
         run: cmake --build --preset conan-release --parallel 3
       - name: Test GLB loader and existing engine
         run: ctest --preset conan-release --output-on-failure
+      - name: Render robot GLB review
+        run: >-
+          python tools/render_robot_glb_review.py
+          --renderer build/Release/mascotrender-glb-preview
+          --input examples/robot-004/robot-004.glb
+          --output generated/robot-004-review
+      - name: Upload robot GLB review
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: mascotrender-robot-004-review-${{ github.sha }}
+          path: generated/robot-004-review
+          if-no-files-found: error
+          retention-days: 14
