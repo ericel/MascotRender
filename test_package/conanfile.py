@@ -1,4 +1,5 @@
 from conan import ConanFile
+from conan.errors import ConanException
 from conan.tools.build import can_run
 from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
 
@@ -69,4 +70,33 @@ class MascotRenderTestPackage(ConanFile):
             self.run(
                 f'"{sys.executable}" "{reviewer}" --input "{bundle}" '
                 f'--expected-count 10'
+            )
+            if dependency.options.get_safe("with_filament"):
+                self._test_installed_filament_preview(dependency, resources)
+
+    def _test_installed_filament_preview(self, dependency, resources):
+        executable_name = (
+            "mascotrender-glb-preview.exe"
+            if str(self.settings.os) == "Windows"
+            else "mascotrender-glb-preview"
+        )
+        preview = os.path.join(dependency.package_folder, "bin", executable_name)
+        model = os.path.join(resources, "examples", "robot-004", "robot-004.glb")
+        output = os.path.join(self.build_folder, "installed-filament-preview.webp")
+        self.run(
+            f'"{preview}" --input "{model}" --output "{output}" '
+            "--width 64 --height 64 --span 3.85 --center-y 0.15",
+            env="conanrun",
+        )
+        if not os.path.isfile(output):
+            raise ConanException("installed Filament preview did not create output")
+        with open(output, "rb") as rendered:
+            payload = rendered.read()
+        if (
+            len(payload) < 100
+            or payload[:4] != b"RIFF"
+            or payload[8:12] != b"WEBP"
+        ):
+            raise ConanException(
+                "installed Filament preview did not produce a valid WebP container"
             )

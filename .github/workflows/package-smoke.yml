@@ -153,9 +153,29 @@ jobs:
           UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
         run: ctest --preset conan-debug --output-on-failure
 
-  filament-macos:
-    name: macOS arm64 Filament GLB
-    runs-on: macos-26
+  filament:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS arm64 Filament GLB
+            runner: macos-26
+            profile: profiles/macos-armv8-release
+            lockfile: locks/macos-armv8-filament-release.lock
+            review: true
+          - name: Linux Clang 18 libc++ Filament GLB
+            runner: ubuntu-24.04
+            profile: profiles/linux-x86_64-clang18-libcxx-release
+            lockfile: locks/linux-x86_64-filament-release.lock
+            review: false
+          - name: Windows MSVC 19.4x Filament GLB
+            runner: windows-2022
+            profile: profiles/windows-x86_64-msvc194-release
+            lockfile: locks/windows-x86_64-filament-release.lock
+            review: false
+
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Check out source
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -167,36 +187,65 @@ jobs:
         run: |
           python -m pip install "conan>=2.16,<3" "pillow>=11,<13"
           conan profile detect --force
+      - name: Install Linux Filament runtime
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libc++-18-dev libc++abi-18-dev \
+            libegl1-mesa libgl1-mesa-dri mesa-vulkan-drivers xvfb
+      - name: Create and test Filament package on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: >-
+          xvfb-run -a conan create recipes/filament
+          -pr:h "${{ matrix.profile }}"
+          -pr:b default
+          --build=missing
       - name: Create and test Filament package
+        if: runner.os != 'Linux'
+        shell: bash
         run: >-
           conan create recipes/filament
-          -pr:h profiles/macos-armv8-release
+          -pr:h "${{ matrix.profile }}"
           -pr:b default
           --build=missing
       - name: Install Filament-enabled dependencies
+        shell: bash
         run: >-
           conan install .
-          -pr:h profiles/macos-armv8-release
+          -pr:h "${{ matrix.profile }}"
           -pr:b default
-          --lockfile=locks/macos-armv8-filament-release.lock
+          --lockfile="${{ matrix.lockfile }}"
           --build=missing
           -o "&:with_filament=True"
-          -o "&:with_cli=False"
+          -o "&:with_cli=True"
       - name: Configure Filament build
+        shell: bash
         run: >-
           cmake --preset conan-release
           -DMASCOTRENDER_BUILD_TESTS=ON
       - name: Build
+        shell: bash
         run: cmake --build --preset conan-release --parallel 3
+      - name: Test GLB loader and existing engine on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: xvfb-run -a ctest --preset conan-release --output-on-failure
       - name: Test GLB loader and existing engine
+        if: runner.os != 'Linux'
+        shell: bash
         run: ctest --preset conan-release --output-on-failure
       - name: Render robot GLB review
+        if: matrix.review
+        shell: bash
         run: >-
           python tools/render_robot_glb_review.py
           --renderer build/Release/mascotrender-glb-preview
           --input examples/robot-004/robot-004.glb
           --output generated/robot-004-review
       - name: Upload robot GLB review
+        if: matrix.review
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: mascotrender-robot-004-review-${{ github.sha }}

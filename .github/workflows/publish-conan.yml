@@ -26,6 +26,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - name: macOS arm64 AppleClang 21 static Release + CLI
+            runner: macos-26
+            profile: profiles/macos-armv8-release
+            lockfile: conan.lock
+            shared: "False"
+            cli: "True"
           - name: Linux GCC 13 static Release + CLI
             runner: ubuntu-24.04
             profile: profiles/linux-x86_64-gcc13-release
@@ -107,7 +113,7 @@ jobs:
         run: |
           recipe_revision="$(
             conan list "$PACKAGE_REFERENCE#latest" --format=json |
-              python -c 'import json, sys; data = json.load(sys.stdin)["Local Cache"]; print(next(iter(data["mascotrender/0.1.0"]["revisions"])))'
+              python -c 'import json, os, sys; data = json.load(sys.stdin)["Local Cache"]; print(next(iter(data[os.environ["PACKAGE_REFERENCE"]]["revisions"])))'
           )"
           recipe_reference="$PACKAGE_REFERENCE#$recipe_revision"
           consumer_lockfile="$PWD/mascotrender-consumer.lock"
@@ -128,6 +134,7 @@ jobs:
         shell: bash
         run: |
           conan remove "$PACKAGE_RECIPE_REFERENCE" --confirm
+          conan remote logout "$CONAN_REMOTE_NAME"
           conan test test_package "$PACKAGE_RECIPE_REFERENCE" \
             -pr:h "${{ matrix.profile }}" \
             -pr:b default \
@@ -135,3 +142,197 @@ jobs:
             --build=never \
             -o "&:shared=${{ matrix.shared }}" \
             -o "&:with_cli=${{ matrix.cli }}"
+
+  publish-filament:
+    name: ${{ matrix.name }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS arm64 Filament package
+            runner: macos-26
+            profile: profiles/macos-armv8-release
+            lockfile: locks/macos-armv8-filament-release.lock
+          - name: Linux Clang 18 libc++ Filament package
+            runner: ubuntu-24.04
+            profile: profiles/linux-x86_64-clang18-libcxx-release
+            lockfile: locks/linux-x86_64-filament-release.lock
+          - name: Windows MSVC 19.4x Filament package
+            runner: windows-2022
+            profile: profiles/windows-x86_64-msvc194-release
+            lockfile: locks/windows-x86_64-filament-release.lock
+
+    runs-on: ${{ matrix.runner }}
+    env:
+      CONAN_REMOTE_NAME: mascotrender
+      CONAN_REMOTE_URL: ${{ secrets.CONAN_URL }}
+      CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
+      CONAN_USERNAME: ${{ secrets.CONAN_USER }}
+      FILAMENT_REFERENCE: filament/1.74.0
+    steps:
+      - name: Check out source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+      - name: Install Conan
+        run: |
+          python -m pip install "conan>=2.16,<3"
+          conan profile detect --force
+      - name: Install Linux Filament runtime
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libc++-18-dev libc++abi-18-dev \
+            libegl1-mesa libgl1-mesa-dri mesa-vulkan-drivers xvfb
+      - name: Validate publication version and credentials
+        shell: bash
+        env:
+          REQUESTED_VERSION: ${{ inputs.version }}
+        run: |
+          recipe_version="$(conan inspect . --format=json | python -c 'import json,sys; print(json.load(sys.stdin)["version"] or "")')"
+          requested_version="$REQUESTED_VERSION"
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            requested_version="${GITHUB_REF_NAME#v}"
+          fi
+          if [[ -z "$CONAN_REMOTE_URL" || -z "$CONAN_PASSWORD" || -z "$CONAN_USERNAME" ]]; then
+            echo "Conan publication credentials are incomplete" >&2
+            exit 1
+          fi
+          if [[ "$requested_version" != "$recipe_version" ]]; then
+            echo "Requested version $requested_version does not match recipe $recipe_version" >&2
+            exit 1
+          fi
+          echo "PACKAGE_REFERENCE=mascotrender/$recipe_version" >> "$GITHUB_ENV"
+      - name: Authenticate Conan remote
+        shell: bash
+        run: |
+          conan remote add "$CONAN_REMOTE_NAME" "$CONAN_REMOTE_URL" --force
+          conan remote login "$CONAN_REMOTE_NAME" "$CONAN_USERNAME" --password "$CONAN_PASSWORD"
+      - name: Create and test Filament wrapper on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: >-
+          xvfb-run -a conan create recipes/filament
+          -pr:h "${{ matrix.profile }}"
+          -pr:b default
+          --build=missing
+      - name: Create and test Filament wrapper
+        if: runner.os != 'Linux'
+        shell: bash
+        run: >-
+          conan create recipes/filament
+          -pr:h "${{ matrix.profile }}"
+          -pr:b default
+          --build=missing
+      - name: Pin and upload Filament wrapper
+        shell: bash
+        run: |
+          recipe_revision="$(
+            conan list "$FILAMENT_REFERENCE#latest" --format=json |
+              python -c 'import json, os, sys; data = json.load(sys.stdin)["Local Cache"]; print(next(iter(data[os.environ["FILAMENT_REFERENCE"]]["revisions"])))'
+          )"
+          recipe_reference="$FILAMENT_REFERENCE#$recipe_revision"
+          echo "FILAMENT_RECIPE_REFERENCE=$recipe_reference" >> "$GITHUB_ENV"
+          conan upload "$recipe_reference" \
+            --remote "$CONAN_REMOTE_NAME" \
+            --check \
+            --confirm
+      - name: Verify anonymous Filament wrapper consumer on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          conan remove "$FILAMENT_RECIPE_REFERENCE" --confirm
+          conan remote logout "$CONAN_REMOTE_NAME"
+          xvfb-run -a conan test recipes/filament/test_package "$FILAMENT_RECIPE_REFERENCE" \
+            -pr:h "${{ matrix.profile }}" \
+            -pr:b default \
+            --build=never
+      - name: Verify anonymous Filament wrapper consumer
+        if: runner.os != 'Linux'
+        shell: bash
+        run: |
+          conan remove "$FILAMENT_RECIPE_REFERENCE" --confirm
+          conan remote logout "$CONAN_REMOTE_NAME"
+          conan test recipes/filament/test_package "$FILAMENT_RECIPE_REFERENCE" \
+            -pr:h "${{ matrix.profile }}" \
+            -pr:b default \
+            --build=never
+      - name: Re-authenticate Conan remote
+        shell: bash
+        run: conan remote login "$CONAN_REMOTE_NAME" "$CONAN_USERNAME" --password "$CONAN_PASSWORD"
+      - name: Create and test Filament-enabled MascotRender on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: >-
+          xvfb-run -a conan create .
+          -pr:h "${{ matrix.profile }}"
+          -pr:b default
+          --lockfile="${{ matrix.lockfile }}"
+          --build=missing
+          -o "&:shared=False"
+          -o "&:with_cli=True"
+          -o "&:with_filament=True"
+      - name: Create and test Filament-enabled MascotRender
+        if: runner.os != 'Linux'
+        shell: bash
+        run: >-
+          conan create .
+          -pr:h "${{ matrix.profile }}"
+          -pr:b default
+          --lockfile="${{ matrix.lockfile }}"
+          --build=missing
+          -o "&:shared=False"
+          -o "&:with_cli=True"
+          -o "&:with_filament=True"
+      - name: Pin and upload Filament-enabled MascotRender
+        shell: bash
+        run: |
+          recipe_revision="$(
+            conan list "$PACKAGE_REFERENCE#latest" --format=json |
+              python -c 'import json, os, sys; data = json.load(sys.stdin)["Local Cache"]; print(next(iter(data[os.environ["PACKAGE_REFERENCE"]]["revisions"])))'
+          )"
+          recipe_reference="$PACKAGE_REFERENCE#$recipe_revision"
+          consumer_lockfile="$PWD/mascotrender-filament-consumer.lock"
+          conan lock add \
+            --lockfile="${{ matrix.lockfile }}" \
+            --requires="$recipe_reference" \
+            --lockfile-out="$consumer_lockfile"
+          echo "PACKAGE_RECIPE_REFERENCE=$recipe_reference" >> "$GITHUB_ENV"
+          echo "CONSUMER_LOCKFILE=$consumer_lockfile" >> "$GITHUB_ENV"
+          conan upload "$recipe_reference" \
+            --remote "$CONAN_REMOTE_NAME" \
+            --check \
+            --confirm
+      - name: Prepare anonymous package verification
+        shell: bash
+        run: |
+          conan remove "$PACKAGE_RECIPE_REFERENCE" --confirm
+          conan remove "$FILAMENT_RECIPE_REFERENCE" --confirm
+          conan remote logout "$CONAN_REMOTE_NAME"
+      - name: Verify anonymous Filament-enabled consumer on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          xvfb-run -a conan test test_package "$PACKAGE_RECIPE_REFERENCE" \
+            -pr:h "${{ matrix.profile }}" \
+            -pr:b default \
+            --lockfile="$CONSUMER_LOCKFILE" \
+            --build=never \
+            -o "&:shared=False" \
+            -o "&:with_cli=True" \
+            -o "&:with_filament=True"
+      - name: Verify anonymous Filament-enabled consumer
+        if: runner.os != 'Linux'
+        shell: bash
+        run: |
+          conan test test_package "$PACKAGE_RECIPE_REFERENCE" \
+            -pr:h "${{ matrix.profile }}" \
+            -pr:b default \
+            --lockfile="$CONSUMER_LOCKFILE" \
+            --build=never \
+            -o "&:shared=False" \
+            -o "&:with_cli=True" \
+            -o "&:with_filament=True"
