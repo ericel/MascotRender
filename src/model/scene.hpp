@@ -31,10 +31,21 @@ struct AffineTransform {
   float translate_y{};
 };
 
+struct Point {
+  float x{};
+  float y{};
+};
+
+struct SceneAnimationNode {
+  std::string id;
+  Point pivot;
+};
+
 struct SceneLayer {
   std::string id;
   std::filesystem::path source;
   AffineTransform transform;
+  std::vector<SceneAnimationNode> animation_chain;
   float opacity{1.0F};
   float depth{};
   std::int32_t z{};
@@ -56,12 +67,48 @@ struct TextBlock {
 
 enum class AnimationLoop { once, loop, ping_pong, hold_last_frame };
 
+enum class AnimationProperty {
+  translate_x,
+  translate_y,
+  scale_x,
+  scale_y,
+  rotation_degrees,
+  opacity,
+  view_x,
+  view_y
+};
+
+enum class AnimationEasing { linear, ease_out, ease_in_out, back_out };
+
+struct AnimationKeyframe {
+  std::uint32_t at_ms{};
+  float value{};
+  AnimationEasing easing{AnimationEasing::linear};
+};
+
+struct AnimationTrack {
+  std::string target;
+  AnimationProperty property{AnimationProperty::translate_x};
+  std::vector<AnimationKeyframe> keyframes;
+};
+
 struct AnimationSpec {
   std::uint32_t duration_ms{};
   std::uint32_t fps{};
   AnimationLoop loop{AnimationLoop::once};
   bool body_bounce{};
   bool text_pop{};
+  std::vector<AnimationTrack> tracks;
+};
+
+struct NodeFrameState {
+  std::string target;
+  float translate_x{};
+  float translate_y{};
+  float scale_x{1.0F};
+  float scale_y{1.0F};
+  float rotation_degrees{};
+  float opacity{1.0F};
 };
 
 struct FrameState {
@@ -69,6 +116,9 @@ struct FrameState {
   float mascot_scale{1.0F};
   float text_scale{1.0F};
   float text_opacity{1.0F};
+  float view_offset_x{};
+  float view_offset_y{};
+  std::vector<NodeFrameState> nodes;
 };
 
 struct Scene {

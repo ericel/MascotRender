@@ -43,19 +43,44 @@ int main(int argc, char **argv) {
       robot / "pack-flat.json", robot / "stickers" / "flat.json", {}};
   const mascotrender::RenderRequest parallax_request{
       robot / "pack.json", robot / "stickers" / "parallax-right.json", {}};
+  const mascotrender::RenderRequest animated_request{
+      robot / "pack.json", robot / "stickers" / "animated-hop.json", {}};
   auto layered = engine.render(layered_request);
   auto flat = engine.render(flat_request);
   auto parallax = engine.render(parallax_request);
-  if (!layered || !flat || !parallax) {
+  auto animated = engine.render(animated_request);
+  if (!layered || !flat || !parallax || !animated) {
     return 6;
   }
   if (layered.value().bytes != flat.value().bytes ||
-      layered.value().bytes == parallax.value().bytes) {
+      layered.value().bytes == parallax.value().bytes ||
+      animated.value().bytes == layered.value().bytes) {
     return 7;
+  }
+  const auto contains_chunk = [](const auto &bytes, std::string_view chunk) {
+    if (bytes.size() < chunk.size()) {
+      return false;
+    }
+    for (std::size_t offset = 0; offset <= bytes.size() - chunk.size();
+         ++offset) {
+      bool matches = true;
+      for (std::size_t index = 0; index < chunk.size(); ++index) {
+        matches = matches &&
+                  std::to_integer<char>(bytes[offset + index]) == chunk[index];
+      }
+      if (matches) {
+        return true;
+      }
+    }
+    return false;
+  };
+  if (!contains_chunk(animated.value().bytes, "ANIM") ||
+      !contains_chunk(animated.value().bytes, "ANMF")) {
+    return 8;
   }
 
   std::ofstream output{"mascotrender-package-test.webp", std::ios::binary};
   output.write(reinterpret_cast<const char *>(image.bytes.data()),
                static_cast<std::streamsize>(image.bytes.size()));
-  return output ? 0 : 8;
+  return output ? 0 : 9;
 }

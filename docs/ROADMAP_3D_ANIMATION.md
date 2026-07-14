@@ -63,10 +63,11 @@ jumping.
 
 ### E3 — Layered 2.5D
 
-Status: MR-100 complete. M6 approved the flat visual baseline on 2026-07-14;
-the parented robot matches its flat control byte-for-byte at `t = 0` and
-demonstrates deterministic depth parallax. MR-101 motion and the MR-102
-animation golden remain.
+Status: MR-100 and MR-101 complete. M6 approved the flat visual baseline on
+2026-07-14; the parented robot matches its flat control byte-for-byte at `t =
+0` and demonstrates deterministic depth parallax. Typed node/view tracks now
+drive squash/stretch, delayed child follow-through, shadow response, and camera
+motion. MR-102 visual approval and its accepted animation golden remain.
 
 Split a mascot into parented parts with pivots and depth. Add parallax,
 squash-and-stretch, delayed child motion, shadows, and simple camera motion

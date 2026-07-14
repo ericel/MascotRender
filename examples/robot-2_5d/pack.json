@@ -3,7 +3,7 @@
   "pack_id": "robot-2_5d",
   "canvas": { "width": 512, "height": 512 },
   "layers": [
-    { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0, "depth": -0.6 },
+    { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0, "pivot": "shadow", "depth": -0.6 },
     {
       "id": "body",
       "source": "layers/10-body.svg",
@@ -36,6 +36,7 @@
   },
   "anchors": { "face_center": { "x": 256, "y": 256 } },
   "pivots": {
+    "shadow": { "x": 256, "y": 420 },
     "body": { "x": 256, "y": 360 },
     "head": { "x": 256, "y": 246 },
     "antenna": { "x": 256, "y": 128 }

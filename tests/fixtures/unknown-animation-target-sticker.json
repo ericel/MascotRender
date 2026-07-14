@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "sticker_id": "unknown-animation-target",
+  "pack_id": "robot-2_5d",
+  "expression": "happy",
+  "pose": "front",
+  "animation": {
+    "duration_ms": 400,
+    "fps": 10,
+    "loop": "once",
+    "tracks": [
+      {
+        "target": "missing-part",
+        "property": "translate_y",
+        "keyframes": [
+          { "at_ms": 0, "value": 0 },
+          { "at_ms": 400, "value": 10 }
+        ]
+      }
+    ]
+  }
+}

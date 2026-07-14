@@ -38,13 +38,9 @@ struct Layer {
   float opacity{1.0F};
   std::string location;
   AffineTransform world_transform;
+  Point world_pivot;
   float world_depth{};
   float world_opacity{1.0F};
-};
-
-struct Point {
-  float x{};
-  float y{};
 };
 
 struct Font {
@@ -594,7 +590,8 @@ parse_scene(const Json &pack, const Json &sticker,
       available.emplace(id, Layer{id, std::move(resolved).value(), z,
                                   collision_bounds, parent, pivot, depth, x, y,
                                   rotation_degrees, scale_x, scale_y, opacity,
-                                  location, AffineTransform{}, 0.0F, 1.0F});
+                                  location, AffineTransform{}, Point{}, 0.0F,
+                                  1.0F});
       ++layer_index;
     }
 
@@ -632,6 +629,7 @@ parse_scene(const Json &pack, const Json &sticker,
       const auto pivot_point = layer.pivot ? pivots.at(*layer.pivot) : Point{};
       layer.world_transform =
           multiply(parent_transform, local_transform(layer, pivot_point));
+      layer.world_pivot = transform_point(layer.world_transform, pivot_point);
       layer.world_depth = parent_depth + layer.depth;
       layer.world_opacity = parent_opacity * layer.opacity;
       state = 2U;
@@ -746,9 +744,18 @@ parse_scene(const Json &pack, const Json &sticker,
               });
     scene.layers.reserve(selected.size());
     for (auto &layer : selected) {
+      std::vector<SceneAnimationNode> animation_chain;
+      const Layer *node = &layer;
+      while (node != nullptr) {
+        animation_chain.push_back(
+            SceneAnimationNode{node->id, node->world_pivot});
+        node = node->parent ? &available.at(*node->parent) : nullptr;
+      }
+      std::reverse(animation_chain.begin(), animation_chain.end());
       scene.layers.push_back(
           SceneLayer{layer.id, std::move(layer.source), layer.world_transform,
-                     layer.world_opacity, layer.world_depth, layer.z});
+                     std::move(animation_chain), layer.world_opacity,
+                     layer.world_depth, layer.z});
       if (layer.collision_bounds) {
         auto visual_transform = layer.world_transform;
         visual_transform.translate_x -= scene.view_offset_x * layer.world_depth;
@@ -886,37 +893,193 @@ parse_scene(const Json &pack, const Json &sticker,
       bool text_pop = false;
       std::set<std::string, std::less<>> overlays;
       std::size_t index = 0;
-      const auto &configured_overlays = configured.at("overlays");
-      if (configured_overlays.empty()) {
-        return Result<Scene>::failure(
-            document_error("Animation overlays must not be empty", sticker_file,
-                           "$.animation.overlays"));
-      }
-      for (const auto &item : configured_overlays) {
-        const auto name = item.get<std::string>();
-        const auto location =
-            "$.animation.overlays[" + std::to_string(index) + "]";
-        if (!overlays.insert(name).second) {
-          return Result<Scene>::failure(document_error(
-              "Animation overlays must be unique", sticker_file, location));
+      if (configured.contains("overlays")) {
+        const auto &configured_overlays = configured.at("overlays");
+        for (const auto &item : configured_overlays) {
+          const auto name = item.get<std::string>();
+          const auto location =
+              "$.animation.overlays[" + std::to_string(index) + "]";
+          if (!overlays.insert(name).second) {
+            return Result<Scene>::failure(document_error(
+                "Animation overlays must be unique", sticker_file, location));
+          }
+          if (name == "body_bounce") {
+            body_bounce = true;
+          } else if (name == "text_pop") {
+            text_pop = true;
+          } else {
+            return Result<Scene>::failure(document_error(
+                "Unknown animation overlay: " + name, sticker_file, location));
+          }
+          ++index;
         }
-        if (name == "body_bounce") {
-          body_bounce = true;
-        } else if (name == "text_pop") {
-          text_pop = true;
-        } else {
-          return Result<Scene>::failure(document_error(
-              "Unknown animation overlay: " + name, sticker_file, location));
-        }
-        ++index;
       }
       if (text_pop && scene.text.empty()) {
         return Result<Scene>::failure(
             document_error("text_pop requires sticker text", sticker_file,
                            "$.animation.overlays"));
       }
-      scene.animation =
-          AnimationSpec{duration_ms, fps, loop, body_bounce, text_pop};
+
+      const auto parse_property =
+          [](std::string_view name) -> std::optional<AnimationProperty> {
+        if (name == "translate_x") {
+          return AnimationProperty::translate_x;
+        }
+        if (name == "translate_y") {
+          return AnimationProperty::translate_y;
+        }
+        if (name == "scale_x") {
+          return AnimationProperty::scale_x;
+        }
+        if (name == "scale_y") {
+          return AnimationProperty::scale_y;
+        }
+        if (name == "rotation_degrees") {
+          return AnimationProperty::rotation_degrees;
+        }
+        if (name == "opacity") {
+          return AnimationProperty::opacity;
+        }
+        if (name == "view_x") {
+          return AnimationProperty::view_x;
+        }
+        if (name == "view_y") {
+          return AnimationProperty::view_y;
+        }
+        return std::nullopt;
+      };
+      const auto parse_easing =
+          [](std::string_view name) -> std::optional<AnimationEasing> {
+        if (name == "linear") {
+          return AnimationEasing::linear;
+        }
+        if (name == "ease_out") {
+          return AnimationEasing::ease_out;
+        }
+        if (name == "ease_in_out") {
+          return AnimationEasing::ease_in_out;
+        }
+        if (name == "back_out") {
+          return AnimationEasing::back_out;
+        }
+        return std::nullopt;
+      };
+
+      std::vector<AnimationTrack> tracks;
+      std::set<std::pair<std::string, std::string>> track_ids;
+      if (configured.contains("tracks")) {
+        std::size_t track_index = 0;
+        for (const auto &configured_track : configured.at("tracks")) {
+          const auto track_location =
+              "$.animation.tracks[" + std::to_string(track_index) + "]";
+          const auto target = configured_track.at("target").get<std::string>();
+          const auto property_name =
+              configured_track.at("property").get<std::string>();
+          const auto property = parse_property(property_name);
+          if (!property) {
+            return Result<Scene>::failure(document_error(
+                "Unknown animation track property: " + property_name,
+                sticker_file, track_location + ".property"));
+          }
+          const auto view_property = *property == AnimationProperty::view_x ||
+                                     *property == AnimationProperty::view_y;
+          if ((target == "$view") != view_property) {
+            return Result<Scene>::failure(document_error(
+                "View tracks must target $view and node tracks must target a "
+                "selected layer",
+                sticker_file, track_location + ".target"));
+          }
+          if (target != "$view" && !selected_ids.contains(target)) {
+            return Result<Scene>::failure(
+                document_error("Unknown animation track target: " + target,
+                               sticker_file, track_location + ".target"));
+          }
+          if (!track_ids.emplace(target, property_name).second) {
+            return Result<Scene>::failure(document_error(
+                "Animation target/property tracks must be unique", sticker_file,
+                track_location));
+          }
+
+          std::vector<AnimationKeyframe> keyframes;
+          std::uint32_t previous_at = 0U;
+          std::size_t keyframe_index = 0;
+          for (const auto &configured_keyframe :
+               configured_track.at("keyframes")) {
+            const auto keyframe_location = track_location + ".keyframes[" +
+                                           std::to_string(keyframe_index) + "]";
+            const auto at_ms =
+                configured_keyframe.at("at_ms").get<std::uint32_t>();
+            const auto value = configured_keyframe.at("value").get<float>();
+            const auto easing_name =
+                configured_keyframe.value("easing", std::string{"linear"});
+            const auto easing = parse_easing(easing_name);
+            if (!easing) {
+              return Result<Scene>::failure(
+                  document_error("Unknown animation easing: " + easing_name,
+                                 sticker_file, keyframe_location + ".easing"));
+            }
+            if (at_ms > duration_ms ||
+                (keyframe_index > 0U && at_ms <= previous_at)) {
+              return Result<Scene>::failure(document_error(
+                  "Animation keyframe times must be strictly increasing and "
+                  "inside the duration",
+                  sticker_file, keyframe_location + ".at_ms"));
+            }
+            const auto valid_value = [&] {
+              if (!std::isfinite(value)) {
+                return false;
+              }
+              switch (*property) {
+              case AnimationProperty::translate_x:
+              case AnimationProperty::translate_y:
+                return std::abs(value) <= 4096.0F;
+              case AnimationProperty::scale_x:
+              case AnimationProperty::scale_y:
+                return value >= 0.01F && value <= 100.0F;
+              case AnimationProperty::rotation_degrees:
+                return std::abs(value) <= 3600.0F;
+              case AnimationProperty::opacity:
+                return value >= 0.0F && value <= 1.0F;
+              case AnimationProperty::view_x:
+              case AnimationProperty::view_y:
+                return std::abs(value) <= 128.0F;
+              }
+              return false;
+            }();
+            if (!valid_value) {
+              return Result<Scene>::failure(document_error(
+                  "Animation keyframe value is outside property bounds",
+                  sticker_file, keyframe_location + ".value"));
+            }
+            keyframes.push_back(AnimationKeyframe{at_ms, value, *easing});
+            previous_at = at_ms;
+            ++keyframe_index;
+          }
+          if (keyframes.size() < 2U || keyframes.front().at_ms != 0U ||
+              keyframes.back().at_ms != duration_ms) {
+            return Result<Scene>::failure(document_error(
+                "Animation tracks require at least two keyframes spanning 0 "
+                "through duration_ms",
+                sticker_file, track_location + ".keyframes"));
+          }
+          if (loop == AnimationLoop::loop &&
+              keyframes.front().value != keyframes.back().value) {
+            return Result<Scene>::failure(document_error(
+                "Looping animation tracks must end at their starting value",
+                sticker_file, track_location + ".keyframes"));
+          }
+          tracks.push_back(
+              AnimationTrack{target, *property, std::move(keyframes)});
+          ++track_index;
+        }
+      }
+      if (overlays.empty() && tracks.empty()) {
+        return Result<Scene>::failure(document_error(
+            "Animation requires at least one overlay or typed track",
+            sticker_file, "$.animation"));
+      }
+      scene.animation = AnimationSpec{duration_ms, fps,      loop,
+                                      body_bounce, text_pop, std::move(tracks)};
     }
     return Result<Scene>::success(std::move(scene));
   } catch (const Json::exception &exception) {

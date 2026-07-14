@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "sticker_id": "robot-2_5d-animated-hop",
+  "pack_id": "robot-2_5d",
+  "alt_text": "Layered yellow robot hopping with follow-through and parallax",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 42,
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "translate_y",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "ease_in_out" },
+          { "at_ms": 120, "value": 8, "easing": "ease_out" },
+          { "at_ms": 320, "value": -28, "easing": "ease_in_out" },
+          { "at_ms": 560, "value": 6, "easing": "ease_out" },
+          { "at_ms": 820, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      },
+      {
+        "target": "body",
+        "property": "scale_x",
+        "keyframes": [
+          { "at_ms": 0, "value": 1, "easing": "ease_in_out" },
+          { "at_ms": 120, "value": 1.08, "easing": "ease_out" },
+          { "at_ms": 320, "value": 0.94, "easing": "ease_in_out" },
+          { "at_ms": 560, "value": 1.1, "easing": "ease_out" },
+          { "at_ms": 820, "value": 1, "easing": "linear" },
+          { "at_ms": 1200, "value": 1 }
+        ]
+      },
+      {
+        "target": "body",
+        "property": "scale_y",
+        "keyframes": [
+          { "at_ms": 0, "value": 1, "easing": "ease_in_out" },
+          { "at_ms": 120, "value": 0.92, "easing": "ease_out" },
+          { "at_ms": 320, "value": 1.08, "easing": "ease_in_out" },
+          { "at_ms": 560, "value": 0.9, "easing": "ease_out" },
+          { "at_ms": 820, "value": 1, "easing": "linear" },
+          { "at_ms": 1200, "value": 1 }
+        ]
+      },
+      {
+        "target": "head",
+        "property": "translate_y",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "linear" },
+          { "at_ms": 180, "value": 0, "easing": "ease_out" },
+          { "at_ms": 380, "value": -9, "easing": "ease_in_out" },
+          { "at_ms": 640, "value": 5, "easing": "ease_out" },
+          { "at_ms": 900, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      },
+      {
+        "target": "head",
+        "property": "rotation_degrees",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "linear" },
+          { "at_ms": 180, "value": 0, "easing": "ease_out" },
+          { "at_ms": 400, "value": -5, "easing": "ease_in_out" },
+          { "at_ms": 650, "value": 3, "easing": "ease_out" },
+          { "at_ms": 900, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      },
+      {
+        "target": "antenna",
+        "property": "rotation_degrees",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "linear" },
+          { "at_ms": 260, "value": 0, "easing": "back_out" },
+          { "at_ms": 460, "value": 12, "easing": "ease_in_out" },
+          { "at_ms": 700, "value": -6, "easing": "ease_out" },
+          { "at_ms": 980, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          { "at_ms": 0, "value": 1, "easing": "ease_in_out" },
+          { "at_ms": 320, "value": 0.72, "easing": "ease_in_out" },
+          { "at_ms": 560, "value": 1.12, "easing": "ease_out" },
+          { "at_ms": 820, "value": 1, "easing": "linear" },
+          { "at_ms": 1200, "value": 1 }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "opacity",
+        "keyframes": [
+          { "at_ms": 0, "value": 1, "easing": "ease_in_out" },
+          { "at_ms": 320, "value": 0.55, "easing": "ease_in_out" },
+          { "at_ms": 560, "value": 1, "easing": "linear" },
+          { "at_ms": 1200, "value": 1 }
+        ]
+      },
+      {
+        "target": "$view",
+        "property": "view_x",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "ease_in_out" },
+          { "at_ms": 320, "value": 14, "easing": "ease_in_out" },
+          { "at_ms": 700, "value": -7, "easing": "ease_out" },
+          { "at_ms": 1000, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      },
+      {
+        "target": "$view",
+        "property": "view_y",
+        "keyframes": [
+          { "at_ms": 0, "value": 0, "easing": "ease_in_out" },
+          { "at_ms": 320, "value": -8, "easing": "ease_in_out" },
+          { "at_ms": 700, "value": 4, "easing": "ease_out" },
+          { "at_ms": 1000, "value": 0, "easing": "linear" },
+          { "at_ms": 1200, "value": 0 }
+        ]
+      }
+    ]
+  }
+}

@@ -99,10 +99,17 @@ mascotrender render \
   --pack examples/robot-2_5d/pack.json \
   --sticker examples/robot-2_5d/stickers/parallax-right.json \
   --output robot-parallax-right.webp
+
+mascotrender render \
+  --pack examples/robot-2_5d/pack.json \
+  --sticker examples/robot-2_5d/stickers/animated-hop.json \
+  --output robot-animated-hop.webp
 ```
 
 At zero view the layered pack is byte-identical to `pack-flat.json`. The shifted
-view applies inherited depth parallax while captions remain screen-fixed.
+view applies inherited depth parallax while captions remain screen-fixed. The
+animated example uses typed node and camera tracks for squash/stretch, delayed
+head and antenna follow-through, a responsive shadow, and moving parallax.
 
 ## Bootstrap build
 
