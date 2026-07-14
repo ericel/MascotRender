@@ -181,6 +181,8 @@ Goal: publish a package other C++ applications can safely adopt.
 
 Goal: validate the procedural art system before scaling content production.
 
+**Status: complete — Product/Design approval recorded 2026-07-14.**
+
 Add CSV import, contact-sheet review, incremental caching, additional poses and
 effects, and performance reporting as needed for the content workflow. Exit
 requires Design and Product approval of a 50-sticker contact sheet and no
@@ -188,12 +190,12 @@ unresolved rendering or licensing failures.
 
 The engine must not scale to 200 stickers until this gate passes.
 
-Engineering status: the deterministic five-pack/50-sticker generator, renderer,
+Engineering result: the deterministic five-pack/50-sticker generator, renderer,
 and full-bundle verifier are complete. The review tool produces an HTML contact
 sheet, a 50-row per-sticker CSV checklist, and a machine-readable verification
 summary; pull-request CI publishes the verified bundle as a review artifact.
-M6 remains open until the checklist has no unresolved failures and Design and
-Product approve the contact sheet.
+The approved round-three bundle has no unresolved failures, and the project
+owner approved the contact sheet and animation play-through.
 
 Review round 1 requested alien/bunny differentiation, normalized headroom,
 caption/accessory clearance, and bottom mask safety. Round 2 confirmed those
@@ -202,7 +204,7 @@ visual system. Generator v6 and the engine layout now use selected-layer
 collision bounds, actual fitted-glyph overlap, one general clearance rule, and
 a shared silhouette family. The animation reviewer also exposes all four motion
 presets side by side and a loop-seam regression protects playback. Round 3
-Product/Design review is required before the gate can close.
+Product/Design review approved the corrected bundle, closing the gate.
 
 ## M7: 200-sticker product pilot
 
@@ -246,6 +248,8 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
 
 ### E3: Layered 2.5D — 10-15 days
 
+**Status: active after M6 approval.**
+
 - `MR-100` Parented mascot parts, pivots, depth, and parallax.
 - `MR-101` Squash/stretch, delayed child motion, shadows, and camera motion.
 - `MR-102` Robot 2.5D acceptance pack and deterministic animation golden.
@@ -268,7 +272,8 @@ Start these items immediately:
 4. Font licensing and text-limit decisions before M3 begins.
 
 Do not add Filament until the sampled-scene/timeline contracts and animated 2D
-tests pass. Do not scale to 200 stickers until the M6 coherence gate passes.
+tests pass. The M6 coherence gate has passed; any scale-up to 200 stickers now
+belongs to the separately controlled M7 pilot.
 
 ## Project controls
 

@@ -4,10 +4,10 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-M6 — 50-sticker coherence gate. M0-M5 are complete, release `v0.1.0` is
-published, and anonymous consumers can install `mascotrender/0.1.0` from the
-public JFrog Conan remote. The generated art set is mechanically verified and
-ready for the remaining Product/Design review.
+E3 — layered 2.5D. M0-M6 are complete, release `v0.1.0` is published, and
+anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
+remote. Product/Design approved the generator-v6 50-sticker bundle on
+2026-07-14. M7 remains a separate product-integration pilot.
 
 ## Completed locally
 
@@ -60,8 +60,8 @@ ready for the remaining Product/Design review.
   while the engine applies one selected-layer collision rule to all mascots.
 - Animation playback review found and fixed an abrupt loop reset. All repeating
   timelines now end at the starting transform, scale, and opacity.
-- The v6 bundle passes the mechanical review gate and awaits round-3 approval;
-  its catalogue SHA-256 is
+- The v6 bundle passed round-three Product/Design review and closes M6; its
+  catalogue SHA-256 is
   `d16f85b60f707a4559b3a36bca9e8e82dc44b37dbfc8eb24389077799565a57f`.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
@@ -85,14 +85,13 @@ consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
 publication credentials remain confined to repository secrets.
 
-## Product follow-up
+## Next execution track
 
-The engineering golden is approved as a regression baseline, not as final
-Product/Design approval of all generated art. The verified gallery and blank
-checklist are ready, but M6 remains open until all 50 rows are reviewed and the
-contact sheet is approved. Matcher boundary/collision behavior belongs to the
-product integration unless a reusable matcher is deliberately added to the
-engine.
+The approved generator-v6 contact sheet is the M6 visual regression baseline.
+Layered 2.5D now begins with parented parts, pivots, depth, and parallax, followed
+by squash/stretch, delayed child motion, shadows, camera motion, and a robot
+acceptance golden. Matcher boundary/collision behavior remains part of M7 unless
+a reusable matcher is deliberately added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The first deterministic 2D animation slice is working; the next major engine
