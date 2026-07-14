@@ -24,6 +24,7 @@ using Json = nlohmann::json;
 struct Layer {
   std::filesystem::path source;
   std::int32_t z{};
+  std::optional<Rect> collision_bounds;
 };
 
 struct Font {
@@ -304,6 +305,17 @@ parse_scene(const Json &pack, const Json &sticker,
       }
     }
 
+    float text_clearance = 0.0F;
+    if (pack.contains("text_clearance")) {
+      text_clearance = pack.at("text_clearance").get<float>();
+      if (!std::isfinite(text_clearance) || text_clearance < 0.0F ||
+          text_clearance > 128.0F) {
+        return Result<Scene>::failure(document_error(
+            "Text clearance must be finite and between 0 and 128", pack_file,
+            "$.text_clearance"));
+      }
+    }
+
     std::map<std::string, TextStyle, std::less<>> text_styles;
     if (pack.contains("text_styles")) {
       for (auto item = pack.at("text_styles").begin();
@@ -417,7 +429,19 @@ parse_scene(const Json &pack, const Json &sticker,
       if (!resolved) {
         return Result<Scene>::failure(resolved.error());
       }
-      available.emplace(id, Layer{std::move(resolved).value(), z});
+      std::optional<Rect> collision_bounds;
+      if (item.contains("collision_bounds")) {
+        auto parsed = parse_rect(item.at("collision_bounds"), scene.width,
+                                 scene.height, pack_file,
+                                 location + ".collision_bounds",
+                                 "Layer collision bounds");
+        if (!parsed) {
+          return Result<Scene>::failure(parsed.error());
+        }
+        collision_bounds = std::move(parsed).value();
+      }
+      available.emplace(
+          id, Layer{std::move(resolved).value(), z, collision_bounds});
       ++layer_index;
     }
 
@@ -507,20 +531,30 @@ parse_scene(const Json &pack, const Json &sticker,
           "Resolved sticker contains no layers", sticker_file, "$"));
     }
 
-    std::vector<std::pair<std::int32_t, std::filesystem::path>> selected;
+    std::vector<Layer> selected;
     selected.reserve(selected_ids.size());
     for (const auto &id : selected_ids) {
       const auto &layer = available.at(id);
-      selected.emplace_back(layer.z, layer.source);
+      selected.push_back(layer);
     }
     std::sort(selected.begin(), selected.end(),
               [](const auto &left, const auto &right) {
-                return left.first < right.first;
+                return left.z < right.z;
               });
     scene.layers.reserve(selected.size());
-    for (auto &[z, path] : selected) {
-      static_cast<void>(z);
-      scene.layers.push_back(std::move(path));
+    for (auto &layer : selected) {
+      scene.layers.push_back(std::move(layer.source));
+      if (layer.collision_bounds) {
+        const auto &bounds = *layer.collision_bounds;
+        const auto left = std::max(0.0F, bounds.x - text_clearance);
+        const auto top = std::max(0.0F, bounds.y - text_clearance);
+        const auto right = std::min(static_cast<float>(scene.width),
+                                    bounds.x + bounds.width + text_clearance);
+        const auto bottom = std::min(static_cast<float>(scene.height),
+                                     bounds.y + bounds.height + text_clearance);
+        avoid_regions.push_back(
+            Rect{left, top, right - left, bottom - top});
+      }
     }
 
     if (sticker.contains("text")) {

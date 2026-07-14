@@ -25,10 +25,11 @@ stickers each. Every pack contains:
 - seeded left/right effects;
 - ten English/Pidgin phrases with punctuation and longer text;
 - named top/bottom slots, avoid regions, and four animated phrases per mascot;
-- a species-specific primary palette and silhouette; alien additionally uses a
-  narrow oval body and a three-eye expression rig;
-- normalized accessory headroom, antenna-aware bottom-only captions for alien
-  and robot, and a 48 px bottom safe-area inset;
+- a shared rounded-square body/muzzle family with species-specific accessories
+  and palettes; alien remains distinct through teal, antennae, and three eyes;
+- selected-layer collision bounds, one pack-wide clearance buffer, automatic
+  caption placement with no per-species overrides, normalized accessory
+  headroom, and a 48 px bottom safe-area inset;
 - the approved pack-local Changa One static TTF and complete OFL license;
 - a schema-v1 `pack.json` and ten sticker JSON specifications.
 
@@ -81,8 +82,10 @@ python3 tools/build_sticker_review.py \
 
 Open `generated/bundle/review/index.html`. It shows every thumbnail grouped by
 pack, labels animated assets, and links each card to its full-size static or
-animated WebP. Complete `checklist.csv` with `pass`, `fail`, or `n/a` for every
-criterion and an `approve` or `revise` decision for every sticker.
+animated WebP. Open `animation-review.html` to play the four animated phrases
+side by side for every mascot. Complete `checklist.csv` with `pass`, `fail`, or
+`n/a` for every criterion and an `approve` or `revise` decision for every
+sticker.
 
 The review builder does not trust the catalogue blindly. Before writing the
 gallery it verifies every relative path, byte count, SHA-256 hash, WebP header,

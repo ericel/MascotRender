@@ -365,12 +365,39 @@ code {{ color: #a9d1ff; }}
   <div class="summary">
     <span>{summary["pack_count"]} packs</span><span>{summary["sticker_count"]} stickers</span><span>{summary["animated_sticker_count"]} animated</span><span>{summary["asset_count"]} verified WebPs</span>
   </div>
-  <p class="instructions">Review every card at thumbnail size, then click it to inspect the full static or animated asset. Record <code>pass</code>, <code>fail</code>, or <code>n/a</code> for each criterion in <a class="download" href="checklist.csv">checklist.csv</a>; set each decision to <code>approve</code> or <code>revise</code>.</p>
+  <p class="instructions">Review every card at thumbnail size, then click it to inspect the full static or animated asset. Play all animated phrases side by side in <a class="download" href="animation-review.html">animation-review.html</a>. Record <code>pass</code>, <code>fail</code>, or <code>n/a</code> for each criterion in <a class="download" href="checklist.csv">checklist.csv</a>; set each decision to <code>approve</code> or <code>revise</code>.</p>
   <ul class="criteria">{criteria}</ul>
 </header>
 <main>{"".join(sections)}</main>
 </body>
 </html>
+'''
+    path.write_text(document, encoding="utf-8", newline="\n")
+
+
+def build_animation_gallery(
+    path: Path,
+    output: Path,
+    bundle: Path,
+    stickers: list[dict[str, object]],
+) -> None:
+    groups: dict[str, list[dict[str, object]]] = {}
+    for sticker in stickers:
+        if sticker["animated"]:
+            groups.setdefault(str(sticker["pack_id"]), []).append(sticker)
+    sections = []
+    for pack_id, animated in groups.items():
+        cards = "".join(
+            f'''<article><img class="motion" src="{relative_url(output, bundle / str(sticker["path"]))}" alt="{html.escape(str(sticker["alt_text"]), quote=True)}"><h3>{html.escape(str(sticker["text"]))}</h3><p>{html.escape(str(sticker["sticker_id"]))}</p></article>'''
+            for sticker in animated
+        )
+        sections.append(
+            f'<section><h2>{html.escape(pack_id)}</h2><div class="grid">{cards}</div></section>'
+        )
+    document = f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MascotRender animation review</title>
+<style>:root{{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,sans-serif;background:#0c1018;color:#f3f6fc}}body{{width:min(1200px,calc(100% - 32px));margin:32px auto}}a{{color:#8fc3ff}}section{{margin:36px 0}}.grid{{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}article{{background:#121927;border:1px solid #27344b;border-radius:14px;overflow:hidden}}img{{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:repeating-conic-gradient(#e9edf4 0 25%,#cdd4df 0 50%) 50%/24px 24px}}h3,p{{margin:10px 14px}}p{{color:#8190a8;font-size:.8rem;overflow-wrap:anywhere}}@media(max-width:700px){{.grid{{grid-template-columns:repeat(2,minmax(0,1fr))}}}}</style></head>
+<body><h1>Animated sticker play-through</h1><p>Watch each four-sticker row through several loops. Check easing, caption readability during motion, synchronized body/text motion, and the last-to-first loop seam. <a href="index.html">Return to the complete contact sheet.</a></p>{"".join(sections)}</body></html>
 '''
     path.write_text(document, encoding="utf-8", newline="\n")
 
@@ -438,6 +465,12 @@ def main(argv: list[str] | None = None) -> int:
         build_checklist(staging / "checklist.csv", stickers)
         write_json(staging / "review-summary.json", summary)
         build_gallery(staging / "index.html", destination, bundle, stickers, summary)
+        build_animation_gallery(
+            staging / "animation-review.html",
+            destination,
+            bundle,
+            stickers,
+        )
         replace_directory(staging, destination, args.force)
     except Exception:
         if staging.exists():

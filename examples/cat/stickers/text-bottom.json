@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sticker_id": "text-bottom-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat with HELLO! below it",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "text": {
+    "content": "HELLO!",
+    "style": "caption",
+    "placement": "bottom"
+  }
+}

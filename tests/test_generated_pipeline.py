@@ -91,27 +91,49 @@ def main() -> int:
         species_manifest = json.loads(
             (generated_species / "generation-manifest.json").read_text()
         )
-        if species_manifest["generator_version"] != 5:
+        if species_manifest["generator_version"] != 6:
             raise AssertionError("unexpected mascot generator version")
         primary_colors = {
             item["palette"]["primary"] for item in species_manifest["packs"]
         }
         if len(primary_colors) != 5:
             raise AssertionError("canonical species must have distinct primary colors")
-        for species, number in (("robot", 4), ("alien", 5)):
+        expected_preferences: dict[str, list[str]] = {}
+        for species, number in (
+            ("cat", 1),
+            ("bear", 2),
+            ("bunny", 3),
+            ("robot", 4),
+            ("alien", 5),
+        ):
             pack_root = generated_species / f"generated-{species}-{number:03d}"
             pack = json.loads((pack_root / "pack.json").read_text())
-            avoid_names = {region["name"] for region in pack["avoid_regions"]}
-            if "antenna" not in " ".join(avoid_names):
-                raise AssertionError(f"{species} pack has no antenna avoid region")
+            body_layers = {
+                layer["id"]: layer for layer in pack["layers"]
+            }
+            for body_id in ("body-front", "body-round"):
+                if "collision_bounds" not in body_layers[body_id]:
+                    raise AssertionError(
+                        f"{species} {body_id} has no collision bounds"
+                    )
+            if pack.get("text_clearance") != 14:
+                raise AssertionError(f"{species} has unexpected text clearance")
             bottom = pack["text_slots"]["bottom"]
             if bottom["y"] + bottom["height"] > 464:
                 raise AssertionError(f"{species} bottom caption lacks safe margin")
             for sticker_path in (pack_root / "stickers").glob("*.json"):
                 sticker = json.loads(sticker_path.read_text())
-                if sticker["text"]["preferred_slots"] != ["bottom"]:
+                preferences = sticker["text"]["preferred_slots"]
+                if sticker_path.name in expected_preferences:
+                    if preferences != expected_preferences[sticker_path.name]:
+                        raise AssertionError(
+                            "caption placement contains a species override"
+                        )
+                else:
+                    expected_preferences[sticker_path.name] = preferences
+                if preferences not in (["top", "bottom"], ["bottom", "top"]):
                     raise AssertionError(
-                        f"{species} caption may collide with its antenna"
+                        f"{species} has invalid caption preferences"
                     )
         alien_eyes = (
             generated_species
@@ -127,6 +149,16 @@ def main() -> int:
         ).read_text()
         if alien_eyes.count("<ellipse") != 3 or bunny_eyes.count("<ellipse") != 2:
             raise AssertionError("alien and bunny expression rigs are not distinct")
+        alien_body = (
+            generated_species
+            / "generated-alien-005"
+            / "layers"
+            / "10-body-front.svg"
+        ).read_text()
+        if '<rect x="122" y="118" width="268" height="272"' not in alien_body:
+            raise AssertionError("alien does not use the shared rounded-square body")
+        if 'fill-opacity="0.65"' in alien_body or 'r="6"' in alien_body:
+            raise AssertionError("alien contains out-of-family decorative details")
 
         render_base = [
             args.python,
@@ -240,6 +272,11 @@ def main() -> int:
             raise AssertionError("review gallery does not contain every sticker")
         if gallery.count('<span class="badge animated">') != 8:
             raise AssertionError("review gallery has incorrect animation badges")
+        animation_gallery = (review_a / "animation-review.html").read_text(
+            encoding="utf-8"
+        )
+        if animation_gallery.count('class="motion"') != 8:
+            raise AssertionError("animation review does not contain every animation")
 
         webps = sorted(bundle_a.rglob("*.webp"))
         if len(webps) != 40:
