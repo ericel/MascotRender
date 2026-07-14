@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "sticker_id": "robot-2_5d-parallax-right",
+  "pack_id": "robot-2_5d",
+  "alt_text": "Layered yellow robot viewed with rightward parallax",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 42,
+  "view": { "x": 40, "y": -12 }
+}

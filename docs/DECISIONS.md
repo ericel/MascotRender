@@ -141,8 +141,8 @@ the package could build.
 
 Pack format v1 composes the union of invariant base layers, one named
 expression, one named pose, optional sticker-specific layers, and one selected
-choice per variation group. Pack-defined unique integer z values are the sole
-render ordering mechanism.
+choice per variation group. Pack-defined unique integer z values order flat
+layers; ADR-019 extends ordering for optional depth-enabled scene nodes.
 
 An explicit unsigned 64-bit sticker seed is used directly. If absent, the seed
 is derived with 64-bit FNV-1a over the pack and sticker IDs with zero-byte
@@ -260,3 +260,25 @@ asset and renders a stable static poster for its thumbnail. Encoders may merge
 identical consecutive resting frames, so acceptance is based on deterministic
 bytes, timing, canvas, loop metadata, and decoded frame changes rather than an
 exact encoded-frame count.
+
+## ADR-019: Backward-compatible layered 2.5D scene nodes
+
+- Status: Accepted
+- Date: 2026-07-14
+
+Pack format v1 gains optional layer parent, named pivot, local affine transform,
+opacity, and depth fields. Sticker format v1 gains an optional bounded `view`
+offset. Missing fields compile to identity nodes, and the renderer retains its
+existing identity fast path; therefore every pre-existing pack and the approved
+M6 `t = 0` pixels remain unchanged.
+
+Parent transforms, depth, and opacity resolve deterministically before
+rendering. Parent cycles, missing parents, unknown pivots, non-finite values,
+and out-of-range transforms fail with pack/sticker JSON locations. World depth
+orders nodes before the existing unique z tie-breaker and controls parallax
+against the sticker view. Text remains screen-fixed, while transformed
+collision bounds follow the visible node.
+
+This contract deliberately stops before procedural squash/stretch, delayed
+child motion, shadow response, or camera timelines; those are MR-101 timeline
+features built on the resolved nodes rather than additional ad hoc render paths.

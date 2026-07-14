@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <map>
 #include <nlohmann/json.hpp>
 #include <optional>
@@ -22,9 +23,28 @@ namespace {
 using Json = nlohmann::json;
 
 struct Layer {
+  std::string id;
   std::filesystem::path source;
   std::int32_t z{};
   std::optional<Rect> collision_bounds;
+  std::optional<std::string> parent;
+  std::optional<std::string> pivot;
+  float depth{};
+  float x{};
+  float y{};
+  float rotation_degrees{};
+  float scale_x{1.0F};
+  float scale_y{1.0F};
+  float opacity{1.0F};
+  std::string location;
+  AffineTransform world_transform;
+  float world_depth{};
+  float world_opacity{1.0F};
+};
+
+struct Point {
+  float x{};
+  float y{};
 };
 
 struct Font {
@@ -41,6 +61,65 @@ struct TextStyle {
   Color outline;
   float outline_width{};
 };
+
+[[nodiscard]] AffineTransform multiply(const AffineTransform &left,
+                                       const AffineTransform &right) {
+  return AffineTransform{left.m11 * right.m11 + left.m12 * right.m21,
+                         left.m11 * right.m12 + left.m12 * right.m22,
+                         left.m21 * right.m11 + left.m22 * right.m21,
+                         left.m21 * right.m12 + left.m22 * right.m22,
+                         left.m11 * right.translate_x +
+                             left.m12 * right.translate_y + left.translate_x,
+                         left.m21 * right.translate_x +
+                             left.m22 * right.translate_y + left.translate_y};
+}
+
+[[nodiscard]] AffineTransform local_transform(const Layer &layer,
+                                              const Point &pivot) {
+  constexpr float degrees_to_radians = 3.14159265358979323846F / 180.0F;
+  const auto angle = layer.rotation_degrees * degrees_to_radians;
+  const auto cosine = std::cos(angle);
+  const auto sine = std::sin(angle);
+  const auto m11 = cosine * layer.scale_x;
+  const auto m12 = -sine * layer.scale_y;
+  const auto m21 = sine * layer.scale_x;
+  const auto m22 = cosine * layer.scale_y;
+  return AffineTransform{m11,
+                         m12,
+                         m21,
+                         m22,
+                         layer.x + pivot.x - m11 * pivot.x - m12 * pivot.y,
+                         layer.y + pivot.y - m21 * pivot.x - m22 * pivot.y};
+}
+
+[[nodiscard]] Point transform_point(const AffineTransform &transform,
+                                    const Point &point) {
+  return Point{transform.m11 * point.x + transform.m12 * point.y +
+                   transform.translate_x,
+               transform.m21 * point.x + transform.m22 * point.y +
+                   transform.translate_y};
+}
+
+[[nodiscard]] Rect transform_rect(const Rect &rect,
+                                  const AffineTransform &transform) {
+  const Point corners[]{
+      transform_point(transform, Point{rect.x, rect.y}),
+      transform_point(transform, Point{rect.x + rect.width, rect.y}),
+      transform_point(transform, Point{rect.x, rect.y + rect.height}),
+      transform_point(transform,
+                      Point{rect.x + rect.width, rect.y + rect.height})};
+  auto left = corners[0].x;
+  auto top = corners[0].y;
+  auto right = corners[0].x;
+  auto bottom = corners[0].y;
+  for (const auto &corner : corners) {
+    left = std::min(left, corner.x);
+    top = std::min(top, corner.y);
+    right = std::max(right, corner.x);
+    bottom = std::max(bottom, corner.y);
+  }
+  return Rect{left, top, right - left, bottom - top};
+}
 
 [[nodiscard]] Error document_error(std::string message,
                                    const std::filesystem::path &source = {},
@@ -198,6 +277,19 @@ parse_scene(const Json &pack, const Json &sticker,
                          pack_file, "$.canvas"));
     }
 
+    if (sticker.contains("view")) {
+      scene.view_offset_x = sticker.at("view").at("x").get<float>();
+      scene.view_offset_y = sticker.at("view").at("y").get<float>();
+      if (!std::isfinite(scene.view_offset_x) ||
+          !std::isfinite(scene.view_offset_y) ||
+          std::abs(scene.view_offset_x) > 128.0F ||
+          std::abs(scene.view_offset_y) > 128.0F) {
+        return Result<Scene>::failure(document_error(
+            "Sticker view offsets must be finite and between -128 and 128",
+            sticker_file, "$.view"));
+      }
+    }
+
     const auto &provenance = pack.at("provenance");
     if (provenance.at("creator").get<std::string>().empty() ||
         provenance.at("license").get<std::string>().empty() ||
@@ -228,6 +320,13 @@ parse_scene(const Json &pack, const Json &sticker,
     }
     if (auto error = validate_points(pack.at("pivots"), "$.pivots")) {
       return Result<Scene>::failure(std::move(*error));
+    }
+
+    std::map<std::string, Point, std::less<>> pivots;
+    for (auto item = pack.at("pivots").begin(); item != pack.at("pivots").end();
+         ++item) {
+      pivots.emplace(item.key(), Point{item.value().at("x").get<float>(),
+                                       item.value().at("y").get<float>()});
     }
 
     const auto pack_root = pack_file.parent_path();
@@ -431,18 +530,119 @@ parse_scene(const Json &pack, const Json &sticker,
       }
       std::optional<Rect> collision_bounds;
       if (item.contains("collision_bounds")) {
-        auto parsed = parse_rect(item.at("collision_bounds"), scene.width,
-                                 scene.height, pack_file,
-                                 location + ".collision_bounds",
-                                 "Layer collision bounds");
+        auto parsed = parse_rect(
+            item.at("collision_bounds"), scene.width, scene.height, pack_file,
+            location + ".collision_bounds", "Layer collision bounds");
         if (!parsed) {
           return Result<Scene>::failure(parsed.error());
         }
         collision_bounds = std::move(parsed).value();
       }
-      available.emplace(
-          id, Layer{std::move(resolved).value(), z, collision_bounds});
+
+      std::optional<std::string> parent;
+      if (item.contains("parent")) {
+        parent = item.at("parent").get<std::string>();
+        if (parent->empty() || *parent == id) {
+          return Result<Scene>::failure(
+              document_error("Layer parent must name a different layer",
+                             pack_file, location + ".parent"));
+        }
+      }
+
+      std::optional<std::string> pivot;
+      if (item.contains("pivot")) {
+        pivot = item.at("pivot").get<std::string>();
+        if (pivot->empty() || !pivots.contains(*pivot)) {
+          return Result<Scene>::failure(
+              document_error("Unknown layer pivot: " + *pivot, pack_file,
+                             location + ".pivot"));
+        }
+      }
+
+      const auto depth = item.value("depth", 0.0F);
+      float x = 0.0F;
+      float y = 0.0F;
+      float rotation_degrees = 0.0F;
+      float scale_x = 1.0F;
+      float scale_y = 1.0F;
+      float opacity = 1.0F;
+      if (item.contains("transform")) {
+        const auto &transform = item.at("transform");
+        x = transform.value("x", 0.0F);
+        y = transform.value("y", 0.0F);
+        rotation_degrees = transform.value("rotation_degrees", 0.0F);
+        scale_x = transform.value("scale_x", 1.0F);
+        scale_y = transform.value("scale_y", 1.0F);
+        opacity = transform.value("opacity", 1.0F);
+      }
+      if (!std::isfinite(depth) || depth < -4.0F || depth > 4.0F) {
+        return Result<Scene>::failure(
+            document_error("Layer depth must be finite and between -4 and 4",
+                           pack_file, location + ".depth"));
+      }
+      if (!std::isfinite(x) || !std::isfinite(y) || std::abs(x) > 4096.0F ||
+          std::abs(y) > 4096.0F || !std::isfinite(rotation_degrees) ||
+          std::abs(rotation_degrees) > 3600.0F || !std::isfinite(scale_x) ||
+          !std::isfinite(scale_y) || scale_x <= 0.0F || scale_x > 100.0F ||
+          scale_y <= 0.0F || scale_y > 100.0F || !std::isfinite(opacity) ||
+          opacity < 0.0F || opacity > 1.0F) {
+        return Result<Scene>::failure(document_error(
+            "Layer transform values are outside supported finite bounds",
+            pack_file, location + ".transform"));
+      }
+
+      available.emplace(id, Layer{id, std::move(resolved).value(), z,
+                                  collision_bounds, parent, pivot, depth, x, y,
+                                  rotation_degrees, scale_x, scale_y, opacity,
+                                  location, AffineTransform{}, 0.0F, 1.0F});
       ++layer_index;
+    }
+
+    std::map<std::string, std::uint8_t, std::less<>> visit_state;
+    const std::function<std::optional<Error>(const std::string &)>
+        resolve_node = [&](const std::string &id) -> std::optional<Error> {
+      auto &state = visit_state[id];
+      if (state == 2U) {
+        return std::nullopt;
+      }
+      auto &layer = available.at(id);
+      if (state == 1U) {
+        return document_error("Layer parent graph contains a cycle", pack_file,
+                              layer.location + ".parent");
+      }
+      state = 1U;
+
+      AffineTransform parent_transform;
+      float parent_depth = 0.0F;
+      float parent_opacity = 1.0F;
+      if (layer.parent) {
+        if (!available.contains(*layer.parent)) {
+          return document_error("Unknown layer parent: " + *layer.parent,
+                                pack_file, layer.location + ".parent");
+        }
+        if (auto error = resolve_node(*layer.parent)) {
+          return error;
+        }
+        const auto &resolved_parent = available.at(*layer.parent);
+        parent_transform = resolved_parent.world_transform;
+        parent_depth = resolved_parent.world_depth;
+        parent_opacity = resolved_parent.world_opacity;
+      }
+
+      const auto pivot_point = layer.pivot ? pivots.at(*layer.pivot) : Point{};
+      layer.world_transform =
+          multiply(parent_transform, local_transform(layer, pivot_point));
+      layer.world_depth = parent_depth + layer.depth;
+      layer.world_opacity = parent_opacity * layer.opacity;
+      state = 2U;
+      return std::nullopt;
+    };
+
+    for (const auto &[id, layer] : available) {
+      static_cast<void>(layer);
+      if (auto error = resolve_node(id)) {
+        return Result<Scene>::failure(std::move(*error));
+      }
     }
 
     std::set<std::string, std::less<>> selected_ids;
@@ -539,21 +739,31 @@ parse_scene(const Json &pack, const Json &sticker,
     }
     std::sort(selected.begin(), selected.end(),
               [](const auto &left, const auto &right) {
+                if (left.world_depth != right.world_depth) {
+                  return left.world_depth < right.world_depth;
+                }
                 return left.z < right.z;
               });
     scene.layers.reserve(selected.size());
     for (auto &layer : selected) {
-      scene.layers.push_back(std::move(layer.source));
+      scene.layers.push_back(
+          SceneLayer{layer.id, std::move(layer.source), layer.world_transform,
+                     layer.world_opacity, layer.world_depth, layer.z});
       if (layer.collision_bounds) {
-        const auto &bounds = *layer.collision_bounds;
+        auto visual_transform = layer.world_transform;
+        visual_transform.translate_x -= scene.view_offset_x * layer.world_depth;
+        visual_transform.translate_y -= scene.view_offset_y * layer.world_depth;
+        const auto bounds =
+            transform_rect(*layer.collision_bounds, visual_transform);
         const auto left = std::max(0.0F, bounds.x - text_clearance);
         const auto top = std::max(0.0F, bounds.y - text_clearance);
         const auto right = std::min(static_cast<float>(scene.width),
                                     bounds.x + bounds.width + text_clearance);
         const auto bottom = std::min(static_cast<float>(scene.height),
                                      bounds.y + bounds.height + text_clearance);
-        avoid_regions.push_back(
-            Rect{left, top, right - left, bottom - top});
+        if (right > left && bottom > top) {
+          avoid_regions.push_back(Rect{left, top, right - left, bottom - top});
+        }
       }
     }
 

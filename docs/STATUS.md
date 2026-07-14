@@ -25,6 +25,9 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 - Backward-compatible named text slots with explicit or deterministic
   preference-based auto placement, actual fitted-glyph overlap scoring, and
   selected-layer collision bounds expanded by a pack-wide clearance.
+- Backward-compatible parented scene nodes with named pivots, inherited affine
+  transforms/opacity/depth, deterministic view parallax, transformed collision
+  bounds, and byte-stable identity rendering.
 - Bounded deterministic timelines for body-bounce and text-pop overlays,
   animated WebP assets, and static poster thumbnails.
 - 512 x 512 assets, 256 x 256 thumbnails, alpha/dimension checks, and CLI
@@ -46,12 +49,14 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 
 ## Verified locally
 
-- AppleClang 21 Release build is warning-clean and all 24 CTest tests pass.
+- AppleClang 21 Release build is warning-clean and all 28 CTest tests pass.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
 - Static-with-CLI and shared-without-CLI Conan packages pass the external
-  consumer; installed scripts generate and render a real bundle.
+  consumer; the consumer proves layered/flat identity and changed parallax from
+  installed robot resources, while installed scripts generate and render a real
+  bundle.
 - The current generated review set contains 5 packs, 50 stickers, 100 WebPs,
   20 animated primary assets, exact authored metadata, and 2,975,724 encoded
   bytes.
@@ -88,10 +93,11 @@ publication credentials remain confined to repository secrets.
 ## Next execution track
 
 The approved generator-v6 contact sheet is the M6 visual regression baseline.
-Layered 2.5D now begins with parented parts, pivots, depth, and parallax, followed
-by squash/stretch, delayed child motion, shadows, camera motion, and a robot
-acceptance golden. Matcher boundary/collision behavior remains part of M7 unless
-a reusable matcher is deliberately added to the engine.
+MR-100 parented parts, pivots, depth, and static parallax are complete. MR-101
+adds squash/stretch, delayed child motion, shadow response, and camera motion;
+MR-102 then locks the reviewed robot animation golden. Matcher
+boundary/collision behavior remains part of M7 unless a reusable matcher is
+deliberately added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The first deterministic 2D animation slice is working; the next major engine

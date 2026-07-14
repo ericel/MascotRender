@@ -83,6 +83,27 @@ scripts are installed under `share/mascotrender/tools` by CMake and Conan.
 Pull-request CI uploads the complete bundle and gallery as a downloadable
 14-day artifact.
 
+## Layered 2.5D acceptance example
+
+The `examples/robot-2_5d` pack splits a robot into parented shadow, body, side
+panel, head, antenna, face, and effect nodes. Render the approved flat view and
+a deterministic parallax view with the same C++ engine:
+
+```bash
+mascotrender render \
+  --pack examples/robot-2_5d/pack.json \
+  --sticker examples/robot-2_5d/stickers/flat.json \
+  --output robot-flat.webp
+
+mascotrender render \
+  --pack examples/robot-2_5d/pack.json \
+  --sticker examples/robot-2_5d/stickers/parallax-right.json \
+  --output robot-parallax-right.webp
+```
+
+At zero view the layered pack is byte-identical to `pack-flat.json`. The shifted
+view applies inherited depth parallax while captions remain screen-fixed.
+
 ## Bootstrap build
 
 The checked-in macOS profile keeps MascotRender at C++20 while compiling the

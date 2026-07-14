@@ -2,6 +2,7 @@
 #include <webp/demux.h>
 
 #include <catch2/catch_test_macros.hpp>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <filesystem>
@@ -9,6 +10,8 @@
 #include <iterator>
 #include <mascotrender/mascotrender.hpp>
 #include <vector>
+
+#include "model/scene.hpp"
 
 namespace {
 
@@ -19,6 +22,14 @@ example_request(const std::filesystem::path &sticker = "sample.json") {
   const auto pack = source_root / "examples" / "cat";
   return mascotrender::RenderRequest{
       pack / "pack.json", pack / "stickers" / sticker, {}};
+}
+
+[[nodiscard]] mascotrender::RenderRequest
+robot_2_5d_request(const std::filesystem::path &pack_file = "pack.json",
+                   const std::filesystem::path &sticker_file = "flat.json") {
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  return mascotrender::RenderRequest{
+      pack / pack_file, pack / "stickers" / sticker_file, {}};
 }
 
 struct Pixel {
@@ -77,6 +88,93 @@ TEST_CASE("versioned JSON pack and sticker render SVG layers") {
   REQUIRE(features.width == 512);
   REQUIRE(features.height == 512);
   REQUIRE(features.has_alpha == 1);
+}
+
+TEST_CASE("parented 2.5D nodes preserve the flat t0 render") {
+  mascotrender::Engine engine;
+  auto layered = engine.render(robot_2_5d_request());
+  REQUIRE(layered);
+  auto flat = engine.render(robot_2_5d_request("pack-flat.json"));
+  REQUIRE(flat);
+  REQUIRE(layered.value().bytes == flat.value().bytes);
+
+  auto layered_thumbnail_request = robot_2_5d_request();
+  layered_thumbnail_request.options.width = 256;
+  layered_thumbnail_request.options.height = 256;
+  auto layered_thumbnail = engine.render(layered_thumbnail_request);
+  REQUIRE(layered_thumbnail);
+  auto flat_thumbnail_request = robot_2_5d_request("pack-flat.json");
+  flat_thumbnail_request.options.width = 256;
+  flat_thumbnail_request.options.height = 256;
+  auto flat_thumbnail = engine.render(flat_thumbnail_request);
+  REQUIRE(flat_thumbnail);
+  REQUIRE(layered_thumbnail.value().bytes == flat_thumbnail.value().bytes);
+
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  auto scene = mascotrender::detail::load_scene(
+      pack / "pack.json", pack / "stickers" / "flat.json");
+  REQUIRE(scene);
+  REQUIRE(scene.value().layers.size() == 7U);
+  REQUIRE(scene.value().layers.front().id == "shadow");
+  REQUIRE(scene.value().layers.back().id == "spark");
+  REQUIRE(scene.value().view_offset_x == 0.0F);
+  REQUIRE(scene.value().view_offset_y == 0.0F);
+}
+
+TEST_CASE(
+    "parent transforms depth and opacity resolve through the scene graph") {
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  auto scene = mascotrender::detail::load_scene(
+      pack / "pack-transform.json", pack / "stickers" / "flat.json");
+  REQUIRE(scene);
+  REQUIRE(scene.value().layers.size() == 2U);
+  const auto &body = scene.value().layers.at(0);
+  const auto &head = scene.value().layers.at(1);
+  REQUIRE(body.id == "body");
+  REQUIRE(body.transform.translate_x == 10.0F);
+  REQUIRE(body.transform.translate_y == 5.0F);
+  REQUIRE(std::abs(body.depth - 0.2F) < 0.0001F);
+  REQUIRE(std::abs(body.opacity - 0.8F) < 0.0001F);
+  REQUIRE(head.id == "head");
+  REQUIRE(head.transform.translate_x == 13.0F);
+  REQUIRE(head.transform.translate_y == 7.0F);
+  REQUIRE(std::abs(head.depth - 0.5F) < 0.0001F);
+  REQUIRE(std::abs(head.opacity - 0.4F) < 0.0001F);
+}
+
+TEST_CASE("layer depth produces deterministic parallax") {
+  mascotrender::Engine engine;
+  auto first =
+      engine.render(robot_2_5d_request("pack.json", "parallax-right.json"));
+  REQUIRE(first);
+  auto second =
+      engine.render(robot_2_5d_request("pack.json", "parallax-right.json"));
+  REQUIRE(second);
+  auto flat = engine.render(robot_2_5d_request());
+  REQUIRE(flat);
+  REQUIRE(first.value().bytes == second.value().bytes);
+  REQUIRE(first.value().bytes != flat.value().bytes);
+
+  const auto parallax_pixels = decode(first.value());
+  const auto flat_pixels = decode(flat.value());
+  REQUIRE(pixel_at(flat_pixels, 512, 92, 262).alpha == 255);
+  REQUIRE(pixel_at(parallax_pixels, 512, 92, 262).alpha == 0);
+  REQUIRE(pixel_at(parallax_pixels, 512, 60, 272).alpha == 255);
+}
+
+TEST_CASE("layer parent cycles report their pack location") {
+  mascotrender::Engine engine;
+  auto request = example_request();
+  request.pack_file =
+      source_root / "tests" / "fixtures" / "layer-cycle-pack.json";
+  request.sticker_file =
+      source_root / "tests" / "fixtures" / "layer-cycle-sticker.json";
+
+  auto result = engine.render(request);
+  REQUIRE_FALSE(result);
+  REQUIRE(result.error().code == mascotrender::ErrorCode::invalid_document);
+  REQUIRE(result.error().source == request.pack_file.string());
+  REQUIRE(result.error().location == "$.layers[0].parent");
 }
 
 TEST_CASE("pack render supports deterministic 256 pixel thumbnails") {

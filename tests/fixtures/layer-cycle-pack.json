@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "pack_id": "layer-cycle",
+  "canvas": { "width": 16, "height": 16 },
+  "layers": [
+    { "id": "a", "source": "layer-cycle.svg", "z": 0, "parent": "b" },
+    { "id": "b", "source": "layer-cycle.svg", "z": 1, "parent": "a" }
+  ],
+  "base_layers": ["a"],
+  "expressions": { "default": [] },
+  "poses": { "default": [] },
+  "provenance": { "creator": "test", "license": "test", "source": "test" },
+  "anchors": {},
+  "pivots": {}
+}

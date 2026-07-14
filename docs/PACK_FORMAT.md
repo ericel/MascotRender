@@ -22,9 +22,11 @@ The normative machine-readable files are
       "id": "body",
       "source": "layers/body.svg",
       "z": 10,
+      "pivot": "head",
+      "depth": 0,
       "collision_bounds": { "x": 123, "y": 58, "width": 266, "height": 359 }
     },
-    { "id": "eyes-happy", "source": "layers/eyes-happy.svg", "z": 20 },
+    { "id": "eyes-happy", "source": "layers/eyes-happy.svg", "z": 20, "parent": "body", "pivot": "head", "depth": 0.2 },
     { "id": "spark-left", "source": "layers/spark-left.svg", "z": 30 },
     { "id": "spark-right", "source": "layers/spark-right.svg", "z": 31 }
   ],
@@ -104,6 +106,27 @@ The normative machine-readable files are
   128 canvas units before placement scoring. Expansion is clipped to the
   canvas.
 
+## Layered 2.5D nodes
+
+Every SVG layer is also a backend-neutral scene node. Existing declarations
+remain flat identity nodes. A layer may additionally declare:
+
+- `parent`: another layer ID whose affine transform, opacity, and depth it
+  inherits; the parent need not be selected for its transform to resolve;
+- `pivot`: an ID from the pack's `pivots` map, used as the center for local
+  rotation and scale;
+- `depth`: a finite value from -4 through 4, added to parent depth;
+- `transform`: optional `x`, `y`, `rotation_degrees`, `scale_x`, `scale_y`, and
+  `opacity` values. Defaults are identity translation/rotation/scale and full
+  opacity.
+
+The compiler rejects parent cycles, missing parents, unknown pivots, and invalid
+transform values. Nodes draw by resolved world depth and then by the existing
+unique integer `z`. At an identity view, identity nodes use the original flat
+render path byte-for-byte. The runnable
+[`robot-2_5d`](../examples/robot-2_5d) example includes a flat control and a
+layered pack with shadow, body, head, face, antenna, and effect depths.
+
 ## Sticker
 
 ```json
@@ -115,6 +138,7 @@ The normative machine-readable files are
   "expression": "happy",
   "pose": "front",
   "seed": 42,
+  "view": { "x": 0, "y": 0 },
   "layers": [],
   "text": {
     "content": "YOU GOT THIS!",
@@ -140,6 +164,12 @@ lexicographic ID order when no preference is supplied. Unknown and duplicate
 slot references are rejected with JSON-path diagnostics. The C++ caller
 supplies output dimensions and WebP settings with `RenderOptions`; these are
 build settings rather than authored pack content.
+
+An optional sticker `view` supplies bounded canvas-space x/y offsets from -128
+through 128. Each node moves by the negative view offset multiplied by its
+resolved depth, producing deterministic parallax while text stays screen-fixed.
+Collision bounds receive the same world transform and parallax before automatic
+text placement.
 
 ## Text behavior in 0.1
 
