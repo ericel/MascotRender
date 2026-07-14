@@ -165,6 +165,7 @@ TEST_CASE("layer depth produces deterministic parallax") {
 TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
   mascotrender::Engine engine;
   auto request = robot_2_5d_request("pack.json", "animated-hop.json");
+  request.options.lossless = true;
 
   auto first = engine.render(request);
   REQUIRE(first);
@@ -186,6 +187,7 @@ TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
 
   std::vector<std::uint8_t> first_frame;
   std::vector<std::uint8_t> changed_frame;
+  std::vector<std::uint8_t> last_frame;
   std::uint8_t *frame = nullptr;
   int timestamp = 0;
   std::uint32_t frame_index = 0U;
@@ -196,17 +198,51 @@ TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
     } else if (frame_index == info.frame_count / 2U) {
       changed_frame.assign(frame, frame + 512U * 512U * 4U);
     }
+    last_frame.assign(frame, frame + 512U * 512U * 4U);
     ++frame_index;
   }
   REQUIRE(timestamp == 1200);
   REQUIRE_FALSE(changed_frame.empty());
   REQUIRE(first_frame != changed_frame);
+
+  const auto rest_shadow_edge = pixel_at(first_frame, 512, 140, 420);
+  const auto apex_shadow_edge = pixel_at(changed_frame, 512, 140, 420);
+  const auto rest_shadow_center = pixel_at(first_frame, 512, 256, 420);
+  const auto apex_shadow_center = pixel_at(changed_frame, 512, 264, 414);
+  REQUIRE(rest_shadow_edge.alpha > 0U);
+  REQUIRE(apex_shadow_edge.alpha == 0U);
+  REQUIRE(apex_shadow_center.alpha < rest_shadow_center.alpha / 2U);
+
+  const auto side_panel_pixels = [](const std::vector<std::uint8_t> &pixels) {
+    std::size_t count = 0U;
+    for (std::size_t offset = 0; offset < pixels.size(); offset += 4U) {
+      if (pixels[offset] == 223U && pixels[offset + 1U] == 142U &&
+          pixels[offset + 2U] == 36U && pixels[offset + 3U] == 255U) {
+        ++count;
+      }
+    }
+    return count;
+  };
+  REQUIRE(side_panel_pixels(first_frame) > 500U);
+  REQUIRE(side_panel_pixels(changed_frame) > 500U);
+  REQUIRE(side_panel_pixels(last_frame) > 500U);
+
+  bool top_margin_is_clear = true;
+  for (std::uint32_t y = 0U; y < 12U; ++y) {
+    for (std::uint32_t x = 0U; x < 512U; ++x) {
+      top_margin_is_clear =
+          top_margin_is_clear && pixel_at(changed_frame, 512, x, y).alpha == 0U;
+    }
+  }
+  REQUIRE(top_margin_is_clear);
   WebPAnimDecoderDelete(decoder);
 
   request.options.animation_first_frame_only = true;
   auto poster = engine.render(request);
   REQUIRE(poster);
-  auto flat = engine.render(robot_2_5d_request());
+  auto flat_request = robot_2_5d_request();
+  flat_request.options.lossless = true;
+  auto flat = engine.render(flat_request);
   REQUIRE(flat);
   REQUIRE(poster.value().bytes == flat.value().bytes);
 }
