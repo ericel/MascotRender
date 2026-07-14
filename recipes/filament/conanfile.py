@@ -123,7 +123,7 @@ class FilamentRecipe(ConanFile):
         elif self.settings.os == "Linux":
             core.system_libs = ["pthread", "dl"]
         elif self.settings.os == "Windows":
-            core.system_libs = ["gdi32", "user32", "opengl32"]
+            core.system_libs = ["gdi32", "user32", "opengl32", "shlwapi"]
 
     def _library_source_folder(self):
         base = os.path.join(self.build_folder, "lib")
