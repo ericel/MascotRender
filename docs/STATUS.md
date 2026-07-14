@@ -50,12 +50,15 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
-  Windows MSVC static/shared Release, plus Linux Clang 18 ASan/UBSan.
+  Windows MSVC static/shared Release, macOS arm64 static Release, an opt-in
+  macOS Filament/GLB build, plus Linux Clang 18 ASan/UBSan.
 - MIT project license shipped by CMake and Conan.
 
 ## Verified locally
 
 - AppleClang 21 Release build is warning-clean and all 32 CTest tests pass.
+- The opt-in Filament graph passes 33 non-CLI tests, including real Metal
+  engine/gltfio lifecycle, semantic anchor loading, and missing-anchor failure.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
@@ -92,6 +95,11 @@ ThorVG 0.15.16 must compile as C++17 on recent libc++ while MascotRender remains
 C++20. Profiles record this package-scoped setting. ADR-003 requires the
 workaround to be audited when ThorVG is upgraded.
 
+Filament 1.74.0 does not have a ConanCenter recipe. The repository wrapper uses
+Google's checksum-pinned official archives; its recipe and binaries must be
+published to the MascotRender remote before external 3D consumers can resolve
+`with_filament=True`.
+
 ## Distribution
 
 Release `v0.1.0` and its tested Conan binaries are published. Anonymous
@@ -112,5 +120,8 @@ The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The deterministic 2D and layered 2.5D slices are complete. The next major
 engine step is the optional Filament/GLB backend proof. The default Conan graph
 now explicitly keeps Filament disabled, and hosted CI covers macOS arm64 in
-addition to Linux and Windows. MR-111 will package the official Filament 1.74.0
-desktop archive because ConanCenter does not currently provide Filament.
+addition to Linux and Windows. MR-111 now packages the official Filament 1.74.0
+desktop archives because ConanCenter does not provide Filament. Its macOS
+Metal/gltfio lifecycle and semantic GLB loader are implemented; orthographic
+camera, toon lighting, and Linux/Windows validation remain before MR-111 can
+close.

@@ -2,6 +2,8 @@
 /build-*/
 /test_package/build/
 /test_package/CMakeUserPresets.json
+/recipes/filament/test_package/build/
+/recipes/filament/test_package/CMakeUserPresets.json
 /cmake-build-*/
 /CMakeUserPresets.json
 /.conan/

@@ -75,7 +75,8 @@ target_link_libraries(
 )
 
 if(MASCOTRENDER_WITH_FILAMENT)
-    target_link_libraries(MascotRender PRIVATE filament::filament)
+    target_sources(MascotRender PRIVATE src/render/filament_backend.cpp)
+    target_link_libraries(MascotRender PRIVATE filament::gltfio)
     target_compile_definitions(MascotRender PRIVATE MASCOTRENDER_WITH_FILAMENT=1)
 endif()
 
