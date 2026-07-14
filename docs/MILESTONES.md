@@ -285,6 +285,12 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   layered 2.5D produce byte-identical captioned posters, while Filament
   composites the same transparent screen-space caption over the real GLB frame.
   Tests and a reproducible three-backend review sheet lock the boundary.
+- `MR-114` **Done:** A versioned `robot-004` identity contract now owns the
+  exact palette, required features, and six normalized proportions shared by
+  flat 2D, layered 2.5D, and GLB. Validation independently measures actual SVG
+  and GLB data, the GLB generator derives its geometry from the contract, and
+  a reproducible review sheet proves stronger still-frame 2.5D separation
+  without changing the flat `front` compatibility pose.
 
 ## First execution batch
 

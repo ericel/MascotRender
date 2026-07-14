@@ -18,6 +18,18 @@ if(MASCOTRENDER_WITH_FILAMENT)
             --check
     )
 endif()
+
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_test(
+    NAME robot_004_identity_contract
+    COMMAND
+        "${Python3_EXECUTABLE}"
+        "${PROJECT_SOURCE_DIR}/tools/validate_character_identity.py"
+        --contract "${PROJECT_SOURCE_DIR}/examples/robot-004/identity.json"
+        --pack "${PROJECT_SOURCE_DIR}/examples/robot-2_5d/pack.json"
+        --flat-pack "${PROJECT_SOURCE_DIR}/examples/robot-2_5d/pack-flat.json"
+        --glb "${PROJECT_SOURCE_DIR}/examples/robot-004/robot-004.glb"
+)
 target_link_libraries(
     mascotrender_unit_tests
     PRIVATE

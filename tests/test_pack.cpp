@@ -2,6 +2,7 @@
 #include <webp/demux.h>
 
 #include <catch2/catch_test_macros.hpp>
+#include <algorithm>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
@@ -179,6 +180,36 @@ TEST_CASE("layer depth produces deterministic parallax") {
   REQUIRE(pixel_at(parallax_pixels, 512, 60, 272).alpha == 255);
 }
 
+TEST_CASE("dimensional 2.5D pose adds shading rim light and stronger depth") {
+  mascotrender::Engine engine;
+  auto first = engine.render(
+      robot_2_5d_request("pack.json", "dimensional-caption-proof.json"));
+  REQUIRE(first);
+  auto second = engine.render(
+      robot_2_5d_request("pack.json", "dimensional-caption-proof.json"));
+  REQUIRE(second);
+  REQUIRE(first.value().bytes == second.value().bytes);
+  auto flat = engine.render(
+      robot_2_5d_request("pack-flat.json", "caption-proof.json"));
+  REQUIRE(flat);
+  REQUIRE(first.value().bytes != flat.value().bytes);
+
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  auto scene = mascotrender::detail::load_scene(
+      pack / "pack.json",
+      pack / "stickers" / "dimensional-caption-proof.json");
+  REQUIRE(scene);
+  REQUIRE(scene.value().layers.size() == 11U);
+  const auto has_layer = [&scene](const std::string &id) {
+    return std::any_of(scene.value().layers.begin(), scene.value().layers.end(),
+                       [&id](const auto &layer) { return layer.id == id; });
+  };
+  REQUIRE(has_layer("dimensional-shadow"));
+  REQUIRE(has_layer("side-shading"));
+  REQUIRE(has_layer("face-shading"));
+  REQUIRE(has_layer("rim-light"));
+}
+
 TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
   mascotrender::Engine engine;
   auto request = robot_2_5d_request("pack.json", "animated-hop.json");
@@ -233,8 +264,8 @@ TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
   const auto side_panel_pixels = [](const std::vector<std::uint8_t> &pixels) {
     std::size_t count = 0U;
     for (std::size_t offset = 0; offset < pixels.size(); offset += 4U) {
-      if (pixels[offset] == 223U && pixels[offset + 1U] == 142U &&
-          pixels[offset + 2U] == 36U && pixels[offset + 3U] == 255U) {
+      if (pixels[offset] == 233U && pixels[offset + 1U] == 154U &&
+          pixels[offset + 2U] == 32U && pixels[offset + 3U] == 255U) {
         ++count;
       }
     }

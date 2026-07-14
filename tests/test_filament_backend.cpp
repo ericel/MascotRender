@@ -288,8 +288,8 @@ TEST_CASE("authored robot GLB exposes four clips and six facial morphs") {
       mascotrender::detail::inspect_filament_glb(robot_glb, anchors);
 
   REQUIRE(inspected);
-  REQUIRE(inspected.value().entity_count == 21U);
-  REQUIRE(inspected.value().renderable_count == 15U);
+  REQUIRE(inspected.value().entity_count == 19U);
+  REQUIRE(inspected.value().renderable_count == 13U);
   REQUIRE(inspected.value().animation_count == 4U);
   REQUIRE(inspected.value().animation_names ==
           std::vector<std::string>{"idle", "hello", "hop", "celebrate"});
@@ -313,13 +313,13 @@ TEST_CASE("authored robot clips produce distinct orthographic frames") {
   REQUIRE(rest);
   REQUIRE(lit_pixel_count(rest.value().rgba) > 2000U);
   REQUIRE(color_pixel_count(rest.value(), {255U, 209U, 102U}) > 1000U);
-  REQUIRE(color_pixel_count(rest.value(), {228U, 155U, 54U}) > 500U);
-  REQUIRE(color_pixel_count(rest.value(), {122U, 225U, 210U}) > 100U);
-  REQUIRE(color_pixel_count(rest.value(), {60U, 48U, 66U}) > 100U);
-  const auto mint_on_top = color_pixel_count(rest.value(), {122U, 225U, 210U},
+  REQUIRE(color_pixel_count(rest.value(), {233U, 154U, 32U}) > 500U);
+  REQUIRE(color_pixel_count(rest.value(), {99U, 217U, 207U}) > 100U);
+  REQUIRE(color_pixel_count(rest.value(), {38U, 52U, 81U}) > 100U);
+  const auto mint_on_top = color_pixel_count(rest.value(), {99U, 217U, 207U},
                                              0U, rest.value().height / 4U);
   const auto mint_on_bottom = color_pixel_count(
-      rest.value(), {122U, 225U, 210U}, rest.value().height * 3U / 4U);
+      rest.value(), {99U, 217U, 207U}, rest.value().height * 3U / 4U);
   REQUIRE(mint_on_top > mint_on_bottom);
   const auto rest_hash = frame_hash(rest.value().rgba);
 

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "robot-2_5d-dimensional-caption-proof",
+  "pack_id": "robot-2_5d",
+  "alt_text": "Dimensional yellow robot with parallax, shading, rim light, and NICE ONE caption",
+  "expression": "happy",
+  "pose": "dimensional",
+  "seed": 42,
+  "view": { "x": 28, "y": -8 },
+  "text": {
+    "content": "NICE ONE!",
+    "style": "caption",
+    "placement": "auto",
+    "preferred_slots": ["top", "bottom"]
+  }
+}

@@ -42,9 +42,9 @@ The current implementation proves the distribution and graphics path:
    covered by the unit suite.
 
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
-hosted compiler/sanitizer matrix is green. A protected Conan publication
-workflow performs an upload followed by a clean remote-consumer proof; its
-first successful run is the remaining package-publication gate.
+hosted compiler/sanitizer matrix is green. The protected Conan publication
+workflow uploads and then proves a clean anonymous remote consumer; release
+`v0.1.0` and its tested binaries are public.
 
 Pack v1 also supports backward-compatible named text slots. Stickers can select
 an explicit slot such as `top` or request deterministic `auto` placement with
@@ -104,12 +104,20 @@ mascotrender render \
   --pack examples/robot-2_5d/pack.json \
   --sticker examples/robot-2_5d/stickers/animated-hop.json \
   --output robot-animated-hop.webp
+
+mascotrender render \
+  --pack examples/robot-2_5d/pack.json \
+  --sticker examples/robot-2_5d/stickers/dimensional-caption-proof.json \
+  --output robot-dimensional.webp
 ```
 
 At zero view the layered pack is byte-identical to `pack-flat.json`. The shifted
 view applies inherited depth parallax while captions remain screen-fixed. The
 animated example uses typed node and camera tracks for squash/stretch, delayed
-head and antenna follow-through, a responsive shadow, and moving parallax.
+head and antenna follow-through, a responsive shadow, and moving parallax. The
+review-only `dimensional` pose makes depth visible in a still with a stronger
+cast shadow, warm side planes, face gradient, rim light, and a shifted view;
+the existing `front` pose remains the flat compatibility control.
 
 ## Bootstrap build
 
@@ -159,7 +167,7 @@ playback page, and machine-checked review metadata with:
 
 ```bash
 python tools/render_robot_glb_review.py \
-  --renderer build/Release/mascotrender-glb-preview \
+  --renderer build/filament/cmake/mascotrender-glb-preview \
   --input examples/robot-004/robot-004.glb \
   --output generated/robot-004-review
 ```
@@ -177,6 +185,27 @@ python tools/render_caption_backend_review.py \
 
 The review fails if flat and layered `t = 0` pixels differ or if any backend
 does not render the caption inside the selected safe area.
+
+MR-114 adds a versioned `robot-004` character identity contract shared by the
+SVG and GLB packs. Exact palette values, required features, and six normalized
+proportion measurements are checked against the actual SVG XML and GLB mesh
+data rather than trusting authored metadata. Validate it and generate the
+identity review sheet with:
+
+```bash
+python tools/validate_character_identity.py \
+  --contract examples/robot-004/identity.json \
+  --pack examples/robot-2_5d/pack.json \
+  --flat-pack examples/robot-2_5d/pack-flat.json \
+  --glb examples/robot-004/robot-004.glb
+
+python tools/render_character_identity_review.py \
+  --renderer-2d build/Release/mascotrender \
+  --renderer-3d build/filament/cmake/mascotrender-glb-preview \
+  --output generated/mr114-identity-review
+```
+
+Captions remain one separate screen-space layer in all three outputs.
 
 ## Use from another Conan project
 

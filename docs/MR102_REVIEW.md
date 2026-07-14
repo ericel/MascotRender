@@ -13,7 +13,11 @@ enough and the side-panel geometry was visually ambiguous. The correction:
 
 The accepted asset is `tests/golden/robot-2_5d-animated-hop.webp`: a lossless
 512 x 512, 1200 ms, 15-frame looping WebP with SHA-256
-`61e255a91dbdb2dc8005d646d28cef6b4de2f64bcaa1781775b0152578465873`.
+`84785d86bf309cb4c1f24e10d0374131908ab28fd9cae1f4d090363836c18f0a`.
 CTest verifies animation metadata and timestamps, compares every decoded RGBA
 sample against the accepted golden, and separately asserts the reviewed shadow,
 panel-presence, and top-clearance properties.
+
+The encoded asset was intentionally revised during MR-114 to apply the shared
+`robot-004` palette and proportion contract. This changes the art pixels but
+does not change the previously approved motion timing or depth behavior.

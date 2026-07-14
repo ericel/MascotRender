@@ -316,3 +316,26 @@ entities. This keeps typography deterministic, crisp, pack-font licensed, and
 independent of camera depth while leaving the default Conan graph free of
 Filament. Existing 2D text goldens must remain pixel-stable; flat and layered
 captioned `t = 0` output must be byte-identical.
+
+## ADR-022: Versioned character identity contract across backends
+
+- Status: Accepted
+- Date: 2026-07-14
+
+Character identity is an authored, backend-independent contract. Each contract
+owns a stable character ID and version, exact palette, required semantic
+features, normalized proportion measurements, and explicit measurement
+definitions. Participating packs pin the canonical JSON bytes by SHA-256; GLB
+generation derives its geometry and materials from the same file and embeds the
+contract reference in asset metadata.
+
+Acceptance must inspect actual SVG XML and GLB material, node, and mesh data;
+matching metadata alone is insufficient. The first contract is `robot-004` and
+covers head aspect, head-to-body ratio, eye spacing and height, mouth height,
+antenna height, palette, and five required features.
+
+Captions remain outside this contract as the shared screen-space layer from
+ADR-021. Layered 2.5D may add review-only shading, rim light, shadow, depth, and
+view offsets, but must preserve the original flat pose as a compatibility
+control. Identity-driven art revisions may update a golden only with recorded
+review evidence and unchanged motion acceptance checks.

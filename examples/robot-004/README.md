@@ -6,6 +6,12 @@ Its rounded-square silhouette, curved face, mint antenna/sparkle, warm gold
 face plate, orange trim, and navy ink follow the approved 2D/2.5D visual
 contract rather than introducing an independent 3D character design.
 
+`identity.json` is the versioned MR-114 identity contract shared with the flat
+2D and layered 2.5D packs. It fixes the exact palette, required semantic
+features, and normalized proportions for the head, body, eyes, mouth, and
+antenna. The generator derives GLB geometry and material colors from this file,
+then embeds its ID, version, and SHA-256 in the GLB asset metadata.
+
 Semantic nodes:
 
 - `RobotRoot`, `Body`, `Head`, `Face`, `Antenna`
@@ -25,9 +31,18 @@ Facial morph targets:
 Regenerate or verify the asset:
 
 ```bash
-python tools/generate_robot_glb.py --output examples/robot-004/robot-004.glb
 python tools/generate_robot_glb.py \
+  --identity examples/robot-004/identity.json \
+  --output examples/robot-004/robot-004.glb
+python tools/generate_robot_glb.py \
+  --identity examples/robot-004/identity.json \
   --output examples/robot-004/robot-004.glb --check
+
+python tools/validate_character_identity.py \
+  --contract examples/robot-004/identity.json \
+  --pack examples/robot-2_5d/pack.json \
+  --flat-pack examples/robot-2_5d/pack-flat.json \
+  --glb examples/robot-004/robot-004.glb
 ```
 
 The review script requires Pillow and writes five transparent pose WebPs, four
@@ -39,7 +54,7 @@ WebP chunk, a wrong frame count, or a loop that does not close:
 
 ```bash
 python tools/render_robot_glb_review.py \
-  --renderer build/Release/mascotrender-glb-preview \
+  --renderer build/filament/cmake/mascotrender-glb-preview \
   --input examples/robot-004/robot-004.glb \
   --output generated/robot-004-review
 ```
