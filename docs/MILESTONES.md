@@ -291,6 +291,11 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   and GLB data, the GLB generator derives its geometry from the contract, and
   a reproducible review sheet proves stronger still-frame 2.5D separation
   without changing the flat `front` compatibility pose.
+- `MR-115` **Done:** Identity contract v2 locks antenna continuity and three
+  antenna ratios, four eye ratios, orange-frame/inset-body structure, and one
+  anchored screen-space sparkle rule. The GLB no longer owns sparkle geometry;
+  all three backends composite the same SVG bounds, verified unchanged across
+  near and far 3D camera spans.
 
 ## First execution batch
 

@@ -30,6 +30,7 @@ The normative machine-readable files are
       "z": 10,
       "pivot": "head",
       "depth": 0,
+      "screen_space": false,
       "collision_bounds": { "x": 123, "y": 58, "width": 266, "height": 359 }
     },
     { "id": "eyes-happy", "source": "layers/eyes-happy.svg", "z": 20, "parent": "body", "pivot": "head", "depth": 0.2 },
@@ -115,6 +116,10 @@ The normative machine-readable files are
 - `text_clearance` optionally expands selected-layer collision bounds by 0 to
   128 canvas units before placement scoring. Expansion is clipped to the
   canvas.
+- A layer may set `screen_space: true` to draw after character-space nodes and
+  opt out of mascot transforms and depth parallax. Screen-space layers cannot
+  declare a parent. Use this for effects whose pixel size must not change with
+  a 2.5D or 3D camera; captions remain the separate text compositor.
 
 ## Layered 2.5D nodes
 
@@ -126,6 +131,8 @@ remain flat identity nodes. A layer may additionally declare:
 - `pivot`: an ID from the pack's `pivots` map, used as the center for local
   rotation and scale;
 - `depth`: a finite value from -4 through 4, added to parent depth;
+- `screen_space`: optional boolean for unparented post-character effects that
+  remain fixed under view and mascot animation;
 - `transform`: optional `x`, `y`, `rotation_degrees`, `scale_x`, `scale_y`, and
   `opacity` values. Defaults are identity translation/rotation/scale and full
   opacity.

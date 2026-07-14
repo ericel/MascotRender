@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "characterId": "robot-004",
   "identity": {
     "primaryColor": "#FFD166",
@@ -8,27 +8,64 @@
     "outlineColor": "#263451",
     "headAspectRatio": 1.08,
     "headToBodyRatio": 3.2,
-    "eyeSpacingRatio": 0.31,
-    "eyeVerticalRatio": 0.42,
     "mouthVerticalRatio": 0.68,
-    "antennaHeightRatio": 0.32,
+    "antenna": {
+      "tipColor": "#59D4CC",
+      "stemColor": "#263451",
+      "stemWidthRatio": 0.035,
+      "totalHeightRatio": 0.26,
+      "tipDiameterRatio": 0.13,
+      "continuousSilhouette": true
+    },
+    "eyes": {
+      "widthToHeadRatio": 0.16,
+      "heightToHeadRatio": 0.25,
+      "horizontalSpacingRatio": 0.30,
+      "verticalCenterRatio": 0.44
+    },
+    "body": {
+      "frameColor": "#E99A20",
+      "insetColor": "#FFD166",
+      "frameWidthToHeadRatio": 0.74,
+      "insetWidthToFrameRatio": 0.74,
+      "insetHeightToFrameRatio": 0.52,
+      "orangeFrame": true,
+      "insetPanel": true
+    },
+    "sparkle": {
+      "color": "#63D9CF",
+      "anchor": "head.left",
+      "screenOffset": [-0.19, 0.02],
+      "screenSizeRatio": 0.18
+    },
     "requiredFeatures": [
       "rounded_square_head",
       "single_antenna",
       "teal_antenna_tip",
       "triangular_teal_nose",
-      "orange_side_ears"
+      "orange_side_ears",
+      "orange_body_frame",
+      "inset_body_panel",
+      "screen_space_sparkle"
     ]
   },
   "validation": {
-    "ratioTolerance": 0.02,
+    "ratioTolerance": 0.01,
     "measurements": {
       "headAspectRatio": "outer head width divided by outer head height",
-      "headToBodyRatio": "outer head height divided by core body height",
-      "eyeSpacingRatio": "eye center distance divided by outer head width",
-      "eyeVerticalRatio": "head-top to eye-center distance divided by outer head height",
+      "headToBodyRatio": "outer head height divided by inset body-panel height",
       "mouthVerticalRatio": "head-top to mouth-anchor distance divided by outer head height",
-      "antennaHeightRatio": "head-top to antenna-tip-top distance divided by outer head height"
+      "antennaStemWidthRatio": "visible stem width divided by outer head width",
+      "antennaTotalHeightRatio": "head-top to antenna-tip-top distance divided by outer head height",
+      "antennaTipDiameterRatio": "antenna-tip diameter divided by outer head width",
+      "eyesWidthToHeadRatio": "one eye width divided by outer head width",
+      "eyesHeightToHeadRatio": "one eye height divided by outer head height",
+      "eyesHorizontalSpacingRatio": "eye center distance divided by outer head width",
+      "eyesVerticalCenterRatio": "head-top to eye-center distance divided by outer head height",
+      "bodyFrameWidthToHeadRatio": "outer body-frame width divided by outer head width",
+      "bodyInsetWidthToFrameRatio": "body inset width divided by outer body-frame width",
+      "bodyInsetHeightToFrameRatio": "body inset height divided by outer body-frame height",
+      "sparkleScreenSizeRatio": "sparkle outer diameter divided by the smaller output dimension"
     }
   }
 }

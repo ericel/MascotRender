@@ -48,6 +48,7 @@ struct SceneLayer {
   std::vector<SceneAnimationNode> animation_chain;
   float opacity{1.0F};
   float depth{};
+  bool screen_space{};
   std::int32_t z{};
 };
 

@@ -36,15 +36,15 @@ PALETTE: dict[str, tuple[int, int, int]] = {}
 def palette_from_identity(path: Path) -> dict[str, tuple[int, int, int]]:
     identity = json.loads(path.read_text(encoding="utf-8"))["identity"]
 
-    def channels(name: str) -> tuple[int, int, int]:
-        color = identity[name]
+    def channels(color: str) -> tuple[int, int, int]:
         return tuple(int(color[index : index + 2], 16) for index in (1, 3, 5))
 
     return {
-        "gold": channels("primaryColor"),
-        "orange": channels("secondaryColor"),
-        "mint": channels("accentColor"),
-        "ink": channels("outlineColor"),
+        "gold": channels(identity["primaryColor"]),
+        "orange": channels(identity["secondaryColor"]),
+        "mint": channels(identity["accentColor"]),
+        "ink": channels(identity["outlineColor"]),
+        "antenna_tip": channels(identity["antenna"]["tipColor"]),
     }
 
 
@@ -81,6 +81,15 @@ def render_command(
         "--center-y",
         "0.15",
     ]
+    pack_root = source.parent.parent / "robot-2_5d"
+    command.extend(
+        [
+            "--screen-effects-pack",
+            str(pack_root / "pack.json"),
+            "--screen-effects-sticker",
+            str(pack_root / "stickers" / "caption-proof.json"),
+        ]
+    )
     if animation:
         command.extend(["--animation", animation, "--time", str(time)])
     return command
@@ -119,11 +128,11 @@ def validate_rest_frame(image: Image.Image) -> dict[str, object]:
     if missing:
         raise RuntimeError(f"rest frame is missing approved palette colors: {missing}")
 
-    mint_pixels = matching_pixels(image, PALETTE["mint"])
-    top_mint = sum(y < image.height * 0.2 for _, y in mint_pixels)
-    bottom_mint = sum(y > image.height * 0.8 for _, y in mint_pixels)
-    if top_mint < 100 or top_mint <= bottom_mint:
-        raise RuntimeError("rest frame orientation guard failed: mint antenna is not on top")
+    tip_pixels = matching_pixels(image, PALETTE["antenna_tip"])
+    top_tip = sum(y < image.height * 0.2 for _, y in tip_pixels)
+    bottom_tip = sum(y > image.height * 0.8 for _, y in tip_pixels)
+    if top_tip < 100 or top_tip <= bottom_tip:
+        raise RuntimeError("rest frame orientation guard failed: antenna tip is not on top")
 
     alpha_bounds = image.getchannel("A").getbbox()
     if alpha_bounds is None or alpha_bounds[1] >= image.height * 0.3:

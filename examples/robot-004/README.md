@@ -2,15 +2,17 @@
 
 `robot-004.glb` is the deterministic MR-112 true-3D mascot proof. It is built
 from code so CI can compare the complete binary without requiring Blender.
-Its rounded-square silhouette, curved face, mint antenna/sparkle, warm gold
+Its rounded-square silhouette, curved face, teal antenna, warm gold
 face plate, orange trim, and navy ink follow the approved 2D/2.5D visual
 contract rather than introducing an independent 3D character design.
 
-`identity.json` is the versioned MR-114 identity contract shared with the flat
+`identity.json` is the version-2 MR-114/MR-115 identity contract shared with the flat
 2D and layered 2.5D packs. It fixes the exact palette, required semantic
-features, and normalized proportions for the head, body, eyes, mouth, and
-antenna. The generator derives GLB geometry and material colors from this file,
-then embeds its ID, version, and SHA-256 in the GLB asset metadata.
+features, and normalized proportions for the head, framed/inset body, eyes,
+mouth, antenna, and screen-space sparkle. The generator derives GLB geometry
+and material colors from this file, then embeds its ID, version, SHA-256, and
+effect semantics in the GLB asset metadata. Sparkle geometry deliberately stays
+out of the GLB and is composited from the shared SVG layer.
 
 Semantic nodes:
 

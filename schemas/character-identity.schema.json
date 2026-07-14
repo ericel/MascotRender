@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://mascotrender.dev/schema/character-identity-v1.json",
+  "$id": "https://mascotrender.dev/schema/character-identity-v2.json",
   "title": "MascotRender character identity contract",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "characterId", "identity", "validation"],
   "properties": {
-    "schema_version": { "const": 1 },
+    "schema_version": { "const": 2 },
     "characterId": { "type": "string", "minLength": 1 },
     "identity": {
       "type": "object",
@@ -18,10 +18,11 @@
         "outlineColor",
         "headAspectRatio",
         "headToBodyRatio",
-        "eyeSpacingRatio",
-        "eyeVerticalRatio",
         "mouthVerticalRatio",
-        "antennaHeightRatio",
+        "antenna",
+        "eyes",
+        "body",
+        "sparkle",
         "requiredFeatures"
       ],
       "properties": {
@@ -31,10 +32,60 @@
         "outlineColor": { "$ref": "#/$defs/color" },
         "headAspectRatio": { "$ref": "#/$defs/ratio" },
         "headToBodyRatio": { "$ref": "#/$defs/ratio" },
-        "eyeSpacingRatio": { "$ref": "#/$defs/ratio" },
-        "eyeVerticalRatio": { "$ref": "#/$defs/ratio" },
         "mouthVerticalRatio": { "$ref": "#/$defs/ratio" },
-        "antennaHeightRatio": { "$ref": "#/$defs/ratio" },
+        "antenna": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tipColor", "stemColor", "stemWidthRatio", "totalHeightRatio", "tipDiameterRatio", "continuousSilhouette"],
+          "properties": {
+            "tipColor": { "$ref": "#/$defs/color" },
+            "stemColor": { "$ref": "#/$defs/color" },
+            "stemWidthRatio": { "$ref": "#/$defs/ratio" },
+            "totalHeightRatio": { "$ref": "#/$defs/ratio" },
+            "tipDiameterRatio": { "$ref": "#/$defs/ratio" },
+            "continuousSilhouette": { "const": true }
+          }
+        },
+        "eyes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthToHeadRatio", "heightToHeadRatio", "horizontalSpacingRatio", "verticalCenterRatio"],
+          "properties": {
+            "widthToHeadRatio": { "$ref": "#/$defs/ratio" },
+            "heightToHeadRatio": { "$ref": "#/$defs/ratio" },
+            "horizontalSpacingRatio": { "$ref": "#/$defs/ratio" },
+            "verticalCenterRatio": { "$ref": "#/$defs/ratio" }
+          }
+        },
+        "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["frameColor", "insetColor", "frameWidthToHeadRatio", "insetWidthToFrameRatio", "insetHeightToFrameRatio", "orangeFrame", "insetPanel"],
+          "properties": {
+            "frameColor": { "$ref": "#/$defs/color" },
+            "insetColor": { "$ref": "#/$defs/color" },
+            "frameWidthToHeadRatio": { "$ref": "#/$defs/ratio" },
+            "insetWidthToFrameRatio": { "$ref": "#/$defs/ratio" },
+            "insetHeightToFrameRatio": { "$ref": "#/$defs/ratio" },
+            "orangeFrame": { "const": true },
+            "insetPanel": { "const": true }
+          }
+        },
+        "sparkle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["color", "anchor", "screenOffset", "screenSizeRatio"],
+          "properties": {
+            "color": { "$ref": "#/$defs/color" },
+            "anchor": { "const": "head.left" },
+            "screenOffset": {
+              "type": "array",
+              "prefixItems": [{ "type": "number" }, { "type": "number" }],
+              "items": false
+            },
+            "screenSizeRatio": { "$ref": "#/$defs/ratio" }
+          }
+        },
         "requiredFeatures": {
           "type": "array",
           "minItems": 1,
@@ -48,47 +99,49 @@
       "additionalProperties": false,
       "required": ["ratioTolerance", "measurements"],
       "properties": {
-        "ratioTolerance": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 0.25
-        },
+        "ratioTolerance": { "type": "number", "minimum": 0, "maximum": 0.25 },
         "measurements": {
           "type": "object",
           "additionalProperties": false,
           "required": [
             "headAspectRatio",
             "headToBodyRatio",
-            "eyeSpacingRatio",
-            "eyeVerticalRatio",
             "mouthVerticalRatio",
-            "antennaHeightRatio"
+            "antennaStemWidthRatio",
+            "antennaTotalHeightRatio",
+            "antennaTipDiameterRatio",
+            "eyesWidthToHeadRatio",
+            "eyesHeightToHeadRatio",
+            "eyesHorizontalSpacingRatio",
+            "eyesVerticalCenterRatio",
+            "bodyFrameWidthToHeadRatio",
+            "bodyInsetWidthToFrameRatio",
+            "bodyInsetHeightToFrameRatio",
+            "sparkleScreenSizeRatio"
           ],
           "properties": {
             "headAspectRatio": { "$ref": "#/$defs/measurement" },
             "headToBodyRatio": { "$ref": "#/$defs/measurement" },
-            "eyeSpacingRatio": { "$ref": "#/$defs/measurement" },
-            "eyeVerticalRatio": { "$ref": "#/$defs/measurement" },
             "mouthVerticalRatio": { "$ref": "#/$defs/measurement" },
-            "antennaHeightRatio": { "$ref": "#/$defs/measurement" }
+            "antennaStemWidthRatio": { "$ref": "#/$defs/measurement" },
+            "antennaTotalHeightRatio": { "$ref": "#/$defs/measurement" },
+            "antennaTipDiameterRatio": { "$ref": "#/$defs/measurement" },
+            "eyesWidthToHeadRatio": { "$ref": "#/$defs/measurement" },
+            "eyesHeightToHeadRatio": { "$ref": "#/$defs/measurement" },
+            "eyesHorizontalSpacingRatio": { "$ref": "#/$defs/measurement" },
+            "eyesVerticalCenterRatio": { "$ref": "#/$defs/measurement" },
+            "bodyFrameWidthToHeadRatio": { "$ref": "#/$defs/measurement" },
+            "bodyInsetWidthToFrameRatio": { "$ref": "#/$defs/measurement" },
+            "bodyInsetHeightToFrameRatio": { "$ref": "#/$defs/measurement" },
+            "sparkleScreenSizeRatio": { "$ref": "#/$defs/measurement" }
           }
         }
       }
     }
   },
   "$defs": {
-    "color": {
-      "type": "string",
-      "pattern": "^#[0-9A-F]{6}$"
-    },
-    "ratio": {
-      "type": "number",
-      "exclusiveMinimum": 0,
-      "maximum": 10
-    },
-    "measurement": {
-      "type": "string",
-      "minLength": 1
-    }
+    "color": { "type": "string", "pattern": "^#[0-9A-F]{6}$" },
+    "ratio": { "type": "number", "exclusiveMinimum": 0, "maximum": 10 },
+    "measurement": { "type": "string", "minLength": 1 }
   }
 }

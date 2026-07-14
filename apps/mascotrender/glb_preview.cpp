@@ -29,6 +29,8 @@ void print_help() {
                "       [--width 256] [--height 256] [--span 3.6] "
                "[--center-y 0.0]\n"
                "       [--animation clip] [--time seconds]\n"
+               "       [--screen-effects-pack pack.json "
+               "--screen-effects-sticker sticker.json]\n"
                "       [--caption-pack pack.json --caption-sticker "
                "sticker.json]\n";
 }
@@ -40,6 +42,8 @@ int main(int argc, char **argv) {
   std::filesystem::path output;
   std::filesystem::path caption_pack;
   std::filesystem::path caption_sticker;
+  std::filesystem::path screen_effects_pack;
+  std::filesystem::path screen_effects_sticker;
   mascotrender::detail::FilamentRenderOptions options;
   try {
     for (int index = 1; index < argc; ++index) {
@@ -67,6 +71,10 @@ int main(int argc, char **argv) {
         caption_pack = next_value(index, argc, argv);
       } else if (argument == "--caption-sticker") {
         caption_sticker = next_value(index, argc, argv);
+      } else if (argument == "--screen-effects-pack") {
+        screen_effects_pack = next_value(index, argc, argv);
+      } else if (argument == "--screen-effects-sticker") {
+        screen_effects_sticker = next_value(index, argc, argv);
       } else if (argument == "--help" || argument == "-h") {
         print_help();
         return 0;
@@ -87,6 +95,11 @@ int main(int argc, char **argv) {
     std::cerr << "--caption-pack and --caption-sticker must be used together\n";
     return 2;
   }
+  if (screen_effects_pack.empty() != screen_effects_sticker.empty()) {
+    std::cerr << "--screen-effects-pack and --screen-effects-sticker must be "
+                 "used together\n";
+    return 2;
+  }
 
   auto rendered = mascotrender::detail::render_filament_glb(input, options);
   if (!rendered) {
@@ -95,21 +108,45 @@ int main(int argc, char **argv) {
   }
 
   auto frame = std::move(rendered.value());
+  mascotrender::detail::ThorvgBackend overlay_renderer;
+  if (!screen_effects_pack.empty()) {
+    auto scene = mascotrender::detail::load_scene(screen_effects_pack,
+                                                  screen_effects_sticker);
+    if (!scene) {
+      std::cerr << "screen-effect scene failed: " << scene.error().message
+                << '\n';
+      return 1;
+    }
+    auto overlay = overlay_renderer.render_layer_overlay(
+        scene.value(), "spark", options.width, options.height);
+    if (!overlay) {
+      std::cerr << "screen-effect render failed: " << overlay.error().message
+                << '\n';
+      return 1;
+    }
+    auto composited = mascotrender::detail::composite_overlay(std::move(frame),
+                                                              overlay.value());
+    if (!composited) {
+      std::cerr << "screen-effect composite failed: "
+                << composited.error().message << '\n';
+      return 1;
+    }
+    frame = std::move(composited.value());
+  }
   if (!caption_pack.empty()) {
     auto scene = mascotrender::detail::load_scene(caption_pack, caption_sticker);
     if (!scene) {
       std::cerr << "caption scene failed: " << scene.error().message << '\n';
       return 1;
     }
-    mascotrender::detail::ThorvgBackend caption_renderer;
-    auto overlay = caption_renderer.render_caption_overlay(
+    auto overlay = overlay_renderer.render_caption_overlay(
         scene.value(), options.width, options.height);
     if (!overlay) {
       std::cerr << "caption render failed: " << overlay.error().message << '\n';
       return 1;
     }
-    auto composited = mascotrender::detail::composite_caption(
-        std::move(frame), overlay.value());
+    auto composited = mascotrender::detail::composite_overlay(std::move(frame),
+                                                              overlay.value());
     if (!composited) {
       std::cerr << "caption composite failed: " << composited.error().message
                 << '\n';

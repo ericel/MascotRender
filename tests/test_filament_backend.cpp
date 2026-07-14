@@ -260,8 +260,16 @@ TEST_CASE("Filament uses the shared screen-space caption compositor") {
   auto caption =
       caption_renderer.render_caption_overlay(scene.value(), size, size);
   REQUIRE(caption);
-  auto composited = mascotrender::detail::composite_caption(
-      std::move(rendered.value()), caption.value());
+  auto sparkle =
+      caption_renderer.render_layer_overlay(scene.value(), "spark", size, size);
+  REQUIRE(sparkle);
+  auto with_effect = mascotrender::detail::composite_overlay(
+      std::move(rendered.value()), sparkle.value());
+  REQUIRE(with_effect);
+  REQUIRE(frame_hash(with_effect.value().rgba) != base_hash);
+
+  auto composited = mascotrender::detail::composite_overlay(
+      std::move(with_effect.value()), caption.value());
   REQUIRE(composited);
   REQUIRE(frame_hash(composited.value().rgba) != base_hash);
 
@@ -314,13 +322,14 @@ TEST_CASE("authored robot clips produce distinct orthographic frames") {
   REQUIRE(lit_pixel_count(rest.value().rgba) > 2000U);
   REQUIRE(color_pixel_count(rest.value(), {255U, 209U, 102U}) > 1000U);
   REQUIRE(color_pixel_count(rest.value(), {233U, 154U, 32U}) > 500U);
-  REQUIRE(color_pixel_count(rest.value(), {99U, 217U, 207U}) > 100U);
+  REQUIRE(color_pixel_count(rest.value(), {99U, 217U, 207U}) > 10U);
+  REQUIRE(color_pixel_count(rest.value(), {89U, 212U, 204U}) > 20U);
   REQUIRE(color_pixel_count(rest.value(), {38U, 52U, 81U}) > 100U);
-  const auto mint_on_top = color_pixel_count(rest.value(), {99U, 217U, 207U},
-                                             0U, rest.value().height / 4U);
-  const auto mint_on_bottom = color_pixel_count(
-      rest.value(), {99U, 217U, 207U}, rest.value().height * 3U / 4U);
-  REQUIRE(mint_on_top > mint_on_bottom);
+  const auto tip_on_top = color_pixel_count(rest.value(), {89U, 212U, 204U}, 0U,
+                                            rest.value().height / 4U);
+  const auto tip_on_bottom = color_pixel_count(rest.value(), {89U, 212U, 204U},
+                                               rest.value().height * 3U / 4U);
+  REQUIRE(tip_on_top > tip_on_bottom);
   const auto rest_hash = frame_hash(rest.value().rgba);
 
   for (const auto &[clip, time] :

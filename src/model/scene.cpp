@@ -30,6 +30,7 @@ struct Layer {
   std::optional<std::string> parent;
   std::optional<std::string> pivot;
   float depth{};
+  bool screen_space{};
   float x{};
   float y{};
   float rotation_degrees{};
@@ -556,6 +557,12 @@ parse_scene(const Json &pack, const Json &sticker,
       }
 
       const auto depth = item.value("depth", 0.0F);
+      const auto screen_space = item.value("screen_space", false);
+      if (screen_space && parent) {
+        return Result<Scene>::failure(document_error(
+            "Screen-space layers cannot inherit a character parent", pack_file,
+            location + ".screen_space"));
+      }
       float x = 0.0F;
       float y = 0.0F;
       float rotation_degrees = 0.0F;
@@ -588,10 +595,10 @@ parse_scene(const Json &pack, const Json &sticker,
       }
 
       available.emplace(id, Layer{id, std::move(resolved).value(), z,
-                                  collision_bounds, parent, pivot, depth, x, y,
-                                  rotation_degrees, scale_x, scale_y, opacity,
-                                  location, AffineTransform{}, Point{}, 0.0F,
-                                  1.0F});
+                                  collision_bounds, parent, pivot, depth,
+                                  screen_space, x, y, rotation_degrees, scale_x,
+                                  scale_y, opacity, location, AffineTransform{},
+                                  Point{}, 0.0F, 1.0F});
       ++layer_index;
     }
 
@@ -737,6 +744,9 @@ parse_scene(const Json &pack, const Json &sticker,
     }
     std::sort(selected.begin(), selected.end(),
               [](const auto &left, const auto &right) {
+                if (left.screen_space != right.screen_space) {
+                  return !left.screen_space;
+                }
                 if (left.world_depth != right.world_depth) {
                   return left.world_depth < right.world_depth;
                 }
@@ -755,11 +765,15 @@ parse_scene(const Json &pack, const Json &sticker,
       scene.layers.push_back(
           SceneLayer{layer.id, std::move(layer.source), layer.world_transform,
                      std::move(animation_chain), layer.world_opacity,
-                     layer.world_depth, layer.z});
+                     layer.world_depth, layer.screen_space, layer.z});
       if (layer.collision_bounds) {
         auto visual_transform = layer.world_transform;
-        visual_transform.translate_x -= scene.view_offset_x * layer.world_depth;
-        visual_transform.translate_y -= scene.view_offset_y * layer.world_depth;
+        if (!layer.screen_space) {
+          visual_transform.translate_x -=
+              scene.view_offset_x * layer.world_depth;
+          visual_transform.translate_y -=
+              scene.view_offset_y * layer.world_depth;
+        }
         const auto bounds =
             transform_rect(*layer.collision_bounds, visual_transform);
         const auto left = std::max(0.0F, bounds.x - text_clearance);

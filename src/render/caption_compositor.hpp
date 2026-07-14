@@ -7,10 +7,10 @@
 
 namespace mascotrender::detail {
 
-// Composites a straight-alpha BGRA caption overlay over a straight-alpha RGBA
-// Filament frame and returns RGBA. Keeping this at the backend boundary avoids
-// making Filament a dependency of the scene/text system.
+// Composites a straight-alpha BGRA screen-space overlay over a straight-alpha
+// RGBA Filament frame and returns RGBA. Captions and semantic effects share
+// this backend boundary.
 [[nodiscard]] Result<FilamentFrame>
-composite_caption(FilamentFrame base, const PixelBuffer &caption);
+composite_overlay(FilamentFrame base, const PixelBuffer &overlay);
 
 } // namespace mascotrender::detail

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <optional>
+#include <string>
 
 #include "render/irender_backend.hpp"
 
@@ -27,7 +28,13 @@ public:
         const Scene& scene, std::uint32_t width, std::uint32_t height,
         const FrameState& frame = {}) const;
 
-private:
+    // Renders one selected SVG layer at output resolution without mascot or
+    // camera transforms. Screen-space effects use this path across backends.
+    [[nodiscard]] Result<PixelBuffer>
+    render_layer_overlay(const Scene &scene, const std::string &layer_id,
+                         std::uint32_t width, std::uint32_t height) const;
+
+  private:
     std::optional<Error> initialization_error_;
 };
 

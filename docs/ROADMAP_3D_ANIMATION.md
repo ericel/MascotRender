@@ -131,6 +131,13 @@ gradient, rim-light, depth, and parallax cues while retaining `front` as the
 unchanged flat compatibility pose. Generate the acceptance contact sheet with
 `tools/render_character_identity_review.py`.
 
+MR-115 tightens the remaining parity configuration. Contract v2 defines a
+continuous antenna silhouette, normalized stem/tip and eye geometry, the orange
+body frame with an inset gold panel, and a `head.left` screen-space sparkle.
+The pack's `screen_space` layer flag prevents 2.5D view/mascot transforms, and
+the Filament preview composites that same SVG after GLB rendering. Acceptance
+requires identical sparkle bounds across all backends and two camera spans.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.

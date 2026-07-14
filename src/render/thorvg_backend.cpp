@@ -378,11 +378,13 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
         animated_opacity *= state->opacity;
       }
     }
-    visual_transform.translate_x -=
-        (scene.view_offset_x + frame.view_offset_x) * layer.depth;
-    visual_transform.translate_y -=
-        (scene.view_offset_y + frame.view_offset_y) * layer.depth;
-    if (animated_mascot) {
+    if (!layer.screen_space) {
+      visual_transform.translate_x -=
+          (scene.view_offset_x + frame.view_offset_x) * layer.depth;
+      visual_transform.translate_y -=
+          (scene.view_offset_y + frame.view_offset_y) * layer.depth;
+    }
+    if (animated_mascot && !layer.screen_space) {
       visual_transform = multiply(mascot_transform, visual_transform);
     }
     if (!is_identity(visual_transform)) {
@@ -460,6 +462,23 @@ Result<PixelBuffer> ThorvgBackend::render_caption_overlay(
         render_error("ThorVG failed while drawing the caption overlay"));
   }
   return Result<PixelBuffer>::success(copy_target(target, width, height));
+}
+
+Result<PixelBuffer> ThorvgBackend::render_layer_overlay(
+    const Scene &scene, const std::string &layer_id, std::uint32_t width,
+    std::uint32_t height) const {
+  Scene overlay = scene;
+  std::erase_if(overlay.layers, [&layer_id](const auto &layer) {
+    return layer.id != layer_id;
+  });
+  overlay.text.clear();
+  overlay.view_offset_x = 0.0F;
+  overlay.view_offset_y = 0.0F;
+  if (overlay.layers.empty()) {
+    return Result<PixelBuffer>::failure(render_error(
+        "Screen-space overlay layer is not selected: " + layer_id));
+  }
+  return render_scene(overlay, width, height, {});
 }
 
 } // namespace mascotrender::detail

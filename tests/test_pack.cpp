@@ -121,7 +121,11 @@ TEST_CASE("parented 2.5D nodes preserve the flat t0 render") {
   REQUIRE(scene);
   REQUIRE(scene.value().layers.size() == 7U);
   REQUIRE(scene.value().layers.front().id == "shadow");
-  REQUIRE(scene.value().layers.back().id == "spark");
+  const auto sparkle =
+      std::find_if(scene.value().layers.begin(), scene.value().layers.end(),
+                   [](const auto &layer) { return layer.id == "spark"; });
+  REQUIRE(sparkle != scene.value().layers.end());
+  REQUIRE(sparkle->depth == 0.0F);
   REQUIRE(scene.value().view_offset_x == 0.0F);
   REQUIRE(scene.value().view_offset_y == 0.0F);
 }
@@ -175,9 +179,13 @@ TEST_CASE("layer depth produces deterministic parallax") {
 
   const auto parallax_pixels = decode(first.value());
   const auto flat_pixels = decode(flat.value());
-  REQUIRE(pixel_at(flat_pixels, 512, 92, 262).alpha == 255);
-  REQUIRE(pixel_at(parallax_pixels, 512, 92, 262).alpha == 0);
-  REQUIRE(pixel_at(parallax_pixels, 512, 60, 272).alpha == 255);
+  const auto flat_sparkle = pixel_at(flat_pixels, 512, 85, 246);
+  const auto parallax_sparkle = pixel_at(parallax_pixels, 512, 85, 246);
+  REQUIRE(flat_sparkle.alpha == 255);
+  REQUIRE(parallax_sparkle.red == flat_sparkle.red);
+  REQUIRE(parallax_sparkle.green == flat_sparkle.green);
+  REQUIRE(parallax_sparkle.blue == flat_sparkle.blue);
+  REQUIRE(parallax_sparkle.alpha == flat_sparkle.alpha);
 }
 
 TEST_CASE("dimensional 2.5D pose adds shading rim light and stronger depth") {
@@ -346,6 +354,11 @@ TEST_CASE("approved layered 2.5D animation remains within its decoded golden") {
     REQUIRE(WebPAnimDecoderGetNext(golden_decoder.get(), &golden_frame,
                                    &golden_timestamp) != 0);
     REQUIRE(actual_timestamp == golden_timestamp);
+    const auto sparkle_index = (246U * 512U + 85U) * 4U;
+    REQUIRE(actual_frame[sparkle_index] == 99U);
+    REQUIRE(actual_frame[sparkle_index + 1U] == 217U);
+    REQUIRE(actual_frame[sparkle_index + 2U] == 207U);
+    REQUIRE(actual_frame[sparkle_index + 3U] == 255U);
     for (std::size_t sample = 0; sample < frame_bytes; ++sample) {
       const auto actual = actual_frame[sample];
       const auto golden = golden_frame[sample];
