@@ -298,12 +298,13 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   anchored screen-space sparkle rule. The GLB no longer owns sparkle geometry;
   all three backends composite the same SVG bounds, verified unchanged across
   near and far 3D camera spans.
-- `MR-116` **Correction ready for review:** Every robot GLB sample and animated
+- `MR-116` **Done:** Every robot GLB sample and animated
   WebP now has a mandatory 512 x 512 canvas. The review verifier measures the
   actual translucent contact-shadow ellipse in every decoded hop frame instead
   of inferring shadow response from character motion. Acceptance requires at
   least 30% contraction in both width and pixel area, a stable horizontal
   center, distinct bounds in frames 0/3/6/9/12, and exact loop closure.
+  Product/Design approved the corrected playback bundle on 2026-07-14.
 
 ## First execution batch
 
