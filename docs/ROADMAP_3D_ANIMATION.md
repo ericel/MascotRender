@@ -100,7 +100,12 @@ remote publication remain.
 MR-112 now has a reproducible, Khronos-valid `robot-004.glb`. Its semantic
 hierarchy contains `RobotRoot`, body/head/face/antenna nodes, and
 `caption_anchor`; its four clips and six face morphs are enumerated and sampled
-through Filament tests. The generator does not require Blender, while the GLB
+through Filament tests. The model now carries the approved 2D/2.5D visual
+contract: rounded-square gold/orange construction, mint antenna and sparkle,
+cream round eyes, curved navy face, pivoted arm gestures, and an independent
+contact shadow that contracts during the hop. Review generation owns its white
+PNG and contact sheet, cleans stale debug outputs, and rejects palette or
+orientation regressions. The generator does not require Blender, while the GLB
 remains editable in Blender for a later art-quality pass.
 
 ## Guardrails

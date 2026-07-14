@@ -61,10 +61,13 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   including real Metal engine/gltfio lifecycle, semantic anchor loading,
   missing-anchor failure, bounded output, and non-empty headless RGBA rendering
   through a fixed orthographic camera and toon-style key light.
-- The deterministic 17.4 KiB `robot-004.glb` passes the Khronos validator with
-  zero errors and warnings. Filament reports four named clips, six named facial
-  morphs, six required semantic anchors, and distinct pixels for every sampled
-  clip; the preview tool emits five lossless 512 px WebPs.
+- The deterministic `robot-004.glb` follows the approved 2D/2.5D robot identity
+  and passes the Khronos validator with zero errors and warnings. Filament
+  reports four named clips, six named facial morphs, six required semantic
+  anchors, exact approved palette pixels, correct antenna-up orientation,
+  independent hop-shadow contraction, and distinct pixels for every sampled
+  clip. The review tool emits five lossless 512 px WebPs, an upright
+  white-background PNG, a contact sheet, and machine-readable validation.
 - The deterministic integration test independently generates and byte-compares
   two 20-sticker/40-asset bundles, including eight animated assets and static
   poster thumbnails.
