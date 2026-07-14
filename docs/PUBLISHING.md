@@ -30,6 +30,11 @@ with `--build=never`. This verifies that anonymous users can download the exact
 published binary rather than rebuilding it locally. A job is not successful
 merely because upload completed.
 
+Windows publication validates the installed preview executable and Filament
+NOOP runtime because the hosted runner has no Vulkan ICD. Metal on macOS and
+Mesa/Vulkan on Linux provide the full pixel-rendering gates. Windows consumers
+need a Vulkan-capable driver to use the renderer.
+
 ## Release sequence
 
 1. Merge a green release-candidate pull request into protected `main`.

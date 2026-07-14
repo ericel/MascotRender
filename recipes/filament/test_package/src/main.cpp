@@ -3,7 +3,14 @@
 #include <gltfio/MaterialProvider.h>
 
 int main() {
+#if defined(_WIN32)
+  // GitHub's Windows runner has no Vulkan ICD. NOOP still exercises the
+  // packaged Filament runtime without pretending that it rendered pixels.
+  auto *engine =
+      filament::Engine::create(filament::Engine::Backend::NOOP);
+#else
   auto *engine = filament::Engine::create();
+#endif
   if (engine == nullptr) {
     return 1;
   }
