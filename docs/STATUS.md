@@ -4,9 +4,8 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E4 — optional Filament/GLB proof. MR-110 and MR-112 through MR-115 are complete;
-MR-116 animation-export correction is in review, then MR-111 cross-platform
-wrapper publication resumes. M0-M6
+E4 — optional Filament/GLB proof. MR-110 and MR-112 through MR-116 are complete;
+MR-111 cross-platform wrapper publication is active. M0-M6
 and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
@@ -89,7 +88,8 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   512 x 512. The regenerated hop shadow contracts from 276 to 146 pixels wide
   at peak height (52.9%) and from 6,828 to 2,102 interior pixels (30.8%), keeps
   its horizontal center at x=256, and returns exactly to its frame-zero bounds.
-  Final playback signoff remains pending review of this corrected bundle.
+  Product/Design approved the corrected playback bundle on 2026-07-14, closing
+  MR-116.
 - MR-113 renders one collision-aware `NICE ONE!` recipe through flat 2D,
   layered 2.5D, and GLB/Filament. Flat and layered files are byte-identical;
   the repeatable review tool validates caption pixels on every backend and
@@ -154,12 +154,12 @@ publication credentials remain confined to repository secrets.
 The approved generator-v6 contact sheet is the M6 visual regression baseline,
 the identity-aligned robot hop is the MR-102 layered-animation baseline, the
 MR-113 sheet is the shared-caption backend baseline, and the MR-115 sheet is
-the cross-backend identity/parity baseline. MR-116 is the active correction
-gate for uniform 512 px 3D animation exports and directly measured hop-shadow
-response. After its playback review, the next E4 work is the
-remaining MR-111 Linux/Windows Filament-wrapper validation and remote optional
-package publication. Matcher boundary and collision behavior remains part of
-M7 unless a reusable matcher is deliberately added to the engine.
+the cross-backend identity/parity baseline. The approved MR-116 bundle is the
+uniform 512 px 3D animation and directly measured hop-shadow baseline. The next
+E4 work is the remaining MR-111 Linux/Windows Filament-wrapper validation and
+remote optional package publication. Matcher boundary and collision behavior
+remains part of M7 unless a reusable matcher is deliberately added to the
+engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The deterministic 2D and layered 2.5D slices are complete. The next major

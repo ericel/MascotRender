@@ -143,7 +143,8 @@ audit found inconsistent review sizing and an inadequate shadow assertion. All
 static and animated robot review assets are now 512 x 512. The hop validator
 records the contact-shadow RGBA signature, bounds, center, and pixel area for
 all 13 decoded frames and fails unless contraction visibly tracks the jump and
-the final geometry exactly matches frame zero.
+the final geometry exactly matches frame zero. Product/Design approved the
+corrected MR-116 playback bundle on 2026-07-14.
 
 ## Guardrails
 
