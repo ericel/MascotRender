@@ -5,7 +5,8 @@ Updated: 2026-07-14
 ## Current milestone
 
 E4 — optional Filament/GLB proof. MR-110 and MR-112 through MR-115 are complete;
-MR-111 cross-platform wrapper publication remains active. M0-M6
+MR-116 animation-export correction is in review, then MR-111 cross-platform
+wrapper publication resumes. M0-M6
 and E1-E3 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
@@ -82,7 +83,13 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
   white-background PNG, four real 13-frame looping animated WebPs, pose and
   motion sheets, a browser playback page, and machine-readable validation.
   Product/Design approved both the corrected static gate and animated playback
-  proof on 2026-07-14, closing MR-112.
+  proof on 2026-07-14. A later decoded-frame audit reopened only the animation
+  export contract; MR-116 corrects it without changing the approved static art.
+- MR-116 requires every robot sample and all four 13-frame animated WebPs to be
+  512 x 512. The regenerated hop shadow contracts from 276 to 146 pixels wide
+  at peak height (52.9%) and from 6,828 to 2,102 interior pixels (30.8%), keeps
+  its horizontal center at x=256, and returns exactly to its frame-zero bounds.
+  Final playback signoff remains pending review of this corrected bundle.
 - MR-113 renders one collision-aware `NICE ONE!` recipe through flat 2D,
   layered 2.5D, and GLB/Filament. Flat and layered files are byte-identical;
   the repeatable review tool validates caption pixels on every backend and
@@ -147,7 +154,9 @@ publication credentials remain confined to repository secrets.
 The approved generator-v6 contact sheet is the M6 visual regression baseline,
 the identity-aligned robot hop is the MR-102 layered-animation baseline, the
 MR-113 sheet is the shared-caption backend baseline, and the MR-115 sheet is
-the cross-backend identity/parity baseline. The next E4 work is the
+the cross-backend identity/parity baseline. MR-116 is the active correction
+gate for uniform 512 px 3D animation exports and directly measured hop-shadow
+response. After its playback review, the next E4 work is the
 remaining MR-111 Linux/Windows Filament-wrapper validation and remote optional
 package publication. Matcher boundary and collision behavior remains part of
 M7 unless a reusable matcher is deliberately added to the engine.

@@ -279,7 +279,9 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   real 13-frame looping WebPs, a browser playback page, a five-sample motion
   sheet, decoded-frame hashes, non-static-motion checks, and exact loop-closure
   checks now cover the remaining timing caveat. Hosted Filament validation and
-  Product/Design accepted the animated playback proof on 2026-07-14.
+  Product/Design accepted the animated playback proof on 2026-07-14; the later
+  MR-116 decoded-frame audit supersedes only its export-size and shadow-evidence
+  claims while leaving the approved static design unchanged.
 - `MR-113` **Done:** One backend-neutral caption resolver now owns fitting,
   collision scoring, safe-slot selection, and line coordinates. Flat 2D and
   layered 2.5D produce byte-identical captioned posters, while Filament
@@ -296,6 +298,12 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   anchored screen-space sparkle rule. The GLB no longer owns sparkle geometry;
   all three backends composite the same SVG bounds, verified unchanged across
   near and far 3D camera spans.
+- `MR-116` **Correction ready for review:** Every robot GLB sample and animated
+  WebP now has a mandatory 512 x 512 canvas. The review verifier measures the
+  actual translucent contact-shadow ellipse in every decoded hop frame instead
+  of inferring shadow response from character motion. Acceptance requires at
+  least 30% contraction in both width and pixel area, a stable horizontal
+  center, distinct bounds in frames 0/3/6/9/12, and exact loop closure.
 
 ## First execution batch
 

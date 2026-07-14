@@ -47,12 +47,16 @@ python tools/validate_character_identity.py \
   --glb examples/robot-004/robot-004.glb
 ```
 
-The review script requires Pillow and writes five transparent pose WebPs, four
-real 13-frame looping animated WebPs, a white-background rest PNG, labelled
+The review script requires Pillow and writes five transparent 512 x 512 pose
+WebPs, four real 512 x 512, 13-frame looping animated WebPs, a white-background
+rest PNG, labelled
 pose and motion sheets, a browser playback page, and a JSON manifest. It cleans
 legacy review names before rendering and rejects missing brand colors, an
 antenna that appears below the character, a static clip, a missing animated
-WebP chunk, a wrong frame count, or a loop that does not close:
+WebP chunk, a wrong frame count, or a loop that does not close. It also measures
+the translucent contact-shadow bounds in every decoded hop frame and rejects a
+loop unless the shadow contracts to at most 70% of its resting width and area,
+stays horizontally centered, and returns exactly to its resting geometry:
 
 ```bash
 python tools/render_robot_glb_review.py \

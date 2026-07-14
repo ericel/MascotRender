@@ -1,10 +1,11 @@
-#include "render/filament_backend.hpp"
 #include "model/scene.hpp"
 #include "render/caption_compositor.hpp"
+#include "render/filament_backend.hpp"
 #include "render/thorvg_backend.hpp"
 
 #include <catch2/catch_test_macros.hpp>
 
+#include <algorithm>
 #include <array>
 #include <bit>
 #include <cstdint>
@@ -80,18 +81,35 @@ color_pixel_count(const mascotrender::detail::FilamentFrame &frame,
   return count;
 }
 
-[[nodiscard]] std::size_t
-translucent_pixel_count(const mascotrender::detail::FilamentFrame &frame,
-                        std::uint32_t first_row) noexcept {
-  std::size_t count = 0U;
+struct PixelBounds final {
+  std::size_t count{0U};
+  std::uint32_t left{std::numeric_limits<std::uint32_t>::max()};
+  std::uint32_t top{std::numeric_limits<std::uint32_t>::max()};
+  std::uint32_t right{0U};
+  std::uint32_t bottom{0U};
+
+  [[nodiscard]] std::uint32_t width() const noexcept { return right - left; }
+};
+
+[[nodiscard]] PixelBounds
+translucent_pixel_bounds(const mascotrender::detail::FilamentFrame &frame,
+                         std::uint32_t first_row) noexcept {
+  PixelBounds bounds;
   for (auto y = first_row; y < frame.height; ++y) {
     for (std::uint32_t x = 0U; x < frame.width; ++x) {
       const auto alpha =
           frame.rgba[(static_cast<std::size_t>(y) * frame.width + x) * 4U + 3U];
-      count += alpha >= 90U && alpha <= 130U ? 1U : 0U;
+      if (alpha < 90U || alpha > 130U) {
+        continue;
+      }
+      ++bounds.count;
+      bounds.left = std::min(bounds.left, x);
+      bounds.top = std::min(bounds.top, y);
+      bounds.right = std::max(bounds.right, x + 1U);
+      bounds.bottom = std::max(bounds.bottom, y + 1U);
     }
   }
-  return count;
+  return bounds;
 }
 
 [[nodiscard]] std::vector<std::uint8_t> semantic_robot_glb() {
@@ -244,11 +262,10 @@ TEST_CASE("Filament render bounds reject unsafe output sizes") {
 TEST_CASE("Filament uses the shared screen-space caption compositor") {
   constexpr std::uint32_t size = 256U;
   auto rendered = mascotrender::detail::render_filament_glb(
-      robot_glb,
-      {.width = size,
-       .height = size,
-       .vertical_span = 4.4F,
-       .vertical_center = 0.35F});
+      robot_glb, {.width = size,
+                  .height = size,
+                  .vertical_span = 4.4F,
+                  .vertical_center = 0.35F});
   REQUIRE(rendered);
   const auto base_hash = frame_hash(rendered.value().rgba);
 
@@ -362,8 +379,17 @@ TEST_CASE("authored robot hop contracts its independent contact shadow") {
   REQUIRE(rest);
   REQUIRE(hop);
   const auto lower_quarter = rest.value().height * 3U / 4U;
-  REQUIRE(translucent_pixel_count(rest.value(), lower_quarter) >
-          translucent_pixel_count(hop.value(), lower_quarter));
+  const auto rest_shadow =
+      translucent_pixel_bounds(rest.value(), lower_quarter);
+  const auto hop_shadow = translucent_pixel_bounds(hop.value(), lower_quarter);
+  REQUIRE(rest_shadow.count > 0U);
+  REQUIRE(hop_shadow.count > 0U);
+  REQUIRE(hop_shadow.width() * 100U <= rest_shadow.width() * 70U);
+  REQUIRE(hop_shadow.count * 100U <= rest_shadow.count * 70U);
+  const auto rest_center_twice = rest_shadow.left + rest_shadow.right;
+  const auto hop_center_twice = hop_shadow.left + hop_shadow.right;
+  REQUIRE(std::abs(static_cast<int>(rest_center_twice) -
+                   static_cast<int>(hop_center_twice)) <= 2);
 }
 
 TEST_CASE("authored robot rejects an unknown animation clip") {

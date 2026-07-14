@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import hashlib
 import json
 from pathlib import Path
@@ -28,7 +29,7 @@ CLIPS = {
     "celebrate": 1.0,
 }
 ANIMATION_FRAME_COUNT = 13
-ANIMATION_SIZE = 320
+EXPORT_SIZE = 512
 
 PALETTE: dict[str, tuple[int, int, int]] = {}
 
@@ -123,6 +124,11 @@ def matching_pixels(image: Image.Image, target: tuple[int, int, int], tolerance=
 
 
 def validate_rest_frame(image: Image.Image) -> dict[str, object]:
+    if image.size != (EXPORT_SIZE, EXPORT_SIZE):
+        raise RuntimeError(
+            f"rest frame is {image.width}x{image.height}, expected "
+            f"{EXPORT_SIZE}x{EXPORT_SIZE}"
+        )
     counts = {name: len(matching_pixels(image, color)) for name, color in PALETTE.items()}
     missing = [name for name, count in counts.items() if count < 100]
     if missing:
@@ -138,6 +144,89 @@ def validate_rest_frame(image: Image.Image) -> dict[str, object]:
     if alpha_bounds is None or alpha_bounds[1] >= image.height * 0.3:
         raise RuntimeError("rest frame orientation/visibility guard failed")
     return {"palette_pixel_counts": counts, "alpha_bounds": list(alpha_bounds)}
+
+
+def dominant_shadow_pixel(image: Image.Image) -> tuple[int, int, int, int]:
+    lower_quarter = image.crop((0, image.height * 3 // 4, image.width, image.height))
+    translucent = Counter(
+        pixel for pixel in lower_quarter.getdata() if 0 < pixel[3] < 250
+    )
+    if not translucent:
+        raise RuntimeError("hop frame has no translucent contact-shadow pixels")
+    pixel, count = translucent.most_common(1)[0]
+    if count < 100:
+        raise RuntimeError("hop contact shadow has no stable interior pixel color")
+    return pixel
+
+
+def shadow_geometry(
+    image: Image.Image, shadow_pixel: tuple[int, int, int, int]
+) -> dict[str, object]:
+    points = [
+        (x, y)
+        for y in range(image.height * 3 // 4, image.height)
+        for x in range(image.width)
+        if image.getpixel((x, y)) == shadow_pixel
+    ]
+    if not points:
+        raise RuntimeError("contact shadow disappeared from a hop frame")
+    left = min(x for x, _ in points)
+    top = min(y for _, y in points)
+    right = max(x for x, _ in points) + 1
+    bottom = max(y for _, y in points) + 1
+    return {
+        "pixel_count": len(points),
+        "bounds": [left, top, right, bottom],
+        "width": right - left,
+        "height": bottom - top,
+        "center": [(left + right) / 2.0, (top + bottom) / 2.0],
+    }
+
+
+def validate_hop_shadow(
+    frames: list[Image.Image], times: list[float]
+) -> dict[str, object]:
+    shadow_pixel = dominant_shadow_pixel(frames[0])
+    metrics = [shadow_geometry(frame, shadow_pixel) for frame in frames]
+    rest = metrics[0]
+    minimum = min(metrics, key=lambda metric: metric["pixel_count"])
+    minimum_index = metrics.index(minimum)
+
+    if metrics[-1] != rest:
+        raise RuntimeError("hop contact shadow does not close exactly with the loop")
+    if minimum["width"] > rest["width"] * 0.70:
+        raise RuntimeError(
+            "hop contact shadow does not visibly contract with character height"
+        )
+    if minimum["pixel_count"] > rest["pixel_count"] * 0.70:
+        raise RuntimeError(
+            "hop contact-shadow area does not visibly react to character height"
+        )
+    if max(abs(metric["center"][0] - rest["center"][0]) for metric in metrics) > 2:
+        raise RuntimeError("hop contact shadow drifts horizontally during the loop")
+
+    sampled_indices = [0, 3, 6, 9, 12]
+    sampled_bounds = {tuple(metrics[index]["bounds"]) for index in sampled_indices}
+    if len(sampled_bounds) == 1:
+        raise RuntimeError(
+            "hop contact-shadow bounds are identical in review sample frames"
+        )
+
+    return {
+        "pixel_rgba": list(shadow_pixel),
+        "rest_width": rest["width"],
+        "minimum_width": minimum["width"],
+        "width_ratio": minimum["width"] / rest["width"],
+        "rest_pixel_count": rest["pixel_count"],
+        "minimum_pixel_count": minimum["pixel_count"],
+        "area_ratio": minimum["pixel_count"] / rest["pixel_count"],
+        "minimum_frame_index": minimum_index,
+        "minimum_time_seconds": times[minimum_index],
+        "frames": [
+            {"index": index, "time_seconds": times[index], **metric}
+            for index, metric in enumerate(metrics)
+        ],
+    }
 
 
 def write_review_images(output: Path, rendered: list[tuple[str, Path]]) -> dict[str, object]:
@@ -209,7 +298,7 @@ def write_animation_review(
                         renderer,
                         source,
                         frame_path,
-                        size=ANIMATION_SIZE,
+                        size=EXPORT_SIZE,
                         animation=clip,
                         time=time,
                     )
@@ -237,6 +326,16 @@ def write_animation_review(
                 encoded.seek(index)
                 encoded_frames.append(encoded.convert("RGBA"))
                 encoded_durations.append(int(encoded.info.get("duration", 0)))
+            mismatched_sizes = [
+                frame.size
+                for frame in encoded_frames
+                if frame.size != (EXPORT_SIZE, EXPORT_SIZE)
+            ]
+            if mismatched_sizes:
+                raise RuntimeError(
+                    f"{clip} animation contains canvas sizes {mismatched_sizes}, "
+                    f"expected {EXPORT_SIZE}x{EXPORT_SIZE}"
+                )
             payload = encoded_path.read_bytes()
             deltas = [
                 frame_delta(left, right)
@@ -257,22 +356,26 @@ def write_animation_review(
                     f"{clip} loop does not close: mean channel delta {loop_delta:.4f}"
                 )
 
-            animation_records.append(
-                {
-                    "clip": clip,
-                    "clip_duration_seconds": clip_duration,
-                    "frame_count": encoded.n_frames,
-                    "frame_durations_ms": encoded_durations,
-                    "sample_times_seconds": times,
-                    "mean_channel_deltas": deltas,
-                    "moving_steps": moving_steps,
-                    "loop_closure_mean_channel_delta": loop_delta,
-                    "decoded_frame_sha256": [
-                        decoded_frame_hash(frame) for frame in encoded_frames
-                    ],
-                    **file_record(encoded_path),
-                }
-            )
+            record = {
+                "clip": clip,
+                "canvas": {"width": encoded.width, "height": encoded.height},
+                "clip_duration_seconds": clip_duration,
+                "frame_count": encoded.n_frames,
+                "frame_durations_ms": encoded_durations,
+                "sample_times_seconds": times,
+                "mean_channel_deltas": deltas,
+                "moving_steps": moving_steps,
+                "loop_closure_mean_channel_delta": loop_delta,
+                "decoded_frame_sha256": [
+                    decoded_frame_hash(frame) for frame in encoded_frames
+                ],
+                **file_record(encoded_path),
+            }
+            if clip == "hop":
+                record["contact_shadow"] = validate_hop_shadow(
+                    encoded_frames, times
+                )
+            animation_records.append(record)
             motion_rows.append((clip, encoded_frames, clip_duration))
 
     tile_size = 200
@@ -307,7 +410,8 @@ def write_animation_review(
     html_path = output / "robot-004-animation-review.html"
     cards = "\n".join(
         f'<figure><img src="robot-004-{clip}-animated.webp" alt="{clip} animation">'
-        f"<figcaption>{clip}</figcaption></figure>"
+        f"<figcaption>{clip} — {EXPORT_SIZE}×{EXPORT_SIZE}, "
+        f"{ANIMATION_FRAME_COUNT} frames</figcaption></figure>"
         for clip in CLIPS
     )
     html_path.write_text(
@@ -347,9 +451,15 @@ def main() -> None:
                 stale.unlink()
 
     manifest = {
+        "milestone": "MR-116",
         "asset": str(args.input),
         "identity_contract": str(identity_path),
         "identity_sha256": hashlib.sha256(identity_path.read_bytes()).hexdigest(),
+        "export_contract": {
+            "width": EXPORT_SIZE,
+            "height": EXPORT_SIZE,
+            "animation_frame_count": ANIMATION_FRAME_COUNT,
+        },
         "samples": [],
     }
     rendered: list[tuple[str, Path]] = []
@@ -360,18 +470,25 @@ def main() -> None:
                 args.renderer,
                 args.input,
                 destination,
-                size=512,
+                size=EXPORT_SIZE,
                 animation=animation,
                 time=time,
             )
         )
         rendered.append((label, destination))
+        rendered_image = Image.open(destination)
+        if rendered_image.size != (EXPORT_SIZE, EXPORT_SIZE):
+            raise RuntimeError(
+                f"{label} sample is {rendered_image.width}x{rendered_image.height}, "
+                f"expected {EXPORT_SIZE}x{EXPORT_SIZE}"
+            )
         payload = destination.read_bytes()
         manifest["samples"].append(
             {
                 "label": label,
                 "animation": animation or None,
                 "time_seconds": time,
+                "canvas": {"width": rendered_image.width, "height": rendered_image.height},
                 "file": destination.name,
                 "bytes": len(payload),
                 "sha256": hashlib.sha256(payload).hexdigest(),
