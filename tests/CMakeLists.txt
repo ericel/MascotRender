@@ -33,6 +33,7 @@ if(MASCOTRENDER_BUILD_CLI)
             --python "${Python3_EXECUTABLE}"
             --generator "${PROJECT_SOURCE_DIR}/tools/generate_mascot_packs.py"
             --renderer "${PROJECT_SOURCE_DIR}/tools/render_mascot_packs.py"
+            --reviewer "${PROJECT_SOURCE_DIR}/tools/build_sticker_review.py"
             --cli "$<TARGET_FILE:mascotrender_cli>"
             --font-source "${PROJECT_SOURCE_DIR}/examples/cat/fonts/changa-one"
     )

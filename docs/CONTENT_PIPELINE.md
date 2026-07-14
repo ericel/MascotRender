@@ -1,6 +1,6 @@
 # Mascot content pipeline
 
-MascotRender ships two standard-library Python scripts around the C++20 engine.
+MascotRender ships three standard-library Python scripts around the C++20 engine.
 They are deterministic build tools; applications still consume the C++ library
 through Conan and `MascotRender::MascotRender`.
 
@@ -66,6 +66,30 @@ mascot identities intentionally map to a stable ordered list. `build-report.json
 records deterministic counts, settings, and total encoded bytes; it contains no
 wall-clock timestamps.
 
+## 3. Verify and review all stickers
+
+```bash
+python3 tools/build_sticker_review.py \
+  --input generated/bundle \
+  --expected-count 50 \
+  --force
+```
+
+Open `generated/bundle/review/index.html`. It shows every thumbnail grouped by
+pack, labels animated assets, and links each card to its full-size static or
+animated WebP. Complete `checklist.csv` with `pass`, `fail`, or `n/a` for every
+criterion and an `approve` or `revise` decision for every sticker.
+
+The review builder does not trust the catalogue blindly. Before writing the
+gallery it verifies every relative path, byte count, SHA-256 hash, WebP header,
+animation flag, static poster thumbnail, and build-report total. Its
+`review-summary.json` records the verified bundle hashes and leaves the formal
+status at `awaiting_design_product_approval`.
+
+The pull-request workflow regenerates the canonical 50-sticker bundle and
+publishes it as the `mascotrender-50-sticker-review-<commit>` artifact for 14
+days. Download it from the workflow run and open `review/index.html` locally.
+
 ## Custom runs
 
 - `--count` accepts 1 through 50 identities.
@@ -73,6 +97,8 @@ wall-clock timestamps.
 - `--width`, `--height`, `--thumbnail-size`, `--quality`, and `--lossless`
   control bundle rendering. Animated main assets always receive static poster
   thumbnails through the engine's first-frame-only option.
+- The review builder accepts `--expected-count` to turn a missing or extra
+  sticker into a hard failure.
 - Omit `--force` in automation when overwriting an existing result should be an
   error.
 

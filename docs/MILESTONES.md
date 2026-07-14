@@ -188,6 +188,13 @@ unresolved rendering or licensing failures.
 
 The engine must not scale to 200 stickers until this gate passes.
 
+Engineering status: the deterministic five-pack/50-sticker generator, renderer,
+and full-bundle verifier are complete. The review tool produces an HTML contact
+sheet, a 50-row per-sticker CSV checklist, and a machine-readable verification
+summary; pull-request CI publishes the verified bundle as a review artifact.
+M6 remains open until the checklist has no unresolved failures and Design and
+Product approve the contact sheet.
+
 ## M7: 200-sticker product pilot
 
 Goal: integrate the generated pack into Drogon delivery and React local

@@ -1,13 +1,13 @@
 # MascotRender Project Status
 
-Updated: 2026-07-13
+Updated: 2026-07-14
 
 ## Current milestone
 
-M5 — Engine 0.1 release candidate. M0-M4 are implemented, the hosted compiler
-and sanitizer matrix is green, and the project is MIT-licensed. A writable
-Conan remote remains the publication gate. Product/Design approval of the full
-50-sticker art set is the separate M6 gate.
+M6 — 50-sticker coherence gate. M0-M5 are complete, release `v0.1.0` is
+published, and anonymous consumers can install `mascotrender/0.1.0` from the
+public JFrog Conan remote. The generated art set is mechanically verified and
+ready for the remaining Product/Design review.
 
 ## Completed locally
 
@@ -32,6 +32,9 @@ Conan remote remains the publication gate. Product/Design approval of the full
   identities with ten English/Pidgin phrases per identity.
 - Staged batch renderer producing assets, thumbnails, SHA-256 catalogue,
   full-phrase dictionary, and deterministic build report.
+- Deterministic review builder producing a complete HTML gallery, per-sticker
+  CSV checklist, and machine-readable summary after independently verifying
+  paths, sizes, hashes, WebP structure, animation metadata, and report totals.
 - Reviewed lossless cat/text golden with decoded-pixel regression tolerance.
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
@@ -50,9 +53,13 @@ Conan remote remains the publication gate. Product/Design approval of the full
 - The current generated review set contains 5 packs, 50 stickers, 100 WebPs,
   20 animated primary assets, exact authored metadata, and 3,057,496 encoded
   bytes.
-- Representative cat, bear, bunny, robot, and alien outputs were visually
-  inspected after balanced layout/outline changes; transparency, punctuation,
-  margins, and outline weight are coherent.
+- The regenerated 50-sticker bundle passes the formal mechanical review gate;
+  its catalogue SHA-256 is
+  `9c698cf732513e6ea7e039af6fd27172b219fc5c3117156015166146e6c6ec30`.
+- The complete 50-sticker contact sheet was visually inspected after balanced
+  layout/outline changes; every caption is readable, no caption or silhouette
+  is clipped, transparent edges are clean, and all five packs are coherent.
+  Formal Product/Design approval remains pending.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
 - Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50
@@ -68,20 +75,21 @@ ThorVG 0.15.16 must compile as C++17 on recent libc++ while MascotRender remains
 C++20. Profiles record this package-scoped setting. ADR-003 requires the
 workaround to be audited when ThorVG is upgraded.
 
-## Remaining release gates
+## Distribution
 
-1. Select and authenticate a writable Conan remote. Only Conan Center is
-   configured locally and it is not the project binary publishing destination.
-2. After the remote is selected, upload the tested recipe/binaries, verify a
-   clean remote consumer, tag `v0.1.0`, and record immutable recipe/package
-   revisions.
+Release `v0.1.0` and its tested Conan binaries are published. Anonymous
+consumers add
+`https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
+publication credentials remain confined to repository secrets.
 
 ## Product follow-up
 
 The engineering golden is approved as a regression baseline, not as final
-Product/Design approval of all generated art. M6 still requires full 50-sticker
-coherence review. Matcher boundary/collision behavior belongs to the product
-integration unless a reusable matcher is deliberately added to the engine.
+Product/Design approval of all generated art. The verified gallery and blank
+checklist are ready, but M6 remains open until all 50 rows are reviewed and the
+contact sheet is approved. Matcher boundary/collision behavior belongs to the
+product integration unless a reusable matcher is deliberately added to the
+engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
 The first deterministic 2D animation slice is working; the next major engine
