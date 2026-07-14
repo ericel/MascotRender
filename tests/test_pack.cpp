@@ -247,6 +247,77 @@ TEST_CASE("layered 2.5D timeline encodes motion and preserves its t0 poster") {
   REQUIRE(poster.value().bytes == flat.value().bytes);
 }
 
+TEST_CASE("approved layered 2.5D animation remains within its decoded golden") {
+  mascotrender::Engine engine;
+  auto request = robot_2_5d_request("pack.json", "animated-hop.json");
+  request.options.lossless = true;
+  auto rendered = engine.render(request);
+  REQUIRE(rendered);
+
+  const auto golden_bytes = read_bytes(source_root / "tests" / "golden" /
+                                       "robot-2_5d-animated-hop.webp");
+  const auto *actual_encoded =
+      reinterpret_cast<const std::uint8_t *>(rendered.value().bytes.data());
+  const WebPData actual_data{actual_encoded, rendered.value().bytes.size()};
+  const WebPData golden_data{golden_bytes.data(), golden_bytes.size()};
+  auto *actual_decoder = WebPAnimDecoderNew(&actual_data, nullptr);
+  auto *golden_decoder = WebPAnimDecoderNew(&golden_data, nullptr);
+  REQUIRE(actual_decoder != nullptr);
+  REQUIRE(golden_decoder != nullptr);
+
+  WebPAnimInfo actual_info{};
+  WebPAnimInfo golden_info{};
+  REQUIRE(WebPAnimDecoderGetInfo(actual_decoder, &actual_info) != 0);
+  REQUIRE(WebPAnimDecoderGetInfo(golden_decoder, &golden_info) != 0);
+  REQUIRE(actual_info.canvas_width == golden_info.canvas_width);
+  REQUIRE(actual_info.canvas_height == golden_info.canvas_height);
+  REQUIRE(actual_info.frame_count == golden_info.frame_count);
+  REQUIRE(actual_info.loop_count == golden_info.loop_count);
+  REQUIRE(actual_info.canvas_width == 512U);
+  REQUIRE(actual_info.canvas_height == 512U);
+  REQUIRE(actual_info.frame_count == 15U);
+  REQUIRE(actual_info.loop_count == 0U);
+
+  constexpr std::size_t frame_bytes = 512U * 512U * 4U;
+  std::uint64_t total_delta = 0U;
+  std::uint8_t maximum_delta = 0U;
+  std::uint64_t compared_samples = 0U;
+  std::uint8_t *actual_frame = nullptr;
+  std::uint8_t *golden_frame = nullptr;
+  int actual_timestamp = 0;
+  int golden_timestamp = 0;
+  std::uint32_t compared_frames = 0U;
+  while (WebPAnimDecoderHasMoreFrames(actual_decoder) != 0 ||
+         WebPAnimDecoderHasMoreFrames(golden_decoder) != 0) {
+    REQUIRE(WebPAnimDecoderHasMoreFrames(actual_decoder) != 0);
+    REQUIRE(WebPAnimDecoderHasMoreFrames(golden_decoder) != 0);
+    REQUIRE(WebPAnimDecoderGetNext(actual_decoder, &actual_frame,
+                                   &actual_timestamp) != 0);
+    REQUIRE(WebPAnimDecoderGetNext(golden_decoder, &golden_frame,
+                                   &golden_timestamp) != 0);
+    REQUIRE(actual_timestamp == golden_timestamp);
+    for (std::size_t sample = 0; sample < frame_bytes; ++sample) {
+      const auto actual = actual_frame[sample];
+      const auto golden = golden_frame[sample];
+      const auto delta = static_cast<std::uint8_t>(
+          actual > golden ? actual - golden : golden - actual);
+      maximum_delta = std::max(maximum_delta, delta);
+      total_delta += delta;
+    }
+    compared_samples += frame_bytes;
+    ++compared_frames;
+  }
+  REQUIRE(compared_frames == actual_info.frame_count);
+  REQUIRE(actual_timestamp == 1200);
+  REQUIRE(golden_timestamp == 1200);
+  REQUIRE(maximum_delta <= 2U);
+  REQUIRE(static_cast<double>(total_delta) /
+              static_cast<double>(compared_samples) <=
+          0.02);
+  WebPAnimDecoderDelete(actual_decoder);
+  WebPAnimDecoderDelete(golden_decoder);
+}
+
 TEST_CASE("layer parent cycles report their pack location") {
   mascotrender::Engine engine;
   auto request = example_request();
