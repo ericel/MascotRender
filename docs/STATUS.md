@@ -4,9 +4,9 @@ Updated: 2026-07-14
 
 ## Current milestone
 
-E4 — optional Filament/GLB proof. MR-110 and MR-112 through MR-116 are complete;
-MR-111 cross-platform wrapper publication is active. M0-M6
-and E1-E3 are complete, release `v0.1.0` is published, and
+E4 — optional Filament/GLB proof is complete. MR-110 through MR-116 are done,
+including cross-platform wrapper validation and publication. M0-M6
+and E1-E4 are complete, release `v0.1.0` is published, and
 anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
 remote. Product/Design approved the generator-v6 50-sticker bundle on
 2026-07-14. M7 remains a separate product-integration pilot.
@@ -62,8 +62,9 @@ remote. Product/Design approved the generator-v6 50-sticker bundle on
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
 - GitHub Actions definition covering Linux GCC 13 static Release/shared Debug,
-  Windows MSVC static/shared Release, macOS arm64 static Release, an opt-in
-  macOS Filament/GLB build, plus Linux Clang 18 ASan/UBSan.
+  Windows MSVC static/shared Release, macOS arm64 static Release, opt-in
+  Filament/GLB builds on all three desktop platforms, plus Linux Clang 18
+  ASan/UBSan.
 - MIT project license shipped by CMake and Conan.
 
 ## Verified locally
@@ -138,16 +139,19 @@ C++20. Profiles record this package-scoped setting. ADR-003 requires the
 workaround to be audited when ThorVG is upgraded.
 
 Filament 1.74.0 does not have a ConanCenter recipe. The repository wrapper uses
-Google's checksum-pinned official archives; its recipe and binaries must be
-published to the MascotRender remote before external 3D consumers can resolve
-`with_filament=True`.
+Google's checksum-pinned official archives. Its recipe and tested macOS arm64,
+Linux x86-64, and Windows x86-64 binaries are published to the MascotRender
+remote so external 3D consumers can resolve `with_filament=True`.
 
 ## Distribution
 
 Release `v0.1.0` and its tested Conan binaries are published. Anonymous
 consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
-publication credentials remain confined to repository secrets.
+publication credentials remain confined to repository secrets. The default
+package matrix and optional Filament wrapper/MascotRender packages passed clean,
+logged-out `--build=never` consumer verification on macOS arm64, Linux x86-64,
+and Windows x86-64 in publication run `29335668526`.
 
 ## Next execution track
 
@@ -155,18 +159,15 @@ The approved generator-v6 contact sheet is the M6 visual regression baseline,
 the identity-aligned robot hop is the MR-102 layered-animation baseline, the
 MR-113 sheet is the shared-caption backend baseline, and the MR-115 sheet is
 the cross-backend identity/parity baseline. The approved MR-116 bundle is the
-uniform 512 px 3D animation and directly measured hop-shadow baseline. The next
-E4 work is the remaining MR-111 Linux/Windows Filament-wrapper validation and
-remote optional package publication. Matcher boundary and collision behavior
-remains part of M7 unless a reusable matcher is deliberately added to the
-engine.
+uniform 512 px 3D animation and directly measured hop-shadow baseline. MR-111
+closed after native macOS, Linux, and Windows CI plus anonymous remote package
+verification. Matcher boundary and collision behavior remains part of M7
+unless a reusable matcher is deliberately added to the engine.
 
 The approved expansion direction is documented in `ROADMAP_3D_ANIMATION.md`.
-The deterministic 2D and layered 2.5D slices are complete. The next major
-engine step is the optional Filament/GLB backend proof. The default Conan graph
-now explicitly keeps Filament disabled, and hosted CI covers macOS arm64 in
-addition to Linux and Windows. MR-111 now packages the official Filament 1.74.0
-desktop archives because ConanCenter does not provide Filament. Its macOS
-Metal/gltfio lifecycle, semantic GLB loader, orthographic camera, hard key
-lighting, and headless RGBA readback are implemented. Linux/Windows wrapper
-validation and remote publication remain before MR-111 can close.
+The deterministic 2D, layered 2.5D, and optional Filament/GLB slices are
+complete. The default Conan graph explicitly keeps Filament disabled. Hosted CI
+covers macOS arm64, Linux x86-64, and Windows x86-64; Metal and Linux Vulkan
+jobs exercise pixel rendering, while hosted Windows proves archive integrity,
+MSVC compile/link, the Filament NOOP runtime, and backend-neutral engine paths
+because the runner has no Vulkan ICD. The next product track is M7 integration.
