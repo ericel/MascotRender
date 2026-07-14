@@ -31,11 +31,24 @@ reviewed.
 | Alien broke pack coherence | Alien returns to the shared rounded-square body and muzzle/face construction. Teal, antennae, and a three-eye rig retain its identity without a separate oval/blush/freckle visual system. |
 | Animation quality was not reviewed | The reviewer now produces `animation-review.html`, playing all four animated phrases side by side per mascot. Frame inspection found and fixed an abrupt caption reset; repeating timelines now finish at their starting state with an explicit fade-out. |
 
-## Round 3 resubmission evidence
+## Review round 3 — 2026-07-14
+
+Decision: approved. The project owner accepted the complete generator-v6
+50-sticker contact sheet, the 5 × 3 caption/accessory collision matrix, and the
+side-by-side animation playback review. No unresolved visual, rendering,
+packaging, sanitizer, or licensing failure remains in the M6 scope.
+
+## Approval evidence
 
 The canonical seed remains `20260713`. The resubmitted bundle contains five
 packs, 50 stickers, 20 animated primary assets, and 100 WebPs. The review
 builder verifies all asset hashes and report totals before either gallery is
 opened. All 24 local CTest cases pass, including the engine-level collision and
-loop-seam regressions. Product/Design approval remains pending until review
-round 3; this record does not self-approve M6.
+loop-seam regressions. All six protected GitHub checks passed on PR #9, including
+the canonical 50-sticker review artifact, Linux GCC static/shared, Windows MSVC
+static/shared, and Linux Clang ASan/UBSan jobs. The approved catalogue SHA-256
+is `d16f85b60f707a4559b3a36bca9e8e82dc44b37dbfc8eb24389077799565a57f`.
+
+M6 is complete. This approval permits the project to begin layered 2.5D work;
+it does not silently approve future 2.5D or 3D visual changes, which require
+their own acceptance goldens.

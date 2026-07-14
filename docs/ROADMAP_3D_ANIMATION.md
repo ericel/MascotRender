@@ -33,9 +33,9 @@ Sticker recipe
 
 ### E1 — Layout and scene foundations
 
-Status: in progress. Named text slots, deterministic preference-based auto
-placement, and authored avoid-region scoring are implemented without breaking
-existing pack files.
+Status: layout slice complete. Named text slots, deterministic preference-based
+auto placement, actual fitted-glyph scoring, and selected-layer collision bounds
+are implemented without breaking existing pack files.
 
 Next: introduce internal scene nodes and parent-child transforms; add
 screen-fixed and character-anchor text;
@@ -62,6 +62,9 @@ a stable static poster thumbnail, with bounded duration/frame count and no text
 jumping.
 
 ### E3 — Layered 2.5D
+
+Status: active. M6 approved the flat visual baseline on 2026-07-14; 2.5D changes
+must preserve it at `t = 0` and earn a separate robot animation golden.
 
 Split a mascot into parented parts with pivots and depth. Add parallax,
 squash-and-stretch, delayed child motion, shadows, and simple camera motion
