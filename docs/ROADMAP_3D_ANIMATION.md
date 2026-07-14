@@ -138,6 +138,13 @@ The pack's `screen_space` layer flag prevents 2.5D view/mascot transforms, and
 the Filament preview composites that same SVG after GLB rendering. Acceptance
 requires identical sparkle bounds across all backends and two camera spans.
 
+MR-116 corrects the animation deliverable contract after a direct decoded-frame
+audit found inconsistent review sizing and an inadequate shadow assertion. All
+static and animated robot review assets are now 512 x 512. The hop validator
+records the contact-shadow RGBA signature, bounds, center, and pixel area for
+all 13 decoded frames and fails unless contraction visibly tracks the jump and
+the final geometry exactly matches frame zero.
+
 ## Guardrails
 
 - Do not add Filament before the sampled-scene and timeline tests pass.
