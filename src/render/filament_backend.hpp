@@ -19,11 +19,30 @@ struct GlbAssetInfo {
   std::vector<std::string> semantic_anchors;
 };
 
+struct FilamentRenderOptions {
+  std::uint32_t width{256U};
+  std::uint32_t height{256U};
+  float vertical_span{2.5F};
+};
+
+struct FilamentFrame {
+  std::uint32_t width{};
+  std::uint32_t height{};
+  std::vector<std::uint8_t> rgba;
+};
+
 // Loads a GLB through Filament's gltfio implementation, validates required
 // semantic node names, and returns backend-neutral metadata. The Filament
 // objects are intentionally private to the implementation.
 [[nodiscard]] Result<GlbAssetInfo>
 inspect_filament_glb(const std::filesystem::path &path,
                      const std::vector<std::string> &required_anchors);
+
+// Renders a GLB into owned RGBA pixels using a fixed orthographic camera and
+// deterministic hard key light. This remains internal until the common scene
+// compiler can select the 3D backend through the public renderer contract.
+[[nodiscard]] Result<FilamentFrame>
+render_filament_glb(const std::filesystem::path &path,
+                    const FilamentRenderOptions &options = {});
 
 } // namespace mascotrender::detail

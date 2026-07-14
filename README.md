@@ -143,7 +143,9 @@ That option requires the pinned `filament/1.74.0` package and sets
 `MASCOTRENDER_WITH_FILAMENT=ON`. Filament is not currently available from
 ConanCenter, so `recipes/filament` wraps the checksum-pinned official desktop
 archives and exposes `filament::filament` plus `filament::gltfio`. The wrapper
-is validated on macOS arm64 while Linux and Windows validation remains part of
+is validated on macOS arm64. The internal proof loads GLB resources, validates
+semantic anchors, and reads transparent RGBA pixels from a fixed orthographic
+camera and hard key light. Linux and Windows wrapper validation remains part of
 MR-111. The default `with_filament=False` graph remains fully installable from
 public dependencies and does not download or link Filament.
 
