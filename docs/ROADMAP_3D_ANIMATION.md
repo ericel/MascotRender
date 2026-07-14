@@ -41,6 +41,9 @@ Next: introduce internal scene nodes and parent-child transforms; add
 screen-fixed and character-anchor text;
 then add rotated/path text after HarfBuzz shaping is available.
 
+Authored per-sticker caption offset/rotation is tracked as `MR-085`. It must
+preserve automatic collision-aware placement rather than replacing it.
+
 Exit: one recipe renders unchanged at `t = 0`; top, bottom, left, right, and
 speech placements are deterministic at both 512 and 256 pixels.
 
@@ -50,6 +53,9 @@ Status: first vertical slice complete. Typed scalar tracks, fixed easing, loop
 policy, body bounce, text pop, bounded frame sampling, animated WebP, and static
 poster thumbnails are implemented. Next add blink/sparkle tracks and solve text
 against the union of occupied regions across the animation.
+
+Per-sticker text slide, bounce, and pulse presets plus deterministic goldens are
+tracked as `MR-094`. Lottie remains a separate optional exporter decision.
 
 Exit: one existing mascot produces a deterministic animated WebP plus
 a stable static poster thumbnail, with bounded duration/frame count and no text

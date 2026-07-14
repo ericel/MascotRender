@@ -51,15 +51,13 @@ ready for the remaining Product/Design review.
 - Static-with-CLI and shared-without-CLI Conan packages pass the external
   consumer; installed scripts generate and render a real bundle.
 - The current generated review set contains 5 packs, 50 stickers, 100 WebPs,
-  20 animated primary assets, exact authored metadata, and 3,057,496 encoded
+  20 animated primary assets, exact authored metadata, and 2,992,506 encoded
   bytes.
-- The regenerated 50-sticker bundle passes the formal mechanical review gate;
-  its catalogue SHA-256 is
-  `9c698cf732513e6ea7e039af6fd27172b219fc5c3117156015166146e6c6ec30`.
-- The complete 50-sticker contact sheet was visually inspected after balanced
-  layout/outline changes; every caption is readable, no caption or silhouette
-  is clipped, transparent edges are clean, and all five packs are coherent.
-  Formal Product/Design approval remains pending.
+- Review round 1 requested changes for alien/bunny differentiation, normalized
+  framing, antenna/caption collisions, and bottom mask safety. Generator v5
+  implements all four corrections and is awaiting round-2 approval.
+- The v5 bundle passes the mechanical review gate; its catalogue SHA-256 is
+  `a9ffe3bb0fa2c303357fe7936d14177f8f93bae39442c4f291e952db0d4279b5`.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
 - Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50

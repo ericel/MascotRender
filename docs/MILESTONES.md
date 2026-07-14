@@ -195,6 +195,11 @@ summary; pull-request CI publishes the verified bundle as a review artifact.
 M6 remains open until the checklist has no unresolved failures and Design and
 Product approve the contact sheet.
 
+The first review requested changes for alien/bunny differentiation, silhouette
+headroom, antenna/caption collisions, and bottom mask safety. Generator v5
+implements that correction pass; the regenerated bundle must be reviewed again
+before the gate can close.
+
 ## M7: 200-sticker product pilot
 
 Goal: integrate the generated pack into Drogon delivery and React local
@@ -219,6 +224,8 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
 - `MR-083` Add internal parented scene nodes with position, rotation, scale,
   opacity, pivot, and depth; static output is the `t = 0` compatibility test.
 - `MR-084` Add screen-fixed and character-anchor text placement.
+- `MR-085` Add optional per-sticker caption offset, rotation, and authored
+  placement without changing automatic collision handling.
 
 ### E2: Animated current 2D packs — 7-10 days
 
@@ -230,6 +237,8 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   and sparkle remain future additions.
 - `MR-093` **Done:** deterministic animated WebP encoder plus static poster
   thumbnail mode.
+- `MR-094` Add per-sticker text slide, bounce, and pulse presets with animation
+  goldens. Treat Lottie as a separate optional export decision.
 
 ### E3: Layered 2.5D — 10-15 days
 

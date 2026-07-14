@@ -20,6 +20,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Architecture decisions](docs/DECISIONS.md)
 - [Pack format v1](docs/PACK_FORMAT.md)
 - [Mascot generation and batch pipeline](docs/CONTENT_PIPELINE.md)
+- [M6 sticker review record](docs/M6_REVIEW.md)
 - [0.1.0 release notes](docs/RELEASE_0.1.0.md)
 - [Conan publication runbook](docs/PUBLISHING.md)
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
