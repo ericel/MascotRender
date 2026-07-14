@@ -31,6 +31,18 @@
         "y": { "type": "number" }
       }
     },
+    "layerTransform": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "x": { "type": "number", "minimum": -4096, "maximum": 4096 },
+        "y": { "type": "number", "minimum": -4096, "maximum": 4096 },
+        "rotation_degrees": { "type": "number", "minimum": -3600, "maximum": 3600 },
+        "scale_x": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+        "scale_y": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+        "opacity": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
     "rect": {
       "type": "object",
       "additionalProperties": false,
@@ -88,7 +100,11 @@
           "id": { "type": "string", "minLength": 1 },
           "source": { "type": "string", "pattern": "^[^:/\\\\]+(?:/[^:/\\\\]+)*\\.svg$" },
           "z": { "type": "integer" },
-          "collision_bounds": { "$ref": "#/$defs/rect" }
+          "collision_bounds": { "$ref": "#/$defs/rect" },
+          "parent": { "type": "string", "minLength": 1 },
+          "pivot": { "type": "string", "minLength": 1 },
+          "depth": { "type": "number", "minimum": -4, "maximum": 4 },
+          "transform": { "$ref": "#/$defs/layerTransform" }
         }
       }
     },

@@ -27,6 +27,30 @@ namespace {
   return result == tvg::Result::Success;
 }
 
+[[nodiscard]] AffineTransform multiply(const AffineTransform &left,
+                                       const AffineTransform &right) {
+  return AffineTransform{left.m11 * right.m11 + left.m12 * right.m21,
+                         left.m11 * right.m12 + left.m12 * right.m22,
+                         left.m21 * right.m11 + left.m22 * right.m21,
+                         left.m21 * right.m12 + left.m22 * right.m22,
+                         left.m11 * right.translate_x +
+                             left.m12 * right.translate_y + left.translate_x,
+                         left.m21 * right.translate_x +
+                             left.m22 * right.translate_y + left.translate_y};
+}
+
+[[nodiscard]] bool is_identity(const AffineTransform &transform) {
+  return transform.m11 == 1.0F && transform.m12 == 0.0F &&
+         transform.m21 == 0.0F && transform.m22 == 1.0F &&
+         transform.translate_x == 0.0F && transform.translate_y == 0.0F;
+}
+
+[[nodiscard]] tvg::Matrix thorvg_matrix(const AffineTransform &transform) {
+  return tvg::Matrix{transform.m11, transform.m12, transform.translate_x,
+                     transform.m21, transform.m22, transform.translate_y,
+                     0.0F,          0.0F,          1.0F};
+}
+
 [[nodiscard]] std::unique_ptr<tvg::Shape>
 circle(float cx, float cy, float rx, float ry, std::uint8_t red,
        std::uint8_t green, std::uint8_t blue, std::uint8_t alpha = 255) {
@@ -187,8 +211,7 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
       const auto text_bounds = fitted_bounds(area, *fitted, outline_width);
       for (const auto &avoid : block.avoid_regions) {
         const Rect scaled_avoid{avoid.x * scale_x, avoid.y * scale_y,
-                                avoid.width * scale_x,
-                                avoid.height * scale_y};
+                                avoid.width * scale_x, avoid.height * scale_y};
         score += overlap_area(text_bounds, scaled_avoid) * 20.0F;
       }
       const auto source_font_size = fitted->font_size / scale;
@@ -383,38 +406,49 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
       static_cast<float>(height) / static_cast<float>(scene.height);
   const auto animated_mascot =
       frame.mascot_scale != 1.0F || frame.mascot_offset_y != 0.0F;
+  const AffineTransform output_scale{scale_x, 0.0F, 0.0F, scale_y, 0.0F, 0.0F};
+  const auto center_x = static_cast<float>(scene.width) * 0.5F;
+  const auto center_y = static_cast<float>(scene.height) * 0.5F;
+  const AffineTransform mascot_transform{
+      frame.mascot_scale,
+      0.0F,
+      0.0F,
+      frame.mascot_scale,
+      (1.0F - frame.mascot_scale) * center_x,
+      (1.0F - frame.mascot_scale) * center_y + frame.mascot_offset_y};
   for (const auto &layer : scene.layers) {
     auto picture = tvg::Picture::gen();
-    if (!picture || !succeeded(picture->load(layer.string()))) {
-      return Result<PixelBuffer>::failure(
-          render_error("ThorVG could not load SVG layer: " + layer.string()));
+    if (!picture || !succeeded(picture->load(layer.source.string()))) {
+      return Result<PixelBuffer>::failure(render_error(
+          "ThorVG could not load SVG layer: " + layer.source.string()));
     }
+    auto visual_transform = layer.transform;
+    visual_transform.translate_x -= scene.view_offset_x * layer.depth;
+    visual_transform.translate_y -= scene.view_offset_y * layer.depth;
     if (animated_mascot) {
-      const auto center_x = static_cast<float>(scene.width) * 0.5F;
-      const auto center_y = static_cast<float>(scene.height) * 0.5F;
-      const tvg::Matrix transform{
-          scale_x * frame.mascot_scale,
-          0.0F,
-          scale_x * (1.0F - frame.mascot_scale) * center_x,
-          0.0F,
-          scale_y * frame.mascot_scale,
-          scale_y *
-              ((1.0F - frame.mascot_scale) * center_y + frame.mascot_offset_y),
-          0.0F,
-          0.0F,
-          1.0F};
-      if (!succeeded(picture->transform(transform))) {
+      visual_transform = multiply(mascot_transform, visual_transform);
+    }
+    if (!is_identity(visual_transform)) {
+      const auto transform = multiply(output_scale, visual_transform);
+      if (!succeeded(picture->transform(thorvg_matrix(transform)))) {
         return Result<PixelBuffer>::failure(render_error(
-            "ThorVG could not animate SVG layer: " + layer.string()));
+            "ThorVG could not transform SVG layer: " + layer.source.string()));
       }
     } else if (!succeeded(picture->size(static_cast<float>(width),
                                         static_cast<float>(height)))) {
+      return Result<PixelBuffer>::failure(render_error(
+          "ThorVG could not size SVG layer: " + layer.source.string()));
+    }
+    const auto opacity = static_cast<std::uint8_t>(
+        std::lround(std::clamp(layer.opacity, 0.0F, 1.0F) * 255.0F));
+    if (opacity != 255U && !succeeded(picture->opacity(opacity))) {
       return Result<PixelBuffer>::failure(
-          render_error("ThorVG could not size SVG layer: " + layer.string()));
+          render_error("ThorVG could not apply SVG layer opacity: " +
+                       layer.source.string()));
     }
     if (!push(*canvas, std::move(picture))) {
-      return Result<PixelBuffer>::failure(
-          render_error("ThorVG could not queue SVG layer: " + layer.string()));
+      return Result<PixelBuffer>::failure(render_error(
+          "ThorVG could not queue SVG layer: " + layer.source.string()));
     }
   }
 

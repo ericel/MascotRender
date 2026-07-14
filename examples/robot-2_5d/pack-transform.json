@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "pack_id": "robot-2_5d",
+  "canvas": { "width": 512, "height": 512 },
+  "layers": [
+    {
+      "id": "body",
+      "source": "layers/10-body.svg",
+      "z": 10,
+      "pivot": "body",
+      "depth": 0.2,
+      "transform": { "x": 10, "y": 5, "opacity": 0.8 }
+    },
+    {
+      "id": "head",
+      "source": "layers/20-head.svg",
+      "z": 20,
+      "parent": "body",
+      "pivot": "head",
+      "depth": 0.3,
+      "transform": { "x": 3, "y": 2, "opacity": 0.5 }
+    }
+  ],
+  "base_layers": ["body", "head"],
+  "expressions": { "happy": [] },
+  "poses": { "front": [] },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "Parent transform compiler fixture"
+  },
+  "anchors": {},
+  "pivots": {
+    "body": { "x": 256, "y": 360 },
+    "head": { "x": 256, "y": 246 }
+  }
+}

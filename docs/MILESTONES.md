@@ -248,11 +248,14 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
 
 ### E3: Layered 2.5D — 10-15 days
 
-**Status: active after M6 approval.**
+**Status: MR-100 complete; MR-101 is next.**
 
-- `MR-100` Parented mascot parts, pivots, depth, and parallax.
+- `MR-100` **Done:** parented mascot parts, named pivots, inherited affine
+  transforms/opacity/depth, deterministic parallax, transformed collision
+  bounds, and identity fast-path compatibility.
 - `MR-101` Squash/stretch, delayed child motion, shadows, and camera motion.
-- `MR-102` Robot 2.5D acceptance pack and deterministic animation golden.
+- `MR-102` **Partial:** the robot 2.5D acceptance pack and flat/parallax review
+  frames are complete; the deterministic animation golden follows MR-101.
 
 ### E4: Optional Filament/GLB proof — 15-25 days plus art
 

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "pack_id": "robot-2_5d",
+  "canvas": { "width": 512, "height": 512 },
+  "layers": [
+    { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0, "depth": -0.6 },
+    {
+      "id": "body",
+      "source": "layers/10-body.svg",
+      "z": 10,
+      "pivot": "body",
+      "depth": 0,
+      "collision_bounds": { "x": 136, "y": 276, "width": 240, "height": 138 }
+    },
+    { "id": "side-panels", "source": "layers/15-side-panels.svg", "z": 15, "parent": "body", "pivot": "body", "depth": 0.1 },
+    {
+      "id": "head",
+      "source": "layers/20-head.svg",
+      "z": 20,
+      "parent": "body",
+      "pivot": "head",
+      "depth": 0.25,
+      "collision_bounds": { "x": 132, "y": 126, "width": 248, "height": 238 }
+    },
+    { "id": "antenna", "source": "layers/25-antenna.svg", "z": 25, "parent": "head", "pivot": "antenna", "depth": 0.25 },
+    { "id": "face", "source": "layers/30-face.svg", "z": 30, "parent": "head", "pivot": "head", "depth": 0.2 },
+    { "id": "spark", "source": "layers/40-spark.svg", "z": 40, "depth": 0.8 }
+  ],
+  "base_layers": ["shadow", "body", "side-panels", "head", "antenna", "spark"],
+  "expressions": { "happy": ["face"] },
+  "poses": { "front": [] },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "Original deterministic vector acceptance fixture"
+  },
+  "anchors": { "face_center": { "x": 256, "y": 256 } },
+  "pivots": {
+    "body": { "x": 256, "y": 360 },
+    "head": { "x": 256, "y": 246 },
+    "antenna": { "x": 256, "y": 128 }
+  }
+}
