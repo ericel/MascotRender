@@ -157,9 +157,9 @@ TEST_CASE("named text slots place captions in different canvas regions") {
   REQUIRE(automatic);
   auto collision_aware = engine.render(example_request("text-auto-avoid.json"));
   REQUIRE(collision_aware);
-  auto bottom = engine.render(example_request("text-sample.json"));
+  auto bottom = engine.render(example_request("text-bottom.json"));
   REQUIRE(bottom);
-  REQUIRE(automatic.value().bytes == top.value().bytes);
+  REQUIRE(automatic.value().bytes == bottom.value().bytes);
   REQUIRE(collision_aware.value().bytes == top.value().bytes);
   REQUIRE(top.value().bytes != bottom.value().bytes);
 

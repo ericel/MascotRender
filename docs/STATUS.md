@@ -23,7 +23,8 @@ ready for the remaining Product/Design review.
 - Largest-valid whole-point text sizing, dynamic-programming balanced wrapping,
   configurable eight-pass outlined glyphs, and outline-aware safe-area fitting.
 - Backward-compatible named text slots with explicit or deterministic
-  preference-based auto placement and authored avoid-region collision scoring.
+  preference-based auto placement, actual fitted-glyph overlap scoring, and
+  selected-layer collision bounds expanded by a pack-wide clearance.
 - Bounded deterministic timelines for body-bounce and text-pop overlays,
   animated WebP assets, and static poster thumbnails.
 - 512 x 512 assets, 256 x 256 thumbnails, alpha/dimension checks, and CLI
@@ -32,9 +33,10 @@ ready for the remaining Product/Design review.
   identities with ten English/Pidgin phrases per identity.
 - Staged batch renderer producing assets, thumbnails, SHA-256 catalogue,
   full-phrase dictionary, and deterministic build report.
-- Deterministic review builder producing a complete HTML gallery, per-sticker
-  CSV checklist, and machine-readable summary after independently verifying
-  paths, sizes, hashes, WebP structure, animation metadata, and report totals.
+- Deterministic review builder producing a complete HTML gallery, side-by-side
+  animation playback page, per-sticker CSV checklist, and machine-readable
+  summary after independently verifying paths, sizes, hashes, WebP structure,
+  animation metadata, and report totals.
 - Reviewed lossless cat/text golden with decoded-pixel regression tolerance.
 - Public API comments, pack documentation, release notes, benchmark baseline,
   and third-party dependency/font notices.
@@ -51,13 +53,16 @@ ready for the remaining Product/Design review.
 - Static-with-CLI and shared-without-CLI Conan packages pass the external
   consumer; installed scripts generate and render a real bundle.
 - The current generated review set contains 5 packs, 50 stickers, 100 WebPs,
-  20 animated primary assets, exact authored metadata, and 2,992,506 encoded
+  20 animated primary assets, exact authored metadata, and 2,975,724 encoded
   bytes.
-- Review round 1 requested changes for alien/bunny differentiation, normalized
-  framing, antenna/caption collisions, and bottom mask safety. Generator v5
-  implements all four corrections and is awaiting round-2 approval.
-- The v5 bundle passes the mechanical review gate; its catalogue SHA-256 is
-  `a9ffe3bb0fa2c303357fe7936d14177f8f93bae39442c4f291e952db0d4279b5`.
+- Review round 2 rejected per-character collision patches and the alien's
+  separate visual system. Generator v6 now uses the shared silhouette family,
+  while the engine applies one selected-layer collision rule to all mascots.
+- Animation playback review found and fixed an abrupt loop reset. All repeating
+  timelines now end at the starting transform, scale, and opacity.
+- The v6 bundle passes the mechanical review gate and awaits round-3 approval;
+  its catalogue SHA-256 is
+  `d16f85b60f707a4559b3a36bca9e8e82dc44b37dbfc8eb24389077799565a57f`.
 - Golden `cat-text-sample.webp` is lossless 512 x 512 WebP with SHA-256
   `8591f0dca51b1c8ec39765cb19ed5719c62b12825f9d0aef960452f9a84d23ee`.
 - Local render baselines: 1.37 seconds for 10 stickers and 6.21 seconds for 50

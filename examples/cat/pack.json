@@ -7,7 +7,12 @@
   },
   "layers": [
     { "id": "shadow", "source": "layers/00-shadow.svg", "z": 0 },
-    { "id": "ears", "source": "layers/10-ears.svg", "z": 10 },
+    {
+      "id": "ears",
+      "source": "layers/10-ears.svg",
+      "z": 10,
+      "collision_bounds": { "x": 126, "y": 58, "width": 260, "height": 130 }
+    },
     { "id": "head", "source": "layers/20-head.svg", "z": 20 },
     { "id": "eyes-happy", "source": "layers/30-eyes.svg", "z": 30 },
     { "id": "eyes-sleepy", "source": "layers/31-eyes-sleepy.svg", "z": 31 },
@@ -51,6 +56,7 @@
   "avoid_regions": [
     { "name": "face", "x": 123, "y": 145, "width": 266, "height": 272 }
   ],
+  "text_clearance": 12,
   "fonts": [
     {
       "id": "display",

@@ -18,7 +18,12 @@ The normative machine-readable files are
   "pack_id": "example-pack",
   "canvas": { "width": 512, "height": 512 },
   "layers": [
-    { "id": "body", "source": "layers/body.svg", "z": 10 },
+    {
+      "id": "body",
+      "source": "layers/body.svg",
+      "z": 10,
+      "collision_bounds": { "x": 123, "y": 58, "width": 266, "height": 359 }
+    },
     { "id": "eyes-happy", "source": "layers/eyes-happy.svg", "z": 20 },
     { "id": "spark-left", "source": "layers/spark-left.svg", "z": 30 },
     { "id": "spark-right", "source": "layers/spark-right.svg", "z": 31 }
@@ -40,6 +45,7 @@ The normative machine-readable files are
   "avoid_regions": [
     { "name": "face", "x": 123, "y": 145, "width": 266, "height": 272 }
   ],
+  "text_clearance": 12,
   "fonts": [
     {
       "id": "display",
@@ -91,6 +97,12 @@ The normative machine-readable files are
   the canvas.
 - `avoid_regions` declares named rectangles that automatic text should not
   cover. Names must be unique and rectangles must remain inside the canvas.
+- A layer may declare `collision_bounds`, a canvas-relative rectangle covering
+  the visual occupancy that text must avoid when that layer is selected.
+  MascotRender adds only the selected layers' bounds to automatic placement.
+- `text_clearance` optionally expands selected-layer collision bounds by 0 to
+  128 canvas units before placement scoring. Expansion is clipped to the
+  canvas.
 
 ## Sticker
 
@@ -137,12 +149,14 @@ The renderer searches downward from `max_font_size` for the largest whole-point
 size that fits, chooses the fewest valid lines, and balances them by minimizing
 squared unused line width. An outline is rendered as eight deterministic glyph
 passes around the fill and participates in safe-area fitting. For auto
-placement, the renderer chooses the candidate yielding the largest font, then
-the fewest lines, then the earliest authored preference. Authored avoid-region
-overlap is the strongest penalty, so automatic captions do not cover declared
-faces or silhouettes. Text is centered above the selected SVG layers. Explicit
-newline preservation, pixel occupancy masks, rotation, paths, fallback fonts,
-shaping, and bidirectional text remain later work.
+placement, the renderer computes the fitted glyph rectangle including its
+outline, then scores that actual rectangle against authored avoid regions and
+the selected layers' expanded collision bounds. It chooses the candidate with
+the least overlap, then the largest font, fewest lines, and earliest authored
+preference. This makes caption placement follow the selected rig rather than a
+species-specific slot override. Text is centered above the selected SVG layers.
+Explicit newline preservation, pixel occupancy masks, rotation, paths,
+fallback fonts, shaping, and bidirectional text remain later work.
 
 ## Animation behavior in 0.1
 
@@ -154,8 +168,11 @@ Supported loop policies are `once`, `loop`, `ping_pong`, and
 `text_pop`; unknown or duplicate overlays fail with a JSON-path diagnostic.
 
 Frame timestamps, easing functions, transforms, encoder settings, and overlay
-order are fixed. A render is rejected before frame allocation if its retained
-BGRA frame buffers would exceed the 256 MiB safety ceiling.
+order are fixed. Repeating timelines normalize their final logical sample to
+the loop endpoint; looping text-pop tracks also fade back to their initial
+scale and opacity so the last-to-first transition is continuous. A render is
+rejected before frame allocation if its retained BGRA frame buffers would
+exceed the 256 MiB safety ceiling.
 `RenderOptions::animation_first_frame_only` and the CLI
 `--first-frame-only` flag produce a stable static poster; the batch pipeline
 uses that path for thumbnails. libwebp may merge identical resting frames, so

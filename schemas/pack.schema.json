@@ -87,7 +87,8 @@
         "properties": {
           "id": { "type": "string", "minLength": 1 },
           "source": { "type": "string", "pattern": "^[^:/\\\\]+(?:/[^:/\\\\]+)*\\.svg$" },
-          "z": { "type": "integer" }
+          "z": { "type": "integer" },
+          "collision_bounds": { "$ref": "#/$defs/rect" }
         }
       }
     },
@@ -129,6 +130,11 @@
       "type": "array",
       "uniqueItems": true,
       "items": { "$ref": "#/$defs/avoidRegion" }
+    },
+    "text_clearance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 128
     },
     "fonts": {
       "type": "array",

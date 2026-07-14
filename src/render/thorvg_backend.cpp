@@ -78,6 +78,31 @@ triangle(float x1, float y1, float x2, float y2, float x3, float y3,
   return width * height;
 }
 
+[[nodiscard]] Rect fitted_bounds(const Rect &area, const FittedText &fitted,
+                                 float outline_width) {
+  const auto total_height =
+      fitted.line_height * static_cast<float>(fitted.lines.size());
+  const auto first_y = area.y + (area.height - total_height) * 0.5F;
+  auto left = std::numeric_limits<float>::infinity();
+  auto top = std::numeric_limits<float>::infinity();
+  auto right = -std::numeric_limits<float>::infinity();
+  auto bottom = -std::numeric_limits<float>::infinity();
+  for (std::size_t index = 0; index < fitted.metrics.size(); ++index) {
+    const auto &metrics = fitted.metrics[index];
+    const auto glyph_left =
+        area.x + (area.width - metrics.width) * 0.5F - outline_width;
+    const auto glyph_top =
+        first_y + static_cast<float>(index) * fitted.line_height +
+        (fitted.line_height - metrics.height) * 0.5F - outline_width;
+    left = std::min(left, glyph_left);
+    top = std::min(top, glyph_top);
+    right = std::max(right, glyph_left + metrics.width + outline_width * 2.0F);
+    bottom =
+        std::max(bottom, glyph_top + metrics.height + outline_width * 2.0F);
+  }
+  return Rect{left, top, right - left, bottom - top};
+}
+
 [[nodiscard]] std::unique_ptr<tvg::Text>
 make_text(const TextBlock &block, const std::string &line, float font_size,
           const Color &color, TextMetrics *metrics = nullptr) {
@@ -159,8 +184,12 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
     }
     float score = 0.0F;
     if (block.auto_placement) {
+      const auto text_bounds = fitted_bounds(area, *fitted, outline_width);
       for (const auto &avoid : block.avoid_regions) {
-        score += overlap_area(candidate, avoid) * 20.0F;
+        const Rect scaled_avoid{avoid.x * scale_x, avoid.y * scale_y,
+                                avoid.width * scale_x,
+                                avoid.height * scale_y};
+        score += overlap_area(text_bounds, scaled_avoid) * 20.0F;
       }
       const auto source_font_size = fitted->font_size / scale;
       score += (block.max_font_size - source_font_size) * 10.0F;

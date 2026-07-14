@@ -195,10 +195,14 @@ summary; pull-request CI publishes the verified bundle as a review artifact.
 M6 remains open until the checklist has no unresolved failures and Design and
 Product approve the contact sheet.
 
-The first review requested changes for alien/bunny differentiation, silhouette
-headroom, antenna/caption collisions, and bottom mask safety. Generator v5
-implements that correction pass; the regenerated bundle must be reviewed again
-before the gate can close.
+Review round 1 requested alien/bunny differentiation, normalized headroom,
+caption/accessory clearance, and bottom mask safety. Round 2 confirmed those
+improvements but rejected per-species collision patches and the alien's separate
+visual system. Generator v6 and the engine layout now use selected-layer
+collision bounds, actual fitted-glyph overlap, one general clearance rule, and
+a shared silhouette family. The animation reviewer also exposes all four motion
+presets side by side and a loop-seam regression protects playback. Round 3
+Product/Design review is required before the gate can close.
 
 ## M7: 200-sticker product pilot
 

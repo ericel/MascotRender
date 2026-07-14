@@ -15,12 +15,20 @@ TEST_CASE("timeline samples bounded deterministic frame timestamps") {
     REQUIRE(frames.at(1).state.mascot_offset_y < 0.0F);
     REQUIRE(frames.front().state.text_opacity == 0.0F);
     REQUIRE(frames.at(1).state.text_opacity > 0.0F);
+    REQUIRE(frames.back().state.mascot_offset_y ==
+            frames.front().state.mascot_offset_y);
+    REQUIRE(frames.back().state.mascot_scale ==
+            frames.front().state.mascot_scale);
+    REQUIRE(frames.back().state.text_scale ==
+            frames.front().state.text_scale);
+    REQUIRE(frames.back().state.text_opacity ==
+            frames.front().state.text_opacity);
     REQUIRE(mascotrender::detail::animation_loop_count(animation.loop) == 0U);
     REQUIRE(mascotrender::detail::animation_loop_count(
                 mascotrender::detail::AnimationLoop::once) == 1U);
 }
 
-TEST_CASE("ping pong timeline returns toward its starting transform") {
+TEST_CASE("ping pong timeline returns to its starting transform") {
     const mascotrender::detail::AnimationSpec animation{
         1000U, 10U, mascotrender::detail::AnimationLoop::ping_pong, true,
         false};
@@ -28,6 +36,6 @@ TEST_CASE("ping pong timeline returns toward its starting transform") {
     const auto frames = mascotrender::detail::sample_animation(animation);
     REQUIRE(frames.size() == 10U);
     REQUIRE(frames.at(1).state.mascot_offset_y < 0.0F);
-    REQUIRE(frames.at(9).state.mascot_offset_y < 0.0F);
+    REQUIRE(frames.at(9).state.mascot_offset_y == 0.0F);
     REQUIRE(frames.at(5).state.mascot_offset_y == 0.0F);
 }
