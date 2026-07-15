@@ -195,6 +195,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=ROOT / "contracts/human-canonical-production-design-review-v1.json",
     )
+    parser.add_argument("--expect-verification-status")
     parser.add_argument("--expect-review-status")
     parser.add_argument("--force", action="store_true")
     return parser.parse_args()
@@ -547,6 +548,14 @@ def main() -> int:
         shutil.rmtree(staging, ignore_errors=True)
         raise
     report = read_json(destination / "release-review.json")
+    if (
+        args.expect_verification_status
+        and report.get("verification_status") != args.expect_verification_status
+    ):
+        raise RuntimeError(
+            f"expected verification status {args.expect_verification_status!r}, "
+            f"got {report.get('verification_status')!r}"
+        )
     if args.expect_review_status and report.get("review_status") != args.expect_review_status:
         raise RuntimeError(
             f"expected review status {args.expect_review_status!r}, got {report.get('review_status')!r}"

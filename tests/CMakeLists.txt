@@ -43,7 +43,7 @@ if(MASCOTRENDER_WITH_FILAMENT)
                 --output "${PROJECT_BINARY_DIR}/canonical-human-production-review"
                 --mascotrender "$<TARGET_FILE:mascotrender_cli>"
                 --glb-renderer "$<TARGET_FILE:mascotrender_glb_preview>"
-                --expect-review-status public-release-approved
+                --expect-verification-status technical-validation-success
                 --force
         )
         set_tests_properties(canonical_human_production_review_pipeline PROPERTIES TIMEOUT 300)

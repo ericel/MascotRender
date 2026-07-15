@@ -158,8 +158,10 @@ Cross-backend identity parity and family art-direction parity are separate gates
 public release requires both.
 
 Human Pack v1 is owner-approved for public release. The approval is bound to the
-exact eight current review-sheet hashes, and the generated release report reads
-`public-release-approved` / `public-release` in CI.
+exact eight current review-sheet hashes. CI requires fresh cross-platform review
+runs to reach `technical-validation-success`; it separately validates the bound
+approval contract as `public-release-approved` / `public-release`. A rerender
+with different pixel hashes is deliberately not allowed to inherit owner approval.
 
 ## Layered 2.5D acceptance example
 
