@@ -1,6 +1,6 @@
 # Third-party notices
 
-MascotRender 0.1.0 uses the following pinned dependencies. The complete license
+MascotRender 0.2.0 uses the following pinned dependencies. The complete license
 files are distributed in their respective Conan packages; this inventory is
 derived from the locked Conan dependency graph.
 

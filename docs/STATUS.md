@@ -1,15 +1,17 @@
 # MascotRender Project Status
 
-Updated: 2026-07-14
+Updated: 2026-07-15
 
 ## Current milestone
 
 E4 — optional Filament/GLB proof is complete. MR-110 through MR-116 are done,
-including cross-platform wrapper validation and publication. M0-M6
-and E1-E4 are complete, release `v0.1.0` is published, and
-anonymous consumers can install `mascotrender/0.1.0` from the public JFrog Conan
-remote. Product/Design approved the generator-v6 50-sticker bundle on
-2026-07-14. M7 remains a separate product-integration pilot.
+including cross-platform wrapper validation and publication. M0-M6 and E1-E4
+are complete. The owner-approved, hash-bound Human Pack production pipeline
+ships in `v0.2.0`; anonymous consumers install `mascotrender/0.2.0` from the
+public JFrog Conan remote.
+Product/Design approved the generator-v6 50-sticker bundle on 2026-07-14 and
+the canonical Human Pack production bundle on 2026-07-15. M7 remains a
+separate product-integration pilot.
 
 ## Completed locally
 
@@ -145,15 +147,15 @@ remote so external 3D consumers can resolve `with_filament=True`.
 
 ## Distribution
 
-Release `v0.1.0` and its tested Conan binaries are published. Anonymous
+Release `v0.2.0` supersedes `v0.1.0` as the current production package. Anonymous
 consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
-publication credentials remain confined to repository secrets. The default
-package matrix and optional Filament wrapper/MascotRender packages passed
-logged-out exact-package re-downloads with `--build=never` on macOS arm64,
-Linux x86-64, and Windows x86-64 in publication run `29335668526`. Fresh caches
-use `--build=missing` for public dependencies without matching ConanCenter
-binaries.
+publication credentials remain confined to repository secrets. Every release
+job must pass a logged-out exact-package re-download with `--build=never` on
+macOS arm64, Linux x86-64, and Windows x86-64. Fresh caches use
+`--build=missing` for public dependencies without matching ConanCenter
+binaries. The successful `v0.2.0` publication run is linked from its GitHub
+release.
 
 ## Product direction baseline
 
