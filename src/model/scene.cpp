@@ -1,6 +1,7 @@
 #include "model/scene.hpp"
 
 #include <algorithm>
+#include <charconv>
 #include <cmath>
 #include <cstdint>
 #include <filesystem>
@@ -25,6 +26,7 @@ using Json = nlohmann::json;
 struct Layer {
   std::string id;
   std::filesystem::path source;
+  std::vector<std::pair<std::uint32_t, std::filesystem::path>> lod_sources;
   std::int32_t z{};
   std::optional<Rect> collision_bounds;
   std::optional<std::string> parent;
@@ -319,11 +321,57 @@ parse_scene(const Json &pack, const Json &sticker,
       return Result<Scene>::failure(std::move(*error));
     }
 
+    std::map<std::string, Point, std::less<>> anchors;
+    for (auto item = pack.at("anchors").begin();
+         item != pack.at("anchors").end(); ++item) {
+      anchors.emplace(item.key(), Point{item.value().at("x").get<float>(),
+                                        item.value().at("y").get<float>()});
+    }
+
     std::map<std::string, Point, std::less<>> pivots;
     for (auto item = pack.at("pivots").begin(); item != pack.at("pivots").end();
          ++item) {
       pivots.emplace(item.key(), Point{item.value().at("x").get<float>(),
                                        item.value().at("y").get<float>()});
+    }
+
+    if (sticker.contains("camera")) {
+      const auto &camera = sticker.at("camera");
+      const auto framing = camera.at("framing").get<std::string>();
+      const std::set<std::string, std::less<>> supported_framings{
+          "face-closeup", "bust", "three-quarter", "full-body",
+          "dynamic-full-body"};
+      if (!supported_framings.contains(framing)) {
+        return Result<Scene>::failure(document_error(
+            "Unknown semantic camera framing: " + framing, sticker_file,
+            "$.camera.framing"));
+      }
+      const auto target_name = camera.at("target").get<std::string>();
+      if (!anchors.contains(target_name)) {
+        return Result<Scene>::failure(document_error(
+            "Unknown camera target anchor: " + target_name, sticker_file,
+            "$.camera.target"));
+      }
+      const auto zoom = camera.at("zoom").get<float>();
+      const auto offset_x = camera.value("offset_x", 0.0F);
+      const auto offset_y = camera.value("offset_y", 0.0F);
+      if (!std::isfinite(zoom) || zoom < 0.5F || zoom > 3.0F ||
+          !std::isfinite(offset_x) || !std::isfinite(offset_y) ||
+          std::abs(offset_x) > 512.0F || std::abs(offset_y) > 512.0F) {
+        return Result<Scene>::failure(document_error(
+            "Camera zoom must be 0.5 to 3.0 and offsets must be finite within "
+            "+/-512",
+            sticker_file, "$.camera"));
+      }
+      const auto target = anchors.at(target_name);
+      const auto destination_x = static_cast<float>(scene.width) * 0.5F +
+                                 offset_x;
+      const auto destination_y = static_cast<float>(scene.height) * 0.5F +
+                                 offset_y;
+      scene.camera_transform =
+          AffineTransform{zoom, 0.0F, 0.0F, zoom,
+                          destination_x - zoom * target.x,
+                          destination_y - zoom * target.y};
     }
 
     const auto pack_root = pack_file.parent_path();
@@ -525,6 +573,37 @@ parse_scene(const Json &pack, const Json &sticker,
       if (!resolved) {
         return Result<Scene>::failure(resolved.error());
       }
+      std::vector<std::pair<std::uint32_t, std::filesystem::path>> lod_sources;
+      if (item.contains("lod_sources")) {
+        for (auto lod = item.at("lod_sources").begin();
+             lod != item.at("lod_sources").end(); ++lod) {
+          std::uint32_t maximum_dimension{};
+          const auto *begin = lod.key().data();
+          const auto *end = begin + lod.key().size();
+          const auto [parsed_end, error] =
+              std::from_chars(begin, end, maximum_dimension);
+          if (error != std::errc{} || parsed_end != end ||
+              maximum_dimension < 32U || maximum_dimension > 512U) {
+            return Result<Scene>::failure(document_error(
+                "LOD source keys must be maximum dimensions from 32 to 512",
+                pack_file, location + ".lod_sources." + lod.key()));
+          }
+          const auto lod_source = lod.value().get<std::string>();
+          auto resolved_lod = resolve_asset(
+              pack_root, lod_source, pack_file,
+              location + ".lod_sources." + lod.key(), ".svg",
+              "Layer LOD source");
+          if (!resolved_lod) {
+            return Result<Scene>::failure(resolved_lod.error());
+          }
+          lod_sources.emplace_back(maximum_dimension,
+                                   std::move(resolved_lod).value());
+        }
+        std::sort(lod_sources.begin(), lod_sources.end(),
+                  [](const auto &left, const auto &right) {
+                    return left.first < right.first;
+                  });
+      }
       std::optional<Rect> collision_bounds;
       if (item.contains("collision_bounds")) {
         auto parsed = parse_rect(
@@ -594,7 +673,8 @@ parse_scene(const Json &pack, const Json &sticker,
             pack_file, location + ".transform"));
       }
 
-      available.emplace(id, Layer{id, std::move(resolved).value(), z,
+      available.emplace(id, Layer{id, std::move(resolved).value(),
+                                  std::move(lod_sources), z,
                                   collision_bounds, parent, pivot, depth,
                                   screen_space, x, y, rotation_degrees, scale_x,
                                   scale_y, opacity, location, AffineTransform{},
@@ -763,7 +843,8 @@ parse_scene(const Json &pack, const Json &sticker,
       }
       std::reverse(animation_chain.begin(), animation_chain.end());
       scene.layers.push_back(
-          SceneLayer{layer.id, std::move(layer.source), layer.world_transform,
+          SceneLayer{layer.id, std::move(layer.source),
+                     std::move(layer.lod_sources), layer.world_transform,
                      std::move(animation_chain), layer.world_opacity,
                      layer.world_depth, layer.screen_space, layer.z});
       if (layer.collision_bounds) {
@@ -773,6 +854,8 @@ parse_scene(const Json &pack, const Json &sticker,
               scene.view_offset_x * layer.world_depth;
           visual_transform.translate_y -=
               scene.view_offset_y * layer.world_depth;
+          visual_transform =
+              multiply(scene.camera_transform, visual_transform);
         }
         const auto bounds =
             transform_rect(*layer.collision_bounds, visual_transform);

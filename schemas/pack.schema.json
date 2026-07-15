@@ -96,6 +96,29 @@
         }
       }
     },
+    "rig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "contract_version", "pose_bindings"],
+      "properties": {
+        "contract_id": { "type": "string", "minLength": 1 },
+        "contract_version": { "type": "integer", "minimum": 1 },
+        "device_profile": { "type": "string", "minLength": 1 },
+        "device_bindings": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
+        "pose_bindings": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
     "canvas": {
       "type": "object",
       "additionalProperties": false,
@@ -115,6 +138,12 @@
         "properties": {
           "id": { "type": "string", "minLength": 1 },
           "source": { "type": "string", "pattern": "^[^:/\\\\]+(?:/[^:/\\\\]+)*\\.svg$" },
+          "lod_sources": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": { "pattern": "^(?:[3-9][0-9]|[1-4][0-9]{2}|5(?:0[0-9]|1[0-2]))$" },
+            "additionalProperties": { "type": "string", "pattern": "^[^:/\\\\]+(?:/[^:/\\\\]+)*\\.svg$" }
+          },
           "z": { "type": "integer" },
           "collision_bounds": { "$ref": "#/$defs/rect" },
           "parent": { "type": "string", "minLength": 1 },

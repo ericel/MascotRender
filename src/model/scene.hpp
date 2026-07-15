@@ -44,6 +44,7 @@ struct SceneAnimationNode {
 struct SceneLayer {
   std::string id;
   std::filesystem::path source;
+  std::vector<std::pair<std::uint32_t, std::filesystem::path>> lod_sources;
   AffineTransform transform;
   std::vector<SceneAnimationNode> animation_chain;
   float opacity{1.0F};
@@ -126,6 +127,7 @@ struct Scene {
   std::uint32_t width{};
   std::uint32_t height{};
   std::vector<SceneLayer> layers;
+  AffineTransform camera_transform;
   float view_offset_x{};
   float view_offset_y{};
   std::vector<TextBlock> text;

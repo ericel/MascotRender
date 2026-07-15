@@ -309,6 +309,92 @@ the small default package and is detailed in `ROADMAP_3D_ANIMATION.md`.
   center, distinct bounds in frames 0/3/6/9/12, and exact loop closure.
   Product/Design approved the corrected playback bundle on 2026-07-14.
 
+## H1: Human identity and full-body technical fixture
+
+**Engineering status: implemented locally. Product status: permanently a
+technical fixture; production use forbidden.**
+
+- `MR-120` **Done:** Versioned human identity schema separates complexion
+  material, undertone, face, hair, body, presentation, and audit-only heritage
+  context. All 12 pilots declare `rendering_source: appearance-only`.
+- `MR-121` **Done:** `humanoid-full-body-v1` defines 15 normalized joints,
+  semantic gesture/root/head targets, capabilities, and five camera framings.
+- `MR-122` **Done:** The C++ scene loader applies bounded semantic camera
+  framing around authored anchors while keeping captions screen-fixed and
+  transforming collision bounds consistently.
+- `MR-123` **Done:** Twelve core semantic motion recipes compile to selected
+  concrete layers, close their loops, and preserve phrase/recipe/camera metadata
+  in bundle catalogues.
+- `MR-124` **Done:** Twelve curated pilot identities generate 144 full-body
+  sticker specifications deterministically. Coverage spans all ten complexion
+  scale values, four undertones, five hair texture families, three height
+  classes, five builds, and multiple representation contexts.
+- `MR-125` **Done:** The review builder emits 12 phrase contact sheets and a
+  machine-readable 144-poster validation report. The output is explicitly a
+  technical fixture and cannot be promoted to production artwork.
+- `MR-126` **Superseded:** Product review correctly established a materially
+  higher authored-human standard instead of approving the procedural fixture.
+- `MR-127` **Moved to H2:** GLB parity begins only after an original Human Pack
+  v1 identity passes the production visual and representation gate.
+- `MR-128` **Pending:** Add tiered/on-demand pack generation and sharded
+  catalogues before scaling beyond curated pilots.
+
+## H2: Authored Human Pack v1
+
+**Engineering prototype status: complete locally. Front-facing vector
+foundation: approved. Production turnaround and cross-backend design: rejected.**
+
+- `MR-130` **Done locally:** Establish the Human Mascot Reference dated
+  2026-07-15 as the visual/coverage benchmark and record the normative Human
+  Pack visual and representation standard.
+- `MR-131` **Done locally:** Add the machine-readable production capability and
+  editorial-policy contract, keep coverage pack-specific, make minor-coded
+  characters optional, and enforce fixture-versus-production classification.
+- `MR-132` **Done locally:** The project owner approved H01, H04, H07, H12, and H13
+  on 2026-07-15 as the initial canonical family and foundation of the Human
+  Character Library. Their exact concept SHA, visual language, anatomical
+  principles, and device rules are versioned in
+  `human-canonical-family-v1`. Deterministic layered SVG production-review
+  candidates now provide 176 semantic layers and independently bound
+  assistive-device parts.
+  The corrective parity pass formalizes anatomical left/right and restores
+  character-specific face, age, body, hair, clothing, glasses, and scarf cues.
+  On 2026-07-15 the owner approved vector parity for all five members, including
+  H07's seated geometry and footrest relationship. MIT production licensing and
+  public redistribution authority are now recorded in the release evidence.
+- `MR-133` **Reopened:** Five 512-pixel framing samples, a common-world-scale
+  lineup, 15 true-size 80/96/100-pixel renders, 12 authored low-LOD layers, 19
+  semantic-device part proofs, labeled anchor/pivot/contact sheets, four
+  animated device checks, 20 authored turnaround views, 35 expression/pose
+  renders, and 35 reduced-motion equivalents are technically validated. The
+  owner rejected the turnaround construction: hair detaches in side views,
+  three-quarter views do not rotate the complete hierarchy, and device topology
+  is incomplete outside the front view.
+- `MR-134` **Technical prototype only:** All five GLBs load and expose nine pose
+  and seven expression clips plus named device nodes. Their primitive geometry
+  does not preserve authored faces, bodies, clothing, hair, or assistive-device
+  construction, so they are not production art.
+- `MR-135` **Failed design gate:** The reviewer renders 80 GLB clips, but its
+  former numeric checks proved execution rather than artistic parity. The exact
+  rejected sheets are now bound to the owner decision; the report correctly
+  emits `release-blocked` and `production_use: forbidden`.
+
+## P1: Independent open-source platform foundation
+
+- `MR-140` **Done locally:** Add the project manifesto, product vision, module
+  boundaries, and the explicit Wahalao-as-consumer boundary.
+- `MR-141` **Done locally:** Specify the draft portable `.mascot` v1 container,
+  licensing/provenance requirements, deterministic ordering, and path safety.
+- `MR-142` **Done locally:** Add a deterministic `.mascot` build/verify tool and
+  regression tests for byte stability and traversal rejection.
+- `MR-143` **Pending:** Introduce behavior-backed package loader and capability
+  inspection APIs while preserving the 0.1 file-based render call.
+- `MR-144` **Pending:** Split the monolithic target into internal core, vector,
+  layered, animation, and text targets, then expose Conan components only after
+  dependency and ABI tests pass.
+- `MR-145` **Pending:** Add Character Catalogue, Recipe Catalogue, compile, and
+  capability APIs; implement the Wahalao adapter outside the engine.
+
 ## First execution batch
 
 Start these items immediately:

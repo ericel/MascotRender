@@ -1,0 +1,535 @@
+{
+  "schema_version": 1,
+  "pack_id": "human-canonical-h04",
+  "character_identity": {
+    "character_id": "H04",
+    "contract_version": 1,
+    "contract_sha256": "a7231185a654cab37e50b7919dc38579e7e3fe0d6a2a025bb73fb5827ae8e08c",
+    "required_features": [
+      "human",
+      "canonical-family-v1",
+      "full-body",
+      "semantic-rig-v2",
+      "prosthesis.lower-leg.right"
+    ]
+  },
+  "rig": {
+    "contract_id": "humanoid-production-v2",
+    "contract_version": 2,
+    "device_profile": "prosthesis.lower-leg.right",
+    "device_bindings": {
+      "socket.right": "device-prosthesis-socket-right",
+      "pylon.right": "device-prosthesis-pylon-right",
+      "prosthetic-foot.right": "device-prosthetic-foot-right"
+    },
+    "pose_bindings": {
+      "greeting": {
+        "root": "torso",
+        "head": "head",
+        "face": "face-friendly",
+        "gesture.primary": "arm-right-greeting",
+        "gesture.secondary": "arm-left-greeting",
+        "ground.contact": "shadow",
+        "gaze.target": "head"
+      }
+    }
+  },
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "shadow",
+      "source": "layers/00-shadow.svg",
+      "z": 0,
+      "depth": 0.0
+    },
+    {
+      "id": "leg-left",
+      "source": "layers/07-leg-left.svg",
+      "z": 70,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "hip_left"
+    },
+    {
+      "id": "leg-right",
+      "source": "layers/08-leg-right.svg",
+      "z": 80,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "hip_right"
+    },
+    {
+      "id": "device-prosthesis-socket-right",
+      "source": "layers/09-device-prosthesis-socket-right.svg",
+      "z": 90,
+      "depth": 0.0,
+      "lod_sources": {
+        "100": "layers-lod100/09-device-prosthesis-socket-right.svg"
+      },
+      "parent": "leg-right",
+      "pivot": "knee_right"
+    },
+    {
+      "id": "device-prosthesis-pylon-right",
+      "source": "layers/10-device-prosthesis-pylon-right.svg",
+      "z": 100,
+      "depth": 0.0,
+      "lod_sources": {
+        "100": "layers-lod100/10-device-prosthesis-pylon-right.svg"
+      },
+      "parent": "device-prosthesis-socket-right",
+      "pivot": "ankle_right"
+    },
+    {
+      "id": "device-prosthetic-foot-right",
+      "source": "layers/11-device-prosthetic-foot-right.svg",
+      "z": 110,
+      "depth": 0.0,
+      "lod_sources": {
+        "100": "layers-lod100/11-device-prosthetic-foot-right.svg"
+      },
+      "parent": "device-prosthesis-pylon-right",
+      "pivot": "foot_right"
+    },
+    {
+      "id": "torso",
+      "source": "layers/12-torso.svg",
+      "z": 120,
+      "depth": 0.18,
+      "pivot": "hips",
+      "collision_bounds": {
+        "x": 60,
+        "y": 28,
+        "width": 392,
+        "height": 445
+      }
+    },
+    {
+      "id": "head",
+      "source": "layers/13-head.svg",
+      "z": 130,
+      "depth": 0.08,
+      "parent": "torso",
+      "pivot": "neck",
+      "collision_bounds": {
+        "x": 185,
+        "y": 19,
+        "width": 142,
+        "height": 166
+      }
+    },
+    {
+      "id": "hair-front",
+      "source": "layers/14-hair-front.svg",
+      "z": 140,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-friendly",
+      "source": "layers/15-face-friendly.svg",
+      "z": 150,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-laughing",
+      "source": "layers/16-face-laughing.svg",
+      "z": 160,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-surprised",
+      "source": "layers/17-face-surprised.svg",
+      "z": 170,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-thinking",
+      "source": "layers/18-face-thinking.svg",
+      "z": 180,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-confident",
+      "source": "layers/19-face-confident.svg",
+      "z": 190,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-sorry",
+      "source": "layers/20-face-sorry.svg",
+      "z": 200,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-excited",
+      "source": "layers/21-face-excited.svg",
+      "z": 210,
+      "depth": 0.02,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "arm-left-rest",
+      "source": "layers/22-arm-left-rest.svg",
+      "z": 220,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-rest",
+      "source": "layers/23-arm-right-rest.svg",
+      "z": 230,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-greeting",
+      "source": "layers/24-arm-left-greeting.svg",
+      "z": 240,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-greeting",
+      "source": "layers/25-arm-right-greeting.svg",
+      "z": 250,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-farewell",
+      "source": "layers/26-arm-left-farewell.svg",
+      "z": 260,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-farewell",
+      "source": "layers/27-arm-right-farewell.svg",
+      "z": 270,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-agreement",
+      "source": "layers/28-arm-left-agreement.svg",
+      "z": 280,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-agreement",
+      "source": "layers/29-arm-right-agreement.svg",
+      "z": 290,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-disagreement",
+      "source": "layers/30-arm-left-disagreement.svg",
+      "z": 300,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-disagreement",
+      "source": "layers/31-arm-right-disagreement.svg",
+      "z": 310,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-gratitude",
+      "source": "layers/32-arm-left-gratitude.svg",
+      "z": 320,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-gratitude",
+      "source": "layers/33-arm-right-gratitude.svg",
+      "z": 330,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-concern",
+      "source": "layers/34-arm-left-concern.svg",
+      "z": 340,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-concern",
+      "source": "layers/35-arm-right-concern.svg",
+      "z": 350,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-surprise",
+      "source": "layers/36-arm-left-surprise.svg",
+      "z": 360,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-surprise",
+      "source": "layers/37-arm-right-surprise.svg",
+      "z": 370,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-celebration",
+      "source": "layers/38-arm-left-celebration.svg",
+      "z": 380,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-celebration",
+      "source": "layers/39-arm-right-celebration.svg",
+      "z": 390,
+      "depth": 0.015,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    }
+  ],
+  "base_layers": [
+    "shadow",
+    "leg-left",
+    "leg-right",
+    "device-prosthesis-socket-right",
+    "device-prosthesis-pylon-right",
+    "device-prosthetic-foot-right",
+    "torso",
+    "head",
+    "hair-front"
+  ],
+  "expressions": {
+    "friendly": [
+      "face-friendly"
+    ],
+    "happy": [
+      "face-friendly"
+    ],
+    "laughing": [
+      "face-laughing"
+    ],
+    "surprised": [
+      "face-surprised"
+    ],
+    "thinking": [
+      "face-thinking"
+    ],
+    "confident": [
+      "face-confident"
+    ],
+    "sorry": [
+      "face-sorry"
+    ],
+    "excited": [
+      "face-excited"
+    ]
+  },
+  "poses": {
+    "neutral": [
+      "arm-left-rest",
+      "arm-right-rest"
+    ],
+    "rest": [
+      "arm-left-rest",
+      "arm-right-rest"
+    ],
+    "greeting": [
+      "arm-left-greeting",
+      "arm-right-greeting"
+    ],
+    "farewell": [
+      "arm-left-farewell",
+      "arm-right-farewell"
+    ],
+    "agreement": [
+      "arm-left-agreement",
+      "arm-right-agreement"
+    ],
+    "disagreement": [
+      "arm-left-disagreement",
+      "arm-right-disagreement"
+    ],
+    "gratitude": [
+      "arm-left-gratitude",
+      "arm-right-gratitude"
+    ],
+    "concern": [
+      "arm-left-concern",
+      "arm-right-concern"
+    ],
+    "surprise": [
+      "arm-left-surprise",
+      "arm-right-surprise"
+    ],
+    "celebration": [
+      "arm-left-celebration",
+      "arm-right-celebration"
+    ]
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "Original deterministic semantic vector art authored in the MascotRender repository"
+  },
+  "anchors": {
+    "face_center": {
+      "x": 256,
+      "y": 104
+    },
+    "bust_center": {
+      "x": 256,
+      "y": 198
+    },
+    "body_center": {
+      "x": 256,
+      "y": 284.5
+    },
+    "ground_contact": {
+      "x": 256,
+      "y": 465
+    }
+  },
+  "pivots": {
+    "root": {
+      "x": 256,
+      "y": 465
+    },
+    "hips": {
+      "x": 256,
+      "y": 295
+    },
+    "torso": {
+      "x": 256,
+      "y": 243.35000000000002
+    },
+    "chest": {
+      "x": 256,
+      "y": 206.36
+    },
+    "neck": {
+      "x": 256,
+      "y": 168
+    },
+    "head": {
+      "x": 256,
+      "y": 104
+    },
+    "shoulder_left": {
+      "x": 324,
+      "y": 202
+    },
+    "shoulder_right": {
+      "x": 188,
+      "y": 202
+    },
+    "elbow_left": {
+      "x": 352,
+      "y": 272
+    },
+    "elbow_right": {
+      "x": 160,
+      "y": 272
+    },
+    "wrist_left": {
+      "x": 346,
+      "y": 310
+    },
+    "wrist_right": {
+      "x": 166,
+      "y": 310
+    },
+    "hand_left": {
+      "x": 346,
+      "y": 322
+    },
+    "hand_right": {
+      "x": 166,
+      "y": 322
+    },
+    "ear_right": {
+      "x": 203,
+      "y": 104
+    },
+    "hip_left": {
+      "x": 280,
+      "y": 295
+    },
+    "hip_right": {
+      "x": 232,
+      "y": 295
+    },
+    "knee_left": {
+      "x": 280,
+      "y": 418.00000000000006
+    },
+    "knee_right": {
+      "x": 232,
+      "y": 418.00000000000006
+    },
+    "ankle_left": {
+      "x": 280,
+      "y": 445
+    },
+    "ankle_right": {
+      "x": 232,
+      "y": 445
+    },
+    "foot_left": {
+      "x": 280,
+      "y": 465
+    },
+    "foot_right": {
+      "x": 232,
+      "y": 465
+    },
+    "device": {
+      "x": 256,
+      "y": 465
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 10
+}

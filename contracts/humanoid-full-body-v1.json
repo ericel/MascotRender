@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "rig_id": "humanoid-full-body-v1",
+  "joints": [
+    { "id": "root", "parent": null, "pivot": "root" },
+    { "id": "hips", "parent": "root", "pivot": "hips" },
+    { "id": "torso", "parent": "hips", "pivot": "torso" },
+    { "id": "neck", "parent": "torso", "pivot": "neck" },
+    { "id": "head", "parent": "neck", "pivot": "head" },
+    { "id": "shoulder.left", "parent": "torso", "pivot": "shoulder_left" },
+    { "id": "elbow.left", "parent": "shoulder.left", "pivot": "elbow_left" },
+    { "id": "hand.left", "parent": "elbow.left", "pivot": "hand_left" },
+    { "id": "shoulder.right", "parent": "torso", "pivot": "shoulder_right" },
+    { "id": "elbow.right", "parent": "shoulder.right", "pivot": "elbow_right" },
+    { "id": "hand.right", "parent": "elbow.right", "pivot": "hand_right" },
+    { "id": "hip.left", "parent": "hips", "pivot": "hip_left" },
+    { "id": "foot.left", "parent": "hip.left", "pivot": "foot_left" },
+    { "id": "hip.right", "parent": "hips", "pivot": "hip_right" },
+    { "id": "foot.right", "parent": "hip.right", "pivot": "foot_right" }
+  ],
+  "semantic_targets": {
+    "root": "root",
+    "head": "head",
+    "face": "head",
+    "gesture.primary": "hand.right",
+    "gesture.secondary": "hand.left",
+    "ground.contact": "root",
+    "gaze.target": "head"
+  },
+  "camera_framings": {
+    "face-closeup": { "target": "face_center", "zoom": 1.42, "offset_x": 0, "offset_y": 42 },
+    "bust": { "target": "bust_center", "zoom": 1.16, "offset_x": 0, "offset_y": 34 },
+    "three-quarter": { "target": "body_center", "zoom": 1.02, "offset_x": 0, "offset_y": 24 },
+    "full-body": { "target": "body_center", "zoom": 0.91, "offset_x": 0, "offset_y": 28 },
+    "dynamic-full-body": { "target": "body_center", "zoom": 0.86, "offset_x": 0, "offset_y": 28 }
+  },
+  "capabilities": [
+    "face.expression",
+    "gaze",
+    "gesture.primary",
+    "gesture.secondary",
+    "head.rotation",
+    "root.squash-stretch",
+    "shadow.reactive",
+    "full-body.framing"
+  ]
+}

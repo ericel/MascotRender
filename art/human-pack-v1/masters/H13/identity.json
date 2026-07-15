@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "character_id": "H13",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "owner-vector-parity-approved",
+  "identity_direction": "Black senior woman with natural grey coily hair using a rollator",
+  "device_profile": "rollator.four-wheel",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "forbidden",
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "palette": {
+    "skin": "#714027",
+    "skin_light": "#965F43",
+    "hair": "#B8B1AA",
+    "primary": "#643A78",
+    "secondary": "#E87522",
+    "accent": "#F2A13A",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  }
+}

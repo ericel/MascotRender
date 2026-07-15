@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h13-pose-disagreement",
+  "pack_id": "human-canonical-h13",
+  "alt_text": "H13 demonstrating the disagreement pose with a stable friendly expression",
+  "expression": "friendly",
+  "pose": "disagreement",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

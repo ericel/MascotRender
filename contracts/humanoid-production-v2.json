@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "rig_id": "humanoid-production-v2",
+  "coordinate_convention": {
+    "left_right": "character-anatomical",
+    "front_view_character_right_appears_on": "screen-left",
+    "up_axis": "canvas-negative-y",
+    "origin": "canvas-top-left"
+  },
+  "joints": [
+    { "id": "root", "parent": null, "pivot": "root" },
+    { "id": "hips", "parent": "root", "pivot": "hips" },
+    { "id": "torso", "parent": "hips", "pivot": "torso" },
+    { "id": "chest", "parent": "torso", "pivot": "chest" },
+    { "id": "neck", "parent": "chest", "pivot": "neck" },
+    { "id": "head", "parent": "neck", "pivot": "head" },
+    { "id": "shoulder.left", "parent": "chest", "pivot": "shoulder_left" },
+    { "id": "elbow.left", "parent": "shoulder.left", "pivot": "elbow_left" },
+    { "id": "wrist.left", "parent": "elbow.left", "pivot": "wrist_left" },
+    { "id": "hand.left", "parent": "wrist.left", "pivot": "hand_left" },
+    { "id": "shoulder.right", "parent": "chest", "pivot": "shoulder_right" },
+    { "id": "elbow.right", "parent": "shoulder.right", "pivot": "elbow_right" },
+    { "id": "wrist.right", "parent": "elbow.right", "pivot": "wrist_right" },
+    { "id": "hand.right", "parent": "wrist.right", "pivot": "hand_right" },
+    { "id": "hip.left", "parent": "hips", "pivot": "hip_left" },
+    { "id": "knee.left", "parent": "hip.left", "pivot": "knee_left" },
+    { "id": "ankle.left", "parent": "knee.left", "pivot": "ankle_left" },
+    { "id": "foot.left", "parent": "ankle.left", "pivot": "foot_left" },
+    { "id": "hip.right", "parent": "hips", "pivot": "hip_right" },
+    { "id": "knee.right", "parent": "hip.right", "pivot": "knee_right" },
+    { "id": "ankle.right", "parent": "knee.right", "pivot": "ankle_right" },
+    { "id": "foot.right", "parent": "ankle.right", "pivot": "foot_right" }
+  ],
+  "semantic_targets": {
+    "root": "root",
+    "head": "head",
+    "face": "head",
+    "gesture.primary": "hand.right",
+    "gesture.secondary": "hand.left",
+    "ground.contact": "root",
+    "gaze.target": "head"
+  },
+  "device_profiles": {
+    "device.none": {
+      "required_parts": [],
+      "required_anchors": [],
+      "capabilities": []
+    },
+    "prosthesis.lower-leg.right": {
+      "required_parts": ["socket.right", "pylon.right", "prosthetic-foot.right"],
+      "required_anchors": ["knee_right", "ankle_right", "foot_right", "ground_contact"],
+      "capabilities": ["device.articulated", "device.ground-contact", "device.hop-safe"]
+    },
+    "wheelchair.manual": {
+      "required_parts": ["frame", "wheel.left", "wheel.right", "pushrim.left", "pushrim.right", "footrest"],
+      "required_anchors": ["hips", "hand_left", "hand_right", "ground_contact"],
+      "capabilities": ["device.seated-root", "device.wheel-rotation", "device.hand-contact", "device.ground-contact"]
+    },
+    "hearing-aid.behind-ear.right": {
+      "required_parts": ["case.right", "tube.right", "earpiece.right"],
+      "required_anchors": ["head", "ear_right"],
+      "capabilities": ["device.head-parented", "device.visibility-required"]
+    },
+    "rollator.four-wheel": {
+      "required_parts": ["frame", "handle.left", "handle.right", "wheel.front-left", "wheel.front-right", "wheel.rear-left", "wheel.rear-right"],
+      "required_anchors": ["hand_left", "hand_right", "ground_contact"],
+      "capabilities": ["device.hand-contact", "device.ground-contact", "device.walk-cycle-compatible"]
+    }
+  },
+  "camera_framings": {
+    "face-closeup": { "target": "face_center", "zoom": 1.55, "offset_x": 0, "offset_y": 60 },
+    "bust": { "target": "bust_center", "zoom": 1.22, "offset_x": 0, "offset_y": 40 },
+    "three-quarter": { "target": "body_center", "zoom": 1.05, "offset_x": 0, "offset_y": 25 },
+    "full-body": { "target": "body_center", "zoom": 0.91, "offset_x": 0, "offset_y": 18 },
+    "dynamic-full-body": { "target": "body_center", "zoom": 0.84, "offset_x": 0, "offset_y": 18 }
+  },
+  "capabilities": [
+    "face.expression",
+    "gaze",
+    "gesture.primary",
+    "gesture.secondary",
+    "head.rotation",
+    "limb.upper-lower-articulation",
+    "wrist.articulation",
+    "root.squash-stretch",
+    "shadow.reactive",
+    "full-body.framing",
+    "assistive-device.semantic-parts"
+  ]
+}

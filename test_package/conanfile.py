@@ -3,6 +3,7 @@ from conan.errors import ConanException
 from conan.tools.build import can_run
 from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
 
+import json
 import os
 import shutil
 import sys
@@ -71,8 +72,126 @@ class MascotRenderTestPackage(ConanFile):
                 f'"{sys.executable}" "{reviewer}" --input "{bundle}" '
                 f'--expected-count 10'
             )
+            self._test_installed_human_pilots(resources, cli)
+            self._test_installed_canonical_humans(resources, cli)
             if dependency.options.get_safe("with_filament"):
                 self._test_installed_filament_preview(dependency, resources)
+
+    def _test_installed_human_pilots(self, resources, cli):
+        validator = os.path.join(
+            resources, "tools", "validate_human_pilots.py"
+        )
+        generator = os.path.join(
+            resources, "tools", "generate_human_pilots.py"
+        )
+        packager = os.path.join(
+            resources, "tools", "build_mascot_package.py"
+        )
+        human_root = os.path.join(self.build_folder, "installed-human-pilots")
+        report = os.path.join(human_root, "contract-validation.json")
+        generated = os.path.join(human_root, "generated")
+        shutil.rmtree(human_root, ignore_errors=True)
+        os.makedirs(human_root, exist_ok=True)
+
+        self.run(
+            f'"{sys.executable}" "{validator}" --report "{report}"'
+        )
+        self.run(
+            f'"{sys.executable}" "{generator}" --output "{generated}" '
+            "--count 1"
+        )
+        self.run(f'"{sys.executable}" "{packager}" --help')
+
+        manifest_path = os.path.join(generated, "generation-manifest.json")
+        with open(manifest_path, "r", encoding="utf-8") as manifest_file:
+            manifest = json.load(manifest_file)
+        if (
+            manifest.get("pack_count") != 1
+            or manifest.get("sticker_count") != 12
+            or manifest.get("asset_class") != "technical-fixture"
+            or manifest.get("production_use") != "forbidden"
+        ):
+            raise ConanException(
+                "installed human pilot generator produced an unexpected manifest"
+            )
+
+        pack_id = manifest["packs"][0]["pack_id"]
+        pack_root = os.path.join(generated, pack_id)
+        pack = os.path.join(pack_root, "pack.json")
+        stickers = os.path.join(pack_root, "stickers")
+        sticker_paths = sorted(
+            os.path.join(stickers, name)
+            for name in os.listdir(stickers)
+            if name.endswith(".json")
+        )
+        if len(sticker_paths) != 12:
+            raise ConanException(
+                "installed human pilot generator did not produce 12 stickers"
+            )
+        for sticker in sticker_paths:
+            self.run(
+                f'"{cli}" validate --pack "{pack}" --sticker "{sticker}"',
+                env="conanrun",
+            )
+
+    def _test_installed_canonical_humans(self, resources, cli):
+        generator = os.path.join(
+            resources, "tools", "generate_canonical_human_masters.py"
+        )
+        glb_generator = os.path.join(
+            resources, "tools", "generate_canonical_human_glbs.py"
+        )
+        output = os.path.join(self.build_folder, "installed-canonical-humans")
+        shutil.rmtree(output, ignore_errors=True)
+        self.run(f'"{sys.executable}" "{generator}" --output "{output}"')
+        self.run(f'"{sys.executable}" "{glb_generator}" --input "{output}"')
+        with open(
+            os.path.join(output, "generation-manifest.json"),
+            "r",
+            encoding="utf-8",
+        ) as manifest_file:
+            manifest = json.load(manifest_file)
+        if (
+            manifest.get("master_count") != 5
+            or manifest.get("status") != "owner-vector-parity-approved"
+            or manifest.get("production_use") != "forbidden"
+        ):
+            raise ConanException(
+                "installed canonical human generator produced an unexpected manifest"
+            )
+        validated = 0
+        for master_id in ("H01", "H04", "H07", "H12", "H13"):
+            master = os.path.join(output, master_id)
+            pack = os.path.join(master, "pack.json")
+            stickers = os.path.join(master, "stickers")
+            sticker_paths = sorted(
+                os.path.join(directory, name)
+                for directory, _, names in os.walk(stickers)
+                for name in names
+                if name.endswith(".json")
+            )
+            expected = 40 if master_id == "H01" else 41
+            if len(sticker_paths) != expected:
+                raise ConanException(
+                    f"installed canonical master {master_id} has an incomplete review specification set"
+                )
+            for sticker in sticker_paths:
+                self.run(
+                    f'"{cli}" validate --pack "{pack}" --sticker "{sticker}"',
+                    env="conanrun",
+                )
+                validated += 1
+            self.run(
+                f'"{cli}" validate --pack "{os.path.join(master, "pack-flat.json")}" '
+                f'--sticker "{os.path.join(stickers, "production", "happy.json")}"',
+                env="conanrun",
+            )
+        if validated != 204:
+            raise ConanException("installed canonical human pipeline did not validate 204 render specifications")
+        with open(os.path.join(output, "glb-manifest.json"), "r", encoding="utf-8") as glb_file:
+            glb_manifest = json.load(glb_file)
+        if glb_manifest.get("master_count") != 5:
+            raise ConanException("installed canonical human GLB generation is incomplete")
 
     def _test_installed_filament_preview(self, dependency, resources):
         executable_name = (

@@ -360,10 +360,20 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
       (1.0F - frame.mascot_scale) * center_x,
       (1.0F - frame.mascot_scale) * center_y + frame.mascot_offset_y};
   for (const auto &layer : scene.layers) {
+    auto source = layer.source;
+    const auto output_dimension = std::max(width, height);
+    const auto lod = std::find_if(
+        layer.lod_sources.begin(), layer.lod_sources.end(),
+        [output_dimension](const auto &candidate) {
+          return output_dimension <= candidate.first;
+        });
+    if (lod != layer.lod_sources.end()) {
+      source = lod->second;
+    }
     auto picture = tvg::Picture::gen();
-    if (!picture || !succeeded(picture->load(layer.source.string()))) {
+    if (!picture || !succeeded(picture->load(source.string()))) {
       return Result<PixelBuffer>::failure(render_error(
-          "ThorVG could not load SVG layer: " + layer.source.string()));
+          "ThorVG could not load SVG layer: " + source.string()));
     }
     auto visual_transform = layer.transform;
     auto animated_opacity = layer.opacity;
@@ -387,27 +397,30 @@ Result<PixelBuffer> ThorvgBackend::render_scene(const Scene &scene,
     if (animated_mascot && !layer.screen_space) {
       visual_transform = multiply(mascot_transform, visual_transform);
     }
+    if (!layer.screen_space) {
+      visual_transform = multiply(scene.camera_transform, visual_transform);
+    }
     if (!is_identity(visual_transform)) {
       const auto transform = multiply(output_scale, visual_transform);
       if (!succeeded(picture->transform(thorvg_matrix(transform)))) {
         return Result<PixelBuffer>::failure(render_error(
-            "ThorVG could not transform SVG layer: " + layer.source.string()));
+            "ThorVG could not transform SVG layer: " + source.string()));
       }
     } else if (!succeeded(picture->size(static_cast<float>(width),
                                         static_cast<float>(height)))) {
       return Result<PixelBuffer>::failure(render_error(
-          "ThorVG could not size SVG layer: " + layer.source.string()));
+          "ThorVG could not size SVG layer: " + source.string()));
     }
     const auto opacity = static_cast<std::uint8_t>(
         std::lround(std::clamp(animated_opacity, 0.0F, 1.0F) * 255.0F));
     if (opacity != 255U && !succeeded(picture->opacity(opacity))) {
       return Result<PixelBuffer>::failure(
           render_error("ThorVG could not apply SVG layer opacity: " +
-                       layer.source.string()));
+                       source.string()));
     }
     if (!push(*canvas, std::move(picture))) {
       return Result<PixelBuffer>::failure(render_error(
-          "ThorVG could not queue SVG layer: " + layer.source.string()));
+          "ThorVG could not queue SVG layer: " + source.string()));
     }
   }
 

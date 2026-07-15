@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "family_id": "human-character-library-canonical-family",
+  "creator": "MascotRender project",
+  "copyright_holder": "MascotRender project owner",
+  "license": "MIT",
+  "license_file": "LICENSE",
+  "source_class": "original-deterministic-repository-authored-svg-and-glb",
+  "reference_use": "project-owner-approved identity direction; production geometry is independently generated",
+  "distribution_authority": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved-for-public-release"
+  }
+}

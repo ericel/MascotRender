@@ -11,7 +11,7 @@ class MascotRenderRecipe(ConanFile):
     name = "mascotrender"
     version = "0.1.0"
     package_type = "library"
-    description = "Procedural mascot and sticker rendering engine"
+    description = "Deterministic procedural character rendering engine"
     license = "MIT"
     settings = "os", "arch", "compiler", "build_type"
     options = {
@@ -39,6 +39,8 @@ class MascotRenderRecipe(ConanFile):
         "docs/*",
         "tests/*",
         "schemas/*",
+        "contracts/*",
+        "content/*",
         "examples/*",
         "!examples/*/.DS_Store",
         "!examples/**/.DS_Store",

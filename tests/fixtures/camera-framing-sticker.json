@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "sticker_id": "camera-framing",
+  "pack_id": "mascotrender-cat",
+  "expression": "happy",
+  "pose": "front",
+  "camera": {
+    "framing": "face-closeup",
+    "target": "face_center",
+    "zoom": 1.25,
+    "offset_x": 10,
+    "offset_y": -20
+  }
+}

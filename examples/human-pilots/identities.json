@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "pilot_set_id": "human-representation-pilots-v1",
+  "asset_class": "technical-fixture",
+  "production_use": "forbidden",
+  "identities": [
+    {
+      "schema_version": 1, "mascot_id": "human-ada-001", "display_name": "Ada", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 9, "undertone": "neutral", "base_color": "#6B3F2A", "highlight_color": "#8C5B42", "shadow_color": "#432519" },
+        "face": { "profile": "face-profile-01", "width_ratio": 1.04, "eye_spacing_ratio": 0.34, "eye_shape": "oval", "nose_profile": "broad", "lip_profile": "full" },
+        "hair": { "texture": "coily", "style": "short-twists", "base_color": "#211712", "highlight_color": "#49362C" },
+        "body": { "proportion": "adult-average-01", "height_class": "medium", "build": "soft", "shoulder_ratio": 1.00, "hip_ratio": 1.06 }
+      },
+      "presentation": { "clothing_set": "casual-modern", "primary_color": "#F2A65A", "secondary_color": "#E85D75", "accent_color": "#55D6BE", "accessories": ["earrings-small"] },
+      "representation": { "heritage_context": ["Black", "West African"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed", "review_note": "Synthetic pilot; heritage metadata is editorial and never drives geometry." }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-nia-002", "display_name": "Nia", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 10, "undertone": "cool", "base_color": "#4B2B23", "highlight_color": "#6E4538", "shadow_color": "#2D1713" },
+        "face": { "profile": "face-profile-02", "width_ratio": 0.98, "eye_spacing_ratio": 0.32, "eye_shape": "almond", "nose_profile": "rounded", "lip_profile": "wide" },
+        "hair": { "texture": "coily", "style": "locs", "base_color": "#1D1717", "highlight_color": "#4B3837" },
+        "body": { "proportion": "adult-tall-02", "height_class": "tall", "build": "slender", "shoulder_ratio": 0.94, "hip_ratio": 1.02 }
+      },
+      "presentation": { "clothing_set": "streetwear", "primary_color": "#735CDD", "secondary_color": "#302B4D", "accent_color": "#F4D35E", "accessories": ["none"] },
+      "representation": { "heritage_context": ["Black", "African diaspora"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-zuri-003", "display_name": "Zuri", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 8, "undertone": "warm", "base_color": "#7B4932", "highlight_color": "#A36B4B", "shadow_color": "#4D2A1D" },
+        "face": { "profile": "face-profile-03", "width_ratio": 1.01, "eye_spacing_ratio": 0.36, "eye_shape": "upturned", "nose_profile": "broad", "lip_profile": "full" },
+        "hair": { "texture": "coily", "style": "braids", "base_color": "#251A15", "highlight_color": "#5B4030" },
+        "body": { "proportion": "adult-athletic-03", "height_class": "medium", "build": "lean", "shoulder_ratio": 1.04, "hip_ratio": 0.96 }
+      },
+      "presentation": { "clothing_set": "casual-jacket", "primary_color": "#2F9C95", "secondary_color": "#F4D06F", "accent_color": "#EE6352", "accessories": ["earrings-small"] },
+      "representation": { "heritage_context": ["Black", "East African"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-maya-004", "display_name": "Maya", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 6, "undertone": "warm", "base_color": "#A66A4B", "highlight_color": "#C98B67", "shadow_color": "#71442F" },
+        "face": { "profile": "face-profile-04", "width_ratio": 0.96, "eye_spacing_ratio": 0.33, "eye_shape": "almond", "nose_profile": "strong-bridge", "lip_profile": "medium" },
+        "hair": { "texture": "wavy", "style": "long-layers", "base_color": "#241915", "highlight_color": "#5B4032" },
+        "body": { "proportion": "adult-average-04", "height_class": "medium", "build": "soft", "shoulder_ratio": 0.93, "hip_ratio": 1.08 }
+      },
+      "presentation": { "clothing_set": "casual-modern", "primary_color": "#D1495B", "secondary_color": "#F7C59F", "accent_color": "#00798C", "accessories": ["none"] },
+      "representation": { "heritage_context": ["South Asian"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-lin-005", "display_name": "Lin", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 3, "undertone": "neutral", "base_color": "#E2B693", "highlight_color": "#F2CEAD", "shadow_color": "#B98466" },
+        "face": { "profile": "face-profile-05", "width_ratio": 1.02, "eye_spacing_ratio": 0.35, "eye_shape": "monolid", "nose_profile": "low-bridge", "lip_profile": "soft" },
+        "hair": { "texture": "straight", "style": "bob", "base_color": "#19191C", "highlight_color": "#424149" },
+        "body": { "proportion": "adult-short-05", "height_class": "short", "build": "slender", "shoulder_ratio": 0.91, "hip_ratio": 0.96 }
+      },
+      "presentation": { "clothing_set": "casual-sweater", "primary_color": "#5B8E7D", "secondary_color": "#E6C79C", "accent_color": "#ED6A5A", "accessories": ["glasses-round"] },
+      "representation": { "heritage_context": ["East Asian"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-sora-006", "display_name": "Sora", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 2, "undertone": "cool", "base_color": "#F0C9AB", "highlight_color": "#FFE1C9", "shadow_color": "#C8977B" },
+        "face": { "profile": "face-profile-06", "width_ratio": 0.94, "eye_spacing_ratio": 0.31, "eye_shape": "hooded", "nose_profile": "low-bridge", "lip_profile": "balanced" },
+        "hair": { "texture": "straight", "style": "crop", "base_color": "#1C1D21", "highlight_color": "#484B55" },
+        "body": { "proportion": "adult-lean-06", "height_class": "medium", "build": "lean", "shoulder_ratio": 1.06, "hip_ratio": 0.90 }
+      },
+      "presentation": { "clothing_set": "casual-shirt", "primary_color": "#3A86FF", "secondary_color": "#D9EAFD", "accent_color": "#FFBE0B", "accessories": ["none"] },
+      "representation": { "heritage_context": ["East Asian"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-an-007", "display_name": "An", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 5, "undertone": "warm", "base_color": "#BD805C", "highlight_color": "#DFA17B", "shadow_color": "#84533C" },
+        "face": { "profile": "face-profile-07", "width_ratio": 1.06, "eye_spacing_ratio": 0.37, "eye_shape": "almond", "nose_profile": "rounded", "lip_profile": "medium" },
+        "hair": { "texture": "wavy", "style": "side-part", "base_color": "#241A18", "highlight_color": "#59423A" },
+        "body": { "proportion": "adult-average-07", "height_class": "medium", "build": "stocky", "shoulder_ratio": 1.12, "hip_ratio": 1.03 }
+      },
+      "presentation": { "clothing_set": "casual-jacket", "primary_color": "#00A6A6", "secondary_color": "#F7F3E3", "accent_color": "#FF6B6B", "accessories": ["none"] },
+      "representation": { "heritage_context": ["Southeast Asian"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-sofia-008", "display_name": "Sofia", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 5, "undertone": "olive", "base_color": "#B77B58", "highlight_color": "#D99D78", "shadow_color": "#7C4D37" },
+        "face": { "profile": "face-profile-08", "width_ratio": 1.08, "eye_spacing_ratio": 0.32, "eye_shape": "round", "nose_profile": "medium", "lip_profile": "full" },
+        "hair": { "texture": "curly", "style": "short-curls", "base_color": "#38251C", "highlight_color": "#76513B" },
+        "body": { "proportion": "adult-curvy-08", "height_class": "short", "build": "soft", "shoulder_ratio": 0.92, "hip_ratio": 1.16 }
+      },
+      "presentation": { "clothing_set": "casual-modern", "primary_color": "#EF476F", "secondary_color": "#FFD166", "accent_color": "#06D6A0", "accessories": ["earrings-small"] },
+      "representation": { "heritage_context": ["Latina", "Mestiza"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-noor-009", "display_name": "Noor", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 4, "undertone": "olive", "base_color": "#C99470", "highlight_color": "#E4B493", "shadow_color": "#916347" },
+        "face": { "profile": "face-profile-09", "width_ratio": 0.99, "eye_spacing_ratio": 0.34, "eye_shape": "almond", "nose_profile": "strong-bridge", "lip_profile": "balanced" },
+        "hair": { "texture": "covered", "style": "covered-wrap", "base_color": "#3D315B", "highlight_color": "#6A5B8C" },
+        "body": { "proportion": "adult-average-09", "height_class": "medium", "build": "slender", "shoulder_ratio": 0.95, "hip_ratio": 1.00 }
+      },
+      "presentation": { "clothing_set": "modest-casual", "primary_color": "#5F4B8B", "secondary_color": "#EAD7D1", "accent_color": "#4ECDC4", "accessories": ["head-wrap"] },
+      "representation": { "heritage_context": ["Middle Eastern", "North African"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-emma-010", "display_name": "Emma", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 1, "undertone": "cool", "base_color": "#F6D6C5", "highlight_color": "#FFE8DC", "shadow_color": "#D4A997" },
+        "face": { "profile": "face-profile-10", "width_ratio": 0.97, "eye_spacing_ratio": 0.35, "eye_shape": "round", "nose_profile": "narrow", "lip_profile": "soft" },
+        "hair": { "texture": "wavy", "style": "waves", "base_color": "#B9783E", "highlight_color": "#E0A769" },
+        "body": { "proportion": "adult-tall-10", "height_class": "tall", "build": "lean", "shoulder_ratio": 0.96, "hip_ratio": 0.98 }
+      },
+      "presentation": { "clothing_set": "casual-sweater", "primary_color": "#7C77B9", "secondary_color": "#F3E9DC", "accent_color": "#E55934", "accessories": ["none"] },
+      "representation": { "heritage_context": ["White", "Northern European"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-luca-011", "display_name": "Luca", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 3, "undertone": "warm", "base_color": "#D9AA86", "highlight_color": "#F0C7A5", "shadow_color": "#A47759" },
+        "face": { "profile": "face-profile-11", "width_ratio": 1.03, "eye_spacing_ratio": 0.30, "eye_shape": "hooded", "nose_profile": "strong-bridge", "lip_profile": "medium" },
+        "hair": { "texture": "curly", "style": "short-curls", "base_color": "#3A2A22", "highlight_color": "#72543F" },
+        "body": { "proportion": "adult-broad-11", "height_class": "medium", "build": "broad", "shoulder_ratio": 1.18, "hip_ratio": 0.91 }
+      },
+      "presentation": { "clothing_set": "casual-shirt", "primary_color": "#33658A", "secondary_color": "#F6AE2D", "accent_color": "#F26419", "accessories": ["none"] },
+      "representation": { "heritage_context": ["White", "Mediterranean European"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    },
+    {
+      "schema_version": 1, "mascot_id": "human-kai-012", "display_name": "Kai", "species": "human",
+      "rig": { "contract_id": "humanoid-full-body-v1", "contract_version": 1 },
+      "appearance": {
+        "skin": { "tone_scale": 7, "undertone": "neutral", "base_color": "#916047", "highlight_color": "#B98263", "shadow_color": "#603B2C" },
+        "face": { "profile": "face-profile-12", "width_ratio": 0.95, "eye_spacing_ratio": 0.38, "eye_shape": "upturned", "nose_profile": "medium", "lip_profile": "wide" },
+        "hair": { "texture": "coily", "style": "afro", "base_color": "#211A19", "highlight_color": "#51403C" },
+        "body": { "proportion": "adult-average-12", "height_class": "medium", "build": "stocky", "shoulder_ratio": 1.08, "hip_ratio": 1.08 }
+      },
+      "presentation": { "clothing_set": "streetwear", "primary_color": "#118AB2", "secondary_color": "#073B4C", "accent_color": "#FFD166", "accessories": ["glasses-round"] },
+      "representation": { "heritage_context": ["Mixed heritage"], "rendering_source": "appearance-only", "review_status": "pilot-unreviewed" }
+    }
+  ]
+}

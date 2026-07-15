@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/human-pack-standard-v1.json",
+  "title": "MascotRender production human pack standard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "standard_id", "asset_class", "reference", "supported_identity_dimensions", "editorial_policy", "framings", "readability_sizes_px", "required_expressions", "required_poses", "production_gates", "prohibited_inference"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "standard_id": { "const": "human-pack-production-v1" },
+    "asset_class": { "const": "production-art" },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "date", "role"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "date": { "type": "string", "format": "date" },
+        "role": { "const": "visual-and-coverage-benchmark" }
+      }
+    },
+    "supported_identity_dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["life_stages", "body_presentations", "complexion_tones", "undertones", "hair_families", "gender_presentations", "ability_representations", "context_families"],
+      "properties": {
+        "life_stages": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "body_presentations": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "complexion_tones": { "type": "array", "uniqueItems": true, "items": { "type": "integer", "minimum": 1, "maximum": 10 } },
+        "undertones": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "hair_families": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "gender_presentations": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "ability_representations": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+        "context_families": { "$ref": "#/$defs/nonemptyUniqueStrings" }
+      }
+    },
+    "editorial_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coverage_is_pack_specific", "every_pack_may_choose_a_subset", "minor_coded_characters_are_optional", "minor_coded_characters_require_owner_editorial_approval", "engine_requires_any_life_stage"],
+      "properties": {
+        "coverage_is_pack_specific": { "const": true },
+        "every_pack_may_choose_a_subset": { "const": true },
+        "minor_coded_characters_are_optional": { "const": true },
+        "minor_coded_characters_require_owner_editorial_approval": { "const": true },
+        "engine_requires_any_life_stage": { "const": false }
+      }
+    },
+    "framings": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "readability_sizes_px": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "type": "integer", "minimum": 32, "maximum": 512 } },
+    "required_expressions": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "required_poses": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "production_gates": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "prohibited_inference": { "$ref": "#/$defs/nonemptyUniqueStrings" }
+  },
+  "$defs": {
+    "nonemptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

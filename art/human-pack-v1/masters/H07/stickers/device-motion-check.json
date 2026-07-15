@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h07-device-motion-check",
+  "pack_id": "human-canonical-h07",
+  "alt_text": "H07 semantic assistive-device motion and attachment check",
+  "expression": "friendly",
+  "pose": "neutral",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  },
+  "animation": {
+    "duration_ms": 800,
+    "fps": 8,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "device-wheel-left",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 28,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "device-pushrim-left",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 28,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "device-wheel-right",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 28,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "device-pushrim-right",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 28,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "torso",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "device-wheelchair-frame",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      }
+    ]
+  }
+}

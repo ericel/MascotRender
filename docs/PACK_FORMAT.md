@@ -1,5 +1,11 @@
 # MascotRender Pack Format v1
 
+This document defines the trusted local directory model consumed by the 0.1
+engine. The draft portable `.mascot` authoring container is specified separately
+in `MASCOT_PACKAGE_SPEC.md`; it is not yet an accepted engine input. A future
+bounded loader will verify that container before translating it into this
+compiled pack model.
+
 A pack declares local SVG layers, invariant base layers, named expressions and
 poses, optional seeded variation groups, and optional local TTF fonts and text
 styles. A sticker chooses an expression and pose and may provide authored text;
@@ -91,6 +97,11 @@ The normative machine-readable files are
   versioned external identity contract by character ID, contract version,
   SHA-256, and required feature list. MascotRender preserves this declaration;
   project validation may additionally inspect SVG or GLB geometry against it.
+- `rig` is optional backward-compatible metadata that identifies a normalized
+  rig contract and maps each authored pose's semantic targets (for example
+  `gesture.primary`) to concrete selected layer IDs. Offline recipe compilers
+  resolve those semantic names before the C++ loader validates animation
+  tracks, so the runtime remains deterministic and backend-neutral.
 - Canvas dimensions must be between 1 and 4096 pixels.
 - A source must be a relative `.svg` path resolving inside the pack directory.
 - Absolute paths, URLs, missing files, symlink escapes, and non-SVG sources are
@@ -152,10 +163,19 @@ layered pack with shadow, body, head, face, antenna, and effect depths.
   "sticker_id": "happy-example",
   "pack_id": "example-pack",
   "alt_text": "The example mascot smiling",
+  "phrase_id": "encouragement.you-got-this",
+  "recipe_id": "motion.celebrate-jump",
   "expression": "happy",
   "pose": "front",
   "seed": 42,
   "view": { "x": 0, "y": 0 },
+  "camera": {
+    "framing": "three-quarter",
+    "target": "face_center",
+    "zoom": 1.05,
+    "offset_x": 0,
+    "offset_y": 24
+  },
   "layers": [],
   "text": {
     "content": "YOU GOT THIS!",
@@ -196,6 +216,14 @@ through 128. Each node moves by the negative view offset multiplied by its
 resolved depth, producing deterministic parallax while text stays screen-fixed.
 Collision bounds receive the same world transform and parallax before automatic
 text placement.
+
+Optional `phrase_id` and `recipe_id` preserve semantic provenance in generated
+catalogues. An optional `camera` selects one of `face-closeup`, `bust`,
+`three-quarter`, `full-body`, or `dynamic-full-body`; it scales character-space
+layers around a declared pack anchor and moves that anchor by bounded screen
+offsets. Captions and screen-space effects do not scale. Selected-layer
+collision bounds receive the same camera transform before automatic text
+placement, so close-ups cannot silently invalidate caption safety.
 
 ## Text behavior in 0.1
 

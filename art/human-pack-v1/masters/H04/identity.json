@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "character_id": "H04",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "owner-vector-parity-approved",
+  "identity_direction": "Black young adult man with articulated below-knee prosthesis",
+  "device_profile": "prosthesis.lower-leg.right",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "forbidden",
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "palette": {
+    "skin": "#754329",
+    "skin_light": "#9A6040",
+    "hair": "#201714",
+    "primary": "#238C8F",
+    "secondary": "#173D5E",
+    "accent": "#E6F1E9",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  }
+}

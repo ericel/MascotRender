@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "review_id": "human-canonical-production-design-review-v1",
+  "family_id": "human-character-library-canonical-family",
+  "date": "2026-07-15",
+  "authority": "project-owner",
+  "decision": "approved",
+  "review_status": "public-release-approved",
+  "production_use": "public-release",
+  "reviewed_artifacts": {
+    "turnaround-sheet.png": "c3724b87debfe72a1d59cea412547e462b6584e287c2692c3d28011c0ab724f7",
+    "expression-sheet.png": "fcb9038aa2bd5ddfd22f263fac901509b8b255c5c33aa350e6e37288c281af80",
+    "pose-sheet.png": "b54c383c38fa42a51d2a3d4d799901bdff212cd5c8a39701b7e44e9a266ad7bd",
+    "depth-motion-sheet.png": "28c1ab2156a7c3396e26e6df2fadac2c2975f6c5311a4472c74c4ab0da8ab10f",
+    "device-topology-sheet.png": "a8d121ac4f2a8ac69367f713cc1548d4f24b8b53a56b58d7f99e20859b4579ac",
+    "glb-semantic-pose-sheet.png": "115433de91e5b90ee9c7890915c58b4d5c6d188cf0268c5f9a833f2390d5de49",
+    "animation-playback-sheet.png": "71922680720ac7fefeb109a90194faf34710db57d19d6c9ec46e7ec65a5a329b",
+    "cross-backend-parity-sheet.png": "e42c7ca7e5d0b3528aa177adea7e90daa2cfd19152724ca027bfe1a8c1b9a4e6"
+  },
+  "approved_gates": {
+    "neutral-turnaround": "pass",
+    "isolated-expression": "pass",
+    "isolated-pose": "pass",
+    "layered-2d-identity": "pass",
+    "layered-depth-and-motion": "pass",
+    "assistive-device-topology": "pass",
+    "cross-backend-identity-parity": "pass",
+    "cross-backend-art-direction-parity": "pass-for-human-pack-v1",
+    "glb-semantic-pose-parity": "pass",
+    "animation-and-reduced-motion-visual-review": "pass"
+  },
+  "production_gates": {
+    "owner-production-design-review": "pass",
+    "neutral-turnaround": "pass",
+    "isolated-expression": "pass",
+    "isolated-pose": "pass",
+    "layered-2d-identity": "pass",
+    "layered-depth-and-motion": "pass",
+    "assistive-device-topology": "pass",
+    "cross-backend-identity-parity": "pass",
+    "cross-backend-art-direction-parity": "pass-for-human-pack-v1",
+    "glb-semantic-pose-parity": "pass",
+    "animation-and-reduced-motion-visual-review": "pass"
+  },
+  "owner_attestations": {
+    "all_five_animated_webp_loops_reviewed": true,
+    "all_five_reduced_motion_equivalents_reviewed": true,
+    "no_further_corrective_design_cycle_required": true
+  },
+  "playback_activation_check": {
+    "native_webp_container_validation": "pass",
+    "pillow_and_imagemagick_full_frame_decode": "pass",
+    "animated_frame_count_per_character": 9,
+    "reduced_motion_frame_count_per_character": 1,
+    "first_last_mean_channel_delta": 0.0
+  },
+  "parity_policy": {
+    "cross_backend_identity_parity": "pass",
+    "cross_backend_art_direction_parity": "pass-for-human-pack-v1",
+    "public_release_requirement": "both parity levels pass"
+  },
+  "backend_status": {
+    "flat-2d": "public-release-approved",
+    "layered-2.5d": "public-release-approved",
+    "glb-3d": "public-release-approved"
+  },
+  "blocking_findings": [],
+  "release_disposition": "activate-public-release"
+}

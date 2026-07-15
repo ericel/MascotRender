@@ -2,8 +2,13 @@
 
 Licensed under the [MIT License](LICENSE).
 
-MascotRender is a local-first C++20 library and CLI for compiling structured
-mascot packs into deterministic static and animated sticker assets.
+See [Contributing](CONTRIBUTING.md), [Security](SECURITY.md), and the
+[Community Code of Conduct](CODE_OF_CONDUCT.md).
+
+MascotRender is an open-source, local-first C++20 procedural character
+rendering library and CLI. It compiles structured character packs and semantic
+recipes into deterministic static and animated assets. Wahalao is the flagship
+consumer, not the engine boundary.
 
 The project has completed the C++20 static-rendering MVP and is extending its
 backend-neutral scene model toward positioned text, animation, 2.5D, and 3D.
@@ -15,6 +20,16 @@ SIL Open Font License 1.1; platform font discovery is not used.
 
 ## Project documents
 
+- [Manifesto](docs/MANIFESTO.md)
+- [Product vision](docs/VISION.md)
+- [Product roadmap](docs/ROADMAP.md)
+- [Architecture direction](docs/ARCHITECTURE.md)
+- [Human Pack visual and representation standard](docs/HUMAN_PACK_VISUAL_STANDARD.md)
+- [Human Pack v1 art brief](docs/HUMAN_PACK_V1_ART_BRIEF.md)
+- [Human Pack production recovery plan](docs/HUMAN_PACK_PRODUCTION_RECOVERY.md)
+- [Approved canonical human family concept](art/concepts/human-pack-v1/family-gate-v1.png)
+- [Canonical human semantic SVG masters](art/human-pack-v1/masters/generation-manifest.json)
+- [Portable `.mascot` package specification](docs/MASCOT_PACKAGE_SPEC.md)
 - [Software Design Document v0.2](MascotRender_SDD_v0.2.docx)
 - [Milestones and initial backlog](docs/MILESTONES.md)
 - [Architecture decisions](docs/DECISIONS.md)
@@ -27,6 +42,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
 - [Current status](docs/STATUS.md)
 - [Scene, animation, and 3D expansion plan](docs/ROADMAP_3D_ANIMATION.md)
+- [Human mascot identity and representation system](docs/HUMAN_MASCOT_SYSTEM.md)
 
 The original v0.1 SDD is retained unchanged as the review baseline.
 
@@ -85,6 +101,68 @@ scripts are installed under `share/mascotrender/tools` by CMake and Conan.
 Pull-request CI uploads the complete bundle and gallery as a downloadable
 14-day artifact.
 
+## Generate the full-body human pilot matrix
+
+Human mascots use a separate appearance contract rather than a `race` geometry
+switch. Complexion material, undertone, facial proportions, hair texture/style,
+body proportions, clothing, and editorial representation metadata remain
+independent. Validate and generate the 12-identity × 12-phrase pilot with:
+
+```bash
+python3 tools/validate_human_pilots.py
+
+python3 tools/generate_human_pilots.py \
+  --output generated/human-pilots \
+  --count 12 \
+  --force
+
+python3 tools/build_human_pilot_review.py \
+  --input generated/human-pilots \
+  --mascotrender build/Release/mascotrender \
+  --force
+```
+
+The output contains 144 animated sticker specifications and 12 deterministic
+contact sheets at `generated/human-pilots/review/index.html`. These simplified
+procedural humans are permanently classified as technical fixtures and are not
+production art. Production Human Pack assets must meet
+`docs/HUMAN_PACK_VISUAL_STANDARD.md`, use original licensed artwork, and pass
+diverse human review; fixture validation cannot promote them.
+
+## Build and review the canonical Human Pack candidate
+
+The front-facing H01/H04/H07/H12/H13 vector family is an owner-approved
+foundation. The current turnaround and GLB conversion is explicitly blocked
+from production. Generate its vector, layered, and GLB candidates and run the
+technical plus owner-decision gate with:
+
+```bash
+python3 tools/generate_canonical_human_masters.py --force
+python3 tools/author_canonical_human_blender.py
+python3 tools/build_canonical_human_review.py --force
+python3 tools/build_canonical_human_production_review.py --force
+```
+
+The authored `.blend` sources remain beside their production-review GLBs. The
+reviewer exercises all five GLBs through the optional Filament backend and
+writes technical evidence plus the artifact-bound owner decision to
+`generated/canonical-human-production-review/release-review.json`. File counts,
+distinct hashes, palette presence, semantic nodes, and successful renders prove
+technical execution only; visual approval remains an explicit owner decision.
+Earlier rejected and partially approved bundles remain recorded in the review
+history, while the current eight-sheet bundle is owner-approved and hash-bound.
+
+The production reviewer also writes `animation-review.html`, real animated WebP
+loops, static reduced-motion semantic equivalents, and an animation storyboard.
+Cross-backend identity parity and family art-direction parity are separate gates;
+public release requires both.
+
+Human Pack v1 is owner-approved for public release. The approval is bound to the
+exact eight current review-sheet hashes. CI requires fresh cross-platform review
+runs to reach `technical-validation-success`; it separately validates the bound
+approval contract as `public-release-approved` / `public-release`. A rerender
+with different pixel hashes is deliberately not allowed to inherit owner approval.
+
 ## Layered 2.5D acceptance example
 
 The `examples/robot-2_5d` pack splits a robot into parented shadow, body, side
@@ -134,6 +212,21 @@ conan create . \
   --lockfile=conan.lock \
   --build=missing
 ```
+
+The optional 3D configuration uses the platform-specific Filament lockfile:
+
+```bash
+conan create . \
+  -pr:h profiles/macos-armv8-release \
+  -pr:b default \
+  --lockfile=locks/macos-armv8-filament-release.lock \
+  --build=missing \
+  -o '&:with_filament=True'
+```
+
+Equivalent pinned Filament lockfiles are checked in for Linux x86-64 and
+Windows x86-64. macOS is therefore an explicit native validation target, not an
+unvalidated default.
 
 Checked-in Release profiles and hosted package-consumer jobs cover macOS
 arm64/AppleClang 21, Linux x86-64/GCC 13, and Windows x86-64/MSVC 19.4x. The

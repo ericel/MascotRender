@@ -113,3 +113,67 @@ The generator currently owns five geometric species templates. Add a new
 species by extending `SPECIES` and `body_layer()` while keeping layer IDs and
 the pack schema stable. Content intended for release still requires design and
 product review; procedural output does not by itself close the M6 art gate.
+
+## Human full-body pilot pipeline
+
+Human mascots use four independent, versioned inputs:
+
+- `examples/human-pilots/identities.json` — 12 curated appearance contracts;
+- `contracts/humanoid-full-body-v1.json` — normalized joints, semantic targets,
+  capabilities, and camera framings;
+- `content/motion-recipes-core-v1.json` — 12 reusable motions that target the
+  semantic rig rather than mascot-specific layers;
+- `content/phrase-lexicon-core-v1.json` — captions, categories, emotions,
+  locale-aware triggers, match policies, minimum typed lengths, and recipes.
+
+The current procedural human generator is a deterministic engineering fixture,
+not the production Human Pack art pipeline. Its output is forbidden from
+production use. Production human sources must conform to
+`HUMAN_PACK_VISUAL_STANDARD.md`, carry explicit provenance and licenses, and
+pass the recorded human review gates before packaging.
+
+`generate_human_pilots.py` compiles semantic targets to the selected concrete
+arm/head/root layers for every pose. The normal C++ loader then validates and
+renders those tracks. Heritage context is copied only to the identity/audit
+record; generated geometry reads complexion, face, hair, body, and presentation
+attributes and never branches on race or heritage labels.
+
+The default pilot produces 12 identities × 12 core phrases = 144 sticker
+specifications. Use `build_human_pilot_review.py` to create one 12-character
+contact sheet per phrase. The verifier checks source counts, non-empty alpha
+bounds, visible reference complexion pixels, deterministic hashes, and complete
+identity/phrase coverage. Success proves the fixture pipeline only; it cannot
+approve or promote the generated visuals.
+
+## Canonical human technical-art review
+
+The owner-approved H01/H04/H07/H12/H13 concept is translated into deterministic
+semantic SVG production-review candidates with:
+
+```sh
+python3 tools/generate_canonical_human_masters.py --force
+python3 tools/build_canonical_human_review.py --force
+```
+
+The generator writes a layered master, pack, identity, source manifest, and
+five framing specifications per character under `art/human-pack-v1/masters`.
+The production-v2 humanoid rig binds the prosthetic socket/pylon/foot,
+wheelchair wheels/pushrims/frame/footrest, hearing-aid case/tube/earpiece, and
+rollator frame/handles/four wheels as separately addressable semantic parts.
+The reviewer renders 25 canonical 512-pixel posters and nine review sheets. In
+addition to the sticker-fit framing matrix it emits a same-world-scale lineup,
+true 80/96/100-pixel outputs, 19 isolated semantic device parts, labeled
+anchors/pivots/contact points, and four animated device-motion checks. The C++
+renderer selects 12 authored 100-pixel LOD layers for prosthesis, wheelchair,
+hearing-aid, and rollator readability instead of merely downsampling the base
+SVGs. The rig and regression fixtures define left/right anatomically; character
+right projects to screen-left in an unmirrored front view.
+
+The project owner approved vector identity parity for all five masters on
+2026-07-15, explicitly including H07's seated pose and footrest relationship.
+The front-facing vector family remains an approved foundation. The current
+turnaround and GLB candidate is owner-rejected and `production_use: forbidden`.
+Automated checks prove valid files, rendering, palettes, clip execution, and
+semantic nodes; they do not prove authored identity or device parity. The
+artifact-bound decision and blocking findings are recorded in
+`generated/canonical-human-production-review/release-review.json`.

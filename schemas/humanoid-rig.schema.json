@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/humanoid-rig-v1.json",
+  "title": "MascotRender normalized humanoid full-body rig",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rig_id", "joints", "semantic_targets", "camera_framings", "capabilities"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "rig_id": { "const": "humanoid-full-body-v1" },
+    "joints": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "parent", "pivot"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "parent": { "type": ["string", "null"] },
+          "pivot": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "semantic_targets": {
+      "type": "object",
+      "required": ["root", "head", "face", "gesture.primary", "gesture.secondary", "ground.contact", "gaze.target"],
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "camera_framings": {
+      "type": "object",
+      "required": ["face-closeup", "bust", "three-quarter", "full-body", "dynamic-full-body"],
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target", "zoom", "offset_x", "offset_y"],
+        "properties": {
+          "target": { "type": "string", "minLength": 1 },
+          "zoom": { "type": "number", "minimum": 0.5, "maximum": 3.0 },
+          "offset_x": { "type": "number", "minimum": -512, "maximum": 512 },
+          "offset_y": { "type": "number", "minimum": -512, "maximum": 512 }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

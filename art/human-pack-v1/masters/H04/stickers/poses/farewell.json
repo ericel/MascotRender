@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h04-pose-farewell",
+  "pack_id": "human-canonical-h04",
+  "alt_text": "H04 demonstrating the farewell pose with a stable friendly expression",
+  "expression": "friendly",
+  "pose": "farewell",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/human-identity-v1.json",
+  "title": "MascotRender human mascot identity contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mascot_id", "display_name", "species", "rig", "appearance", "presentation", "representation"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "mascot_id": { "type": "string", "pattern": "^human-[a-z0-9]+-[0-9]{3}$" },
+    "display_name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "species": { "const": "human" },
+    "rig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "contract_version"],
+      "properties": {
+        "contract_id": { "const": "humanoid-full-body-v1" },
+        "contract_version": { "const": 1 }
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skin", "face", "hair", "body"],
+      "properties": {
+        "skin": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tone_scale", "undertone", "base_color", "highlight_color", "shadow_color"],
+          "properties": {
+            "tone_scale": { "type": "integer", "minimum": 1, "maximum": 10 },
+            "undertone": { "enum": ["cool", "neutral", "olive", "warm"] },
+            "base_color": { "$ref": "#/$defs/color" },
+            "highlight_color": { "$ref": "#/$defs/color" },
+            "shadow_color": { "$ref": "#/$defs/color" }
+          }
+        },
+        "face": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["profile", "width_ratio", "eye_spacing_ratio", "eye_shape", "nose_profile", "lip_profile"],
+          "properties": {
+            "profile": { "type": "string", "pattern": "^face-profile-[0-9]{2}$" },
+            "width_ratio": { "type": "number", "minimum": 0.82, "maximum": 1.18 },
+            "eye_spacing_ratio": { "type": "number", "minimum": 0.24, "maximum": 0.42 },
+            "eye_shape": { "enum": ["almond", "hooded", "monolid", "oval", "round", "upturned"] },
+            "nose_profile": { "enum": ["broad", "low-bridge", "medium", "narrow", "rounded", "strong-bridge"] },
+            "lip_profile": { "enum": ["balanced", "full", "medium", "soft", "wide"] }
+          }
+        },
+        "hair": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["texture", "style", "base_color", "highlight_color"],
+          "properties": {
+            "texture": { "enum": ["straight", "wavy", "curly", "coily", "covered", "none"] },
+            "style": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
+            "base_color": { "$ref": "#/$defs/color" },
+            "highlight_color": { "$ref": "#/$defs/color" }
+          }
+        },
+        "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["proportion", "height_class", "build", "shoulder_ratio", "hip_ratio"],
+          "properties": {
+            "proportion": { "type": "string", "pattern": "^[a-z][a-z0-9-]+-[0-9]{2}$" },
+            "height_class": { "enum": ["short", "medium", "tall"] },
+            "build": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,31}$" },
+            "shoulder_ratio": { "type": "number", "minimum": 0.78, "maximum": 1.25 },
+            "hip_ratio": { "type": "number", "minimum": 0.78, "maximum": 1.25 },
+            "head_to_height_ratio": { "type": "number", "minimum": 0.2, "maximum": 0.4 },
+            "mobility_profile": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" }
+          }
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clothing_set", "primary_color", "secondary_color", "accent_color", "accessories"],
+      "properties": {
+        "clothing_set": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
+        "primary_color": { "$ref": "#/$defs/color" },
+        "secondary_color": { "$ref": "#/$defs/color" },
+        "accent_color": { "$ref": "#/$defs/color" },
+        "accessories": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" }
+        },
+        "fashion_context": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" },
+        "occupation_context": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" },
+        "cultural_garment_context": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1, "maxLength": 80 }
+        }
+      }
+    },
+    "authored_demographics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["life_stage", "gender_presentation"],
+      "properties": {
+        "life_stage": { "enum": ["child", "pre-teen", "teen", "young-adult", "adult", "middle-aged", "senior"] },
+        "gender_presentation": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "assistive_devices": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" }
+        },
+        "device_rig_requirements": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9.-]{1,63}$" }
+        }
+      }
+    },
+    "representation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heritage_context", "rendering_source", "review_status"],
+      "properties": {
+        "heritage_context": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "rendering_source": { "const": "appearance-only" },
+        "review_status": { "enum": ["pilot-unreviewed", "technical-fixture", "review-candidate", "reviewed", "production-approved", "retired"] },
+        "asset_class": { "enum": ["technical-fixture", "production-art"] },
+        "review_note": { "type": "string", "maxLength": 500 }
+      }
+    }
+  },
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9A-F]{6}$" }
+  }
+}

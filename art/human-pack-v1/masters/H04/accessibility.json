@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "character_id": "H04",
+  "default_motion_policy": "standard",
+  "prefers_reduced_motion_policy": "static-semantic-equivalent",
+  "presentations": [
+    {
+      "expression": "happy",
+      "pose": "agreement",
+      "standard": "stickers/production/happy.json",
+      "reduced_motion": "stickers/reduced-motion/happy.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "laughing",
+      "pose": "celebration",
+      "standard": "stickers/production/laughing.json",
+      "reduced_motion": "stickers/reduced-motion/laughing.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "surprised",
+      "pose": "surprise",
+      "standard": "stickers/production/surprised.json",
+      "reduced_motion": "stickers/reduced-motion/surprised.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "thinking",
+      "pose": "concern",
+      "standard": "stickers/production/thinking.json",
+      "reduced_motion": "stickers/reduced-motion/thinking.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "confident",
+      "pose": "agreement",
+      "standard": "stickers/production/confident.json",
+      "reduced_motion": "stickers/reduced-motion/confident.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "sorry",
+      "pose": "gratitude",
+      "standard": "stickers/production/sorry.json",
+      "reduced_motion": "stickers/reduced-motion/sorry.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    },
+    {
+      "expression": "excited",
+      "pose": "celebration",
+      "standard": "stickers/production/excited.json",
+      "reduced_motion": "stickers/reduced-motion/excited.json",
+      "reduced_motion_behavior": "static-semantic-equivalent"
+    }
+  ]
+}
