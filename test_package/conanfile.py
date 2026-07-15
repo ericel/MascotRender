@@ -170,7 +170,7 @@ class MascotRenderTestPackage(ConanFile):
                 for name in names
                 if name.endswith(".json")
             )
-            expected = 20 if master_id == "H01" else 21
+            expected = 40 if master_id == "H01" else 41
             if len(sticker_paths) != expected:
                 raise ConanException(
                     f"installed canonical master {master_id} has an incomplete review specification set"
@@ -186,8 +186,8 @@ class MascotRenderTestPackage(ConanFile):
                 f'--sticker "{os.path.join(stickers, "production", "happy.json")}"',
                 env="conanrun",
             )
-        if validated != 104:
-            raise ConanException("installed canonical human pipeline did not validate 104 render specifications")
+        if validated != 204:
+            raise ConanException("installed canonical human pipeline did not validate 204 render specifications")
         with open(os.path.join(output, "glb-manifest.json"), "r", encoding="utf-8") as glb_file:
             glb_manifest = json.load(glb_file)
         if glb_manifest.get("master_count") != 5:
