@@ -62,14 +62,14 @@ class MascotRenderTestPackage(ConanFile):
             generated = os.path.join(pipeline_root, "mascots")
             bundle = os.path.join(pipeline_root, "bundle")
             self.run(
-                f'"{sys.executable}" "{generator}" --output "{generated}" --count 1'
+                f'"{sys.executable}" -B "{generator}" --output "{generated}" --count 1'
             )
             self.run(
-                f'"{sys.executable}" "{renderer}" --input "{generated}" '
+                f'"{sys.executable}" -B "{renderer}" --input "{generated}" '
                 f'--output "{bundle}" --mascotrender "{cli}"'
             )
             self.run(
-                f'"{sys.executable}" "{reviewer}" --input "{bundle}" '
+                f'"{sys.executable}" -B "{reviewer}" --input "{bundle}" '
                 f'--expected-count 10'
             )
             self._test_installed_human_pilots(resources, cli)
@@ -94,13 +94,13 @@ class MascotRenderTestPackage(ConanFile):
         os.makedirs(human_root, exist_ok=True)
 
         self.run(
-            f'"{sys.executable}" "{validator}" --report "{report}"'
+            f'"{sys.executable}" -B "{validator}" --report "{report}"'
         )
         self.run(
-            f'"{sys.executable}" "{generator}" --output "{generated}" '
+            f'"{sys.executable}" -B "{generator}" --output "{generated}" '
             "--count 1"
         )
-        self.run(f'"{sys.executable}" "{packager}" --help')
+        self.run(f'"{sys.executable}" -B "{packager}" --help')
 
         manifest_path = os.path.join(generated, "generation-manifest.json")
         with open(manifest_path, "r", encoding="utf-8") as manifest_file:
@@ -143,8 +143,8 @@ class MascotRenderTestPackage(ConanFile):
         )
         output = os.path.join(self.build_folder, "installed-canonical-humans")
         shutil.rmtree(output, ignore_errors=True)
-        self.run(f'"{sys.executable}" "{generator}" --output "{output}"')
-        self.run(f'"{sys.executable}" "{glb_generator}" --input "{output}"')
+        self.run(f'"{sys.executable}" -B "{generator}" --output "{output}"')
+        self.run(f'"{sys.executable}" -B "{glb_generator}" --input "{output}"')
         with open(
             os.path.join(output, "generation-manifest.json"),
             "r",

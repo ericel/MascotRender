@@ -63,6 +63,9 @@ jobs:
       CONAN_REMOTE_URL: ${{ secrets.CONAN_URL }}
       CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
       CONAN_USERNAME: ${{ secrets.CONAN_USER }}
+      # Installed package tests execute bundled Python tools before upload.
+      # Keep those tests from mutating the immutable Conan package manifest.
+      PYTHONDONTWRITEBYTECODE: "1"
     steps:
       - name: Check out source
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -169,6 +172,9 @@ jobs:
       CONAN_PASSWORD: ${{ secrets.CONAN_PASSWORD }}
       CONAN_USERNAME: ${{ secrets.CONAN_USER }}
       FILAMENT_REFERENCE: filament/1.74.0
+      # Installed package tests execute bundled Python tools before upload.
+      # Keep those tests from mutating the immutable Conan package manifest.
+      PYTHONDONTWRITEBYTECODE: "1"
     steps:
       - name: Check out source
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
