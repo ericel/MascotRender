@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "approved-canonical-foundation",
+  "scope": "foundation-not-complete-library",
+  "approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved",
+    "members": ["H01", "H04", "H07", "H12", "H13"],
+    "scope": [
+      "character-identity",
+      "family-wide-visual-language",
+      "age-and-body-proportion-differentiation",
+      "canonical-scale-silhouette-parity",
+      "five-framing-consistency",
+      "demonstrated-motion-identity-stability",
+      "prosthesis-wheelchair-hearing-aid-rollator-visual-integration",
+      "H07-seated-geometry-and-footrest-relationship"
+    ],
+    "production_release": false
+  },
+  "public_release_authorization": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved",
+    "license": "MIT",
+    "representation_disposition": "respectful-and-non-stereotyped-for-human-pack-production",
+    "condition": "all-human-pack-production-v1-gates-pass",
+    "machine_evidence": "generated/canonical-human-production-review/release-review.json"
+  },
+  "current_production_candidate_review": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved",
+    "reason": "all production design, identity, art-direction, device, semantic-pose, animation, and reduced-motion gates passed",
+    "evidence": "contracts/human-canonical-production-design-review-v1.json",
+    "production_use": "public-release"
+  },
+  "reference_asset": {
+    "path": "art/concepts/human-pack-v1/family-gate-v1.png",
+    "sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+    "width": 1774,
+    "height": 887,
+    "asset_class": "approved-concept-reference",
+    "production_use": "reference-only"
+  },
+  "visual_language": [
+    "friendly-polished-full-body-illustration",
+    "clear-dark-navy-outer-silhouette",
+    "soft-interior-linework",
+    "two-to-three-tone-cel-shading",
+    "rounded-expressive-facial-language",
+    "distinct-authored-faces-and-bodies",
+    "clear-articulated-anatomy",
+    "contemporary-character-specific-clothing",
+    "readable-integrated-assistive-devices",
+    "consistent-contact-shadow-and-baseline"
+  ],
+  "canonical_members": [
+    {
+      "id": "H01",
+      "life_stage": "child",
+      "body_direction": "child-average",
+      "identity_direction": "Black girl with medium-deep complexion and coily two-puff protective hairstyle",
+      "device_requirements": []
+    },
+    {
+      "id": "H04",
+      "life_stage": "young-adult",
+      "body_direction": "adult-athletic",
+      "identity_direction": "Black man with deep complexion and short coily hair",
+      "device_requirements": ["articulated-below-knee-prosthesis", "prosthesis-ground-contact", "prosthesis-hop-retargeting"]
+    },
+    {
+      "id": "H07",
+      "life_stage": "adult",
+      "body_direction": "adult-seated-average",
+      "identity_direction": "Southeast Asian man with warm medium complexion and short straight hair",
+      "device_requirements": ["manual-wheelchair", "seated-pose-rig", "wheel-and-hand-clearance", "footrest-contact"]
+    },
+    {
+      "id": "H12",
+      "life_stage": "middle-aged",
+      "body_direction": "adult-average",
+      "identity_direction": "East Asian woman with light-medium neutral complexion and naturally greying straight hair",
+      "device_requirements": ["behind-the-ear-hearing-aid", "hearing-aid-small-size-visibility"]
+    },
+    {
+      "id": "H13",
+      "life_stage": "senior",
+      "body_direction": "senior-soft-curvy",
+      "identity_direction": "Black woman with deep warm complexion and natural grey coily hair",
+      "device_requirements": ["rollator", "rollator-hand-contact", "rollator-ground-contact", "supported-walk-cycle"]
+    }
+  ],
+  "future_character_rules": [
+    "follow-the-canonical-family-visual-language",
+    "remain-distinct-identities-not-palette-swaps",
+    "preserve-clear-age-and-body-silhouettes",
+    "author-social-identity-without-stereotype-rules",
+    "integrate-assistive-devices-functionally",
+    "provide-equal-expression-and-animation-quality",
+    "extend-library-coverage-without-copying-canonical-members"
+  ],
+  "production_requirements": [
+    "original-layered-svg-source",
+    "neutral-and-three-quarter-turnaround",
+    "normalized-rig-and-pivots",
+    "device-technical-sheet-when-applicable",
+    "five-camera-framings",
+    "80-96-100-pixel-readability",
+    "reduced-motion-presentation",
+    "provenance-and-license-clearance",
+    "diverse-human-review",
+    "cross-backend-identity-parity-for-every-claimed-backend",
+    "cross-backend-art-direction-parity-for-every-claimed-backend"
+  ],
+  "cross_backend_parity_policy": {
+    "identity_parity": [
+      "same-character-identity", "defining-hair-clothing-and-device-features",
+      "same-palette", "same-age-and-body-direction"
+    ],
+    "art_direction_parity": [
+      "dark-navy-silhouette-language", "two-to-three-tone-cel-shading",
+      "shared-facial-line-language", "comparable-garment-detail"
+    ],
+    "public_release_requires": ["identity_parity", "art_direction_parity"]
+  }
+}

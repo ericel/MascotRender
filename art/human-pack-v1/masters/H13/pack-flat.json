@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "pack_id": "human-canonical-h13",
+  "character_identity": {
+    "character_id": "H13",
+    "contract_version": 1,
+    "contract_sha256": "b2bd1669fe1a1cdffdaf7e6300733dc5d32f55004bed75beaac206d208144b44",
+    "required_features": [
+      "human",
+      "canonical-family-v1",
+      "full-body",
+      "semantic-rig-v2",
+      "rollator.four-wheel"
+    ]
+  },
+  "rig": {
+    "contract_id": "humanoid-production-v2",
+    "contract_version": 2,
+    "device_profile": "rollator.four-wheel",
+    "device_bindings": {
+      "frame": "device-rollator-frame",
+      "handle.left": "device-rollator-handle-left",
+      "handle.right": "device-rollator-handle-right",
+      "wheel.front-left": "device-rollator-wheel-front-left",
+      "wheel.front-right": "device-rollator-wheel-front-right",
+      "wheel.rear-left": "device-rollator-wheel-rear-left",
+      "wheel.rear-right": "device-rollator-wheel-rear-right"
+    },
+    "pose_bindings": {
+      "greeting": {
+        "root": "torso",
+        "head": "head",
+        "face": "face-friendly",
+        "gesture.primary": "arm-right-greeting",
+        "gesture.secondary": "arm-left-greeting",
+        "ground.contact": "shadow",
+        "gaze.target": "head"
+      }
+    }
+  },
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "shadow",
+      "source": "layers/00-shadow.svg",
+      "z": 0,
+      "depth": 0
+    },
+    {
+      "id": "leg-left",
+      "source": "layers/07-leg-left.svg",
+      "z": 70,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "hip_left"
+    },
+    {
+      "id": "leg-right",
+      "source": "layers/08-leg-right.svg",
+      "z": 80,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "hip_right"
+    },
+    {
+      "id": "torso",
+      "source": "layers/12-torso.svg",
+      "z": 120,
+      "depth": 0,
+      "pivot": "hips",
+      "collision_bounds": {
+        "x": 60,
+        "y": 28,
+        "width": 392,
+        "height": 445
+      }
+    },
+    {
+      "id": "head",
+      "source": "layers/13-head.svg",
+      "z": 130,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "neck",
+      "collision_bounds": {
+        "x": 178,
+        "y": 17,
+        "width": 156,
+        "height": 174
+      }
+    },
+    {
+      "id": "hair-front",
+      "source": "layers/14-hair-front.svg",
+      "z": 140,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-friendly",
+      "source": "layers/15-face-friendly.svg",
+      "z": 150,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-laughing",
+      "source": "layers/16-face-laughing.svg",
+      "z": 160,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-surprised",
+      "source": "layers/17-face-surprised.svg",
+      "z": 170,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-thinking",
+      "source": "layers/18-face-thinking.svg",
+      "z": 180,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-confident",
+      "source": "layers/19-face-confident.svg",
+      "z": 190,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-sorry",
+      "source": "layers/20-face-sorry.svg",
+      "z": 200,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "face-excited",
+      "source": "layers/21-face-excited.svg",
+      "z": 210,
+      "depth": 0,
+      "parent": "head",
+      "pivot": "head"
+    },
+    {
+      "id": "arm-left-rest",
+      "source": "layers/22-arm-left-rest.svg",
+      "z": 220,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-rest",
+      "source": "layers/23-arm-right-rest.svg",
+      "z": 230,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-greeting",
+      "source": "layers/24-arm-left-greeting.svg",
+      "z": 240,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-greeting",
+      "source": "layers/25-arm-right-greeting.svg",
+      "z": 250,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-farewell",
+      "source": "layers/26-arm-left-farewell.svg",
+      "z": 260,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-farewell",
+      "source": "layers/27-arm-right-farewell.svg",
+      "z": 270,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-agreement",
+      "source": "layers/28-arm-left-agreement.svg",
+      "z": 280,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-agreement",
+      "source": "layers/29-arm-right-agreement.svg",
+      "z": 290,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-disagreement",
+      "source": "layers/30-arm-left-disagreement.svg",
+      "z": 300,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-disagreement",
+      "source": "layers/31-arm-right-disagreement.svg",
+      "z": 310,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-gratitude",
+      "source": "layers/32-arm-left-gratitude.svg",
+      "z": 320,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-gratitude",
+      "source": "layers/33-arm-right-gratitude.svg",
+      "z": 330,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-concern",
+      "source": "layers/34-arm-left-concern.svg",
+      "z": 340,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-concern",
+      "source": "layers/35-arm-right-concern.svg",
+      "z": 350,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-surprise",
+      "source": "layers/36-arm-left-surprise.svg",
+      "z": 360,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-surprise",
+      "source": "layers/37-arm-right-surprise.svg",
+      "z": 370,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "arm-left-celebration",
+      "source": "layers/38-arm-left-celebration.svg",
+      "z": 380,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_left"
+    },
+    {
+      "id": "arm-right-celebration",
+      "source": "layers/39-arm-right-celebration.svg",
+      "z": 390,
+      "depth": 0,
+      "parent": "torso",
+      "pivot": "shoulder_right"
+    },
+    {
+      "id": "device-rollator-frame",
+      "source": "layers/44-device-rollator-frame.svg",
+      "z": 440,
+      "depth": 0
+    },
+    {
+      "id": "device-rollator-handle-left",
+      "source": "layers/45-device-rollator-handle-left.svg",
+      "z": 450,
+      "depth": 0,
+      "lod_sources": {
+        "100": "layers-lod100/45-device-rollator-handle-left.svg"
+      },
+      "parent": "device-rollator-frame",
+      "pivot": "device"
+    },
+    {
+      "id": "device-rollator-handle-right",
+      "source": "layers/46-device-rollator-handle-right.svg",
+      "z": 460,
+      "depth": 0,
+      "lod_sources": {
+        "100": "layers-lod100/46-device-rollator-handle-right.svg"
+      },
+      "parent": "device-rollator-frame",
+      "pivot": "device"
+    },
+    {
+      "id": "device-rollator-wheel-rear-left",
+      "source": "layers/47-device-rollator-wheel-rear-left.svg",
+      "z": 470,
+      "depth": 0,
+      "parent": "device-rollator-frame",
+      "pivot": "device_wheel_rear_left"
+    },
+    {
+      "id": "device-rollator-wheel-rear-right",
+      "source": "layers/48-device-rollator-wheel-rear-right.svg",
+      "z": 480,
+      "depth": 0,
+      "parent": "device-rollator-frame",
+      "pivot": "device_wheel_rear_right"
+    },
+    {
+      "id": "device-rollator-wheel-front-left",
+      "source": "layers/49-device-rollator-wheel-front-left.svg",
+      "z": 490,
+      "depth": 0,
+      "lod_sources": {
+        "100": "layers-lod100/49-device-rollator-wheel-front-left.svg"
+      },
+      "parent": "device-rollator-frame",
+      "pivot": "device_wheel_front_left"
+    },
+    {
+      "id": "device-rollator-wheel-front-right",
+      "source": "layers/50-device-rollator-wheel-front-right.svg",
+      "z": 500,
+      "depth": 0,
+      "lod_sources": {
+        "100": "layers-lod100/50-device-rollator-wheel-front-right.svg"
+      },
+      "parent": "device-rollator-frame",
+      "pivot": "device_wheel_front_right"
+    }
+  ],
+  "base_layers": [
+    "shadow",
+    "leg-left",
+    "leg-right",
+    "torso",
+    "head",
+    "hair-front",
+    "device-rollator-frame",
+    "device-rollator-handle-left",
+    "device-rollator-handle-right",
+    "device-rollator-wheel-rear-left",
+    "device-rollator-wheel-rear-right",
+    "device-rollator-wheel-front-left",
+    "device-rollator-wheel-front-right"
+  ],
+  "expressions": {
+    "friendly": [
+      "face-friendly"
+    ],
+    "happy": [
+      "face-friendly"
+    ],
+    "laughing": [
+      "face-laughing"
+    ],
+    "surprised": [
+      "face-surprised"
+    ],
+    "thinking": [
+      "face-thinking"
+    ],
+    "confident": [
+      "face-confident"
+    ],
+    "sorry": [
+      "face-sorry"
+    ],
+    "excited": [
+      "face-excited"
+    ]
+  },
+  "poses": {
+    "neutral": [
+      "arm-left-rest",
+      "arm-right-rest"
+    ],
+    "rest": [
+      "arm-left-rest",
+      "arm-right-rest"
+    ],
+    "greeting": [
+      "arm-left-greeting",
+      "arm-right-greeting"
+    ],
+    "farewell": [
+      "arm-left-farewell",
+      "arm-right-farewell"
+    ],
+    "agreement": [
+      "arm-left-agreement",
+      "arm-right-agreement"
+    ],
+    "disagreement": [
+      "arm-left-disagreement",
+      "arm-right-disagreement"
+    ],
+    "gratitude": [
+      "arm-left-gratitude",
+      "arm-right-gratitude"
+    ],
+    "concern": [
+      "arm-left-concern",
+      "arm-right-concern"
+    ],
+    "surprise": [
+      "arm-left-surprise",
+      "arm-right-surprise"
+    ],
+    "celebration": [
+      "arm-left-celebration",
+      "arm-right-celebration"
+    ]
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "Flat 2D projection of the canonical semantic vector source"
+  },
+  "anchors": {
+    "face_center": {
+      "x": 256,
+      "y": 106
+    },
+    "bust_center": {
+      "x": 256,
+      "y": 208
+    },
+    "body_center": {
+      "x": 256,
+      "y": 285.5
+    },
+    "ground_contact": {
+      "x": 256,
+      "y": 465
+    }
+  },
+  "pivots": {
+    "root": {
+      "x": 256,
+      "y": 465
+    },
+    "hips": {
+      "x": 256,
+      "y": 323
+    },
+    "torso": {
+      "x": 256,
+      "y": 263.25
+    },
+    "chest": {
+      "x": 256,
+      "y": 221.4
+    },
+    "neck": {
+      "x": 256,
+      "y": 178
+    },
+    "head": {
+      "x": 256,
+      "y": 106
+    },
+    "shoulder_left": {
+      "x": 318,
+      "y": 212
+    },
+    "shoulder_right": {
+      "x": 194,
+      "y": 212
+    },
+    "elbow_left": {
+      "x": 346,
+      "y": 282
+    },
+    "elbow_right": {
+      "x": 166,
+      "y": 282
+    },
+    "wrist_left": {
+      "x": 340,
+      "y": 320
+    },
+    "wrist_right": {
+      "x": 172,
+      "y": 320
+    },
+    "hand_left": {
+      "x": 340,
+      "y": 332
+    },
+    "hand_right": {
+      "x": 172,
+      "y": 332
+    },
+    "ear_right": {
+      "x": 196,
+      "y": 106
+    },
+    "hip_left": {
+      "x": 280,
+      "y": 323
+    },
+    "hip_right": {
+      "x": 232,
+      "y": 323
+    },
+    "knee_left": {
+      "x": 280,
+      "y": 433.40000000000003
+    },
+    "knee_right": {
+      "x": 232,
+      "y": 433.40000000000003
+    },
+    "ankle_left": {
+      "x": 280,
+      "y": 445
+    },
+    "ankle_right": {
+      "x": 232,
+      "y": 445
+    },
+    "foot_left": {
+      "x": 280,
+      "y": 465
+    },
+    "foot_right": {
+      "x": 232,
+      "y": 465
+    },
+    "device": {
+      "x": 256,
+      "y": 465
+    },
+    "device_wheel_front_left": {
+      "x": 347,
+      "y": 451
+    },
+    "device_wheel_front_right": {
+      "x": 165,
+      "y": 451
+    },
+    "device_wheel_rear_left": {
+      "x": 319,
+      "y": 438
+    },
+    "device_wheel_rear_right": {
+      "x": 193,
+      "y": 438
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 10
+}

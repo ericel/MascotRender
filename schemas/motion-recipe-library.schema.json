@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/motion-recipe-library-v1.json",
+  "title": "MascotRender semantic motion recipe library",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "library_id", "recipes"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "library_id": { "type": "string", "minLength": 1 },
+    "recipes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["recipe_id", "expression", "pose", "camera_framing", "duration_ms", "fps", "loop", "tracks"],
+        "properties": {
+          "recipe_id": { "type": "string", "pattern": "^motion[.][a-z0-9-]+$" },
+          "expression": { "type": "string", "minLength": 1 },
+          "pose": { "type": "string", "minLength": 1 },
+          "camera_framing": { "enum": ["face-closeup", "bust", "three-quarter", "full-body", "dynamic-full-body"] },
+          "duration_ms": { "type": "integer", "minimum": 100, "maximum": 10000 },
+          "fps": { "type": "integer", "minimum": 1, "maximum": 30 },
+          "loop": { "enum": ["once", "loop", "ping_pong", "hold_last_frame"] },
+          "text_pop": { "type": "boolean" },
+          "tracks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["target", "property", "keyframes"],
+              "properties": {
+                "target": { "type": "string", "minLength": 1 },
+                "property": { "enum": ["translate_x", "translate_y", "scale_x", "scale_y", "rotation_degrees", "opacity"] },
+                "keyframes": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["at_ms", "value"],
+                    "properties": {
+                      "at_ms": { "type": "integer", "minimum": 0 },
+                      "value": { "type": "number" },
+                      "easing": { "enum": ["linear", "ease_out", "ease_in_out", "back_out"] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

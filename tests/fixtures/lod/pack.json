@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "pack_id": "lod-selection-fixture",
+  "canvas": { "width": 512, "height": 512 },
+  "layers": [
+    {
+      "id": "body",
+      "source": "base.svg",
+      "lod_sources": { "100": "lod-100.svg" },
+      "z": 0
+    }
+  ],
+  "base_layers": ["body"],
+  "expressions": { "neutral": ["body"] },
+  "poses": { "front": ["body"] },
+  "anchors": {},
+  "pivots": {},
+  "provenance": {
+    "creator": "MascotRender tests",
+    "license": "MIT",
+    "source": "authored test fixture"
+  }
+}

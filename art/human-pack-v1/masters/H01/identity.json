@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "character_id": "H01",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "owner-vector-parity-approved",
+  "identity_direction": "Black girl child with coily two-puff protective hairstyle",
+  "device_profile": "device.none",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "forbidden",
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "palette": {
+    "skin": "#754329",
+    "skin_light": "#9A6040",
+    "hair": "#211714",
+    "primary": "#F5B82E",
+    "secondary": "#E85D89",
+    "accent": "#23B6A6",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  }
+}

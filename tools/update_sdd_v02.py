@@ -602,6 +602,88 @@ def main() -> None:
         "WebP rather than embedding the 3D runtime."
     )
 
+    document.add_heading("Appendix G — Human Mascot Identity and Representation", level=1)
+    document.add_paragraph(
+        "Human mascots use a versioned appearance contract rather than a race enum. "
+        "Complexion tone/undertone/material, normalized face profiles, hair texture "
+        "and style, body proportions, clothing, and accessories are independent. "
+        "Heritage context is audit-only metadata and cannot drive rendering geometry."
+    )
+    document.add_paragraph(
+        "The humanoid-full-body-v1 contract defines parented joints, pivots, semantic "
+        "targets, capabilities, and face-closeup, bust, three-quarter, full-body, and "
+        "dynamic-full-body camera framings. Recipes compile semantic gestures to "
+        "selected concrete layers; captions stay screen-fixed and collision-aware."
+    )
+    document.add_paragraph(
+        "The first technical pilot contains 12 synthetic identities and 12 core "
+        "phrases, producing 144 deterministic sticker specifications and one contact "
+        "sheet per phrase. The procedural set is permanently classified as a technical "
+        "fixture with production use forbidden; automated success cannot promote it to "
+        "approved Human Pack artwork. Scaling uses a shared phrase Trie plus core, extended, and "
+        "on-demand asset tiers rather than precomputing every combination."
+    )
+    document.add_paragraph(
+        "The owner-supplied Human Mascot Reference dated 2026-07-15 is the visual and "
+        "capability benchmark for original Human Pack v1 artwork. The production "
+        "standard lists supported identity dimensions while each pack owns its editorial "
+        "coverage; minor-coded characters are optional and require an explicit owner decision. "
+        "It gates five camera framings; 80/96/100-pixel "
+        "readability; provenance; reduced-motion behavior; diverse human review; and "
+        "cross-backend identity parity. Heritage metadata remains audit-only."
+    )
+    document.add_paragraph(
+        "On 2026-07-15 the project owner approved the original H01, H04, H07, H12, "
+        "and H13 concept lineup as the initial canonical family and foundation for the "
+        "Human Character Library. The versioned family contract pins the exact concept "
+        "digest, approval, visual language, anatomical principles, and prosthesis, manual "
+        "wheelchair, hearing-aid, and rollator requirements. This establishes rules for "
+        "future characters but is explicitly not the complete library or a production rig."
+    )
+    document.add_paragraph(
+        "The approved front-facing five now have deterministic semantic SVG candidates with 176 "
+        "separate anatomy and assistive-device layers, five 512-pixel camera framings per "
+        "identity, and a production-v2 22-joint humanoid rig. Prosthesis, manual wheelchair, "
+        "hearing-aid, and rollator components are addressable rig parts rather than flattened "
+        "decoration. Anatomical left/right is character-local, so character-right projects "
+        "to screen-left in an unmirrored front view. All 25 posters validate through the C++ "
+        "engine. Nine review sheets additionally prove a common world scale, true 80/96/100-"
+        "pixel output, 19 isolated device parts, labeled anchors/pivots/contacts, and four "
+        "animated device checks. The renderer selects 12 authored low-LOD layers for the four "
+        "device users. On 2026-07-15 the project owner approved vector identity parity for "
+        "all five members, explicitly including H07's seated geometry and footrest relationship. "
+        "The technical pipeline emits 20 turnaround images, 35 expression/pose renders, "
+        "35 reduced-motion equivalents, five semantic GLBs, and 80 Filament clip renders. "
+        "On 2026-07-15 the project owner rejected those production sheets: side-view hair "
+        "detaches, whole-character rotation and device topology are incomplete, required "
+        "pose evidence is missing, dimensional 2.5D behavior is unproven, and the primitive "
+        "GLBs do not preserve authored identity or assistive-device geometry. Technical "
+        "validation therefore succeeds while production use remains forbidden. A future "
+        "candidate requires a new owner design decision bound to the regenerated sheet hashes."
+    )
+
+    document.add_heading("Appendix H — Independent Platform and Portable Packages", level=1)
+    document.add_paragraph(
+        "MascotRender is an independent open-source procedural character rendering "
+        "engine. Wahalao is its flagship consumer rather than its architectural boundary. "
+        "The stable conceptual input is Character + Semantic Recipe + Camera + Output "
+        "Configuration; compilation resolves those inputs to a scene graph and sampled "
+        "timeline consumed by vector, layered, or optional GLB backends."
+    )
+    document.add_paragraph(
+        "Core, vector, layered, GLB, animation, text, CLI, and authoring boundaries begin "
+        "as CMake targets and later Conan components in one repository. Repository splits "
+        "are deferred until APIs and independent release cadences stabilize. Character "
+        "packs are independently versioned and explicitly licensed."
+    )
+    document.add_paragraph(
+        "The draft .mascot v1 authoring format is a deterministic ZIP-compatible container "
+        "with a root manifest, safe sorted paths, fixed metadata, SHA-256 declarations, "
+        "capabilities, provenance, and licenses. This does not expand the 0.1 trust boundary: "
+        "engine loading begins only after a bounded package loader and capability validation "
+        "API are implemented and security tested."
+    )
+
     # Header and core properties.
     for section in document.sections:
         for item in section.header.paragraphs:

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "library_id": "human-core-v1",
+  "recipes": [
+    {
+      "recipe_id": "motion.greeting-wave", "expression": "friendly", "pose": "wave", "camera_framing": "bust", "duration_ms": 900, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "gesture.primary", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 300, "value": -12, "easing": "ease_out" }, { "at_ms": 600, "value": 12, "easing": "ease_in_out" }, { "at_ms": 900, "value": 0, "easing": "ease_in_out" }] },
+        { "target": "head", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 450, "value": -4, "easing": "ease_in_out" }, { "at_ms": 900, "value": 0, "easing": "ease_in_out" }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.laugh-bounce", "expression": "joyful", "pose": "laugh", "camera_framing": "bust", "duration_ms": 800, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "root", "property": "translate_y", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 200, "value": -12, "easing": "ease_out" }, { "at_ms": 400, "value": 0, "easing": "ease_in_out" }, { "at_ms": 600, "value": -7, "easing": "ease_out" }, { "at_ms": 800, "value": 0, "easing": "ease_in_out" }] },
+        { "target": "head", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 200, "value": -5 }, { "at_ms": 400, "value": 4 }, { "at_ms": 600, "value": -3 }, { "at_ms": 800, "value": 0 }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.firm-nod", "expression": "confident", "pose": "agree", "camera_framing": "bust", "duration_ms": 700, "fps": 12, "loop": "loop", "text_pop": false,
+      "tracks": [{ "target": "head", "property": "translate_y", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 230, "value": 8, "easing": "ease_out" }, { "at_ms": 460, "value": -2, "easing": "ease_in_out" }, { "at_ms": 700, "value": 0, "easing": "ease_in_out" }] }]
+    },
+    {
+      "recipe_id": "motion.head-shake", "expression": "firm", "pose": "disagree", "camera_framing": "face-closeup", "duration_ms": 700, "fps": 12, "loop": "loop", "text_pop": false,
+      "tracks": [{ "target": "head", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 175, "value": -10, "easing": "ease_out" }, { "at_ms": 350, "value": 10, "easing": "ease_in_out" }, { "at_ms": 525, "value": -6, "easing": "ease_in_out" }, { "at_ms": 700, "value": 0, "easing": "ease_in_out" }] }]
+    },
+    {
+      "recipe_id": "motion.calm-breathe", "expression": "neutral", "pose": "neutral", "camera_framing": "three-quarter", "duration_ms": 1200, "fps": 10, "loop": "loop", "text_pop": false,
+      "tracks": [{ "target": "root", "property": "scale_y", "keyframes": [{ "at_ms": 0, "value": 1 }, { "at_ms": 600, "value": 1.025, "easing": "ease_in_out" }, { "at_ms": 1200, "value": 1, "easing": "ease_in_out" }] }]
+    },
+    {
+      "recipe_id": "motion.shock-pop", "expression": "shocked", "pose": "shock", "camera_framing": "bust", "duration_ms": 800, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "root", "property": "scale_x", "keyframes": [{ "at_ms": 0, "value": 1 }, { "at_ms": 220, "value": 1.06, "easing": "back_out" }, { "at_ms": 800, "value": 1, "easing": "ease_in_out" }] },
+        { "target": "root", "property": "scale_y", "keyframes": [{ "at_ms": 0, "value": 1 }, { "at_ms": 220, "value": 1.06, "easing": "back_out" }, { "at_ms": 800, "value": 1, "easing": "ease_in_out" }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.gratitude-bow", "expression": "grateful", "pose": "gratitude", "camera_framing": "three-quarter", "duration_ms": 900, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [{ "target": "root", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 360, "value": 6, "easing": "ease_in_out" }, { "at_ms": 540, "value": 6 }, { "at_ms": 900, "value": 0, "easing": "ease_in_out" }] }]
+    },
+    {
+      "recipe_id": "motion.apology-bow", "expression": "regretful", "pose": "apology", "camera_framing": "three-quarter", "duration_ms": 1000, "fps": 12, "loop": "loop", "text_pop": false,
+      "tracks": [{ "target": "root", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 400, "value": 9, "easing": "ease_in_out" }, { "at_ms": 650, "value": 9 }, { "at_ms": 1000, "value": 0, "easing": "ease_in_out" }] }]
+    },
+    {
+      "recipe_id": "motion.love-pulse", "expression": "loving", "pose": "love", "camera_framing": "bust", "duration_ms": 900, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "root", "property": "scale_x", "keyframes": [{ "at_ms": 0, "value": 1 }, { "at_ms": 300, "value": 1.035, "easing": "ease_out" }, { "at_ms": 900, "value": 1, "easing": "ease_in_out" }] },
+        { "target": "root", "property": "scale_y", "keyframes": [{ "at_ms": 0, "value": 1 }, { "at_ms": 300, "value": 1.035, "easing": "ease_out" }, { "at_ms": 900, "value": 1, "easing": "ease_in_out" }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.dramatic-shake", "expression": "dramatic", "pose": "dramatic", "camera_framing": "dynamic-full-body", "duration_ms": 800, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "root", "property": "translate_x", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 200, "value": -8 }, { "at_ms": 400, "value": 8 }, { "at_ms": 600, "value": -5 }, { "at_ms": 800, "value": 0 }] },
+        { "target": "gesture.primary", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 400, "value": 7 }, { "at_ms": 800, "value": 0 }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.plead-pulse", "expression": "pleading", "pose": "plead", "camera_framing": "three-quarter", "duration_ms": 900, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [
+        { "target": "gesture.primary", "property": "translate_y", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 450, "value": -5, "easing": "ease_in_out" }, { "at_ms": 900, "value": 0, "easing": "ease_in_out" }] },
+        { "target": "gesture.secondary", "property": "translate_y", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 450, "value": -5, "easing": "ease_in_out" }, { "at_ms": 900, "value": 0, "easing": "ease_in_out" }] }
+      ]
+    },
+    {
+      "recipe_id": "motion.farewell-wave", "expression": "friendly", "pose": "farewell", "camera_framing": "full-body", "duration_ms": 900, "fps": 12, "loop": "loop", "text_pop": true,
+      "tracks": [{ "target": "gesture.primary", "property": "rotation_degrees", "keyframes": [{ "at_ms": 0, "value": 0 }, { "at_ms": 300, "value": -10 }, { "at_ms": 600, "value": 10 }, { "at_ms": 900, "value": 0 }] }]
+    }
+  ]
+}

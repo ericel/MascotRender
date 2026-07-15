@@ -95,6 +95,31 @@ TEST_CASE("versioned JSON pack and sticker render SVG layers") {
   REQUIRE(features.has_alpha == 1);
 }
 
+TEST_CASE("authored SVG LOD sources are selected by output dimension") {
+  const auto root = source_root / "tests" / "fixtures" / "lod";
+  mascotrender::Engine engine;
+  mascotrender::RenderRequest small{root / "pack.json", root / "sticker.json", {}};
+  small.options.width = 80;
+  small.options.height = 80;
+  small.options.lossless = true;
+  auto small_image = engine.render(small);
+  REQUIRE(small_image);
+  const auto small_pixel = pixel_at(decode(small_image.value()), 80, 40, 40);
+  REQUIRE(small_pixel.red == 35U);
+  REQUIRE(small_pixel.green == 182U);
+  REQUIRE(small_pixel.blue == 166U);
+
+  auto large = small;
+  large.options.width = 128;
+  large.options.height = 128;
+  auto large_image = engine.render(large);
+  REQUIRE(large_image);
+  const auto large_pixel = pixel_at(decode(large_image.value()), 128, 64, 64);
+  REQUIRE(large_pixel.red == 233U);
+  REQUIRE(large_pixel.green == 78U);
+  REQUIRE(large_pixel.blue == 100U);
+}
+
 TEST_CASE("parented 2.5D nodes preserve the flat t0 render") {
   mascotrender::Engine engine;
   auto layered = engine.render(robot_2_5d_request());
@@ -186,6 +211,30 @@ TEST_CASE("layer depth produces deterministic parallax") {
   REQUIRE(parallax_sparkle.green == flat_sparkle.green);
   REQUIRE(parallax_sparkle.blue == flat_sparkle.blue);
   REQUIRE(parallax_sparkle.alpha == flat_sparkle.alpha);
+}
+
+TEST_CASE("semantic camera framing resolves around an authored anchor") {
+  const auto pack = source_root / "examples" / "cat";
+  auto scene = mascotrender::detail::load_scene(
+      pack / "pack.json",
+      source_root / "tests" / "fixtures" / "camera-framing-sticker.json");
+  REQUIRE(scene);
+  REQUIRE(std::abs(scene.value().camera_transform.m11 - 1.25F) < 0.0001F);
+  REQUIRE(std::abs(scene.value().camera_transform.m22 - 1.25F) < 0.0001F);
+  REQUIRE(std::abs(scene.value().camera_transform.translate_x + 54.0F) <
+          0.0001F);
+  REQUIRE(std::abs(scene.value().camera_transform.translate_y + 114.0F) <
+          0.0001F);
+
+  mascotrender::Engine engine;
+  auto framed_request = example_request();
+  framed_request.sticker_file =
+      source_root / "tests" / "fixtures" / "camera-framing-sticker.json";
+  auto framed = engine.render(framed_request);
+  auto unframed = engine.render(example_request());
+  REQUIRE(framed);
+  REQUIRE(unframed);
+  REQUIRE(framed.value().bytes != unframed.value().bytes);
 }
 
 TEST_CASE("dimensional 2.5D pose adds shading rim light and stronger depth") {

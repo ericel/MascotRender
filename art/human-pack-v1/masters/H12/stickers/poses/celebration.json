@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h12-pose-celebration",
+  "pack_id": "human-canonical-h12",
+  "alt_text": "H12 demonstrating the celebration pose with a stable friendly expression",
+  "expression": "friendly",
+  "pose": "celebration",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

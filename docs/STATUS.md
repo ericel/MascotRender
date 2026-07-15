@@ -155,7 +155,111 @@ Linux x86-64, and Windows x86-64 in publication run `29335668526`. Fresh caches
 use `--build=missing` for public dependencies without matching ConanCenter
 binaries.
 
+## Product direction baseline
+
+MascotRender is now explicitly defined as an independent open-source procedural
+character rendering engine. `MANIFESTO.md`, `VISION.md`, and `ARCHITECTURE.md`
+separate the engine from Wahalao and define Character + Recipe + Camera + Output
+as the stable conceptual boundary. The repository remains a monorepo while
+behavior-backed CMake/Conan module boundaries mature.
+
+The owner-supplied Human Mascot Reference dated 2026-07-15 is the production
+visual and capability benchmark. `HUMAN_PACK_VISUAL_STANDARD.md` and
+`human-pack-production-v1.json` separate engine-supported identity dimensions
+from pack-specific editorial coverage, with reviewable gates spanning body,
+complexion, hair, gender presentation, ability, context,
+expression, pose, five framings, small-size readability, reduced motion,
+provenance, diverse review, and cross-backend parity.
+
+The old procedural human matrix is permanently classified as a technical
+fixture with production use forbidden. It continues to prove determinism and
+contract behavior; it is not awaiting promotion to approved artwork.
+
+On 2026-07-15 the project owner approved the original H01/H04/H07/H12/H13
+concept lineup as the initial canonical family and foundation of the Human
+Character Library. The approval covers family visual language, anatomical
+rules, assistive-device integration, age diversity, and identity principles.
+The pinned contract explicitly states that this is not the complete library and
+that the raster reference is not a production rig.
+
+The five approved front-facing identities have deterministic layered SVG
+candidates: 176 semantic layers, five 512-pixel framings per identity, a
+production-v2 22-joint rig, and separately bound prosthesis, wheelchair,
+hearing-aid, and rollator parts. Anatomical right is formalized as screen-left
+in an unmirrored front view. The renderer validates all 25 combinations and the
+review builder emits nine sheets: framing and sticker-fit lineups, a common
+world-scale lineup, true 80/96/100-pixel renders, 19 isolated device parts,
+anchors, pivots, contacts, and four genuine animated device checks. Twelve
+authored low-LOD layers are selected by the C++ renderer for the four device
+users. H13's three-quarter framing has the preferred 16-pixel top margin. On
+2026-07-15 the project owner approved vector identity parity for all five
+members, explicitly including H07's seated geometry and footrest relationship.
+The technical run emits 20 turnaround images, 35 expression/pose renders, 35
+reduced-motion equivalents, five GLBs, and 80 Filament clip renders. The project
+owner rejected the resulting production sheets on 2026-07-15. Side-view hair is
+detached, three-quarter rotations do not rotate the whole hierarchy, device
+topology collapses outside the front view, required pose evidence is incomplete,
+and the primitive GLBs do not preserve identity or assistive-device geometry.
+Technical validation succeeds, but the reviewed result is `release-blocked`
+with production use `forbidden`.
+
+A corrected candidate replaced synthetic production evidence with retained
+Blender sources and authored GLBs. Complete-character hierarchy rotations drive
+front/three-quarter/side/back views; hair remains attached; wheelchair and
+rollator topology survives rotation; seven expressions and all nine poses are
+shown on separate sheets; and a dedicated depth sheet shows flat, layered,
+left/right parallax, and animated midpoint states. At that recovery stage, the
+six review-sheet hashes were intentionally unapproved, so the generated status was
+`awaiting-owner-production-design-review` with production use `forbidden`.
+The owner then partially approved the isolated expressions, isolated vector
+poses, flat/layered identity, and front-view GLB identity, while rejecting rear
+shell construction, rigid device parallax, side/back device topology, readable
+GLB semantic poses, and full parity. That decision is bound to the reviewed six
+sheet hashes. The next seven-sheet candidate fixes those rejected areas, adds a
+dedicated GLB semantic-pose sheet, and again awaits an owner decision bound to
+its new hashes.
+That bundle received near-final partial approval. The final targeted authoring
+pass restores H01's skirt and visible legs, gives H04 a single short-coily hair
+silhouette with long teal sleeves, and replaces H12's erroneous rear skin oval
+with complete bob coverage and a rear grey streak. Cross-backend gates are now
+split into identity parity and stricter family art-direction parity. Five real
+nine-frame animated WebPs, five static semantic reduced-motion equivalents, a
+playback storyboard, and a browser review page provided the previously missing
+timing/loop evidence and became the final owner-review candidate.
+The project owner approved those exact eight artifact hashes on 2026-07-15.
+Native WebP container validation plus Pillow and ImageMagick decoding confirmed
+all five nine-frame loops and five one-frame reduced-motion equivalents with
+perfect loop closure. The authoritative result is now
+`public-release-approved` with production use `public-release` and no blocking
+findings.
+
+Age values are engine capabilities rather than mandatory pack coverage. H01 is
+an explicit approved Human Pack v1 editorial choice. Proposed pre-teen H02 and
+teen H03 are deferred until a separate owner/editorial approval.
+
+The draft `.mascot` v1 container specification and deterministic authoring tool
+establish a portable package boundary. Engine loading remains future work; the
+0.1 trusted-directory API is unchanged.
+
 ## Next execution track
+
+The H1 human representation fixture foundation is implemented locally: 12 versioned
+appearance contracts, one normalized 15-joint full-body rig, 12 semantic core
+phrases and reusable motion recipes, real engine-level semantic camera framing,
+and deterministic generation/review tooling for 144 pilot stickers. Contract
+validation covers all ten complexion positions, four undertones, five hair
+texture families, three height classes, and five builds. The technical review
+builder verifies every identity/phrase poster and intentionally reports
+`technical-fixture`; these synthetic pilots can never become approved Human
+Pack art merely by passing automated checks.
+
+The next human-content task is owner review of the corrected turnarounds, GLB
+parity, device topology, isolated pose/expression, and dimensional 2.5D sheets.
+Any rejected detail returns to authoring; approval must be bound to the exact
+sheet hashes before catalogue expansion. The phrase Trie continues to map
+triggers to semantic phrase IDs rather than duplicating terminals per mascot.
+The phrase Trie must map triggers to
+semantic phrase IDs rather than multiplying terminals by every mascot.
 
 The approved generator-v6 contact sheet is the M6 visual regression baseline,
 the identity-aligned robot hop is the MR-102 layered-animation baseline, the

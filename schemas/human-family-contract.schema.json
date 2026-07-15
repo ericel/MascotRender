@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/human-family-contract-v1.json",
+  "title": "MascotRender canonical human family contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "family_id", "family_version", "status", "scope", "approval", "reference_asset", "visual_language", "canonical_members", "future_character_rules", "production_requirements"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "family_id": { "const": "human-character-library-canonical-family" },
+    "family_version": { "const": 1 },
+    "status": { "const": "approved-canonical-foundation" },
+    "scope": { "const": "foundation-not-complete-library" },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "authority", "decision"],
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "authority": { "const": "project-owner" },
+        "decision": { "const": "approved" }
+      }
+    },
+    "reference_asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "width", "height", "asset_class", "production_use"],
+      "properties": {
+        "path": { "type": "string", "pattern": "^art/concepts/human-pack-v1/[a-z0-9.-]+\\.png$" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "asset_class": { "const": "approved-concept-reference" },
+        "production_use": { "const": "reference-only" }
+      }
+    },
+    "visual_language": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "canonical_members": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "life_stage", "body_direction", "identity_direction", "device_requirements"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^H(?:01|04|07|12|13)$" },
+          "life_stage": { "enum": ["child", "young-adult", "adult", "middle-aged", "senior"] },
+          "body_direction": { "type": "string", "minLength": 1 },
+          "identity_direction": { "type": "string", "minLength": 1 },
+          "device_requirements": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "future_character_rules": { "$ref": "#/$defs/nonemptyUniqueStrings" },
+    "production_requirements": { "$ref": "#/$defs/nonemptyUniqueStrings" }
+  },
+  "$defs": {
+    "nonemptyUniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

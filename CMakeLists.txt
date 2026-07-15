@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.24)
 project(
     MascotRender
     VERSION 0.1.0
-    DESCRIPTION "Procedural mascot and sticker rendering engine"
+    DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
 
@@ -180,13 +180,21 @@ install(
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/mascotrender"
 )
 install(
-    DIRECTORY schemas examples
+    DIRECTORY schemas examples contracts content
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
     PATTERN ".DS_Store" EXCLUDE
 )
 install(
     FILES
         LICENSE
+        docs/MANIFESTO.md
+        docs/VISION.md
+        docs/ROADMAP.md
+        docs/ARCHITECTURE.md
+        docs/HUMAN_PACK_VISUAL_STANDARD.md
+        docs/HUMAN_PACK_V1_ART_BRIEF.md
+        docs/HUMAN_PACK_PRODUCTION_RECOVERY.md
+        docs/MASCOT_PACKAGE_SPEC.md
         docs/RELEASE_0.1.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
@@ -196,6 +204,15 @@ install(
     PROGRAMS
         tools/generate_robot_glb.py
         tools/generate_mascot_packs.py
+        tools/generate_human_pilots.py
+        tools/human_contracts.py
+        tools/validate_human_pilots.py
+        tools/build_human_pilot_review.py
+        tools/generate_canonical_human_masters.py
+        tools/generate_canonical_human_glbs.py
+        tools/build_canonical_human_review.py
+        tools/build_canonical_human_production_review.py
+        tools/build_mascot_package.py
         tools/render_caption_backend_review.py
         tools/render_character_identity_review.py
         tools/render_robot_glb_review.py

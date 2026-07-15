@@ -16,6 +16,8 @@
     "sticker_id": { "type": "string", "minLength": 1 },
     "pack_id": { "type": "string", "minLength": 1 },
     "alt_text": { "type": "string" },
+    "phrase_id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$" },
+    "recipe_id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$" },
     "expression": { "type": "string", "minLength": 1 },
     "pose": { "type": "string", "minLength": 1 },
     "seed": { "type": "integer", "minimum": 0 },
@@ -31,6 +33,20 @@
       "properties": {
         "x": { "type": "number", "minimum": -128, "maximum": 128 },
         "y": { "type": "number", "minimum": -128, "maximum": 128 }
+      }
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["framing", "target", "zoom"],
+      "properties": {
+        "framing": {
+          "enum": ["face-closeup", "bust", "three-quarter", "full-body", "dynamic-full-body"]
+        },
+        "target": { "type": "string", "minLength": 1 },
+        "zoom": { "type": "number", "minimum": 0.5, "maximum": 3.0 },
+        "offset_x": { "type": "number", "minimum": -512, "maximum": 512 },
+        "offset_y": { "type": "number", "minimum": -512, "maximum": 512 }
       }
     },
     "text": {

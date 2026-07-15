@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/humanoid-production-rig-v2.json",
+  "title": "MascotRender production humanoid rig",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "rig_id", "coordinate_convention", "joints", "semantic_targets", "device_profiles", "camera_framings", "capabilities"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "rig_id": { "const": "humanoid-production-v2" },
+    "coordinate_convention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left_right", "front_view_character_right_appears_on", "up_axis", "origin"],
+      "properties": {
+        "left_right": { "const": "character-anatomical" },
+        "front_view_character_right_appears_on": { "const": "screen-left" },
+        "up_axis": { "const": "canvas-negative-y" },
+        "origin": { "const": "canvas-top-left" }
+      }
+    },
+    "joints": {
+      "type": "array",
+      "minItems": 22,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "parent", "pivot"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "parent": { "type": ["string", "null"] },
+          "pivot": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "semantic_targets": {
+      "type": "object",
+      "required": ["root", "head", "face", "gesture.primary", "gesture.secondary", "ground.contact", "gaze.target"],
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "device_profiles": {
+      "type": "object",
+      "required": ["device.none", "prosthesis.lower-leg.right", "wheelchair.manual", "hearing-aid.behind-ear.right", "rollator.four-wheel"],
+      "additionalProperties": { "$ref": "#/$defs/deviceProfile" }
+    },
+    "camera_framings": {
+      "type": "object",
+      "required": ["face-closeup", "bust", "three-quarter", "full-body", "dynamic-full-body"],
+      "additionalProperties": { "$ref": "#/$defs/framing" }
+    },
+    "capabilities": { "$ref": "#/$defs/uniqueStrings" }
+  },
+  "$defs": {
+    "uniqueStrings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "deviceProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_parts", "required_anchors", "capabilities"],
+      "properties": {
+        "required_parts": { "$ref": "#/$defs/uniqueStrings" },
+        "required_anchors": { "$ref": "#/$defs/uniqueStrings" },
+        "capabilities": { "$ref": "#/$defs/uniqueStrings" }
+      }
+    },
+    "framing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "zoom", "offset_x", "offset_y"],
+      "properties": {
+        "target": { "type": "string", "minLength": 1 },
+        "zoom": { "type": "number", "minimum": 0.5, "maximum": 3.0 },
+        "offset_x": { "type": "number", "minimum": -512, "maximum": 512 },
+        "offset_y": { "type": "number", "minimum": -512, "maximum": 512 }
+      }
+    }
+  }
+}

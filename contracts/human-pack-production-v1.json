@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "standard_id": "human-pack-production-v1",
+  "asset_class": "production-art",
+  "reference": {
+    "name": "Human Mascot Reference",
+    "date": "2026-07-15",
+    "role": "visual-and-coverage-benchmark"
+  },
+  "supported_identity_dimensions": {
+    "life_stages": ["child", "pre-teen", "teen", "young-adult", "adult", "middle-aged", "senior"],
+    "body_presentations": ["slim", "average", "curvy", "plus-size", "athletic", "additional-authored-build"],
+    "complexion_tones": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "undertones": ["cool", "neutral", "olive", "warm"],
+    "hair_families": ["straight", "wavy", "curly", "coily", "protective-style", "covered", "bald-or-no-hair"],
+    "gender_presentations": ["feminine", "masculine", "androgynous"],
+    "ability_representations": ["wheelchair", "prosthetic-limb", "visual-impairment", "hearing-aid", "additional-reviewed-representation"],
+    "context_families": ["casual", "formal", "generational", "cultural", "occupation"]
+  },
+  "editorial_policy": {
+    "coverage_is_pack_specific": true,
+    "every_pack_may_choose_a_subset": true,
+    "minor_coded_characters_are_optional": true,
+    "minor_coded_characters_require_owner_editorial_approval": true,
+    "engine_requires_any_life_stage": false
+  },
+  "framings": ["face-closeup", "bust", "three-quarter", "full-body", "dynamic-full-body"],
+  "readability_sizes_px": [80, 96, 100],
+  "required_expressions": ["happy", "laughing", "surprised", "thinking", "confident", "sorry", "excited"],
+  "required_poses": ["rest", "greeting", "farewell", "agreement", "disagreement", "gratitude", "concern"],
+  "production_gates": ["contract-and-provenance", "neutral-turnaround", "required-framings", "expression-and-pose", "small-size-readability", "complexion-and-contrast", "device-and-cultural-review", "animation-and-reduced-motion", "diverse-human-review", "cross-backend-parity"],
+  "prohibited_inference": ["race-from-user", "ethnicity-from-user", "age-from-user", "ability-from-user", "gender-from-user", "culture-to-geometry", "heritage-to-geometry"]
+}

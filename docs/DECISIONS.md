@@ -358,3 +358,82 @@ the actual SVG and GLB meshes/material assignments, rejects any GLB sparkle
 mesh, and requires its embedded screen-space effect declaration to match the
 contract. Review acceptance compares sparkle pixel bounds across 2D, 2.5D,
 Filament, and multiple orthographic camera spans.
+
+## ADR-024: MascotRender is independent character-rendering infrastructure
+
+- Status: Accepted
+- Date: 2026-07-15
+
+MascotRender is an open-source procedural character rendering engine rather
+than a Wahalao-specific sticker subsystem. Its stable conceptual input is a
+Character, Semantic Recipe, Camera, and Output Configuration. Wahalao consumes
+the engine through an adapter and does not own phrase, identity, pack, or
+renderer contracts.
+
+Module boundaries begin as tested CMake targets and later Conan components in
+one repository. They are not split into separate repositories until public API
+stability and independent release cadence justify the cost.
+
+## ADR-025: Production human art is distinct from technical fixtures
+
+- Status: Accepted
+- Date: 2026-07-15
+
+The procedural 12-human matrix proves deterministic identity, rig, camera,
+recipe, rendering, review, and packaging behavior. It is permanently marked a
+technical fixture with production use forbidden. Automated schema or coverage
+success cannot promote it to production artwork.
+
+The owner-supplied Human Mascot Reference dated 2026-07-15 is the visual and
+coverage benchmark for original Human Pack v1 artwork. Production approval
+uses the versioned human-pack standard, provenance, small-size readability,
+assistive-device/cultural review, reduced-motion review, diverse human review,
+and claimed-backend identity parity. Representation metadata supports audit;
+it never infers user identity or drives geometry from heritage labels.
+
+## ADR-026: Draft `.mascot` v1 is a deterministic ZIP-compatible container
+
+- Status: Accepted
+- Date: 2026-07-15
+
+Portable character packages use a ZIP-compatible `.mascot` authoring container
+with a root `manifest.json`, sorted entries, fixed metadata, declared SHA-256
+hashes, safe relative paths, explicit capabilities, provenance, and licenses.
+Version 1 uses stored entries to avoid compressor-version nondeterminism.
+
+The authoring packager and verifier do not make the container a trusted engine
+input. The 0.1 directory API remains unchanged until a bounded loader rejects
+duplicates, traversal, symlinks/devices, unknown requirements, excessive sizes,
+hash mismatches, and undeclared content before compilation.
+
+## ADR-027: Five approved masters define the initial canonical human family
+
+- Status: Accepted
+- Date: 2026-07-15
+
+The project owner approved the original H01, H04, H07, H12, and H13 concept
+lineup as the initial canonical family. It establishes the visual language,
+anatomical rules, assistive-device integration, age diversity, and identity
+principles that future Human Character Library members must follow.
+
+The versioned family contract pins the reference SHA-256, approval, five member
+IDs, device requirements, production requirements, and scope. The scope is a
+foundation rather than a complete library. The raster is an approved concept
+reference, not a layered production source or permission to skip the pack's
+declared editorial goals, licensing, small-size, device-motion, diverse-review,
+or backend parity gates.
+
+## ADR-028: Human identity dimensions are capabilities, not mandatory pack coverage
+
+- Status: Accepted
+- Date: 2026-07-15
+
+MascotRender supports authored human characters across life stage, body,
+complexion, hair, presentation, ability, and context dimensions. The engine
+does not require any pack to contain every value. Each pack owns an explicit
+editorial coverage decision and may choose a reviewed subset.
+
+Minor-coded characters are optional. H01 remains part of the owner-approved
+Human Pack v1 foundation, while proposed pre-teen H02 and teen H03 are deferred
+until a separate owner/editorial approval records their intended use. Automated
+coverage validation cannot make or imply that decision.

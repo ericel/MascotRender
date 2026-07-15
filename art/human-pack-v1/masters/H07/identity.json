@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "character_id": "H07",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "owner-vector-parity-approved",
+  "identity_direction": "Southeast Asian adult man using a manual wheelchair",
+  "device_profile": "wheelchair.manual",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "forbidden",
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "palette": {
+    "skin": "#B87542",
+    "skin_light": "#D89965",
+    "hair": "#171719",
+    "primary": "#D9C6A5",
+    "secondary": "#65704D",
+    "accent": "#294E72",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "device_review_resolution": "project-owner-approved-seated-geometry-and-footrest-relationship"
+}

@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "master_id": "H12",
+  "status": "owner-vector-parity-approved",
+  "production_use": "forbidden",
+  "master_svg": "master.svg",
+  "master_sha256": "07d08f5c106030c6a0600d288b3d3c101a38d7aef5475039e61f05fccb86b97f",
+  "layer_count": 35,
+  "layers": [
+    {
+      "id": "shadow",
+      "path": "layers/00-shadow.svg",
+      "sha256": "e1911e81616c0c4bce3a4f25983d4976d5d19a50f6cdbf7cd4b87136a487baad"
+    },
+    {
+      "id": "hair-back",
+      "path": "layers/06-hair-back.svg",
+      "sha256": "e18c66a1709139f8d7a2ef17d0c8c69dd69b3475adfd34ce4abd4c0a273f73f6"
+    },
+    {
+      "id": "leg-left",
+      "path": "layers/07-leg-left.svg",
+      "sha256": "547c77465b5f6205489a6293cdc3e5024009dc7f617751085bbdc70da5acf995"
+    },
+    {
+      "id": "leg-right",
+      "path": "layers/08-leg-right.svg",
+      "sha256": "8d7fccc4faca586a5634f7c99f5944d213c0986950d45b47a59c6d42368c5843"
+    },
+    {
+      "id": "torso",
+      "path": "layers/12-torso.svg",
+      "sha256": "9036109de26a9a3602f1aeb4186176a03826d65f172f45299533fef9391f3ae7"
+    },
+    {
+      "id": "head",
+      "path": "layers/13-head.svg",
+      "sha256": "8f2e94df4a06650ed2f8e11d644fd162ae60a83d3de140e5f651d862aff0a2b7"
+    },
+    {
+      "id": "hair-front",
+      "path": "layers/14-hair-front.svg",
+      "sha256": "1ed34a5c49ec9602f4b0243e62608996d01301602477c2409a0a31d2c943efc2"
+    },
+    {
+      "id": "face-friendly",
+      "path": "layers/15-face-friendly.svg",
+      "sha256": "9f975d5631e0f1a6ea1b9a590e6dd0a9cf20fb21c83c54b693b2d7ce1fa61043"
+    },
+    {
+      "id": "face-laughing",
+      "path": "layers/16-face-laughing.svg",
+      "sha256": "eaa8ca5c1f339541ecc915c25c044aba1445c0643761cc7ce22a76270c468b14"
+    },
+    {
+      "id": "face-surprised",
+      "path": "layers/17-face-surprised.svg",
+      "sha256": "c6db5d56ad575f60f6d286ee79e5e8e298bfb73df8bb981a84b9d4c6e0cfd856"
+    },
+    {
+      "id": "face-thinking",
+      "path": "layers/18-face-thinking.svg",
+      "sha256": "eae1e2b5b538e772c2417d39a01ef2dfc8642b315bedf8aa49921d9bd4af8f67"
+    },
+    {
+      "id": "face-confident",
+      "path": "layers/19-face-confident.svg",
+      "sha256": "cb11d73afec54baa3099a7bf632f11ae64ba319ada0b798c5f5b5f5c86f41db7"
+    },
+    {
+      "id": "face-sorry",
+      "path": "layers/20-face-sorry.svg",
+      "sha256": "be723114d0c81c84f3e0993e312c1f5f814c30fba3de3dddc1246d9308b232bb"
+    },
+    {
+      "id": "face-excited",
+      "path": "layers/21-face-excited.svg",
+      "sha256": "17b773f04829c6addf41808533e08ee66701f367d36f61443e220231bc0f6210"
+    },
+    {
+      "id": "arm-left-rest",
+      "path": "layers/22-arm-left-rest.svg",
+      "sha256": "b131aab60f5327b2fc33ed51fcca61949151ea88e2683188c252dc71f3082af2"
+    },
+    {
+      "id": "arm-right-rest",
+      "path": "layers/23-arm-right-rest.svg",
+      "sha256": "eeeda7c47a57660990def94d13076af806a0dcbccccc48c787c7c879723deba7"
+    },
+    {
+      "id": "arm-left-greeting",
+      "path": "layers/24-arm-left-greeting.svg",
+      "sha256": "e7012aae898da68df5a97f17430ebc92b2c0a184066aedc00cdeb489e9b73183"
+    },
+    {
+      "id": "arm-right-greeting",
+      "path": "layers/25-arm-right-greeting.svg",
+      "sha256": "d1f5be601af80d689850709f32eec761c74ccbea4b58ed4681147661cd6f62e6"
+    },
+    {
+      "id": "arm-left-farewell",
+      "path": "layers/26-arm-left-farewell.svg",
+      "sha256": "ddfd4733a73910a2464242b06b3c1218a1facb0146d19f67d445925ad935bcfd"
+    },
+    {
+      "id": "arm-right-farewell",
+      "path": "layers/27-arm-right-farewell.svg",
+      "sha256": "b0d2fc8cf4696d503576937eb6d1193d8f2de6c26e33094d90dbbcba806b05d1"
+    },
+    {
+      "id": "arm-left-agreement",
+      "path": "layers/28-arm-left-agreement.svg",
+      "sha256": "314b9d93b9bbc4a95f1284aad208443b7fa736f5601e702730af05c520a2745d"
+    },
+    {
+      "id": "arm-right-agreement",
+      "path": "layers/29-arm-right-agreement.svg",
+      "sha256": "5a4659c5910e76f43640573549517647edcdd2c7e9af8db934a6cf67d117cd37"
+    },
+    {
+      "id": "arm-left-disagreement",
+      "path": "layers/30-arm-left-disagreement.svg",
+      "sha256": "bda3dfa9986c0bf1d891714893968629fc59e32214467d57c0703e36f21a79cd"
+    },
+    {
+      "id": "arm-right-disagreement",
+      "path": "layers/31-arm-right-disagreement.svg",
+      "sha256": "15e6267b56001789ae2679182d398811c842213cf10bf09b167c18b050035f59"
+    },
+    {
+      "id": "arm-left-gratitude",
+      "path": "layers/32-arm-left-gratitude.svg",
+      "sha256": "e3200ec3aa59c55b3b6bfb88e93d362e6bca159716429a997ef682134e78e091"
+    },
+    {
+      "id": "arm-right-gratitude",
+      "path": "layers/33-arm-right-gratitude.svg",
+      "sha256": "2293821a3310520f8e57dcc076c36cec320cadfbff84956ffba0369faf95cdeb"
+    },
+    {
+      "id": "arm-left-concern",
+      "path": "layers/34-arm-left-concern.svg",
+      "sha256": "af37bf88a5666f4ee53f84c1510afa0abaab70436b533360b0a865629956d3a2"
+    },
+    {
+      "id": "arm-right-concern",
+      "path": "layers/35-arm-right-concern.svg",
+      "sha256": "fe22484bae57bc9679a55b4fe60da4a0185066310ae6aaf2adfa08751bbb8d3c"
+    },
+    {
+      "id": "arm-left-surprise",
+      "path": "layers/36-arm-left-surprise.svg",
+      "sha256": "ddf779a407c8b1bb1e518eaa0b78d976471e57352e60f929f439ba784506e422"
+    },
+    {
+      "id": "arm-right-surprise",
+      "path": "layers/37-arm-right-surprise.svg",
+      "sha256": "9b3019c2e819dab100a6cc2d29ff80c5b491c8280315bb0e7a4d604791a56602"
+    },
+    {
+      "id": "arm-left-celebration",
+      "path": "layers/38-arm-left-celebration.svg",
+      "sha256": "d2021cfe79f89fb4719e5e2ac2ad4211ee1e05b7008ec9f932d645bee178f2da"
+    },
+    {
+      "id": "arm-right-celebration",
+      "path": "layers/39-arm-right-celebration.svg",
+      "sha256": "7ea6c89d4a8320ffc4b2c1bb7a1f8652053cc59ee7d96a2b22ba44c11acd1b2e"
+    },
+    {
+      "id": "device-hearing-case-right",
+      "path": "layers/41-device-hearing-case-right.svg",
+      "sha256": "326168dacc2d7b33839cce3240e37dede9062e7cab8718ee9b0bb5aa20bcd670"
+    },
+    {
+      "id": "device-hearing-tube-right",
+      "path": "layers/42-device-hearing-tube-right.svg",
+      "sha256": "6aecafeabc6cea065f8970b48756771c8d287379464168eff056cad2c058fd6b"
+    },
+    {
+      "id": "device-hearing-earpiece-right",
+      "path": "layers/43-device-hearing-earpiece-right.svg",
+      "sha256": "8cb217c40a7f7e00dc69bc214c3a53fd053ab0298623a0c00277d68b16378540"
+    }
+  ],
+  "lod_layer_count": 3,
+  "lod_layers": [
+    {
+      "id": "device-hearing-case-right",
+      "maximum_dimension": 100,
+      "path": "layers-lod100/41-device-hearing-case-right.svg",
+      "sha256": "a64f90c502924ac2c91b9f5ace36daebfb311b31a8ad1db9e38b79164d0f8a24"
+    },
+    {
+      "id": "device-hearing-tube-right",
+      "maximum_dimension": 100,
+      "path": "layers-lod100/42-device-hearing-tube-right.svg",
+      "sha256": "a61a854ec85bcb1d24827cd3070d73b805910d4eb4fa870eb7f1d5293f42311b"
+    },
+    {
+      "id": "device-hearing-earpiece-right",
+      "maximum_dimension": 100,
+      "path": "layers-lod100/43-device-hearing-earpiece-right.svg",
+      "sha256": "069fcab7071ec077b971b08270a98219dadf2a340317fd0ead415e1a86125174"
+    }
+  ],
+  "production_expression_count": 7,
+  "production_pose_count": 9,
+  "reduced_motion_presentation_count": 7,
+  "turnaround_view_count": 4,
+  "turnarounds": [
+    {
+      "view": "front",
+      "path": "turnarounds/front.svg",
+      "sha256": "c7e084a0509c26dfcfc0bcb86f4166cfa7685fc37a80a7c9315a4d7d7398141e",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "three-quarter",
+      "path": "turnarounds/three-quarter.svg",
+      "sha256": "a37a7c607eace99bfbbb6b87f58daa3eda38de27a35bf4a2a4a14b5aa474c9db",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "side",
+      "path": "turnarounds/side.svg",
+      "sha256": "e0e646b786505869368020cb319c839f8ea8852d2f3441813c438ea610709a98",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "back",
+      "path": "turnarounds/back.svg",
+      "sha256": "c9c3bee9b3012c7fdcee6d4642eef2720a80423fb088d0ac6f006daa949d726f",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    }
+  ],
+  "claimed_backends": [
+    "flat-2d",
+    "layered-2.5d",
+    "filament-glb"
+  ],
+  "flat_pack": "pack-flat.json",
+  "layered_pack": "pack.json",
+  "glb": "H12-production.glb",
+  "glb_sha256": "284d1ca56aab5445e47bb3a2297d7fa8854f5803b373cd706db7faca55848cf4",
+  "dcc_source": "H12.blend",
+  "dcc_source_sha256": "ac90d026e791fd4f3e7c5e83db4f35af21d65a7ec09351e8bff4f6617c1b437f",
+  "glb_asset_class": "authored-production-review-candidate",
+  "glb_production_use": "forbidden-until-owner-design-review",
+  "glb_required_semantic_clip_count": 16,
+  "glb_turnaround_clip_count": 3
+}

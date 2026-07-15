@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/phrase-lexicon-v1.json",
+  "title": "MascotRender semantic phrase lexicon",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "lexicon_id", "phrases"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "lexicon_id": { "type": "string", "minLength": 1 },
+    "phrases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["phrase_id", "caption", "category", "emotion", "recipe_id", "content_rating", "tier", "triggers"],
+        "properties": {
+          "phrase_id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[.][a-z0-9-]+)+$" },
+          "caption": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "category": { "type": "string", "minLength": 1 },
+          "emotion": { "type": "string", "minLength": 1 },
+          "recipe_id": { "type": "string", "pattern": "^motion[.][a-z0-9-]+$" },
+          "content_rating": { "enum": ["general", "mature"] },
+          "tier": { "enum": ["core", "extended", "long-tail"] },
+          "triggers": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["text", "locale", "match", "weight", "min_typed_length"],
+              "properties": {
+                "text": { "type": "string", "minLength": 1 },
+                "locale": { "type": "string", "pattern": "^[a-z]{2,3}(?:-[A-Z]{2})?$" },
+                "match": { "enum": ["exact-token", "full-phrase", "prefix"] },
+                "weight": { "type": "number", "minimum": 0, "maximum": 1 },
+                "min_typed_length": { "type": "integer", "minimum": 2, "maximum": 80 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

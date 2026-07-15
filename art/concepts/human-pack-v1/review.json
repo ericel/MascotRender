@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "concept_id": "human-pack-v1-family-gate-v1",
+  "created_date": "2026-07-15",
+  "asset": "family-gate-v1.png",
+  "sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "dimensions": {
+    "width": 1774,
+    "height": 887
+  },
+  "generation": {
+    "method": "OpenAI built-in image generation",
+    "reference_role": "quality-and-coverage-only",
+    "reference_name": "Human Mascot Reference",
+    "original_character_requirement": true
+  },
+  "characters_left_to_right": ["H01", "H04", "H07", "H12", "H13"],
+  "asset_class": "approved-concept-reference",
+  "canonical_role": "human-character-library-foundation",
+  "canonical_scope": "foundation-not-complete-library",
+  "production_use": "reference-only",
+  "redistribution_status": "owner-license-review-required",
+  "review_status": "approved-canonical-family-v1",
+  "approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "preflight": {
+    "family_coherence": "pass",
+    "distinct_age_and_body_silhouettes": "pass",
+    "complete_full_body_or_seated_geometry": "pass",
+    "assistive_devices_visible": "pass",
+    "original_layered_source_available": "fail",
+    "small_size_readability_verified": "pending",
+    "device_behavior_verified": "pending",
+    "diverse_human_review": "pending"
+  },
+  "revision_notes": [
+    "Increase the hearing-aid contrast and silhouette so it survives 80-100 pixel output.",
+    "Create orthographic technical sheets for the prosthesis, wheelchair, and rollator before rigging.",
+    "Simplify selected clothing micro-detail after the first 80/96/100-pixel reduction test.",
+    "Preserve distinct faces and body proportions when converting the selected designs to layered SVG."
+  ]
+}

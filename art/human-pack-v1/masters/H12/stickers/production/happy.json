@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h12-happy",
+  "pack_id": "human-canonical-h12",
+  "alt_text": "H12 expressing happy in a agreement pose",
+  "expression": "happy",
+  "pose": "agreement",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

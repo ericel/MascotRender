@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "character_id": "H12",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "owner-vector-parity-approved",
+  "identity_direction": "East Asian middle-aged woman with visible behind-the-ear hearing aid",
+  "device_profile": "hearing-aid.behind-ear.right",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "forbidden",
+  "vector_parity_approval": {
+    "date": "2026-07-15",
+    "authority": "project-owner",
+    "decision": "approved"
+  },
+  "palette": {
+    "skin": "#E2AD7D",
+    "skin_light": "#F1C49B",
+    "hair": "#2B292C",
+    "primary": "#9970A8",
+    "secondary": "#F2E7D7",
+    "accent": "#5BD1C6",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "hair_intent": "naturally greying straight bob with a visible side part and swept fringe",
+  "head_covering": false
+}

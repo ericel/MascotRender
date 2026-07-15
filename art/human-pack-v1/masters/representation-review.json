@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "family_id": "human-character-library-canonical-family",
+  "date": "2026-07-15",
+  "review_role": "project-owner-and-product-identity-reviewer",
+  "reviewer": "project-owner",
+  "decision": "approved",
+  "disposition": "respectful-and-non-stereotyped-for-human-pack-production",
+  "members": [
+    "H01",
+    "H04",
+    "H07",
+    "H12",
+    "H13"
+  ],
+  "scope": [
+    "age",
+    "body-proportion",
+    "complexion",
+    "hair",
+    "identity",
+    "assistive-device-integration"
+  ],
+  "public_feedback_policy": "representation defects remain release-blocking regressions and may be corrected after public feedback"
+}

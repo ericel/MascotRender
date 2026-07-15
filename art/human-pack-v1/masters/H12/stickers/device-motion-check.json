@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h12-device-motion-check",
+  "pack_id": "human-canonical-h12",
+  "alt_text": "H12 semantic assistive-device motion and attachment check",
+  "expression": "friendly",
+  "pose": "neutral",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  },
+  "animation": {
+    "duration_ms": 800,
+    "fps": 8,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "head",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 7,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "target": "hair-back",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 7,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0
+          }
+        ]
+      }
+    ]
+  }
+}

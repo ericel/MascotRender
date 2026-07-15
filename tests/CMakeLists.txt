@@ -17,9 +17,54 @@ if(MASCOTRENDER_WITH_FILAMENT)
             --output "${PROJECT_SOURCE_DIR}/examples/robot-004/robot-004.glb"
             --check
     )
+    add_test(
+        NAME canonical_human_glbs_are_deterministic
+        COMMAND
+            "${Python3_EXECUTABLE}"
+            "${PROJECT_SOURCE_DIR}/tools/generate_canonical_human_glbs.py"
+            --input "${PROJECT_SOURCE_DIR}/art/human-pack-v1/masters"
+            --self-test
+    )
+    if(MASCOTRENDER_BUILD_CLI)
+        find_program(
+            MASCOTRENDER_REVIEW_PYTHON
+            NAMES python3
+            HINTS "$ENV{PYENV_ROOT}/shims" "$ENV{HOME}/.pyenv/shims"
+        )
+        if(NOT MASCOTRENDER_REVIEW_PYTHON)
+            set(MASCOTRENDER_REVIEW_PYTHON "${Python3_EXECUTABLE}")
+        endif()
+        add_test(
+            NAME canonical_human_production_review_pipeline
+            COMMAND
+                "${MASCOTRENDER_REVIEW_PYTHON}"
+                "${PROJECT_SOURCE_DIR}/tools/build_canonical_human_production_review.py"
+                --input "${PROJECT_SOURCE_DIR}/art/human-pack-v1/masters"
+                --output "${PROJECT_BINARY_DIR}/canonical-human-production-review"
+                --mascotrender "$<TARGET_FILE:mascotrender_cli>"
+                --glb-renderer "$<TARGET_FILE:mascotrender_glb_preview>"
+                --expect-review-status public-release-approved
+                --force
+        )
+        set_tests_properties(canonical_human_production_review_pipeline PROPERTIES TIMEOUT 300)
+    endif()
 endif()
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_test(
+    NAME product_direction_contracts
+    COMMAND
+        "${Python3_EXECUTABLE}"
+        "${PROJECT_SOURCE_DIR}/tests/test_product_direction.py"
+        --python "${Python3_EXECUTABLE}"
+        --validator "${PROJECT_SOURCE_DIR}/tools/validate_human_pilots.py"
+        --packager "${PROJECT_SOURCE_DIR}/tools/build_mascot_package.py"
+        --standard "${PROJECT_SOURCE_DIR}/contracts/human-pack-production-v1.json"
+        --canonical-family "${PROJECT_SOURCE_DIR}/contracts/human-canonical-family-v1.json"
+        --production-design-review "${PROJECT_SOURCE_DIR}/contracts/human-canonical-production-design-review-v1.json"
+        --canonical-asset "${PROJECT_SOURCE_DIR}/art/concepts/human-pack-v1/family-gate-v1.png"
+)
+set_tests_properties(product_direction_contracts PROPERTIES TIMEOUT 60)
 add_test(
     NAME robot_004_identity_contract
     COMMAND
@@ -62,4 +107,31 @@ if(MASCOTRENDER_BUILD_CLI)
             --font-source "${PROJECT_SOURCE_DIR}/examples/cat/fonts/changa-one"
     )
     set_tests_properties(generated_mascot_pipeline PROPERTIES TIMEOUT 120)
+    add_test(
+        NAME human_mascot_pilot_pipeline
+        COMMAND
+            "${Python3_EXECUTABLE}"
+            "${PROJECT_SOURCE_DIR}/tests/test_human_pilot_pipeline.py"
+            --python "${Python3_EXECUTABLE}"
+            --validator "${PROJECT_SOURCE_DIR}/tools/validate_human_pilots.py"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_human_pilots.py"
+            --reviewer "${PROJECT_SOURCE_DIR}/tools/build_human_pilot_review.py"
+            --renderer "${PROJECT_SOURCE_DIR}/tools/render_mascot_packs.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --font-source "${PROJECT_SOURCE_DIR}/examples/cat/fonts/changa-one"
+    )
+    set_tests_properties(human_mascot_pilot_pipeline PROPERTIES TIMEOUT 180)
+    add_test(
+        NAME canonical_human_master_pipeline
+        COMMAND
+            "${Python3_EXECUTABLE}"
+            "${PROJECT_SOURCE_DIR}/tests/test_canonical_human_masters.py"
+            --python "${Python3_EXECUTABLE}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_canonical_human_masters.py"
+            --glb-generator "${PROJECT_SOURCE_DIR}/tools/generate_canonical_human_glbs.py"
+            --reviewer "${PROJECT_SOURCE_DIR}/tools/build_canonical_human_review.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --rig-contract "${PROJECT_SOURCE_DIR}/contracts/humanoid-production-v2.json"
+    )
+    set_tests_properties(canonical_human_master_pipeline PROPERTIES TIMEOUT 180)
 endif()

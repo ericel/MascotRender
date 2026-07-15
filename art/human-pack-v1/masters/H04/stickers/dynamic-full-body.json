@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h04-dynamic-full-body",
+  "pack_id": "human-canonical-h04",
+  "alt_text": "H04 canonical human master in dynamic-full-body framing",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "dynamic-full-body",
+    "target": "body_center",
+    "zoom": 0.84,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

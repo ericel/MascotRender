@@ -218,7 +218,10 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
             animation_metadata = animation if isinstance(animation, dict) else None
 
             trigger = normalize_trigger(content)
-            if trigger and (len(trigger) < 3 or trigger in STOP_WORDS):
+            # Two-character chat phrases such as NO and OK are deliberate
+            # semantic entries. One-character slang aliases remain forbidden;
+            # richer alias safety lives in the versioned phrase lexicon.
+            if trigger and (len(trigger) < 2 or trigger in STOP_WORDS):
                 raise ValueError(f"unsafe trigger {trigger!r} in {sticker_file}")
             if trigger:
                 dictionary.setdefault(trigger, []).append(
@@ -231,8 +234,11 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                     "sticker_id": sticker_id,
                     "text": content,
                     "alt_text": sticker.get("alt_text", ""),
+                    "phrase_id": sticker.get("phrase_id"),
+                    "recipe_id": sticker.get("recipe_id"),
                     "expression": sticker.get("expression"),
                     "pose": sticker.get("pose"),
+                    "camera": sticker.get("camera"),
                     "seed": sticker.get("seed"),
                     "animated": animation_metadata is not None,
                     "animation": animation_metadata,
