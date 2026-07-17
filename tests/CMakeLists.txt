@@ -75,6 +75,38 @@ add_test(
         --flat-pack "${PROJECT_SOURCE_DIR}/examples/robot-2_5d/pack-flat.json"
         --glb "${PROJECT_SOURCE_DIR}/examples/robot-004/robot-004.glb"
 )
+add_test(
+    NAME human_wave2_expansion_contract
+    COMMAND
+        "${Python3_EXECUTABLE}"
+        "${PROJECT_SOURCE_DIR}/tests/test_human_wave2_expansion.py"
+        --python "${Python3_EXECUTABLE}"
+        --generator "${PROJECT_SOURCE_DIR}/tools/generate_human_wave2_candidates.py"
+        --glb-generator "${PROJECT_SOURCE_DIR}/tools/generate_human_wave2_glbs.py"
+        --contract "${PROJECT_SOURCE_DIR}/contracts/human-canonical-expansion-wave2.json"
+        --owner-approval "${PROJECT_SOURCE_DIR}/contracts/human-canonical-expansion-wave2-owner-approval.json"
+        --art-direction-approval "${PROJECT_SOURCE_DIR}/contracts/human-wave2-cross-backend-art-direction-owner-approval-v1.json"
+        --production-activation "${PROJECT_SOURCE_DIR}/contracts/human-wave2-production-activation-v1.json"
+        --selector "${PROJECT_SOURCE_DIR}/content/human-character-selection-v1.json"
+        --phrase-eligibility "${PROJECT_SOURCE_DIR}/content/human-phrase-eligibility-v1.json"
+)
+set_tests_properties(human_wave2_expansion_contract PROPERTIES TIMEOUT 90)
+find_program(
+    MASCOTRENDER_SMALL_DISPLAY_PYTHON
+    NAMES python3
+    HINTS "$ENV{PYENV_ROOT}/shims" "$ENV{HOME}/.pyenv/shims"
+    NO_DEFAULT_PATH
+)
+if(NOT MASCOTRENDER_SMALL_DISPLAY_PYTHON)
+    set(MASCOTRENDER_SMALL_DISPLAY_PYTHON "${Python3_EXECUTABLE}")
+endif()
+add_test(
+    NAME human_small_display_profiles
+    COMMAND
+        "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+        "${PROJECT_SOURCE_DIR}/tests/test_human_display_profiles.py"
+)
+set_tests_properties(human_small_display_profiles PROPERTIES TIMEOUT 30)
 target_link_libraries(
     mascotrender_unit_tests
     PRIVATE

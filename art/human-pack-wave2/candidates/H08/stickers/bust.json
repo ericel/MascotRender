@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h08-bust",
+  "pack_id": "human-canonical-h08",
+  "alt_text": "H08 canonical human master in bust framing",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "bust",
+    "target": "bust_center",
+    "zoom": 1.22,
+    "offset_x": 0,
+    "offset_y": 40
+  }
+}

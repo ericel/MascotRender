@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "contract_id": "human-small-display-occupancy-v1",
+  "status": "production-gate-candidate",
+  "canonical_delivery_profile": "message-512",
+  "display_profiles": {
+    "message-512": {"width": 512, "height": 512, "hard_margin": 16, "preferred_margin": 24},
+    "tray-100": {"width": 100, "height": 100, "target_content_occupancy": 0.86, "target_character_height": [0.62, 0.72]},
+    "tray-96": {"width": 96, "height": 96, "target_content_occupancy": 0.85, "target_character_height": [0.60, 0.70]},
+    "stress-80": {"width": 80, "height": 80, "target_content_occupancy": 0.82, "target_character_height": [0.56, 0.66]}
+  },
+  "device_critical_characters": ["H05", "H07", "H12", "H13"],
+  "device_critical_policy": {"target_width_occupancy": [0.72, 0.86], "preserve_complete_device": true},
+  "caption_readability": {
+    "minimum_maximum_visible_height_ratio": 0.10,
+    "side_slot_fallback": "top-or-bottom",
+    "applies_to_rendered_glyph_bounds": true
+  },
+  "occupancy_gate": {
+    "hard_source_margin_px": 16,
+    "minimum_combined_occupancy": 0.72,
+    "preferred_combined_occupancy": 0.82,
+    "maximum_combined_occupancy": 0.90,
+    "minimum_mascot_height_ratio": {"80": 0.56, "96": 0.60, "100": 0.62},
+    "caption_may_overlap_character": false,
+    "caption_may_overlap_device": false,
+    "evaluate_every_animation_frame": true,
+    "minimum_combined_occupancy_evaluation": "union-of-visible-bounds-across-animation",
+    "per_frame_evaluation": ["maximum_combined_occupancy", "canvas_margin", "caption_collision", "character_or_device_size"],
+    "invisible_caption_lead_in_does_not_fail_minimum_combined_occupancy": true,
+    "device_width_may_satisfy_gate": true
+  }
+}

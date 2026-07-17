@@ -4,7 +4,8 @@
 
 TEST_CASE("timeline samples bounded deterministic frame timestamps") {
   const mascotrender::detail::AnimationSpec animation{
-      800U, 10U, mascotrender::detail::AnimationLoop::loop, true, true, {}};
+      800U, 10U, mascotrender::detail::AnimationLoop::loop, true,
+      mascotrender::detail::TextMotion::pop, {}};
 
   const auto frames = mascotrender::detail::sample_animation(animation);
   REQUIRE(frames.size() == 8U);
@@ -29,8 +30,8 @@ TEST_CASE("timeline samples bounded deterministic frame timestamps") {
 
 TEST_CASE("ping pong timeline returns to its starting transform") {
   const mascotrender::detail::AnimationSpec animation{
-      1000U, 10U,   mascotrender::detail::AnimationLoop::ping_pong,
-      true,  false, {}};
+      1000U, 10U, mascotrender::detail::AnimationLoop::ping_pong, true,
+      mascotrender::detail::TextMotion::none, {}};
 
   const auto frames = mascotrender::detail::sample_animation(animation);
   REQUIRE(frames.size() == 10U);
@@ -52,7 +53,7 @@ TEST_CASE("typed node and view tracks sample delayed deterministic motion") {
       5U,
       AnimationLoop::loop,
       false,
-      false,
+      mascotrender::detail::TextMotion::none,
       {AnimationTrack{
            "body",
            AnimationProperty::scale_y,
@@ -82,4 +83,23 @@ TEST_CASE("typed node and view tracks sample delayed deterministic motion") {
   REQUIRE(frames.at(2).state.view_offset_x == 20.0F);
   REQUIRE(frames.back().state.nodes.at(0).scale_y == 1.0F);
   REQUIRE(frames.back().state.view_offset_x == 0.0F);
+}
+
+TEST_CASE("caption motion modes preserve seamless loop closure") {
+  using mascotrender::detail::AnimationLoop;
+  using mascotrender::detail::AnimationSpec;
+  using mascotrender::detail::TextMotion;
+
+  for (const auto motion : {TextMotion::pulse, TextMotion::wobble,
+                            TextMotion::float_motion}) {
+    const AnimationSpec animation{800U, 10U, AnimationLoop::loop, false,
+                                  motion, {}};
+    const auto frames = mascotrender::detail::sample_animation(animation);
+    REQUIRE(frames.front().state.text_scale ==
+            frames.back().state.text_scale);
+    REQUIRE(frames.front().state.text_rotation_degrees ==
+            frames.back().state.text_rotation_degrees);
+    REQUIRE(frames.front().state.text_translate_y ==
+            frames.back().state.text_translate_y);
+  }
 }

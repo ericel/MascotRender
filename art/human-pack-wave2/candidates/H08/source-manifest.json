@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "master_id": "H08",
+  "status": "public-release-approved",
+  "production_use": "public-release",
+  "master_svg": "master.svg",
+  "master_sha256": "274e7380e0e98315f2a28ad46476976e331b5906d06ceb8ae075332c3d911980",
+  "layer_count": 32,
+  "layers": [
+    {
+      "id": "shadow",
+      "path": "layers/00-shadow.svg",
+      "sha256": "e1911e81616c0c4bce3a4f25983d4976d5d19a50f6cdbf7cd4b87136a487baad"
+    },
+    {
+      "id": "hair-back",
+      "path": "layers/06-hair-back.svg",
+      "sha256": "704d4556fbc5b1ed6d7399079b35a9d39cb1117ac1b4d823197bf5eecc9ff81c"
+    },
+    {
+      "id": "leg-left",
+      "path": "layers/07-leg-left.svg",
+      "sha256": "3383d3c3ce771606417458e40eb74d8e54b6d4a4046333655c583bb687416f7c"
+    },
+    {
+      "id": "leg-right",
+      "path": "layers/08-leg-right.svg",
+      "sha256": "11df4dd28bab7dd259a8a2d27eb9d41f9c9131352f0553743327df0162a7824a"
+    },
+    {
+      "id": "torso",
+      "path": "layers/12-torso.svg",
+      "sha256": "e3e6550af9c4184a28b97b578748c4d04dfdd3948f6103a396356493ecec9b17"
+    },
+    {
+      "id": "head",
+      "path": "layers/13-head.svg",
+      "sha256": "8922c62d53f94cc525a04b1843ec4a8d2a8bcbda7dbb07c58ff60d63b8ddfd6b"
+    },
+    {
+      "id": "hair-front",
+      "path": "layers/14-hair-front.svg",
+      "sha256": "a5e8afc182403d871014b42b4d437892c541b2fa3e11a174481efd093c616efa"
+    },
+    {
+      "id": "face-friendly",
+      "path": "layers/15-face-friendly.svg",
+      "sha256": "5e98296047c0a6283d80a84f4a62815aabd2755f7b4a12a38f33730740a6032d"
+    },
+    {
+      "id": "face-laughing",
+      "path": "layers/16-face-laughing.svg",
+      "sha256": "a2eb874d9e783d0f40922ee6fa9b8a1f3433a9f10c1d9c8f1ae5b3b28b6b6753"
+    },
+    {
+      "id": "face-surprised",
+      "path": "layers/17-face-surprised.svg",
+      "sha256": "971c8b02d09fa99a7469e9d7723fe71fa83ba7fbdd6fd2073a026763a2b9713f"
+    },
+    {
+      "id": "face-thinking",
+      "path": "layers/18-face-thinking.svg",
+      "sha256": "7120e24bd5c3afc37b09d5d4d7406de6f1a80bcadf1278c6c18dc12d8a2714c4"
+    },
+    {
+      "id": "face-confident",
+      "path": "layers/19-face-confident.svg",
+      "sha256": "86187f52782fd323d283d4004f58c35e17323a8f449aa9dbf915bf1331b60cd6"
+    },
+    {
+      "id": "face-sorry",
+      "path": "layers/20-face-sorry.svg",
+      "sha256": "aed6b6f86933a3ee3ccbc403af15a04045808873fb5a7ddba33c6667425c63e1"
+    },
+    {
+      "id": "face-excited",
+      "path": "layers/21-face-excited.svg",
+      "sha256": "512f44a05154bb1679082c184bf2c69b953832f947a9ed2b19c0fb2054ccc8b1"
+    },
+    {
+      "id": "arm-left-rest",
+      "path": "layers/22-arm-left-rest.svg",
+      "sha256": "ce1e283f38f5f3e949180cfced478bfa049c097c48968d1aaf305de6f1e100bf"
+    },
+    {
+      "id": "arm-right-rest",
+      "path": "layers/23-arm-right-rest.svg",
+      "sha256": "dc7e278237c9887427bde95175c56d0001d9319ce124cd8f9a9291720d60c813"
+    },
+    {
+      "id": "arm-left-greeting",
+      "path": "layers/24-arm-left-greeting.svg",
+      "sha256": "82186ca61852082544abc06cf965f55cd73c55902fbb3464fe8fd31820f3bf75"
+    },
+    {
+      "id": "arm-right-greeting",
+      "path": "layers/25-arm-right-greeting.svg",
+      "sha256": "e753246b480c96037a950e7a153cd9462f6863eae52e0ad5ee27f234e0450b4c"
+    },
+    {
+      "id": "arm-left-farewell",
+      "path": "layers/26-arm-left-farewell.svg",
+      "sha256": "5e57f6971174f7fc8536a8e88cfded53480c38f883c9473da5865078839f07cd"
+    },
+    {
+      "id": "arm-right-farewell",
+      "path": "layers/27-arm-right-farewell.svg",
+      "sha256": "f9828de0956489682b3bcecbf17f81298392509b7e5f5fa9acaf60a12f1ad506"
+    },
+    {
+      "id": "arm-left-agreement",
+      "path": "layers/28-arm-left-agreement.svg",
+      "sha256": "758fc4400922ed7102e5bed2bf179cbdfb895c2756e138bab76dd0c2ce456a33"
+    },
+    {
+      "id": "arm-right-agreement",
+      "path": "layers/29-arm-right-agreement.svg",
+      "sha256": "e4f257bd9bb5921841fd78a79e85f0a687ed3edbf83ed28b48d21bf90c917358"
+    },
+    {
+      "id": "arm-left-disagreement",
+      "path": "layers/30-arm-left-disagreement.svg",
+      "sha256": "782bebf1cfe11f7ed0304b54ea33d39fc17fa715376cae0aa839798653f8b23b"
+    },
+    {
+      "id": "arm-right-disagreement",
+      "path": "layers/31-arm-right-disagreement.svg",
+      "sha256": "4ef4f2b3b6dd2f9c7f9da2251c730b28334c633f51cf395f93c1d19354eb2be5"
+    },
+    {
+      "id": "arm-left-gratitude",
+      "path": "layers/32-arm-left-gratitude.svg",
+      "sha256": "386fa7ec2348ce1cc7ae20525cf77d43fb4b2f7ad5414cb3d5e2007ab83ecdbd"
+    },
+    {
+      "id": "arm-right-gratitude",
+      "path": "layers/33-arm-right-gratitude.svg",
+      "sha256": "0d7e06de9d712531758d2f7152931e4fded3c4148b0e518b4cda8c949720a9a4"
+    },
+    {
+      "id": "arm-left-concern",
+      "path": "layers/34-arm-left-concern.svg",
+      "sha256": "951a65f0a722333cf4fef3baf659d27952e2be7ae590a37483e29ac1351e1cbb"
+    },
+    {
+      "id": "arm-right-concern",
+      "path": "layers/35-arm-right-concern.svg",
+      "sha256": "441872e0b66005a6bf31c01620b0fc0f304a00a14a445e1dc59eef99690eb59e"
+    },
+    {
+      "id": "arm-left-surprise",
+      "path": "layers/36-arm-left-surprise.svg",
+      "sha256": "5d44d509812806e02c4d7b86e6c6ec9902a4952946630c36f29ff650515fc1b3"
+    },
+    {
+      "id": "arm-right-surprise",
+      "path": "layers/37-arm-right-surprise.svg",
+      "sha256": "6341518ef38ae5e9a8d39cd8d9c75732c9b52977713709cec3bf98dab6ac3fea"
+    },
+    {
+      "id": "arm-left-celebration",
+      "path": "layers/38-arm-left-celebration.svg",
+      "sha256": "00f88d4af597b3e99c7514fec01b6795dd59567911b04ef1c52ac729e92ae3b8"
+    },
+    {
+      "id": "arm-right-celebration",
+      "path": "layers/39-arm-right-celebration.svg",
+      "sha256": "0a526797831dd90ceb37c6037e9da40daa79224f77d178e3ff714a73d75f1cd0"
+    }
+  ],
+  "lod_layer_count": 0,
+  "lod_layers": [],
+  "production_expression_count": 7,
+  "production_pose_count": 9,
+  "reduced_motion_presentation_count": 7,
+  "turnaround_view_count": 4,
+  "turnarounds": [
+    {
+      "view": "front",
+      "path": "turnarounds/front.svg",
+      "sha256": "69602cbe0303f3b2bf0ff0707dcb5c9a5791503605ce351fb21aa4ccfdd1d179",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "three-quarter",
+      "path": "turnarounds/three-quarter.svg",
+      "sha256": "c0ebfba6275c32e285be1caa1731f14f6734f00d064df1f996649dc7f80c3b73",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "side",
+      "path": "turnarounds/side.svg",
+      "sha256": "40b9864a68b018e9f943b7b2f053179c2d1b81a4550fb80c3f7bc6ecf40351fc",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "back",
+      "path": "turnarounds/back.svg",
+      "sha256": "a68a89d1ca1feb0b39e650878e9c37f4e6c9de44799338f20a4177344d035d76",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    }
+  ],
+  "claimed_backends": [
+    "flat-2d",
+    "layered-2.5d",
+    "filament-glb"
+  ],
+  "flat_pack": "pack-flat.json",
+  "layered_pack": "pack.json",
+  "glb": "H08-production.glb"
+}

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><linearGradient id="softShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".24"/><stop offset="1" stop-color="#10243A" stop-opacity=".14"/></linearGradient></defs>
+<path d="M199 84 Q256 15 313 84 L305 108 Q256 81 207 108 Z" fill="#426B4B" stroke="#162B45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" /><path d="M195 107 Q189 156 216 198" fill="none" stroke="#7E9B65" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /><path d="M317 107 Q323 156 296 198" fill="none" stroke="#7E9B65" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" /><path d="M213 183 Q256 202 299 183" fill="none" stroke="#7E9B65" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

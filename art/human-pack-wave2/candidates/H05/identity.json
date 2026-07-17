@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "character_id": "H05",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "public-release-approved",
+  "identity_direction": "White young adult man with light cool complexion, swept auburn hair, and an orientation white cane integrated into the rig",
+  "device_profile": "white-cane.orientation",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "public-release",
+  "palette": {
+    "skin": "#E2B192",
+    "skin_light": "#F0C9AF",
+    "hair": "#873E2B",
+    "primary": "#537A52",
+    "secondary": "#E5B84A",
+    "accent": "#4D8EBA",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "review_gate": {
+    "decision": "pending-owner-identity-review",
+    "production_use": "forbidden-until-all-production-gates"
+  },
+  "representation": {
+    "heritage_context": [
+      "White"
+    ],
+    "rendering_source": "appearance-only",
+    "review_status": "owner-vector-identity-approved"
+  },
+  "authored_demographics": {
+    "life_stage": "young-adult",
+    "gender_presentation": "masculine",
+    "assistive_devices": [
+      "white-cane.orientation"
+    ]
+  }
+}

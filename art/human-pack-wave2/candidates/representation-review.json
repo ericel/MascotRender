@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "expansion_id": "human-canonical-expansion-wave2",
+  "decision": "owner-production-release-approved",
+  "production_use": "public-release",
+  "members": [
+    "H02",
+    "H03",
+    "H05",
+    "H06",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H14",
+    "H15"
+  ],
+  "review_requirements": [
+    "identity-coherence",
+    "age-and-body-readability",
+    "non-stereotyped-presentation",
+    "head-covering-construction",
+    "white-cane-hand-and-ground-contact"
+  ],
+  "specialist_follow_up": {
+    "H05-orientation-white-cane-specialist-review": "non-blocking-post-release-advisory",
+    "H08-head-covering-cultural-detail-review": "non-blocking-post-release-advisory",
+    "specialist_approval_claimed": false
+  }
+}

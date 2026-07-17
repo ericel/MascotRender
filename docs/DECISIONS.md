@@ -166,6 +166,12 @@ The first approved font is Changa One Regular from `google/fonts`, licensed
 under SIL OFL 1.1. The complete font license is also copied into the Conan
 package license directory.
 
+The sticker display set expands this rule to Bangers Regular, Lilita One
+Regular, and Kalam Bold. They are static TTF files pinned to a `google/fonts`
+revision with local OFL terms and SHA-256 entries in
+`content/fonts/sticker-display-v1/manifest.json`. Third-party catalogue sites
+may be used for discovery, but never as the redistribution authority.
+
 ## ADR-013: Scripted procedural content compiler
 
 - Status: Accepted
@@ -437,3 +443,128 @@ Minor-coded characters are optional. H01 remains part of the owner-approved
 Human Pack v1 foundation, while proposed pre-teen H02 and teen H03 are deferred
 until a separate owner/editorial approval records their intended use. Automated
 coverage validation cannot make or imply that decision.
+
+## ADR-029: Human selection rotates authored identities without demographic inference
+
+- Status: Accepted
+- Date: 2026-07-16
+
+Human Expansion Wave 2 adds ten independently authored identity candidates to
+the five-character canonical foundation. Heritage context is review metadata;
+it never derives geometry and is never visible to runtime selection. After the
+Unicode trie resolves a phrase, production-eligible human identities rotate
+with uniform weight using a stable conversation offset and round robin. An
+explicit character choice may override rotation, but the selector must not
+infer or target a user's race, ethnicity, complexion, or appearance.
+
+Wave 2 candidates remain excluded from production selection until hash-bound
+owner identity approval, cultural or assistive-device review where applicable,
+authored cross-backend parity, and final production activation. Phrase
+multiplication follows identity approval so a weak identity cannot be amplified
+into hundreds of derivative stickers.
+
+## ADR-030: Production captions use strict animation-aware semantic exclusion
+
+- Status: Accepted
+- Date: 2026-07-16
+
+Caption placement for animated stickers is solved against the union of each
+selected semantic layer's transformed collision bounds across the complete
+sampled loop. Character, hair, limbs, and assistive-device layers contribute
+independent raster-derived bounds. A production pack may forbid overlap; an
+intersecting slot is then rejected instead of merely receiving a worse score.
+If no slot remains, validation fails and the asset is not rendered.
+
+Production review checks every frame against a 16-source-pixel canvas margin
+and publishes complete-sticker sheets at 80, 96, and 100 pixels. Phrase intent,
+physical pose implementation, audience class, and accessible description are
+separate authored fields. Reusing a pose never permits apology or affection to
+be mislabeled as gratitude.
+
+## ADR-031: Canonical delivery and small-display composition are separate profiles
+
+- Status: Accepted
+- Date: 2026-07-17
+
+The canonical animated human sticker remains a 512×512 delivery asset. Tray
+and stress-test outputs at 100, 96, and 80 pixels are derived display profiles,
+not naive resizes and not replacements for the canonical asset.
+
+The backend-neutral profile solver isolates the animated character/device and
+screen-space caption, computes each component's union bounds over the complete
+loop, and applies one stable transform per component for every frame. It picks
+the largest safe composition within the profile's occupancy range. Wide
+assistive-device geometry may satisfy the character-size gate by width and is
+never cropped. Long side captions fall back to a vertical slot when their
+actual rendered glyph height would be less than ten percent of the tile.
+
+Minimum combined occupancy is evaluated over the animation union because a
+caption may intentionally fade out at a loop endpoint. Canvas margin, maximum
+occupancy, character/device size, and zero caption collision remain per-frame
+requirements. This distinction prevents both animation pumping and false
+failures on intentional transparent caption frames.
+
+The project owner approved the exact `human-small-display-occupancy-v1`
+contract and 80/96/100 contact-sheet hashes on 2026-07-17. `tray-100` is the
+recommended default, `tray-96` is the compact profile, and `stress-80` is only
+the compatibility/readability floor. The binding approval is
+`contracts/human-small-display-occupancy-owner-approval-v1.json`; it closes the
+occupancy gate without waiving any specialist, turnaround, GLB, playback, or
+final production gate.
+
+## ADR-032: Wave 2 production activation requires deterministic complete evidence
+
+- Status: Accepted
+- Date: 2026-07-17
+
+Wave 2 production review is one hash-bound package spanning flat 2D, layered
+2.5D, GLB front identity, true four-view GLB turnarounds, nine semantic poses,
+seven expressions, native animation playback, reduced motion, and the H05/H08
+specialist evidence. A front-only GLB or a still sheet cannot stand in for the
+missing views or playback.
+
+The review builder verifies semantic hierarchy, clip presence, palette and
+silhouette thresholds, visible motion, exact loop closure, reduced-motion
+equivalence, and full-tree byte determinism. H08's crown is a true rear shell;
+the front skin shell, side panels, and shoulder drape form its opening without
+intersecting coplanar surfaces, preventing nondeterministic GPU depth ties.
+H05's vector cane sweep remains outside the leg silhouette and preserves a
+visible red tip in every sampled frame.
+
+Automation may report technical success but cannot approve assistive-device
+behavior, cultural construction, art direction, or production activation.
+Those decisions remain separately attributable to qualified reviewers and the
+project owner. Until both specialist reviews and the hash-bound owner decision
+pass, Wave 2 remains excluded from public production selection.
+
+On 2026-07-17 the project owner reviewed the complete Wave 2 package and
+approved neutral turnarounds, cross-backend identity recognition, GLB semantic
+poses and expressions, and animation/reduced-motion quality. Cross-backend
+art-direction parity failed. The exact partial decision is bound in
+`human-wave2-owner-production-decision-v1.json`; corrective work must preserve
+the four approved gates and return only the GLB art-direction comparison for
+owner re-review.
+
+The corrective candidate uses semantically matched rest, greeting, and excited
+states across flat 2D, layered 2.5D, and GLB. Wave 2 GLBs now use real
+depth-safe ink shells instead of detached front-view outline cards, smaller
+age-aware head proportions, longer authored legs, outlined facial/body
+hierarchy, richer hoodie construction, and a ground-correct H05 cane. The
+focused deterministic package is
+`generated/human-wave2-art-direction-review-v2`; it does not reopen the four
+approved owner gates.
+
+On 2026-07-17 the project owner approved the corrected cross-backend
+art-direction gate against the exact four review-image hashes in
+`human-wave2-cross-backend-art-direction-owner-approval-v1.json`. The owner
+then explicitly activated all ten Wave 2 members for public production use.
+The binding activation is
+`human-wave2-production-activation-v1.json`; the production selector now
+rotates all fifteen approved human identities uniformly without demographic
+inference.
+
+The H05 orientation-white-cane and H08 head-covering specialist reviews remain
+open as named, non-blocking post-release advisories. The activation does not
+claim that a qualified specialist supplied either decision. Findings from
+those reviews can require a corrective release, but they do not silently
+revoke or weaken the project owner's explicit production activation.

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "gate": "human-small-display-occupancy-v1",
+  "decision_date": "2026-07-17",
+  "decision": "approved",
+  "review_status": "small-display-occupancy-approved",
+  "canonical_assets_modified": false,
+  "profile_disposition": {
+    "tray-100": {
+      "status": "approved",
+      "role": "recommended-default"
+    },
+    "tray-96": {
+      "status": "approved",
+      "role": "compact"
+    },
+    "stress-80": {
+      "status": "approved",
+      "role": "minimum-readability-stress-test",
+      "recommended_as_default": false
+    }
+  },
+  "runtime_policy": {
+    "normal_ui": "tray-100",
+    "space_constrained_ui": "tray-96",
+    "hard_compatibility_floor": "stress-80",
+    "large_text_or_low_vision_ui": "tray-100-or-larger"
+  },
+  "approved_scope": [
+    "animation-aware-occupancy-fitting",
+    "small-display-caption-layout",
+    "stable-animation-transform",
+    "assistive-device-preservation",
+    "small-display-margin-safety",
+    "caption-character-collision-safety",
+    "deterministic-display-asset-generation"
+  ],
+  "contract_sha256": "baf6de7cea472f91b06c1120d6f91912b3b299bc99deb98f8167edec0e7c8893",
+  "reviewed_artifacts_root": "generated/human-small-display-profiles-v1",
+  "reviewed_artifacts": {
+    "tray-100-contact-sheet.png": "3579027a5870a57b415393ff0bb2549ac60b2c87bbf608af1820dcadf1467fdd",
+    "tray-96-contact-sheet.png": "c6c5b886eec0fa12f88d5e2f7c6990cfd2c0180a2ca2059ae2008f770fcce3dd",
+    "stress-80-contact-sheet.png": "40197f2a8d7a4ac8490e9e74d6b46b1adb28ac85a31630c837e6f6162c4a9abf"
+  },
+  "delivery_consideration": {
+    "status": "non-blocking",
+    "high_density_outputs": {
+      "stress-80@2x": "160x160",
+      "tray-96@2x": "192x192",
+      "tray-100@2x": "200x200"
+    }
+  },
+  "human_pack_production_use": "forbidden-until-remaining-production-gates-pass",
+  "remaining_gates": [
+    "H05-cane-specialist-review",
+    "H08-cultural-construction-review",
+    "wave2-turnaround-approval",
+    "production-GLB-identity-and-art-direction-parity",
+    "final-animation-playback-review",
+    "owner-production-approval"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "pack_id": "human-canonical-h02",
+  "expression": "friendly",
+  "pose": "rest",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  },
+  "sticker_id": "h02-depth-parallax-right",
+  "alt_text": "H02 layered depth review: parallax-right",
+  "view": {
+    "x": 56,
+    "y": -10
+  }
+}

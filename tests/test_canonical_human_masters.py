@@ -161,7 +161,7 @@ def main() -> int:
             if h13_three_quarter["alpha_bounds"][1] < 16:
                 raise AssertionError("H13 three-quarter framing lacks its preferred top safe margin")
         glb_manifest = read_json(first / "glb-manifest.json")
-        if glb_manifest.get("master_count") != 5 or any(record.get("clip_count") != 16 for record in glb_manifest.get("records", [])):
+        if glb_manifest.get("master_count") != 5 or any(record.get("clip_count") != 20 for record in glb_manifest.get("records", [])):
             raise AssertionError("canonical GLB generation is incomplete")
         if read_json(first / "provenance.json").get("license") != "MIT":
             raise AssertionError("canonical family lacks MIT provenance")

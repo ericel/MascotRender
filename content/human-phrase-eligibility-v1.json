@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "eligibility_id": "human-chat-phrase-eligibility-v1",
+  "status": "approved-for-wave2-matrix-generation",
+  "decision_date": "2026-07-16",
+  "policy": {
+    "authored_compatibility_not_engine_inference": true,
+    "default_deny_unknown_phrase": true,
+    "allowed_audience_classes": [
+      "general",
+      "teen-and-up",
+      "adult",
+      "pack-specific"
+    ],
+    "all_current_phrases_are_general": true
+  },
+  "phrases": [
+    {
+      "phrase_id": "chat.big.mood",
+      "source_slug": "big-mood",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.hello",
+      "source_slug": "hello",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.haha",
+      "source_slug": "haha",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.lol",
+      "source_slug": "lol",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.yes",
+      "source_slug": "yes",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no",
+      "source_slug": "no",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.okay",
+      "source_slug": "okay",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.facts",
+      "source_slug": "facts",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no.cap",
+      "source_slug": "no-cap",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.omg",
+      "source_slug": "omg",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.sus",
+      "source_slug": "sus",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.for.real",
+      "source_slug": "for-real",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.vibes",
+      "source_slug": "vibes",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.slay",
+      "source_slug": "slay",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.win",
+      "source_slug": "win",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.right.now",
+      "source_slug": "right-now",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.tbh",
+      "source_slug": "tbh",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.wdym",
+      "source_slug": "wdym",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.brb",
+      "source_slug": "brb",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.on.my.way",
+      "source_slug": "on-my-way",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.thanks",
+      "source_slug": "thanks",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.sorry",
+      "source_slug": "sorry",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no.problem",
+      "source_slug": "no-problem",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.good.morning",
+      "source_slug": "good-morning",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.good.night",
+      "source_slug": "good-night",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.bye",
+      "source_slug": "bye",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.love",
+      "source_slug": "love",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.wahala",
+      "source_slug": "wahala",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no.wahala",
+      "source_slug": "no-wahala",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no.vex",
+      "source_slug": "no-vex",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.chai",
+      "source_slug": "chai",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.abeg",
+      "source_slug": "abeg",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.omo",
+      "source_slug": "omo",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.chale",
+      "source_slug": "chale",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.no.stress",
+      "source_slug": "no-stress",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.lets.go",
+      "source_slug": "lets-go",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.nice.one",
+      "source_slug": "nice-one",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.oh.wow",
+      "source_slug": "oh-wow",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.thank.you",
+      "source_slug": "thank-you",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.well.done",
+      "source_slug": "well-done",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    },
+    {
+      "phrase_id": "chat.you.got.this",
+      "source_slug": "you-got-this",
+      "audience_class": "general",
+      "allowed_life_stages": [
+        "pre-teen",
+        "teen",
+        "young-adult",
+        "adult",
+        "middle-aged",
+        "senior"
+      ]
+    }
+  ]
+}

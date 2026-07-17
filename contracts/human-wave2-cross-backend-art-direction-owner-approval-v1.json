@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-17",
+  "gate": "cross-backend-art-direction-parity",
+  "reviewed_artifacts": {
+    "rest-matched-parity.png": "70e8dbf63083dd04a83e10d87cfda33434c36f41a6b229cba02fc380207dcb9f",
+    "greeting-matched-parity.png": "7427cae0e2b68134e145dd821404fee439139ed7b3e0660d9b3254bdca40cb19",
+    "excited-matched-parity.png": "a5f921e3e6237662a5e73ffc98a305133eda666cadf7b4c06cca507086d4d0a2",
+    "cross-backend-art-direction-correction.png": "a0178f1bddafe09fc50e745964660cccd34023a9ada130e6e0f61617a6631d75"
+  },
+  "preserved_prior_owner_gates": {
+    "wave2-neutral-turnarounds": "approved",
+    "cross-backend-identity-parity": "approved",
+    "glb-semantic-pose-and-expression-parity": "approved",
+    "animation-and-reduced-motion-visual-quality": "approved"
+  },
+  "production_use": "still-requires-specialist-gates-and-owner-activation"
+}

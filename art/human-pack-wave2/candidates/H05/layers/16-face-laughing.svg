@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><linearGradient id="softShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".24"/><stop offset="1" stop-color="#10243A" stop-opacity=".14"/></linearGradient></defs>
+<path d="M223.35 108 Q232.35 116.25 241.35 108" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M270.65 108 Q279.65 116.25 288.65 108" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M218.35 88 Q232.35 82 246.35 88" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M265.65 88 Q279.65 82 293.65 88" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M256 116 q-4 10 5 12" fill="none" stroke="#F0C9AF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M228 138 Q256 179 285 137 Z" fill="#5B2730" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M241 158 Q256 167 272 157" fill="none" stroke="#E98A86" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

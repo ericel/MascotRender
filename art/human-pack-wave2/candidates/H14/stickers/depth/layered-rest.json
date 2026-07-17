@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "pack_id": "human-canonical-h14",
+  "expression": "friendly",
+  "pose": "rest",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  },
+  "sticker_id": "h14-depth-layered-rest",
+  "alt_text": "H14 layered depth review: layered-rest",
+  "view": {
+    "x": 0,
+    "y": 0
+  }
+}

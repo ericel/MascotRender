@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status_date": "2026-07-17",
+  "supersedes_status": "human-development-matrix-gate-status-v4",
+  "owner_decision": "human-wave2-owner-production-decision-v1",
+  "production_use": "forbidden-until-cross-backend-art-direction-parity-and-specialist-gates-pass",
+  "owner_approved_gates": {
+    "wave2-neutral-turnarounds": "approved",
+    "cross-backend-identity-parity": "approved",
+    "glb-semantic-pose-and-expression-parity": "approved",
+    "animation-and-reduced-motion-visual-quality": "approved"
+  },
+  "failed_owner_gate": {
+    "cross-backend-art-direction-parity": "failed"
+  },
+  "corrected_art_direction_candidate": {
+    "path": "generated/human-wave2-art-direction-review-v2",
+    "review_manifest_sha256": "661bcf566c6b63bb9f7324fb2faa95e6910c127abee7bbd39b7d3fab2db6aa88",
+    "verification_status": "technical-validation-success",
+    "review_status": "awaiting-owner-art-direction-re-review",
+    "deterministic_full_tree_regeneration": "pass"
+  },
+  "correction_scope": [
+    "GLB family silhouette and proportion language",
+    "GLB facial construction and outline hierarchy",
+    "GLB clothing and device detail parity",
+    "GLB dimensional shading without losing the approved flat-vector identity"
+  ],
+  "remaining_gates": [
+    "H05-orientation-white-cane-specialist-review",
+    "H08-head-covering-cultural-detail-review",
+    "corrected-cross-backend-art-direction-parity-owner-review",
+    "owner-production-activation"
+  ]
+}

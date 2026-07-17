@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "character_id": "H03",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "public-release-approved",
+  "identity_direction": "South Asian teen girl with medium warm complexion, long wavy hair, and a contemporary layered outfit",
+  "device_profile": "device.none",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "public-release",
+  "palette": {
+    "skin": "#A9653E",
+    "skin_light": "#CE8B61",
+    "hair": "#251817",
+    "primary": "#7654A8",
+    "secondary": "#E2A4D2",
+    "accent": "#F2A33A",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "review_gate": {
+    "decision": "pending-owner-identity-review",
+    "production_use": "forbidden-until-all-production-gates"
+  },
+  "representation": {
+    "heritage_context": [
+      "South Asian"
+    ],
+    "rendering_source": "appearance-only",
+    "review_status": "owner-vector-identity-approved"
+  },
+  "authored_demographics": {
+    "life_stage": "teen",
+    "gender_presentation": "feminine"
+  }
+}

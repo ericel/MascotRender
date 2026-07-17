@@ -185,6 +185,11 @@ install(
     PATTERN ".DS_Store" EXCLUDE
 )
 install(
+    DIRECTORY art/human-pack-v1 art/human-pack-wave2
+    DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/art"
+    PATTERN ".DS_Store" EXCLUDE
+)
+install(
     FILES
         LICENSE
         docs/MANIFESTO.md
@@ -211,6 +216,8 @@ install(
         tools/build_human_pilot_review.py
         tools/generate_canonical_human_masters.py
         tools/generate_canonical_human_glbs.py
+        tools/generate_human_wave2_candidates.py
+        tools/generate_human_wave2_glbs.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py
         tools/build_mascot_package.py

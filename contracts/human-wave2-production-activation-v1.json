@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved-for-production-release",
+  "decision_date": "2026-07-17",
+  "activation_id": "human-wave2-production-activation-v1",
+  "bound_decisions": {
+    "prior_owner_gate_decision": "contracts/human-wave2-owner-production-decision-v1.json",
+    "cross_backend_art_direction_approval": "contracts/human-wave2-cross-backend-art-direction-owner-approval-v1.json"
+  },
+  "approved_members": [
+    "H02",
+    "H03",
+    "H05",
+    "H06",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H14",
+    "H15"
+  ],
+  "production_gates": {
+    "wave2-neutral-turnarounds": "approved",
+    "cross-backend-identity-parity": "approved",
+    "cross-backend-art-direction-parity": "approved",
+    "glb-semantic-pose-and-expression-parity": "approved",
+    "animation-and-reduced-motion-visual-quality": "approved",
+    "owner-production-activation": "approved"
+  },
+  "specialist_gate_disposition": {
+    "H05-orientation-white-cane-specialist-review": "non-blocking-post-release-advisory",
+    "H08-head-covering-cultural-detail-review": "non-blocking-post-release-advisory",
+    "specialist_approval_claimed": false,
+    "owner_release_direction": "release-now-with-specialist-follow-up-open",
+    "policy": "Specialist review remains desirable and may produce a corrective release, but is not represented as completed or as a blocker to this owner-authorized release."
+  },
+  "runtime_activation": {
+    "selector": "content/human-character-selection-v1.json",
+    "wave2_production_eligible": true,
+    "selection_weight": "uniform",
+    "demographic_inference": false
+  },
+  "production_use": "public-release",
+  "public_release_activation": "approved"
+}

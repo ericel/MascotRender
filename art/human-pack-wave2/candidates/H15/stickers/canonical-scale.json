@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h15-canonical-scale",
+  "pack_id": "human-canonical-h15",
+  "alt_text": "H15 at the canonical shared world scale and baseline",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "ground_contact",
+    "zoom": 0.82,
+    "offset_x": 0,
+    "offset_y": 194
+  }
+}

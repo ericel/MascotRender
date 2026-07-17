@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h10-thinking",
+  "pack_id": "human-canonical-h10",
+  "alt_text": "H10 expressing thinking in a concern pose",
+  "expression": "thinking",
+  "pose": "concern",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "selection_policy_id": "human-uniform-deterministic-rotation-v1",
+  "purpose": "Provide balanced identity rotation after trie phrase matching without demographic inference or fixed first-character bias.",
+  "policy": {
+    "match_stage": "after-unicode-trie-trigger-resolution",
+    "algorithm": "stable-hash-trigger-and-conversation-offset-then-round-robin",
+    "weights": "uniform-among-production-eligible-identities",
+    "demographic_inference": false,
+    "user-race-or-ethnicity-targeting": false,
+    "appearance-metadata-visible-to-selector": false,
+    "explicit-character-choice-overrides-rotation": true
+  },
+  "identities": [
+    {"character_id": "H01", "cohort": "canonical-foundation", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H04", "cohort": "canonical-foundation", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H07", "cohort": "canonical-foundation", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H12", "cohort": "canonical-foundation", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H13", "cohort": "canonical-foundation", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H02", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H03", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H05", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H06", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H08", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H09", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H10", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H11", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H14", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true},
+    {"character_id": "H15", "cohort": "expansion-wave2", "selection_weight": 1, "development_eligible": true, "production_eligible": true}
+  ],
+  "activation_rule": "Wave 2 identities were activated by the hash-bound project-owner production decision dated 2026-07-17."
+}

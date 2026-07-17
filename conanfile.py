@@ -41,6 +41,8 @@ class MascotRenderRecipe(ConanFile):
         "schemas/*",
         "contracts/*",
         "content/*",
+        "art/human-pack-v1/*",
+        "art/human-pack-wave2/*",
         "examples/*",
         "!examples/*/.DS_Store",
         "!examples/**/.DS_Store",

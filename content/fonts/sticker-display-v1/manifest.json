@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "upstream_repository": "https://github.com/google/fonts",
+  "upstream_revision": "26c5c976d82d50c24a8f0a7ac455e0a7c639c226",
+  "retrieved": "2026-07-15",
+  "license": "SIL Open Font License 1.1",
+  "fonts": [
+    {
+      "id": "punch",
+      "family": "Changa One",
+      "voice": "compact-punch",
+      "source": "changa-one/ChangaOne-Regular.ttf",
+      "license_file": "changa-one/OFL.txt",
+      "sha256": "7ac4d26a3a45b4731904b59cbb8a9cc15b7b70d447fc2b5dda40ef17c5d2e16d"
+    },
+    {
+      "id": "comic-slant",
+      "family": "Bangers",
+      "voice": "energetic-comic-slant",
+      "source": "bangers/Bangers-Regular.ttf",
+      "license_file": "bangers/OFL.txt",
+      "sha256": "4160a7311de9342674cce9160cde9fcbb30f48190397d86ff1b70b455af65824"
+    },
+    {
+      "id": "rounded",
+      "family": "Lilita One",
+      "voice": "soft-rounded",
+      "source": "lilita-one/LilitaOne-Regular.ttf",
+      "license_file": "lilita-one/OFL.txt",
+      "sha256": "f5b641c45c69d772ee4eda687bc9fda411d5cad6b0b45371491da4580cbc8d59"
+    },
+    {
+      "id": "handwritten",
+      "family": "Kalam Bold",
+      "voice": "handwritten-emphasis",
+      "source": "kalam/Kalam-Bold.ttf",
+      "license_file": "kalam/OFL.txt",
+      "sha256": "2f6576601db015d4f6c08678120277fc8510b98c06e932ce7a6a9cbff4cbdded"
+    }
+  ]
+}

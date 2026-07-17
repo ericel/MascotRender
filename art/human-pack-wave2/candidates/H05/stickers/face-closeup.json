@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h05-face-closeup",
+  "pack_id": "human-canonical-h05",
+  "alt_text": "H05 canonical human master in face-closeup framing",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "face-closeup",
+    "target": "face_center",
+    "zoom": 1.55,
+    "offset_x": 0,
+    "offset_y": 60
+  }
+}

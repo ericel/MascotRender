@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><linearGradient id="softShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".24"/><stop offset="1" stop-color="#10243A" stop-opacity=".14"/></linearGradient></defs>
+<polyline points="314,215 323.0,238.5 332,262" fill="none" stroke="#162B45" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/><polyline points="314,215 323.0,238.5 332,262" fill="none" stroke="#6F8A4B" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><polyline points="332,262 266,277" fill="none" stroke="#162B45" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/><polyline points="332,262 266,277" fill="none" stroke="#C58A62" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="266" cy="277" rx="11" ry="13" fill="#E1AD84" stroke="#162B45" stroke-width="5" />
+</svg>

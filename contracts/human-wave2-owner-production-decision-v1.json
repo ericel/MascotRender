@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-07-17",
+  "authority": "project-owner",
+  "decision": "partial-approval-one-gate-failed",
+  "review_manifest": {
+    "path": "generated/human-wave2-final-production-review/review.json",
+    "sha256": "3052c22f69485f92e5a4f405c5b01bcaa9c51d3a4ef0dce5854f38905b1b0893"
+  },
+  "reviewed_artifacts": {
+    "cross-backend-production-candidate.png": "e3bf6b566a964df5410a8cfd50089d2c640d950ffa039e0801daff2b3235467b",
+    "turnaround-parity-sheet.png": "c714ed1c8a13f6791d96a5b5e74bb47aea642a38f3618400a55471a9527a5628",
+    "glb-nine-pose-sheet.png": "97b261029bd09f23482e14b6c5e2b98b9658bc43f98f2420b5ded34e119efffc",
+    "glb-seven-expression-sheet.png": "b7e226538a2c7261bfaef7990db7a1e10fb81e2b87506c7cce45be7403d3ca80",
+    "animation-playback-sheet.png": "e5d5aebb564d1872d1e57d04f33be20effb32f85b5f493f1272b60e635433dfa"
+  },
+  "production_gates": {
+    "wave2-neutral-turnarounds": "approved",
+    "cross-backend-identity-parity": "approved",
+    "cross-backend-art-direction-parity": "failed",
+    "glb-semantic-pose-and-expression-parity": "approved",
+    "animation-and-reduced-motion-visual-quality": "approved"
+  },
+  "scope": {
+    "preserve_approved_gates_during_correction": true,
+    "reopen_only": [
+      "cross-backend-art-direction-parity"
+    ]
+  },
+  "production_use": "forbidden-until-cross-backend-art-direction-parity-passes-and-owner-activates",
+  "public_release_activation": "blocked"
+}
