@@ -51,7 +51,7 @@ Consumers configure the remote and install normally:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.2.0 --build=missing
+conan install --requires=mascotrender/0.3.0 --build=missing
 ```
 
 The JFrog repository permits anonymous reads but requires authenticated writes.
