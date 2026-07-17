@@ -110,7 +110,7 @@ def face_layer(d: dict[str, Any]) -> str:
         "child": (12, 15), "prosthesis": (9, 12), "wheelchair": (12, 9),
         "hearing-aid": (9, 11), "rollator": (9, 11),
     }
-    eye_rx, eye_ry = eye_profiles[mode]
+    eye_rx, eye_ry = d.get("eye_profile", eye_profiles.get(mode, (10, 12)))
     if mode == "prosthesis":
         brows = [
             path(f"M{hx-spacing-15} {eye_y-17} L{hx-spacing+13} {eye_y-23}", sw=7),
@@ -164,7 +164,32 @@ def face_layer(d: dict[str, Any]) -> str:
             ellipse(hx+spacing, eye_y, 19, 17, "none", INK, 4),
             path(f"M{hx-spacing+19} {eye_y} L{hx+spacing-19} {eye_y}", sw=4),
         ]
+    parts.extend(face_accessories(d, hx, hy, spacing, eye_y))
     return "\n".join(parts)
+
+
+def face_accessories(
+    d: dict[str, Any], hx: float, hy: float, spacing: float, eye_y: float
+) -> list[str]:
+    parts: list[str] = []
+    if d.get("glasses"):
+        parts.extend([
+            ellipse(hx-spacing, eye_y, 18, 16, "none", INK, 4),
+            ellipse(hx+spacing, eye_y, 18, 16, "none", INK, 4),
+            path(f"M{hx-spacing+18} {eye_y} L{hx+spacing-18} {eye_y}", sw=4),
+        ])
+    facial_hair = d.get("facial_hair")
+    if facial_hair == "close-beard":
+        parts.append(path(
+            f"M{hx-34} {hy+27} Q{hx} {hy+69} {hx+34} {hy+26}",
+            stroke=d["hair"], sw=7,
+        ))
+    elif facial_hair == "moustache":
+        parts.extend([
+            path(f"M{hx-4} {hy+29} Q{hx-17} {hy+22} {hx-28} {hy+31}", stroke=d["hair"], sw=6),
+            path(f"M{hx+4} {hy+29} Q{hx+17} {hy+22} {hx+28} {hy+31}", stroke=d["hair"], sw=6),
+        ])
+    return parts
 
 
 def expression_face_layer(d: dict[str, Any], expression: str) -> str:
@@ -177,7 +202,7 @@ def expression_face_layer(d: dict[str, Any], expression: str) -> str:
         "child": (12, 15), "prosthesis": (9, 12), "wheelchair": (12, 9),
         "hearing-aid": (9, 11), "rollator": (9, 11),
     }
-    erx, ery = eye_profiles[mode]
+    erx, ery = d.get("eye_profile", eye_profiles.get(mode, (10, 12)))
     parts: list[str] = []
     if expression == "laughing":
         for center in (hx-spacing, hx+spacing):
@@ -232,6 +257,7 @@ def expression_face_layer(d: dict[str, Any], expression: str) -> str:
             ellipse(hx+spacing, eye_y, 19, 17, "none", INK, 4),
             path(f"M{hx-spacing+19} {eye_y} L{hx+spacing-19} {eye_y}", sw=4),
         ])
+    parts.extend(face_accessories(d, hx, hy, spacing, eye_y))
     return "\n".join(parts)
 
 
@@ -248,6 +274,95 @@ def head_layer(d: dict[str, Any]) -> str:
 def hair_layers(d: dict[str, Any]) -> tuple[str, str]:
     hx, hy, rx, ry = d["head"]
     mode = d["mode"]
+    style = d.get("hair_style")
+    if style == "short-loose-curls":
+        curls = "".join(
+            ellipse(hx-46+i*15, hy-ry+8+(i%2)*5, 18, 17, d["hair"], INK, 4)
+            for i in range(7)
+        )
+        return "", curls + path(
+            f"M{hx-rx+5} {hy-39} Q{hx} {hy-ry-24} {hx+rx-2} {hy-37}",
+            fill=d["hair"], sw=5,
+        )
+    if style == "long-wavy":
+        back = path(
+            f"M{hx-rx-13} {hy-40} Q{hx-rx-27} {hy+70} {hx-48} {hy+116} "
+            f"L{hx+48} {hy+116} Q{hx+rx+27} {hy+70} {hx+rx+13} {hy-40} Z",
+            fill=d["hair"], sw=7,
+        )
+        front = path(
+            f"M{hx-rx+3} {hy-36} Q{hx-20} {hy-ry-24} {hx+rx+2} {hy-31} "
+            f"Q{hx+25} {hy-55} {hx-9} {hy-60} Q{hx-39} {hy-55} {hx-rx+3} {hy-36} Z",
+            fill=d["hair"], sw=6,
+        )
+        front += path(f"M{hx-38} {hy-37} Q{hx-55} {hy+16} {hx-43} {hy+65}", stroke=d["hair_highlight"], sw=6)
+        front += path(f"M{hx+38} {hy-36} Q{hx+54} {hy+16} {hx+42} {hy+66}", stroke=d["hair_highlight"], sw=6)
+        return back, front
+    if style == "shoulder-wave":
+        back = path(
+            f"M{hx-rx-10} {hy-38} Q{hx-rx-20} {hy+35} {hx-39} {hy+78} "
+            f"L{hx+35} {hy+78} Q{hx+rx+18} {hy+34} {hx+rx+10} {hy-38} Z",
+            fill=d["hair"], sw=7,
+        )
+        front = path(
+            f"M{hx-rx+4} {hy-32} Q{hx-24} {hy-ry-25} {hx+rx+3} {hy-35} "
+            f"Q{hx+16} {hy-61} {hx-15} {hy-63} Q{hx-43} {hy-55} {hx-rx+4} {hy-32} Z",
+            fill=d["hair"], sw=6,
+        )
+        front += path(f"M{hx+35} {hy-35} Q{hx+51} {hy+4} {hx+36} {hy+55}", stroke=d["hair_highlight"], sw=6)
+        return back, front
+    if style == "voluminous-curls":
+        positions = [(-58,-42,27),(-38,-66,28),(-8,-76,29),(24,-70,30),(52,-48,29),(-62,-12,27),(60,-13,27)]
+        curls = "".join(ellipse(hx+x, hy+y, r, r, d["hair"], INK, 4) for x,y,r in positions)
+        return "", curls
+    if style == "coily-taper":
+        top = "".join(ellipse(hx-43+i*14, hy-ry+5+(i%2)*4, 16, 16, d["hair"], INK, 4) for i in range(7))
+        return "", top + path(f"M{hx-rx+15} {hy-34} Q{hx} {hy-68} {hx+rx-13} {hy-32}", fill=d["hair"], sw=5)
+    if style == "bald":
+        return "", path(f"M{hx-rx*.62} {hy-ry*.57} Q{hx} {hy-ry*.76} {hx+rx*.62} {hy-ry*.57}", stroke=d["skin_light"], sw=4, extra='opacity=".55"')
+    if style == "silver-swept":
+        front = path(
+            f"M{hx-rx+3} {hy-30} Q{hx-30} {hy-ry-28} {hx+rx+4} {hy-37} "
+            f"Q{hx+18} {hy-66} {hx-20} {hy-63} Q{hx-44} {hy-55} {hx-rx+3} {hy-30} Z",
+            fill=d["hair"], sw=6,
+        )
+        front += path(f"M{hx-28} {hy-55} Q{hx+2} {hy-65} {hx+35} {hy-43}", stroke=d["hair_highlight"], sw=5)
+        return "", front
+    if style == "swept-wave":
+        back = path(
+            f"M{hx-rx+2} {hy-27} Q{hx-rx-8} {hy-ry+9} {hx-34} {hy-ry-15} "
+            f"Q{hx+3} {hy-ry-35} {hx+rx+3} {hy-35} L{hx+rx-4} {hy-6} "
+            f"Q{hx+20} {hy-38} {hx-rx+2} {hy-27} Z",
+            fill=d["hair"], sw=6,
+        )
+        front = path(
+            f"M{hx-rx+5} {hy-30} Q{hx-25} {hy-ry-26} {hx+rx+3} {hy-38} "
+            f"Q{hx+13} {hy-65} {hx-20} {hy-63} Q{hx-45} {hy-53} {hx-rx+5} {hy-30} Z",
+            fill=d["hair"], sw=6,
+        )
+        front += path(f"M{hx-30} {hy-54} Q{hx+2} {hy-67} {hx+35} {hy-43}", stroke=d["hair_highlight"], sw=5)
+        return back, front
+    if style == "straight-undercut":
+        return "", path(
+            f"M{hx-rx+5} {hy-23} Q{hx-32} {hy-ry-31} {hx+rx+6} {hy-40} "
+            f"Q{hx+25} {hy-67} {hx-17} {hy-66} Q{hx-48} {hy-55} {hx-rx+5} {hy-23} Z",
+            fill=d["hair"], sw=6,
+        ) + path(f"M{hx-9} {hy-62} Q{hx+22} {hy-58} {hx+44} {hy-39}", stroke=d["hair_highlight"], sw=4)
+    if style == "head-covering":
+        back = path(
+            f"M{hx-rx-15} {hy-35} Q{hx-rx-28} {hy+54} {hx-57} {hy+104} "
+            f"Q{hx} {hy+123} {hx+57} {hy+104} Q{hx+rx+28} {hy+54} {hx+rx+15} {hy-35} Z",
+            fill=d["hair"], sw=7,
+        )
+        front = path(
+            f"M{hx-rx+2} {hy-27} Q{hx} {hy-ry-31} {hx+rx-2} {hy-27} "
+            f"L{hx+rx-10} {hy-3} Q{hx} {hy-30} {hx-rx+10} {hy-3} Z",
+            fill=d["hair"], sw=6,
+        )
+        front += path(f"M{hx-rx-2} {hy-4} Q{hx-rx-8} {hy+45} {hx-40} {hy+87}", stroke=d["hair_highlight"], sw=5)
+        front += path(f"M{hx+rx+2} {hy-4} Q{hx+rx+8} {hy+45} {hx+40} {hy+87}", stroke=d["hair_highlight"], sw=5)
+        front += path(f"M{hx-43} {hy+72} Q{hx} {hy+91} {hx+43} {hy+72}", stroke=d["hair_highlight"], sw=4)
+        return back, front
     if mode == "child":
         back = ellipse(hx-60, hy-60, 41, 43, d["hair"], INK, 6) + ellipse(hx+60, hy-60, 41, 43, d["hair"], INK, 6)
         curls = "".join(ellipse(hx-45+i*15, hy-ry+10+(i%2)*5, 18, 17, d["hair"], INK, 4) for i in range(7))
@@ -281,11 +396,93 @@ def hair_layers(d: dict[str, Any]) -> tuple[str, str]:
     ) + path(f"M{hx-17} {hy-53} Q{hx+5} {hy-49} {hx+28} {hy-35}", stroke="#4B3B35", sw=4)
 
 
+def wave2_profile_hair(d: dict[str, Any], profile_x: float) -> tuple[str, str]:
+    """Return attached back/front hair geometry for authored Wave 2 side views."""
+    _, hy, rx, ry = d["head"]
+    style = d.get("hair_style")
+    hair = d["hair"]
+    highlight = d["hair_highlight"]
+    if style == "bald":
+        return "", path(f"M{profile_x-rx*.35} {hy-ry*.7} Q{profile_x} {hy-ry*.84} {profile_x+rx*.28} {hy-ry*.68}", stroke=d["skin_light"], sw=4, extra='opacity=".55"')
+    if style == "head-covering":
+        back = path(
+            f"M{profile_x-rx*.5} {hy-ry*.62} Q{profile_x-rx*.72} {hy+38} {profile_x-rx*.48} {hy+103} "
+            f"Q{profile_x+12} {hy+116} {profile_x+rx*.46} {hy+77} L{profile_x+rx*.44} {hy-15} Z",
+            fill=hair, sw=7,
+        )
+        front = path(f"M{profile_x-rx*.18} {hy-ry*.72} Q{profile_x+rx*.28} {hy-ry*.86} {profile_x+rx*.48} {hy-19}", stroke=highlight, sw=5)
+        front += path(f"M{profile_x-rx*.36} {hy+45} Q{profile_x-7} {hy+78} {profile_x+rx*.33} {hy+68}", stroke=highlight, sw=4)
+        return back, front
+    if style in {"long-wavy", "shoulder-wave"}:
+        length = 112 if style == "long-wavy" else 76
+        back = path(
+            f"M{profile_x-rx*.46} {hy-ry*.62} Q{profile_x-rx*.72} {hy+20} {profile_x-rx*.48} {hy+length} "
+            f"Q{profile_x+8} {hy+length+13} {profile_x+rx*.4} {hy+length-18} L{profile_x+rx*.42} {hy-14} Z",
+            fill=hair, sw=7,
+        )
+        front = path(f"M{profile_x-rx*.2} {hy-ry*.72} Q{profile_x+rx*.18} {hy-ry*.9} {profile_x+rx*.48} {hy-25}", stroke=highlight, sw=5)
+        return back, front
+    if style == "voluminous-curls":
+        back = "".join(ellipse(profile_x+x, hy+y, r, r, hair, INK, 4) for x, y, r in [(-28,-45,28),(0,-68,30),(28,-50,29),(-32,-12,27)])
+        return back, path(f"M{profile_x-12} {hy-61} Q{profile_x+18} {hy-69} {profile_x+35} {hy-38}", stroke=highlight, sw=4)
+    if style in {"short-loose-curls", "coily-taper"}:
+        cap = "".join(ellipse(profile_x-28+i*14, hy-ry+8+(i%2)*4, 16, 16, hair, INK, 4) for i in range(5))
+        return "", cap
+    # Swept and undercut styles use a compact, attached cap.
+    front = path(
+        f"M{profile_x-rx*.48} {hy-22} Q{profile_x-rx*.25} {hy-ry-25} {profile_x+rx*.44} {hy-35} "
+        f"Q{profile_x+rx*.24} {hy-ry-2} {profile_x-rx*.48} {hy-22} Z",
+        fill=hair, sw=6,
+    )
+    front += path(f"M{profile_x-8} {hy-ry+7} Q{profile_x+18} {hy-ry+8} {profile_x+rx*.34} {hy-39}", stroke=highlight, sw=4)
+    return "", front
+
+
+def wave2_back_hair(d: dict[str, Any]) -> str:
+    """Build a back-view identity silhouette without front-face openings."""
+    hx, hy, rx, ry = d["head"]
+    style = d.get("hair_style")
+    if style == "bald":
+        return ""
+    if style == "head-covering":
+        return path(
+            f"M{hx-rx-15} {hy-34} Q{hx-rx-27} {hy+55} {hx-57} {hy+104} "
+            f"Q{hx-28} {hy+120} {hx} {hy+112} Q{hx+28} {hy+120} {hx+57} {hy+104} "
+            f"Q{hx+rx+27} {hy+55} {hx+rx+15} {hy-34} Z",
+            fill=d["hair"], sw=7,
+        ) + path(f"M{hx} {hy-ry+9} Q{hx-8} {hy+36} {hx} {hy+93}", stroke=d["hair_highlight"], sw=4)
+    if style in {"long-wavy", "shoulder-wave"}:
+        length = 116 if style == "long-wavy" else 79
+        return path(
+            f"M{hx-rx-12} {hy-40} Q{hx-rx-24} {hy+62} {hx-47} {hy+length} "
+            f"Q{hx-24} {hy+length+14} {hx} {hy+length-1} Q{hx+24} {hy+length+14} {hx+47} {hy+length} "
+            f"Q{hx+rx+24} {hy+62} {hx+rx+12} {hy-40} Z",
+            fill=d["hair"], sw=7,
+        ) + path(f"M{hx} {hy-ry+6} Q{hx-10} {hy+26} {hx} {hy+length-9}", stroke=d["hair_highlight"], sw=4)
+    back, front = hair_layers(d)
+    return back + front
+
+
 def standing_legs(d: dict[str, Any]) -> tuple[str, str]:
     mode = d["mode"]
     if mode == "child":
         screen_left = rect(217, 305, 33, 123, 15, d["skin"], INK, 6) + rect(201, 416, 57, 29, 14, d["shoe"], INK, 6) + path("M210 425 L248 425", stroke=d["accent"], sw=5)
         screen_right = rect(262, 305, 33, 123, 15, d["skin"], INK, 6) + rect(255, 416, 57, 29, 14, d["shoe"], INK, 6) + path("M264 425 L302 425", stroke=d["accent"], sw=5)
+        return screen_right, screen_left
+    if d.get("wave2"):
+        x, y, w, h = d["torso"]
+        hip_y = y + h - 8
+        ground = d["ground"]
+        leg_width = d.get("leg_width", max(28, min(42, w * .26)))
+        gap = d.get("leg_gap", max(17, w * .15))
+        left_x = 256-gap-leg_width
+        right_x = 256+gap
+        leg_height = ground-hip_y-18
+        shoe_width = leg_width+24
+        screen_left = rect(left_x, hip_y, leg_width, leg_height, leg_width*.38, d["pants"], INK, 6)
+        screen_left += rect(left_x-12, ground-28, shoe_width, 28, 13, d["shoe"], INK, 6)
+        screen_right = rect(right_x, hip_y, leg_width, leg_height, leg_width*.38, d["pants"], INK, 6)
+        screen_right += rect(right_x-3, ground-28, shoe_width, 28, 13, d["shoe"], INK, 6)
         return screen_right, screen_left
     screen_right = path("M254 303 L301 302 Q305 362 297 442 L260 442 Z", fill=d["pants"], sw=7) + rect(250, 432, 61, 28, 13, d["shoe"], INK, 6)
     if mode == "prosthesis":
@@ -298,6 +495,7 @@ def standing_legs(d: dict[str, Any]) -> tuple[str, str]:
 def torso_layer(d: dict[str, Any]) -> str:
     x, y, w, h = d["torso"]
     mode = d["mode"]
+    clothing_style = d.get("clothing_style")
     if mode == "child":
         shirt = rect(x, y, w, h, 29, d["primary"], INK, 7)
         shirt += path(f"M{x+18} {y+15} Q{x+w/2} {y+34} {x+w-18} {y+15}", stroke="#FFD966", sw=5)
@@ -307,7 +505,22 @@ def torso_layer(d: dict[str, Any]) -> str:
     body = rect(x, y, w, h, 30, d["primary"], INK, 7)
     body += path(f"M{x+18} {y+18} Q{x+w/2} {y+43} {x+w-18} {y+18}", stroke=d["secondary"], sw=8)
     body += path(f"M{x+w*.18} {y+18} Q{x+w*.5} {y+8} {x+w*.82} {y+18}", stroke=d["accent"], sw=5)
-    if mode == "prosthesis":
+    if clothing_style == "hoodie":
+        body += path(f"M{x+w*.27} {y+4} Q{x+w*.5} {y+44} {x+w*.73} {y+4}", stroke=d["secondary"], sw=8)
+        body += rect(x+w*.27, y+h*.58, w*.46, h*.25, 14, d["secondary"], INK, 4)
+    elif clothing_style == "layered-jacket":
+        body += path(f"M{x+w*.5} {y+7} L{x+w*.5} {y+h-8}", stroke=d["secondary"], sw=6)
+        body += path(f"M{x+w*.18} {y+18} L{x+w*.42} {y+58} M{x+w*.82} {y+18} L{x+w*.58} {y+58}", stroke=d["accent"], sw=7)
+    elif clothing_style == "modest-tunic":
+        body += path(f"M{x+18} {y+h*.56} Q{x+w*.5} {y+h*.72} {x+w-18} {y+h*.56}", stroke=d["secondary"], sw=7)
+        body += path(f"M{x+w*.5} {y+10} L{x+w*.5} {y+h-9}", stroke=d["accent"], sw=4)
+    elif clothing_style == "graphic-tee":
+        body += ellipse(x+w*.5, y+h*.48, 22, 22, d["secondary"], INK, 4)
+        body += path(f"M{x+w*.5-11} {y+h*.48} L{x+w*.5+11} {y+h*.48}", stroke=d["accent"], sw=5)
+    elif clothing_style == "cardigan":
+        body += path(f"M{x+w*.33} {y+10} L{x+w*.33} {y+h-10} M{x+w*.67} {y+10} L{x+w*.67} {y+h-10}", stroke=d["secondary"], sw=6)
+        body += path(f"M{x+w*.33} {y+11} L{x+w*.5} {y+47} L{x+w*.67} {y+11}", stroke=d["accent"], sw=5)
+    elif mode == "prosthesis":
         body += path(f"M{x+14} {y+12} L{x+32} {y+h-12} M{x+w-14} {y+12} L{x+w-32} {y+h-12}", stroke=d["secondary"], sw=8)
         body += path(f"M{x+w/2} {y+8} L{x+w/2} {y+h-8}", stroke=d["accent"], sw=4)
     elif mode == "hearing-aid":
@@ -335,7 +548,17 @@ def arm(d: dict[str, Any], side: str, pose: str) -> str:
     sy = y+34
     direction = 1 if side == "left" else -1
     raised = pose in {"greeting", "farewell", "surprise", "celebration"}
-    if pose == "greeting" and side == "right":
+    if d.get("device") == "white-cane.orientation" and side == "right":
+        # The character-right hand owns the cane for every semantic pose.
+        # Keeping it stable prevents a wave or celebration from detaching the
+        # hand from the grip while the free hand remains expressive.
+        elbow = (sx+direction*28, sy+70)
+        hand = (sx+direction*22, sy+120)
+        raised = False
+    elif d.get("device") == "white-cane.orientation" and pose == "greeting" and side == "left":
+        elbow = (sx+direction*36, sy-32)
+        hand = (sx+direction*48, sy-90)
+    elif pose == "greeting" and side == "right":
         elbow = (sx+direction*36, sy-32)
         hand = (sx+direction*48, sy-90)
     elif pose == "farewell" and side == "left":
@@ -458,6 +681,25 @@ def hearing_aid_layers(d: dict[str, Any]) -> dict[str, str]:
     }
 
 
+def white_cane_layers(d: dict[str, Any]) -> dict[str, str]:
+    x, y, _, h = d["torso"]
+    grip_x = x - 14
+    grip_y = y + h + 35
+    tip_x = grip_x + 66
+    tip_y = d["ground"] - 2
+    return {
+        "device-white-cane-grip": rect(grip_x-8, grip_y-17, 16, 34, 8, "#263451", INK, 4),
+        "device-white-cane-shaft": path(
+            f"M{grip_x} {grip_y+10} L{tip_x} {tip_y-13}", stroke=INK, sw=15
+        ) + path(
+            f"M{grip_x} {grip_y+10} L{tip_x} {tip_y-13}", stroke="#F6F4EA", sw=9
+        ) + path(
+            f"M{tip_x-16} {tip_y-48} L{tip_x} {tip_y-13}", stroke=INK, sw=15
+        ) + path(f"M{tip_x-16} {tip_y-48} L{tip_x} {tip_y-13}", stroke="#E85D68", sw=9),
+        "device-white-cane-tip": ellipse(tip_x, tip_y, 10, 7, "#303944", INK, 4),
+    }
+
+
 def build_layers(d: dict[str, Any]) -> dict[str, str]:
     mode = d["mode"]
     layers: dict[str, str] = {layer_id: "" for layer_id in LAYER_ORDER}
@@ -492,6 +734,8 @@ def build_layers(d: dict[str, Any]) -> dict[str, str]:
         layers.update(hearing_aid_layers(d))
     if mode == "prosthesis":
         layers.update(prosthesis_layers(d))
+    if d["device"] == "white-cane.orientation":
+        layers.update(white_cane_layers(d))
     return layers
 
 
@@ -542,7 +786,8 @@ def turnaround_content(d: dict[str, Any], layers: dict[str, str], view: str) -> 
         body = "".join(layers[layer_id] for layer_id in body_ids if layers.get(layer_id))
         face_x = hx + 13
         head = ellipse(face_x, hy, rx*.9, ry, d["skin"], INK, 7)
-        hair = f'<g transform="translate(13 0) scale(.92 1)">{layers["hair-front"]}</g>'
+        hair_translate = face_x - hx*.92 if d.get("wave2") else 13
+        hair = f'<g transform="translate({hair_translate:.2f} 0) scale(.92 1)">{layers["hair-front"]}</g>'
         face = "".join([
             ellipse(face_x-15, hy+4, 9, 12, WHITE, INK, 4),
             ellipse(face_x+24, hy+4, 7, 10, WHITE, INK, 4),
@@ -562,7 +807,11 @@ def turnaround_content(d: dict[str, Any], layers: dict[str, str], view: str) -> 
         profile += ellipse(profile_x+rx*.24, hy+4, 4, 6, INK, INK, 0)
         profile += path(f"M{profile_x+rx*.5} {hy+8} q12 8 0 16", stroke=d["skin_light"], sw=5)
         profile += path(f"M{profile_x+2} {hy+37} Q{profile_x+18} {hy+48} {profile_x+31} {hy+34}", sw=5)
-        hair = f'<g transform="translate(2 0) scale(.64 1)">{layers["hair-front"]}</g>'
+        if d.get("wave2"):
+            hair_back, hair_front = wave2_profile_hair(d, profile_x)
+        else:
+            hair_back = ""
+            hair_front = f'<g transform="translate(2 0) scale(.64 1)">{layers["hair-front"]}</g>'
         if d["mode"] == "wheelchair":
             lower = ellipse(254, 394, 76, 76, "none", INK, 12) + ellipse(254, 394, 60, 60, "none", "#7F8992", 5)
             lower += path("M220 292 L230 379 L308 379 L318 306 M233 322 L215 450", stroke="#434B52", sw=10)
@@ -574,7 +823,15 @@ def turnaround_content(d: dict[str, Any], layers: dict[str, str], view: str) -> 
                 lower += path("M290 300 L310 451 M290 300 L350 300", stroke="#5A3470", sw=10)
                 lower += ellipse(312, 451, 18, 18, "#252A30", INK, 5) + ellipse(342, 438, 12, 12, "#414850", INK, 4)
         arm_side = path(f"M{profile_x} {y+35} Q{profile_x+35} {y+95} {profile_x+20} {y+150}", stroke=d["skin"], sw=20)
-        return shadow + lower + body + arm_side + head + hair + profile
+        cane_side = ""
+        if d.get("device") == "white-cane.orientation":
+            grip_x, grip_y = profile_x+20, y+150
+            tip_x, tip_y = profile_x+69, d["ground"]-1
+            cane_side = rect(grip_x-7, grip_y-15, 14, 30, 7, "#263451", INK, 4)
+            cane_side += path(f"M{grip_x} {grip_y+9} L{tip_x} {tip_y-12}", stroke="#F6F4EA", sw=10)
+            cane_side += path(f"M{tip_x-12} {tip_y-42} L{tip_x} {tip_y-12}", stroke="#E85D68", sw=10)
+            cane_side += ellipse(tip_x, tip_y, 9, 6, "#303944", INK, 4)
+        return shadow + lower + body + arm_side + cane_side + hair_back + head + hair_front + profile
     if view == "back":
         if d["mode"] == "wheelchair":
             lower = devices + layers["leg-left"] + layers["leg-right"]
@@ -583,8 +840,11 @@ def turnaround_content(d: dict[str, Any], layers: dict[str, str], view: str) -> 
         back_torso = rect(x, y, w, h, 30, d["primary"], INK, 7)
         back_torso += path(f"M{x+18} {y+22} Q{x+w/2} {y+38} {x+w-18} {y+22}", stroke=d["secondary"], sw=8)
         back_head = ellipse(hx, hy, rx, ry, d["skin"], INK, 7)
-        hair_back, hair_front = hair_layers(d)
-        hair = hair_back + hair_front
+        if d.get("wave2"):
+            hair = wave2_back_hair(d)
+        else:
+            hair_back, hair_front = hair_layers(d)
+            hair = hair_back + hair_front
         arms = arm(d, "left", "rest") + arm(d, "right", "rest")
         return shadow + lower + arms + back_torso + back_head + hair
     raise ValueError(f"unknown turnaround view: {view}")
@@ -598,6 +858,7 @@ LAYER_ORDER = [
     *[f"face-{expression}" for expression in EXPRESSIONS if expression != "happy"],
     *[f"arm-{side}-{pose}" for pose in POSES for side in ("left", "right")],
     "device-wheelchair-footrest",
+    "device-white-cane-grip", "device-white-cane-shaft", "device-white-cane-tip",
     "device-hearing-case-right", "device-hearing-tube-right", "device-hearing-earpiece-right",
     "device-rollator-frame", "device-rollator-handle-left", "device-rollator-handle-right",
     "device-rollator-wheel-rear-left", "device-rollator-wheel-rear-right",
@@ -606,6 +867,11 @@ LAYER_ORDER = [
 
 DEVICE_BINDINGS: dict[str, dict[str, str]] = {
     "device.none": {},
+    "white-cane.orientation": {
+        "grip": "device-white-cane-grip",
+        "shaft": "device-white-cane-shaft",
+        "tip": "device-white-cane-tip",
+    },
     "prosthesis.lower-leg.right": {
         "socket.right": "device-prosthesis-socket-right",
         "pylon.right": "device-prosthesis-pylon-right",
@@ -660,6 +926,8 @@ def pivots(d: dict[str, Any]) -> dict[str, dict[str, float]]:
         "ankle_right": {"x": 232, "y": foot_y-20}, "foot_left": {"x": 280, "y": foot_y},
         "foot_right": {"x": 232, "y": foot_y}, "device": {"x": 256, "y": d["ground"]},
     }
+    if d["device"] == "white-cane.orientation":
+        points["device_cane_grip"] = {"x": x-14, "y": y+h+35}
     if d["mode"] == "wheelchair":
         points.update({
             "device_wheel_left": {"x": 376, "y": 398},
@@ -712,6 +980,12 @@ def pack_document(master_id: str, d: dict[str, Any], layers: dict[str, str], lod
             item.update({"parent": "device-prosthesis-pylon-right", "pivot": "foot_right"})
         elif layer_id.startswith("device-hearing-"):
             item.update({"parent": "head", "pivot": "ear_right"})
+        elif layer_id == "device-white-cane-grip":
+            item.update({"parent": "torso", "pivot": "device_cane_grip"})
+        elif layer_id == "device-white-cane-shaft":
+            item.update({"parent": "device-white-cane-grip", "pivot": "device_cane_grip"})
+        elif layer_id == "device-white-cane-tip":
+            item.update({"parent": "device-white-cane-shaft", "pivot": "device_cane_grip"})
         elif layer_id.startswith("arm"):
             item.update({"parent": "torso", "pivot": "shoulder_left" if "left" in layer_id else "shoulder_right"})
         elif layer_id.startswith("leg"):
@@ -739,6 +1013,8 @@ def pack_document(master_id: str, d: dict[str, Any], layers: dict[str, str], lod
         elif layer_id.startswith("device-prosthesis") or layer_id == "device-prosthetic-foot-right":
             item["depth"] = 0.0
         elif layer_id.startswith("device-hearing-"):
+            item["depth"] = 0.0
+        elif layer_id.startswith("device-white-cane-"):
             item["depth"] = 0.0
         elif layer_id == "device-wheelchair-frame":
             item["depth"] = .18
@@ -799,6 +1075,19 @@ def loop_track(target: str, property_name: str, middle: float) -> dict[str, Any]
 
 
 def device_motion_tracks(master_id: str) -> list[dict[str, Any]]:
+    if master_id == "H05":
+        return [
+            {
+                "target": "device-white-cane-grip",
+                "property": "rotation_degrees",
+                "keyframes": [
+                    {"at_ms": 0, "value": -12, "easing": "ease_in_out"},
+                    {"at_ms": 200, "value": -28, "easing": "ease_in_out"},
+                    {"at_ms": 600, "value": -12, "easing": "ease_in_out"},
+                    {"at_ms": 800, "value": -12},
+                ],
+            },
+        ]
     if master_id == "H04":
         return [
             loop_track("torso", "translate_y", -12),
@@ -855,15 +1144,32 @@ def generate_master(root: Path, master_id: str, d: dict[str, Any]) -> dict[str, 
     target = root / master_id
     layers = build_layers(d)
     lod_layers = build_lod100_layers(d)
+    status = str(d.get("status", VECTOR_STATUS))
+    production_use = str(d.get("production_use", PRODUCTION_USE))
     identity = {
         "schema_version": 1, "character_id": master_id, "family_id": "human-character-library-canonical-family",
-        "family_version": 1, "status": VECTOR_STATUS, "identity_direction": d["identity"],
+        "family_version": 1, "status": status, "identity_direction": d["identity"],
         "device_profile": d["device"], "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
-        "production_use": PRODUCTION_USE,
-        "vector_parity_approval": {"date": "2026-07-15", "authority": "project-owner", "decision": "approved"},
+        "production_use": production_use,
         "palette": {"skin": d["skin"], "skin_light": d["skin_light"], "hair": d["hair"], "primary": d["primary"], "secondary": d["secondary"], "accent": d["accent"], "outline": INK},
         "provenance": {"creator": "MascotRender project", "license": "MIT", "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"},
     }
+    if status in {VECTOR_STATUS, "owner-vector-identity-approved"}:
+        identity["vector_parity_approval"] = {
+            "date": "2026-07-16" if d.get("wave2") else "2026-07-15",
+            "authority": "project-owner",
+            "decision": "approved",
+            "scope": "owner-identity-cohort-gate" if d.get("wave2") else "canonical-vector-parity",
+        }
+    else:
+        identity["review_gate"] = {
+            "decision": "pending-owner-identity-review",
+            "production_use": "forbidden-until-all-production-gates",
+        }
+    if "representation" in d:
+        identity["representation"] = d["representation"]
+    if "authored_demographics" in d:
+        identity["authored_demographics"] = d["authored_demographics"]
     if "hair_intent" in d:
         identity["hair_intent"] = d["hair_intent"]
         identity["head_covering"] = d["head_covering"]
@@ -1015,8 +1321,8 @@ def generate_master(root: Path, master_id: str, d: dict[str, Any]) -> dict[str, 
             "animation": {"duration_ms": 800, "fps": 8, "loop": "loop", "tracks": tracks},
         })
     manifest = {
-        "schema_version": 1, "master_id": master_id, "status": VECTOR_STATUS,
-        "production_use": PRODUCTION_USE, "master_svg": "master.svg", "master_sha256": sha(target / "master.svg"),
+        "schema_version": 1, "master_id": master_id, "status": status,
+        "production_use": production_use, "master_svg": "master.svg", "master_sha256": sha(target / "master.svg"),
         "layer_count": len(layer_manifest), "layers": layer_manifest,
         "lod_layer_count": len(lod_manifest), "lod_layers": lod_manifest,
         "production_expression_count": len(EXPRESSIONS), "production_pose_count": len(POSES),

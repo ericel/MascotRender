@@ -127,6 +127,12 @@ The normative machine-readable files are
 - `text_clearance` optionally expands selected-layer collision bounds by 0 to
   128 canvas units before placement scoring. Expansion is clipped to the
   canvas.
+- `caption_validation` optionally declares a production caption gate. When
+  character or assistive-device overlap is forbidden, intersecting candidate
+  slots are rejected. Collision is evaluated against the union of every
+  selected semantic layer's transformed bounds across the sampled animation,
+  including authored devices. The contract also records canvas margin, line
+  limits, and required 80/96/100px review sizes.
 - A layer may set `screen_space: true` to draw after character-space nodes and
   opt out of mascot transforms and depth parallax. Screen-space layers cannot
   declare a parent. Use this for effects whose pixel size must not change with
@@ -225,6 +231,13 @@ offsets. Captions and screen-space effects do not scale. Selected-layer
 collision bounds receive the same camera transform before automatic text
 placement, so close-ups cannot silently invalidate caption safety.
 
+Optional `intent`, `pose_implementation`, `audience_class`, and
+`accessible_description` fields keep meaning distinct from physical reuse. An
+affection recipe may temporarily use a gratitude pose implementation, for
+example, but its intent and accessible description must remain affection. This
+compatibility is authored data; the engine does not infer a user's age or
+demographic identity.
+
 ## Text behavior in 0.1
 
 The engine loads only the exact pack-declared static TTF. Platform font lookup
@@ -249,7 +262,10 @@ libwebp's animated WebP encoder. `duration_ms` is 100 through 10000, `fps` is 1
 through 30, and the combination is limited to 2 through 300 logical frames.
 Supported loop policies are `once`, `loop`, `ping_pong`, and
 `hold_last_frame`. The first procedural overlays are `body_bounce` and
-`text_pop`; unknown or duplicate overlays fail with a JSON-path diagnostic.
+`text_pop`, `text_pulse`, `text_wobble`, and `text_float`; unknown or duplicate
+overlays fail with a JSON-path diagnostic. A sticker may select only one caption
+motion. All caption motions run in the shared screen-space compositor, so the
+same authored animation applies to 2D, layered 2.5D, and GLB output.
 
 An animation may instead, or additionally, contain typed `tracks`. Node targets
 name a selected layer and support `translate_x`, `translate_y`, `scale_x`,
@@ -276,6 +292,22 @@ exceed the 256 MiB safety ceiling.
 uses that path for thumbnails. libwebp may merge identical resting frames, so
 the encoded frame count can be lower than the logical sample count without
 changing duration or playback.
+
+## Derived small-display profiles
+
+The canonical pack output is not resized directly for compact UI tiles. A
+derived display profile may independently reframe the character/device layer
+and the screen-space caption while preserving their complete animation. Each
+component receives one fixed transform for the entire loop; frame-by-frame
+auto-zoom is forbidden because it produces visible pumping.
+
+Small-display validation uses the union of visible bounds across the animation
+for minimum combined occupancy. Every individual frame must remain under the
+maximum occupancy, inside its canvas margin, free of caption/character/device
+intersection, and above the profile's character-height threshold. A
+width-limited assistive device may satisfy the size gate by width. If a side
+caption's rendered glyphs would be under the profile's readable-height floor,
+the compositor selects a safe top or bottom slot instead.
 
 ## Deterministic variation
 

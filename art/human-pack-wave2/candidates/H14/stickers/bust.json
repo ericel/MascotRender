@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h14-bust",
+  "pack_id": "human-canonical-h14",
+  "alt_text": "H14 canonical human master in bust framing",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "bust",
+    "target": "bust_center",
+    "zoom": 1.22,
+    "offset_x": 0,
+    "offset_y": 40
+  }
+}

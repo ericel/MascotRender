@@ -51,6 +51,7 @@ struct SceneLayer {
   float depth{};
   bool screen_space{};
   std::int32_t z{};
+  std::optional<Rect> collision_bounds;
 };
 
 struct TextBlock {
@@ -59,6 +60,7 @@ struct TextBlock {
   std::vector<Rect> candidate_areas;
   std::vector<Rect> avoid_regions;
   bool auto_placement{};
+  bool strict_collision{};
   float min_font_size{};
   float max_font_size{};
   std::uint32_t max_lines{};
@@ -68,6 +70,8 @@ struct TextBlock {
 };
 
 enum class AnimationLoop { once, loop, ping_pong, hold_last_frame };
+
+enum class TextMotion { none, pop, pulse, wobble, float_motion };
 
 enum class AnimationProperty {
   translate_x,
@@ -99,7 +103,7 @@ struct AnimationSpec {
   std::uint32_t fps{};
   AnimationLoop loop{AnimationLoop::once};
   bool body_bounce{};
-  bool text_pop{};
+  TextMotion text_motion{TextMotion::none};
   std::vector<AnimationTrack> tracks;
 };
 
@@ -118,6 +122,9 @@ struct FrameState {
   float mascot_scale{1.0F};
   float text_scale{1.0F};
   float text_opacity{1.0F};
+  float text_translate_x{};
+  float text_translate_y{};
+  float text_rotation_degrees{};
   float view_offset_x{};
   float view_offset_y{};
   std::vector<NodeFrameState> nodes;

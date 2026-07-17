@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "expansion_id": "human-canonical-expansion-wave2",
+  "family_id": "human-character-library-canonical-family",
+  "status": "owner-identity-cohort-approved",
+  "production_use": "forbidden-until-all-production-gates",
+  "objective": "Add ten coherent authored human identities and balance the canonical library without palette swaps, demographic geometry inference, or unequal backend quality.",
+  "library_scale": {
+    "currently_approved_identities": 5,
+    "new_identity_count": 10,
+    "identity_count_after_wave": 15,
+    "current_chat_phrase_count": 41,
+    "human_sticker_count_after_wave": 615
+  },
+  "editorial_rules": [
+    "Heritage and cultural metadata never select facial or body geometry.",
+    "Every face, silhouette, hair or covering, body, garment, accessory, and device combination is authored as one coherent identity.",
+    "No member may be a recolor, costume swap, or device swap of an existing member.",
+    "Minor-coded H02 and H03 require explicit owner approval before public release.",
+    "Assistive devices are functional rig components and require device-specific review.",
+    "All members receive equal expression, motion, framing, 2.5D, and GLB quality.",
+    "Suggestion balancing rotates authored identities uniformly and never predicts a user's race or ethnicity."
+  ],
+  "planned_members": [
+    {
+      "id": "H02",
+      "life_stage": "pre-teen",
+      "body_direction": "pre-teen-average",
+      "heritage_context": ["Latino"],
+      "identity_direction": "Latino pre-teen boy with warm medium complexion, short loose curls, and an energetic hoodie silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H03",
+      "life_stage": "teen",
+      "body_direction": "teen-slim",
+      "heritage_context": ["South Asian"],
+      "identity_direction": "South Asian teen girl with medium warm complexion, long wavy hair, and a contemporary layered outfit",
+      "gender_presentation": "feminine",
+      "device_requirements": []
+    },
+    {
+      "id": "H05",
+      "life_stage": "young-adult",
+      "body_direction": "adult-slim",
+      "heritage_context": ["White"],
+      "identity_direction": "White young adult man with light cool complexion, swept auburn hair, and an orientation white cane integrated into the rig",
+      "gender_presentation": "masculine",
+      "device_requirements": ["white-cane", "cane-ground-contact", "cane-hand-contact", "orientation-and-mobility-motion-review"]
+    },
+    {
+      "id": "H06",
+      "life_stage": "adult",
+      "body_direction": "adult-curvy",
+      "heritage_context": ["Latina"],
+      "identity_direction": "Latina adult woman with medium olive complexion, short voluminous curls, and a strong rounded silhouette",
+      "gender_presentation": "feminine",
+      "device_requirements": []
+    },
+    {
+      "id": "H08",
+      "life_stage": "adult",
+      "body_direction": "adult-average",
+      "heritage_context": ["Middle Eastern"],
+      "identity_direction": "Middle Eastern adult woman with light-medium olive complexion and an authored modest head covering and tunic",
+      "gender_presentation": "feminine",
+      "device_requirements": [],
+      "cultural_review_requirements": ["head-covering-construction", "modest-garment-motion", "non-stereotyped-presentation"]
+    },
+    {
+      "id": "H09",
+      "life_stage": "young-adult",
+      "body_direction": "adult-plus-size",
+      "heritage_context": ["Mixed heritage"],
+      "identity_direction": "Mixed-heritage young adult with medium-deep neutral complexion, coily tapered hair, and a soft broad androgynous silhouette",
+      "gender_presentation": "androgynous",
+      "device_requirements": []
+    },
+    {
+      "id": "H10",
+      "life_stage": "middle-aged",
+      "body_direction": "adult-stocky",
+      "heritage_context": ["White"],
+      "identity_direction": "White middle-aged man with light warm complexion, bald head, close beard, and a broad stocky silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H11",
+      "life_stage": "senior",
+      "body_direction": "senior-slim",
+      "heritage_context": ["South Asian"],
+      "identity_direction": "South Asian senior man with medium warm complexion, silver swept hair, moustache, glasses, and a tall slim silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H14",
+      "life_stage": "young-adult",
+      "body_direction": "adult-athletic",
+      "heritage_context": ["East Asian"],
+      "identity_direction": "East Asian young adult man with light-medium neutral complexion, a straight undercut, and an athletic bomber-jacket silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H15",
+      "life_stage": "young-adult",
+      "body_direction": "adult-average",
+      "heritage_context": ["Southeast Asian"],
+      "identity_direction": "Southeast Asian young adult woman with warm medium complexion, shoulder-length asymmetrical waves, and a relaxed contemporary cardigan silhouette",
+      "gender_presentation": "feminine",
+      "device_requirements": []
+    }
+  ],
+  "required_production_gates": [
+    "owner-identity-cohort-approval",
+    "original-layered-svg-source",
+    "neutral-front-three-quarter-side-back-turnaround",
+    "seven-expression-parity",
+    "nine-pose-parity",
+    "five-camera-framings",
+    "80-96-100-pixel-readability",
+    "caption-collision-and-layout-variation",
+    "semantic-animation-and-static-fallback",
+    "layered-2.5d-depth-and-parallax",
+    "production-glb-and-cross-backend-identity-parity",
+    "cross-backend-art-direction-parity",
+    "representation-cultural-and-device-review",
+    "owner-production-design-approval",
+    "hash-bound-public-release-activation"
+  ]
+}

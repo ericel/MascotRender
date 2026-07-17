@@ -1,6 +1,6 @@
 # MascotRender Project Status
 
-Updated: 2026-07-15
+Updated: 2026-07-17
 
 ## Current milestone
 
@@ -236,14 +236,24 @@ perfect loop closure. The authoritative result is now
 findings.
 
 Age values are engine capabilities rather than mandatory pack coverage. H01 is
-an explicit approved Human Pack v1 editorial choice. Proposed pre-teen H02 and
-teen H03 are deferred until a separate owner/editorial approval.
+an explicit approved Human Pack v1 editorial choice. On 2026-07-16 the owner
+also explicitly approved the authored pre-teen H02 and teen H03 identities as
+optional Human Pack members; the engine still does not require minor-coded
+characters or infer a user's age.
 
 The draft `.mascot` v1 container specification and deterministic authoring tool
 establish a portable package boundary. Engine loading remains future work; the
 0.1 trusted-directory API is unchanged.
 
 ## Next execution track
+
+The 15-identity × 41-phrase production matrix now has an owner-approved
+small-display system. Its 1,845 derived animated assets use animation-aware
+80/96/100 profiles while the canonical 512×512 assets remain unchanged. The
+owner approved the exact contract and three review-sheet hashes on 2026-07-17:
+100 pixels is the default tray, 96 is compact, and 80 is a stress/compatibility
+floor. The new gate-status record removes small-display occupancy from the
+remaining list.
 
 The H1 human representation fixture foundation is implemented locally: 12 versioned
 appearance contracts, one normalized 15-joint full-body rig, 12 semantic core
@@ -255,11 +265,43 @@ builder verifies every identity/phrase poster and intentionally reports
 `technical-fixture`; these synthetic pilots can never become approved Human
 Pack art merely by passing automated checks.
 
-The next human-content task is owner review of the corrected turnarounds, GLB
-parity, device topology, isolated pose/expression, and dimensional 2.5D sheets.
-Any rejected detail returns to authoring; approval must be bound to the exact
-sheet hashes before catalogue expansion. The phrase Trie continues to map
-triggers to semantic phrase IDs rather than duplicating terminals per mascot.
+The complete Wave 2 technical production candidate is now available at
+`generated/human-wave2-final-production-review`. It contains all ten
+flat/layered/GLB comparisons, true vector/GLB four-view turnarounds, 90 GLB pose
+renders, 70 GLB expression renders, ten native semantic-excited loops and their
+reduced-motion equivalents, and focused H05/H08 specialist packages. Two full
+regenerations produced byte-identical trees. The technical manifest SHA-256 is
+`3052c22f69485f92e5a4f405c5b01bcaa9c51d3a4ef0dce5854f38905b1b0893`.
+
+The project owner approved Wave 2 turnarounds, identity recognition, semantic
+pose/expression parity, and animation/reduced-motion quality on 2026-07-17.
+The first cross-backend art-direction submission failed, and its four approved
+gates remained bound while the GLB silhouette, facial language, outline
+hierarchy, clothing, and device styling were corrected. The phrase Trie
+continues to map triggers to semantic phrase IDs rather than duplicating
+terminals per mascot.
+
+The focused correction is in
+`generated/human-wave2-art-direction-review-v2`. It compares matched rest,
+greeting, and excited semantics; all ten GLBs include depth-safe ink shells,
+age-aware proportions, longer legs, outlined eyes/body/limbs, additional
+clothing detail, and corrected cane ground contact. Two builds produced
+byte-identical trees and all 46 tests pass. The owner approved its four exact
+review-image hashes on 2026-07-17, closing the only reopened visual gate. Its
+review manifest SHA-256 is
+`661bcf566c6b63bb9f7324fb2faa95e6910c127abee7bbd39b7d3fab2db6aa88`.
+
+The project owner then activated H02, H03, H05, H06, H08, H09, H10, H11, H14,
+and H15 for public release. All fifteen canonical human identities are now
+production-eligible with uniform rotation and no demographic inference. The
+authoritative records are
+`human-wave2-cross-backend-art-direction-owner-approval-v1.json`,
+`human-wave2-production-activation-v1.json`, and
+`human-development-matrix-gate-status-v6.json`.
+
+H05 orientation-white-cane and H08 head-covering specialist reviews remain
+visible as non-blocking post-release advisories. No specialist approval is
+claimed. A later qualified review may result in a corrective release.
 The phrase Trie must map triggers to
 semantic phrase IDs rather than multiplying terminals by every mascot.
 

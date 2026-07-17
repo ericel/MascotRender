@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "character_id": "H10",
+  "views": [
+    {
+      "view": "front",
+      "path": "turnarounds/front.svg",
+      "sha256": "f6f48c459f8c5e0777c126c749bef4d52f6d251ef761aa1bcaf32c60b9f3b29f",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "three-quarter",
+      "path": "turnarounds/three-quarter.svg",
+      "sha256": "5f2d22f40a02b660f78c9619172e1f82cc6380d59bf712cfc14b560eae1a93d2",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "side",
+      "path": "turnarounds/side.svg",
+      "sha256": "e09669a26bb954c6556d57120cbee98f023e1803836b11919c7f75e24662d5ee",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    },
+    {
+      "view": "back",
+      "path": "turnarounds/back.svg",
+      "sha256": "b2c802c508acf69b1ca48f643e19d5e2669395f20038e32c1c2d5e725417dccf",
+      "authored_geometry": false,
+      "asset_class": "legacy-synthetic-technical-fixture",
+      "production_use": "forbidden"
+    }
+  ],
+  "same_world_scale": true,
+  "camera_projection": "orthographic-technical-art",
+  "review_disposition": "rejected-for-production; production turnarounds are rendered from hierarchy-preserving authored GLB rotations"
+}

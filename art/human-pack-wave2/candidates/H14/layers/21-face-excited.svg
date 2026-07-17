@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><linearGradient id="softShade" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".24"/><stop offset="1" stop-color="#10243A" stop-opacity=".14"/></linearGradient></defs>
+<ellipse cx="231.92000000000002" cy="108" rx="10" ry="13.5" fill="#FFF8EE" stroke="#162B45" stroke-width="4" />
+<ellipse cx="232.92000000000002" cy="110" rx="4" ry="8.100000000000001" fill="#162B45" stroke="#162B45" stroke-width="0" />
+<ellipse cx="280.08" cy="108" rx="10" ry="13.5" fill="#FFF8EE" stroke="#162B45" stroke-width="4" />
+<ellipse cx="281.08" cy="110" rx="4" ry="8.100000000000001" fill="#162B45" stroke="#162B45" stroke-width="0" />
+<path d="M217.92000000000002 83 Q231.92000000000002 77 245.92000000000002 83" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266.08 83 Q280.08 77 294.08 83" fill="none" stroke="#162B45" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M256 116 q-4 10 5 12" fill="none" stroke="#EAC29E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M229 140 Q256 169 284 138" fill="none" stroke="#162B45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "character_id": "H08",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "public-release-approved",
+  "identity_direction": "Middle Eastern adult woman with light-medium olive complexion and an authored modest head covering and tunic",
+  "device_profile": "device.none",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "public-release",
+  "palette": {
+    "skin": "#C58A62",
+    "skin_light": "#E1AD84",
+    "hair": "#426B4B",
+    "primary": "#6F8A4B",
+    "secondary": "#D7A742",
+    "accent": "#A65A54",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "review_gate": {
+    "decision": "pending-owner-identity-review",
+    "production_use": "forbidden-until-all-production-gates"
+  },
+  "representation": {
+    "heritage_context": [
+      "Middle Eastern"
+    ],
+    "rendering_source": "appearance-only",
+    "review_status": "owner-vector-identity-approved"
+  },
+  "authored_demographics": {
+    "life_stage": "adult",
+    "gender_presentation": "feminine"
+  },
+  "hair_intent": "not-hair: an individually authored everyday draped hijab; never inferred from heritage metadata",
+  "head_covering": {
+    "authored_term": "everyday draped hijab",
+    "undercap": "not-visible",
+    "coverage": [
+      "hair",
+      "ears",
+      "neck",
+      "upper-shoulders"
+    ],
+    "construction": "face opening follows the hairline; two side panels join a rounded shoulder drape with a rear center fold",
+    "material_behavior": "soft opaque fabric with restrained folds; remains attached to the head-and-shoulder rig during motion",
+    "cultural_review_status": "owner-release-accepted-specialist-follow-up-open"
+  }
+}

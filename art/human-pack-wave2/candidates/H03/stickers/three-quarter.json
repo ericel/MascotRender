@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h03-three-quarter",
+  "pack_id": "human-canonical-h03",
+  "alt_text": "H03 canonical human master in three-quarter framing",
+  "expression": "friendly",
+  "pose": "greeting",
+  "seed": 1,
+  "camera": {
+    "framing": "three-quarter",
+    "target": "body_center",
+    "zoom": 1.05,
+    "offset_x": 0,
+    "offset_y": 25
+  }
+}

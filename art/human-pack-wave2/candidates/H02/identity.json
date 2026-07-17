@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "character_id": "H02",
+  "family_id": "human-character-library-canonical-family",
+  "family_version": 1,
+  "status": "public-release-approved",
+  "identity_direction": "Latino pre-teen boy with warm medium complexion, short loose curls, and an energetic hoodie silhouette",
+  "device_profile": "device.none",
+  "concept_reference_sha256": "76ca14b9669995efe6cf61196dc6df794391de8bba81a63e362b06286e5b31b8",
+  "production_use": "public-release",
+  "palette": {
+    "skin": "#B86F45",
+    "skin_light": "#D89164",
+    "hair": "#352019",
+    "primary": "#1F9B92",
+    "secondary": "#F1C34A",
+    "accent": "#F06C62",
+    "outline": "#162B45"
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "original deterministic semantic SVG authored in this repository from project-owner-approved identity direction"
+  },
+  "review_gate": {
+    "decision": "pending-owner-identity-review",
+    "production_use": "forbidden-until-all-production-gates"
+  },
+  "representation": {
+    "heritage_context": [
+      "Latino"
+    ],
+    "rendering_source": "appearance-only",
+    "review_status": "owner-vector-identity-approved"
+  },
+  "authored_demographics": {
+    "life_stage": "pre-teen",
+    "gender_presentation": "masculine"
+  }
+}

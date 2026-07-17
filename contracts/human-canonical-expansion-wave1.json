@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "expansion_id": "human-canonical-expansion-wave1",
+  "family_id": "human-character-library-canonical-family",
+  "status": "planned-authoring",
+  "production_use": "forbidden-until-production-gates",
+  "objective": "Add eight distinct authored identities without palette swaps or demographic-to-geometry inference.",
+  "library_scale": {
+    "currently_approved_identities": 5,
+    "new_identity_count": 8,
+    "identity_count_after_wave": 13,
+    "current_chat_phrase_count": 41,
+    "human_sticker_count_after_wave": 533
+  },
+  "editorial_rules": [
+    "Heritage and cultural metadata never select facial or body geometry.",
+    "Every face, silhouette, hair or covering, body, garment, and accessory combination is authored as one coherent identity.",
+    "No new member may be a recolor, costume swap, or device swap of an existing member.",
+    "Minor-coded H02 and H03 require explicit owner approval before public release.",
+    "Assistive devices are functional rig components and require device-specific review.",
+    "All members receive equal expression, motion, framing, 2.5D, and GLB quality."
+  ],
+  "planned_members": [
+    {
+      "id": "H02",
+      "life_stage": "pre-teen",
+      "body_direction": "pre-teen-average",
+      "identity_direction": "Latino boy with warm medium complexion, short loose curls, and an energetic casual silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H03",
+      "life_stage": "teen",
+      "body_direction": "teen-slim",
+      "identity_direction": "South Asian girl with medium warm complexion, long wavy hair, and a distinct contemporary layered outfit",
+      "gender_presentation": "feminine",
+      "device_requirements": []
+    },
+    {
+      "id": "H05",
+      "life_stage": "young-adult",
+      "body_direction": "adult-slim",
+      "identity_direction": "White man with light cool complexion, short wavy auburn hair, and a distinct narrow facial silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": [
+        "white-cane",
+        "cane-ground-contact",
+        "cane-hand-contact",
+        "orientation-and-mobility-motion-review"
+      ]
+    },
+    {
+      "id": "H06",
+      "life_stage": "adult",
+      "body_direction": "adult-curvy",
+      "identity_direction": "Latina woman with medium olive complexion, short voluminous curls, and a strong rounded silhouette",
+      "gender_presentation": "feminine",
+      "device_requirements": []
+    },
+    {
+      "id": "H08",
+      "life_stage": "adult",
+      "body_direction": "adult-average",
+      "identity_direction": "Middle Eastern woman with light-medium olive complexion and an authored modest head covering and outfit",
+      "gender_presentation": "feminine",
+      "device_requirements": [],
+      "cultural_review_requirements": [
+        "head-covering-construction",
+        "modest-garment-motion",
+        "non-stereotyped-presentation"
+      ]
+    },
+    {
+      "id": "H09",
+      "life_stage": "young-adult",
+      "body_direction": "adult-plus-size",
+      "identity_direction": "Mixed-heritage person with medium-deep neutral complexion, a coily tapered hairstyle, and a distinct soft broad silhouette",
+      "gender_presentation": "androgynous",
+      "device_requirements": []
+    },
+    {
+      "id": "H10",
+      "life_stage": "middle-aged",
+      "body_direction": "adult-broad",
+      "identity_direction": "White man with light warm complexion, a bald head with a close beard, and a broad stocky silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    },
+    {
+      "id": "H11",
+      "life_stage": "senior",
+      "body_direction": "senior-slim",
+      "identity_direction": "South Asian man with medium warm complexion, silver swept hair, glasses, and a tall slim silhouette",
+      "gender_presentation": "masculine",
+      "device_requirements": []
+    }
+  ],
+  "required_production_gates": [
+    "original-layered-svg-source",
+    "neutral-front-three-quarter-side-back-turnaround",
+    "seven-expression-parity",
+    "ten-pose-parity",
+    "five-camera-framings",
+    "80-96-100-pixel-readability",
+    "caption-collision-and-layout-variation",
+    "semantic-animation-and-static-fallback",
+    "layered-2.5d-depth-and-parallax",
+    "production-glb-and-cross-backend-identity-parity",
+    "cross-backend-art-direction-parity",
+    "representation-and-device-review",
+    "owner-design-approval",
+    "hash-bound-public-release-activation"
+  ]
+}

@@ -67,12 +67,17 @@ resolve_caption(const TextBlock &block, float scale_x, float scale_y,
     float score = 0.0F;
     if (block.auto_placement) {
       const auto text_bounds = fitted_bounds(area, *fitted, outline_width);
+      auto collision_overlap = 0.0F;
       for (const auto &avoid : block.avoid_regions) {
         const Rect scaled_avoid{avoid.x * scale_x, avoid.y * scale_y,
                                 avoid.width * scale_x,
                                 avoid.height * scale_y};
-        score += overlap_area(text_bounds, scaled_avoid) * 20.0F;
+        collision_overlap += overlap_area(text_bounds, scaled_avoid);
       }
+      if (block.strict_collision && collision_overlap > 0.01F) {
+        continue;
+      }
+      score += collision_overlap * 20.0F;
       const auto source_font_size = fitted->font_size / scale;
       score += (block.max_font_size - source_font_size) * 10.0F;
       score += static_cast<float>(fitted->lines.size()) * 5.0F;

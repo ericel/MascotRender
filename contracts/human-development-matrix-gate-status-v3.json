@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status_date": "2026-07-17",
+  "supersedes_status": "human-development-matrix-conditional-approval-v2",
+  "production_use": "forbidden-until-all-remaining-production-gates-pass",
+  "closed_gates": {
+    "development-phrase-matrix": "approved",
+    "animation-frame-bound-safety": "approved",
+    "caption-collision-safety": "approved",
+    "semantic-metadata": "approved",
+    "catalogue-and-dictionary-generation": "approved",
+    "small-display-occupancy": "approved"
+  },
+  "small_display_approval": {
+    "contract": "human-small-display-occupancy-v1",
+    "owner_approval": "human-small-display-occupancy-owner-approval-v1"
+  },
+  "remaining_gates": [
+    "H05-cane-specialist-review",
+    "H08-cultural-construction-review",
+    "wave2-turnaround-approval",
+    "production-GLB-identity-and-art-direction-parity",
+    "final-animation-playback-review",
+    "owner-production-approval"
+  ]
+}

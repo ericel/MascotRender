@@ -22,6 +22,13 @@ The font is licensed under SIL Open Font License 1.1. Its complete `OFL.txt`,
 upstream metadata, provenance, and static TTF are stored with the example pack
 and copied into each generated pack.
 
+The sticker display set additionally includes Bangers Regular, Lilita One
+Regular, and Kalam Bold from the Google Fonts repository at revision
+`26c5c976d82d50c24a8f0a7ac455e0a7c639c226`. All four display fonts are
+licensed under SIL Open Font License 1.1. Complete licenses, immutable hashes,
+and provenance are stored under `content/fonts/sticker-display-v1` and copied
+into generated packs that use the set.
+
 Build-only tools such as CMake, Meson, Ninja, and pkgconf are not linked into or
 redistributed by the MascotRender library package. Conan records and distributes
 their licenses with their own packages.

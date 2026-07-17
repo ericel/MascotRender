@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "sticker_id": "h05-thinking-reduced-motion",
+  "pack_id": "human-canonical-h05",
+  "alt_text": "H05 expressing thinking in a concern pose; reduced-motion static presentation",
+  "expression": "thinking",
+  "pose": "concern",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  }
+}

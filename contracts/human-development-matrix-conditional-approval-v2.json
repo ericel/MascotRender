@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-07-17",
+  "decision": "conditional-approval",
+  "approved_scope": [
+    "development-phrase-matrix",
+    "animation-frame-bound-safety",
+    "caption-collision-safety",
+    "semantic-metadata",
+    "catalogue-and-dictionary-generation",
+    "proceed-to-remaining-production-gates"
+  ],
+  "revision_required": {"small-display-occupancy-and-framing": true},
+  "production_use": "forbidden-until-all-production-gates",
+  "remaining_gates": [
+    "H05-cane-specialist-review",
+    "H08-cultural-construction-review",
+    "corrected-turnarounds",
+    "production-GLB-parity",
+    "animation-playback-review",
+    "small-display-occupancy",
+    "owner-production-approval"
+  ]
+}

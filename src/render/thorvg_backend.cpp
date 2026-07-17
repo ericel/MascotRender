@@ -131,20 +131,31 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
 
 [[nodiscard]] bool position_text(tvg::Text &text, float x, float y,
                                  const Rect &area, const FrameState &frame) {
-  if (frame.text_scale == 1.0F) {
-    if (!succeeded(text.translate(x, y))) {
+  if (frame.text_scale == 1.0F && frame.text_rotation_degrees == 0.0F) {
+    if (!succeeded(text.translate(x + frame.text_translate_x,
+                                  y + frame.text_translate_y))) {
       return false;
     }
   } else {
     const auto center_x = area.x + area.width * 0.5F;
     const auto center_y = area.y + area.height * 0.5F;
+    const auto radians = frame.text_rotation_degrees *
+                         3.14159265358979323846F / 180.0F;
+    const auto cosine = std::cos(radians);
+    const auto sine = std::sin(radians);
+    const auto m11 = frame.text_scale * cosine;
+    const auto m12 = -frame.text_scale * sine;
+    const auto m21 = frame.text_scale * sine;
+    const auto m22 = frame.text_scale * cosine;
     const tvg::Matrix transform{
-        frame.text_scale,
-        0.0F,
-        frame.text_scale * x + (1.0F - frame.text_scale) * center_x,
-        0.0F,
-        frame.text_scale,
-        frame.text_scale * y + (1.0F - frame.text_scale) * center_y,
+        m11,
+        m12,
+        m11 * x + m12 * y + center_x - m11 * center_x -
+            m12 * center_y + frame.text_translate_x,
+        m21,
+        m22,
+        m21 * x + m22 * y + center_y - m21 * center_x -
+            m22 * center_y + frame.text_translate_y,
         0.0F,
         0.0F,
         1.0F};

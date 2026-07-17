@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "pack_id": "human-canonical-h09",
+  "expression": "friendly",
+  "pose": "rest",
+  "seed": 1,
+  "camera": {
+    "framing": "full-body",
+    "target": "body_center",
+    "zoom": 0.91,
+    "offset_x": 0,
+    "offset_y": 18
+  },
+  "sticker_id": "h09-depth-motion",
+  "alt_text": "H09 layered depth hop with responsive contact shadow and parallax",
+  "view": {
+    "x": 0,
+    "y": -8
+  },
+  "animation": {
+    "duration_ms": 800,
+    "fps": 8,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "torso",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0
+          },
+          {
+            "at_ms": 400,
+            "value": -16,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "head",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0
+          },
+          {
+            "at_ms": 400,
+            "value": -21,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1
+          },
+          {
+            "at_ms": 400,
+            "value": 0.66,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "$view",
+        "property": "view_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": -18
+          },
+          {
+            "at_ms": 400,
+            "value": 18,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": -18,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

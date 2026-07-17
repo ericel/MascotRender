@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status_date": "2026-07-17",
+  "supersedes_status": "human-development-matrix-gate-status-v5",
+  "owner_decisions": [
+    "human-wave2-owner-production-decision-v1",
+    "human-wave2-cross-backend-art-direction-owner-approval-v1",
+    "human-wave2-production-activation-v1"
+  ],
+  "production_use": "public-release",
+  "closed_owner_gates": {
+    "wave2-neutral-turnarounds": "approved",
+    "cross-backend-identity-parity": "approved",
+    "cross-backend-art-direction-parity": "approved",
+    "glb-semantic-pose-and-expression-parity": "approved",
+    "animation-and-reduced-motion-visual-quality": "approved",
+    "owner-production-activation": "approved"
+  },
+  "art_direction_evidence": {
+    "path": "generated/human-wave2-art-direction-review-v2",
+    "owner_decision": "approved",
+    "deterministic_full_tree_regeneration": "pass"
+  },
+  "non_blocking_follow_up": [
+    "H05-orientation-white-cane-specialist-review",
+    "H08-head-covering-cultural-detail-review"
+  ],
+  "specialist_approval_claimed": false,
+  "runtime_selection": {
+    "eligible_members": 15,
+    "wave2_enabled": true,
+    "uniform_rotation": true,
+    "demographic_inference": false
+  },
+  "remaining_blocking_gates": []
+}

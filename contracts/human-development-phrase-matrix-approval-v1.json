@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-07-16",
+  "decision": "approved",
+  "approved_scope": [
+    "development-phrase-matrix",
+    "15-character-catalogue-generation",
+    "41-phrase-recipe-expansion",
+    "animated-webp-generation",
+    "front-facing-character-identity-stability",
+    "development-catalogue-and-dictionary"
+  ],
+  "review_status": "development-matrix-approved",
+  "production_use": "forbidden-until-production-gates",
+  "matrix": {
+    "identity_count": 15,
+    "phrase_count": 41,
+    "static_combination_count": 615,
+    "animated_webp_count": 615,
+    "canvas": "512x512",
+    "demographic_inference": false
+  },
+  "approved_artifacts": {
+    "generated/human-library-dev-review/15x8-animated-phrase-contact-sheet.png": "e406249da3dbf7b5c96ab67eb158aadfb992b313fd7c2bc9c55fcf8e5978ee20",
+    "generated/human-library-dev-review/animation-review.html": "7c04a54b9f764b85fd2bf79abe3d48dd1f23368171bdae293b4d8b611cab89e1",
+    "generated/human-library-dev-review/review.json": "d3edbd6a872b0d08427ffdea58f9b859d2056fc54c8e477e6353a69d9e693e2f",
+    "generated/wahalao-human-dev-bundle-v6/catalogue.json": "017806e02fef91ebec8ac6b29bc847b7ae7fc6a3444b25fdd6a51e32b72c05a4",
+    "generated/wahalao-human-dev-bundle-v6/dictionary.json": "a6231fb34b8120a43568cea0f51bd37f9c50c61768983bcfaedbbd2f2b543f28",
+    "generated/wahalao-human-dev-bundle-v6/build-report.json": "22181755017a2da78a4e60bb2dadd8684c0a499973b1dd0121e53a693dd0a994"
+  },
+  "newly_explicit_production_gates": {
+    "animation-aware-caption-layout": "pending-correction",
+    "phrase-semantics-and-accessibility-metadata": "pending-correction"
+  },
+  "existing_pending_gates": {
+    "H05-orientation-white-cane-specialist-review": "pending",
+    "H08-head-covering-cultural-detail-review": "pending",
+    "corrected-turnaround-owner-review": "pending",
+    "full-cross-backend-production-parity": "pending",
+    "stratified-real-playback-review": "pending",
+    "public-release-activation": "forbidden"
+  },
+  "release_strategy": "full-multi-backend-parity-required"
+}

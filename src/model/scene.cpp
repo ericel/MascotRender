@@ -1,5 +1,7 @@
 #include "model/scene.hpp"
 
+#include "animation/timeline.hpp"
+
 #include <algorithm>
 #include <charconv>
 #include <cmath>
@@ -118,6 +120,110 @@ struct TextStyle {
     bottom = std::max(bottom, corner.y);
   }
   return Rect{left, top, right - left, bottom - top};
+}
+
+[[nodiscard]] AffineTransform
+animation_transform(const NodeFrameState &state, const Point &pivot) {
+  constexpr float degrees_to_radians = 3.14159265358979323846F / 180.0F;
+  const auto angle = state.rotation_degrees * degrees_to_radians;
+  const auto cosine = std::cos(angle);
+  const auto sine = std::sin(angle);
+  const auto m11 = cosine * state.scale_x;
+  const auto m12 = -sine * state.scale_y;
+  const auto m21 = sine * state.scale_x;
+  const auto m22 = cosine * state.scale_y;
+  return AffineTransform{
+      m11,
+      m12,
+      m21,
+      m22,
+      state.translate_x + pivot.x - m11 * pivot.x - m12 * pivot.y,
+      state.translate_y + pivot.y - m21 * pivot.x - m22 * pivot.y};
+}
+
+[[nodiscard]] Rect union_rect(const Rect &left, const Rect &right) {
+  const auto x = std::min(left.x, right.x);
+  const auto y = std::min(left.y, right.y);
+  const auto far_x = std::max(left.x + left.width, right.x + right.width);
+  const auto far_y = std::max(left.y + left.height, right.y + right.height);
+  return Rect{x, y, far_x - x, far_y - y};
+}
+
+void append_animation_aware_collision_regions(Scene &scene,
+                                              float text_clearance) {
+  std::vector<FrameState> frames;
+  if (scene.animation) {
+    const auto sampled = sample_animation(*scene.animation);
+    frames.reserve(sampled.size());
+    for (const auto &frame : sampled) {
+      frames.push_back(frame.state);
+    }
+  } else {
+    frames.emplace_back();
+  }
+  const auto center_x = static_cast<float>(scene.width) * .5F;
+  const auto center_y = static_cast<float>(scene.height) * .5F;
+  for (const auto &layer : scene.layers) {
+    if (!layer.collision_bounds) {
+      continue;
+    }
+    std::optional<Rect> animated_union;
+    for (const auto &frame : frames) {
+      auto visual_transform = layer.transform;
+      for (auto node = layer.animation_chain.rbegin();
+           node != layer.animation_chain.rend(); ++node) {
+        const auto state = std::find_if(
+            frame.nodes.begin(), frame.nodes.end(),
+            [&node](const auto &item) { return item.target == node->id; });
+        if (state != frame.nodes.end()) {
+          visual_transform = multiply(
+              animation_transform(*state, node->pivot), visual_transform);
+        }
+      }
+      if (!layer.screen_space) {
+        visual_transform.translate_x -=
+            (scene.view_offset_x + frame.view_offset_x) * layer.depth;
+        visual_transform.translate_y -=
+            (scene.view_offset_y + frame.view_offset_y) * layer.depth;
+      }
+      if (!layer.screen_space &&
+          (frame.mascot_scale != 1.0F || frame.mascot_offset_y != 0.0F)) {
+        const AffineTransform mascot_transform{
+            frame.mascot_scale,
+            0.0F,
+            0.0F,
+            frame.mascot_scale,
+            (1.0F - frame.mascot_scale) * center_x,
+            (1.0F - frame.mascot_scale) * center_y + frame.mascot_offset_y};
+        visual_transform = multiply(mascot_transform, visual_transform);
+      }
+      if (!layer.screen_space) {
+        visual_transform = multiply(scene.camera_transform, visual_transform);
+      }
+      const auto bounds = transform_rect(*layer.collision_bounds,
+                                         visual_transform);
+      animated_union = animated_union ? union_rect(*animated_union, bounds)
+                                      : std::optional<Rect>{bounds};
+    }
+    if (!animated_union) {
+      continue;
+    }
+    const auto left = std::max(0.0F, animated_union->x - text_clearance);
+    const auto top = std::max(0.0F, animated_union->y - text_clearance);
+    const auto right = std::min(static_cast<float>(scene.width),
+                                animated_union->x + animated_union->width +
+                                    text_clearance);
+    const auto bottom = std::min(static_cast<float>(scene.height),
+                                 animated_union->y + animated_union->height +
+                                     text_clearance);
+    if (right <= left || bottom <= top) {
+      continue;
+    }
+    const Rect expanded{left, top, right - left, bottom - top};
+    for (auto &text : scene.text) {
+      text.avoid_regions.push_back(expanded);
+    }
+  }
 }
 
 [[nodiscard]] Error document_error(std::string message,
@@ -458,6 +564,21 @@ parse_scene(const Json &pack, const Json &sticker,
             "Text clearance must be finite and between 0 and 128", pack_file,
             "$.text_clearance"));
       }
+    }
+    bool strict_caption_collision = false;
+    if (pack.contains("caption_validation")) {
+      const auto &validation = pack.at("caption_validation");
+      if (!validation.is_object() ||
+          !validation.contains("may_overlap_character") ||
+          !validation.contains("may_overlap_assistive_device") ||
+          !validation.contains("must_remain_inside_canvas_for_every_frame")) {
+        return Result<Scene>::failure(document_error(
+            "caption_validation requires overlap and every-frame policies",
+            pack_file, "$.caption_validation"));
+      }
+      strict_caption_collision =
+          !validation.at("may_overlap_character").get<bool>() ||
+          !validation.at("may_overlap_assistive_device").get<bool>();
     }
 
     std::map<std::string, TextStyle, std::less<>> text_styles;
@@ -846,29 +967,8 @@ parse_scene(const Json &pack, const Json &sticker,
           SceneLayer{layer.id, std::move(layer.source),
                      std::move(layer.lod_sources), layer.world_transform,
                      std::move(animation_chain), layer.world_opacity,
-                     layer.world_depth, layer.screen_space, layer.z});
-      if (layer.collision_bounds) {
-        auto visual_transform = layer.world_transform;
-        if (!layer.screen_space) {
-          visual_transform.translate_x -=
-              scene.view_offset_x * layer.world_depth;
-          visual_transform.translate_y -=
-              scene.view_offset_y * layer.world_depth;
-          visual_transform =
-              multiply(scene.camera_transform, visual_transform);
-        }
-        const auto bounds =
-            transform_rect(*layer.collision_bounds, visual_transform);
-        const auto left = std::max(0.0F, bounds.x - text_clearance);
-        const auto top = std::max(0.0F, bounds.y - text_clearance);
-        const auto right = std::min(static_cast<float>(scene.width),
-                                    bounds.x + bounds.width + text_clearance);
-        const auto bottom = std::min(static_cast<float>(scene.height),
-                                     bounds.y + bounds.height + text_clearance);
-        if (right > left && bottom > top) {
-          avoid_regions.push_back(Rect{left, top, right - left, bottom - top});
-        }
-      }
+                     layer.world_depth, layer.screen_space, layer.z,
+                     layer.collision_bounds});
     }
 
     if (sticker.contains("text")) {
@@ -947,8 +1047,9 @@ parse_scene(const Json &pack, const Json &sticker,
       scene.text.push_back(
           TextBlock{fonts.at(style.font).source, content,
                     std::move(candidate_areas), avoid_regions, auto_placement,
-                    style.min_font_size, style.max_font_size, style.max_lines,
-                    style.fill, style.outline, style.outline_width});
+                    strict_caption_collision, style.min_font_size,
+                    style.max_font_size, style.max_lines, style.fill,
+                    style.outline, style.outline_width});
     }
 
     if (sticker.contains("animation")) {
@@ -987,7 +1088,7 @@ parse_scene(const Json &pack, const Json &sticker,
       }
 
       bool body_bounce = false;
-      bool text_pop = false;
+      TextMotion text_motion = TextMotion::none;
       std::set<std::string, std::less<>> overlays;
       std::size_t index = 0;
       if (configured.contains("overlays")) {
@@ -1003,7 +1104,13 @@ parse_scene(const Json &pack, const Json &sticker,
           if (name == "body_bounce") {
             body_bounce = true;
           } else if (name == "text_pop") {
-            text_pop = true;
+            text_motion = TextMotion::pop;
+          } else if (name == "text_pulse") {
+            text_motion = TextMotion::pulse;
+          } else if (name == "text_wobble") {
+            text_motion = TextMotion::wobble;
+          } else if (name == "text_float") {
+            text_motion = TextMotion::float_motion;
           } else {
             return Result<Scene>::failure(document_error(
                 "Unknown animation overlay: " + name, sticker_file, location));
@@ -1011,10 +1118,18 @@ parse_scene(const Json &pack, const Json &sticker,
           ++index;
         }
       }
-      if (text_pop && scene.text.empty()) {
+      const auto configured_text_motion_count = static_cast<std::size_t>(
+          overlays.contains("text_pop") + overlays.contains("text_pulse") +
+          overlays.contains("text_wobble") + overlays.contains("text_float"));
+      if (configured_text_motion_count > 1U) {
+        return Result<Scene>::failure(document_error(
+            "Animation may select only one caption motion overlay",
+            sticker_file, "$.animation.overlays"));
+      }
+      if (text_motion != TextMotion::none && scene.text.empty()) {
         return Result<Scene>::failure(
-            document_error("text_pop requires sticker text", sticker_file,
-                           "$.animation.overlays"));
+            document_error("Caption motion requires sticker text",
+                           sticker_file, "$.animation.overlays"));
       }
 
       const auto parse_property =
@@ -1175,9 +1290,10 @@ parse_scene(const Json &pack, const Json &sticker,
             "Animation requires at least one overlay or typed track",
             sticker_file, "$.animation"));
       }
-      scene.animation = AnimationSpec{duration_ms, fps,      loop,
-                                      body_bounce, text_pop, std::move(tracks)};
+      scene.animation = AnimationSpec{duration_ms, fps, loop, body_bounce,
+                                      text_motion, std::move(tracks)};
     }
+    append_animation_aware_collision_regions(scene, text_clearance);
     return Result<Scene>::success(std::move(scene));
   } catch (const Json::exception &exception) {
     return Result<Scene>::failure(

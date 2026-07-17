@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "expansion_id": "human-canonical-expansion-wave2",
+  "decision_date": "2026-07-16",
+  "decision": "approved",
+  "review_status": "owner-identity-cohort-approved",
+  "production_use": "forbidden-until-all-production-gates",
+  "approved_members": [
+    "H02",
+    "H03",
+    "H05",
+    "H06",
+    "H08",
+    "H09",
+    "H10",
+    "H11",
+    "H14",
+    "H15"
+  ],
+  "minor_identity_owner_approval": {
+    "H02": "approved",
+    "H03": "approved"
+  },
+  "minor_coded_character_decision": {
+    "H02": {
+      "life_stage": "pre-teen",
+      "decision": "approved",
+      "scope": "optional-authored-human-pack-identity"
+    },
+    "H03": {
+      "life_stage": "teen",
+      "decision": "approved",
+      "scope": "optional-authored-human-pack-identity"
+    },
+    "engine_requirement": false,
+    "demographic_inference": "prohibited"
+  },
+  "approved_scope": [
+    "front-facing-vector-identity",
+    "family-visual-language",
+    "seven-expression-compatibility",
+    "nine-pose-compatibility",
+    "small-size-readability",
+    "identity-cohort-composition"
+  ],
+  "pending_gates": {
+    "H05-orientation-white-cane-review": "pending",
+    "H08-head-covering-cultural-review": "pending",
+    "technical-turnaround-production-review": "pending",
+    "authored-production-glb-parity": "pending",
+    "phrase-life-stage-compatibility": "pending",
+    "owner-production-design-approval": "pending",
+    "public-release-activation": "forbidden"
+  },
+  "approved_artifacts": {
+    "identity-cohort-sheet.png": "490f0e03769cb4633e0451e901dd216758d9dc80c6b16e657d0bd6fe9a3453f2",
+    "expression-sheet.png": "4c8645930f6c413071d7b336cdb5b398c8beac56911bf74fba1c2aeb2739e69b",
+    "pose-sheet.png": "157aa264fec75dde20594b76225ae89036d9a5b4c9bd03c843163b3d050213ea",
+    "small-size-readability-sheet.png": "6a5eb386a625d89e78de3318706d2f2440a7bf5414e7a376cc96bdd0738674a0",
+    "representation-matrix.png": "fc8b97d6dc18720fedce63134c7afb9019f1bfa0f0d7794f12a1987bef5c5689"
+  },
+  "reviewed_but_not_approved": {
+    "turnaround-technical-sheet.png": "a8af6b8717f669374448b55f8dbe3ff2bf22f045e96d4d6c03eea976fc0bd382",
+    "cross-backend-candidate-sheet.png": "c180c9e73863a40b32cd591f4ecc7ee45b325e8e24589d0eba5f6e9624d7e709"
+  }
+}

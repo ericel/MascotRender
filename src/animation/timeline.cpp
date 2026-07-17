@@ -188,6 +188,23 @@ std::vector<TimedFrameState> sample_animation(const AnimationSpec &animation) {
       {0.16F, 1.0F, Easing::linear},
       {0.70F, 1.0F, Easing::linear},
       {1.0F, 0.0F, Easing::linear}};
+  const std::vector<Keyframe> pulsing_text_scale{
+      {0.0F, 1.0F, Easing::ease_out},
+      {0.25F, 1.07F, Easing::ease_out},
+      {0.5F, 1.0F, Easing::ease_out},
+      {0.75F, 1.04F, Easing::ease_out},
+      {1.0F, 1.0F, Easing::linear}};
+  const std::vector<Keyframe> wobbling_text_rotation{
+      {0.0F, 0.0F, Easing::ease_out},
+      {0.2F, -5.0F, Easing::ease_out},
+      {0.4F, 4.0F, Easing::ease_out},
+      {0.6F, -3.0F, Easing::ease_out},
+      {0.8F, 2.0F, Easing::ease_out},
+      {1.0F, 0.0F, Easing::linear}};
+  const std::vector<Keyframe> floating_text_y{
+      {0.0F, 0.0F, Easing::ease_out},
+      {0.5F, -6.0F, Easing::ease_out},
+      {1.0F, 0.0F, Easing::linear}};
 
   std::vector<TimedFrameState> frames;
   frames.reserve(frame_count);
@@ -208,7 +225,7 @@ std::vector<TimedFrameState> sample_animation(const AnimationSpec &animation) {
       state.mascot_offset_y = sample_track(bounce_y, progress, 0.0F);
       state.mascot_scale = sample_track(bounce_scale, progress, 1.0F);
     }
-    if (animation.text_pop) {
+    if (animation.text_motion == TextMotion::pop) {
       const auto &scale_track = animation.loop == AnimationLoop::loop
                                     ? looping_text_scale
                                     : text_scale;
@@ -217,6 +234,13 @@ std::vector<TimedFrameState> sample_animation(const AnimationSpec &animation) {
                                       : text_opacity;
       state.text_scale = sample_track(scale_track, progress, 1.0F);
       state.text_opacity = sample_track(opacity_track, progress, 1.0F);
+    } else if (animation.text_motion == TextMotion::pulse) {
+      state.text_scale = sample_track(pulsing_text_scale, progress, 1.0F);
+    } else if (animation.text_motion == TextMotion::wobble) {
+      state.text_rotation_degrees =
+          sample_track(wobbling_text_rotation, progress, 0.0F);
+    } else if (animation.text_motion == TextMotion::float_motion) {
+      state.text_translate_y = sample_track(floating_text_y, progress, 0.0F);
     }
     const auto timeline_ms =
         progress * static_cast<float>(animation.duration_ms);

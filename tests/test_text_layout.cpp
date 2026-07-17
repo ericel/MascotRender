@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <filesystem>
 #include <optional>
 #include <string>
@@ -78,4 +79,43 @@ TEST_CASE("one collision-aware caption layout resolves for flat and layered scen
           layered_caption->positions.front().x);
   REQUIRE(flat_caption->positions.front().y ==
           layered_caption->positions.front().y);
+}
+
+TEST_CASE("caption avoidance unions collision bounds across animation frames") {
+  const std::filesystem::path source_root{MASCOTRENDER_TEST_SOURCE_DIR};
+  const auto pack = source_root / "examples" / "robot-2_5d";
+  const auto scene = mascotrender::detail::load_scene(
+      pack / "pack.json",
+      pack / "stickers" / "animated-caption-collision-proof.json");
+  REQUIRE(scene);
+  REQUIRE(scene.value().animation);
+  REQUIRE(scene.value().text.size() == 1U);
+  const auto &regions = scene.value().text.front().avoid_regions;
+  REQUIRE(regions.size() >= 3U);
+  REQUIRE(std::any_of(regions.begin(), regions.end(), [](const auto &region) {
+    return region.height >= 300.0F;
+  }));
+}
+
+TEST_CASE("strict caption collision rejects an overlapping preferred slot") {
+  using mascotrender::detail::Color;
+  using mascotrender::detail::Rect;
+  using mascotrender::detail::TextBlock;
+  const TextBlock block{
+      {},
+      "CAPTION",
+      {Rect{0, 0, 100, 40}, Rect{0, 60, 100, 40}},
+      {Rect{0, 0, 100, 40}},
+      true,
+      true,
+      10,
+      20,
+      2,
+      Color{255, 255, 255},
+      Color{0, 0, 0},
+      1};
+  const auto resolved = mascotrender::detail::resolve_caption(
+      block, 1.0F, 1.0F, monospace_measure);
+  REQUIRE(resolved);
+  REQUIRE(resolved->candidate_index == 1U);
 }
