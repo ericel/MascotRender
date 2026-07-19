@@ -18,6 +18,7 @@ from urllib.parse import quote
 
 
 REVIEW_VERSION = 1
+PROTOCOL = "mascotrender-bundle-v1"
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 CRITERIA = (
     ("caption_readability", "Caption is immediately readable at thumbnail size"),
@@ -115,6 +116,11 @@ def verify_bundle(
     report_path = bundle / "build-report.json"
     catalogue = read_json(catalogue_path)
     report = read_json(report_path)
+    for label, document in (("catalogue", catalogue), ("build-report", report)):
+        if document.get("schema_version") != 1 or document.get("protocol") != PROTOCOL:
+            raise ValueError(
+                f"{label} must declare schema_version 1 and protocol {PROTOCOL}"
+            )
     stickers_value = catalogue.get("stickers")
     if not isinstance(stickers_value, list):
         raise ValueError("catalogue.stickers must be an array")
@@ -144,6 +150,7 @@ def verify_bundle(
         pack_ids.add(pack_id)
         require_string(value.get("text"), f"{pack_id}/{sticker_id}.text")
         require_string(value.get("alt_text"), f"{pack_id}/{sticker_id}.alt_text")
+        require_string(value.get("phrase_id"), f"{pack_id}/{sticker_id}.phrase_id")
         require_int(value.get("width"), f"{pack_id}/{sticker_id}.width", 1)
         require_int(value.get("height"), f"{pack_id}/{sticker_id}.height", 1)
 
@@ -176,6 +183,28 @@ def verify_bundle(
             thumbnail_value,
             f"{pack_id}/{sticker_id} thumbnail",
         )
+        reduced_value = value.get("reduced_motion")
+        if not isinstance(reduced_value, dict):
+            raise ValueError(f"{pack_id}/{sticker_id}.reduced_motion must be an object")
+        if reduced_value.get("presentation") != "static-semantic-equivalent":
+            raise ValueError(
+                f"{pack_id}/{sticker_id}.reduced_motion presentation is invalid"
+            )
+        require_int(
+            reduced_value.get("width"),
+            f"{pack_id}/{sticker_id}.reduced_motion.width",
+            1,
+        )
+        require_int(
+            reduced_value.get("height"),
+            f"{pack_id}/{sticker_id}.reduced_motion.height",
+            1,
+        )
+        reduced = checked_file(
+            bundle,
+            reduced_value,
+            f"{pack_id}/{sticker_id} reduced motion",
+        )
         asset_animated = b"ANIM" in asset.read_bytes()
         if asset_animated != animated:
             raise ValueError(
@@ -183,7 +212,15 @@ def verify_bundle(
             )
         if b"ANIM" in thumbnail.read_bytes():
             raise ValueError(f"{pack_id}/{sticker_id} thumbnail must be a static poster")
-        encoded_bytes += asset.stat().st_size + thumbnail.stat().st_size
+        if b"ANIM" in reduced.read_bytes():
+            raise ValueError(
+                f"{pack_id}/{sticker_id} reduced motion must be a static semantic equivalent"
+            )
+        encoded_bytes += (
+            asset.stat().st_size
+            + thumbnail.stat().st_size
+            + reduced.stat().st_size
+        )
         stickers.append(value)
 
     declared_animated = require_int(
@@ -196,7 +233,8 @@ def verify_bundle(
         "pack_count": len(pack_ids),
         "sticker_count": len(stickers),
         "animated_sticker_count": animated_count,
-        "asset_count": len(stickers) * 2,
+        "asset_count": len(stickers) * 3,
+        "reduced_motion_sticker_count": len(stickers),
         "encoded_bytes": encoded_bytes,
     }
     for field, expected in expected_report.items():
@@ -219,7 +257,8 @@ def verify_bundle(
         "pack_count": len(pack_ids),
         "sticker_count": len(stickers),
         "animated_sticker_count": animated_count,
-        "asset_count": len(stickers) * 2,
+        "asset_count": len(stickers) * 3,
+        "reduced_motion_sticker_count": len(stickers),
         "encoded_bytes": encoded_bytes,
         "review_status": "awaiting_design_product_approval",
         "criteria": [

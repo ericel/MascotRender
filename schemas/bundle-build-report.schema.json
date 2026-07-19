@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-build-report-v1.json",
+  "title": "MascotRender source bundle build report",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "protocol",
+    "status",
+    "pack_count",
+    "sticker_count",
+    "animated_sticker_count",
+    "asset_count",
+    "reduced_motion_sticker_count",
+    "encoded_bytes"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "status": { "const": "success" },
+    "pack_count": { "type": "integer", "minimum": 1 },
+    "sticker_count": { "type": "integer", "minimum": 1 },
+    "animated_sticker_count": { "type": "integer", "minimum": 0 },
+    "asset_count": { "type": "integer", "minimum": 3 },
+    "reduced_motion_sticker_count": { "type": "integer", "minimum": 1 },
+    "encoded_bytes": { "type": "integer", "minimum": 1 }
+  }
+}

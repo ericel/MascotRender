@@ -7,8 +7,9 @@ See [Contributing](CONTRIBUTING.md), [Security](SECURITY.md), and the
 
 MascotRender is an open-source, local-first C++20 procedural character
 rendering library and CLI. It compiles structured character packs and semantic
-recipes into deterministic static and animated assets. Wahalao is the flagship
-consumer, not the engine boundary.
+recipes into deterministic static and animated assets. It has no application,
+cloud, CDN, or storage-provider dependency; consuming products remain separate
+integrations.
 
 The project ships a production-ready C++20 engine spanning deterministic 2D,
 layered 2.5D, animation, reduced-motion output, and optional Filament/GLB 3D.
@@ -34,6 +35,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Milestones and initial backlog](docs/MILESTONES.md)
 - [Architecture decisions](docs/DECISIONS.md)
 - [Pack format v1](docs/PACK_FORMAT.md)
+- [Storage-neutral bundle protocol v1](docs/BUNDLE_PROTOCOL.md)
 - [Mascot generation and batch pipeline](docs/CONTENT_PIPELINE.md)
 - [M6 sticker review record](docs/M6_REVIEW.md)
 - [0.1.0 release notes](docs/RELEASE_0.1.0.md)
@@ -92,14 +94,25 @@ python3 tools/build_sticker_review.py \
   --input generated/bundle \
   --expected-count 50 \
   --force
+
+python3 tools/mascot_bundle.py validate \
+  --bundle generated/bundle
+
+python3 tools/mascot_bundle.py stage \
+  --bundle generated/bundle \
+  --output generated/distribution \
+  --channel stable \
+  --force
 ```
 
-The result includes 512 px assets, 256 px thumbnails, a SHA-256 catalogue,
-phrase dictionary, deterministic build report, and a verified review gallery
+The result includes 512 px assets, 256 px thumbnails, explicit static
+reduced-motion equivalents, a SHA-256 catalogue, a semantic phrase dictionary,
+deterministic build report, and a verified review gallery
 at `generated/bundle/review/index.html`. The review directory also contains a
 side-by-side animated playback page at `animation-review.html`, a 50-row CSV
 sign-off checklist, and a machine-readable verification summary. All three
-scripts are installed under `share/mascotrender/tools` by CMake and Conan.
+generation/review scripts plus the bundle validator/stager are installed under
+`share/mascotrender/tools` by CMake and Conan.
 Pull-request CI uploads the complete bundle and gallery as a downloadable
 14-day artifact.
 

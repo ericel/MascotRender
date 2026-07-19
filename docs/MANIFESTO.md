@@ -49,10 +49,10 @@ than application-specific cleanup.
 
 ## Open source should create an ecosystem
 
-MascotRender is independent infrastructure. Wahalao is its flagship consumer,
-not its architectural boundary. Schools, healthcare products, games, digital
-assistants, support tools, and community projects should be able to use the
-same engine with different packs.
+MascotRender is independent infrastructure. No consuming application defines
+its product identity or architectural boundary. Schools, healthcare products,
+games, digital assistants, support tools, and community projects should be
+able to use the same engine with different packs.
 
 The engine, authoring tools, and pack specification should be open and
 inspectable. Character packs remain independently versioned and explicitly

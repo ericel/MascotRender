@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-GENERATOR_VERSION = 6
+GENERATOR_VERSION = 7
 MASK64 = (1 << 64) - 1
 
 
@@ -360,6 +360,7 @@ def sticker_document(
         "schema_version": 1,
         "sticker_id": f"{pack_id}-{slug}",
         "pack_id": pack_id,
+        "phrase_id": f"chat.{slug.replace('-', '.')}",
         "alt_text": f"Generated mascot {mascot_number} saying {content}",
         "expression": expression,
         "pose": pose,
