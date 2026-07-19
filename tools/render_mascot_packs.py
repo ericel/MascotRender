@@ -15,7 +15,7 @@ import tempfile
 from pathlib import Path
 
 
-BUNDLE_VERSION = 2
+BUNDLE_VERSION = 3
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 STOP_WORDS = frozenset({"a", "an", "and", "he", "it", "of", "she", "the", "to"})
 
@@ -65,6 +65,19 @@ def normalize_trigger(content: str) -> str:
             characters.append(" ")
             previous_space = True
     return "".join(characters).strip()
+
+
+def semantic_phrase_id(
+    sticker: dict[str, object],
+    pack_id: str,
+    sticker_id: str,
+) -> str:
+    authored = sticker.get("phrase_id")
+    if isinstance(authored, str) and authored.strip():
+        return authored.strip()
+    prefix = f"{pack_id}-"
+    slug = sticker_id[len(prefix):] if sticker_id.startswith(prefix) else sticker_id
+    return f"chat.{slug.replace('-', '.')}"
 
 
 def check_id(value: object, field: str, source: Path) -> str:
@@ -158,7 +171,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
         raise FileNotFoundError(f"no */pack.json files found under {input_root}")
 
     catalogue: list[dict[str, object]] = []
-    dictionary: dict[str, list[dict[str, str]]] = {}
+    dictionary: dict[str, set[str]] = {}
     for pack_file in pack_files:
         pack = read_json(pack_file)
         pack_id = check_id(pack.get("pack_id"), "pack_id", pack_file)
@@ -189,8 +202,10 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
 
             asset_relative = Path("assets") / pack_id / f"{sticker_id}.webp"
             thumbnail_relative = Path("thumbnails") / pack_id / f"{sticker_id}.webp"
+            reduced_relative = Path("reduced-motion") / pack_id / f"{sticker_id}.webp"
             asset = staging / asset_relative
             thumbnail = staging / thumbnail_relative
+            reduced = staging / reduced_relative
             render_one(
                 executable,
                 pack_file,
@@ -213,9 +228,21 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                 args.lossless,
                 True,
             )
+            render_one(
+                executable,
+                pack_file,
+                sticker_file,
+                reduced,
+                args.width,
+                args.height,
+                args.quality,
+                args.lossless,
+                True,
+            )
 
             animation = sticker.get("animation")
             animation_metadata = animation if isinstance(animation, dict) else None
+            phrase_id = semantic_phrase_id(sticker, pack_id, sticker_id)
 
             trigger = normalize_trigger(content)
             # Two-character chat phrases such as NO and OK are deliberate
@@ -224,9 +251,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
             if trigger and (len(trigger) < 2 or trigger in STOP_WORDS):
                 raise ValueError(f"unsafe trigger {trigger!r} in {sticker_file}")
             if trigger:
-                dictionary.setdefault(trigger, []).append(
-                    {"pack_id": pack_id, "sticker_id": sticker_id}
-                )
+                dictionary.setdefault(trigger, set()).add(phrase_id)
 
             catalogue.append(
                 {
@@ -234,7 +259,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                     "sticker_id": sticker_id,
                     "text": content,
                     "alt_text": sticker.get("alt_text", ""),
-                    "phrase_id": sticker.get("phrase_id"),
+                    "phrase_id": phrase_id,
                     "recipe_id": sticker.get("recipe_id"),
                     "expression": sticker.get("expression"),
                     "pose": sticker.get("pose"),
@@ -255,6 +280,14 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
                         "sha256": sha256_file(thumbnail),
                         "encoded_bytes": thumbnail.stat().st_size,
                     },
+                    "reduced_motion": {
+                        "presentation": "static-semantic-equivalent",
+                        "width": args.width,
+                        "height": args.height,
+                        "path": reduced_relative.as_posix(),
+                        "sha256": sha256_file(reduced),
+                        "encoded_bytes": reduced.stat().st_size,
+                    },
                 }
             )
 
@@ -263,7 +296,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
         {
             "trigger": trigger,
             "match": "unicode-word-boundary",
-            "stickers": sorted(items, key=lambda item: (item["pack_id"], item["sticker_id"])),
+            "phrase_ids": sorted(items),
         }
         for trigger, items in sorted(dictionary.items())
     ]
@@ -271,6 +304,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
         staging / "catalogue.json",
         {
             "schema_version": 1,
+            "protocol": "mascotrender-bundle-v1",
             "bundle_version": BUNDLE_VERSION,
             "source_sha256": source_digest(input_root),
             "sticker_count": len(catalogue),
@@ -284,6 +318,7 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
         staging / "dictionary.json",
         {
             "schema_version": 1,
+            "protocol": "mascotrender-bundle-v1",
             "matching": "casefolded full phrase with Unicode word boundaries",
             "trigger_count": len(ordered_dictionary),
             "entries": ordered_dictionary,
@@ -294,13 +329,15 @@ def build_bundle(args: argparse.Namespace, staging: Path) -> tuple[int, int]:
         staging / "build-report.json",
         {
             "schema_version": 1,
+            "protocol": "mascotrender-bundle-v1",
             "status": "success",
             "pack_count": len(pack_files),
             "sticker_count": len(catalogue),
             "animated_sticker_count": sum(
                 1 for sticker in catalogue if sticker["animated"]
             ),
-            "asset_count": len(catalogue) * 2,
+            "asset_count": len(catalogue) * 3,
+            "reduced_motion_sticker_count": len(catalogue),
             "encoded_bytes": total_bytes,
             "render": {
                 "width": args.width,

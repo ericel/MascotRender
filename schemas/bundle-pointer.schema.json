@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-pointer-v1.json",
+  "title": "MascotRender mutable release-channel pointer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "channel",
+    "bundle_id",
+    "release_path",
+    "release_sha256"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "channel": { "type": "string", "pattern": "^[a-z][a-z0-9._-]*$" },
+    "bundle_id": { "type": "string", "pattern": "^mascotrender-b[1-9][0-9]*-[0-9a-f]{12}$" },
+    "release_path": { "type": "string", "minLength": 1 },
+    "release_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+  }
+}

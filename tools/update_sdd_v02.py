@@ -665,7 +665,8 @@ def main() -> None:
     document.add_heading("Appendix H — Independent Platform and Portable Packages", level=1)
     document.add_paragraph(
         "MascotRender is an independent open-source procedural character rendering "
-        "engine. Wahalao is its flagship consumer rather than its architectural boundary. "
+        "engine. No consuming application defines its product identity or "
+        "architectural boundary. "
         "The stable conceptual input is Character + Semantic Recipe + Camera + Output "
         "Configuration; compilation resolves those inputs to a scene graph and sampled "
         "timeline consumed by vector, layered, or optional GLB backends."

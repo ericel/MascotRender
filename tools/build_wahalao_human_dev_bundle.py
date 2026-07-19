@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Build a local Wahalao bundle with the 15-character human library.
+"""Build a local Wahalao bundle with the production 15-character human library.
 
-This is a development integration artifact, not a public content release.  It
-combines the existing reviewed mascot bundle with the 41-phrase development
-matrix. Foundation identities must remain public-release approved; Wave 2 must
-remain hash-bound to its owner vector approval and is clearly marked as a
-non-public production candidate until its remaining gates pass.
+The bundle combines the existing reviewed mascot pack with the approved
+41-phrase human matrix. Foundation and Wave 2 identities are both bound to
+their public-release owner decisions. Trie entries contain semantic phrase IDs;
+character selection happens after matching and never inspects demographics.
 """
 
 from __future__ import annotations
@@ -29,7 +28,8 @@ FOUNDATION_IDS = ("H01", "H04", "H07", "H12", "H13")
 WAVE2_IDS = ("H02", "H03", "H05", "H06", "H08", "H09", "H10", "H11", "H14", "H15")
 MASTER_IDS = tuple(f"H{index:02d}" for index in range(1, 16))
 CAPTION_LAYOUTS = ("top", "right", "bottom", "left")
-BUNDLE_VERSION = 7
+BUNDLE_VERSION = 8
+PROTOCOL = "mascotrender-bundle-v1"
 MATCHING = "casefolded full phrase with Unicode word boundaries"
 FONT_SET_ROOT = ROOT / "content" / "fonts" / "sticker-display-v1"
 FONT_VOICES = {
@@ -197,14 +197,25 @@ def verify_approved_review(review_root: Path) -> dict[str, Any]:
 
 
 def verify_wave2_owner_approval(review_root: Path) -> dict[str, Any]:
-    decision = read_json(ROOT / "contracts" / "human-canonical-expansion-wave2-owner-approval.json")
-    if decision.get("decision") != "approved" or set(decision.get("approved_members", [])) != set(WAVE2_IDS):
+    identity_decision = read_json(ROOT / "contracts" / "human-canonical-expansion-wave2-owner-approval.json")
+    if identity_decision.get("decision") != "approved" or set(identity_decision.get("approved_members", [])) != set(WAVE2_IDS):
         raise ValueError("Wave 2 owner vector identity approval is incomplete")
-    if decision.get("production_use") != "forbidden-until-all-production-gates":
-        raise ValueError("Wave 2 must remain non-public during the development build")
-    for relative, expected in decision.get("approved_artifacts", {}).items():
+    for relative, expected in identity_decision.get("approved_artifacts", {}).items():
         if sha256_file(review_root / relative) != expected:
             raise ValueError(f"Wave 2 owner-approved artifact changed: {relative}")
+
+    activation = read_json(ROOT / "contracts" / "human-wave2-production-activation-v1.json")
+    if (
+        activation.get("decision") != "approved-for-production-release"
+        or activation.get("production_use") != "public-release"
+        or activation.get("public_release_activation") != "approved"
+        or set(activation.get("approved_members", [])) != set(WAVE2_IDS)
+    ):
+        raise ValueError("Wave 2 production activation is incomplete")
+    production_gates = activation.get("production_gates")
+    if not isinstance(production_gates, dict) or any(value != "approved" for value in production_gates.values()):
+        raise ValueError("Wave 2 production activation contains an open production gate")
+
     eligibility = read_json(ROOT / "content" / "human-phrase-eligibility-v1.json")
     phrases = eligibility.get("phrases")
     if not isinstance(phrases, list) or len(phrases) != len(PHRASES):
@@ -212,7 +223,42 @@ def verify_wave2_owner_approval(review_root: Path) -> dict[str, Any]:
     expected = {f"chat.{phrase_value['slug'].replace('-', '.')}" for phrase_value in PHRASES}
     if {str(value.get("phrase_id")) for value in phrases} != expected:
         raise ValueError("Wave 2 phrase eligibility does not match the development matrix")
-    return decision
+    return {
+        "review_status": identity_decision.get("review_status"),
+        "production_use": activation.get("production_use"),
+        "activation_decision": activation.get("decision"),
+    }
+
+
+def phrase_id(phrase_value: dict[str, Any]) -> str:
+    return f"chat.{str(phrase_value['slug']).replace('-', '.')}"
+
+
+def infer_phrase_id(sticker_id: str) -> str:
+    for phrase_value in sorted(PHRASES, key=lambda value: len(str(value["slug"])), reverse=True):
+        if sticker_id.endswith(f"-{phrase_value['slug']}"):
+            return phrase_id(phrase_value)
+    raise ValueError(f"cannot infer semantic phrase ID for base sticker {sticker_id}")
+
+
+def add_reduced_motion_asset(staging: Path, record: dict[str, Any]) -> None:
+    sticker_id = str(record["sticker_id"])
+    pack_id = str(record["pack_id"])
+    source = staging / str(record["path"])
+    relative = Path("reduced-motion") / pack_id / f"{sticker_id}.webp"
+    destination = staging / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with Image.open(source) as image:
+        image.seek(0)
+        image.convert("RGBA").save(destination, "WEBP", lossless=True, quality=100, method=6)
+    record["reduced_motion"] = {
+        "presentation": "static-semantic-equivalent",
+        "width": 512,
+        "height": 512,
+        "path": relative.as_posix(),
+        "sha256": sha256_file(destination),
+        "encoded_bytes": destination.stat().st_size,
+    }
 
 
 def verify_font_set() -> dict[str, Any]:
@@ -454,7 +500,7 @@ def sticker_document(master_id: str, pack_id: str, phrase: dict[str, Any]) -> di
         "schema_version": 1,
         "sticker_id": f"human-canonical-{master_id.lower()}-{phrase['slug']}",
         "pack_id": pack_id,
-        "phrase_id": f"chat.{phrase['slug'].replace('-', '.')}",
+        "phrase_id": phrase_id(phrase),
         "recipe_id": f"human.{phrase['motion']}",
         "alt_text": f"{master_id} {phrase['accessible_tone']} saying {phrase['text']}",
         "intent": phrase["intent"],
@@ -547,11 +593,31 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     policy_root.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(ROOT / "content" / "human-character-selection-v1.json", policy_root / "human-character-selection-v1.json")
     shutil.copyfile(ROOT / "content" / "human-phrase-eligibility-v1.json", policy_root / "human-phrase-eligibility-v1.json")
-    catalogue = list(base_catalogue.get("stickers", []))
-    entries = {
-        entry["trigger"]: list(entry["stickers"])
-        for entry in base_dictionary.get("entries", [])
-    }
+    catalogue = [dict(item) for item in base_catalogue.get("stickers", [])]
+    catalogue_by_sticker_id: dict[str, dict[str, Any]] = {}
+    for record in catalogue:
+        sticker_id = str(record["sticker_id"])
+        record["phrase_id"] = str(record.get("phrase_id") or infer_phrase_id(sticker_id))
+        record["content_status"] = "public-release"
+        add_reduced_motion_asset(staging, record)
+        catalogue_by_sticker_id[sticker_id] = record
+
+    entries: dict[str, set[str]] = {}
+    for entry in base_dictionary.get("entries", []):
+        trigger = str(entry["trigger"])
+        phrase_ids = entries.setdefault(trigger, set())
+        semantic_ids = entry.get("phrase_ids")
+        if isinstance(semantic_ids, list):
+            phrase_ids.update(str(value) for value in semantic_ids)
+        else:
+            for reference in entry.get("stickers", []):
+                sticker_id = str(reference["sticker_id"])
+                record = catalogue_by_sticker_id.get(sticker_id)
+                if record is None:
+                    raise ValueError(
+                        f"base dictionary references unknown sticker {sticker_id}"
+                    )
+                phrase_ids.add(str(record["phrase_id"]))
 
     authoring_root = staging.parent / f"{staging.name}.human-input"
     try:
@@ -578,10 +644,13 @@ def build(args: argparse.Namespace, staging: Path) -> None:
                 sticker_id = str(sticker["sticker_id"])
                 asset_relative = Path("assets") / pack_id / f"{sticker_id}.webp"
                 thumbnail_relative = Path("thumbnails") / pack_id / f"{sticker_id}.webp"
+                reduced_relative = Path("reduced-motion") / pack_id / f"{sticker_id}.webp"
                 asset = staging / asset_relative
                 thumbnail = staging / thumbnail_relative
+                reduced = staging / reduced_relative
                 render(executable, pack_path, sticker_path, asset, 512, 512, False)
                 render(executable, pack_path, thumbnail_sticker_path, thumbnail, 256, 256, False)
+                render(executable, pack_path, thumbnail_sticker_path, reduced, 512, 512, False)
 
                 animated = isinstance(sticker.get("animation"), dict)
                 catalogue.append({
@@ -617,13 +686,19 @@ def build(args: argparse.Namespace, staging: Path) -> None:
                         "sha256": sha256_file(thumbnail),
                         "encoded_bytes": thumbnail.stat().st_size,
                     },
-                    "content_status": "local-development-test" if master_id in FOUNDATION_IDS else "local-development-wave2-production-candidate",
+                    "reduced_motion": {
+                        "presentation": "static-semantic-equivalent",
+                        "width": 512,
+                        "height": 512,
+                        "path": reduced_relative.as_posix(),
+                        "sha256": sha256_file(reduced),
+                        "encoded_bytes": reduced.stat().st_size,
+                    },
+                    "content_status": "public-release",
                     "approved_identity_source": master_id,
                 })
                 for trigger in phrase["triggers"]:
-                    reference = {"pack_id": pack_id, "sticker_id": sticker_id}
-                    if reference not in entries.setdefault(str(trigger), []):
-                        entries[str(trigger)].append(reference)
+                    entries.setdefault(str(trigger), set()).add(str(sticker["phrase_id"]))
     finally:
         if authoring_root.exists():
             shutil.rmtree(authoring_root)
@@ -633,7 +708,7 @@ def build(args: argparse.Namespace, staging: Path) -> None:
         {
             "trigger": trigger,
             "match": "unicode-word-boundary",
-            "stickers": sorted(items, key=lambda item: (item["pack_id"], item["sticker_id"])),
+            "phrase_ids": sorted(items),
         }
         for trigger, items in sorted(entries.items())
     ]
@@ -643,6 +718,7 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     source_digest.update(json.dumps(PHRASES, sort_keys=True).encode("utf-8"))
     source_digest.update(sha256_file(ROOT / "content" / "human-phrase-eligibility-v1.json").encode("ascii"))
     source_digest.update(sha256_file(ROOT / "contracts" / "human-canonical-expansion-wave2-owner-approval.json").encode("ascii"))
+    source_digest.update(sha256_file(ROOT / "contracts" / "human-wave2-production-activation-v1.json").encode("ascii"))
     source_digest.update(sha256_file(FONT_SET_ROOT / "manifest.json").encode("ascii"))
     generator_sha256 = sha256_file(Path(__file__).resolve())
     source_digest.update(generator_sha256.encode("ascii"))
@@ -650,6 +726,7 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     animated_count = sum(1 for sticker in catalogue if sticker.get("animated") is True)
     write_json(staging / "catalogue.json", {
         "schema_version": 1,
+        "protocol": PROTOCOL,
         "bundle_version": BUNDLE_VERSION,
         "source_sha256": source_digest.hexdigest(),
         "sticker_count": len(catalogue),
@@ -658,10 +735,11 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     })
     write_json(staging / "dictionary.json", {
         "schema_version": 1,
+        "protocol": PROTOCOL,
         "matching": MATCHING,
         "human_selection_policy": "human-uniform-deterministic-rotation-v1",
         "human_selection_policy_path": "content/human-character-selection-v1.json",
-        "human_selection_eligibility_field": "development_eligible",
+        "human_selection_eligibility_field": "production_eligible",
         "demographic_inference": False,
         "trigger_count": len(dictionary_entries),
         "entries": dictionary_entries,
@@ -669,8 +747,9 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     total_bytes = sum(path.stat().st_size for path in staging.rglob("*.webp"))
     write_json(staging / "build-report.json", {
         "schema_version": 1,
+        "protocol": PROTOCOL,
         "status": "success",
-        "content_status": "local-development-test",
+        "content_status": "public-release",
         "base_bundle_version": base_catalogue.get("bundle_version"),
         "bundle_version": BUNDLE_VERSION,
         "pack_count": len({str(item["pack_id"]) for item in catalogue}),
@@ -701,13 +780,16 @@ def build(args: argparse.Namespace, staging: Path) -> None:
         "camera_framings": sorted({str(phrase_value["framing"]) for phrase_value in PHRASES}),
         "sticker_count": len(catalogue),
         "animated_sticker_count": animated_count,
-        "asset_count": len(catalogue) * 2,
+        "asset_count": len(catalogue) * 3,
+        "reduced_motion_sticker_count": len(catalogue),
         "encoded_bytes": total_bytes,
         "human_review_status": review.get("review_status"),
         "human_review_sha256": sha256_file(review_root / "release-review.json"),
         "wave2_vector_review_status": wave2_approval.get("review_status"),
         "wave2_production_use": wave2_approval.get("production_use"),
+        "wave2_activation_decision": wave2_approval.get("activation_decision"),
         "wave2_owner_approval_sha256": sha256_file(ROOT / "contracts" / "human-canonical-expansion-wave2-owner-approval.json"),
+        "wave2_production_activation_sha256": sha256_file(ROOT / "contracts" / "human-wave2-production-activation-v1.json"),
         "phrase_eligibility_sha256": sha256_file(ROOT / "content" / "human-phrase-eligibility-v1.json"),
         "render": {
             "width": 512,

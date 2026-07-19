@@ -44,6 +44,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--generator", type=Path, required=True)
     parser.add_argument("--renderer", type=Path, required=True)
     parser.add_argument("--reviewer", type=Path, required=True)
+    parser.add_argument("--bundle-tool", type=Path, required=True)
     parser.add_argument("--cli", type=Path, required=True)
     parser.add_argument("--font-source", type=Path, required=True)
     return parser.parse_args()
@@ -91,7 +92,7 @@ def main() -> int:
         species_manifest = json.loads(
             (generated_species / "generation-manifest.json").read_text()
         )
-        if species_manifest["generator_version"] != 6:
+        if species_manifest["generator_version"] != 7:
             raise AssertionError("unexpected mascot generator version")
         primary_colors = {
             item["palette"]["primary"] for item in species_manifest["packs"]
@@ -192,6 +193,107 @@ def main() -> int:
         if tree_digest(review_a) != tree_digest(review_b):
             raise AssertionError("same bundle did not produce a byte-identical review")
 
+        release_a = root / "release-a"
+        release_b = root / "release-b"
+        run(
+            [
+                args.python,
+                str(args.bundle_tool),
+                "validate",
+                "--bundle",
+                str(bundle_a),
+            ]
+        )
+        run(
+            [
+                args.python,
+                str(args.bundle_tool),
+                "stage",
+                "--bundle",
+                str(bundle_a),
+                "--output",
+                str(release_a),
+                "--channel",
+                "stable",
+            ]
+        )
+        run(
+            [
+                args.python,
+                str(args.bundle_tool),
+                "stage",
+                "--bundle",
+                str(bundle_a),
+                "--output",
+                str(release_b),
+                "--channel",
+                "stable",
+                "--previous-plan",
+                str(release_a / "publish-plan.json"),
+            ]
+        )
+        publish_plan = json.loads((release_b / "publish-plan.json").read_text())
+        if (
+            publish_plan["upload_count"] != 0
+            or publish_plan["skip_count"] != publish_plan["object_count"]
+        ):
+            raise AssertionError("unchanged content was not skipped by incremental staging")
+        pointer = json.loads((release_b / "channels" / "stable.json").read_text())
+        release = json.loads(
+            (release_b / pointer["release_path"]).read_text()
+        )
+        distributed_catalogue = json.loads(
+            (release_b / release["catalogue"]["path"]).read_text()
+        )
+        if not all(
+            item["path"].startswith("objects/sha256/")
+            and item["thumbnail"]["path"].startswith("objects/sha256/")
+            and item["reduced_motion"]["path"].startswith("objects/sha256/")
+            for item in distributed_catalogue["stickers"]
+        ):
+            raise AssertionError("release catalogue is not content-addressed")
+        pointer_object = next(
+            item
+            for item in publish_plan["objects"]
+            if item["object_key"] == "channels/stable.json"
+        )
+        if pointer_object["cache_control"] != "no-cache,max-age=0,must-revalidate":
+            raise AssertionError("mutable channel pointer has unsafe cache policy")
+        if any(
+            item["cache_control"] != "public,max-age=31536000,immutable"
+            for item in publish_plan["objects"]
+            if item["object_key"] != "channels/stable.json"
+        ):
+            raise AssertionError("immutable release object has unsafe cache policy")
+        dictionary_variant_bundle = root / "bundle-dictionary-variant"
+        shutil.copytree(bundle_a, dictionary_variant_bundle)
+        dictionary_variant = json.loads(
+            (dictionary_variant_bundle / "dictionary.json").read_text()
+        )
+        dictionary_variant["entries"][0]["trigger"] += "-variant"
+        (dictionary_variant_bundle / "dictionary.json").write_text(
+            json.dumps(dictionary_variant, indent=2) + "\n"
+        )
+        release_variant = root / "release-dictionary-variant"
+        run(
+            [
+                args.python,
+                str(args.bundle_tool),
+                "stage",
+                "--bundle",
+                str(dictionary_variant_bundle),
+                "--output",
+                str(release_variant),
+                "--channel",
+                "stable",
+            ]
+        )
+        variant_pointer = json.loads(
+            (release_variant / "channels" / "stable.json").read_text()
+        )
+        if variant_pointer["bundle_id"] == pointer["bundle_id"]:
+            raise AssertionError("dictionary change reused an immutable bundle ID")
+
         manifest = json.loads((generated_a / "generation-manifest.json").read_text())
         catalogue = json.loads((bundle_a / "catalogue.json").read_text())
         dictionary = json.loads((bundle_a / "dictionary.json").read_text())
@@ -205,6 +307,15 @@ def main() -> int:
         corrupted[-1] ^= 0x01
         first_thumbnail.write_bytes(corrupted)
         run_expect_failure(review_base + ["--input", str(corrupt_bundle), "--force"])
+        run_expect_failure(
+            [
+                args.python,
+                str(args.bundle_tool),
+                "validate",
+                "--bundle",
+                str(corrupt_bundle),
+            ]
+        )
         if (
             manifest["pack_count"] != 2
             or manifest["sticker_count"] != 20
@@ -223,10 +334,15 @@ def main() -> int:
         for item in animated:
             asset = bundle_a / item["path"]
             thumbnail = bundle_a / item["thumbnail"]["path"]
+            reduced = bundle_a / item["reduced_motion"]["path"]
             if b"ANIM" not in asset.read_bytes():
                 raise AssertionError(f"animated asset has no ANIM chunk: {asset}")
             if b"ANIM" in thumbnail.read_bytes():
                 raise AssertionError(f"thumbnail must be a static poster: {thumbnail}")
+            if b"ANIM" in reduced.read_bytes():
+                raise AssertionError(
+                    f"reduced-motion output must be static: {reduced}"
+                )
             if item["animation"]["duration_ms"] != 800:
                 raise AssertionError("unexpected animation metadata")
         if any(
@@ -239,8 +355,15 @@ def main() -> int:
             raise AssertionError("unexpected integration-test output dimensions")
         if dictionary["trigger_count"] != 10 or len(dictionary["entries"]) != 10:
             raise AssertionError("unexpected dictionary counts")
+        if any(
+            set(entry) != {"trigger", "match", "phrase_ids"}
+            or not entry["phrase_ids"]
+            for entry in dictionary["entries"]
+        ):
+            raise AssertionError("Trie dictionary terminals are not semantic phrase IDs")
         if (
-            report["asset_count"] != 40
+            report["asset_count"] != 60
+            or report["reduced_motion_sticker_count"] != 20
             or report["animated_sticker_count"] != 8
             or report["status"] != "success"
         ):
@@ -252,7 +375,8 @@ def main() -> int:
             or review_summary["pack_count"] != 2
             or review_summary["sticker_count"] != 20
             or review_summary["animated_sticker_count"] != 8
-            or review_summary["asset_count"] != 40
+            or review_summary["asset_count"] != 60
+            or review_summary["reduced_motion_sticker_count"] != 20
         ):
             raise AssertionError("unexpected review summary")
 
@@ -279,8 +403,8 @@ def main() -> int:
             raise AssertionError("animation review does not contain every animation")
 
         webps = sorted(bundle_a.rglob("*.webp"))
-        if len(webps) != 40:
-            raise AssertionError(f"expected 40 rendered WebPs, got {len(webps)}")
+        if len(webps) != 60:
+            raise AssertionError(f"expected 60 rendered WebPs, got {len(webps)}")
         for webp in webps:
             data = webp.read_bytes()
             if len(data) < 12 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":

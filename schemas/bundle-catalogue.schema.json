@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-catalogue-v1.json",
+  "title": "MascotRender distribution bundle catalogue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "bundle_version",
+    "source_sha256",
+    "sticker_count",
+    "animated_sticker_count",
+    "stickers"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "bundle_version": { "type": "integer", "minimum": 1 },
+    "source_sha256": { "$ref": "#/$defs/sha256" },
+    "sticker_count": { "type": "integer", "minimum": 1 },
+    "animated_sticker_count": { "type": "integer", "minimum": 0 },
+    "stickers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sticker" }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "safePath": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[^\\u0000]+$"
+    },
+    "asset": {
+      "type": "object",
+      "required": ["width", "height", "path", "sha256", "encoded_bytes"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1, "maximum": 4096 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 4096 },
+        "path": { "$ref": "#/$defs/safePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "encoded_bytes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "reducedMotionAsset": {
+      "allOf": [
+        { "$ref": "#/$defs/asset" },
+        {
+          "type": "object",
+          "required": ["presentation"],
+          "properties": {
+            "presentation": { "const": "static-semantic-equivalent" }
+          }
+        }
+      ]
+    },
+    "sticker": {
+      "type": "object",
+      "required": [
+        "pack_id",
+        "sticker_id",
+        "phrase_id",
+        "text",
+        "alt_text",
+        "animated",
+        "media_type",
+        "width",
+        "height",
+        "path",
+        "sha256",
+        "encoded_bytes",
+        "thumbnail",
+        "reduced_motion"
+      ],
+      "properties": {
+        "pack_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "sticker_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "phrase_id": { "type": "string", "pattern": "^[a-z][a-z0-9]*(?:[.][a-z0-9-]+)+$" },
+        "text": { "type": "string" },
+        "alt_text": { "type": "string", "minLength": 1 },
+        "animated": { "type": "boolean" },
+        "media_type": { "const": "image/webp" },
+        "width": { "type": "integer", "minimum": 1, "maximum": 4096 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 4096 },
+        "path": { "$ref": "#/$defs/safePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "encoded_bytes": { "type": "integer", "minimum": 1 },
+        "thumbnail": { "$ref": "#/$defs/asset" },
+        "reduced_motion": { "$ref": "#/$defs/reducedMotionAsset" }
+      }
+    }
+  }
+}

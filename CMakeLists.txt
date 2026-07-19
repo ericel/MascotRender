@@ -200,6 +200,7 @@ install(
         docs/HUMAN_PACK_V1_ART_BRIEF.md
         docs/HUMAN_PACK_PRODUCTION_RECOVERY.md
         docs/MASCOT_PACKAGE_SPEC.md
+        docs/BUNDLE_PROTOCOL.md
         docs/RELEASE_0.1.0.md
         docs/RELEASE_0.2.0.md
         docs/RELEASE_0.3.0.md
@@ -228,6 +229,7 @@ install(
         tools/validate_character_identity.py
         tools/render_mascot_packs.py
         tools/build_sticker_review.py
+        tools/mascot_bundle.py
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/tools"
 )
 

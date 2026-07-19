@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-dictionary-v1.json",
+  "title": "MascotRender semantic trigger dictionary",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "protocol",
+    "matching",
+    "trigger_count",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "matching": { "const": "casefolded full phrase with Unicode word boundaries" },
+    "trigger_count": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["trigger", "match", "phrase_ids"],
+        "properties": {
+          "trigger": { "type": "string", "minLength": 1 },
+          "match": { "const": "unicode-word-boundary" },
+          "phrase_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9]*(?:[.][a-z0-9-]+)+$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

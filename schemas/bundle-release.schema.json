@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-release-v1.json",
+  "title": "MascotRender immutable bundle release",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "bundle_id",
+    "catalogue",
+    "dictionary",
+    "sticker_count",
+    "animated_sticker_count"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "bundle_id": { "type": "string", "pattern": "^mascotrender-b[1-9][0-9]*-[0-9a-f]{12}$" },
+    "catalogue": { "$ref": "#/$defs/document" },
+    "dictionary": { "$ref": "#/$defs/document" },
+    "sticker_count": { "type": "integer", "minimum": 1 },
+    "animated_sticker_count": { "type": "integer", "minimum": 0 }
+  },
+  "$defs": {
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    }
+  }
+}

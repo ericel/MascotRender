@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mascotrender.dev/schema/bundle-publish-plan-v1.json",
+  "title": "MascotRender provider-neutral publish plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "protocol",
+    "bundle_id",
+    "channel",
+    "object_count",
+    "upload_count",
+    "skip_count",
+    "objects"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "protocol": { "const": "mascotrender-bundle-v1" },
+    "bundle_id": { "type": "string", "pattern": "^mascotrender-b[1-9][0-9]*-[0-9a-f]{12}$" },
+    "channel": { "type": "string", "pattern": "^[a-z][a-z0-9._-]*$" },
+    "object_count": { "type": "integer", "minimum": 1 },
+    "upload_count": { "type": "integer", "minimum": 0 },
+    "skip_count": { "type": "integer", "minimum": 0 },
+    "objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "local_path",
+          "object_key",
+          "sha256",
+          "encoded_bytes",
+          "content_type",
+          "cache_control",
+          "action"
+        ],
+        "properties": {
+          "local_path": { "type": "string", "minLength": 1 },
+          "object_key": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "encoded_bytes": { "type": "integer", "minimum": 1 },
+          "content_type": { "type": "string", "minLength": 1 },
+          "cache_control": { "type": "string", "minLength": 1 },
+          "action": { "enum": ["upload", "skip"] }
+        }
+      }
+    }
+  }
+}
