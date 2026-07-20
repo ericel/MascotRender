@@ -65,6 +65,36 @@
     }
   ],
   "text_styles": {
+    "caption-shadow": {
+      "font": "display",
+      "safe_area": { "x": 78, "y": 388, "width": 368, "height": 104 },
+      "min_font_size": 24,
+      "max_font_size": 54,
+      "max_lines": 2,
+      "fill": { "r": 230, "g": 60, "b": 100 }
+    },
+    "shell-caption": {
+      "font": "display",
+      "safe_area": { "x": 72, "y": 382, "width": 368, "height": 104 },
+      "min_font_size": 24,
+      "max_font_size": 54,
+      "max_lines": 2,
+      "fill": { "r": 255, "g": 255, "b": 255 },
+      "outline": {
+        "width": 4,
+        "color": { "r": 30, "g": 37, "b": 58 }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 10,
+        "color": { "r": 230, "g": 60, "b": 100 }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": { "r": 80, "g": 220, "b": 210 }
+      }
+    },
     "caption": {
       "font": "display",
       "safe_area": { "x": 72, "y": 382, "width": 368, "height": 104 },

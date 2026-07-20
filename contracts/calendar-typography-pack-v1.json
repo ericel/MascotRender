@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "contract_id": "calendar-typography-pack-v1",
+  "status": "owner-production-approved",
+  "product_name": "Calendar Pop",
+  "product_type": "typography-first-calendar-sticker-pack",
+  "production_use": "approved-for-public-production",
+  "scope": {
+    "weekday_count": 7,
+    "month_count": 12,
+    "season_count": 4,
+    "sticker_count": 23,
+    "animated_sticker_count": 23,
+    "reduced_motion_sticker_count": 23
+  },
+  "semantic_ids": {
+    "weekdays": [
+      "calendar.weekday.monday",
+      "calendar.weekday.tuesday",
+      "calendar.weekday.wednesday",
+      "calendar.weekday.thursday",
+      "calendar.weekday.friday",
+      "calendar.weekday.saturday",
+      "calendar.weekday.sunday"
+    ],
+    "months": [
+      "calendar.month.january",
+      "calendar.month.february",
+      "calendar.month.march",
+      "calendar.month.april",
+      "calendar.month.may",
+      "calendar.month.june",
+      "calendar.month.july",
+      "calendar.month.august",
+      "calendar.month.september",
+      "calendar.month.october",
+      "calendar.month.november",
+      "calendar.month.december"
+    ],
+    "seasons": [
+      "calendar.season.spring",
+      "calendar.season.summer",
+      "calendar.season.autumn",
+      "calendar.season.winter"
+    ]
+  },
+  "art_direction": {
+    "reference_policy": "reference-establishes-category-and-energy-only",
+    "originality_requirement": "no copied letter construction, palette sequence, pattern, or composition",
+    "typography_is_the_character": true,
+    "licensed_font_source": "content/fonts/sticker-display-v1/manifest.json",
+    "required_visual_system": [
+      "large readable word silhouette",
+      "navy or palette-dark outline",
+      "offset color shadow",
+      "inset highlight pass",
+      "category-specific abstract accents",
+      "transparent background"
+    ],
+    "repetition_policy": {
+      "single_global_font_forbidden": true,
+      "single_global_palette_forbidden": true,
+      "single_global_rotation_forbidden": true,
+      "single_global_motion_forbidden": true
+    },
+    "typography": {
+      "single_read_requirement": true,
+      "front_depth_and_highlight_share_one_fitted_glyph_layout": true,
+      "depth_layer_is_masked_by_foreground": true,
+      "highlight_layer_is_masked_by_foreground": true,
+      "maximum_depth_offset_em": {
+        "80": 0.02,
+        "100": 0.035,
+        "160": 0.06,
+        "512": 0.09
+      },
+      "maximum_visible_depth_area_ratio": 0.14,
+      "independent_depth_outline": false,
+      "independently_scaled_duplicate_word_forbidden": true,
+      "animate_as_one_composite": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "hard_margin_px": 16,
+    "target_word_width_ratio": [
+      0.60,
+      0.90
+    ],
+    "target_word_height_ratio": [
+      0.20,
+      0.50
+    ],
+    "small_display_review_px": [
+      80,
+      100,
+      160
+    ],
+    "maximum_lines": 1,
+    "placement_variation_required": true,
+    "hemisphere_assumption_forbidden": true
+  },
+  "search_and_localization": {
+    "trie_ready_semantic_ids": true,
+    "exact_word_trigger_required": true,
+    "autumn_aliases": [
+      "autumn",
+      "fall"
+    ],
+    "locale": "en",
+    "future_localization_policy": "localized packs receive separately fitted and reviewed word art"
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "thumbnail_256": "required",
+    "source_art": "svg-accents-plus-pack-local-ttf",
+    "glb": "not-applicable-to-typography-only-pack",
+    "license": "MIT-with-fonts-separately-SIL-OFL-1.1"
+  },
+  "animation": {
+    "allowed_text_motion_families": [
+      "pulse",
+      "wobble",
+      "float"
+    ],
+    "loop_closure_required": true,
+    "visible_mid_cycle_change_required": true,
+    "reduced_motion_must_show_complete_word": true,
+    "word_must_remain_inside_canvas_for_every_frame": true
+  },
+  "approved_gate_state": {
+    "owner_approval": "contracts/calendar-typography-owner-approval-v1.json",
+    "exact_spelling_readability": "pass",
+    "single_read_depth_shell": "pass",
+    "family_coherence": "pass",
+    "animation_playback": "pass",
+    "small_display_readability": "pass",
+    "reduced_motion": "pass",
+    "deterministic_generation": "pass",
+    "owner_production_activation": "approved"
+  },
+  "review_gates": [
+    "23-way-semantic-completeness",
+    "original-typography-art-direction",
+    "licensed-font-provenance",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "owner-production-activation"
+  ]
+}

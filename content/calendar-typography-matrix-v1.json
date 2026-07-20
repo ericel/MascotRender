@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "matrix_id": "calendar-typography-matrix-v1",
+  "pack_contract": "calendar-typography-pack-v1",
+  "editorial_policy": {
+    "locale": "en",
+    "case": "uppercase",
+    "hemisphere_neutral": true,
+    "date_inference": false,
+    "selection_mode": "explicit-trie-trigger",
+    "autumn_and_fall_share_one_semantic": true
+  },
+  "entries": [
+    { "id": "calendar.weekday.monday", "label": "MONDAY", "category": "weekday", "aliases": ["monday", "mon"], "font_voice": "compact-punch", "motion": "pulse", "effect": "launch-lines" },
+    { "id": "calendar.weekday.tuesday", "label": "TUESDAY", "category": "weekday", "aliases": ["tuesday", "tue", "tues"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "confetti" },
+    { "id": "calendar.weekday.wednesday", "label": "WEDNESDAY", "category": "weekday", "aliases": ["wednesday", "wed"], "font_voice": "soft-rounded", "motion": "float", "effect": "midweek-stars" },
+    { "id": "calendar.weekday.thursday", "label": "THURSDAY", "category": "weekday", "aliases": ["thursday", "thu", "thur", "thurs"], "font_voice": "handwritten-emphasis", "motion": "wobble", "effect": "scribble-rays" },
+    { "id": "calendar.weekday.friday", "label": "FRIDAY", "category": "weekday", "aliases": ["friday", "fri"], "font_voice": "energetic-comic-slant", "motion": "pulse", "effect": "celebration-burst" },
+    { "id": "calendar.weekday.saturday", "label": "SATURDAY", "category": "weekday", "aliases": ["saturday", "sat"], "font_voice": "soft-rounded", "motion": "float", "effect": "weekend-dots" },
+    { "id": "calendar.weekday.sunday", "label": "SUNDAY", "category": "weekday", "aliases": ["sunday", "sun"], "font_voice": "compact-punch", "motion": "pulse", "effect": "sun-halo" },
+
+    { "id": "calendar.month.january", "label": "JANUARY", "category": "month", "aliases": ["january", "jan"], "font_voice": "soft-rounded", "motion": "float", "effect": "faceted-stars" },
+    { "id": "calendar.month.february", "label": "FEBRUARY", "category": "month", "aliases": ["february", "feb"], "font_voice": "handwritten-emphasis", "motion": "pulse", "effect": "paired-hearts" },
+    { "id": "calendar.month.march", "label": "MARCH", "category": "month", "aliases": ["march", "mar"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "forward-arrows" },
+    { "id": "calendar.month.april", "label": "APRIL", "category": "month", "aliases": ["april", "apr"], "font_voice": "compact-punch", "motion": "float", "effect": "raindrop-rhythm" },
+    { "id": "calendar.month.may", "label": "MAY", "category": "month", "aliases": ["may"], "font_voice": "soft-rounded", "motion": "pulse", "effect": "flower-burst" },
+    { "id": "calendar.month.june", "label": "JUNE", "category": "month", "aliases": ["june", "jun"], "font_voice": "compact-punch", "motion": "float", "effect": "radiant-dots" },
+    { "id": "calendar.month.july", "label": "JULY", "category": "month", "aliases": ["july", "jul"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "sparkler" },
+    { "id": "calendar.month.august", "label": "AUGUST", "category": "month", "aliases": ["august", "aug"], "font_voice": "handwritten-emphasis", "motion": "pulse", "effect": "heat-waves" },
+    { "id": "calendar.month.september", "label": "SEPTEMBER", "category": "month", "aliases": ["september", "sep", "sept"], "font_voice": "soft-rounded", "motion": "float", "effect": "notebook-tabs" },
+    { "id": "calendar.month.october", "label": "OCTOBER", "category": "month", "aliases": ["october", "oct"], "font_voice": "compact-punch", "motion": "wobble", "effect": "crescent-sparks" },
+    { "id": "calendar.month.november", "label": "NOVEMBER", "category": "month", "aliases": ["november", "nov"], "font_voice": "energetic-comic-slant", "motion": "float", "effect": "wind-swirls" },
+    { "id": "calendar.month.december", "label": "DECEMBER", "category": "month", "aliases": ["december", "dec"], "font_voice": "handwritten-emphasis", "motion": "pulse", "effect": "crystal-stars" },
+
+    { "id": "calendar.season.spring", "label": "SPRING", "category": "season", "aliases": ["spring"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "leaf-and-bloom" },
+    { "id": "calendar.season.summer", "label": "SUMMER", "category": "season", "aliases": ["summer"], "font_voice": "energetic-comic-slant", "motion": "pulse", "effect": "sun-and-wave" },
+    { "id": "calendar.season.autumn", "label": "AUTUMN", "category": "season", "aliases": ["autumn", "fall"], "font_voice": "compact-punch", "motion": "wobble", "effect": "abstract-leaf-drift" },
+    { "id": "calendar.season.winter", "label": "WINTER", "category": "season", "aliases": ["winter"], "font_voice": "soft-rounded", "motion": "float", "effect": "snow-crystals" }
+  ]
+}

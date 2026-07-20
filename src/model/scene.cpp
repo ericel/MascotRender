@@ -61,6 +61,8 @@ struct TextStyle {
   Color fill;
   Color outline;
   float outline_width{};
+  std::optional<TextShell> depth_shell;
+  std::optional<TextShell> highlight_shell;
 };
 
 [[nodiscard]] AffineTransform multiply(const AffineTransform &left,
@@ -661,13 +663,56 @@ parse_scene(const Json &pack, const Json &sticker,
                           static_cast<std::uint8_t>(outline_blue)};
         }
 
+        const auto parse_shell =
+            [&](std::string_view property,
+                std::optional<TextShell> &output) -> std::optional<Error> {
+          if (!item.value().contains(property)) {
+            return std::nullopt;
+          }
+          const auto property_name = std::string{property};
+          const auto &configured = item.value().at(property_name);
+          const auto offset_x = configured.at("offset_x").get<float>();
+          const auto offset_y = configured.at("offset_y").get<float>();
+          if (!std::isfinite(offset_x) || !std::isfinite(offset_y) ||
+              offset_x < -64.0F || offset_x > 64.0F ||
+              offset_y < -64.0F || offset_y > 64.0F) {
+            return document_error(
+                "Text shell offsets must be finite and between -64 and 64",
+                pack_file, location + "." + property_name);
+          }
+          const auto &color = configured.at("color");
+          const auto shell_red = color.at("r").get<std::uint32_t>();
+          const auto shell_green = color.at("g").get<std::uint32_t>();
+          const auto shell_blue = color.at("b").get<std::uint32_t>();
+          if (shell_red > 255U || shell_green > 255U || shell_blue > 255U) {
+            return document_error(
+                "Text shell channels must be between 0 and 255", pack_file,
+                location + "." + property_name + ".color");
+          }
+          output = TextShell{
+              offset_x, offset_y,
+              Color{static_cast<std::uint8_t>(shell_red),
+                    static_cast<std::uint8_t>(shell_green),
+                    static_cast<std::uint8_t>(shell_blue)}};
+          return std::nullopt;
+        };
+        std::optional<TextShell> depth_shell;
+        std::optional<TextShell> highlight_shell;
+        if (auto error = parse_shell("depth_shell", depth_shell)) {
+          return Result<Scene>::failure(std::move(*error));
+        }
+        if (auto error = parse_shell("highlight_shell", highlight_shell)) {
+          return Result<Scene>::failure(std::move(*error));
+        }
+
         text_styles.emplace(item.key(),
                             TextStyle{font_id, safe_area, min_size, max_size,
                                       max_lines,
                                       Color{static_cast<std::uint8_t>(red),
                                             static_cast<std::uint8_t>(green),
                                             static_cast<std::uint8_t>(blue)},
-                                      outline, outline_width});
+                                      outline, outline_width, depth_shell,
+                                      highlight_shell});
       }
     }
 
@@ -971,8 +1016,28 @@ parse_scene(const Json &pack, const Json &sticker,
                      layer.collision_bounds});
     }
 
+    if (sticker.contains("text") && sticker.contains("texts")) {
+      return Result<Scene>::failure(document_error(
+          "Sticker may declare text or texts, but not both", sticker_file,
+          "$"));
+    }
+    std::vector<const Json *> configured_text_blocks;
     if (sticker.contains("text")) {
-      const auto &text = sticker.at("text");
+      configured_text_blocks.push_back(&sticker.at("text"));
+    } else if (sticker.contains("texts")) {
+      const auto &texts = sticker.at("texts");
+      if (texts.empty() || texts.size() > 8U) {
+        return Result<Scene>::failure(document_error(
+            "Sticker texts must contain between 1 and 8 text blocks",
+            sticker_file, "$.texts"));
+      }
+      configured_text_blocks.reserve(texts.size());
+      for (const auto &text : texts) {
+        configured_text_blocks.push_back(&text);
+      }
+    }
+    for (const auto *configured_text : configured_text_blocks) {
+      const auto &text = *configured_text;
       const auto content = text.at("content").get<std::string>();
       const auto style_id = text.at("style").get<std::string>();
       if (content.empty() || content.size() > 280U ||
@@ -987,6 +1052,21 @@ parse_scene(const Json &pack, const Json &sticker,
       }
 
       const auto &style = text_styles.at(style_id);
+      const auto text_offset_x = text.value("offset_x", 0.0F);
+      const auto text_offset_y = text.value("offset_y", 0.0F);
+      const auto text_rotation = text.value("rotation_degrees", 0.0F);
+      const auto text_scale = text.value("scale", 1.0F);
+      if (!std::isfinite(text_offset_x) || !std::isfinite(text_offset_y) ||
+          !std::isfinite(text_rotation) || !std::isfinite(text_scale) ||
+          text_offset_x < -128.0F || text_offset_x > 128.0F ||
+          text_offset_y < -128.0F || text_offset_y > 128.0F ||
+          text_rotation < -30.0F || text_rotation > 30.0F ||
+          text_scale < 0.5F || text_scale > 2.0F) {
+        return Result<Scene>::failure(document_error(
+            "Text transform is outside the supported offset, rotation, or "
+            "scale range",
+            sticker_file, "$.text"));
+      }
       std::vector<Rect> candidate_areas;
       bool auto_placement = false;
       if (!text.contains("placement")) {
@@ -1049,7 +1129,9 @@ parse_scene(const Json &pack, const Json &sticker,
                     std::move(candidate_areas), avoid_regions, auto_placement,
                     strict_caption_collision, style.min_font_size,
                     style.max_font_size, style.max_lines, style.fill,
-                    style.outline, style.outline_width});
+                    style.outline, style.outline_width, text_offset_x,
+                    text_offset_y, text_rotation, text_scale,
+                    style.depth_shell, style.highlight_shell});
     }
 
     if (sticker.contains("animation")) {

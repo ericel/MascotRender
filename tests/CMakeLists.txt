@@ -126,6 +126,25 @@ catch_discover_tests(mascotrender_unit_tests)
 
 if(MASCOTRENDER_BUILD_CLI)
     find_package(Python3 COMPONENTS Interpreter REQUIRED)
+    set(MASCOTRENDER_CALENDAR_DETERMINISM_RUNS 2)
+    if(CMAKE_CXX_FLAGS MATCHES "fsanitize")
+        set(MASCOTRENDER_CALENDAR_DETERMINISM_RUNS 1)
+    endif()
+    add_test(
+        NAME calendar_typography_pack_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_calendar_typography.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_calendar_typography_pack.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/calendar-typography-pack-v1.json"
+            --matrix "${PROJECT_SOURCE_DIR}/content/calendar-typography-matrix-v1.json"
+            --owner-approval "${PROJECT_SOURCE_DIR}/contracts/calendar-typography-owner-approval-v1.json"
+            --canonical-source "${PROJECT_SOURCE_DIR}/art/calendar-pop-v1"
+            --determinism-runs "${MASCOTRENDER_CALENDAR_DETERMINISM_RUNS}"
+    )
+    set_tests_properties(calendar_typography_pack_contract PROPERTIES TIMEOUT 600)
     add_test(
         NAME micro_reactions_pack_contract
         COMMAND

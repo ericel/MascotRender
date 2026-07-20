@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-november",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.november",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.month.november",
+  "alt_text": "Decorative animated November word sticker",
+  "accessible_description": "The word November in colorful layered display lettering",
+  "expression": "november",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "NOVEMBER",
+    "style": "november-main",
+    "rotation_degrees": 3.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-november",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

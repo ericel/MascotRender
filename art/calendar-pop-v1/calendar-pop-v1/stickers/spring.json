@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-spring",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.season.spring",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.season.spring",
+  "alt_text": "Decorative animated Spring word sticker",
+  "accessible_description": "The word Spring in colorful layered display lettering",
+  "expression": "spring",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "SPRING",
+    "style": "spring-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-spring",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

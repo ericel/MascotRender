@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-wednesday",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.weekday.wednesday",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.weekday.wednesday",
+  "alt_text": "Decorative animated Wednesday word sticker",
+  "accessible_description": "The word Wednesday in colorful layered display lettering",
+  "expression": "wednesday",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "WEDNESDAY",
+    "style": "wednesday-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-wednesday",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

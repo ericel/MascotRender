@@ -10,6 +10,21 @@ A pack declares local SVG layers, invariant base layers, named expressions and
 poses, optional seeded variation groups, and optional local TTF fonts and text
 styles. A sticker chooses an expression and pose and may provide authored text;
 MascotRender resolves the composition and returns an encoded image in memory.
+Typography-first stickers may instead provide an ordered `texts` array of up to
+eight blocks. The renderer composites those blocks in declaration order, which
+supports deterministic offset shadows, outlines, fills, and inset treatments
+without converting licensed text to a bitmap. `text` and `texts` are mutually
+exclusive. Each block may also declare canvas-relative `offset_x`, `offset_y`,
+`rotation_degrees`, and `scale` values. These authored transforms compose with
+animation-time text motion and let word-art packs vary placement and attitude
+without changing the underlying font asset.
+
+A text style may declare `depth_shell` and `highlight_shell`, each with a color
+and canvas-relative x/y offset. Both shells reuse the already fitted glyph
+layout. The depth shell draws behind the outline; the highlight shell draws
+between the outline and foreground fill. The opaque foreground masks the
+shifted copies, so only attached depth or highlight edges remain visible and a
+decorative pass cannot be read as a second independently typeset word.
 
 The normative machine-readable files are
 [`pack.schema.json`](../schemas/pack.schema.json) and

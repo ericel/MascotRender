@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-tuesday",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.weekday.tuesday",
+  "recipe_id": "calendar-typography.wobble",
+  "intent": "calendar.weekday.tuesday",
+  "alt_text": "Decorative animated Tuesday word sticker",
+  "accessible_description": "The word Tuesday in colorful layered display lettering",
+  "expression": "tuesday",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "TUESDAY",
+    "style": "tuesday-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "accent-tuesday",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

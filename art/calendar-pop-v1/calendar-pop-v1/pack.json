@@ -1,0 +1,1291 @@
+{
+  "schema_version": 1,
+  "pack_id": "calendar-pop-v1",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "accent-monday",
+      "source": "layers/00-accent-monday.svg",
+      "z": 10,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-tuesday",
+      "source": "layers/01-accent-tuesday.svg",
+      "z": 11,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-wednesday",
+      "source": "layers/02-accent-wednesday.svg",
+      "z": 12,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-thursday",
+      "source": "layers/03-accent-thursday.svg",
+      "z": 13,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-friday",
+      "source": "layers/04-accent-friday.svg",
+      "z": 14,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-saturday",
+      "source": "layers/05-accent-saturday.svg",
+      "z": 15,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-sunday",
+      "source": "layers/06-accent-sunday.svg",
+      "z": 16,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-january",
+      "source": "layers/07-accent-january.svg",
+      "z": 17,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-february",
+      "source": "layers/08-accent-february.svg",
+      "z": 18,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-march",
+      "source": "layers/09-accent-march.svg",
+      "z": 19,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-april",
+      "source": "layers/10-accent-april.svg",
+      "z": 20,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-may",
+      "source": "layers/11-accent-may.svg",
+      "z": 21,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-june",
+      "source": "layers/12-accent-june.svg",
+      "z": 22,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-july",
+      "source": "layers/13-accent-july.svg",
+      "z": 23,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-august",
+      "source": "layers/14-accent-august.svg",
+      "z": 24,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-september",
+      "source": "layers/15-accent-september.svg",
+      "z": 25,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-october",
+      "source": "layers/16-accent-october.svg",
+      "z": 26,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-november",
+      "source": "layers/17-accent-november.svg",
+      "z": 27,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-december",
+      "source": "layers/18-accent-december.svg",
+      "z": 28,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-spring",
+      "source": "layers/19-accent-spring.svg",
+      "z": 29,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-summer",
+      "source": "layers/20-accent-summer.svg",
+      "z": 30,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-autumn",
+      "source": "layers/21-accent-autumn.svg",
+      "z": 31,
+      "pivot": "word",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-winter",
+      "source": "layers/22-accent-winter.svg",
+      "z": 32,
+      "pivot": "word",
+      "depth": 0.0
+    }
+  ],
+  "base_layers": [],
+  "expressions": {
+    "monday": [
+      "accent-monday"
+    ],
+    "tuesday": [
+      "accent-tuesday"
+    ],
+    "wednesday": [
+      "accent-wednesday"
+    ],
+    "thursday": [
+      "accent-thursday"
+    ],
+    "friday": [
+      "accent-friday"
+    ],
+    "saturday": [
+      "accent-saturday"
+    ],
+    "sunday": [
+      "accent-sunday"
+    ],
+    "january": [
+      "accent-january"
+    ],
+    "february": [
+      "accent-february"
+    ],
+    "march": [
+      "accent-march"
+    ],
+    "april": [
+      "accent-april"
+    ],
+    "may": [
+      "accent-may"
+    ],
+    "june": [
+      "accent-june"
+    ],
+    "july": [
+      "accent-july"
+    ],
+    "august": [
+      "accent-august"
+    ],
+    "september": [
+      "accent-september"
+    ],
+    "october": [
+      "accent-october"
+    ],
+    "november": [
+      "accent-november"
+    ],
+    "december": [
+      "accent-december"
+    ],
+    "spring": [
+      "accent-spring"
+    ],
+    "summer": [
+      "accent-summer"
+    ],
+    "autumn": [
+      "accent-autumn"
+    ],
+    "winter": [
+      "accent-winter"
+    ]
+  },
+  "poses": {
+    "word-art": []
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT; bundled fonts separately SIL OFL 1.1",
+    "source": "generate_calendar_typography_pack.py v1; original procedural composition"
+  },
+  "anchors": {
+    "word_center": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "pivots": {
+    "word": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 0,
+  "caption_validation": {
+    "minimum_canvas_margin_px": 16,
+    "maximum_lines": 1,
+    "must_remain_inside_canvas_for_every_frame": true,
+    "may_overlap_character": false,
+    "may_overlap_assistive_device": false,
+    "must_pass_sizes_px": [
+      80,
+      100,
+      160
+    ],
+    "collision_bounds": "per-frame-alpha-bounds"
+  },
+  "fonts": [
+    {
+      "id": "punch",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    },
+    {
+      "id": "comic-slant",
+      "source": "fonts/bangers/Bangers-Regular.ttf",
+      "license": "fonts/bangers/OFL.txt"
+    },
+    {
+      "id": "rounded",
+      "source": "fonts/lilita-one/LilitaOne-Regular.ttf",
+      "license": "fonts/lilita-one/OFL.txt"
+    },
+    {
+      "id": "handwritten",
+      "source": "fonts/kalam/Kalam-Bold.ttf",
+      "license": "fonts/kalam/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "monday-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 55,
+        "g": 201,
+        "b": 120
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 13,
+          "g": 140,
+          "b": 117
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 155,
+          "g": 240,
+          "b": 181
+        }
+      }
+    },
+    "tuesday-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 157,
+        "b": 66
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 219,
+          "g": 79,
+          "b": 50
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 211,
+          "b": 107
+        }
+      }
+    },
+    "wednesday-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 95,
+        "g": 141,
+        "b": 255
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 101,
+          "g": 81,
+          "b": 201
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 167,
+          "g": 216,
+          "b": 255
+        }
+      }
+    },
+    "thursday-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 241,
+        "g": 91,
+        "b": 181
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 155,
+          "g": 69,
+          "b": 199
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 183,
+          "b": 222
+        }
+      }
+    },
+    "friday-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 25,
+        "g": 185,
+        "b": 197
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 23,
+          "g": 109,
+          "b": 168
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 141,
+          "g": 235,
+          "b": 232
+        }
+      }
+    },
+    "saturday-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 202,
+        "b": 58
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 239,
+          "g": 111,
+          "b": 51
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 166
+        }
+      }
+    },
+    "sunday-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 112,
+        "g": 211,
+        "b": 107
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 20,
+          "g": 143,
+          "b": 105
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 204,
+          "g": 246,
+          "b": 167
+        }
+      }
+    },
+    "january-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 90,
+        "g": 180,
+        "b": 255
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 63,
+          "g": 103,
+          "b": 198
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 184,
+          "g": 228,
+          "b": 255
+        }
+      }
+    },
+    "february-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 239,
+        "g": 106,
+        "b": 131
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 164,
+          "g": 65,
+          "b": 121
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 192,
+          "b": 200
+        }
+      }
+    },
+    "march-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 49,
+        "g": 196,
+        "b": 141
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 14,
+          "g": 124,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 166,
+          "g": 240,
+          "b": 213
+        }
+      }
+    },
+    "april-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 175,
+        "g": 122,
+        "b": 243
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 97,
+          "g": 84,
+          "b": 199
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 224,
+          "g": 199,
+          "b": 255
+        }
+      }
+    },
+    "may-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 181,
+        "b": 46
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 234,
+          "g": 99,
+          "b": 52
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 224,
+          "b": 155
+        }
+      }
+    },
+    "june-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 32,
+        "g": 183,
+        "b": 213
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 34,
+          "g": 89,
+          "b": 180
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 165,
+          "g": 241,
+          "b": 244
+        }
+      }
+    },
+    "july-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 128,
+        "b": 102
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 217,
+          "g": 56,
+          "b": 120
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 208,
+          "b": 166
+        }
+      }
+    },
+    "august-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 244,
+        "g": 163,
+        "b": 64
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 176,
+          "g": 74,
+          "b": 53
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 224,
+          "b": 147
+        }
+      }
+    },
+    "september-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 82,
+        "g": 184,
+        "b": 178
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 61,
+          "g": 90,
+          "b": 168
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 189,
+          "g": 235,
+          "b": 227
+        }
+      }
+    },
+    "october-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 121,
+        "b": 93
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 150,
+          "g": 59,
+          "b": 114
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 197,
+          "b": 168
+        }
+      }
+    },
+    "november-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 134,
+        "g": 105,
+        "b": 232
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 62,
+          "g": 79,
+          "b": 163
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 217,
+          "g": 202,
+          "b": 255
+        }
+      }
+    },
+    "december-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 91,
+        "g": 157,
+        "b": 234
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 62,
+          "g": 85,
+          "b": 164
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 201,
+          "g": 233,
+          "b": 255
+        }
+      }
+    },
+    "spring-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 86,
+        "g": 201,
+        "b": 111
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 24,
+          "g": 138,
+          "b": 101
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 215,
+          "g": 243,
+          "b": 162
+        }
+      }
+    },
+    "summer-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 52,
+        "y": 148,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 255,
+        "g": 177,
+        "b": 40
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 228,
+          "g": 82,
+          "b": 50
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 152
+        }
+      }
+    },
+    "autumn-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 52,
+        "y": 136,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 229,
+        "g": 122,
+        "b": 66
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 166,
+          "g": 56,
+          "b": 56
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 246,
+          "g": 195,
+          "b": 109
+        }
+      }
+    },
+    "winter-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 52,
+        "y": 142,
+        "width": 408,
+        "height": 220
+      },
+      "min_font_size": 34,
+      "max_font_size": 190,
+      "max_lines": 1,
+      "fill": {
+        "r": 100,
+        "g": 169,
+        "b": 241
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 66,
+          "g": 93,
+          "b": 185
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -4,
+        "offset_y": -4,
+        "color": {
+          "r": 214,
+          "g": 238,
+          "b": 255
+        }
+      }
+    }
+  }
+}

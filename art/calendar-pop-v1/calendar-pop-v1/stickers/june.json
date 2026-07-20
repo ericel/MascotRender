@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-june",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.june",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.month.june",
+  "alt_text": "Decorative animated June word sticker",
+  "accessible_description": "The word June in colorful layered display lettering",
+  "expression": "june",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "JUNE",
+    "style": "june-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-june",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

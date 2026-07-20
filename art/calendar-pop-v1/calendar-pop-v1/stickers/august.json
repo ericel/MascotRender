@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-august",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.august",
+  "recipe_id": "calendar-typography.pulse",
+  "intent": "calendar.month.august",
+  "alt_text": "Decorative animated August word sticker",
+  "accessible_description": "The word August in colorful layered display lettering",
+  "expression": "august",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "AUGUST",
+    "style": "august-main",
+    "rotation_degrees": -4.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "accent-august",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

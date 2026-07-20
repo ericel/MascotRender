@@ -4,6 +4,31 @@
   "title": "MascotRender sticker specification",
   "type": "object",
   "additionalProperties": false,
+  "$defs": {
+    "textBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content", "style"],
+      "properties": {
+        "content": { "type": "string", "minLength": 1, "maxLength": 280 },
+        "style": { "type": "string", "minLength": 1 },
+        "placement": { "type": "string", "minLength": 1 },
+        "offset_x": { "type": "number", "minimum": -128, "maximum": 128 },
+        "offset_y": { "type": "number", "minimum": -128, "maximum": 128 },
+        "rotation_degrees": { "type": "number", "minimum": -30, "maximum": 30 },
+        "scale": { "type": "number", "minimum": 0.5, "maximum": 2 },
+        "preferred_slots": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  },
+  "not": {
+    "required": ["text", "texts"]
+  },
   "required": [
     "schema_version",
     "sticker_id",
@@ -53,21 +78,12 @@
         "offset_y": { "type": "number", "minimum": -512, "maximum": 512 }
       }
     },
-    "text": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["content", "style"],
-      "properties": {
-        "content": { "type": "string", "minLength": 1, "maxLength": 280 },
-        "style": { "type": "string", "minLength": 1 },
-        "placement": { "type": "string", "minLength": 1 },
-        "preferred_slots": {
-          "type": "array",
-          "minItems": 1,
-          "uniqueItems": true,
-          "items": { "type": "string", "minLength": 1 }
-        }
-      }
+    "text": { "$ref": "#/$defs/textBlock" },
+    "texts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": { "$ref": "#/$defs/textBlock" }
     },
     "animation": {
       "type": "object",

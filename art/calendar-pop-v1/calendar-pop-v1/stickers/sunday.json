@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-sunday",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.weekday.sunday",
+  "recipe_id": "calendar-typography.pulse",
+  "intent": "calendar.weekday.sunday",
+  "alt_text": "Decorative animated Sunday word sticker",
+  "accessible_description": "The word Sunday in colorful layered display lettering",
+  "expression": "sunday",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "SUNDAY",
+    "style": "sunday-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "accent-sunday",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
