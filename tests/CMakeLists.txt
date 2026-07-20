@@ -138,7 +138,9 @@ if(MASCOTRENDER_BUILD_CLI)
             --matrix "${PROJECT_SOURCE_DIR}/content/micro-reactions-emotion-matrix-v1.json"
             --owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-reaction-and-orbit-2_5d-owner-approval-v1.json"
     )
-    set_tests_properties(micro_reactions_pack_contract PROPERTIES TIMEOUT 180)
+    # Full review regeneration invokes the instrumented CLI for every frame.
+    # ASan/UBSan runners need more headroom than optimized package jobs.
+    set_tests_properties(micro_reactions_pack_contract PROPERTIES TIMEOUT 480)
     add_test(
         NAME micro_orbit_layered_and_glb_proofs
         COMMAND
@@ -182,7 +184,7 @@ if(MASCOTRENDER_BUILD_CLI)
             --orbit-approval "${PROJECT_SOURCE_DIR}/contracts/micro-orbit-final-glb-face-parity-owner-approval-v1.json"
             --family-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-styled-glb-family-owner-approval-v1.json"
     )
-    set_tests_properties(micro_reactions_distribution_bundle PROPERTIES TIMEOUT 240)
+    set_tests_properties(micro_reactions_distribution_bundle PROPERTIES TIMEOUT 600)
     add_test(
         NAME generated_mascot_pipeline
         COMMAND

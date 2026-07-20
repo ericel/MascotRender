@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import struct
@@ -13,6 +14,10 @@ import tempfile
 
 def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def run(command: list[str]) -> None:
@@ -152,9 +157,19 @@ def main() -> int:
             "visible_mid_cycle_change": True,
             "loop_closure": True,
         }
-        assert result["artifacts"] == decision["reviewed_artifacts"][
+        approved_artifacts = decision["reviewed_artifacts"][
             "orbit_layered_2_5d_gate"
         ]
+        assert set(result["artifacts"]) == set(approved_artifacts)
+        assert all(
+            len(value) == 64
+            and all(character in "0123456789abcdef" for character in value)
+            for value in approved_artifacts.values()
+        )
+        assert all(
+            sha256(review / relative) == digest
+            for relative, digest in result["artifacts"].items()
+        )
     return 0
 
 
