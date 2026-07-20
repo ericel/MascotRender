@@ -137,6 +137,7 @@ if(MASCOTRENDER_BUILD_CLI)
             --contract "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-pack-v1.json"
             --matrix "${PROJECT_SOURCE_DIR}/content/micro-reactions-emotion-matrix-v1.json"
             --owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-reaction-and-orbit-2_5d-owner-approval-v1.json"
+            --final-owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-final-pack-owner-approval-v1.json"
     )
     # Full review regeneration invokes the instrumented CLI for every frame.
     # ASan/UBSan runners need more headroom than optimized package jobs.

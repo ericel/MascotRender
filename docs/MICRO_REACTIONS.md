@@ -94,6 +94,9 @@ The candidate contains 60 animated WebPs, 60 static reduced-motion
 equivalents, 60 static thumbnails, and the six approved styled GLBs. The
 semantic dictionary remains independent of identity selection, so consumers
 can compile its reaction intents into a Trie and choose a character after the
-match. `micro-reactions-final-pack-owner-decision-template-v1.json` binds the
-immutable candidate hashes; publishing the channel remains blocked until that
-last owner-activation decision is approved.
+match. The project owner approved the immutable candidate
+`mascotrender-b1-dc088762e1b7` on 2026-07-20. The permanent decision record is
+`micro-reactions-final-pack-owner-approval-v1.json`; it binds the candidate
+hashes and authorizes the complete pack for public production use. Publishing
+the provider-neutral `micro-reactions-stable` channel is now an operational
+release step rather than an art or product gate.

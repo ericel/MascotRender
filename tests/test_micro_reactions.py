@@ -31,6 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--contract", type=Path, required=True)
     parser.add_argument("--matrix", type=Path, required=True)
     parser.add_argument("--owner-approval", type=Path, required=True)
+    parser.add_argument("--final-owner-approval", type=Path, required=True)
     return parser.parse_args()
 
 
@@ -40,12 +41,31 @@ def main() -> int:
     matrix = read_json(args.matrix)
     assert contract["schema_version"] == 1
     assert contract["contract_id"] == "micro-reactions-pack-v1"
-    assert contract["production_use"] == "forbidden-until-final-pack-owner-activation"
+    assert contract["status"] == "owner-production-approved"
+    assert contract["production_use"] == "approved-for-public-production"
     approval = read_json(args.owner_approval)
     assert approval["authority"] == "project-owner"
     assert approval["decision"] == "approved"
     assert approval["approved_gates"]["ten-reaction-semantic-readability"] == "pass"
     assert approval["approved_gates"]["controlled-small-display-readability"] == "pass"
+    final_approval = read_json(args.final_owner_approval)
+    assert final_approval["authority"] == "project-owner"
+    assert final_approval["decision"] == "approved"
+    assert final_approval["gate"] == "micro-reactions-final-pack-activation-v1"
+    assert final_approval["candidate"]["bundle_id"] == "mascotrender-b1-dc088762e1b7"
+    assert final_approval["candidate"]["object_count"] == 190
+    assert final_approval["production_use"] == "approved-for-public-production"
+    assert all(
+        len(value) == 64
+        and all(character in "0123456789abcdef" for character in value)
+        for value in final_approval["candidate_artifacts"].values()
+    )
+    assert contract["approved_gate_state"]["owner_production_activation"] == (
+        "approved"
+    )
+    assert contract["approved_gate_state"]["final_pack_owner_approval"] == (
+        "contracts/micro-reactions-final-pack-owner-approval-v1.json"
+    )
     assert contract["scope"] == {
         "identity_count": 6,
         "reactions_per_identity": 10,
