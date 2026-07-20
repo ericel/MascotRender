@@ -40,6 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--matrix", type=Path, required=True)
     parser.add_argument("--owner-approval", type=Path, required=True)
     parser.add_argument("--canonical-source", type=Path, required=True)
+    parser.add_argument("--determinism-runs", type=int, choices=(1, 2), default=2)
     return parser.parse_args()
 
 
@@ -109,10 +110,10 @@ def main() -> int:
         review = root / "review"
         repeated_source = root / "repeated-source"
         repeated_review = root / "repeated-review"
-        for source_output, review_output in (
-            (source, review),
-            (repeated_source, repeated_review),
-        ):
+        outputs = [(source, review)]
+        if args.determinism_runs == 2:
+            outputs.append((repeated_source, repeated_review))
+        for source_output, review_output in outputs:
             subprocess.run(
                 [
                     str(args.python),
@@ -186,8 +187,9 @@ def main() -> int:
             "fall",
         }
         assert tree_hashes(source) == tree_hashes(args.canonical_source)
-        assert tree_hashes(source) == tree_hashes(repeated_source)
-        assert tree_hashes(review) == tree_hashes(repeated_review)
+        if args.determinism_runs == 2:
+            assert tree_hashes(source) == tree_hashes(repeated_source)
+            assert tree_hashes(review) == tree_hashes(repeated_review)
     return 0
 
 
