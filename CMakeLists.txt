@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     MascotRender
-    VERSION 0.3.0
+    VERSION 0.4.0
     DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
@@ -205,6 +205,7 @@ install(
         docs/RELEASE_0.1.0.md
         docs/RELEASE_0.2.0.md
         docs/RELEASE_0.3.0.md
+        docs/RELEASE_0.4.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
@@ -238,6 +239,7 @@ install(
         tools/render_mascot_packs.py
         tools/build_sticker_review.py
         tools/mascot_bundle.py
+        tools/package_bundle_release.py
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/tools"
 )
 

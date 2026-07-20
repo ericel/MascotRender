@@ -178,6 +178,7 @@ if(MASCOTRENDER_BUILD_CLI)
             --generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_reactions_pack.py"
             --builder "${PROJECT_SOURCE_DIR}/tools/build_micro_reactions_bundle.py"
             --bundle-tool "${PROJECT_SOURCE_DIR}/tools/mascot_bundle.py"
+            --archive-tool "${PROJECT_SOURCE_DIR}/tools/package_bundle_release.py"
             --cli "$<TARGET_FILE:mascotrender_cli>"
             --matrix "${PROJECT_SOURCE_DIR}/content/micro-reactions-emotion-matrix-v1.json"
             --orbit-glb "${PROJECT_SOURCE_DIR}/art/micro-reactions-v1/orbit-glb-proof/micro-orbit-004.glb"

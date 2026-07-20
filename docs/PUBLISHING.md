@@ -42,7 +42,10 @@ need a Vulkan-capable driver to use the renderer.
    `Publish Conan package` workflow and must match the recipe version.
 3. Record recipe and package revisions from the successful run.
 4. Verify a separate anonymous consumer can resolve the hosted remote.
-5. Create the GitHub release from the already-published tag.
+5. Build the approval-bound content ZIP with
+   `tools/package_bundle_release.py`.
+6. Create the GitHub release from the already-published tag and attach the ZIP
+   plus its SHA-256 file.
 
 Pushing a `v*` tag runs the same publication workflow. The tag version must
 match `conanfile.py`; a mismatch fails before authentication or upload.
@@ -51,7 +54,7 @@ Consumers configure the remote and install normally:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.3.0 --build=missing
+conan install --requires=mascotrender/0.4.0 --build=missing
 ```
 
 The JFrog repository permits anonymous reads but requires authenticated writes.
