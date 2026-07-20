@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     MascotRender
-    VERSION 0.4.0
+    VERSION 0.5.0
     DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
@@ -185,7 +185,11 @@ install(
     PATTERN ".DS_Store" EXCLUDE
 )
 install(
-    DIRECTORY art/human-pack-v1 art/human-pack-wave2 art/micro-reactions-v1
+    DIRECTORY
+        art/calendar-pop-v1
+        art/human-pack-v1
+        art/human-pack-wave2
+        art/micro-reactions-v1
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/art"
     PATTERN ".DS_Store" EXCLUDE
 )
@@ -206,6 +210,7 @@ install(
         docs/RELEASE_0.2.0.md
         docs/RELEASE_0.3.0.md
         docs/RELEASE_0.4.0.md
+        docs/RELEASE_0.5.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
@@ -226,6 +231,7 @@ install(
         tools/generate_micro_orbit_2_5d_proof.py
         tools/generate_micro_orbit_glb.py
         tools/generate_micro_styled_glbs.py
+        tools/generate_calendar_typography_pack.py
         tools/build_micro_reactions_bundle.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py

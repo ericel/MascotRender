@@ -7,7 +7,7 @@
 #include <mascotrender/mascotrender.hpp>
 
 int main(int argc, char **argv) {
-  if (std::string_view{mascotrender::version_string()} != "0.4.0") {
+  if (std::string_view{mascotrender::version_string()} != "0.5.0") {
     return 1;
   }
 
@@ -74,13 +74,28 @@ int main(int argc, char **argv) {
     }
     return false;
   };
+
+  const auto calendar =
+      resources / "art" / "calendar-pop-v1" / "calendar-pop-v1";
+  const mascotrender::RenderRequest calendar_request{
+      calendar / "pack.json", calendar / "stickers" / "monday.json", {}};
+  auto calendar_result = engine.render(calendar_request);
+  if (!calendar_result || calendar_result.value().width != 512 ||
+      calendar_result.value().height != 512) {
+    return 8;
+  }
+  if (!contains_chunk(calendar_result.value().bytes, "ANIM") ||
+      !contains_chunk(calendar_result.value().bytes, "ANMF")) {
+    return 9;
+  }
+
   if (!contains_chunk(animated.value().bytes, "ANIM") ||
       !contains_chunk(animated.value().bytes, "ANMF")) {
-    return 8;
+    return 10;
   }
 
   std::ofstream output{"mascotrender-package-test.webp", std::ios::binary};
   output.write(reinterpret_cast<const char *>(image.bytes.data()),
                static_cast<std::streamsize>(image.bytes.size()));
-  return output ? 0 : 9;
+  return output ? 0 : 11;
 }
