@@ -130,32 +130,40 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
 }
 
 [[nodiscard]] bool position_text(tvg::Text &text, float x, float y,
-                                 const Rect &area, const FrameState &frame) {
-  if (frame.text_scale == 1.0F && frame.text_rotation_degrees == 0.0F) {
-    if (!succeeded(text.translate(x + frame.text_translate_x,
-                                  y + frame.text_translate_y))) {
+                                 const Rect &area, const TextBlock &block,
+                                 float scale_x, float scale_y,
+                                 const FrameState &frame) {
+  const auto translate_x =
+      block.translate_x * scale_x + frame.text_translate_x;
+  const auto translate_y =
+      block.translate_y * scale_y + frame.text_translate_y;
+  const auto text_scale = block.scale * frame.text_scale;
+  const auto rotation_degrees =
+      block.rotation_degrees + frame.text_rotation_degrees;
+  if (text_scale == 1.0F && rotation_degrees == 0.0F) {
+    if (!succeeded(text.translate(x + translate_x, y + translate_y))) {
       return false;
     }
   } else {
     const auto center_x = area.x + area.width * 0.5F;
     const auto center_y = area.y + area.height * 0.5F;
-    const auto radians = frame.text_rotation_degrees *
+    const auto radians = rotation_degrees *
                          3.14159265358979323846F / 180.0F;
     const auto cosine = std::cos(radians);
     const auto sine = std::sin(radians);
-    const auto m11 = frame.text_scale * cosine;
-    const auto m12 = -frame.text_scale * sine;
-    const auto m21 = frame.text_scale * sine;
-    const auto m22 = frame.text_scale * cosine;
+    const auto m11 = text_scale * cosine;
+    const auto m12 = -text_scale * sine;
+    const auto m21 = text_scale * sine;
+    const auto m22 = text_scale * cosine;
     const tvg::Matrix transform{
         m11,
         m12,
         m11 * x + m12 * y + center_x - m11 * center_x -
-            m12 * center_y + frame.text_translate_x,
+            m12 * center_y + translate_x,
         m21,
         m22,
         m21 * x + m22 * y + center_y - m21 * center_x -
-            m22 * center_y + frame.text_translate_y,
+            m22 * center_y + translate_y,
         0.0F,
         0.0F,
         1.0F};
@@ -197,6 +205,18 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
   for (std::size_t index = 0; index < fitted.lines.size(); ++index) {
     const auto x = resolved->positions[index].x;
     const auto y = resolved->positions[index].y;
+    if (block.depth_shell) {
+      auto depth = make_text(block, fitted.lines[index], fitted.font_size,
+                             block.depth_shell->color, nullptr);
+      if (!depth ||
+          !position_text(
+              *depth, x + block.depth_shell->offset_x * scale_x,
+              y + block.depth_shell->offset_y * scale_y, area, block, scale_x,
+              scale_y, frame) ||
+          !push(canvas, std::move(depth))) {
+        return render_error("ThorVG could not construct text depth shell");
+      }
+    }
     if (outline_width > 0.0F) {
       constexpr float diagonal = 0.70710678118F;
       const std::pair<float, float> offsets[] = {
@@ -212,15 +232,30 @@ make_text(const TextBlock &block, const std::string &line, float font_size,
         auto outline = make_text(block, fitted.lines[index], fitted.font_size,
                                  block.outline, nullptr);
         if (!outline ||
-            !position_text(*outline, x + offset_x, y + offset_y, area, frame) ||
+            !position_text(*outline, x + offset_x, y + offset_y, area, block,
+                           scale_x, scale_y, frame) ||
             !push(canvas, std::move(outline))) {
           return render_error("ThorVG could not construct text outline");
         }
       }
     }
+    if (block.highlight_shell) {
+      auto highlight =
+          make_text(block, fitted.lines[index], fitted.font_size,
+                    block.highlight_shell->color, nullptr);
+      if (!highlight ||
+          !position_text(
+              *highlight, x + block.highlight_shell->offset_x * scale_x,
+              y + block.highlight_shell->offset_y * scale_y, area, block,
+              scale_x, scale_y, frame) ||
+          !push(canvas, std::move(highlight))) {
+        return render_error("ThorVG could not construct text highlight shell");
+      }
+    }
     auto text = make_text(block, fitted.lines[index], fitted.font_size,
                           block.fill, nullptr);
-    if (!text || !position_text(*text, x, y, area, frame) ||
+    if (!text ||
+        !position_text(*text, x, y, area, block, scale_x, scale_y, frame) ||
         !push(canvas, std::move(text))) {
       return render_error("ThorVG could not position sticker text");
     }

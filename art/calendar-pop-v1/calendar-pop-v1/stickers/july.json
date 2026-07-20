@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-july",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.july",
+  "recipe_id": "calendar-typography.wobble",
+  "intent": "calendar.month.july",
+  "alt_text": "Decorative animated July word sticker",
+  "accessible_description": "The word July in colorful layered display lettering",
+  "expression": "july",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "JULY",
+    "style": "july-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "accent-july",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

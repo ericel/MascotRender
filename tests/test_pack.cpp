@@ -515,6 +515,66 @@ TEST_CASE("pack-declared TTF renders deterministic fitted sticker text") {
   REQUIRE(thumbnail.value().height == 256);
 }
 
+TEST_CASE("ordered text blocks render deterministic layered word art") {
+  mascotrender::Engine engine;
+
+  auto first = engine.render(example_request("multi-text.json"));
+  REQUIRE(first);
+  auto second = engine.render(example_request("multi-text.json"));
+  REQUIRE(second);
+  REQUIRE(first.value().bytes == second.value().bytes);
+
+  auto single = engine.render(example_request("text-sample.json"));
+  REQUIRE(single);
+  REQUIRE(first.value().bytes != single.value().bytes);
+
+  const auto pixels = decode(first.value());
+  bool found_offset_shadow = false;
+  for (std::uint32_t y = 382; y < 500 && !found_offset_shadow; ++y) {
+    for (std::uint32_t x = 72; x < 456; ++x) {
+      const auto pixel = pixel_at(pixels, 512, x, y);
+      if (pixel.alpha != 0U && pixel.red > 180U && pixel.green < 100U &&
+          pixel.blue < 140U) {
+        found_offset_shadow = true;
+        break;
+      }
+    }
+  }
+  REQUIRE(found_offset_shadow);
+}
+
+TEST_CASE("one fitted glyph layout masks attached depth and highlight shells") {
+  mascotrender::Engine engine;
+
+  auto first = engine.render(example_request("shell-text.json"));
+  REQUIRE(first);
+  auto second = engine.render(example_request("shell-text.json"));
+  REQUIRE(second);
+  REQUIRE(first.value().bytes == second.value().bytes);
+
+  const auto pixels = decode(first.value());
+  bool found_depth = false;
+  bool found_highlight = false;
+  bool found_front = false;
+  for (std::uint32_t y = 370; y < 506; ++y) {
+    for (std::uint32_t x = 60; x < 460; ++x) {
+      const auto pixel = pixel_at(pixels, 512, x, y);
+      found_depth =
+          found_depth || (pixel.red > 180U && pixel.green < 100U &&
+                          pixel.blue < 140U && pixel.alpha != 0U);
+      found_highlight =
+          found_highlight || (pixel.red < 120U && pixel.green > 170U &&
+                              pixel.blue > 160U && pixel.alpha != 0U);
+      found_front =
+          found_front || (pixel.red > 240U && pixel.green > 240U &&
+                          pixel.blue > 240U && pixel.alpha != 0U);
+    }
+  }
+  REQUIRE(found_depth);
+  REQUIRE(found_highlight);
+  REQUIRE(found_front);
+}
+
 TEST_CASE("named text slots place captions in different canvas regions") {
   mascotrender::Engine engine;
 

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "sticker_id": "shell-text-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat with one fitted YOU GOT THIS! word and attached edge shells",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "text": {
+    "content": "YOU GOT THIS!",
+    "style": "shell-caption"
+  }
+}

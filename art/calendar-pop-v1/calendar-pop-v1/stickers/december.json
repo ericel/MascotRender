@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-december",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.december",
+  "recipe_id": "calendar-typography.pulse",
+  "intent": "calendar.month.december",
+  "alt_text": "Decorative animated December word sticker",
+  "accessible_description": "The word December in colorful layered display lettering",
+  "expression": "december",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "DECEMBER",
+    "style": "december-main",
+    "rotation_degrees": -3.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "accent-december",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

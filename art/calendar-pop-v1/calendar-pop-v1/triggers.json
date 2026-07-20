@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "pack_id": "calendar-pop-v1",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "calendar.weekday.monday",
+      "sticker_id": "calendar-pop-monday",
+      "triggers": [
+        {
+          "text": "monday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "mon",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.tuesday",
+      "sticker_id": "calendar-pop-tuesday",
+      "triggers": [
+        {
+          "text": "tuesday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "tue",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        },
+        {
+          "text": "tues",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.wednesday",
+      "sticker_id": "calendar-pop-wednesday",
+      "triggers": [
+        {
+          "text": "wednesday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "wed",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.thursday",
+      "sticker_id": "calendar-pop-thursday",
+      "triggers": [
+        {
+          "text": "thursday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "thu",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        },
+        {
+          "text": "thur",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        },
+        {
+          "text": "thurs",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.friday",
+      "sticker_id": "calendar-pop-friday",
+      "triggers": [
+        {
+          "text": "friday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "fri",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.saturday",
+      "sticker_id": "calendar-pop-saturday",
+      "triggers": [
+        {
+          "text": "saturday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "sat",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.weekday.sunday",
+      "sticker_id": "calendar-pop-sunday",
+      "triggers": [
+        {
+          "text": "sunday",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "sun",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.january",
+      "sticker_id": "calendar-pop-january",
+      "triggers": [
+        {
+          "text": "january",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "jan",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.february",
+      "sticker_id": "calendar-pop-february",
+      "triggers": [
+        {
+          "text": "february",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "feb",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.march",
+      "sticker_id": "calendar-pop-march",
+      "triggers": [
+        {
+          "text": "march",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "mar",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.april",
+      "sticker_id": "calendar-pop-april",
+      "triggers": [
+        {
+          "text": "april",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "apr",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.may",
+      "sticker_id": "calendar-pop-may",
+      "triggers": [
+        {
+          "text": "may",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.june",
+      "sticker_id": "calendar-pop-june",
+      "triggers": [
+        {
+          "text": "june",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "jun",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.july",
+      "sticker_id": "calendar-pop-july",
+      "triggers": [
+        {
+          "text": "july",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "jul",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.august",
+      "sticker_id": "calendar-pop-august",
+      "triggers": [
+        {
+          "text": "august",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "aug",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.september",
+      "sticker_id": "calendar-pop-september",
+      "triggers": [
+        {
+          "text": "september",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "sep",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        },
+        {
+          "text": "sept",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.october",
+      "sticker_id": "calendar-pop-october",
+      "triggers": [
+        {
+          "text": "october",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "oct",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.november",
+      "sticker_id": "calendar-pop-november",
+      "triggers": [
+        {
+          "text": "november",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "nov",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.month.december",
+      "sticker_id": "calendar-pop-december",
+      "triggers": [
+        {
+          "text": "december",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "dec",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.season.spring",
+      "sticker_id": "calendar-pop-spring",
+      "triggers": [
+        {
+          "text": "spring",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.season.summer",
+      "sticker_id": "calendar-pop-summer",
+      "triggers": [
+        {
+          "text": "summer",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.season.autumn",
+      "sticker_id": "calendar-pop-autumn",
+      "triggers": [
+        {
+          "text": "autumn",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        },
+        {
+          "text": "fall",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "calendar.season.winter",
+      "sticker_id": "calendar-pop-winter",
+      "triggers": [
+        {
+          "text": "winter",
+          "locale": "en",
+          "match": "exact-token",
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

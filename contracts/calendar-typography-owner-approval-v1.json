@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-20",
+  "gate": "calendar-typography-production-art-and-playback-v1",
+  "pack_id": "calendar-pop-v1",
+  "approved_scope": [
+    "exact-spelling-readability",
+    "first-letter-single-read-requirement",
+    "dimensional-depth-shell-treatment",
+    "23-sticker-family-coherence",
+    "font-and-color-variety",
+    "start-mid-closure-animation-quality",
+    "pulse-wobble-float-family-variety",
+    "160px-readability",
+    "100px-readability-recommended-default",
+    "80px-readability-stress-test-floor",
+    "reduced-motion-assets",
+    "deterministic-generation"
+  ],
+  "reviewed_artifacts": {
+    "contact-sheet.png": "58320c86a5487cb2ed3b16493843548903558577535156300337aed146782136",
+    "small-display-80-100-160.png": "7fea1ffcb7af8bdf6002b08cc57e7ec0e8407fd810b4d90c10062d84f326750e",
+    "motion-sample-sheet.png": "58c7b1999be5500367e7c9451114324d34d415f0f3f6edf3e4069a26fe247228",
+    "animation-review.html": "ce8cf74a48509df587feab9ee7625a67b09a2ec89c5839b948e6ffeec1ebff7f"
+  },
+  "display_guidance": {
+    "recommended_default_px": 100,
+    "stress_test_floor_px": 80,
+    "showcase_px": 160
+  },
+  "semantic_decisions": {
+    "rendered_season_label": "AUTUMN",
+    "accepted_triggers": [
+      "autumn",
+      "fall"
+    ]
+  },
+  "production_use": "approved-for-public-production"
+}

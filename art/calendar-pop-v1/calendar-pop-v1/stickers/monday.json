@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-monday",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.weekday.monday",
+  "recipe_id": "calendar-typography.pulse",
+  "intent": "calendar.weekday.monday",
+  "alt_text": "Decorative animated Monday word sticker",
+  "accessible_description": "The word Monday in colorful layered display lettering",
+  "expression": "monday",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "MONDAY",
+    "style": "monday-main",
+    "rotation_degrees": -4.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "accent-monday",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

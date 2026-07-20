@@ -54,6 +54,12 @@ struct SceneLayer {
   std::optional<Rect> collision_bounds;
 };
 
+struct TextShell {
+  float offset_x{};
+  float offset_y{};
+  Color color;
+};
+
 struct TextBlock {
   std::filesystem::path font;
   std::string content;
@@ -67,6 +73,12 @@ struct TextBlock {
   Color fill;
   Color outline;
   float outline_width{};
+  float translate_x{};
+  float translate_y{};
+  float rotation_degrees{};
+  float scale{1.0F};
+  std::optional<TextShell> depth_shell;
+  std::optional<TextShell> highlight_shell;
 };
 
 enum class AnimationLoop { once, loop, ping_pong, hold_last_frame };

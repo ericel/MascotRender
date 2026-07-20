@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-march",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.march",
+  "recipe_id": "calendar-typography.wobble",
+  "intent": "calendar.month.march",
+  "alt_text": "Decorative animated March word sticker",
+  "accessible_description": "The word March in colorful layered display lettering",
+  "expression": "march",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "MARCH",
+    "style": "march-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "accent-march",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

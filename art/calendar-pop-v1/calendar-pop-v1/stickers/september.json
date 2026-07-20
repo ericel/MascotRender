@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-september",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.september",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.month.september",
+  "alt_text": "Decorative animated September word sticker",
+  "accessible_description": "The word September in colorful layered display lettering",
+  "expression": "september",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "SEPTEMBER",
+    "style": "september-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-september",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

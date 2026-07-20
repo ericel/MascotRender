@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "calendar-pop-january",
+  "pack_id": "calendar-pop-v1",
+  "phrase_id": "calendar.month.january",
+  "recipe_id": "calendar-typography.float",
+  "intent": "calendar.month.january",
+  "alt_text": "Decorative animated January word sticker",
+  "accessible_description": "The word January in colorful layered display lettering",
+  "expression": "january",
+  "pose": "word-art",
+  "seed": 1,
+  "text": {
+    "content": "JANUARY",
+    "style": "january-main",
+    "rotation_degrees": -4.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "accent-january",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

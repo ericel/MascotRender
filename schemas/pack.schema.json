@@ -267,6 +267,26 @@
               "width": { "type": "number", "minimum": 0, "maximum": 32 },
               "color": { "$ref": "#/$defs/rgb" }
             }
+          },
+          "depth_shell": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["offset_x", "offset_y", "color"],
+            "properties": {
+              "offset_x": { "type": "number", "minimum": -64, "maximum": 64 },
+              "offset_y": { "type": "number", "minimum": -64, "maximum": 64 },
+              "color": { "$ref": "#/$defs/rgb" }
+            }
+          },
+          "highlight_shell": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["offset_x", "offset_y", "color"],
+            "properties": {
+              "offset_x": { "type": "number", "minimum": -64, "maximum": 64 },
+              "offset_y": { "type": "number", "minimum": -64, "maximum": 64 },
+              "color": { "$ref": "#/$defs/rgb" }
+            }
           }
         }
       }

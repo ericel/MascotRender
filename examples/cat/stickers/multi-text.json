@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "sticker_id": "multi-text-cat",
+  "pack_id": "mascotrender-cat",
+  "alt_text": "A cheerful orange cat with layered YOU GOT THIS! lettering",
+  "expression": "happy",
+  "pose": "front",
+  "seed": 1,
+  "texts": [
+    {
+      "content": "YOU GOT THIS!",
+      "style": "caption-shadow",
+      "offset_x": 6,
+      "offset_y": 6,
+      "rotation_degrees": -2
+    },
+    {
+      "content": "YOU GOT THIS!",
+      "style": "caption",
+      "rotation_degrees": -2
+    }
+  ]
+}
