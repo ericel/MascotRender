@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-proud-of-you",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.proud-of-you",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.core.proud-of-you",
+  "alt_text": "Decorative animated sticker saying PROUD OF YOU!",
+  "accessible_description": "The phrase PROUD OF YOU! with an original heart laurel celebration motif",
+  "expression": "proud-of-you",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "PROUD OF YOU!",
+    "style": "proud-of-you-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-proud-of-you",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<circle cx="224" cy="439" r="7" fill="#4B4B9B" opacity=".32"/><circle cx="256" cy="443" r="10" fill="#7B68EE" opacity=".28"/><circle cx="291" cy="438" r="6" fill="#FFCD70" opacity=".48"/>
+<circle cx="79" cy="118" r="10" fill="#7B68EE"/><circle cx="105" cy="91" r="6" fill="#FFCD70"/><circle cx="432" cy="375" r="10" fill="#4B4B9B"/><circle cx="405" cy="404" r="6" fill="#FFCD70"/><path d="M69 366 l22 -34 l20 34 Z M401 107 l21 34 l21 -34 Z" fill="#FFCD70" stroke="#4B4B9B" stroke-width="5" stroke-linejoin="round"/><polygon points="422,174 425,182 433,185 425,188 422,196 419,188 411,185 419,182" fill="#7B68EE" stroke="#4B4B9B" stroke-width="5" stroke-linejoin="round"/>
+<g transform="translate(256 92) scale(0.520)"><polygon points="45.0,-80.0 59.7,-42.2 100.2,-39.9 68.8,-14.3 79.1,24.9 45.0,3.0 10.9,24.9 21.2,-14.3 -10.2,-39.9 30.3,-42.2" fill="#FFCD70" stroke="#20324B" stroke-width="8" stroke-linejoin="round"/><path d="M-106 55 Q-39 -13 10 -25 M-91 87 Q-29 27 17 8" fill="none" stroke="#7B68EE" stroke-width="16" stroke-linecap="round"/></g>
+<path d="M124 248 H61 M388 248 H451 M148 165 L105 122 M364 165 L407 122 M148 334 L105 377 M364 334 L407 377" fill="none" stroke="#7B68EE" stroke-width="9" stroke-linecap="round" opacity=".55"/>
+</svg>

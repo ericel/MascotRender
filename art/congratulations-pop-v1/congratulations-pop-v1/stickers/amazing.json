@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-amazing",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.amazing",
+  "recipe_id": "congratulations-typography.wobble",
+  "intent": "congratulations.core.amazing",
+  "alt_text": "Decorative animated sticker saying AMAZING!",
+  "accessible_description": "The phrase AMAZING! with an original star medal celebration motif",
+  "expression": "amazing",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "AMAZING!",
+    "style": "amazing-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-amazing",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

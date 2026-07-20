@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-dream-big",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.cheer.dream-big",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.cheer.dream-big",
+  "alt_text": "Decorative animated sticker saying DREAM BIG!",
+  "accessible_description": "The phrase DREAM BIG! with an original cloud stars celebration motif",
+  "expression": "dream-big",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "DREAM BIG!",
+    "style": "dream-big-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-dream-big",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

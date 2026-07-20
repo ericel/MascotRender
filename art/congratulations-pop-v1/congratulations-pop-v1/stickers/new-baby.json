@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-new-baby",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.milestone.new-baby",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.milestone.new-baby",
+  "alt_text": "Decorative animated sticker saying NEW BABY!",
+  "accessible_description": "The phrase NEW BABY! with an original baby blocks celebration motif",
+  "expression": "new-baby",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "NEW BABY!",
+    "style": "new-baby-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-new-baby",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

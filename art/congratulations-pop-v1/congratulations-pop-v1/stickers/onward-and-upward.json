@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-onward-and-upward",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.cheer.onward-and-upward",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.cheer.onward-and-upward",
+  "alt_text": "Decorative animated sticker saying ONWARD & UPWARD!",
+  "accessible_description": "The phrase ONWARD & UPWARD! with an original mountain flag celebration motif",
+  "expression": "onward-and-upward",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "ONWARD & UPWARD!",
+    "style": "onward-and-upward-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-onward-and-upward",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

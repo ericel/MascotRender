@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-go-you",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.cheer.go-you",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.cheer.go-you",
+  "alt_text": "Decorative animated sticker saying GO YOU!",
+  "accessible_description": "The phrase GO YOU! with an original pennant celebration motif",
+  "expression": "go-you",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "GO YOU!",
+    "style": "go-you-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-go-you",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

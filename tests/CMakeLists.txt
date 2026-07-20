@@ -146,6 +146,24 @@ if(MASCOTRENDER_BUILD_CLI)
     )
     set_tests_properties(calendar_typography_pack_contract PROPERTIES TIMEOUT 600)
     add_test(
+        NAME congratulations_typography_pack_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_congratulations_typography.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_congratulations_pack.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/congratulations-typography-pack-v1.json"
+            --matrix "${PROJECT_SOURCE_DIR}/content/congratulations-typography-matrix-v1.json"
+            --owner-approval "${PROJECT_SOURCE_DIR}/contracts/congratulations-typography-owner-approval-v1.json"
+            --canonical-source "${PROJECT_SOURCE_DIR}/art/congratulations-pop-v1"
+            --determinism-runs "${MASCOTRENDER_CALENDAR_DETERMINISM_RUNS}"
+    )
+    set_tests_properties(
+        congratulations_typography_pack_contract
+        PROPERTIES TIMEOUT 900
+    )
+    add_test(
         NAME micro_reactions_pack_contract
         COMMAND
             "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"

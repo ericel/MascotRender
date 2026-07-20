@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-happy-wedding",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.milestone.happy-wedding",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.milestone.happy-wedding",
+  "alt_text": "Decorative animated sticker saying HAPPY WEDDING!",
+  "accessible_description": "The phrase HAPPY WEDDING! with an original wedding rings celebration motif",
+  "expression": "happy-wedding",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "HAPPY WEDDING!",
+    "style": "happy-wedding-main",
+    "rotation_degrees": -3.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-happy-wedding",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
