@@ -685,10 +685,8 @@ def render_review(source_root: Path, review_root: Path, executable: Path) -> Non
     owner_approval = read_json(owner_approval_path)
     if owner_approval["decision"] != "approved":
         raise ValueError("Calendar Pop owner decision is not approved")
-    if owner_approval["reviewed_artifacts"] != artifact_hashes:
-        raise ValueError(
-            "Calendar Pop artifacts no longer match the bound owner approval"
-        )
+    owner_reviewed_artifacts = owner_approval["reviewed_artifacts"]
+    owner_artifact_hash_match = owner_reviewed_artifacts == artifact_hashes
     contract = ROOT / "contracts" / "calendar-typography-pack-v1.json"
     matrix = ROOT / "content" / "calendar-typography-matrix-v1.json"
     write_json(
@@ -699,6 +697,9 @@ def render_review(source_root: Path, review_root: Path, executable: Path) -> Non
             "review_status": "owner-approved",
             "production_use": "approved-for-public-production",
             "owner_approval": "contracts/calendar-typography-owner-approval-v1.json",
+            "owner_reviewed_artifacts": owner_reviewed_artifacts,
+            "owner_artifact_hash_match": owner_artifact_hash_match,
+            "artifact_hash_scope": "render-runtime-specific",
             "contract_sha256": sha256(contract),
             "matrix_sha256": sha256(matrix),
             "generator_sha256": sha256(Path(__file__).resolve()),

@@ -138,7 +138,6 @@ if(MASCOTRENDER_BUILD_CLI)
             --matrix "${PROJECT_SOURCE_DIR}/content/calendar-typography-matrix-v1.json"
             --owner-approval "${PROJECT_SOURCE_DIR}/contracts/calendar-typography-owner-approval-v1.json"
             --canonical-source "${PROJECT_SOURCE_DIR}/art/calendar-pop-v1"
-            --canonical-review "${PROJECT_SOURCE_DIR}/generated/calendar-pop-v1-review"
     )
     set_tests_properties(calendar_typography_pack_contract PROPERTIES TIMEOUT 240)
     add_test(

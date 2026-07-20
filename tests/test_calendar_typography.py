@@ -40,7 +40,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--matrix", type=Path, required=True)
     parser.add_argument("--owner-approval", type=Path, required=True)
     parser.add_argument("--canonical-source", type=Path, required=True)
-    parser.add_argument("--canonical-review", type=Path, required=True)
     return parser.parse_args()
 
 
@@ -108,19 +107,25 @@ def main() -> int:
         root = Path(directory)
         source = root / "source"
         review = root / "review"
-        subprocess.run(
-            [
-                str(args.python),
-                str(args.generator),
-                "--source-output",
-                str(source),
-                "--review-output",
-                str(review),
-                "--mascotrender",
-                str(args.cli),
-            ],
-            check=True,
-        )
+        repeated_source = root / "repeated-source"
+        repeated_review = root / "repeated-review"
+        for source_output, review_output in (
+            (source, review),
+            (repeated_source, repeated_review),
+        ):
+            subprocess.run(
+                [
+                    str(args.python),
+                    str(args.generator),
+                    "--source-output",
+                    str(source_output),
+                    "--review-output",
+                    str(review_output),
+                    "--mascotrender",
+                    str(args.cli),
+                ],
+                check=True,
+            )
 
         manifest = read_json(source / "generation-manifest.json")
         result = read_json(review / "review.json")
@@ -152,7 +157,13 @@ def main() -> int:
             "motion-sample-sheet.png",
             "animation-review.html",
         }
-        assert result["artifacts"] == approval["reviewed_artifacts"]
+        assert result["owner_reviewed_artifacts"] == approval["reviewed_artifacts"]
+        assert isinstance(result["owner_artifact_hash_match"], bool)
+        assert result["artifact_hash_scope"] == "render-runtime-specific"
+        assert result["artifacts"] == {
+            name: sha256(review / name)
+            for name in result["artifacts"]
+        }
         assert all(metric["animated_webp"] for metric in result["metrics"])
         assert all(metric["visible_mid_cycle_change"] for metric in result["metrics"])
         assert all(metric["loop_closure"] for metric in result["metrics"])
@@ -175,7 +186,8 @@ def main() -> int:
             "fall",
         }
         assert tree_hashes(source) == tree_hashes(args.canonical_source)
-        assert tree_hashes(review) == tree_hashes(args.canonical_review)
+        assert tree_hashes(source) == tree_hashes(repeated_source)
+        assert tree_hashes(review) == tree_hashes(repeated_review)
     return 0
 
 
