@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "pack_id": "micro-ripple-003",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "shadow",
+      "source": "layers/00-shadow.svg",
+      "z": 0,
+      "depth": 0.0
+    },
+    {
+      "id": "body",
+      "source": "layers/10-body.svg",
+      "z": 100,
+      "depth": 0.14,
+      "pivot": "body",
+      "collision_bounds": {
+        "x": 64,
+        "y": 32,
+        "width": 384,
+        "height": 394
+      }
+    },
+    {
+      "id": "reaction-joy",
+      "source": "layers/20-reaction-joy.svg",
+      "z": 200,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-laugh",
+      "source": "layers/21-reaction-laugh.svg",
+      "z": 210,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-love",
+      "source": "layers/22-reaction-love.svg",
+      "z": 220,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-surprise",
+      "source": "layers/23-reaction-surprise.svg",
+      "z": 230,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-cry",
+      "source": "layers/24-reaction-cry.svg",
+      "z": 240,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-anger",
+      "source": "layers/25-reaction-anger.svg",
+      "z": 250,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-suspicion",
+      "source": "layers/26-reaction-suspicion.svg",
+      "z": 260,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-exhausted",
+      "source": "layers/27-reaction-exhausted.svg",
+      "z": 270,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-panic",
+      "source": "layers/28-reaction-panic.svg",
+      "z": 280,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "reaction-proud",
+      "source": "layers/29-reaction-proud.svg",
+      "z": 290,
+      "depth": 0.025,
+      "parent": "body",
+      "pivot": "face"
+    }
+  ],
+  "base_layers": [
+    "shadow"
+  ],
+  "expressions": {
+    "joy": [
+      "reaction-joy"
+    ],
+    "laugh": [
+      "reaction-laugh"
+    ],
+    "love": [
+      "reaction-love"
+    ],
+    "surprise": [
+      "reaction-surprise"
+    ],
+    "cry": [
+      "reaction-cry"
+    ],
+    "anger": [
+      "reaction-anger"
+    ],
+    "suspicion": [
+      "reaction-suspicion"
+    ],
+    "exhausted": [
+      "reaction-exhausted"
+    ],
+    "panic": [
+      "reaction-panic"
+    ],
+    "proud": [
+      "reaction-proud"
+    ]
+  },
+  "poses": {
+    "reaction": [
+      "body"
+    ]
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "generate_micro_reactions_pack.py v2; original procedural SVG"
+  },
+  "anchors": {
+    "face_center": {
+      "x": 256,
+      "y": 270
+    },
+    "body_center": {
+      "x": 256,
+      "y": 258
+    },
+    "ground_contact": {
+      "x": 256,
+      "y": 420
+    }
+  },
+  "pivots": {
+    "body": {
+      "x": 256,
+      "y": 274
+    },
+    "face": {
+      "x": 256,
+      "y": 260
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 16
+}

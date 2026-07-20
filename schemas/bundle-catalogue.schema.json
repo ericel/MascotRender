@@ -20,6 +20,11 @@
     "source_sha256": { "$ref": "#/$defs/sha256" },
     "sticker_count": { "type": "integer", "minimum": 1 },
     "animated_sticker_count": { "type": "integer", "minimum": 0 },
+    "model_count": { "type": "integer", "minimum": 0 },
+    "models": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/model" }
+    },
     "stickers": {
       "type": "array",
       "minItems": 1,
@@ -57,6 +62,35 @@
           }
         }
       ]
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_id",
+        "identity_id",
+        "media_type",
+        "path",
+        "sha256",
+        "encoded_bytes",
+        "clip_names",
+        "semantic_node_count"
+      ],
+      "properties": {
+        "model_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "identity_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+        "media_type": { "const": "model/gltf-binary" },
+        "path": { "$ref": "#/$defs/safePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "encoded_bytes": { "type": "integer", "minimum": 1 },
+        "clip_names": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "semantic_node_count": { "type": "integer", "minimum": 1 }
+      }
     },
     "sticker": {
       "type": "object",

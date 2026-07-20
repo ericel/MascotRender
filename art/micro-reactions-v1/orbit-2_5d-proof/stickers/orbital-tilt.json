@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-orbit-004-2_5d-orbital-tilt",
+  "pack_id": "micro-orbit-004-2_5d-proof",
+  "alt_text": "Orbit showing a confident proud reaction with layered orbital depth",
+  "expression": "proud",
+  "pose": "dimensional",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 300,
+            "value": -3,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 2,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": -1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "ring-front",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "antenna",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 300,
+            "value": 5,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 0.93,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

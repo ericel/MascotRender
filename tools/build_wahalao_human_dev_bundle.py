@@ -28,9 +28,18 @@ FOUNDATION_IDS = ("H01", "H04", "H07", "H12", "H13")
 WAVE2_IDS = ("H02", "H03", "H05", "H06", "H08", "H09", "H10", "H11", "H14", "H15")
 MASTER_IDS = tuple(f"H{index:02d}" for index in range(1, 16))
 CAPTION_LAYOUTS = ("top", "right", "bottom", "left")
-BUNDLE_VERSION = 8
+BUNDLE_VERSION = 9
 PROTOCOL = "mascotrender-bundle-v1"
 MATCHING = "casefolded full phrase with Unicode word boundaries"
+# Message stickers are authored directly for the canonical 512 px delivery
+# canvas.  These factors reserve caption space without shrinking full-body
+# humans into tray-sized figures.  Side captions need slightly more horizontal
+# room than top/bottom captions, hence the two explicit composition profiles.
+MESSAGE_512_VERTICAL_CAPTION_ZOOM = 0.94
+MESSAGE_512_SIDE_CAPTION_ZOOM = 0.82
+MESSAGE_512_MINIMUM_ZOOM_FACTOR = 0.50
+MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM = 0.50
+MESSAGE_512_ZOOM_BACKOFF_STEP = 0.03
 FONT_SET_ROOT = ROOT / "content" / "fonts" / "sticker-display-v1"
 FONT_VOICES = {
     "punch": {
@@ -487,7 +496,16 @@ def sticker_document(master_id: str, pack_id: str, phrase: dict[str, Any]) -> di
         "dynamic-full-body": 0.92,
     }[framing]
     identity_scale = 0.90 if master_id in {"H06", "H13"} else 1.0
-    zoom = max(0.5, base_zoom * (0.58 if side_layout else 0.64) * identity_scale)
+    zoom = max(
+        0.5,
+        base_zoom
+        * (
+            MESSAGE_512_SIDE_CAPTION_ZOOM
+            if side_layout
+            else MESSAGE_512_VERTICAL_CAPTION_ZOOM
+        )
+        * identity_scale,
+    )
     voice = caption_voice(phrase)
     offset_x = 112 if layout == "left" else -112 if layout == "right" else 0
     preferred = {
@@ -526,6 +544,94 @@ def sticker_document(master_id: str, pack_id: str, phrase: dict[str, Any]) -> di
         "animation": animation_document(phrase),
     }
     return sticker
+
+
+def validate_at_largest_legal_zoom(
+    executable: Path,
+    pack_path: Path,
+    sticker_path: Path,
+    sticker: dict[str, Any],
+    base_zoom: float,
+    identity_scale: float,
+) -> dict[str, Any]:
+    """Resolve the largest 512 px composition accepted by the renderer.
+
+    Caption length, assistive-device width, and pose geometry vary by sticker,
+    so a single conservative scale makes most of the library unnecessarily
+    small. The renderer's semantic collision validator is the authority: only
+    text-fit failures may trigger a deterministic zoom backoff.
+    """
+
+    minimum_zoom = max(
+        MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM,
+        base_zoom * MESSAGE_512_MINIMUM_ZOOM_FACTOR * identity_scale,
+    )
+    while True:
+        write_json(sticker_path, sticker)
+        try:
+            run(
+                [
+                    str(executable),
+                    "validate",
+                    "--pack",
+                    str(pack_path),
+                    "--sticker",
+                    str(sticker_path),
+                ]
+            )
+            return sticker
+        except RuntimeError as error:
+            if "Sticker text does not fit any candidate area" not in str(error):
+                raise
+            current_zoom = float(sticker["camera"]["zoom"])
+            next_zoom = max(
+                MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM,
+                round(current_zoom - MESSAGE_512_ZOOM_BACKOFF_STEP, 3),
+            )
+            if current_zoom <= minimum_zoom or next_zoom < minimum_zoom:
+                raise RuntimeError(
+                    f"{sticker['sticker_id']} cannot satisfy the message-512 "
+                    "caption/character composition contract"
+                ) from error
+            sticker["camera"]["zoom"] = next_zoom
+
+
+def back_off_message_zoom(
+    sticker: dict[str, Any],
+    base_zoom: float,
+    identity_scale: float,
+    reason: str,
+) -> None:
+    current_zoom = float(sticker["camera"]["zoom"])
+    next_zoom = max(
+        MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM,
+        round(current_zoom - MESSAGE_512_ZOOM_BACKOFF_STEP, 3),
+    )
+    minimum_zoom = max(
+        MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM,
+        base_zoom * MESSAGE_512_MINIMUM_ZOOM_FACTOR * identity_scale,
+    )
+    if current_zoom <= minimum_zoom or next_zoom < minimum_zoom:
+        raise RuntimeError(
+            f"{sticker['sticker_id']} cannot satisfy the message-512 "
+            f"composition contract: {reason}"
+        )
+    sticker["camera"]["zoom"] = next_zoom
+
+
+def minimum_alpha_margin(path: Path) -> int:
+    minimum: int | None = None
+    with Image.open(path) as image:
+        for frame in range(getattr(image, "n_frames", 1)):
+            image.seek(frame)
+            rgba = image.convert("RGBA")
+            bounds = rgba.getchannel("A").getbbox()
+            if bounds is None:
+                continue
+            left, top, right, bottom = bounds
+            frame_margin = min(left, top, rgba.width - right, rgba.height - bottom)
+            minimum = frame_margin if minimum is None else min(minimum, frame_margin)
+    return minimum if minimum is not None else 0
 
 
 def render(
@@ -632,14 +738,23 @@ def build(args: argparse.Namespace, staging: Path) -> None:
             for phrase in PHRASES:
                 sticker = sticker_document(master_id, pack_id, phrase)
                 sticker_path = authoring_root / master_id / "stickers" / "wahalao-dev" / f"{phrase['slug']}.json"
-                write_json(sticker_path, sticker)
-                run([str(executable), "validate", "--pack", str(pack_path), "--sticker", str(sticker_path)])
-
-                thumbnail_sticker = dict(sticker)
-                thumbnail_sticker.pop("animation", None)
-                thumbnail_sticker_path = sticker_path.with_name(f"{phrase['slug']}.thumbnail.json")
-                write_json(thumbnail_sticker_path, thumbnail_sticker)
-                run([str(executable), "validate", "--pack", str(pack_path), "--sticker", str(thumbnail_sticker_path)])
+                framing = str(phrase["framing"])
+                base_zoom = {
+                    "face-closeup": 1.12,
+                    "bust": 1.06,
+                    "three-quarter": 0.96,
+                    "full-body": 0.94,
+                    "dynamic-full-body": 0.92,
+                }[framing]
+                identity_scale = 0.90 if master_id in {"H06", "H13"} else 1.0
+                sticker = validate_at_largest_legal_zoom(
+                    executable,
+                    pack_path,
+                    sticker_path,
+                    sticker,
+                    base_zoom,
+                    identity_scale,
+                )
 
                 sticker_id = str(sticker["sticker_id"])
                 asset_relative = Path("assets") / pack_id / f"{sticker_id}.webp"
@@ -648,9 +763,33 @@ def build(args: argparse.Namespace, staging: Path) -> None:
                 asset = staging / asset_relative
                 thumbnail = staging / thumbnail_relative
                 reduced = staging / reduced_relative
-                render(executable, pack_path, sticker_path, asset, 512, 512, False)
+                thumbnail_sticker_path = sticker_path.with_name(f"{phrase['slug']}.thumbnail.json")
+
+                while True:
+                    write_json(sticker_path, sticker)
+                    run([str(executable), "validate", "--pack", str(pack_path), "--sticker", str(sticker_path)])
+                    thumbnail_sticker = dict(sticker)
+                    thumbnail_sticker.pop("animation", None)
+                    write_json(thumbnail_sticker_path, thumbnail_sticker)
+                    run([str(executable), "validate", "--pack", str(pack_path), "--sticker", str(thumbnail_sticker_path)])
+
+                    render(executable, pack_path, thumbnail_sticker_path, reduced, 512, 512, False)
+                    render(executable, pack_path, sticker_path, asset, 512, 512, False)
+                    reduced_margin = minimum_alpha_margin(reduced)
+                    animated_margin = minimum_alpha_margin(asset)
+                    if reduced_margin >= 16 and animated_margin >= 16:
+                        break
+                    back_off_message_zoom(
+                        sticker,
+                        base_zoom,
+                        identity_scale,
+                        "rasterized alpha entered the 16 px hard-margin area "
+                        f"(reduced={reduced_margin}, animated={animated_margin})",
+                    )
+
+                # The picker thumbnail is derived from the same resolved camera
+                # as the canonical message asset.
                 render(executable, pack_path, thumbnail_sticker_path, thumbnail, 256, 256, False)
-                render(executable, pack_path, thumbnail_sticker_path, reduced, 512, 512, False)
 
                 animated = isinstance(sticker.get("animation"), dict)
                 catalogue.append({
@@ -719,6 +858,8 @@ def build(args: argparse.Namespace, staging: Path) -> None:
     source_digest.update(sha256_file(ROOT / "content" / "human-phrase-eligibility-v1.json").encode("ascii"))
     source_digest.update(sha256_file(ROOT / "contracts" / "human-canonical-expansion-wave2-owner-approval.json").encode("ascii"))
     source_digest.update(sha256_file(ROOT / "contracts" / "human-wave2-production-activation-v1.json").encode("ascii"))
+    source_digest.update(sha256_file(ROOT / "contracts" / "human-small-display-occupancy-v1.json").encode("ascii"))
+    source_digest.update(sha256_file(ROOT / "contracts" / "human-small-display-occupancy-owner-approval-v1.json").encode("ascii"))
     source_digest.update(sha256_file(FONT_SET_ROOT / "manifest.json").encode("ascii"))
     generator_sha256 = sha256_file(Path(__file__).resolve())
     source_digest.update(generator_sha256.encode("ascii"))
@@ -764,6 +905,16 @@ def build(args: argparse.Namespace, staging: Path) -> None:
             "may_overlap_character": False,
             "may_overlap_assistive_device": False,
             "small_size_review_px": [80, 96, 100],
+            "canonical_message_profile": "message-512",
+            "canonical_message_character_height_ratio": [0.64, 0.84],
+            "canonical_message_zoom": {
+                "vertical_caption_factor": MESSAGE_512_VERTICAL_CAPTION_ZOOM,
+                "side_caption_factor": MESSAGE_512_SIDE_CAPTION_ZOOM,
+                "minimum_factor": MESSAGE_512_MINIMUM_ZOOM_FACTOR,
+                "absolute_minimum_zoom": MESSAGE_512_ABSOLUTE_MINIMUM_ZOOM,
+                "backoff_step": MESSAGE_512_ZOOM_BACKOFF_STEP,
+                "resolution": "largest-renderer-validated-per-sticker-zoom",
+            },
         },
         "semantic_metadata": {
             "apology_intent": "chat.sorry",

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generator": "generate_micro_reactions_pack.py",
+  "generator_version": 2,
+  "pack_contract": "contracts/micro-reactions-pack-v1.json",
+  "emotion_matrix": "content/micro-reactions-emotion-matrix-v1.json",
+  "identity_count": 6,
+  "sticker_count": 60,
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review",
+  "packs": [
+    {
+      "pack_id": "micro-sprig-001",
+      "display_name": "Sprig",
+      "archetype": "leaf-eared forest sprite",
+      "primary": "#75D77B",
+      "signature": "leaf"
+    },
+    {
+      "pack_id": "micro-cinder-002",
+      "display_name": "Cinder",
+      "archetype": "ember sprite with a flame crown",
+      "primary": "#FF9D52",
+      "signature": "ember"
+    },
+    {
+      "pack_id": "micro-ripple-003",
+      "display_name": "Ripple",
+      "archetype": "water sprite with external gills",
+      "primary": "#69CFE4",
+      "signature": "drop"
+    },
+    {
+      "pack_id": "micro-orbit-004",
+      "display_name": "Orbit",
+      "archetype": "ringed space creature",
+      "primary": "#A98BFF",
+      "signature": "star"
+    },
+    {
+      "pack_id": "micro-crumb-005",
+      "display_name": "Crumb",
+      "archetype": "round snack-loving burrow creature",
+      "primary": "#E6B777",
+      "signature": "crumb"
+    },
+    {
+      "pack_id": "micro-mallow-006",
+      "display_name": "Mallow",
+      "archetype": "scalloped cloud creature",
+      "primary": "#F5B8D2",
+      "signature": "puff"
+    }
+  ]
+}

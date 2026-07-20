@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-20",
+  "approved_gates": {
+    "micro-reactions-vector-identities": "pass",
+    "ten-reaction-semantic-readability": "pass",
+    "controlled-small-display-readability": "pass",
+    "animated-reaction-structure": "pass",
+    "orbit-layered-2_5d-depth": "pass",
+    "orbit-parallax": "pass",
+    "orbit-animation-and-loop": "pass",
+    "orbit-reduced-motion": "pass"
+  },
+  "profile_disposition": {
+    "160px": "approved-large",
+    "100px": "approved-default",
+    "80px": "approved-compact-stress-profile"
+  },
+  "production_use": "still-requires-selected-glb-and-final-pack-review",
+  "prior_conditional_decision": {
+    "file": "micro-reactions-vector-identity-and-reaction-readability-owner-decision-v1.json",
+    "sha256": "986cc7c4fee1dbe7bde018ff7bc34e035f0863388cf4bee1824c2311e4bce109"
+  },
+  "reviewed_artifacts": {
+    "reaction_gate": {
+      "identity-lineup.png": "23a4a0611cc031c8a44fe729e7e71479e63e09b01b36aec437afce9d8a75e6c6",
+      "reaction-matrix.png": "825c620bf9303220e2998b5d7720dcdcf2162dac566065760f964f04072aa37d",
+      "small-display-all-reactions-80px.png": "69cb4bef8a2b00ee245695db93628dda6e311c9bf1b083ed6cb780d8afe3a166",
+      "small-display-all-reactions-100px.png": "1ef893c6fba1759efd0e213b4d02ccb23044f329ca67f132cc1e98722a0948a5",
+      "small-display-all-reactions-160px.png": "1be1c38f965a85ef92d40d70e683997ab9a119b8f7cecd91258ac96cab496c7e",
+      "animation-review.html": "1fa24d3e56012146c4ce3c25b6ec8e5950bcb8ba99cd56c4fbb3342a980fae82"
+    },
+    "orbit_layered_2_5d_gate": {
+      "contact-sheet.png": "a70d08846ffab59fc9afee443e94713953168475428d4ea1bfea0a7824dff6e4",
+      "front.webp": "87f1c999c53dbf641e0e8316fb89beeb993d0788d9996db92341fd82f7666547",
+      "dimensional.webp": "d7be8497f01bcf9e8cbebe45eb7863c60049a3d2afc935ced12bf48c0174cde4",
+      "parallax-left.webp": "fda006808b9d4ac05934ee7c5c484d4ca7b50640919feffe486ce1abb022b2bc",
+      "parallax-right.webp": "e108e2c2d3cb5795df3cb3972c455fc6c59f92518c4a173e28c0228a5c2a775c",
+      "orbital-tilt-animated.webp": "755ca74c50ca0f53b60f5cdde8d6cc993066d2a41a8a735cf0be0c6c32844ee2",
+      "orbital-tilt-reduced-motion.webp": "d7be8497f01bcf9e8cbebe45eb7863c60049a3d2afc935ced12bf48c0174cde4"
+    }
+  },
+  "remaining_gates": [
+    "selected-styled-glb-parity",
+    "final-pack-review",
+    "owner-production-activation"
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "reference_identity": "micro-orbit-004",
+  "production_use": "approved-for-styled-glb-family-expansion",
+  "owner_approval": "contracts/micro-reactions-styled-glb-family-owner-approval-v1.json",
+  "identities": [
+    {
+      "identity_id": "micro-sprig-001",
+      "display_name": "Sprig",
+      "archetype": "leaf-eared forest sprite",
+      "body_kind": "sprig",
+      "signature_kind": "leaf",
+      "signature_node": "LeafAnatomy",
+      "signature_clip": "leaf-sway",
+      "palette": {
+        "primary": "#75D77B",
+        "secondary": "#329B62",
+        "light": "#DFF7C8",
+        "accent": "#FFD65A",
+        "outline": "#20324B",
+        "blush": "#FF8FA8",
+        "white": "#FFFDF8"
+      }
+    },
+    {
+      "identity_id": "micro-cinder-002",
+      "display_name": "Cinder",
+      "archetype": "ember sprite with a flame crown",
+      "body_kind": "ember",
+      "signature_kind": "flame",
+      "signature_node": "FlameCrown",
+      "signature_clip": "ember-flicker",
+      "palette": {
+        "primary": "#FF9D52",
+        "secondary": "#ED5C38",
+        "light": "#FFE2A8",
+        "accent": "#FFD45C",
+        "outline": "#20324B",
+        "blush": "#FF8FA8",
+        "white": "#FFFDF8"
+      }
+    },
+    {
+      "identity_id": "micro-ripple-003",
+      "display_name": "Ripple",
+      "archetype": "water sprite with external gills",
+      "body_kind": "rounded",
+      "signature_kind": "gill",
+      "signature_node": "ExternalGills",
+      "signature_clip": "gill-ripple",
+      "palette": {
+        "primary": "#69CFE4",
+        "secondary": "#318EBC",
+        "light": "#DDF8FF",
+        "accent": "#74E1CB",
+        "outline": "#20324B",
+        "blush": "#FF8FA8",
+        "white": "#FFFDF8"
+      }
+    },
+    {
+      "identity_id": "micro-crumb-005",
+      "display_name": "Crumb",
+      "archetype": "round snack-loving burrow creature",
+      "body_kind": "round",
+      "signature_kind": "ear",
+      "signature_node": "RoundEars",
+      "signature_clip": "snack-bounce",
+      "palette": {
+        "primary": "#E6B777",
+        "secondary": "#A96F48",
+        "light": "#FFF0D4",
+        "accent": "#F58AA8",
+        "outline": "#20324B",
+        "blush": "#FF8FA8",
+        "white": "#FFFDF8"
+      }
+    },
+    {
+      "identity_id": "micro-mallow-006",
+      "display_name": "Mallow",
+      "archetype": "scalloped cloud creature",
+      "body_kind": "cloud",
+      "signature_kind": "puff",
+      "signature_node": "CloudPuffs",
+      "signature_clip": "puff-float",
+      "palette": {
+        "primary": "#F5B8D2",
+        "secondary": "#C879A8",
+        "light": "#FFF2F8",
+        "accent": "#8EDBF3",
+        "outline": "#20324B",
+        "blush": "#FF8FA8",
+        "white": "#FFFDF8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "contract_id": "micro-reactions-pack-v1",
+  "status": "styled-glb-family-owner-approved",
+  "product_name": "Micro Reactions",
+  "product_type": "multi-identity-reaction-pack",
+  "production_use": "forbidden-until-final-pack-owner-activation",
+  "scope": {
+    "identity_count": 6,
+    "reactions_per_identity": 10,
+    "sticker_count": 60,
+    "animated_sticker_count": 60,
+    "reduced_motion_sticker_count": 60
+  },
+  "identity_ids": [
+    "micro-sprig-001",
+    "micro-cinder-002",
+    "micro-ripple-003",
+    "micro-orbit-004",
+    "micro-crumb-005",
+    "micro-mallow-006"
+  ],
+  "reaction_ids": [
+    "joy",
+    "laugh",
+    "love",
+    "surprise",
+    "cry",
+    "anger",
+    "suspicion",
+    "exhausted",
+    "panic",
+    "proud"
+  ],
+  "art_direction": {
+    "reference_policy": "market-references-inform-product-grammar-only",
+    "originality_requirement": "no copied character, silhouette, pose, prop arrangement, typography, or sticker composition",
+    "family_language": [
+      "face-dominant compact silhouette",
+      "navy rounded outline",
+      "flat two-tone color",
+      "high-contrast facial construction",
+      "identity-specific secondary anatomy",
+      "transparent background"
+    ],
+    "identity_separation": {
+      "recolor_only_variants_forbidden": true,
+      "distinct_silhouette_required": true,
+      "distinct_primary_palette_required": true,
+      "distinct_secondary_anatomy_required": true,
+      "identity_specific_motion_performance_required": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "hard_margin_px": 16,
+    "preferred_margin_px": 24,
+    "target_union_occupancy": [
+      0.68,
+      0.92
+    ],
+    "target_character_height_ratio": [
+      0.58,
+      0.82
+    ],
+    "small_display_review_px": [
+      80,
+      100,
+      160
+    ],
+    "text_policy": "text-free-primary",
+    "localization_dependency": false
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "layered_2_5d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "styled_glb": "required-for-all-six-identities",
+    "source_art": "svg",
+    "license": "MIT"
+  },
+  "animation": {
+    "loop_closure_required": true,
+    "visible_mid_cycle_change_required": true,
+    "identity_stable_across_frames": true,
+    "reaction_readable_without_motion": true,
+    "responsive_shadow_when_vertical_motion_is_used": true
+  },
+  "approved_gate_state": {
+    "owner_approval": "contracts/micro-reactions-reaction-and-orbit-2_5d-owner-approval-v1.json",
+    "vector_identity": "pass",
+    "ten_reaction_semantics": "pass",
+    "controlled_small_display": "pass",
+    "animated_reaction_structure": "pass",
+    "orbit_layered_2_5d": "pass",
+    "selected_styled_glb": "pass",
+    "styled_glb_family_expansion": "pass",
+    "styled_glb_family_owner_approval": "contracts/micro-reactions-styled-glb-family-owner-approval-v1.json",
+    "final_pack_review": "candidate-generated",
+    "owner_production_activation": "pending"
+  },
+  "review_gates": [
+    "originality-and-family-coherence",
+    "six-way-identity-separation",
+    "ten-reaction-semantic-readability",
+    "80-100-160px-small-display-readability",
+    "animation-loop-and-reduced-motion-parity",
+    "layered-depth-and-parallax",
+    "selected-styled-glb-parity",
+    "owner-production-activation"
+  ]
+}

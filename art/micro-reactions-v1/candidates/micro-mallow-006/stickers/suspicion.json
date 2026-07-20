@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-mallow-006-suspicion",
+  "pack_id": "micro-mallow-006",
+  "phrase_id": "reaction.suspicion",
+  "recipe_id": "micro-reactions.lean",
+  "alt_text": "Mallow, a scalloped cloud creature, reacting with suspicion",
+  "expression": "suspicion",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

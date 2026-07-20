@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-crumb-005-laugh",
+  "pack_id": "micro-crumb-005",
+  "phrase_id": "reaction.laugh",
+  "recipe_id": "micro-reactions.laugh",
+  "alt_text": "Crumb, a round snack-loving burrow creature, reacting with laugh",
+  "expression": "laugh",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 200,
+            "value": -4,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 4,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

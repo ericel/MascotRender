@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-orbit-004-love",
+  "pack_id": "micro-orbit-004",
+  "phrase_id": "reaction.love",
+  "recipe_id": "micro-reactions.pulse",
+  "alt_text": "Orbit, a ringed space creature, reacting with love",
+  "expression": "love",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 900,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.018,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "body",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.018,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 0.94,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

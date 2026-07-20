@@ -127,6 +127,65 @@ catch_discover_tests(mascotrender_unit_tests)
 if(MASCOTRENDER_BUILD_CLI)
     find_package(Python3 COMPONENTS Interpreter REQUIRED)
     add_test(
+        NAME micro_reactions_pack_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_micro_reactions.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_reactions_pack.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-pack-v1.json"
+            --matrix "${PROJECT_SOURCE_DIR}/content/micro-reactions-emotion-matrix-v1.json"
+            --owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-reaction-and-orbit-2_5d-owner-approval-v1.json"
+    )
+    # Full review regeneration invokes the instrumented CLI for every frame.
+    # ASan/UBSan runners need more headroom than optimized package jobs.
+    set_tests_properties(micro_reactions_pack_contract PROPERTIES TIMEOUT 480)
+    add_test(
+        NAME micro_orbit_layered_and_glb_proofs
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_micro_orbit_proofs.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --layered-generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_orbit_2_5d_proof.py"
+            --glb-generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_orbit_glb.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --glb "${PROJECT_SOURCE_DIR}/art/micro-reactions-v1/orbit-glb-proof/micro-orbit-004.glb"
+            --owner-decision "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-reaction-and-orbit-2_5d-owner-approval-v1.json"
+            --final-owner-decision "${PROJECT_SOURCE_DIR}/contracts/micro-orbit-final-glb-face-parity-owner-approval-v1.json"
+    )
+    set_tests_properties(micro_orbit_layered_and_glb_proofs PROPERTIES TIMEOUT 60)
+    add_test(
+        NAME micro_styled_glb_family_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_micro_styled_glb_family.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_styled_glbs.py"
+            --contract "${PROJECT_SOURCE_DIR}/content/micro-styled-glb-identities-v1.json"
+            --glb-root "${PROJECT_SOURCE_DIR}/art/micro-reactions-v1/styled-glb-proofs"
+            --orbit-owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-orbit-final-glb-face-parity-owner-approval-v1.json"
+            --family-owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-styled-glb-family-owner-approval-v1.json"
+    )
+    set_tests_properties(micro_styled_glb_family_contract PROPERTIES TIMEOUT 30)
+    add_test(
+        NAME micro_reactions_distribution_bundle
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_micro_reactions_bundle.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_micro_reactions_pack.py"
+            --builder "${PROJECT_SOURCE_DIR}/tools/build_micro_reactions_bundle.py"
+            --bundle-tool "${PROJECT_SOURCE_DIR}/tools/mascot_bundle.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --matrix "${PROJECT_SOURCE_DIR}/content/micro-reactions-emotion-matrix-v1.json"
+            --orbit-glb "${PROJECT_SOURCE_DIR}/art/micro-reactions-v1/orbit-glb-proof/micro-orbit-004.glb"
+            --family-glb-root "${PROJECT_SOURCE_DIR}/art/micro-reactions-v1/styled-glb-proofs"
+            --orbit-approval "${PROJECT_SOURCE_DIR}/contracts/micro-orbit-final-glb-face-parity-owner-approval-v1.json"
+            --family-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-styled-glb-family-owner-approval-v1.json"
+    )
+    set_tests_properties(micro_reactions_distribution_bundle PROPERTIES TIMEOUT 600)
+    add_test(
         NAME generated_mascot_pipeline
         COMMAND
             "${Python3_EXECUTABLE}"

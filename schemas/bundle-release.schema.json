@@ -20,7 +20,8 @@
     "catalogue": { "$ref": "#/$defs/document" },
     "dictionary": { "$ref": "#/$defs/document" },
     "sticker_count": { "type": "integer", "minimum": 1 },
-    "animated_sticker_count": { "type": "integer", "minimum": 0 }
+    "animated_sticker_count": { "type": "integer", "minimum": 0 },
+    "model_count": { "type": "integer", "minimum": 0 }
   },
   "$defs": {
     "document": {

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-mallow-006-joy",
+  "pack_id": "micro-mallow-006",
+  "phrase_id": "reaction.joy",
+  "recipe_id": "micro-reactions.pulse",
+  "alt_text": "Mallow, a scalloped cloud creature, reacting with joy",
+  "expression": "joy",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 1.04,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "body",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 1.04,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 400,
+            "value": 0.94,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

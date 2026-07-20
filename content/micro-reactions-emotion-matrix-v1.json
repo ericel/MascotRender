@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "matrix_id": "micro-reactions-emotion-matrix-v1",
+  "pack_contract": "micro-reactions-pack-v1",
+  "editorial_policy": {
+    "shared_semantics": true,
+    "identical_performance_forbidden": true,
+    "text_free": true,
+    "demographic_inference": false,
+    "selection_mode": "explicit-character-choice-or-uniform-deterministic-rotation"
+  },
+  "reactions": [
+    {
+      "id": "joy",
+      "intent": "reaction.positive.joy",
+      "facial_read": "closed crescent eyes and open smile",
+      "effect": "spark burst",
+      "motion_family": "buoyant-pulse"
+    },
+    {
+      "id": "laugh",
+      "intent": "reaction.positive.laughter",
+      "facial_read": "compressed eyes, open laugh, and laugh tears",
+      "effect": "laugh tears",
+      "motion_family": "side-to-side-laugh"
+    },
+    {
+      "id": "love",
+      "intent": "reaction.affection.love",
+      "facial_read": "heart eyes and blush",
+      "effect": "floating hearts",
+      "motion_family": "heart-pulse"
+    },
+    {
+      "id": "surprise",
+      "intent": "reaction.surprise",
+      "facial_read": "wide eyes and round mouth",
+      "effect": "radial surprise marks",
+      "motion_family": "pop-and-settle"
+    },
+    {
+      "id": "cry",
+      "intent": "reaction.sadness.cry",
+      "facial_read": "raised inner brows, frown, and tears",
+      "effect": "tear streams",
+      "motion_family": "sobbing-bob"
+    },
+    {
+      "id": "anger",
+      "intent": "reaction.anger",
+      "facial_read": "downward brows and clenched mouth",
+      "effect": "steam and heat marks",
+      "motion_family": "contained-shake"
+    },
+    {
+      "id": "suspicion",
+      "intent": "reaction.suspicion",
+      "facial_read": "side-eye and asymmetric brow",
+      "effect": "short scrutiny marks",
+      "motion_family": "slow-lean"
+    },
+    {
+      "id": "exhausted",
+      "intent": "reaction.fatigue",
+      "facial_read": "drooping eyelids and yawn",
+      "effect": "descending breath marks",
+      "motion_family": "heavy-breathe"
+    },
+    {
+      "id": "panic",
+      "intent": "reaction.anxiety.panic",
+      "facial_read": "wide eyes and trembling mouth",
+      "effect": "dense motion ticks",
+      "motion_family": "rapid-tremble"
+    },
+    {
+      "id": "proud",
+      "intent": "reaction.positive.proud",
+      "facial_read": "lifted gaze, upward brows, raised cheeks, and asymmetric confident smile",
+      "effect": "achievement medallion and crown-like sparkle arc",
+      "motion_family": "confident-rise"
+    }
+  ],
+  "identity_performances": {
+    "micro-sprig-001": {
+      "display_name": "Sprig",
+      "archetype": "leaf-eared forest sprite",
+      "temperament": "optimistic and gently energetic",
+      "signature_motion": "leaf sway",
+      "signature_effect": "seed and leaf motes"
+    },
+    "micro-cinder-002": {
+      "display_name": "Cinder",
+      "archetype": "ember sprite with a flame crown",
+      "temperament": "intense and quick to react",
+      "signature_motion": "flame flicker",
+      "signature_effect": "embers and heat curls"
+    },
+    "micro-ripple-003": {
+      "display_name": "Ripple",
+      "archetype": "water sprite with external gills",
+      "temperament": "soft, curious, and emotionally transparent",
+      "signature_motion": "watery squash",
+      "signature_effect": "droplets and ripples"
+    },
+    "micro-orbit-004": {
+      "display_name": "Orbit",
+      "archetype": "ringed space creature",
+      "temperament": "strange, observant, and composed",
+      "signature_motion": "orbital tilt",
+      "signature_effect": "stars and orbit points"
+    },
+    "micro-crumb-005": {
+      "display_name": "Crumb",
+      "archetype": "round snack-loving burrow creature",
+      "temperament": "warm, dramatic, and tactile",
+      "signature_motion": "cheek puff",
+      "signature_effect": "crumbs and cheek marks"
+    },
+    "micro-mallow-006": {
+      "display_name": "Mallow",
+      "archetype": "scalloped cloud creature",
+      "temperament": "sleepy, tender, and unexpectedly bold",
+      "signature_motion": "cloud squish",
+      "signature_effect": "puffs and soft starlets"
+    }
+  }
+}

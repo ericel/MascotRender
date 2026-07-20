@@ -24,6 +24,7 @@ bundle/
 ├── assets/<pack-id>/<sticker-id>.webp
 ├── thumbnails/<pack-id>/<sticker-id>.webp
 ├── reduced-motion/<pack-id>/<sticker-id>.webp
+├── models/<identity-id>.glb                 # optional
 ├── catalogue.json
 ├── dictionary.json
 └── build-report.json
@@ -39,6 +40,13 @@ Every sticker has:
 
 Reduced motion is an authored output, not a client-side instruction to freeze an
 arbitrary animation frame.
+
+Bundles may also declare an optional `models[]` catalogue. Each model binds an
+identity ID to a GLB path, SHA-256 digest, byte size, semantic-node count, and
+the animation clip names exposed by that model. Model objects are validated and
+content-addressed exactly like rendered sticker assets. Consumers that only
+support WebP can ignore this optional catalogue without changing sticker
+selection behavior.
 
 ## Semantic dictionary and Trie integration
 
@@ -94,6 +102,7 @@ The staged layout is:
 ```text
 distribution/
 ├── objects/sha256/<prefix>/<hash>.webp
+├── objects/sha256/<prefix>/<hash>.glb
 ├── bundles/<bundle-id>/catalogue.json
 ├── bundles/<bundle-id>/dictionary.json
 ├── bundles/<bundle-id>/release.json

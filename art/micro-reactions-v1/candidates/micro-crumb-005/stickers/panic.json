@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-crumb-005-panic",
+  "pack_id": "micro-crumb-005",
+  "phrase_id": "reaction.panic",
+  "recipe_id": "micro-reactions.tremble",
+  "alt_text": "Crumb, a round snack-loving burrow creature, reacting with panic",
+  "expression": "panic",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 700,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 175,
+            "value": -3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 350,
+            "value": 3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 525,
+            "value": -3,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 700,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
