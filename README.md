@@ -13,7 +13,7 @@ integrations.
 
 The project ships a production-ready C++20 engine spanning deterministic 2D,
 layered 2.5D, animation, reduced-motion output, and optional Filament/GLB 3D.
-The current public package is `mascotrender/0.4.0`, consumable from Conan 2
+The current public package is `mascotrender/0.5.0`, consumable from Conan 2
 and CMake as `MascotRender::MascotRender`. It composes versioned JSON-selected
 SVG layers and optional pack-declared static TTF text through ThorVG, then
 returns a WebP encoded by libwebp. The example pack ships Changa One under the
@@ -43,6 +43,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [0.2.0 release notes](docs/RELEASE_0.2.0.md)
 - [0.3.0 release notes](docs/RELEASE_0.3.0.md)
 - [0.4.0 release notes](docs/RELEASE_0.4.0.md)
+- [0.5.0 release notes](docs/RELEASE_0.5.0.md)
 - [Conan publication runbook](docs/PUBLISHING.md)
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
@@ -56,7 +57,7 @@ The original v0.1 SDD is retained unchanged as the review baseline.
 
 The current implementation proves the distribution and graphics path:
 
-1. `conan create` produces static or shared `mascotrender/0.4.0` packages.
+1. `conan create` produces static or shared `mascotrender/0.5.0` packages.
 2. The external `test_package` installs, links, renders, and writes a WebP.
 3. Unit tests decode the WebP and verify dimensions, alpha, and repeatability.
 4. Public headers expose no ThorVG, libwebp, JSON, or CLI types.
@@ -66,7 +67,7 @@ The current implementation proves the distribution and graphics path:
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
 hosted compiler/sanitizer matrix is green. The protected Conan publication
 workflow uploads and then proves a logged-out exact-package re-download;
-release `v0.4.0` and its tested binaries are public. A fresh Conan cache may
+release `v0.5.0` and its tested binaries are public. A fresh Conan cache may
 build public third-party dependencies that ConanCenter does not provide as
 matching binaries.
 
@@ -117,6 +118,26 @@ generation/review scripts plus the bundle validator/stager are installed under
 `share/mascotrender/tools` by CMake and Conan.
 Pull-request CI uploads the complete bundle and gallery as a downloadable
 14-day artifact.
+
+## Use the production Calendar Pop pack
+
+Release `v0.5.0` installs the approved Calendar Pop source pack under
+`share/mascotrender/art/calendar-pop-v1`. It contains seven weekdays, twelve
+months, four seasons, four OFL display fonts, semantic trigger aliases, and
+animated plus reduced-motion recipes. The pack remains structured input for
+MascotRender rather than an application-specific opaque asset bundle.
+
+Maintainers can regenerate its source and review evidence with:
+
+```bash
+python3 tools/generate_calendar_typography_pack.py \
+  --mascotrender build/Release/mascotrender \
+  --force
+```
+
+The production contract enforces exact spelling, one fitted glyph layout per
+word, animation closure, safe margins, small-display readability, and
+project-owner approval.
 
 ## Download the production Micro Reactions pack
 
@@ -358,7 +379,7 @@ Add the package requirement to the consuming recipe:
 
 ```python
 def requirements(self):
-    self.requires("mascotrender/0.4.0")
+    self.requires("mascotrender/0.5.0")
 ```
 
 Link the canonical imported target:
