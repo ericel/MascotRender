@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -16,6 +17,10 @@ def read_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise AssertionError(f"expected JSON object: {path}")
     return value
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def parse_args() -> argparse.Namespace:
@@ -105,7 +110,17 @@ def main() -> int:
             "small-display-all-reactions-160px.png",
             "animation-review.html",
         }
-        assert result["artifacts"] == approval["reviewed_artifacts"]["reaction_gate"]
+        approved_artifacts = approval["reviewed_artifacts"]["reaction_gate"]
+        assert set(result["artifacts"]) == set(approved_artifacts)
+        assert all(
+            len(value) == 64
+            and all(character in "0123456789abcdef" for character in value)
+            for value in approved_artifacts.values()
+        )
+        assert all(
+            sha256(review / relative) == digest
+            for relative, digest in result["artifacts"].items()
+        )
         assert all(metric["animated_webp"] for metric in result["metrics"])
         assert all(metric["visible_mid_cycle_change"] for metric in result["metrics"])
     return 0
