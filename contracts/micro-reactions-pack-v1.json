@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "contract_id": "micro-reactions-pack-v1",
-  "status": "styled-glb-family-owner-approved",
+  "status": "owner-production-approved",
   "product_name": "Micro Reactions",
   "product_type": "multi-identity-reaction-pack",
-  "production_use": "forbidden-until-final-pack-owner-activation",
+  "production_use": "approved-for-public-production",
   "scope": {
     "identity_count": 6,
     "reactions_per_identity": 10,
@@ -100,8 +100,9 @@
     "selected_styled_glb": "pass",
     "styled_glb_family_expansion": "pass",
     "styled_glb_family_owner_approval": "contracts/micro-reactions-styled-glb-family-owner-approval-v1.json",
-    "final_pack_review": "candidate-generated",
-    "owner_production_activation": "pending"
+    "final_pack_review": "pass",
+    "owner_production_activation": "approved",
+    "final_pack_owner_approval": "contracts/micro-reactions-final-pack-owner-approval-v1.json"
   },
   "review_gates": [
     "originality-and-family-coherence",
