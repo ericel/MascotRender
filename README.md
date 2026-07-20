@@ -13,7 +13,7 @@ integrations.
 
 The project ships a production-ready C++20 engine spanning deterministic 2D,
 layered 2.5D, animation, reduced-motion output, and optional Filament/GLB 3D.
-The current public package is `mascotrender/0.3.0`, consumable from Conan 2
+The current public package is `mascotrender/0.4.0`, consumable from Conan 2
 and CMake as `MascotRender::MascotRender`. It composes versioned JSON-selected
 SVG layers and optional pack-declared static TTF text through ThorVG, then
 returns a WebP encoded by libwebp. The example pack ships Changa One under the
@@ -36,11 +36,13 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Architecture decisions](docs/DECISIONS.md)
 - [Pack format v1](docs/PACK_FORMAT.md)
 - [Storage-neutral bundle protocol v1](docs/BUNDLE_PROTOCOL.md)
+- [Micro Reactions product pack](docs/MICRO_REACTIONS.md)
 - [Mascot generation and batch pipeline](docs/CONTENT_PIPELINE.md)
 - [M6 sticker review record](docs/M6_REVIEW.md)
 - [0.1.0 release notes](docs/RELEASE_0.1.0.md)
 - [0.2.0 release notes](docs/RELEASE_0.2.0.md)
 - [0.3.0 release notes](docs/RELEASE_0.3.0.md)
+- [0.4.0 release notes](docs/RELEASE_0.4.0.md)
 - [Conan publication runbook](docs/PUBLISHING.md)
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
@@ -54,7 +56,7 @@ The original v0.1 SDD is retained unchanged as the review baseline.
 
 The current implementation proves the distribution and graphics path:
 
-1. `conan create` produces static or shared `mascotrender/0.3.0` packages.
+1. `conan create` produces static or shared `mascotrender/0.4.0` packages.
 2. The external `test_package` installs, links, renders, and writes a WebP.
 3. Unit tests decode the WebP and verify dimensions, alpha, and repeatability.
 4. Public headers expose no ThorVG, libwebp, JSON, or CLI types.
@@ -64,7 +66,7 @@ The current implementation proves the distribution and graphics path:
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
 hosted compiler/sanitizer matrix is green. The protected Conan publication
 workflow uploads and then proves a logged-out exact-package re-download;
-release `v0.3.0` and its tested binaries are public. A fresh Conan cache may
+release `v0.4.0` and its tested binaries are public. A fresh Conan cache may
 build public third-party dependencies that ConanCenter does not provide as
 matching binaries.
 
@@ -115,6 +117,29 @@ generation/review scripts plus the bundle validator/stager are installed under
 `share/mascotrender/tools` by CMake and Conan.
 Pull-request CI uploads the complete bundle and gallery as a downloadable
 14-day artifact.
+
+## Download the production Micro Reactions pack
+
+Release `v0.4.0` publishes the approved six-identity Micro Reactions family as
+a provider-neutral GitHub Release ZIP. It contains 60 animated reactions, 60
+reduced-motion equivalents, 60 thumbnails, six styled GLBs, immutable release
+metadata, the semantic dictionary, and a stable channel pointer. Verify the
+companion SHA-256 file, extract the archive, and serve the directory from any
+static file host or object-storage provider.
+
+Maintainers can reproduce the archive from the approved candidate:
+
+```bash
+python3 tools/package_bundle_release.py \
+  --distribution generated/micro-reactions-production-distribution \
+  --source-bundle generated/micro-reactions-production-bundle \
+  --approval contracts/micro-reactions-final-pack-owner-approval-v1.json \
+  --output \
+    mascotrender-micro-reactions-mascotrender-b1-dc088762e1b7.zip
+```
+
+The command fails unless the source metadata, all 190 staged objects, and the
+exact distribution file set match the project-owner approval.
 
 ## Generate the full-body human pilot matrix
 
@@ -333,7 +358,7 @@ Add the package requirement to the consuming recipe:
 
 ```python
 def requirements(self):
-    self.requires("mascotrender/0.3.0")
+    self.requires("mascotrender/0.4.0")
 ```
 
 Link the canonical imported target:

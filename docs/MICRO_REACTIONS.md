@@ -67,8 +67,7 @@ GLB hashes, six-character review sheets, signature-motion evidence, loop
 closure, reduced-motion equivalents, and small-display profiles are bound in
 `micro-reactions-styled-glb-family-owner-approval-v1.json`. The approved
 display guidance is 100 pixels by default, 80 pixels as the minimum stress
-floor, and 160 pixels for comfortable showcase presentation. The remaining
-gate is final activation of the complete Micro Reactions product bundle.
+floor, and 160 pixels for comfortable showcase presentation.
 
 ## Production bundle candidate
 
@@ -100,3 +99,19 @@ match. The project owner approved the immutable candidate
 hashes and authorizes the complete pack for public production use. Publishing
 the provider-neutral `micro-reactions-stable` channel is now an operational
 release step rather than an art or product gate.
+
+Create the public, approval-bound release archive with:
+
+```bash
+python3 tools/package_bundle_release.py \
+  --distribution generated/micro-reactions-production-distribution \
+  --source-bundle generated/micro-reactions-production-bundle \
+  --approval contracts/micro-reactions-final-pack-owner-approval-v1.json \
+  --output \
+    mascotrender-micro-reactions-mascotrender-b1-dc088762e1b7.zip
+```
+
+The tool checks all six owner-bound metadata hashes and every object in the
+190-object publish plan before writing a deterministic ZIP and companion
+SHA-256 file. The archive is the canonical open-source download; storage
+providers are deployment choices rather than MascotRender dependencies.

@@ -171,3 +171,22 @@ Garbage collection is safe only after computing reachability from:
 
 Provider-specific uploaders belong in integrations or consuming applications.
 They consume `publish-plan.json`; they do not change this protocol.
+
+## Provider-neutral public archive
+
+An owner-approved distribution can be published as one deterministic archive:
+
+```bash
+python3 tools/package_bundle_release.py \
+  --distribution generated/micro-reactions-production-distribution \
+  --source-bundle generated/micro-reactions-production-bundle \
+  --approval contracts/micro-reactions-final-pack-owner-approval-v1.json \
+  --output mascotrender-micro-reactions.zip
+```
+
+The archiver verifies the approval, source metadata, stable pointer, immutable
+release, complete publish plan, every object hash, byte size, and exact file
+set. It writes fixed timestamps, permissions, ordering, and compression so the
+same inputs produce the same ZIP hash. The archive adds the permanent owner
+approval alongside the staged distribution and can be mirrored without
+rewriting any runtime document.

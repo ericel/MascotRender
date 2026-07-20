@@ -9,7 +9,7 @@ import os
 
 class MascotRenderRecipe(ConanFile):
     name = "mascotrender"
-    version = "0.3.0"
+    version = "0.4.0"
     package_type = "library"
     description = "Deterministic procedural character rendering engine"
     license = "MIT"
