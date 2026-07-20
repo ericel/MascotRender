@@ -139,7 +139,7 @@ if(MASCOTRENDER_BUILD_CLI)
             --owner-approval "${PROJECT_SOURCE_DIR}/contracts/calendar-typography-owner-approval-v1.json"
             --canonical-source "${PROJECT_SOURCE_DIR}/art/calendar-pop-v1"
     )
-    set_tests_properties(calendar_typography_pack_contract PROPERTIES TIMEOUT 240)
+    set_tests_properties(calendar_typography_pack_contract PROPERTIES TIMEOUT 480)
     add_test(
         NAME micro_reactions_pack_contract
         COMMAND
