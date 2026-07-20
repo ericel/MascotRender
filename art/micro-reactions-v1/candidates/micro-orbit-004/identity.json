@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-orbit-004",
+  "display_name": "Orbit",
+  "archetype": "ringed space creature",
+  "palette": {
+    "primary": "#A98BFF",
+    "secondary": "#6553C7",
+    "light": "#F0EAFF",
+    "accent": "#FFD25F",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "star-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

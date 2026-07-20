@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-orbit-004-2_5d-parallax-right",
+  "pack_id": "micro-orbit-004-2_5d-proof",
+  "alt_text": "Orbit showing a confident proud reaction with layered orbital depth",
+  "expression": "proud",
+  "pose": "dimensional",
+  "seed": 1,
+  "view": {
+    "x": 36,
+    "y": -10
+  }
+}

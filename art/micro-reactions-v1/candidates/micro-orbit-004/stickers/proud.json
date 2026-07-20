@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-orbit-004-proud",
+  "pack_id": "micro-orbit-004",
+  "phrase_id": "reaction.proud",
+  "recipe_id": "micro-reactions.rise",
+  "alt_text": "Orbit, a ringed space creature, reacting with proud",
+  "expression": "proud",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -4,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "shadow",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 0.86,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

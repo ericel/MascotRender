@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-crumb-005-surprise",
+  "pack_id": "micro-crumb-005",
+  "phrase_id": "reaction.surprise",
+  "recipe_id": "micro-reactions.pop",
+  "alt_text": "Crumb, a round snack-loving burrow creature, reacting with surprise",
+  "expression": "surprise",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 800,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 266,
+            "value": 1.045,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "body",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 266,
+            "value": 1.045,
+            "easing": "back_out"
+          },
+          {
+            "at_ms": 800,
+            "value": 1,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

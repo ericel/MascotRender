@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision_date": "2026-07-20",
+  "gate": "micro-reactions-styled-glb-family-expansion-v1",
+  "decision": "approved",
+  "reference_identity": "micro-orbit-004",
+  "approved_identities": [
+    "micro-sprig-001",
+    "micro-cinder-002",
+    "micro-ripple-003",
+    "micro-crumb-005",
+    "micro-mallow-006"
+  ],
+  "approved_scope": [
+    "five-new-deterministic-styled-glbs",
+    "six-identity-family-coherence",
+    "cross-backend-proud-identity-parity",
+    "identity-specific-secondary-anatomy",
+    "idle-rest-semantics",
+    "signature-motion-clips",
+    "proud-semantic-state",
+    "styled-outline-and-palette",
+    "semantic-node-structure",
+    "loop-closure",
+    "reduced-motion-equivalent",
+    "small-display-readability",
+    "family-cross-backend-review"
+  ],
+  "display_profiles": {
+    "80px": "minimum-acceptable-stress-floor",
+    "100px": "recommended-default",
+    "160px": "comfortable-showcase"
+  },
+  "approved_glbs": {
+    "micro-sprig-001": "1758dfc01ab02d265a281eb3c8b7400c43ac1ed22480e71296ca1dbcbda12050",
+    "micro-cinder-002": "e63bad10c34e685c9d1807ead36d3996aecc478bf6cb0b59c872cfe00384fc28",
+    "micro-ripple-003": "2869f1513b9f5d19877dca1972fc07dd8ec57f13ca7d07cb4bb25ec8ad250910",
+    "micro-crumb-005": "36b5b955bdff214476a49774e91c59bef6527b520c762be60df169d9924fcc7d",
+    "micro-mallow-006": "d9d982500a85d9a71418dcba0f487ea62b3c35c8f5b65c3291e4f9c9e3185d56"
+  },
+  "reviewed_artifacts": {
+    "family-cross-backend-contact-sheet.png": "061a98fb217cb1dcaf4012f1ba61761928fa80d90af28eb401a1d38836d0519a",
+    "family-signature-motion-sheet.png": "1f112ebf5b5069cab3496f08a2162c011e4099a2b8e4f4cb2909bcb93141eba2",
+    "family-small-display-80-100-160.png": "b5f5a8a0975f2ff59d3cb9b79ef8b4bffa761f9d3549c45f677b46a70d54475c",
+    "animation-review.html": "753074fac555bc0830ba3c5186c1e7cf93c241c4f3866c68a881cd239da1a27d"
+  },
+  "preserved_reference_gate": {
+    "identity_id": "micro-orbit-004",
+    "gate": "micro-orbit-final-glb-face-parity-v1",
+    "decision": "approved"
+  },
+  "non_blocking_note": "Some flat-to-GLB proud translations simplify decorative accents without breaking identity, mood, or recognizability.",
+  "production_use": "approved-for-styled-glb-family-expansion",
+  "remaining_gate": "final-micro-reactions-pack-activation"
+}

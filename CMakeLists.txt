@@ -185,7 +185,7 @@ install(
     PATTERN ".DS_Store" EXCLUDE
 )
 install(
-    DIRECTORY art/human-pack-v1 art/human-pack-wave2
+    DIRECTORY art/human-pack-v1 art/human-pack-wave2 art/micro-reactions-v1
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender/art"
     PATTERN ".DS_Store" EXCLUDE
 )
@@ -199,6 +199,7 @@ install(
         docs/HUMAN_PACK_VISUAL_STANDARD.md
         docs/HUMAN_PACK_V1_ART_BRIEF.md
         docs/HUMAN_PACK_PRODUCTION_RECOVERY.md
+        docs/MICRO_REACTIONS.md
         docs/MASCOT_PACKAGE_SPEC.md
         docs/BUNDLE_PROTOCOL.md
         docs/RELEASE_0.1.0.md
@@ -220,12 +221,19 @@ install(
         tools/generate_canonical_human_glbs.py
         tools/generate_human_wave2_candidates.py
         tools/generate_human_wave2_glbs.py
+        tools/generate_micro_reactions_pack.py
+        tools/generate_micro_orbit_2_5d_proof.py
+        tools/generate_micro_orbit_glb.py
+        tools/generate_micro_styled_glbs.py
+        tools/build_micro_reactions_bundle.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py
         tools/build_mascot_package.py
         tools/render_caption_backend_review.py
         tools/render_character_identity_review.py
         tools/render_robot_glb_review.py
+        tools/render_micro_orbit_glb_review.py
+        tools/render_micro_styled_glb_family_review.py
         tools/validate_character_identity.py
         tools/render_mascot_packs.py
         tools/build_sticker_review.py

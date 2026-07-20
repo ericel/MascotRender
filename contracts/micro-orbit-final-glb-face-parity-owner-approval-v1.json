@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision_date": "2026-07-20",
+  "gate": "micro-orbit-final-glb-face-parity-v1",
+  "decision": "approved",
+  "identity_id": "micro-orbit-004",
+  "semantic": "proud",
+  "approved_scope": [
+    "cross-backend-identity-parity",
+    "final-glb-facial-parity",
+    "proud-semantic-readability",
+    "styled-outline-and-palette",
+    "antenna-attachment-continuity",
+    "idle-animation",
+    "orbital-tilt-animation",
+    "proud-animation",
+    "loop-closure",
+    "reduced-motion-equivalent",
+    "small-display-readability",
+    "deterministic-generation"
+  ],
+  "reviewed_artifacts": {
+    "cross-backend-contact-sheet.png": "6ad57761711fd624ebe8da35456a3272dbdc66c8103b3dda80ddbc14e42b2044",
+    "motion-sample-sheet.png": "a472b772dac9b2dea41f50237e549d0048fd83488b1088ca66aaced1d75e81c1",
+    "small-display-80-100-160.png": "c3c0e29fa6ea1da8f1c0358f0c33e3c7fb9f25ef2a4efa2598102dab7ecd777f",
+    "rest.webp": "701fcd22bbc2eb83bcaad064a7a0e1c6f04d70cb0b0547b1dfc15ce594ad138a",
+    "idle-animated.webp": "e68401d6a14b02f76c988dcececdade99749e9be9dc27a825cbcc1477eac8188",
+    "orbital-tilt-animated.webp": "ce27e1a78de17d82e894d2cb3f5a92be4920637d8f4809efc0cc8a3afdc074a0",
+    "proud-animated.webp": "760fa392c8f48d8970ff212122e2f6c91a347dde9a7aea003b0eac823a6c9aae"
+  },
+  "production_use": "approved-as-selected-styled-glb-proof"
+}

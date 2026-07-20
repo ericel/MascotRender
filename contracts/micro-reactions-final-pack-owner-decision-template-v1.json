@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "gate": "micro-reactions-final-pack-activation-v1",
+  "decision": "pending",
+  "candidate": {
+    "bundle_id": "mascotrender-b1-dc088762e1b7",
+    "identity_count": 6,
+    "sticker_count": 60,
+    "animated_sticker_count": 60,
+    "reduced_motion_sticker_count": 60,
+    "styled_glb_count": 6,
+    "object_count": 190,
+    "encoded_asset_bytes": 11516510
+  },
+  "candidate_artifacts": {
+    "catalogue.json": "6888d5bc7f40c453ee20a4b5961f797809052c77652868814e35bdc2809c42c9",
+    "dictionary.json": "4a70ee0d7e2c6c6ca6514cf3846cabcaa6a7ae24395a7c8d19153df0ce43ec46",
+    "build-report.json": "16b75aa9699d9b421c0a8be4ec67eec14ee29f2856e7c47387c01499cdf8d042",
+    "channels/micro-reactions-stable.json": "bd45217b7a256ad7fcaac7dd8498948b12150c92342dcd69668f3770cff4fb96",
+    "release.json": "7cbae4cdcc13cab01e6a4cd0398cf0a8ad6c8c704ce923e28857bc79079e8f9a",
+    "publish-plan.json": "bb09bbac125f1054dd379f3b7efab5ffab21dd3d125e14cf9518460684a6400f"
+  },
+  "prerequisite_owner_gates": {
+    "reaction-and-layered-2_5d": "approved",
+    "orbit-final-glb-face-parity": "approved",
+    "styled-glb-family-expansion": "approved"
+  },
+  "validation": {
+    "source_bundle": "pass",
+    "content_addressed_staging": "pass",
+    "incremental_restage_upload_count": 0,
+    "conan_package": "pass-cpp20-consumer-and-installed-pipeline"
+  },
+  "production_use": "forbidden-until-owner-activation"
+}

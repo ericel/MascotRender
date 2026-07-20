@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-orbit-004-suspicion",
+  "pack_id": "micro-orbit-004",
+  "phrase_id": "reaction.suspicion",
+  "recipe_id": "micro-reactions.lean",
+  "alt_text": "Orbit, a ringed space creature, reacting with suspicion",
+  "expression": "suspicion",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

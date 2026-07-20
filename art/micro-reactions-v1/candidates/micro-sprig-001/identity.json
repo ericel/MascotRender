@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-sprig-001",
+  "display_name": "Sprig",
+  "archetype": "leaf-eared forest sprite",
+  "palette": {
+    "primary": "#75D77B",
+    "secondary": "#329B62",
+    "light": "#DFF7C8",
+    "accent": "#FFD65A",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "leaf-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

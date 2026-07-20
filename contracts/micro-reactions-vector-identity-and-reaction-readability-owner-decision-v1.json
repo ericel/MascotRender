@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "gate": "micro-reactions-vector-identity-and-reaction-readability-v1",
+  "decision": "conditional-approval",
+  "decision_date": "2026-07-20",
+  "production_use": "forbidden-until-reaction-gate-closure",
+  "approved_scope": {
+    "six-vector-identities": "pass",
+    "distinct-silhouettes": "pass",
+    "distinct-palettes": "pass",
+    "family-visual-language": "pass",
+    "nine-reaction-semantics": "pass",
+    "sampled-small-display-readability": "pass",
+    "proceed-to-layered-2.5d": true,
+    "proceed-to-selected-glb-proof": true
+  },
+  "revision_required": {
+    "proud-semantic": {
+      "status": "revise-or-rename",
+      "current-reading": [
+        "content",
+        "satisfied",
+        "peaceful"
+      ]
+    },
+    "controlled-small-size-evidence": {
+      "status": "required-before-gate-closure",
+      "sizes_px": [
+        80,
+        100,
+        160
+      ],
+      "use-same-reaction-across-size-columns": true
+    }
+  },
+  "recommended_first_glb_identity": "micro-orbit-004",
+  "reviewed_artifacts": {
+    "identity-lineup.png": "23a4a0611cc031c8a44fe729e7e71479e63e09b01b36aec437afce9d8a75e6c6",
+    "reaction-matrix.png": "74cdb0f51c6265af322746427730611cee2e80743954a047bbd4b13545e8158f",
+    "small-display-readability.png": "a51b3a49fbbd46531a827be444406609bc3d35cd24968f675c086ce196f1e047",
+    "animation-review.html": "1fa24d3e56012146c4ce3c25b6ec8e5950bcb8ba99cd56c4fbb3342a980fae82"
+  }
+}

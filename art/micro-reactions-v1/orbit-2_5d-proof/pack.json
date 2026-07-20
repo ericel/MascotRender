@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "pack_id": "micro-orbit-004-2_5d-proof",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "shadow",
+      "source": "layers/00-shadow.svg",
+      "z": 0,
+      "depth": -0.65,
+      "pivot": "shadow"
+    },
+    {
+      "id": "ring-back",
+      "source": "layers/10-ring-back.svg",
+      "z": 10,
+      "depth": -0.1,
+      "parent": "body",
+      "pivot": "orbit"
+    },
+    {
+      "id": "body",
+      "source": "layers/20-body.svg",
+      "z": 20,
+      "depth": 0.12,
+      "pivot": "body",
+      "collision_bounds": {
+        "x": 99,
+        "y": 100,
+        "width": 314,
+        "height": 320
+      }
+    },
+    {
+      "id": "antenna",
+      "source": "layers/25-antenna.svg",
+      "z": 25,
+      "depth": 0.22,
+      "parent": "body",
+      "pivot": "antenna"
+    },
+    {
+      "id": "ring-front",
+      "source": "layers/30-ring-front.svg",
+      "z": 30,
+      "depth": 0.38,
+      "parent": "body",
+      "pivot": "orbit"
+    },
+    {
+      "id": "face-shading",
+      "source": "layers/35-face-shading.svg",
+      "z": 35,
+      "depth": 0.26,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "face",
+      "source": "layers/40-face-proud.svg",
+      "z": 40,
+      "depth": 0.31,
+      "parent": "body",
+      "pivot": "face"
+    },
+    {
+      "id": "rim-light",
+      "source": "layers/45-rim-light.svg",
+      "z": 45,
+      "depth": 0.34,
+      "parent": "body",
+      "pivot": "body"
+    },
+    {
+      "id": "stars",
+      "source": "layers/50-stars.svg",
+      "z": 50,
+      "depth": 0.46,
+      "pivot": "orbit"
+    }
+  ],
+  "base_layers": [
+    "shadow",
+    "ring-back",
+    "body",
+    "antenna",
+    "ring-front",
+    "face",
+    "stars"
+  ],
+  "expressions": {
+    "proud": []
+  },
+  "poses": {
+    "front": [],
+    "dimensional": [
+      "face-shading",
+      "rim-light"
+    ]
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT",
+    "source": "generate_micro_orbit_2_5d_proof.py; original deterministic SVG",
+    "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+  },
+  "anchors": {
+    "face_center": {
+      "x": 256,
+      "y": 258
+    },
+    "ground_contact": {
+      "x": 256,
+      "y": 420
+    }
+  },
+  "pivots": {
+    "shadow": {
+      "x": 256,
+      "y": 420
+    },
+    "body": {
+      "x": 256,
+      "y": 260
+    },
+    "face": {
+      "x": 256,
+      "y": 255
+    },
+    "antenna": {
+      "x": 257,
+      "y": 112
+    },
+    "orbit": {
+      "x": 256,
+      "y": 270
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 16
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-mallow-006-anger",
+  "pack_id": "micro-mallow-006",
+  "phrase_id": "reaction.anger",
+  "recipe_id": "micro-reactions.shake",
+  "alt_text": "Mallow, a scalloped cloud creature, reacting with anger",
+  "expression": "anger",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 700,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 175,
+            "value": -7,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 350,
+            "value": 7,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 525,
+            "value": -4,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 700,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

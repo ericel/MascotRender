@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-crumb-005",
+  "display_name": "Crumb",
+  "archetype": "round snack-loving burrow creature",
+  "palette": {
+    "primary": "#E6B777",
+    "secondary": "#A96F48",
+    "light": "#FFF0D4",
+    "accent": "#F58AA8",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "crumb-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

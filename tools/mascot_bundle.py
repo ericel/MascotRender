@@ -18,7 +18,7 @@ from typing import Any
 PROTOCOL = "mascotrender-bundle-v1"
 IMMUTABLE_CACHE_CONTROL = "public,max-age=31536000,immutable"
 POINTER_CACHE_CONTROL = "no-cache,max-age=0,must-revalidate"
-ASSET_ROOTS = frozenset({"assets", "thumbnails", "reduced-motion"})
+ASSET_ROOTS = frozenset({"assets", "thumbnails", "reduced-motion", "models"})
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 PHRASE_ID = re.compile(r"^[a-z][a-z0-9]*(?:[.][a-z0-9-]+)+$")
 
@@ -135,7 +135,44 @@ def checked_asset(
     return source, actual_hash, actual_bytes
 
 
-def validate_bundle(bundle: Path) -> dict[str, Any]:
+def checked_blob(
+    bundle: Path,
+    metadata: dict[str, Any],
+    field: str,
+    expected_root: str,
+    expected_media_type: str,
+) -> tuple[Path, str, int]:
+    relative = safe_relative_path(metadata.get("path"), f"{field}.path")
+    if relative.parts[0] != expected_root or expected_root not in ASSET_ROOTS:
+        raise BundleError(f"{field}.path must stay inside {expected_root}/")
+    source = (bundle / relative).resolve()
+    try:
+        source.relative_to(bundle)
+    except ValueError as error:
+        raise BundleError(f"{field}.path escapes the bundle") from error
+    if not source.is_file():
+        raise BundleError(f"{field} is missing: {relative.as_posix()}")
+    if metadata.get("media_type") != expected_media_type:
+        raise BundleError(f"{field}.media_type must be {expected_media_type}")
+    expected_hash = require_sha256(metadata.get("sha256"), f"{field}.sha256")
+    actual_hash = sha256_file(source)
+    if actual_hash != expected_hash:
+        raise BundleError(
+            f"{field} SHA-256 mismatch: expected {expected_hash}, got {actual_hash}"
+        )
+    expected_bytes = require_integer(metadata.get("encoded_bytes"), f"{field}.encoded_bytes", 1)
+    actual_bytes = source.stat().st_size
+    if actual_bytes != expected_bytes:
+        raise BundleError(
+            f"{field} byte-size mismatch: expected {expected_bytes}, got {actual_bytes}"
+        )
+    return source, actual_hash, actual_bytes
+
+
+def validate_bundle(
+    bundle: Path,
+    allow_legacy_source: bool = False,
+) -> dict[str, Any]:
     bundle = bundle.resolve()
     catalogue_bytes, catalogue = read_json(bundle / "catalogue.json")
     dictionary_bytes, dictionary = read_json(bundle / "dictionary.json")
@@ -145,7 +182,11 @@ def validate_bundle(bundle: Path) -> dict[str, Any]:
         ("dictionary", dictionary),
         ("build-report", report),
     ):
-        if document.get("schema_version") != 1 or document.get("protocol") != PROTOCOL:
+        legacy_protocol = allow_legacy_source and document.get("protocol") is None
+        if (
+            document.get("schema_version") != 1
+            or (document.get("protocol") != PROTOCOL and not legacy_protocol)
+        ):
             raise BundleError(f"{label} must declare schema_version 1 and {PROTOCOL}")
 
     require_integer(catalogue.get("bundle_version"), "catalogue.bundle_version", 1)
@@ -242,6 +283,65 @@ def validate_bundle(bundle: Path) -> dict[str, Any]:
     if declared_animated != animated_count:
         raise BundleError("catalogue.animated_sticker_count does not match stickers")
 
+    has_model_catalogue = "models" in catalogue or "model_count" in catalogue
+    models = catalogue.get("models", [])
+    if not isinstance(models, list):
+        raise BundleError("catalogue.models must be an array when present")
+    declared_model_count = require_integer(
+        catalogue.get("model_count", len(models)),
+        "catalogue.model_count",
+    )
+    if declared_model_count != len(models):
+        raise BundleError("catalogue.model_count does not match catalogue.models")
+    model_ids: set[str] = set()
+    for index, model in enumerate(models):
+        if not isinstance(model, dict):
+            raise BundleError(f"catalogue.models[{index}] must be an object")
+        model_id = require_string(model.get("model_id"), f"models[{index}].model_id")
+        identity_id = require_string(
+            model.get("identity_id"),
+            f"models[{index}].identity_id",
+        )
+        if not SAFE_ID.fullmatch(model_id) or not SAFE_ID.fullmatch(identity_id):
+            raise BundleError(f"{model_id}: model_id and identity_id must be filesystem-safe")
+        if model_id in model_ids:
+            raise BundleError(f"duplicate model_id: {model_id}")
+        if identity_id not in pack_ids:
+            raise BundleError(f"{model_id} references unknown identity {identity_id}")
+        model_ids.add(model_id)
+        clips = model.get("clip_names")
+        if not isinstance(clips, list) or len(clips) < 1:
+            raise BundleError(f"{model_id}.clip_names must be a non-empty array")
+        normalized_clips = [
+            require_string(clip, f"{model_id}.clip_names") for clip in clips
+        ]
+        if len(normalized_clips) != len(set(normalized_clips)):
+            raise BundleError(f"{model_id}.clip_names contains duplicates")
+        require_integer(
+            model.get("semantic_node_count"),
+            f"{model_id}.semantic_node_count",
+            1,
+        )
+        source, digest, model_bytes = checked_blob(
+            bundle,
+            model,
+            model_id,
+            "models",
+            "model/gltf-binary",
+        )
+        encoded_bytes += model_bytes
+        asset_records.append(
+            {
+                "model_id": model_id,
+                "identity_id": identity_id,
+                "source": source,
+                "sha256": digest,
+                "encoded_bytes": model_bytes,
+                "metadata": model,
+                "field": "model",
+            }
+        )
+
     entries = dictionary.get("entries")
     if dictionary.get("matching") != "casefolded full phrase with Unicode word boundaries":
         raise BundleError("dictionary.matching is unsupported")
@@ -274,7 +374,7 @@ def validate_bundle(bundle: Path) -> dict[str, Any]:
                     f"dictionary entry {trigger!r} references unknown phrase {normalized}"
                 )
 
-    expected_assets = sticker_count * 3
+    expected_assets = sticker_count * 3 + declared_model_count
     if report.get("status") != "success":
         raise BundleError("build-report.status must be success")
     expected_report = {
@@ -285,6 +385,8 @@ def validate_bundle(bundle: Path) -> dict[str, Any]:
         "reduced_motion_sticker_count": sticker_count,
         "encoded_bytes": encoded_bytes,
     }
+    if has_model_catalogue:
+        expected_report["model_count"] = declared_model_count
     for field, expected in expected_report.items():
         if report.get(field) != expected:
             raise BundleError(
@@ -300,6 +402,8 @@ def validate_bundle(bundle: Path) -> dict[str, Any]:
         "asset_records": asset_records,
         "sticker_count": sticker_count,
         "animated_sticker_count": animated_count,
+        "model_count": declared_model_count,
+        "has_model_catalogue": has_model_catalogue,
         "phrase_count": len(phrase_ids),
         "trigger_count": len(entries),
         "catalogue_sha256": sha256_bytes(catalogue_bytes),
@@ -317,6 +421,8 @@ def content_type(path: Path) -> str:
         return "application/json; charset=utf-8"
     if path.suffix.lower() == ".webp":
         return "image/webp"
+    if path.suffix.lower() == ".glb":
+        return "model/gltf-binary"
     guessed, _ = mimetypes.guess_type(path.name)
     return guessed or "application/octet-stream"
 
@@ -353,6 +459,9 @@ def stage_release(
         raise BundleError("--channel must be a lowercase filesystem-safe identifier")
 
     catalogue = json.loads(json.dumps(validated["catalogue"]))
+    catalogue["protocol"] = PROTOCOL
+    dictionary = json.loads(json.dumps(validated["dictionary"]))
+    dictionary["protocol"] = PROTOCOL
     bundle_version = require_integer(catalogue.get("bundle_version"), "bundle_version", 1)
     destination = destination.resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -360,6 +469,9 @@ def stage_release(
     try:
         sticker_by_id = {
             str(sticker["sticker_id"]): sticker for sticker in catalogue["stickers"]
+        }
+        model_by_id = {
+            str(model["model_id"]): model for model in catalogue.get("models", [])
         }
         copied_objects: dict[str, Path] = {}
         for record in validated["asset_records"]:
@@ -371,15 +483,18 @@ def stage_release(
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(source, target)
                 copied_objects[object_key] = target
-            source_sticker_id = str(record["sticker_id"])
-            sticker = sticker_by_id[source_sticker_id]
-            if record["field"] == "primary":
-                sticker["path"] = object_key
+            if record["field"] == "model":
+                model_by_id[str(record["model_id"])]["path"] = object_key
             else:
-                sticker[str(record["field"])]["path"] = object_key
+                source_sticker_id = str(record["sticker_id"])
+                sticker = sticker_by_id[source_sticker_id]
+                if record["field"] == "primary":
+                    sticker["path"] = object_key
+                else:
+                    sticker[str(record["field"])]["path"] = object_key
 
         catalogue_payload = json_bytes(catalogue)
-        dictionary_payload = json_bytes(validated["dictionary"])
+        dictionary_payload = json_bytes(dictionary)
         identity_digest = hashlib.sha256()
         identity_digest.update(PROTOCOL.encode())
         identity_digest.update(b"\0")
@@ -408,6 +523,8 @@ def stage_release(
             "sticker_count": validated["sticker_count"],
             "animated_sticker_count": validated["animated_sticker_count"],
         }
+        if validated["has_model_catalogue"]:
+            release["model_count"] = validated["model_count"]
         release_path = bundle_root / "release.json"
         release_payload = write_json(release_path, release)
         pointer = {
@@ -476,6 +593,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", required=True)
     validate = subparsers.add_parser("validate", help="Verify a source bundle")
     validate.add_argument("--bundle", type=Path, required=True)
+    validate.add_argument(
+        "--allow-legacy-source",
+        action="store_true",
+        help="Accept a schema-v1 source whose documents predate the protocol field",
+    )
     stage = subparsers.add_parser(
         "stage",
         help="Create content-addressed objects, an immutable release, and a channel pointer",
@@ -484,13 +606,18 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     stage.add_argument("--output", type=Path, required=True)
     stage.add_argument("--channel", default="stable")
     stage.add_argument("--previous-plan", type=Path)
+    stage.add_argument(
+        "--allow-legacy-source",
+        action="store_true",
+        help="Accept and normalize a schema-v1 source that predates the protocol field",
+    )
     stage.add_argument("--force", action="store_true")
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(sys.argv[1:] if argv is None else argv)
-    validated = validate_bundle(args.bundle)
+    validated = validate_bundle(args.bundle, args.allow_legacy_source)
     if args.command == "validate":
         print(
             json.dumps(
@@ -499,6 +626,7 @@ def main(argv: list[str] | None = None) -> int:
                     "protocol": PROTOCOL,
                     "sticker_count": validated["sticker_count"],
                     "animated_sticker_count": validated["animated_sticker_count"],
+                    "model_count": validated["model_count"],
                     "phrase_count": validated["phrase_count"],
                     "trigger_count": validated["trigger_count"],
                     "catalogue_sha256": validated["catalogue_sha256"],

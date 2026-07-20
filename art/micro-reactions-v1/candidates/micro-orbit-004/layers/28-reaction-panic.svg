@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<polygon points="84,179 88,194 103,198 88,202 84,217 80,202 65,198 80,194" fill="#FFD25F" stroke="#20324B" stroke-width="5" stroke-linejoin="round"/><circle cx="433" cy="335" r="10" fill="#F0EAFF" stroke="#20324B" stroke-width="5"/>
+<ellipse cx="207" cy="242" rx="32" ry="42" fill="#FFFDF8" stroke="#20324B" stroke-width="9"/>
+<ellipse cx="305" cy="242" rx="32" ry="42" fill="#FFFDF8" stroke="#20324B" stroke-width="9"/>
+<circle cx="207" cy="252" r="9" fill="#20324B"/><circle cx="305" cy="252" r="9" fill="#20324B"/>
+<path d="M216 326 Q231 304 246 326 Q261 348 276 326 Q291 304 306 326" fill="none" stroke="#20324B" stroke-width="11" stroke-linecap="round"/>
+<path d="M147 177 L121 153 M139 211 L102 206 M365 177 L391 153 M373 211 L410 206" fill="none" stroke="#6553C7" stroke-width="10" stroke-linecap="round"/>
+</svg>

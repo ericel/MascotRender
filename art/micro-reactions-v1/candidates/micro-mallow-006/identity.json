@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-mallow-006",
+  "display_name": "Mallow",
+  "archetype": "scalloped cloud creature",
+  "palette": {
+    "primary": "#F5B8D2",
+    "secondary": "#C879A8",
+    "light": "#FFF2F8",
+    "accent": "#8EDBF3",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "puff-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

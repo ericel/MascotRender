@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "gate": "human-small-display-occupancy-v1",
-  "decision_date": "2026-07-17",
+  "decision_date": "2026-07-20",
   "decision": "approved",
   "review_status": "small-display-occupancy-approved",
-  "canonical_assets_modified": false,
+  "canonical_assets_modified": true,
   "profile_disposition": {
     "tray-100": {
       "status": "approved",
@@ -33,9 +33,10 @@
     "assistive-device-preservation",
     "small-display-margin-safety",
     "caption-character-collision-safety",
+    "canonical-message-character-occupancy",
     "deterministic-display-asset-generation"
   ],
-  "contract_sha256": "baf6de7cea472f91b06c1120d6f91912b3b299bc99deb98f8167edec0e7c8893",
+  "contract_sha256": "58f5df6716926dd91d10e51f1b332808c3b92b9cce87ec8461d0be1d24c1fd52",
   "reviewed_artifacts_root": "generated/human-small-display-profiles-v1",
   "reviewed_artifacts": {
     "tray-100-contact-sheet.png": "3579027a5870a57b415393ff0bb2549ac60b2c87bbf608af1820dcadf1467fdd",

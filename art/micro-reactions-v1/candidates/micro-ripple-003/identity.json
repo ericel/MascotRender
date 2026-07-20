@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-ripple-003",
+  "display_name": "Ripple",
+  "archetype": "water sprite with external gills",
+  "palette": {
+    "primary": "#69CFE4",
+    "secondary": "#318EBC",
+    "light": "#DDF8FF",
+    "accent": "#74E1CB",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "drop-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

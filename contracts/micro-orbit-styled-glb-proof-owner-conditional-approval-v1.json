@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "conditional-approval",
+  "decision_date": "2026-07-20",
+  "gate": "micro-orbit-styled-glb-proof-v1",
+  "approved_scope": [
+    "styled-glb-pipeline",
+    "orbit-dimensional-identity",
+    "outline-and-palette-transport",
+    "semantic-node-structure",
+    "idle-animation",
+    "orbital-tilt-animation",
+    "proud-animation-structure",
+    "deterministic-generation",
+    "loop-closure"
+  ],
+  "revision_required": [
+    "vector-equivalent-eye-construction",
+    "vector-equivalent-proud-expression",
+    "refined-eyebrow-language",
+    "refined-smile-language",
+    "antenna-attachment-continuity"
+  ],
+  "reviewed_artifacts": {
+    "cross-backend-contact-sheet.png": "f20f290435058d6f522faff7cf4ab123abbcb2774eade8d1d7bc25c39c244fb5",
+    "rest.webp": "c0fe0771bbb3e05db67013531f02aa9ea1c47c90ced758f8366befdd44f4976a",
+    "idle-animated.webp": "e015b6afb6779034385f0c8209e734a3f012961dfafb4d50c99593ed23e7bfe5",
+    "orbital-tilt-animated.webp": "c871d7057c3b40f07cd9d0dd5b3c63efe5a3202648a67ef5c57f4d991c42990a",
+    "proud-animated.webp": "c0c88d8b2814be6ca32e6e727f77c2ac0e10e815129e58899ce32fd505b8f265"
+  },
+  "production_use": "forbidden-until-final-glb-face-parity-review"
+}

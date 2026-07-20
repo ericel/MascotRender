@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "sticker_id": "micro-ripple-003-cry",
+  "pack_id": "micro-ripple-003",
+  "phrase_id": "reaction.cry",
+  "recipe_id": "micro-reactions.sob",
+  "alt_text": "Ripple, a water sprite with external gills, reacting with cry",
+  "expression": "cry",
+  "pose": "reaction",
+  "seed": 1,
+  "animation": {
+    "duration_ms": 900,
+    "fps": 10,
+    "loop": "loop",
+    "tracks": [
+      {
+        "target": "body",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 7,
+            "easing": "ease_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

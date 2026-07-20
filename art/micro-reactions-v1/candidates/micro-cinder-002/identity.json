@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "identity_id": "micro-cinder-002",
+  "display_name": "Cinder",
+  "archetype": "ember sprite with a flame crown",
+  "palette": {
+    "primary": "#FF9D52",
+    "secondary": "#ED5C38",
+    "light": "#FFE2A8",
+    "accent": "#FFD45C",
+    "outline": "#20324B"
+  },
+  "required_features": [
+    "face-dominant-silhouette",
+    "ember-secondary-anatomy",
+    "navy-rounded-outline",
+    "transparent-background"
+  ],
+  "production_use": "forbidden-until-selected-glb-and-final-pack-review"
+}

@@ -4,7 +4,20 @@
   "status": "production-gate-candidate",
   "canonical_delivery_profile": "message-512",
   "display_profiles": {
-    "message-512": {"width": 512, "height": 512, "hard_margin": 16, "preferred_margin": 24},
+    "message-512": {
+      "width": 512,
+      "height": 512,
+      "hard_margin": 16,
+      "preferred_margin": 24,
+      "target_character_height": [0.64, 0.84],
+      "vertical_caption_zoom_factor": 0.94,
+      "side_caption_zoom_factor": 0.82,
+      "minimum_zoom_factor": 0.50,
+      "absolute_minimum_zoom": 0.50,
+      "zoom_backoff_step": 0.03,
+      "zoom_resolution": "largest-renderer-validated-per-sticker-zoom",
+      "purpose": "canonical-chat-message-delivery"
+    },
     "tray-100": {"width": 100, "height": 100, "target_content_occupancy": 0.86, "target_character_height": [0.62, 0.72]},
     "tray-96": {"width": 96, "height": 96, "target_content_occupancy": 0.85, "target_character_height": [0.60, 0.70]},
     "stress-80": {"width": 80, "height": 80, "target_content_occupancy": 0.82, "target_character_height": [0.56, 0.66]}
@@ -22,6 +35,9 @@
     "preferred_combined_occupancy": 0.82,
     "maximum_combined_occupancy": 0.90,
     "minimum_mascot_height_ratio": {"80": 0.56, "96": 0.60, "100": 0.62},
+    "minimum_message_character_height_ratio": 0.64,
+    "maximum_message_character_height_ratio": 0.84,
+    "message_character_size_is_independent_of_caption_bounds": true,
     "caption_may_overlap_character": false,
     "caption_may_overlap_device": false,
     "evaluate_every_animation_frame": true,
