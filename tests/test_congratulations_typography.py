@@ -191,7 +191,7 @@ def main() -> int:
             "congratulations-typography-production-art-and-playback-v1"
         )
         assert decision["production_use"] == "approved-for-public-production"
-        assert decision["reviewed_artifacts"] == result["artifacts"]
+        assert decision["reviewed_artifacts"] == result["owner_reviewed_artifacts"]
 
         assert len(triggers["entries"]) == 36
         pack_root = source / "congratulations-pop-v1"
