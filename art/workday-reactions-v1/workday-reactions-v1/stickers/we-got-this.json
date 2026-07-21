@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-we-got-this",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.we-got-this",
+  "recipe_id": "workday-character-scene.pulse",
+  "intent": "workday.team.we-got-this",
+  "alt_text": "Pace the red panda in a workplace scene saying WE GOT THIS",
+  "accessible_description": "Pace performs a cheer pose with a team shield cue and the phrase WE GOT THIS",
+  "expression": "we-got-this",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "WE GOT THIS",
+    "style": "we-got-this-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-we-got-this",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-we-got-this",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

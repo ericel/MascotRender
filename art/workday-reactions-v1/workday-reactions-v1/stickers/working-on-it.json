@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-working-on-it",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.workflow.working-on-it",
+  "recipe_id": "workday-character-scene.type",
+  "intent": "workday.workflow.working-on-it",
+  "alt_text": "Pace the red panda in a workplace scene saying WORKING ON IT",
+  "accessible_description": "Pace performs a type pose with a laptop cue and the phrase WORKING ON IT",
+  "expression": "working-on-it",
+  "pose": "type",
+  "seed": 1,
+  "text": {
+    "content": "WORKING ON IT",
+    "style": "working-on-it-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-working-on-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-working-on-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

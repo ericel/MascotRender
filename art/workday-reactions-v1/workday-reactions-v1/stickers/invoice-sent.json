@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-invoice-sent",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.results.invoice-sent",
+  "recipe_id": "workday-character-scene.slide",
+  "intent": "workday.results.invoice-sent",
+  "alt_text": "Pace the red panda in a workplace scene saying INVOICE SENT",
+  "accessible_description": "Pace performs a present pose with a invoice plane cue and the phrase INVOICE SENT",
+  "expression": "invoice-sent",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "INVOICE SENT",
+    "style": "invoice-sent-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-invoice-sent",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-invoice-sent",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

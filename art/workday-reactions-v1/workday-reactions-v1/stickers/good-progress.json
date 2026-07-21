@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-good-progress",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.results.good-progress",
+  "recipe_id": "workday-character-scene.rise",
+  "intent": "workday.results.good-progress",
+  "alt_text": "Pace the red panda in a workplace scene saying GOOD PROGRESS",
+  "accessible_description": "Pace performs a present pose with a growth chart cue and the phrase GOOD PROGRESS",
+  "expression": "good-progress",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "GOOD PROGRESS",
+    "style": "good-progress-main",
+    "rotation_degrees": 1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-good-progress",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-good-progress",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

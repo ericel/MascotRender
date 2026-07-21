@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     MascotRender
-    VERSION 0.6.0
+    VERSION 0.7.0
     DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
@@ -188,6 +188,7 @@ install(
     DIRECTORY
         art/calendar-pop-v1
         art/congratulations-pop-v1
+        art/workday-reactions-v1
         art/human-pack-v1
         art/human-pack-wave2
         art/micro-reactions-v1
@@ -205,6 +206,7 @@ install(
         docs/HUMAN_PACK_V1_ART_BRIEF.md
         docs/HUMAN_PACK_PRODUCTION_RECOVERY.md
         docs/MICRO_REACTIONS.md
+        docs/WORKDAY_REACTIONS.md
         docs/MASCOT_PACKAGE_SPEC.md
         docs/BUNDLE_PROTOCOL.md
         docs/RELEASE_0.1.0.md
@@ -213,6 +215,7 @@ install(
         docs/RELEASE_0.4.0.md
         docs/RELEASE_0.5.0.md
         docs/RELEASE_0.6.0.md
+        docs/RELEASE_0.7.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
@@ -235,6 +238,7 @@ install(
         tools/generate_micro_styled_glbs.py
         tools/generate_calendar_typography_pack.py
         tools/generate_congratulations_pack.py
+        tools/generate_workday_reactions_pack.py
         tools/build_micro_reactions_bundle.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py

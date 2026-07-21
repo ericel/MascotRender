@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-not-sure",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.not-sure",
+  "recipe_id": "workday-character-scene.wobble",
+  "intent": "workday.decisions.not-sure",
+  "alt_text": "Pace the red panda in a workplace scene saying NOT SURE",
+  "accessible_description": "Pace performs a shrug pose with a question cloud cue and the phrase NOT SURE",
+  "expression": "not-sure",
+  "pose": "shrug",
+  "seed": 1,
+  "text": {
+    "content": "NOT SURE",
+    "style": "not-sure-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-not-sure",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-not-sure",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

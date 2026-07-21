@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "contract_id": "workday-reactions-pack-v1",
+  "status": "owner-production-approved",
+  "product_name": "Workday Reactions",
+  "product_type": "character-led-workplace-reaction-sticker-pack",
+  "production_use": "approved-for-public-production",
+  "scope": {
+    "category_count": 8,
+    "stickers_per_category": 12,
+    "sticker_count": 96,
+    "animated_sticker_count": 96,
+    "reduced_motion_sticker_count": 96
+  },
+  "character_identity": {
+    "character_id": "pace-red-panda-001",
+    "name": "Pace",
+    "species": "stylized-red-panda",
+    "required_features": [
+      "terracotta-rounded-head",
+      "cream-muzzle-and-brow-marks",
+      "navy-eye-mask",
+      "ringed-tail",
+      "teal-work-tie",
+      "navy-ink-outline"
+    ],
+    "identity_must_survive_props_and_pose": true
+  },
+  "art_direction": {
+    "reference_policy": "references-establish-workplace-semantic-breadth-only",
+    "originality_requirement": "no copied bear, pose drawing, lettering, prop composition, palette sequence, or scene",
+    "required_visual_system": [
+      "one consistent original red-panda office mascot",
+      "character-led semantic acting",
+      "workplace prop or graphic cue",
+      "one exact-spelling fitted text layout",
+      "navy outline language",
+      "transparent background",
+      "varied collision-safe caption placement"
+    ],
+    "family_variety": {
+      "minimum_pose_families": 12,
+      "minimum_mood_families": 18,
+      "minimum_semantic_prop_effect_concepts": 48,
+      "minimum_visual_prop_archetypes": 20,
+      "minimum_motion_families": 12,
+      "minimum_composition_systems": 8,
+      "minimum_font_voices": 4,
+      "single_global_text_position_forbidden": true,
+      "generic-recolor-only-variants-forbidden": true
+    },
+    "typography": {
+      "single_read_requirement": true,
+      "independently_typeset_duplicate_word_forbidden": true,
+      "maximum_lines": 2,
+      "punctuation_is_semantic": true,
+      "caption_and_scene_animate_as_coordinated_composite": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {"width": 512, "height": 512},
+    "hard_margin_px": 16,
+    "small_display_review_px": [80, 100, 160],
+    "recommended_default_px": 100,
+    "caption_collision_policy": "layout-specific-safe-area-complementary-to-character-scene"
+  },
+  "search_and_localization": {
+    "trie_ready_semantic_ids": true,
+    "exact_phrase_trigger_required": true,
+    "locale": "en",
+    "future_localization_policy": "localized packs receive separately fitted and reviewed captions"
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "thumbnail_256": "required",
+    "source_art": "original-procedural-svg-plus-pack-local-ofl-ttf",
+    "license": "MIT-with-fonts-separately-SIL-OFL-1.1"
+  },
+  "animation": {
+    "loop_closure_required": true,
+    "visible_mid_cycle_change_required": true,
+    "reduced_motion_must_show_complete-identity-scene-and-phrase": true,
+    "scene_must_remain_inside_canvas_for_every_frame": true
+  },
+  "approved_gate_state": {
+    "owner_approval": "contracts/workday-reactions-owner-approval-v1.json",
+    "96_way_semantic_completeness": "pass",
+    "pace_character_identity_coherence": "pass",
+    "category_organization": "pass",
+    "caption_character_balance": "pass",
+    "pose_mood_prop_and_caption_variety": "pass",
+    "small_display_readability": "pass",
+    "animation_playback_and_loop_closure": "pass",
+    "reduced_motion": "pass",
+    "trie_trigger_completeness": "pass",
+    "deterministic_generation": "pass",
+    "owner_production_activation": "approved"
+  },
+  "review_gates": [
+    "96-way-semantic-completeness",
+    "exact-spelling-and-punctuation",
+    "pace-character-identity-coherence",
+    "pose-prop-caption-composition-variety",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "deterministic-generation",
+    "owner-production-art-and-playback-activation"
+  ]
+}

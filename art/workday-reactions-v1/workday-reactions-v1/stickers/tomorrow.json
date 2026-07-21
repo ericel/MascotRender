@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-tomorrow",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.time.tomorrow",
+  "recipe_id": "workday-character-scene.float",
+  "intent": "workday.time.tomorrow",
+  "alt_text": "Pace the red panda in a workplace scene saying TOMORROW",
+  "accessible_description": "Pace performs a point pose with a tomorrow calendar cue and the phrase TOMORROW",
+  "expression": "tomorrow",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "TOMORROW",
+    "style": "tomorrow-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-tomorrow",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-tomorrow",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

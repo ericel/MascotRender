@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-thank-you",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.thank-you",
+  "recipe_id": "workday-character-scene.float",
+  "intent": "workday.team.thank-you",
+  "alt_text": "Pace the red panda in a workplace scene saying THANK YOU",
+  "accessible_description": "Pace performs a heart pose with a heart note cue and the phrase THANK YOU",
+  "expression": "thank-you",
+  "pose": "heart",
+  "seed": 1,
+  "text": {
+    "content": "THANK YOU",
+    "style": "thank-you-main",
+    "rotation_degrees": 2.2
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-thank-you",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-thank-you",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

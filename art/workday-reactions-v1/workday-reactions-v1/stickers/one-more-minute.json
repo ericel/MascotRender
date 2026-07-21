@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-one-more-minute",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.time.one-more-minute",
+  "recipe_id": "workday-character-scene.tick",
+  "intent": "workday.time.one-more-minute",
+  "alt_text": "Pace the red panda in a workplace scene saying ONE MORE MINUTE",
+  "accessible_description": "Pace performs a hold pose with a stopwatch cue and the phrase ONE MORE MINUTE",
+  "expression": "one-more-minute",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "ONE MORE MINUTE",
+    "style": "one-more-minute-main",
+    "rotation_degrees": 1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-one-more-minute",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-one-more-minute",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

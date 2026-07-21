@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-swamped",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.energy.swamped",
+  "recipe_id": "workday-character-scene.wobble",
+  "intent": "workday.energy.swamped",
+  "alt_text": "Pace the red panda in a workplace scene saying SWAMPED",
+  "accessible_description": "Pace performs a shrug pose with a paper wave cue and the phrase SWAMPED",
+  "expression": "swamped",
+  "pose": "shrug",
+  "seed": 1,
+  "text": {
+    "content": "SWAMPED",
+    "style": "swamped-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-swamped",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-swamped",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

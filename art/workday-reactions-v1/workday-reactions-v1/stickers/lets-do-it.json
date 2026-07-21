@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-lets-do-it",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.lets-do-it",
+  "recipe_id": "workday-character-scene.launch",
+  "intent": "workday.decisions.lets-do-it",
+  "alt_text": "Pace the red panda in a workplace scene saying LET'S DO IT",
+  "accessible_description": "Pace performs a cheer pose with a launch button cue and the phrase LET'S DO IT",
+  "expression": "lets-do-it",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "LET'S DO IT",
+    "style": "lets-do-it-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-lets-do-it",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-lets-do-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

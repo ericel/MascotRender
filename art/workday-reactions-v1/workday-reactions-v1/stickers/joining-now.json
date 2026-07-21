@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-joining-now",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.meetings.joining-now",
+  "recipe_id": "workday-character-scene.slide",
+  "intent": "workday.meetings.joining-now",
+  "alt_text": "Pace the red panda in a workplace scene saying JOINING NOW",
+  "accessible_description": "Pace performs a run pose with a video call cue and the phrase JOINING NOW",
+  "expression": "joining-now",
+  "pose": "run",
+  "seed": 1,
+  "text": {
+    "content": "JOINING NOW",
+    "style": "joining-now-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-joining-now",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-joining-now",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

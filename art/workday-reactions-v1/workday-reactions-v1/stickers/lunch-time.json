@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-lunch-time",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.energy.lunch-time",
+  "recipe_id": "workday-character-scene.bounce",
+  "intent": "workday.energy.lunch-time",
+  "alt_text": "Pace the red panda in a workplace scene saying LUNCH TIME",
+  "accessible_description": "Pace performs a hold pose with a lunch box cue and the phrase LUNCH TIME",
+  "expression": "lunch-time",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "LUNCH TIME",
+    "style": "lunch-time-main",
+    "rotation_degrees": 1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-lunch-time",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-lunch-time",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
