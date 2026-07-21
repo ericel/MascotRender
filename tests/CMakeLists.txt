@@ -177,8 +177,8 @@ if(MASCOTRENDER_BUILD_CLI)
             --final-owner-approval "${PROJECT_SOURCE_DIR}/contracts/micro-reactions-final-pack-owner-approval-v1.json"
     )
     # Full review regeneration invokes the instrumented CLI for every frame.
-    # ASan/UBSan runners need more headroom than optimized package jobs.
-    set_tests_properties(micro_reactions_pack_contract PROPERTIES TIMEOUT 480)
+    # ASan/UBSan runners need the same extended budget as the typography packs.
+    set_tests_properties(micro_reactions_pack_contract PROPERTIES TIMEOUT 900)
     add_test(
         NAME micro_orbit_layered_and_glb_proofs
         COMMAND
