@@ -54,4 +54,9 @@ The project owner approved the exact generated art and playback hashes on
 2026-07-21. The approval covers exact text, Pace identity, workplace semantics,
 layout and prop variety, 80/100/160px readability, animation playback, reduced
 motion, Trie-trigger completeness, and deterministic generation. The pack is
-approved for public production use.
+approved for public production use. Review-image and encoded-WebP hashes are
+recorded as render-runtime-specific because image-library and encoder builds
+can produce byte-distinct, visually equivalent output across operating
+systems. Every runtime still enforces source-tree determinism, two identical
+generation passes, visible animation, loop closure, safe margins, and the full
+semantic contract.

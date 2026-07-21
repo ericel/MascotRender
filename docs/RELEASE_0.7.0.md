@@ -31,7 +31,10 @@ complete-family sheet, eight category sheets, small-display sheet, motion
 sheet, and browser playback review hashes approved on 2026-07-21.
 
 The Workday regression performs two independent complete generations and
-byte-compares both source and review trees. It also validates all sticker
+byte-compares both source and review trees within each render runtime and
+compares the generated source tree with the canonical production source. The
+owner-approved review hashes remain bound as runtime-specific evidence rather
+than a cross-platform encoder invariant. The regression also validates all sticker
 documents through the C++ CLI and checks every animated asset for real WebP
 animation chunks, visible mid-cycle change, exact loop closure, and safe frame
 margins. The external Conan consumer renders an installed Workday sticker and

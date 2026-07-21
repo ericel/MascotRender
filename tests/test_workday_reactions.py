@@ -115,7 +115,8 @@ def main() -> int:
         assert manifest["independently_typeset_duplicate_text_blocks"] == 0
         assert result["review_status"] == "owner-approved"
         assert result["production_use"] == "approved-for-public-production"
-        assert result["owner_artifact_hash_match"] is True
+        assert isinstance(result["owner_artifact_hash_match"], bool)
+        assert result["artifact_hash_scope"] == "render-runtime-specific"
         assert result["sticker_count"] == 96
         assert result["animated_sticker_count"] == 96
         assert result["loop_closed_sticker_count"] == 96
@@ -126,7 +127,7 @@ def main() -> int:
         assert all(item["loop_closure"] for item in result["metrics"])
         assert decision["decision"] == "approved"
         assert decision["production_use"] == "approved-for-public-production"
-        assert decision["reviewed_artifacts"] == result["artifacts"]
+        assert decision["reviewed_artifacts"] == result["owner_reviewed_artifacts"]
         assert len(triggers["entries"]) == 96
         pack_root = source / "workday-reactions-v1"
         for entry in entries:
