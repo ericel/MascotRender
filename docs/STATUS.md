@@ -1,17 +1,17 @@
 # MascotRender Project Status
 
-Updated: 2026-07-20
+Updated: 2026-07-21
 
 ## Current milestone
 
 E4 — optional Filament/GLB proof is complete. MR-110 through MR-116 are done,
 including cross-platform wrapper validation and publication. M0-M6 and E1-E4
 are complete. The owner-approved, hash-bound canonical family, Wave 2 Human
-Pack, six-identity Micro Reactions pipeline, and 23-sticker Calendar Pop
-typography pack ship in `v0.5.0`; anonymous consumers install
-`mascotrender/0.5.0` from the public JFrog Conan remote. The content-addressed
-Micro Reactions bundle remains published as a provider-neutral GitHub Release
-asset.
+Pack, six-identity Micro Reactions pipeline, 23-sticker Calendar Pop pack, and
+36-sticker Congratulations Pop pack ship in `v0.6.0`; anonymous consumers
+install `mascotrender/0.6.0` from the public JFrog Conan remote. The
+content-addressed Micro Reactions bundle remains published as a provider-neutral
+GitHub Release asset.
 Product/Design approved the generator-v6 50-sticker bundle on 2026-07-14 and
 the canonical Human Pack production bundle on 2026-07-15. M7 remains a
 separate product-integration pilot.
@@ -79,6 +79,9 @@ separate product-integration pilot.
   suitable for GitHub Releases or any object-storage provider.
 - Owner-approved Calendar Pop pack with seven weekdays, twelve months, four
   seasons, four OFL font voices, exact spelling, varied placement, animated
+  WebP output, and reduced-motion equivalents.
+- Owner-approved Congratulations Pop pack with 36 phrases, four OFL font
+  voices, six composition systems, varied motifs, exact spelling, animated
   WebP output, and reduced-motion equivalents.
 
 ## Verified locally
@@ -159,14 +162,14 @@ remote so external 3D consumers can resolve `with_filament=True`.
 
 ## Distribution
 
-Release `v0.5.0` supersedes `v0.4.0` as the current production package. Anonymous
+Release `v0.6.0` supersedes `v0.5.0` as the current production package. Anonymous
 consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
 publication credentials remain confined to repository secrets. Every release
 job must pass a logged-out exact-package re-download with `--build=never` on
 macOS arm64, Linux x86-64, and Windows x86-64. Fresh caches use
 `--build=missing` for public dependencies without matching ConanCenter
-binaries. The successful `v0.5.0` publication run is linked from its GitHub
+binaries. The successful `v0.6.0` publication run is linked from its GitHub
 release.
 
 ## Product direction baseline

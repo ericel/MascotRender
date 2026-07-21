@@ -7,7 +7,7 @@
 #include <mascotrender/mascotrender.hpp>
 
 int main(int argc, char **argv) {
-  if (std::string_view{mascotrender::version_string()} != "0.5.0") {
+  if (std::string_view{mascotrender::version_string()} != "0.6.0") {
     return 1;
   }
 
@@ -89,13 +89,29 @@ int main(int argc, char **argv) {
     return 9;
   }
 
+  const auto congratulations = resources / "art" /
+                               "congratulations-pop-v1" /
+                               "congratulations-pop-v1";
+  const mascotrender::RenderRequest congratulations_request{
+      congratulations / "pack.json",
+      congratulations / "stickers" / "congrats.json", {}};
+  auto congratulations_result = engine.render(congratulations_request);
+  if (!congratulations_result || congratulations_result.value().width != 512 ||
+      congratulations_result.value().height != 512) {
+    return 10;
+  }
+  if (!contains_chunk(congratulations_result.value().bytes, "ANIM") ||
+      !contains_chunk(congratulations_result.value().bytes, "ANMF")) {
+    return 11;
+  }
+
   if (!contains_chunk(animated.value().bytes, "ANIM") ||
       !contains_chunk(animated.value().bytes, "ANMF")) {
-    return 10;
+    return 12;
   }
 
   std::ofstream output{"mascotrender-package-test.webp", std::ios::binary};
   output.write(reinterpret_cast<const char *>(image.bytes.data()),
                static_cast<std::streamsize>(image.bytes.size()));
-  return output ? 0 : 11;
+  return output ? 0 : 13;
 }
