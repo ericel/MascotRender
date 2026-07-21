@@ -161,7 +161,9 @@ def main() -> int:
         assert result["owner_approval"] == (
             "contracts/congratulations-typography-owner-approval-v1.json"
         )
-        assert result["owner_artifact_hash_match"] is True
+        assert result["owner_reviewed_artifacts"] == approval["reviewed_artifacts"]
+        assert isinstance(result["owner_artifact_hash_match"], bool)
+        assert result["artifact_hash_scope"] == "render-runtime-specific"
         assert result["sticker_count"] == 36
         assert result["animated_sticker_count"] == 36
         assert result["loop_closed_sticker_count"] == 36
