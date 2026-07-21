@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "contract_id": "congratulations-typography-pack-v1",
+  "status": "owner-production-approved",
+  "product_name": "Congratulations Pop",
+  "product_type": "typography-and-icon-celebration-sticker-pack",
+  "production_use": "approved-for-public-production",
+  "scope": {
+    "core_count": 12,
+    "achievement_count": 8,
+    "milestone_count": 8,
+    "cheer_count": 8,
+    "sticker_count": 36,
+    "animated_sticker_count": 36,
+    "reduced_motion_sticker_count": 36
+  },
+  "art_direction": {
+    "reference_policy": "references-establish-celebratory-energy-and-category-breadth-only",
+    "originality_requirement": "no copied illustration, lettering construction, palette sequence, or composition",
+    "licensed_font_source": "content/fonts/sticker-display-v1/manifest.json",
+    "required_visual_system": [
+      "large exact-spelling word silhouette",
+      "one dominant celebration motif",
+      "navy or palette-dark outline",
+      "masked dimensional depth shell",
+      "restrained inset highlight",
+      "transparent background",
+      "visible composition variety across the family"
+    ],
+    "typography": {
+      "single_read_requirement": true,
+      "front_depth_and_highlight_share_one_fitted_glyph_layout": true,
+      "independently_typeset_duplicate_word_forbidden": true,
+      "maximum_lines": 2,
+      "punctuation_is_semantic": true,
+      "maximum_visible_depth_area_ratio": 0.14,
+      "animate_as_one_composite": true
+    },
+    "family_variety": {
+      "minimum_font_voices": 4,
+      "minimum_motion_families": 4,
+      "minimum_composition_systems": 6,
+      "minimum_motif_families": 18,
+      "single_global_palette_forbidden": true,
+      "single_global_text_position_forbidden": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {
+      "width": 512,
+      "height": 512
+    },
+    "hard_margin_px": 16,
+    "small_display_review_px": [
+      80,
+      100,
+      160
+    ],
+    "recommended_default_px": 100,
+    "placement_variation_required": true,
+    "motif_must_not_obscure_word": true
+  },
+  "search_and_localization": {
+    "trie_ready_semantic_ids": true,
+    "exact_phrase_trigger_required": true,
+    "locale": "en",
+    "future_localization_policy": "localized packs receive separately fitted and reviewed word art"
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "thumbnail_256": "required",
+    "source_art": "original-procedural-svg-plus-pack-local-ofl-ttf",
+    "glb": "not-applicable-to-typography-and-icon-pack",
+    "license": "MIT-with-fonts-separately-SIL-OFL-1.1"
+  },
+  "animation": {
+    "allowed_text_motion_families": [
+      "pop",
+      "pulse",
+      "wobble",
+      "float"
+    ],
+    "loop_closure_required": true,
+    "visible_mid_cycle_change_required": true,
+    "reduced_motion_must_show_complete_phrase": true,
+    "word_must_remain_inside_canvas_for_every_frame": true
+  },
+  "approved_gate_state": {
+    "owner_approval": "contracts/congratulations-typography-owner-approval-v1.json",
+    "exact_spelling_and_punctuation": "pass",
+    "single_read_typography": "pass",
+    "36_phrase_coverage": "pass",
+    "family_art_direction": "pass",
+    "font_composition_and_motif_variety": "pass",
+    "animation_playback": "pass",
+    "small_display_readability": "pass",
+    "reduced_motion": "pass",
+    "deterministic_generation": "pass",
+    "owner_production_activation": "approved"
+  },
+  "review_gates": [
+    "36-way-semantic-completeness",
+    "exact-spelling-and-punctuation",
+    "single-read-depth-shell",
+    "original-art-direction",
+    "font-composition-motif-variety",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "deterministic-generation",
+    "owner-production-activation"
+  ]
+}

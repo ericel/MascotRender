@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-21",
+  "gate": "congratulations-typography-production-art-and-playback-v1",
+  "pack_id": "congratulations-pop-v1",
+  "approved_scope": [
+    "exact-spelling-and-punctuation",
+    "single-read-typography",
+    "36-phrase-coverage",
+    "family-art-direction",
+    "four-font-voices",
+    "six-composition-systems",
+    "motif-variety",
+    "pop-pulse-wobble-float-animation",
+    "visible-mid-cycle-motion",
+    "loop-closure",
+    "reduced-motion-equivalents",
+    "160px-readability",
+    "100px-readability-recommended-default",
+    "80px-readability-stress-test-floor",
+    "deterministic-generation"
+  ],
+  "reviewed_artifacts": {
+    "contact-sheet.png": "944f44133750bee62fff9dd5b039c2f94ca27c0c885b6c947b12e2fcad326c56",
+    "small-display-80-100-160.png": "e840642f0b8ff26afa0c54de25b85b2597afc5b53598e823ef17bd28dbb72cce",
+    "motion-sample-sheet.png": "89045eebf9d87ce1222a50f88279db6e727fd26f214ad9cd14582aa777beab5f",
+    "animation-review.html": "b980b55fbadd53ee9d0a7a930b538794e6f34451894bb3f99c835b257e057595"
+  },
+  "display_guidance": {
+    "recommended_default_px": 100,
+    "stress_test_floor_px": 80,
+    "showcase_px": 160
+  },
+  "production_use": "approved-for-public-production"
+}

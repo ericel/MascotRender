@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-great-job",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.great-job",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.core.great-job",
+  "alt_text": "Decorative animated sticker saying GREAT JOB!",
+  "accessible_description": "The phrase GREAT JOB! with an original trophy celebration motif",
+  "expression": "great-job",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "GREAT JOB!",
+    "style": "great-job-main",
+    "rotation_degrees": -3.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-great-job",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

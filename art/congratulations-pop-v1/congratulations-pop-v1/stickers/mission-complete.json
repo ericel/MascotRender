@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-mission-complete",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.achievement.mission-complete",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.achievement.mission-complete",
+  "alt_text": "Decorative animated sticker saying MISSION COMPLETE!",
+  "accessible_description": "The phrase MISSION COMPLETE! with an original check badge celebration motif",
+  "expression": "mission-complete",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "MISSION COMPLETE!",
+    "style": "mission-complete-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-mission-complete",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

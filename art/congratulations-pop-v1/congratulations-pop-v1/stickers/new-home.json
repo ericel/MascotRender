@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-new-home",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.milestone.new-home",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.milestone.new-home",
+  "alt_text": "Decorative animated sticker saying NEW HOME!",
+  "accessible_description": "The phrase NEW HOME! with an original happy house celebration motif",
+  "expression": "new-home",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "NEW HOME!",
+    "style": "new-home-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-new-home",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

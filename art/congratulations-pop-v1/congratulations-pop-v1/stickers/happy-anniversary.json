@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-happy-anniversary",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.milestone.happy-anniversary",
+  "recipe_id": "congratulations-typography.wobble",
+  "intent": "congratulations.milestone.happy-anniversary",
+  "alt_text": "Decorative animated sticker saying HAPPY ANNIVERSARY!",
+  "accessible_description": "The phrase HAPPY ANNIVERSARY! with an original heart laurel celebration motif",
+  "expression": "happy-anniversary",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "HAPPY ANNIVERSARY!",
+    "style": "happy-anniversary-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-happy-anniversary",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

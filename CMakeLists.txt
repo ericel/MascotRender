@@ -187,6 +187,7 @@ install(
 install(
     DIRECTORY
         art/calendar-pop-v1
+        art/congratulations-pop-v1
         art/human-pack-v1
         art/human-pack-wave2
         art/micro-reactions-v1
@@ -232,6 +233,7 @@ install(
         tools/generate_micro_orbit_glb.py
         tools/generate_micro_styled_glbs.py
         tools/generate_calendar_typography_pack.py
+        tools/generate_congratulations_pack.py
         tools/build_micro_reactions_bundle.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py

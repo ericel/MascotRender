@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-number-one",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.achievement.number-one",
+  "recipe_id": "congratulations-typography.wobble",
+  "intent": "congratulations.achievement.number-one",
+  "alt_text": "Decorative animated sticker saying #1!",
+  "accessible_description": "The phrase #1! with an original podium celebration motif",
+  "expression": "number-one",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "#1!",
+    "style": "number-one-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-number-one",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

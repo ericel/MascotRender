@@ -1,0 +1,685 @@
+{
+  "schema_version": 1,
+  "pack_id": "congratulations-pop-v1",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "congratulations.core.congrats",
+      "sticker_id": "congratulations-pop-congrats",
+      "triggers": [
+        {
+          "text": "congrats",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "congratulations",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.congratulations",
+      "sticker_id": "congratulations-pop-congratulations",
+      "triggers": [
+        {
+          "text": "congratulations",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "congratulation",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.well-done",
+      "sticker_id": "congratulations-pop-well-done",
+      "triggers": [
+        {
+          "text": "well done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "welldone",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.you-did-it",
+      "sticker_id": "congratulations-pop-you-did-it",
+      "triggers": [
+        {
+          "text": "you did it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "u did it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.amazing",
+      "sticker_id": "congratulations-pop-amazing",
+      "triggers": [
+        {
+          "text": "amazing",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "amazing work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.bravo",
+      "sticker_id": "congratulations-pop-bravo",
+      "triggers": [
+        {
+          "text": "bravo",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.nailed-it",
+      "sticker_id": "congratulations-pop-nailed-it",
+      "triggers": [
+        {
+          "text": "nailed it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "you nailed it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.great-job",
+      "sticker_id": "congratulations-pop-great-job",
+      "triggers": [
+        {
+          "text": "great job",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "great work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.superb",
+      "sticker_id": "congratulations-pop-superb",
+      "triggers": [
+        {
+          "text": "superb",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "super",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.way-to-go",
+      "sticker_id": "congratulations-pop-way-to-go",
+      "triggers": [
+        {
+          "text": "way to go",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "wtg",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.proud-of-you",
+      "sticker_id": "congratulations-pop-proud-of-you",
+      "triggers": [
+        {
+          "text": "proud of you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "so proud",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.core.legend",
+      "sticker_id": "congratulations-pop-legend",
+      "triggers": [
+        {
+          "text": "legend",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "absolute legend",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.good-work",
+      "sticker_id": "congratulations-pop-good-work",
+      "triggers": [
+        {
+          "text": "good work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "nice work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.awesome-job",
+      "sticker_id": "congratulations-pop-awesome-job",
+      "triggers": [
+        {
+          "text": "awesome job",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "awesome work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.big-win",
+      "sticker_id": "congratulations-pop-big-win",
+      "triggers": [
+        {
+          "text": "big win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "huge win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.level-up",
+      "sticker_id": "congratulations-pop-level-up",
+      "triggers": [
+        {
+          "text": "level up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "leveled up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.you-crushed-it",
+      "sticker_id": "congratulations-pop-you-crushed-it",
+      "triggers": [
+        {
+          "text": "you crushed it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "crushed it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.mission-complete",
+      "sticker_id": "congratulations-pop-mission-complete",
+      "triggers": [
+        {
+          "text": "mission complete",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "mission accomplished",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.number-one",
+      "sticker_id": "congratulations-pop-number-one",
+      "triggers": [
+        {
+          "text": "number one",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "number 1",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "#1",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.achievement.excellent",
+      "sticker_id": "congratulations-pop-excellent",
+      "triggers": [
+        {
+          "text": "excellent",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "excellent work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.happy-graduation",
+      "sticker_id": "congratulations-pop-happy-graduation",
+      "triggers": [
+        {
+          "text": "happy graduation",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "graduation",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "congrats graduate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.happy-wedding",
+      "sticker_id": "congratulations-pop-happy-wedding",
+      "triggers": [
+        {
+          "text": "happy wedding",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "wedding congratulations",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.new-job",
+      "sticker_id": "congratulations-pop-new-job",
+      "triggers": [
+        {
+          "text": "new job",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "congrats on the new job",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.promoted",
+      "sticker_id": "congratulations-pop-promoted",
+      "triggers": [
+        {
+          "text": "promoted",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "promotion",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "congrats on the promotion",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.new-home",
+      "sticker_id": "congratulations-pop-new-home",
+      "triggers": [
+        {
+          "text": "new home",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "new house",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "congrats on the new home",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.new-baby",
+      "sticker_id": "congratulations-pop-new-baby",
+      "triggers": [
+        {
+          "text": "new baby",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "congrats on the baby",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.happy-anniversary",
+      "sticker_id": "congratulations-pop-happy-anniversary",
+      "triggers": [
+        {
+          "text": "happy anniversary",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "anniversary",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.milestone.best-wishes",
+      "sticker_id": "congratulations-pop-best-wishes",
+      "triggers": [
+        {
+          "text": "best wishes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "all the best",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.lets-celebrate",
+      "sticker_id": "congratulations-pop-lets-celebrate",
+      "triggers": [
+        {
+          "text": "let's celebrate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets celebrate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "celebrate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.cheers",
+      "sticker_id": "congratulations-pop-cheers",
+      "triggers": [
+        {
+          "text": "cheers",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "toast",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.go-you",
+      "sticker_id": "congratulations-pop-go-you",
+      "triggers": [
+        {
+          "text": "go you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "go on",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.keep-it-up",
+      "sticker_id": "congratulations-pop-keep-it-up",
+      "triggers": [
+        {
+          "text": "keep it up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "keep going",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.dream-big",
+      "sticker_id": "congratulations-pop-dream-big",
+      "triggers": [
+        {
+          "text": "dream big",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "big dreams",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.onward-and-upward",
+      "sticker_id": "congratulations-pop-onward-and-upward",
+      "triggers": [
+        {
+          "text": "onward and upward",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "onwards and upwards",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.make-a-wish",
+      "sticker_id": "congratulations-pop-make-a-wish",
+      "triggers": [
+        {
+          "text": "make a wish",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "wish big",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "congratulations.cheer.keep-shining",
+      "sticker_id": "congratulations-pop-keep-shining",
+      "triggers": [
+        {
+          "text": "keep shining",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "shine on",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    }
+  ]
+}

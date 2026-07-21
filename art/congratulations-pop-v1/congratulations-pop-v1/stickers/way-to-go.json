@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-way-to-go",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.way-to-go",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.core.way-to-go",
+  "alt_text": "Decorative animated sticker saying WAY TO GO!",
+  "accessible_description": "The phrase WAY TO GO! with an original megaphone celebration motif",
+  "expression": "way-to-go",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "WAY TO GO!",
+    "style": "way-to-go-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-way-to-go",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

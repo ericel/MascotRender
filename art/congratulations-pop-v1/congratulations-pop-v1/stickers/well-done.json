@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-well-done",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.well-done",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.core.well-done",
+  "alt_text": "Decorative animated sticker saying WELL DONE!",
+  "accessible_description": "The phrase WELL DONE! with an original check badge celebration motif",
+  "expression": "well-done",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "WELL DONE!",
+    "style": "well-done-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-well-done",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

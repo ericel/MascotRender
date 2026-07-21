@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-keep-it-up",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.cheer.keep-it-up",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.cheer.keep-it-up",
+  "alt_text": "Decorative animated sticker saying KEEP IT UP!",
+  "accessible_description": "The phrase KEEP IT UP! with an original rocket celebration motif",
+  "expression": "keep-it-up",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "KEEP IT UP!",
+    "style": "keep-it-up-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-keep-it-up",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

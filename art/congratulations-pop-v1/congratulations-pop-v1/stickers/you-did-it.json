@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-you-did-it",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.you-did-it",
+  "recipe_id": "congratulations-typography.pop",
+  "intent": "congratulations.core.you-did-it",
+  "alt_text": "Decorative animated sticker saying YOU DID IT!",
+  "accessible_description": "The phrase YOU DID IT! with an original finish flag celebration motif",
+  "expression": "you-did-it",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "YOU DID IT!",
+    "style": "you-did-it-main",
+    "rotation_degrees": 2.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-you-did-it",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.065,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

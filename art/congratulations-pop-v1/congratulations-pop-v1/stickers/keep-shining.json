@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-keep-shining",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.cheer.keep-shining",
+  "recipe_id": "congratulations-typography.pop",
+  "intent": "congratulations.cheer.keep-shining",
+  "alt_text": "Decorative animated sticker saying KEEP SHINING!",
+  "accessible_description": "The phrase KEEP SHINING! with an original sun rays celebration motif",
+  "expression": "keep-shining",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "KEEP SHINING!",
+    "style": "keep-shining-main",
+    "rotation_degrees": -3.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-keep-shining",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.065,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

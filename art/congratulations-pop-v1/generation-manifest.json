@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "generator": "generate_congratulations_pack.py",
+  "generator_version": 1,
+  "pack_id": "congratulations-pop-v1",
+  "pack_contract": "contracts/congratulations-typography-pack-v1.json",
+  "content_matrix": "content/congratulations-typography-matrix-v1.json",
+  "sticker_count": 36,
+  "category_counts": {
+    "core": 12,
+    "achievement": 8,
+    "milestone": 8,
+    "cheer": 8
+  },
+  "font_voice_count": 4,
+  "motion_family_count": 4,
+  "composition_system_count": 6,
+  "motif_family_count": 30,
+  "single_fitted_glyph_layout_per_sticker": true,
+  "independently_typeset_duplicate_text_blocks": 0,
+  "owner_approval": "contracts/congratulations-typography-owner-approval-v1.json",
+  "production_use": "approved-for-public-production"
+}

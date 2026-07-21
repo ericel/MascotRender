@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<circle cx="224" cy="439" r="7" fill="#2363A5" opacity=".32"/><circle cx="256" cy="443" r="10" fill="#22B8CF" opacity=".28"/><circle cx="291" cy="438" r="6" fill="#FFE66D" opacity=".48"/>
+<circle cx="79" cy="118" r="10" fill="#22B8CF"/><circle cx="105" cy="91" r="6" fill="#FFE66D"/><circle cx="432" cy="375" r="10" fill="#2363A5"/><circle cx="405" cy="404" r="6" fill="#FFE66D"/><path d="M69 366 l22 -34 l20 34 Z M401 107 l21 34 l21 -34 Z" fill="#FFE66D" stroke="#2363A5" stroke-width="5" stroke-linejoin="round"/><polygon points="422,174 425,182 433,185 425,188 422,196 419,188 411,185 419,182" fill="#22B8CF" stroke="#2363A5" stroke-width="5" stroke-linejoin="round"/>
+<g transform="translate(256 391) scale(0.700)"><path d="M-88 -75 V93" fill="none" stroke="#20324B" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-80 -66 H96 L51 0 L96 66 H-80 Z" fill="#22B8CF" stroke="#20324B" stroke-width="8" stroke-linejoin="round"/><polygon points="7.0,-36.0 16.4,-12.9 41.2,-11.1 22.2,4.9 28.2,29.1 7.0,16.0 -14.2,29.1 -8.2,4.9 -27.2,-11.1 -2.4,-12.9" fill="#FFE66D"/></g>
+<path d="M118 386 Q256 430 394 386 L375 438 Q256 405 137 438 Z" fill="#FFE66D" stroke="#2363A5" stroke-width="7" stroke-linejoin="round"/>
+</svg>

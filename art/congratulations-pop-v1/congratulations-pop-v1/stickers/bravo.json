@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-bravo",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.core.bravo",
+  "recipe_id": "congratulations-typography.float",
+  "intent": "congratulations.core.bravo",
+  "alt_text": "Decorative animated sticker saying BRAVO!",
+  "accessible_description": "The phrase BRAVO! with an original applause celebration motif",
+  "expression": "bravo",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "BRAVO!",
+    "style": "bravo-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-bravo",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

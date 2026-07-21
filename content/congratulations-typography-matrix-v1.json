@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "matrix_id": "congratulations-typography-matrix-v1",
+  "pack_contract": "congratulations-typography-pack-v1",
+  "editorial_policy": {
+    "locale": "en",
+    "case": "uppercase",
+    "selection_mode": "explicit-trie-trigger",
+    "exact_phrase_rendering": true,
+    "generic_praise_and_life_milestones_are_separate_semantics": true
+  },
+  "entries": [
+    { "id": "congratulations.core.congrats", "label": "CONGRATS!", "category": "core", "aliases": ["congrats", "congratulations"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "confetti-burst", "layout": "full-burst" },
+    { "id": "congratulations.core.congratulations", "label": "CONGRATULATIONS!", "category": "core", "aliases": ["congratulations", "congratulation"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "diploma", "layout": "bottom-ribbon" },
+    { "id": "congratulations.core.well-done", "label": "WELL DONE!", "category": "core", "aliases": ["well done", "welldone"], "font_voice": "compact-punch", "motion": "pulse", "effect": "check-badge", "layout": "badge" },
+    { "id": "congratulations.core.you-did-it", "label": "YOU DID IT!", "category": "core", "aliases": ["you did it", "u did it"], "font_voice": "soft-rounded", "motion": "pop", "effect": "finish-flag", "layout": "top-icon" },
+    { "id": "congratulations.core.amazing", "label": "AMAZING!", "category": "core", "aliases": ["amazing", "amazing work"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "star-medal", "layout": "side-icon" },
+    { "id": "congratulations.core.bravo", "label": "BRAVO!", "category": "core", "aliases": ["bravo"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "applause", "layout": "full-burst" },
+    { "id": "congratulations.core.nailed-it", "label": "NAILED IT!", "category": "core", "aliases": ["nailed it", "you nailed it"], "font_voice": "compact-punch", "motion": "pop", "effect": "target", "layout": "side-icon" },
+    { "id": "congratulations.core.great-job", "label": "GREAT JOB!", "category": "core", "aliases": ["great job", "great work"], "font_voice": "soft-rounded", "motion": "pulse", "effect": "trophy", "layout": "top-icon" },
+    { "id": "congratulations.core.superb", "label": "SUPERB!", "category": "core", "aliases": ["superb", "super"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "crown", "layout": "badge" },
+    { "id": "congratulations.core.way-to-go", "label": "WAY TO GO!", "category": "core", "aliases": ["way to go", "wtg"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "megaphone", "layout": "side-icon" },
+    { "id": "congratulations.core.proud-of-you", "label": "PROUD OF YOU!", "category": "core", "aliases": ["proud of you", "so proud"], "font_voice": "soft-rounded", "motion": "pulse", "effect": "heart-laurel", "layout": "bottom-ribbon" },
+    { "id": "congratulations.core.legend", "label": "LEGEND!", "category": "core", "aliases": ["legend", "absolute legend"], "font_voice": "compact-punch", "motion": "pop", "effect": "laurel-medal", "layout": "badge" },
+
+    { "id": "congratulations.achievement.good-work", "label": "GOOD WORK!", "category": "achievement", "aliases": ["good work", "nice work"], "font_voice": "handwritten-emphasis", "motion": "wobble", "effect": "pencil-spark", "layout": "side-icon" },
+    { "id": "congratulations.achievement.awesome-job", "label": "AWESOME JOB!", "category": "achievement", "aliases": ["awesome job", "awesome work"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "star-ribbon", "layout": "bottom-ribbon" },
+    { "id": "congratulations.achievement.big-win", "label": "BIG WIN!", "category": "achievement", "aliases": ["big win", "huge win", "win"], "font_voice": "compact-punch", "motion": "pulse", "effect": "trophy", "layout": "top-icon" },
+    { "id": "congratulations.achievement.level-up", "label": "LEVEL UP!", "category": "achievement", "aliases": ["level up", "leveled up"], "font_voice": "soft-rounded", "motion": "float", "effect": "rocket", "layout": "side-icon" },
+    { "id": "congratulations.achievement.you-crushed-it", "label": "YOU CRUSHED IT!", "category": "achievement", "aliases": ["you crushed it", "crushed it"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "diamond-burst", "layout": "full-burst" },
+    { "id": "congratulations.achievement.mission-complete", "label": "MISSION COMPLETE!", "category": "achievement", "aliases": ["mission complete", "mission accomplished"], "font_voice": "compact-punch", "motion": "pulse", "effect": "check-badge", "layout": "badge" },
+    { "id": "congratulations.achievement.number-one", "label": "#1!", "category": "achievement", "aliases": ["number one", "number 1", "#1"], "font_voice": "soft-rounded", "motion": "wobble", "effect": "podium", "layout": "top-icon" },
+    { "id": "congratulations.achievement.excellent", "label": "EXCELLENT!", "category": "achievement", "aliases": ["excellent", "excellent work"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "star-medal", "layout": "badge" },
+
+    { "id": "congratulations.milestone.happy-graduation", "label": "HAPPY GRADUATION!", "category": "milestone", "aliases": ["happy graduation", "graduation", "congrats graduate"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "graduation-cap", "layout": "top-icon" },
+    { "id": "congratulations.milestone.happy-wedding", "label": "HAPPY WEDDING!", "category": "milestone", "aliases": ["happy wedding", "wedding congratulations"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "wedding-rings", "layout": "corner-icon" },
+    { "id": "congratulations.milestone.new-job", "label": "NEW JOB!", "category": "milestone", "aliases": ["new job", "congrats on the new job"], "font_voice": "energetic-comic-slant", "motion": "pulse", "effect": "briefcase-up", "layout": "top-icon" },
+    { "id": "congratulations.milestone.promoted", "label": "PROMOTED!", "category": "milestone", "aliases": ["promoted", "promotion", "congrats on the promotion"], "font_voice": "soft-rounded", "motion": "pop", "effect": "up-arrow-medal", "layout": "badge" },
+    { "id": "congratulations.milestone.new-home", "label": "NEW HOME!", "category": "milestone", "aliases": ["new home", "new house", "congrats on the new home"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "happy-house", "layout": "top-icon" },
+    { "id": "congratulations.milestone.new-baby", "label": "NEW BABY!", "category": "milestone", "aliases": ["new baby", "congrats on the baby"], "font_voice": "soft-rounded", "motion": "pulse", "effect": "baby-blocks", "layout": "side-icon" },
+    { "id": "congratulations.milestone.happy-anniversary", "label": "HAPPY ANNIVERSARY!", "category": "milestone", "aliases": ["happy anniversary", "anniversary"], "font_voice": "energetic-comic-slant", "motion": "wobble", "effect": "heart-laurel", "layout": "bottom-ribbon" },
+    { "id": "congratulations.milestone.best-wishes", "label": "BEST WISHES!", "category": "milestone", "aliases": ["best wishes", "all the best"], "font_voice": "handwritten-emphasis", "motion": "float", "effect": "shooting-star", "layout": "corner-icon" },
+
+    { "id": "congratulations.cheer.lets-celebrate", "label": "LET'S CELEBRATE!", "category": "cheer", "aliases": ["let's celebrate", "lets celebrate", "celebrate"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "party-popper", "layout": "full-burst" },
+    { "id": "congratulations.cheer.cheers", "label": "CHEERS!", "category": "cheer", "aliases": ["cheers", "toast"], "font_voice": "handwritten-emphasis", "motion": "wobble", "effect": "toast", "layout": "side-icon" },
+    { "id": "congratulations.cheer.go-you", "label": "GO YOU!", "category": "cheer", "aliases": ["go you", "go on"], "font_voice": "energetic-comic-slant", "motion": "pulse", "effect": "pennant", "layout": "bottom-ribbon" },
+    { "id": "congratulations.cheer.keep-it-up", "label": "KEEP IT UP!", "category": "cheer", "aliases": ["keep it up", "keep going"], "font_voice": "compact-punch", "motion": "float", "effect": "rocket", "layout": "side-icon" },
+    { "id": "congratulations.cheer.dream-big", "label": "DREAM BIG!", "category": "cheer", "aliases": ["dream big", "big dreams"], "font_voice": "soft-rounded", "motion": "float", "effect": "cloud-stars", "layout": "corner-icon" },
+    { "id": "congratulations.cheer.onward-and-upward", "label": "ONWARD & UPWARD!", "category": "cheer", "aliases": ["onward and upward", "onwards and upwards"], "font_voice": "compact-punch", "motion": "pulse", "effect": "mountain-flag", "layout": "top-icon" },
+    { "id": "congratulations.cheer.make-a-wish", "label": "MAKE A WISH!", "category": "cheer", "aliases": ["make a wish", "wish big"], "font_voice": "handwritten-emphasis", "motion": "wobble", "effect": "shooting-star", "layout": "full-burst" },
+    { "id": "congratulations.cheer.keep-shining", "label": "KEEP SHINING!", "category": "cheer", "aliases": ["keep shining", "shine on"], "font_voice": "energetic-comic-slant", "motion": "pop", "effect": "sun-rays", "layout": "badge" }
+  ]
+}

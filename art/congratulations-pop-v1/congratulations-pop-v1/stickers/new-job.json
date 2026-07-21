@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "congratulations-pop-new-job",
+  "pack_id": "congratulations-pop-v1",
+  "phrase_id": "congratulations.milestone.new-job",
+  "recipe_id": "congratulations-typography.pulse",
+  "intent": "congratulations.milestone.new-job",
+  "alt_text": "Decorative animated sticker saying NEW JOB!",
+  "accessible_description": "The phrase NEW JOB! with an original briefcase up celebration motif",
+  "expression": "new-job",
+  "pose": "celebration",
+  "seed": 1,
+  "text": {
+    "content": "NEW JOB!",
+    "style": "new-job-main",
+    "rotation_degrees": 2.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-new-job",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

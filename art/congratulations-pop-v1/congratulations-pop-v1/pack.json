@@ -1,0 +1,1980 @@
+{
+  "schema_version": 1,
+  "pack_id": "congratulations-pop-v1",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "motif-congrats",
+      "source": "layers/00-motif-congrats.svg",
+      "z": 10,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-congratulations",
+      "source": "layers/01-motif-congratulations.svg",
+      "z": 11,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-well-done",
+      "source": "layers/02-motif-well-done.svg",
+      "z": 12,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-you-did-it",
+      "source": "layers/03-motif-you-did-it.svg",
+      "z": 13,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-amazing",
+      "source": "layers/04-motif-amazing.svg",
+      "z": 14,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-bravo",
+      "source": "layers/05-motif-bravo.svg",
+      "z": 15,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-nailed-it",
+      "source": "layers/06-motif-nailed-it.svg",
+      "z": 16,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-great-job",
+      "source": "layers/07-motif-great-job.svg",
+      "z": 17,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-superb",
+      "source": "layers/08-motif-superb.svg",
+      "z": 18,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-way-to-go",
+      "source": "layers/09-motif-way-to-go.svg",
+      "z": 19,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-proud-of-you",
+      "source": "layers/10-motif-proud-of-you.svg",
+      "z": 20,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-legend",
+      "source": "layers/11-motif-legend.svg",
+      "z": 21,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-good-work",
+      "source": "layers/12-motif-good-work.svg",
+      "z": 22,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-awesome-job",
+      "source": "layers/13-motif-awesome-job.svg",
+      "z": 23,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-big-win",
+      "source": "layers/14-motif-big-win.svg",
+      "z": 24,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-level-up",
+      "source": "layers/15-motif-level-up.svg",
+      "z": 25,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-you-crushed-it",
+      "source": "layers/16-motif-you-crushed-it.svg",
+      "z": 26,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-mission-complete",
+      "source": "layers/17-motif-mission-complete.svg",
+      "z": 27,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-number-one",
+      "source": "layers/18-motif-number-one.svg",
+      "z": 28,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-excellent",
+      "source": "layers/19-motif-excellent.svg",
+      "z": 29,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-happy-graduation",
+      "source": "layers/20-motif-happy-graduation.svg",
+      "z": 30,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-happy-wedding",
+      "source": "layers/21-motif-happy-wedding.svg",
+      "z": 31,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-new-job",
+      "source": "layers/22-motif-new-job.svg",
+      "z": 32,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-promoted",
+      "source": "layers/23-motif-promoted.svg",
+      "z": 33,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-new-home",
+      "source": "layers/24-motif-new-home.svg",
+      "z": 34,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-new-baby",
+      "source": "layers/25-motif-new-baby.svg",
+      "z": 35,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-happy-anniversary",
+      "source": "layers/26-motif-happy-anniversary.svg",
+      "z": 36,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-best-wishes",
+      "source": "layers/27-motif-best-wishes.svg",
+      "z": 37,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-lets-celebrate",
+      "source": "layers/28-motif-lets-celebrate.svg",
+      "z": 38,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-cheers",
+      "source": "layers/29-motif-cheers.svg",
+      "z": 39,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-go-you",
+      "source": "layers/30-motif-go-you.svg",
+      "z": 40,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-keep-it-up",
+      "source": "layers/31-motif-keep-it-up.svg",
+      "z": 41,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-dream-big",
+      "source": "layers/32-motif-dream-big.svg",
+      "z": 42,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-onward-and-upward",
+      "source": "layers/33-motif-onward-and-upward.svg",
+      "z": 43,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-make-a-wish",
+      "source": "layers/34-motif-make-a-wish.svg",
+      "z": 44,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-keep-shining",
+      "source": "layers/35-motif-keep-shining.svg",
+      "z": 45,
+      "pivot": "composition",
+      "depth": 0.0
+    }
+  ],
+  "base_layers": [],
+  "expressions": {
+    "congrats": [
+      "motif-congrats"
+    ],
+    "congratulations": [
+      "motif-congratulations"
+    ],
+    "well-done": [
+      "motif-well-done"
+    ],
+    "you-did-it": [
+      "motif-you-did-it"
+    ],
+    "amazing": [
+      "motif-amazing"
+    ],
+    "bravo": [
+      "motif-bravo"
+    ],
+    "nailed-it": [
+      "motif-nailed-it"
+    ],
+    "great-job": [
+      "motif-great-job"
+    ],
+    "superb": [
+      "motif-superb"
+    ],
+    "way-to-go": [
+      "motif-way-to-go"
+    ],
+    "proud-of-you": [
+      "motif-proud-of-you"
+    ],
+    "legend": [
+      "motif-legend"
+    ],
+    "good-work": [
+      "motif-good-work"
+    ],
+    "awesome-job": [
+      "motif-awesome-job"
+    ],
+    "big-win": [
+      "motif-big-win"
+    ],
+    "level-up": [
+      "motif-level-up"
+    ],
+    "you-crushed-it": [
+      "motif-you-crushed-it"
+    ],
+    "mission-complete": [
+      "motif-mission-complete"
+    ],
+    "number-one": [
+      "motif-number-one"
+    ],
+    "excellent": [
+      "motif-excellent"
+    ],
+    "happy-graduation": [
+      "motif-happy-graduation"
+    ],
+    "happy-wedding": [
+      "motif-happy-wedding"
+    ],
+    "new-job": [
+      "motif-new-job"
+    ],
+    "promoted": [
+      "motif-promoted"
+    ],
+    "new-home": [
+      "motif-new-home"
+    ],
+    "new-baby": [
+      "motif-new-baby"
+    ],
+    "happy-anniversary": [
+      "motif-happy-anniversary"
+    ],
+    "best-wishes": [
+      "motif-best-wishes"
+    ],
+    "lets-celebrate": [
+      "motif-lets-celebrate"
+    ],
+    "cheers": [
+      "motif-cheers"
+    ],
+    "go-you": [
+      "motif-go-you"
+    ],
+    "keep-it-up": [
+      "motif-keep-it-up"
+    ],
+    "dream-big": [
+      "motif-dream-big"
+    ],
+    "onward-and-upward": [
+      "motif-onward-and-upward"
+    ],
+    "make-a-wish": [
+      "motif-make-a-wish"
+    ],
+    "keep-shining": [
+      "motif-keep-shining"
+    ]
+  },
+  "poses": {
+    "celebration": []
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT; bundled fonts separately SIL OFL 1.1",
+    "source": "generate_congratulations_pack.py v1; original procedural compositions"
+  },
+  "anchors": {
+    "composition_center": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "pivots": {
+    "composition": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 0,
+  "caption_validation": {
+    "minimum_canvas_margin_px": 16,
+    "maximum_lines": 2,
+    "must_remain_inside_canvas_for_every_frame": true,
+    "may_overlap_character": false,
+    "may_overlap_assistive_device": false,
+    "must_pass_sizes_px": [
+      80,
+      100,
+      160
+    ],
+    "collision_bounds": "per-frame-alpha-bounds"
+  },
+  "fonts": [
+    {
+      "id": "punch",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    },
+    {
+      "id": "comic-slant",
+      "source": "fonts/bangers/Bangers-Regular.ttf",
+      "license": "fonts/bangers/OFL.txt"
+    },
+    {
+      "id": "rounded",
+      "source": "fonts/lilita-one/LilitaOne-Regular.ttf",
+      "license": "fonts/lilita-one/OFL.txt"
+    },
+    {
+      "id": "handwritten",
+      "source": "fonts/kalam/Kalam-Bold.ttf",
+      "license": "fonts/kalam/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "congrats-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 102,
+        "y": 162,
+        "width": 308,
+        "height": 192
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 93,
+        "b": 115
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 166,
+          "g": 58,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "congratulations-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 48,
+        "y": 84,
+        "width": 416,
+        "height": 246
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 94,
+        "g": 139,
+        "b": 255
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 77,
+          "g": 77,
+          "b": 183
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 126,
+          "g": 231,
+          "b": 196
+        }
+      }
+    },
+    "well-done-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 64,
+        "y": 142,
+        "width": 384,
+        "height": 238
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 159,
+        "b": 67
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 217,
+          "g": 79,
+          "b": 64
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 227,
+          "b": 154
+        }
+      }
+    },
+    "you-did-it-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 76,
+        "y": 230,
+        "width": 360,
+        "height": 184
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 38,
+        "g": 196,
+        "b": 133
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 20,
+          "g": 125,
+          "b": 115
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 245,
+          "b": 203
+        }
+      }
+    },
+    "amazing-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 166,
+        "g": 108,
+        "b": 255
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 94,
+          "g": 75,
+          "b": 179
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "bravo-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 70,
+        "y": 142,
+        "width": 372,
+        "height": 232
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 107,
+        "b": 154
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 170,
+          "g": 61,
+          "b": 121
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 141,
+          "g": 235,
+          "b": 255
+        }
+      }
+    },
+    "nailed-it-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 196,
+        "y": 146,
+        "width": 240,
+        "height": 230
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 34,
+        "g": 184,
+        "b": 207
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 35,
+          "g": 99,
+          "b": 165
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 230,
+          "b": 109
+        }
+      }
+    },
+    "great-job-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 179,
+        "b": 43
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 217,
+          "g": 87,
+          "b": 57
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 168
+        }
+      }
+    },
+    "superb-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 64,
+        "y": 142,
+        "width": 384,
+        "height": 238
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 102,
+        "g": 209,
+        "b": 122
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 22,
+          "g": 140,
+          "b": 104
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 245,
+          "g": 215,
+          "b": 110
+        }
+      }
+    },
+    "way-to-go-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 122,
+        "b": 89
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 179,
+          "g": 63,
+          "b": 98
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 242,
+          "b": 232
+        }
+      }
+    },
+    "proud-of-you-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 48,
+        "y": 84,
+        "width": 416,
+        "height": 246
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 123,
+        "g": 104,
+        "b": 238
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 75,
+          "g": 75,
+          "b": 155
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 205,
+          "b": 112
+        }
+      }
+    },
+    "legend-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 96,
+        "y": 162,
+        "width": 320,
+        "height": 198
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 68,
+        "g": 183,
+        "b": 232
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 58,
+          "g": 94,
+          "b": 174
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 143,
+          "b": 177
+        }
+      }
+    },
+    "good-work-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 93,
+        "b": 115
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 166,
+          "g": 58,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "awesome-job-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 80,
+        "y": 104,
+        "width": 352,
+        "height": 206
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 94,
+        "g": 139,
+        "b": 255
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 77,
+          "g": 77,
+          "b": 183
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 126,
+          "g": 231,
+          "b": 196
+        }
+      }
+    },
+    "big-win-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 159,
+        "b": 67
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 217,
+          "g": 79,
+          "b": 64
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 227,
+          "b": 154
+        }
+      }
+    },
+    "level-up-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 38,
+        "g": 196,
+        "b": 133
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 20,
+          "g": 125,
+          "b": 115
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 245,
+          "b": 203
+        }
+      }
+    },
+    "you-crushed-it-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 102,
+        "y": 162,
+        "width": 308,
+        "height": 192
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 166,
+        "g": 108,
+        "b": 255
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 94,
+          "g": 75,
+          "b": 179
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "mission-complete-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 64,
+        "y": 142,
+        "width": 384,
+        "height": 238
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 107,
+        "b": 154
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 170,
+          "g": 61,
+          "b": 121
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 141,
+          "g": 235,
+          "b": 255
+        }
+      }
+    },
+    "number-one-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 34,
+        "g": 184,
+        "b": 207
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 35,
+          "g": 99,
+          "b": 165
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 230,
+          "b": 109
+        }
+      }
+    },
+    "excellent-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 64,
+        "y": 142,
+        "width": 384,
+        "height": 238
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 179,
+        "b": 43
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 217,
+          "g": 87,
+          "b": 57
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 168
+        }
+      }
+    },
+    "happy-graduation-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 76,
+        "y": 230,
+        "width": 360,
+        "height": 184
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 102,
+        "g": 209,
+        "b": 122
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 22,
+          "g": 140,
+          "b": 104
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 245,
+          "g": 215,
+          "b": 110
+        }
+      }
+    },
+    "happy-wedding-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 48,
+        "y": 112,
+        "width": 400,
+        "height": 258
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 122,
+        "b": 89
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 179,
+          "g": 63,
+          "b": 98
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 242,
+          "b": 232
+        }
+      }
+    },
+    "new-job-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 123,
+        "g": 104,
+        "b": 238
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 75,
+          "g": 75,
+          "b": 155
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 205,
+          "b": 112
+        }
+      }
+    },
+    "promoted-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 96,
+        "y": 162,
+        "width": 320,
+        "height": 198
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 68,
+        "g": 183,
+        "b": 232
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 58,
+          "g": 94,
+          "b": 174
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 143,
+          "b": 177
+        }
+      }
+    },
+    "new-home-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 93,
+        "b": 115
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 166,
+          "g": 58,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "new-baby-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 94,
+        "g": 139,
+        "b": 255
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 77,
+          "g": 77,
+          "b": 183
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 126,
+          "g": 231,
+          "b": 196
+        }
+      }
+    },
+    "happy-anniversary-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 84,
+        "width": 416,
+        "height": 246
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 159,
+        "b": 67
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 217,
+          "g": 79,
+          "b": 64
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 227,
+          "b": 154
+        }
+      }
+    },
+    "best-wishes-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 48,
+        "y": 112,
+        "width": 400,
+        "height": 258
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 38,
+        "g": 196,
+        "b": 133
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 20,
+          "g": 125,
+          "b": 115
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 245,
+          "b": 203
+        }
+      }
+    },
+    "lets-celebrate-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 102,
+        "y": 162,
+        "width": 308,
+        "height": 192
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 166,
+        "g": 108,
+        "b": 255
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 94,
+          "g": 75,
+          "b": 179
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "cheers-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 107,
+        "b": 154
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 170,
+          "g": 61,
+          "b": 121
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 141,
+          "g": 235,
+          "b": 255
+        }
+      }
+    },
+    "go-you-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 84,
+        "width": 416,
+        "height": 246
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 34,
+        "g": 184,
+        "b": 207
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 35,
+          "g": 99,
+          "b": 165
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 230,
+          "b": 109
+        }
+      }
+    },
+    "keep-it-up-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 164,
+        "y": 126,
+        "width": 304,
+        "height": 270
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 179,
+        "b": 43
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 217,
+          "g": 87,
+          "b": 57
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 168
+        }
+      }
+    },
+    "dream-big-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 48,
+        "y": 112,
+        "width": 400,
+        "height": 258
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 102,
+        "g": 209,
+        "b": 122
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 22,
+          "g": 140,
+          "b": 104
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 245,
+          "g": 215,
+          "b": 110
+        }
+      }
+    },
+    "onward-and-upward-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 44,
+        "y": 210,
+        "width": 424,
+        "height": 224
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 255,
+        "g": 122,
+        "b": 89
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 179,
+          "g": 63,
+          "b": 98
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 183,
+          "g": 242,
+          "b": 232
+        }
+      }
+    },
+    "make-a-wish-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 70,
+        "y": 142,
+        "width": 372,
+        "height": 232
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 123,
+        "g": 104,
+        "b": 238
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 75,
+          "g": 75,
+          "b": 155
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 205,
+          "b": 112
+        }
+      }
+    },
+    "keep-shining-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 96,
+        "y": 162,
+        "width": 320,
+        "height": 198
+      },
+      "min_font_size": 27,
+      "max_font_size": 190,
+      "max_lines": 2,
+      "fill": {
+        "r": 68,
+        "g": 183,
+        "b": 232
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 32,
+          "g": 50,
+          "b": 75
+        }
+      },
+      "depth_shell": {
+        "offset_x": 10,
+        "offset_y": 11,
+        "color": {
+          "r": 58,
+          "g": 94,
+          "b": 174
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 143,
+          "b": 177
+        }
+      }
+    }
+  }
+}
