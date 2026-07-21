@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     MascotRender
-    VERSION 0.5.0
+    VERSION 0.6.0
     DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
@@ -212,6 +212,7 @@ install(
         docs/RELEASE_0.3.0.md
         docs/RELEASE_0.4.0.md
         docs/RELEASE_0.5.0.md
+        docs/RELEASE_0.6.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
