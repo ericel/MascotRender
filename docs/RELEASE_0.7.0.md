@@ -54,10 +54,18 @@ No consumer credentials are required:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.7.0 --build=missing
+conan install --requires=mascotrender/0.7.0 \
+  --remote=mascotrender \
+  --remote=conancenter \
+  --build=missing \
+  -s:h compiler.cppstd=20 \
+  -s:h "thorvg/*:compiler.cppstd=17"
 ```
 
-Leave Conan Center enabled so public dependencies can resolve. Then call
+ThorVG 0.15.16 is intentionally compiled as C++17 to avoid its `identity`
+symbol colliding with C++20 `std::identity` on recent libc++ releases;
+MascotRender and its consumers remain C++20. Leave Conan Center enabled so
+public dependencies can resolve. Then call
 `find_package(MascotRender CONFIG REQUIRED)` and link
 `MascotRender::MascotRender` from a C++20 target. The installed Workday pack is
 under `share/mascotrender/art/workday-reactions-v1`.

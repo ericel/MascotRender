@@ -54,7 +54,12 @@ Consumers configure the remote and install normally:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.7.0 --build=missing
+conan install --requires=mascotrender/0.7.0 \
+  --remote=mascotrender \
+  --remote=conancenter \
+  --build=missing \
+  -s:h compiler.cppstd=20 \
+  -s:h "thorvg/*:compiler.cppstd=17"
 ```
 
 The JFrog repository permits anonymous reads but requires authenticated writes.
@@ -66,3 +71,7 @@ compiler profile. Publication CI uses `--build=never` only after building the
 dependency graph, then evicts the just-published MascotRender/Filament packages
 and logs out; that specifically proves the hosted package binaries can be
 downloaded anonymously without silently rebuilding them.
+
+The ThorVG host setting is deliberate: ThorVG 0.15.16 must remain on C++17 to
+avoid an `identity` symbol collision with `std::identity` in recent libc++.
+MascotRender and consumer targets continue to require C++20.

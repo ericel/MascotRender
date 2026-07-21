@@ -56,6 +56,28 @@ SIL Open Font License 1.1; platform font discovery is not used.
 
 The original v0.1 SDD is retained unchanged as the review baseline.
 
+## Install with Conan 2
+
+The MascotRender remote permits anonymous reads. Keep Conan Center enabled for
+the public dependency graph and compile ThorVG 0.15.16 as C++17; MascotRender
+and consuming applications remain C++20:
+
+```bash
+conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
+conan install --requires=mascotrender/0.7.0 \
+  --remote=mascotrender \
+  --remote=conancenter \
+  --build=missing \
+  -s:h compiler.cppstd=20 \
+  -s:h "thorvg/*:compiler.cppstd=17"
+```
+
+Then call `find_package(MascotRender CONFIG REQUIRED)` and link
+`MascotRender::MascotRender`. Conan downloads a matching published
+MascotRender binary when one exists; `--build=missing` covers public
+third-party dependencies or compiler profiles for which Conan Center has no
+matching binary.
+
 ## Verified vertical slice
 
 The current implementation proves the distribution and graphics path:
