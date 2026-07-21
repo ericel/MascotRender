@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-i-disagree",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.i-disagree",
+  "recipe_id": "workday-character-scene.shake",
+  "intent": "workday.decisions.i-disagree",
+  "alt_text": "Pace the red panda in a workplace scene saying I DISAGREE",
+  "accessible_description": "Pace performs a stop pose with a split arrows cue and the phrase I DISAGREE",
+  "expression": "i-disagree",
+  "pose": "stop",
+  "seed": 1,
+  "text": {
+    "content": "I DISAGREE",
+    "style": "i-disagree-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-i-disagree",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-i-disagree",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

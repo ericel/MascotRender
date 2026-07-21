@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-be-right-there",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.meetings.be-right-there",
+  "recipe_id": "workday-character-scene.slide",
+  "intent": "workday.meetings.be-right-there",
+  "alt_text": "Pace the red panda in a workplace scene saying BE RIGHT THERE",
+  "accessible_description": "Pace performs a run pose with a speed lines cue and the phrase BE RIGHT THERE",
+  "expression": "be-right-there",
+  "pose": "run",
+  "seed": 1,
+  "text": {
+    "content": "BE RIGHT THERE",
+    "style": "be-right-there-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-be-right-there",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-be-right-there",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

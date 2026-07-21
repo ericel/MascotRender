@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-agreed",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.agreed",
+  "recipe_id": "workday-character-scene.nod",
+  "intent": "workday.decisions.agreed",
+  "alt_text": "Pace the red panda in a workplace scene saying AGREED",
+  "accessible_description": "Pace performs a nod pose with a handshake cue and the phrase AGREED",
+  "expression": "agreed",
+  "pose": "nod",
+  "seed": 1,
+  "text": {
+    "content": "AGREED",
+    "style": "agreed-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-agreed",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-agreed",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

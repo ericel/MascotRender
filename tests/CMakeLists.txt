@@ -164,6 +164,20 @@ if(MASCOTRENDER_BUILD_CLI)
         PROPERTIES TIMEOUT 900
     )
     add_test(
+        NAME workday_reactions_pack_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_workday_reactions.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_workday_reactions_pack.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/workday-reactions-pack-v1.json"
+            --matrix "${PROJECT_SOURCE_DIR}/content/workday-reactions-matrix-v1.json"
+            --canonical-source "${PROJECT_SOURCE_DIR}/art/workday-reactions-v1"
+            --determinism-runs "${MASCOTRENDER_CALENDAR_DETERMINISM_RUNS}"
+    )
+    set_tests_properties(workday_reactions_pack_contract PROPERTIES TIMEOUT 1500)
+    add_test(
         NAME micro_reactions_pack_contract
         COMMAND
             "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"

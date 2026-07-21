@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-camera-off",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.meetings.camera-off",
+  "recipe_id": "workday-character-scene.blink",
+  "intent": "workday.meetings.camera-off",
+  "alt_text": "Pace the red panda in a workplace scene saying CAMERA OFF",
+  "accessible_description": "Pace performs a hold pose with a camera off cue and the phrase CAMERA OFF",
+  "expression": "camera-off",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "CAMERA OFF",
+    "style": "camera-off-main",
+    "rotation_degrees": 2.2
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-camera-off",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-camera-off",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

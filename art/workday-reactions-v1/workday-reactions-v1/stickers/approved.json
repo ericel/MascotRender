@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-approved",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.workflow.approved",
+  "recipe_id": "workday-character-scene.stamp",
+  "intent": "workday.workflow.approved",
+  "alt_text": "Pace the red panda in a workplace scene saying APPROVED",
+  "accessible_description": "Pace performs a present pose with a approval stamp cue and the phrase APPROVED",
+  "expression": "approved",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "APPROVED",
+    "style": "approved-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-approved",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-approved",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

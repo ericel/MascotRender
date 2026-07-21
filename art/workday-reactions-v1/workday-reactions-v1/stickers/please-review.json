@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-please-review",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.please-review",
+  "recipe_id": "workday-character-scene.scan",
+  "intent": "workday.team.please-review",
+  "alt_text": "Pace the red panda in a workplace scene saying PLEASE REVIEW",
+  "accessible_description": "Pace performs a hold pose with a review document cue and the phrase PLEASE REVIEW",
+  "expression": "please-review",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "PLEASE REVIEW",
+    "style": "please-review-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-please-review",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-please-review",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

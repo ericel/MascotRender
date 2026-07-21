@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-need-coffee",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.energy.need-coffee",
+  "recipe_id": "workday-character-scene.shake",
+  "intent": "workday.energy.need-coffee",
+  "alt_text": "Pace the red panda in a workplace scene saying NEED COFFEE",
+  "accessible_description": "Pace performs a hold pose with a empty mug cue and the phrase NEED COFFEE",
+  "expression": "need-coffee",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "NEED COFFEE",
+    "style": "need-coffee-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-need-coffee",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-need-coffee",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

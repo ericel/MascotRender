@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-deal-closed",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.results.deal-closed",
+  "recipe_id": "workday-character-scene.stamp",
+  "intent": "workday.results.deal-closed",
+  "alt_text": "Pace the red panda in a workplace scene saying DEAL CLOSED",
+  "accessible_description": "Pace performs a thumb pose with a briefcase check cue and the phrase DEAL CLOSED",
+  "expression": "deal-closed",
+  "pose": "thumb",
+  "seed": 1,
+  "text": {
+    "content": "DEAL CLOSED",
+    "style": "deal-closed-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-deal-closed",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-deal-closed",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

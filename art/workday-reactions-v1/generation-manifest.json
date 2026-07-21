@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generator": "generate_workday_reactions_pack.py",
+  "generator_version": 2,
+  "pack_id": "workday-reactions-v1",
+  "pack_contract": "contracts/workday-reactions-pack-v1.json",
+  "content_matrix": "content/workday-reactions-matrix-v1.json",
+  "sticker_count": 96,
+  "category_counts": {
+    "decisions": 12,
+    "energy": 12,
+    "humor": 12,
+    "meetings": 12,
+    "results": 12,
+    "team": 12,
+    "time": 12,
+    "workflow": 12
+  },
+  "font_voice_count": 4,
+  "motion_family_count": 26,
+  "composition_system_count": 8,
+  "effect_family_count": 93,
+  "visual_prop_archetype_count": 25,
+  "pose_family_count": 19,
+  "mood_family_count": 32,
+  "single_fitted_text_layout_per_sticker": true,
+  "independently_typeset_duplicate_text_blocks": 0,
+  "owner_approval": "contracts/workday-reactions-owner-approval-v1.json",
+  "production_use": "approved-for-public-production"
+}

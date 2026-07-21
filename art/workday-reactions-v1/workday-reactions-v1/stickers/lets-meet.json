@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-lets-meet",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.meetings.lets-meet",
+  "recipe_id": "workday-character-scene.pulse",
+  "intent": "workday.meetings.lets-meet",
+  "alt_text": "Pace the red panda in a workplace scene saying LET'S MEET",
+  "accessible_description": "Pace performs a present pose with a calendar cue and the phrase LET'S MEET",
+  "expression": "lets-meet",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "LET'S MEET",
+    "style": "lets-meet-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-lets-meet",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-lets-meet",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

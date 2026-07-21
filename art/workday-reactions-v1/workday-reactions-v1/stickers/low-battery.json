@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-low-battery",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.energy.low-battery",
+  "recipe_id": "workday-character-scene.drop",
+  "intent": "workday.energy.low-battery",
+  "alt_text": "Pace the red panda in a workplace scene saying LOW BATTERY",
+  "accessible_description": "Pace performs a rest pose with a low battery cue and the phrase LOW BATTERY",
+  "expression": "low-battery",
+  "pose": "rest",
+  "seed": 1,
+  "text": {
+    "content": "LOW BATTERY",
+    "style": "low-battery-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-low-battery",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-low-battery",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

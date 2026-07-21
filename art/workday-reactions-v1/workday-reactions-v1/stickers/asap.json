@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-asap",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.time.asap",
+  "recipe_id": "workday-character-scene.shake",
+  "intent": "workday.time.asap",
+  "alt_text": "Pace the red panda in a workplace scene saying ASAP",
+  "accessible_description": "Pace performs a run pose with a lightning clock cue and the phrase ASAP",
+  "expression": "asap",
+  "pose": "run",
+  "seed": 1,
+  "text": {
+    "content": "ASAP",
+    "style": "asap-main",
+    "rotation_degrees": 2.2
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-asap",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-asap",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

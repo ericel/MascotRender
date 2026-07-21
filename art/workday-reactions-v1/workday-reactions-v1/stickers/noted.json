@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-noted",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.noted",
+  "recipe_id": "workday-character-scene.stamp",
+  "intent": "workday.decisions.noted",
+  "alt_text": "Pace the red panda in a workplace scene saying NOTED",
+  "accessible_description": "Pace performs a write pose with a sticky note cue and the phrase NOTED",
+  "expression": "noted",
+  "pose": "write",
+  "seed": 1,
+  "text": {
+    "content": "NOTED",
+    "style": "noted-main",
+    "rotation_degrees": -1.2
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-noted",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-noted",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

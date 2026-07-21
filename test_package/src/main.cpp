@@ -7,7 +7,7 @@
 #include <mascotrender/mascotrender.hpp>
 
 int main(int argc, char **argv) {
-  if (std::string_view{mascotrender::version_string()} != "0.6.0") {
+  if (std::string_view{mascotrender::version_string()} != "0.7.0") {
     return 1;
   }
 
@@ -105,13 +105,27 @@ int main(int argc, char **argv) {
     return 11;
   }
 
+  const auto workday = resources / "art" / "workday-reactions-v1" /
+                       "workday-reactions-v1";
+  const mascotrender::RenderRequest workday_request{
+      workday / "pack.json", workday / "stickers" / "on-it.json", {}};
+  auto workday_result = engine.render(workday_request);
+  if (!workday_result || workday_result.value().width != 512 ||
+      workday_result.value().height != 512) {
+    return 12;
+  }
+  if (!contains_chunk(workday_result.value().bytes, "ANIM") ||
+      !contains_chunk(workday_result.value().bytes, "ANMF")) {
+    return 13;
+  }
+
   if (!contains_chunk(animated.value().bytes, "ANIM") ||
       !contains_chunk(animated.value().bytes, "ANMF")) {
-    return 12;
+    return 14;
   }
 
   std::ofstream output{"mascotrender-package-test.webp", std::ios::binary};
   output.write(reinterpret_cast<const char *>(image.bytes.data()),
                static_cast<std::streamsize>(image.bytes.size()));
-  return output ? 0 : 13;
+  return output ? 0 : 15;
 }

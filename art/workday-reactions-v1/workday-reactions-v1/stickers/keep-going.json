@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-keep-going",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.keep-going",
+  "recipe_id": "workday-character-scene.bounce",
+  "intent": "workday.team.keep-going",
+  "alt_text": "Pace the red panda in a workplace scene saying KEEP GOING",
+  "accessible_description": "Pace performs a cheer pose with a up arrow cue and the phrase KEEP GOING",
+  "expression": "keep-going",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "KEEP GOING",
+    "style": "keep-going-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-keep-going",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-keep-going",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-great-teamwork",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.great-teamwork",
+  "recipe_id": "workday-character-scene.pulse",
+  "intent": "workday.team.great-teamwork",
+  "alt_text": "Pace the red panda in a workplace scene saying GREAT TEAMWORK",
+  "accessible_description": "Pace performs a cheer pose with a linked hands cue and the phrase GREAT TEAMWORK",
+  "expression": "great-teamwork",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "GREAT TEAMWORK",
+    "style": "great-teamwork-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-great-teamwork",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-great-teamwork",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

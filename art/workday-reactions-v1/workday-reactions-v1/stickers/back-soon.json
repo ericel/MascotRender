@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-back-soon",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.time.back-soon",
+  "recipe_id": "workday-character-scene.slide",
+  "intent": "workday.time.back-soon",
+  "alt_text": "Pace the red panda in a workplace scene saying BACK SOON",
+  "accessible_description": "Pace performs a wave pose with a return arrow cue and the phrase BACK SOON",
+  "expression": "back-soon",
+  "pose": "wave",
+  "seed": 1,
+  "text": {
+    "content": "BACK SOON",
+    "style": "back-soon-main",
+    "rotation_degrees": 2.2
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-back-soon",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-back-soon",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

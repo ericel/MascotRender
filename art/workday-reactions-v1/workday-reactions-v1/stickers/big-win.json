@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-big-win",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.results.big-win",
+  "recipe_id": "workday-character-scene.pop",
+  "intent": "workday.results.big-win",
+  "alt_text": "Pace the red panda in a workplace scene saying BIG WIN",
+  "accessible_description": "Pace performs a cheer pose with a trophy cue and the phrase BIG WIN",
+  "expression": "big-win",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "BIG WIN",
+    "style": "big-win-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-big-win",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-big-win",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

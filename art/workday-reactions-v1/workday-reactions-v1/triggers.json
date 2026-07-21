@@ -1,0 +1,2287 @@
+{
+  "schema_version": 1,
+  "pack_id": "workday-reactions-v1",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "workday.workflow.on-it",
+      "sticker_id": "workday-reactions-on-it",
+      "triggers": [
+        {
+          "text": "on it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "i'm on it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "im on it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.working-on-it",
+      "sticker_id": "workday-reactions-working-on-it",
+      "triggers": [
+        {
+          "text": "working on it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "work in progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.in-progress",
+      "sticker_id": "workday-reactions-in-progress",
+      "triggers": [
+        {
+          "text": "in progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "wip",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.almost-done",
+      "sticker_id": "workday-reactions-almost-done",
+      "triggers": [
+        {
+          "text": "almost done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "nearly done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.done",
+      "sticker_id": "workday-reactions-done",
+      "triggers": [
+        {
+          "text": "done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "finished",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "all done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.fixed",
+      "sticker_id": "workday-reactions-fixed",
+      "triggers": [
+        {
+          "text": "fixed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "it's fixed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "bug fixed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.shipped",
+      "sticker_id": "workday-reactions-shipped",
+      "triggers": [
+        {
+          "text": "shipped",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "deployed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "released",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.reviewing",
+      "sticker_id": "workday-reactions-reviewing",
+      "triggers": [
+        {
+          "text": "reviewing",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "in review",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "under review",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.approved",
+      "sticker_id": "workday-reactions-approved",
+      "triggers": [
+        {
+          "text": "approved",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "approve",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "looks approved",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.needs-changes",
+      "sticker_id": "workday-reactions-needs-changes",
+      "triggers": [
+        {
+          "text": "needs changes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "changes requested",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "revise",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.blocked",
+      "sticker_id": "workday-reactions-blocked",
+      "triggers": [
+        {
+          "text": "blocked",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "i'm blocked",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "im blocked",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.workflow.need-help",
+      "sticker_id": "workday-reactions-need-help",
+      "triggers": [
+        {
+          "text": "need help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "help me",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "can you help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.good-morning",
+      "sticker_id": "workday-reactions-good-morning",
+      "triggers": [
+        {
+          "text": "good morning",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "morning",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "gm",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.lets-meet",
+      "sticker_id": "workday-reactions-lets-meet",
+      "triggers": [
+        {
+          "text": "let's meet",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets meet",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "meeting",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.joining-now",
+      "sticker_id": "workday-reactions-joining-now",
+      "triggers": [
+        {
+          "text": "joining now",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "joining",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "i'm joining",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.running-late",
+      "sticker_id": "workday-reactions-running-late",
+      "triggers": [
+        {
+          "text": "running late",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "late",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "i'll be late",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.be-right-there",
+      "sticker_id": "workday-reactions-be-right-there",
+      "triggers": [
+        {
+          "text": "be right there",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "brt",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "coming now",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.quick-call",
+      "sticker_id": "workday-reactions-quick-call",
+      "triggers": [
+        {
+          "text": "quick call",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "can we call",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "call?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.youre-on-mute",
+      "sticker_id": "workday-reactions-youre-on-mute",
+      "triggers": [
+        {
+          "text": "you're on mute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "youre on mute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "on mute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.cant-hear-you",
+      "sticker_id": "workday-reactions-cant-hear-you",
+      "triggers": [
+        {
+          "text": "can't hear you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "cant hear you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "no audio",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.camera-off",
+      "sticker_id": "workday-reactions-camera-off",
+      "triggers": [
+        {
+          "text": "camera off",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "turn camera off",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "no camera",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.can-we-talk",
+      "sticker_id": "workday-reactions-can-we-talk",
+      "triggers": [
+        {
+          "text": "can we talk",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "got a minute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "can we chat",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.taking-notes",
+      "sticker_id": "workday-reactions-taking-notes",
+      "triggers": [
+        {
+          "text": "taking notes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "noted in meeting",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "writing this down",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.meetings.meeting-over",
+      "sticker_id": "workday-reactions-meeting-over",
+      "triggers": [
+        {
+          "text": "meeting over",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "meeting done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "end meeting",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.agreed",
+      "sticker_id": "workday-reactions-agreed",
+      "triggers": [
+        {
+          "text": "agreed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "i agree",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "agree",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.sounds-good",
+      "sticker_id": "workday-reactions-sounds-good",
+      "triggers": [
+        {
+          "text": "sounds good",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sgtm",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "works for me",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.makes-sense",
+      "sticker_id": "workday-reactions-makes-sense",
+      "triggers": [
+        {
+          "text": "makes sense",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "that makes sense",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.noted",
+      "sticker_id": "workday-reactions-noted",
+      "triggers": [
+        {
+          "text": "noted",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "duly noted",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "got it noted",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.got-it",
+      "sticker_id": "workday-reactions-got-it",
+      "triggers": [
+        {
+          "text": "got it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "gotcha",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "understood",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.good-point",
+      "sticker_id": "workday-reactions-good-point",
+      "triggers": [
+        {
+          "text": "good point",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "fair point",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "valid point",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.exactly",
+      "sticker_id": "workday-reactions-exactly",
+      "triggers": [
+        {
+          "text": "exactly",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "precisely",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "that's it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.lets-do-it",
+      "sticker_id": "workday-reactions-lets-do-it",
+      "triggers": [
+        {
+          "text": "let's do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.not-sure",
+      "sticker_id": "workday-reactions-not-sure",
+      "triggers": [
+        {
+          "text": "not sure",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "unsure",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "i don't know",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.i-disagree",
+      "sticker_id": "workday-reactions-i-disagree",
+      "triggers": [
+        {
+          "text": "i disagree",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "disagree",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "don't agree",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.lets-revisit",
+      "sticker_id": "workday-reactions-lets-revisit",
+      "triggers": [
+        {
+          "text": "let's revisit",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets revisit",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "revisit this",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.decisions.decision-made",
+      "sticker_id": "workday-reactions-decision-made",
+      "triggers": [
+        {
+          "text": "decision made",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "decided",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "final decision",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.thank-you",
+      "sticker_id": "workday-reactions-thank-you",
+      "triggers": [
+        {
+          "text": "thank you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "thanks",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "thx",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.great-teamwork",
+      "sticker_id": "workday-reactions-great-teamwork",
+      "triggers": [
+        {
+          "text": "great teamwork",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "teamwork",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "good teamwork",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.nice-work",
+      "sticker_id": "workday-reactions-nice-work",
+      "triggers": [
+        {
+          "text": "nice work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "good work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "great work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.need-a-hand",
+      "sticker_id": "workday-reactions-need-a-hand",
+      "triggers": [
+        {
+          "text": "need a hand",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "want help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "need help?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.i-can-help",
+      "sticker_id": "workday-reactions-i-can-help",
+      "triggers": [
+        {
+          "text": "i can help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "let me help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "i'll help",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.please-review",
+      "sticker_id": "workday-reactions-please-review",
+      "triggers": [
+        {
+          "text": "please review",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "review please",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "can you review",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.feedback-welcome",
+      "sticker_id": "workday-reactions-feedback-welcome",
+      "triggers": [
+        {
+          "text": "feedback welcome",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "send feedback",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "feedback please",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.your-turn",
+      "sticker_id": "workday-reactions-your-turn",
+      "triggers": [
+        {
+          "text": "your turn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "over to you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "you're up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.my-turn",
+      "sticker_id": "workday-reactions-my-turn",
+      "triggers": [
+        {
+          "text": "my turn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "i'm up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "let me",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.lets-collaborate",
+      "sticker_id": "workday-reactions-lets-collaborate",
+      "triggers": [
+        {
+          "text": "let's collaborate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets collaborate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "collaborate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.keep-going",
+      "sticker_id": "workday-reactions-keep-going",
+      "triggers": [
+        {
+          "text": "keep going",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "keep it up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "don't stop",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.team.we-got-this",
+      "sticker_id": "workday-reactions-we-got-this",
+      "triggers": [
+        {
+          "text": "we got this",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "we've got this",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "team can do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.big-win",
+      "sticker_id": "workday-reactions-big-win",
+      "triggers": [
+        {
+          "text": "big win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "huge win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "win",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.target-hit",
+      "sticker_id": "workday-reactions-target-hit",
+      "triggers": [
+        {
+          "text": "target hit",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "hit target",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "goal reached",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.good-progress",
+      "sticker_id": "workday-reactions-good-progress",
+      "triggers": [
+        {
+          "text": "good progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "making progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.numbers-look-good",
+      "sticker_id": "workday-reactions-numbers-look-good",
+      "triggers": [
+        {
+          "text": "numbers look good",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "good numbers",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "metrics look good",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.problem-solved",
+      "sticker_id": "workday-reactions-problem-solved",
+      "triggers": [
+        {
+          "text": "problem solved",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "solved",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "solution found",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.nice-save",
+      "sticker_id": "workday-reactions-nice-save",
+      "triggers": [
+        {
+          "text": "nice save",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "good save",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "saved it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.deal-closed",
+      "sticker_id": "workday-reactions-deal-closed",
+      "triggers": [
+        {
+          "text": "deal closed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "closed deal",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "we closed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.new-lead",
+      "sticker_id": "workday-reactions-new-lead",
+      "triggers": [
+        {
+          "text": "new lead",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sales lead",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "new prospect",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.invoice-sent",
+      "sticker_id": "workday-reactions-invoice-sent",
+      "triggers": [
+        {
+          "text": "invoice sent",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sent invoice",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "invoiced",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.paid",
+      "sticker_id": "workday-reactions-paid",
+      "triggers": [
+        {
+          "text": "paid",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "payment received",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "got paid",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.launch-day",
+      "sticker_id": "workday-reactions-launch-day",
+      "triggers": [
+        {
+          "text": "launch day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "going live",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "we launch today",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.results.mission-complete",
+      "sticker_id": "workday-reactions-mission-complete",
+      "triggers": [
+        {
+          "text": "mission complete",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "mission accomplished",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "complete",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.asap",
+      "sticker_id": "workday-reactions-asap",
+      "triggers": [
+        {
+          "text": "asap",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "as soon as possible",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "urgent",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.urgent",
+      "sticker_id": "workday-reactions-urgent",
+      "triggers": [
+        {
+          "text": "urgent",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "important now",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "priority",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.no-rush",
+      "sticker_id": "workday-reactions-no-rush",
+      "triggers": [
+        {
+          "text": "no rush",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "take your time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "whenever",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.today",
+      "sticker_id": "workday-reactions-today",
+      "triggers": [
+        {
+          "text": "today",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "due today",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "today please",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.tomorrow",
+      "sticker_id": "workday-reactions-tomorrow",
+      "triggers": [
+        {
+          "text": "tomorrow",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "due tomorrow",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "tmrw",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.eod",
+      "sticker_id": "workday-reactions-eod",
+      "triggers": [
+        {
+          "text": "by eod",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "eod",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "end of day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.one-more-minute",
+      "sticker_id": "workday-reactions-one-more-minute",
+      "triggers": [
+        {
+          "text": "one more minute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "give me a minute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "one minute",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.taking-a-break",
+      "sticker_id": "workday-reactions-taking-a-break",
+      "triggers": [
+        {
+          "text": "taking a break",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "on a break",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "break time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.back-soon",
+      "sticker_id": "workday-reactions-back-soon",
+      "triggers": [
+        {
+          "text": "back soon",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "brb",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "be right back",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.overtime",
+      "sticker_id": "workday-reactions-overtime",
+      "triggers": [
+        {
+          "text": "overtime",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "working late",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "late night work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.weekend-mode",
+      "sticker_id": "workday-reactions-weekend-mode",
+      "triggers": [
+        {
+          "text": "weekend mode",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "weekend",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "off for weekend",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.time.out-of-office",
+      "sticker_id": "workday-reactions-out-of-office",
+      "triggers": [
+        {
+          "text": "out of office",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "ooo",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "on leave",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.coffee",
+      "sticker_id": "workday-reactions-coffee",
+      "triggers": [
+        {
+          "text": "coffee",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "coffee?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "want coffee",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.need-coffee",
+      "sticker_id": "workday-reactions-need-coffee",
+      "triggers": [
+        {
+          "text": "need coffee",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "coffee please",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "more coffee",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.focused",
+      "sticker_id": "workday-reactions-focused",
+      "triggers": [
+        {
+          "text": "focused",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "focus mode",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "locked in",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.deep-work",
+      "sticker_id": "workday-reactions-deep-work",
+      "triggers": [
+        {
+          "text": "deep work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "do not disturb",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "focus time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.busy",
+      "sticker_id": "workday-reactions-busy",
+      "triggers": [
+        {
+          "text": "busy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "i'm busy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "occupied",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.swamped",
+      "sticker_id": "workday-reactions-swamped",
+      "triggers": [
+        {
+          "text": "swamped",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "too much work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "overloaded",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.low-battery",
+      "sticker_id": "workday-reactions-low-battery",
+      "triggers": [
+        {
+          "text": "low battery",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "low energy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "drained",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.tired",
+      "sticker_id": "workday-reactions-tired",
+      "triggers": [
+        {
+          "text": "tired",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sleepy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "exhausted",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.stressed",
+      "sticker_id": "workday-reactions-stressed",
+      "triggers": [
+        {
+          "text": "stressed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "stress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "overwhelmed",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.breathe",
+      "sticker_id": "workday-reactions-breathe",
+      "triggers": [
+        {
+          "text": "breathe",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "take a breath",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "deep breath",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.lunch-time",
+      "sticker_id": "workday-reactions-lunch-time",
+      "triggers": [
+        {
+          "text": "lunch time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lunch",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "time to eat",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.energy.back-to-work",
+      "sticker_id": "workday-reactions-back-to-work",
+      "triggers": [
+        {
+          "text": "back to work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "work time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "let's work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.monday",
+      "sticker_id": "workday-reactions-monday",
+      "triggers": [
+        {
+          "text": "monday",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "monday mood",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "ugh monday",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.friday",
+      "sticker_id": "workday-reactions-friday",
+      "triggers": [
+        {
+          "text": "friday",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "happy friday",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "friday mood",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.whoops",
+      "sticker_id": "workday-reactions-whoops",
+      "triggers": [
+        {
+          "text": "whoops",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "oops",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "oopsie",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.my-bad",
+      "sticker_id": "workday-reactions-my-bad",
+      "triggers": [
+        {
+          "text": "my bad",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sorry my fault",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "oops my bad",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.yikes",
+      "sticker_id": "workday-reactions-yikes",
+      "triggers": [
+        {
+          "text": "yikes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "ouch",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "that's bad",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.seriously",
+      "sticker_id": "workday-reactions-seriously",
+      "triggers": [
+        {
+          "text": "seriously",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "seriously?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "really?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.what",
+      "sticker_id": "workday-reactions-what",
+      "triggers": [
+        {
+          "text": "what",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "what?!",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "huh",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.plot-twist",
+      "sticker_id": "workday-reactions-plot-twist",
+      "triggers": [
+        {
+          "text": "plot twist",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "surprise twist",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "unexpected",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.not-again",
+      "sticker_id": "workday-reactions-not-again",
+      "triggers": [
+        {
+          "text": "not again",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "again?",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "here we go again",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.here-we-go",
+      "sticker_id": "workday-reactions-here-we-go",
+      "triggers": [
+        {
+          "text": "here we go",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "and here we go",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "let's go again",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.hmm",
+      "sticker_id": "workday-reactions-hmm",
+      "triggers": [
+        {
+          "text": "hmm",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "hmmm",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "thinking",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "workday.humor.nope",
+      "sticker_id": "workday-reactions-nope",
+      "triggers": [
+        {
+          "text": "nope",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "nah",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        },
+        {
+          "text": "no",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    }
+  ]
+}

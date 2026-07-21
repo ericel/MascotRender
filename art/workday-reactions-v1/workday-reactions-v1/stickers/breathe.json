@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-breathe",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.energy.breathe",
+  "recipe_id": "workday-character-scene.breathe",
+  "intent": "workday.energy.breathe",
+  "alt_text": "Pace the red panda in a workplace scene saying BREATHE",
+  "accessible_description": "Pace performs a rest pose with a calm rings cue and the phrase BREATHE",
+  "expression": "breathe",
+  "pose": "rest",
+  "seed": 1,
+  "text": {
+    "content": "BREATHE",
+    "style": "breathe-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-breathe",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-breathe",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

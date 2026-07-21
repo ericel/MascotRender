@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-makes-sense",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.decisions.makes-sense",
+  "recipe_id": "workday-character-scene.glow",
+  "intent": "workday.decisions.makes-sense",
+  "alt_text": "Pace the red panda in a workplace scene saying MAKES SENSE",
+  "accessible_description": "Pace performs a think pose with a lightbulb cue and the phrase MAKES SENSE",
+  "expression": "makes-sense",
+  "pose": "think",
+  "seed": 1,
+  "text": {
+    "content": "MAKES SENSE",
+    "style": "makes-sense-main",
+    "rotation_degrees": 1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-makes-sense",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-makes-sense",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

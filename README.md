@@ -13,7 +13,7 @@ integrations.
 
 The project ships a production-ready C++20 engine spanning deterministic 2D,
 layered 2.5D, animation, reduced-motion output, and optional Filament/GLB 3D.
-The current public package is `mascotrender/0.6.0`, consumable from Conan 2
+The current public package is `mascotrender/0.7.0`, consumable from Conan 2
 and CMake as `MascotRender::MascotRender`. It composes versioned JSON-selected
 SVG layers and optional pack-declared static TTF text through ThorVG, then
 returns a WebP encoded by libwebp. The example pack ships Changa One under the
@@ -37,6 +37,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [Pack format v1](docs/PACK_FORMAT.md)
 - [Storage-neutral bundle protocol v1](docs/BUNDLE_PROTOCOL.md)
 - [Micro Reactions product pack](docs/MICRO_REACTIONS.md)
+- [Workday Reactions 96-sticker development pack](docs/WORKDAY_REACTIONS.md)
 - [Mascot generation and batch pipeline](docs/CONTENT_PIPELINE.md)
 - [M6 sticker review record](docs/M6_REVIEW.md)
 - [0.1.0 release notes](docs/RELEASE_0.1.0.md)
@@ -45,6 +46,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [0.4.0 release notes](docs/RELEASE_0.4.0.md)
 - [0.5.0 release notes](docs/RELEASE_0.5.0.md)
 - [0.6.0 release notes](docs/RELEASE_0.6.0.md)
+- [0.7.0 release notes](docs/RELEASE_0.7.0.md)
 - [Conan publication runbook](docs/PUBLISHING.md)
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
@@ -58,7 +60,7 @@ The original v0.1 SDD is retained unchanged as the review baseline.
 
 The current implementation proves the distribution and graphics path:
 
-1. `conan create` produces static or shared `mascotrender/0.6.0` packages.
+1. `conan create` produces static or shared `mascotrender/0.7.0` packages.
 2. The external `test_package` installs, links, renders, and writes a WebP.
 3. Unit tests decode the WebP and verify dimensions, alpha, and repeatability.
 4. Public headers expose no ThorVG, libwebp, JSON, or CLI types.
@@ -68,7 +70,7 @@ The current implementation proves the distribution and graphics path:
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
 hosted compiler/sanitizer matrix is green. The protected Conan publication
 workflow uploads and then proves a logged-out exact-package re-download;
-release `v0.6.0` and its tested binaries are public. A fresh Conan cache may
+release `v0.7.0` and its tested binaries are public. A fresh Conan cache may
 build public third-party dependencies that ConanCenter does not provide as
 matching binaries.
 
@@ -158,6 +160,29 @@ python3 tools/generate_congratulations_pack.py \
 The production contract enforces exact spelling and punctuation, single-read
 typography, clean loop closure, safe margins, deterministic generation, and
 80/100/160-pixel readability across all 36 phrases.
+
+## Use the production Workday Reactions pack
+
+Release `v0.7.0` installs the approved 96-sticker Workday Reactions source pack
+under `share/mascotrender/art/workday-reactions-v1`. Pace, an original
+red-panda office mascot, performs common workflow, meeting, decision, teamwork,
+results, time, energy, and office-humor reactions. The pack includes explicit
+Trie triggers, animated WebP recipes, reduced-motion equivalents, eight
+caption compositions, four OFL display-font voices, and 25 visual prop
+archetypes.
+
+Maintainers can regenerate the source and review evidence with:
+
+```bash
+python3 tools/generate_workday_reactions_pack.py \
+  --mascotrender build/Release/mascotrender \
+  --force
+```
+
+The production contract binds the exact owner-reviewed artifacts and enforces
+96-way semantic completeness, Pace identity, caption/character balance,
+80/100/160-pixel readability, loop closure, reduced motion, deterministic
+generation, and exact-phrase Trie coverage.
 
 ## Download the production Micro Reactions pack
 
@@ -399,7 +424,7 @@ Add the package requirement to the consuming recipe:
 
 ```python
 def requirements(self):
-    self.requires("mascotrender/0.6.0")
+    self.requires("mascotrender/0.7.0")
 ```
 
 Link the canonical imported target:

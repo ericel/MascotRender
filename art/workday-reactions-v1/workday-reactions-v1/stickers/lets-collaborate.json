@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-lets-collaborate",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.team.lets-collaborate",
+  "recipe_id": "workday-character-scene.sync",
+  "intent": "workday.team.lets-collaborate",
+  "alt_text": "Pace the red panda in a workplace scene saying LET'S COLLABORATE",
+  "accessible_description": "Pace performs a hold pose with a puzzle pieces cue and the phrase LET'S COLLABORATE",
+  "expression": "lets-collaborate",
+  "pose": "hold",
+  "seed": 1,
+  "text": {
+    "content": "LET'S COLLABORATE",
+    "style": "lets-collaborate-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-lets-collaborate",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-lets-collaborate",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

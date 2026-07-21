@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "workday-reactions-no-rush",
+  "pack_id": "workday-reactions-v1",
+  "phrase_id": "workday.time.no-rush",
+  "recipe_id": "workday-character-scene.float",
+  "intent": "workday.time.no-rush",
+  "alt_text": "Pace the red panda in a workplace scene saying NO RUSH",
+  "accessible_description": "Pace performs a rest pose with a feather clock cue and the phrase NO RUSH",
+  "expression": "no-rush",
+  "pose": "rest",
+  "seed": 1,
+  "text": {
+    "content": "NO RUSH",
+    "style": "no-rush-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-no-rush",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-no-rush",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
