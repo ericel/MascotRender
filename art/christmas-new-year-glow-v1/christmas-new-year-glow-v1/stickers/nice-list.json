@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-nice-list",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.nice-list",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.christmas.nice-list",
+  "alt_text": "Festive animated sticker saying NICE LIST!",
+  "accessible_description": "The phrase NICE LIST! with an original nice list festive motif",
+  "expression": "nice-list",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "NICE LIST!",
+    "style": "nice-list-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-nice-list",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

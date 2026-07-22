@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-midnight-magic",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.midnight-magic",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.new-year.midnight-magic",
+  "alt_text": "Festive animated sticker saying MIDNIGHT MAGIC",
+  "accessible_description": "The phrase MIDNIGHT MAGIC with an original midnight clock festive motif",
+  "expression": "midnight-magic",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "MIDNIGHT MAGIC",
+    "style": "midnight-magic-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-midnight-magic",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

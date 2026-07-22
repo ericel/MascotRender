@@ -9,7 +9,7 @@ import os
 
 class MascotRenderRecipe(ConanFile):
     name = "mascotrender"
-    version = "0.7.0"
+    version = "0.8.0"
     package_type = "library"
     description = "Deterministic procedural character rendering engine"
     license = "MIT"
@@ -47,6 +47,7 @@ class MascotRenderRecipe(ConanFile):
         "art/calendar-pop-v1/*",
         "art/congratulations-pop-v1/*",
         "art/workday-reactions-v1/*",
+        "art/christmas-new-year-glow-v1/*",
         "examples/*",
         "!examples/*/.DS_Store",
         "!examples/**/.DS_Store",

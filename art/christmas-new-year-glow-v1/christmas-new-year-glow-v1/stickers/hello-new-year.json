@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-hello-new-year",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.hello-new-year",
+  "recipe_id": "seasonal-glow.pop",
+  "intent": "season.new-year.hello-new-year",
+  "alt_text": "Festive animated sticker saying HELLO, NEW YEAR!",
+  "accessible_description": "The phrase HELLO, NEW YEAR! with an original open door confetti festive motif",
+  "expression": "hello-new-year",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "HELLO, NEW YEAR!",
+    "style": "hello-new-year-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-hello-new-year",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.04,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

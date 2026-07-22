@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-happy-holidays",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.happy-holidays",
+  "recipe_id": "seasonal-glow.float",
+  "intent": "season.christmas.happy-holidays",
+  "alt_text": "Festive animated sticker saying HAPPY HOLIDAYS!",
+  "accessible_description": "The phrase HAPPY HOLIDAYS! with an original wreath bow festive motif",
+  "expression": "happy-holidays",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "HAPPY HOLIDAYS!",
+    "style": "happy-holidays-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-happy-holidays",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

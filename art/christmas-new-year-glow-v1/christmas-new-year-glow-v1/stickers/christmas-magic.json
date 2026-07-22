@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-christmas-magic",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.christmas-magic",
+  "recipe_id": "seasonal-glow.float",
+  "intent": "season.christmas.christmas-magic",
+  "alt_text": "Festive animated sticker saying CHRISTMAS MAGIC",
+  "accessible_description": "The phrase CHRISTMAS MAGIC with an original magic star festive motif",
+  "expression": "christmas-magic",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "CHRISTMAS MAGIC",
+    "style": "christmas-magic-main",
+    "rotation_degrees": -1.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-christmas-magic",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

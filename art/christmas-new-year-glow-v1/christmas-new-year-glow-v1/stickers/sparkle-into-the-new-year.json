@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-sparkle-into-the-new-year",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.sparkle-into-the-new-year",
+  "recipe_id": "seasonal-glow.float",
+  "intent": "season.new-year.sparkle-into-the-new-year",
+  "alt_text": "Festive animated sticker saying SPARKLE INTO THE NEW YEAR",
+  "accessible_description": "The phrase SPARKLE INTO THE NEW YEAR with an original sparkle trail festive motif",
+  "expression": "sparkle-into-the-new-year",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "SPARKLE INTO THE NEW YEAR",
+    "style": "sparkle-into-the-new-year-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-sparkle-into-the-new-year",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

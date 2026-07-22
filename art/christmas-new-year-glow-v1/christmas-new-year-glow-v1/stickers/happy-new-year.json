@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-happy-new-year",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.happy-new-year",
+  "recipe_id": "seasonal-glow.pop",
+  "intent": "season.new-year.happy-new-year",
+  "alt_text": "Festive animated sticker saying HAPPY NEW YEAR!",
+  "accessible_description": "The phrase HAPPY NEW YEAR! with an original fireworks skyline festive motif",
+  "expression": "happy-new-year",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "HAPPY NEW YEAR!",
+    "style": "happy-new-year-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-happy-new-year",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.04,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

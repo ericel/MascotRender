@@ -54,7 +54,7 @@ Consumers configure the remote and install normally:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.7.0 \
+conan install --requires=mascotrender/0.8.0 \
   --remote=mascotrender \
   --remote=conancenter \
   --build=missing \

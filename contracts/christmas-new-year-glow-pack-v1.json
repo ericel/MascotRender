@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "contract_id": "christmas-new-year-glow-pack-v1",
+  "status": "owner-production-approved",
+  "product_name": "Christmas & New Year Glow",
+  "product_type": "seasonal-typography-and-icon-sticker-pack",
+  "production_use": "approved-for-public-production",
+  "scope": {
+    "christmas_count": 18,
+    "new_year_count": 12,
+    "sticker_count": 30,
+    "animated_sticker_count": 30,
+    "reduced_motion_sticker_count": 30
+  },
+  "art_direction": {
+    "reference_policy": "the supplied reference establishes festive subject breadth only",
+    "originality_requirement": "all lettering, motifs, palettes, compositions, and motion are original deterministic MascotRender constructions",
+    "visual_system": [
+      "large exact-spelling festive word silhouette",
+      "one dominant Christmas or New Year motif",
+      "deep winter-navy outline",
+      "masked dimensional depth shell",
+      "snow-glint or firework accent language",
+      "transparent background",
+      "warm Christmas and midnight New Year palette families"
+    ],
+    "typography": {
+      "single_read_requirement": true,
+      "front_depth_and_highlight_share_one_fitted_glyph_layout": true,
+      "independently_typeset_duplicate_word_forbidden": true,
+      "maximum_lines": 3,
+      "punctuation_is_semantic": true,
+      "animate_as_one_composite": true
+    },
+    "family_variety": {
+      "minimum_font_voices": 4,
+      "minimum_motion_families": 4,
+      "minimum_composition_systems": 6,
+      "minimum_motif_families": 24,
+      "dominant_authored_motif_per_sticker": true,
+      "layered_seasonal_scene_accents_required": true,
+      "minimum_christmas_pattern_families": 5,
+      "minimum_new_year_pattern_families": 4,
+      "decorative_pattern_frame_required": true,
+      "central_word_window_must_remain_clear": true,
+      "single_global_palette_forbidden": true,
+      "single_global_text_position_forbidden": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {"width": 512, "height": 512},
+    "hard_margin_px": 16,
+    "small_display_review_px": [80, 100, 160],
+    "recommended_default_px": 100,
+    "motif_must_not_obscure_word": true
+  },
+  "search_and_localization": {
+    "trie_ready_semantic_ids": true,
+    "exact_phrase_trigger_required": true,
+    "locale": "en",
+    "year_agnostic": true
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "thumbnail_256": "required",
+    "source_art": "original-procedural-svg-plus-pack-local-ofl-ttf",
+    "glb": "not-applicable-to-typography-and-icon-pack",
+    "license": "MIT-with-fonts-separately-SIL-OFL-1.1"
+  },
+  "animation": {
+    "allowed_motion_families": ["pop", "pulse", "wobble", "float"],
+    "loop_closure_required": true,
+    "visible_mid_cycle_change_required": true,
+    "reduced_motion_must_show_complete_phrase": true,
+    "word_must_remain_inside_canvas_for_every_frame": true
+  },
+  "review_gates": [
+    "30-way-semantic-completeness",
+    "exact-spelling-and-punctuation",
+    "single-read-depth-shell",
+    "original-seasonal-art-direction",
+    "font-composition-motif-variety",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "deterministic-generation",
+    "owner-production-art-approval"
+  ]
+}

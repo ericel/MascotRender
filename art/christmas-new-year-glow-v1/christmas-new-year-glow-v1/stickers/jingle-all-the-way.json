@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-jingle-all-the-way",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.jingle-all-the-way",
+  "recipe_id": "seasonal-glow.wobble",
+  "intent": "season.christmas.jingle-all-the-way",
+  "alt_text": "Festive animated sticker saying JINGLE ALL THE WAY",
+  "accessible_description": "The phrase JINGLE ALL THE WAY with an original jingle bells festive motif",
+  "expression": "jingle-all-the-way",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "JINGLE ALL THE WAY",
+    "style": "jingle-all-the-way-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-jingle-all-the-way",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

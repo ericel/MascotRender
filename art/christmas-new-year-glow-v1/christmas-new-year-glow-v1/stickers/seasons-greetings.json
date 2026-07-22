@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-seasons-greetings",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.seasons-greetings",
+  "recipe_id": "seasonal-glow.wobble",
+  "intent": "season.christmas.seasons-greetings",
+  "alt_text": "Festive animated sticker saying SEASON'S GREETINGS",
+  "accessible_description": "The phrase SEASON'S GREETINGS with an original ornament cluster festive motif",
+  "expression": "seasons-greetings",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "SEASON'S GREETINGS",
+    "style": "seasons-greetings-main",
+    "rotation_degrees": -1.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-seasons-greetings",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

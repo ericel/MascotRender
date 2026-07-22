@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-santas-coming",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.santas-coming",
+  "recipe_id": "seasonal-glow.pop",
+  "intent": "season.christmas.santas-coming",
+  "alt_text": "Festive animated sticker saying SANTA'S COMING!",
+  "accessible_description": "The phrase SANTA'S COMING! with an original chimney santa festive motif",
+  "expression": "santas-coming",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "SANTA'S COMING!",
+    "style": "santas-coming-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-santas-coming",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.04,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
