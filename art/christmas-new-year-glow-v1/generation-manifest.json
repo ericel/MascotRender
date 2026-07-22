@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "generator": "generate_christmas_new_year_glow_pack.py",
+  "generator_version": 3,
+  "pack_id": "christmas-new-year-glow-v1",
+  "pack_contract": "contracts/christmas-new-year-glow-pack-v1.json",
+  "content_matrix": "content/christmas-new-year-glow-matrix-v1.json",
+  "sticker_count": 30,
+  "category_counts": {
+    "christmas": 18,
+    "new-year": 12
+  },
+  "font_voice_count": 4,
+  "motion_family_count": 4,
+  "composition_system_count": 6,
+  "motif_family_count": 30,
+  "seasonal_pattern_family_count": 9,
+  "single_fitted_glyph_layout_per_sticker": true,
+  "independently_typeset_duplicate_text_blocks": 0,
+  "owner_approval": "contracts/christmas-new-year-glow-owner-approval-v1.json",
+  "production_use": "approved-for-public-production"
+}

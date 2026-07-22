@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-warm-wishes",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.warm-wishes",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.christmas.warm-wishes",
+  "alt_text": "Festive animated sticker saying WARM WISHES",
+  "accessible_description": "The phrase WARM WISHES with an original mittens heart festive motif",
+  "expression": "warm-wishes",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "WARM WISHES",
+    "style": "warm-wishes-main",
+    "rotation_degrees": 2.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-warm-wishes",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

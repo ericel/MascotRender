@@ -13,7 +13,7 @@ integrations.
 
 The project ships a production-ready C++20 engine spanning deterministic 2D,
 layered 2.5D, animation, reduced-motion output, and optional Filament/GLB 3D.
-The current public package is `mascotrender/0.7.0`, consumable from Conan 2
+The current public package is `mascotrender/0.8.0`, consumable from Conan 2
 and CMake as `MascotRender::MascotRender`. It composes versioned JSON-selected
 SVG layers and optional pack-declared static TTF text through ThorVG, then
 returns a WebP encoded by libwebp. The example pack ships Changa One under the
@@ -47,6 +47,7 @@ SIL Open Font License 1.1; platform font discovery is not used.
 - [0.5.0 release notes](docs/RELEASE_0.5.0.md)
 - [0.6.0 release notes](docs/RELEASE_0.6.0.md)
 - [0.7.0 release notes](docs/RELEASE_0.7.0.md)
+- [0.8.0 release notes](docs/RELEASE_0.8.0.md)
 - [Conan publication runbook](docs/PUBLISHING.md)
 - [Third-party notices](docs/THIRD_PARTY_NOTICES.md)
 - [Pipeline benchmarks](docs/BENCHMARKS.md)
@@ -64,7 +65,7 @@ and consuming applications remain C++20:
 
 ```bash
 conan remote add mascotrender https://ericel.jfrog.io/artifactory/api/conan/conan-local
-conan install --requires=mascotrender/0.7.0 \
+conan install --requires=mascotrender/0.8.0 \
   --remote=mascotrender \
   --remote=conancenter \
   --build=missing \
@@ -82,7 +83,7 @@ matching binary.
 
 The current implementation proves the distribution and graphics path:
 
-1. `conan create` produces static or shared `mascotrender/0.7.0` packages.
+1. `conan create` produces static or shared `mascotrender/0.8.0` packages.
 2. The external `test_package` installs, links, renders, and writes a WebP.
 3. Unit tests decode the WebP and verify dimensions, alpha, and repeatability.
 4. Public headers expose no ThorVG, libwebp, JSON, or CLI types.
@@ -92,7 +93,7 @@ The current implementation proves the distribution and graphics path:
 Balanced wrapping, outlined text, and a decoded-pixel golden are complete. The
 hosted compiler/sanitizer matrix is green. The protected Conan publication
 workflow uploads and then proves a logged-out exact-package re-download;
-release `v0.7.0` and its tested binaries are public. A fresh Conan cache may
+release `v0.8.0` and its tested binaries are public. A fresh Conan cache may
 build public third-party dependencies that ConanCenter does not provide as
 matching binaries.
 
@@ -205,6 +206,27 @@ The production contract binds the exact owner-reviewed artifacts and enforces
 96-way semantic completeness, Pace identity, caption/character balance,
 80/100/160-pixel readability, loop closure, reduced motion, deterministic
 generation, and exact-phrase Trie coverage.
+
+## Use the production Christmas & New Year Glow pack
+
+Release `v0.8.0` installs the approved 30-sticker Christmas & New Year Glow
+source pack under `share/mascotrender/art/christmas-new-year-glow-v1`. Its 18
+Christmas and 12 New Year entries combine nine seasonal pattern families, 30
+distinct motif families, four OFL display-font voices, six composition systems,
+animated WebP recipes, and reduced-motion equivalents.
+
+Maintainers can regenerate the source and review evidence with:
+
+```bash
+python3 tools/generate_christmas_new_year_glow_pack.py \
+  --mascotrender build/Release/mascotrender \
+  --force
+```
+
+The production contract enforces exact spelling and punctuation, category
+separation, single-read typography, minimum animation clearance, clean loop
+closure, deterministic generation, and 80/100/160-pixel readability across all
+30 phrases.
 
 ## Download the production Micro Reactions pack
 
@@ -446,7 +468,7 @@ Add the package requirement to the consuming recipe:
 
 ```python
 def requirements(self):
-    self.requires("mascotrender/0.7.0")
+    self.requires("mascotrender/0.8.0")
 ```
 
 Link the canonical imported target:

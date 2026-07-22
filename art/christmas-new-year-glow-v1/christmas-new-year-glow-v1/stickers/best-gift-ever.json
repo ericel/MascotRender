@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-best-gift-ever",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.best-gift-ever",
+  "recipe_id": "seasonal-glow.pop",
+  "intent": "season.christmas.best-gift-ever",
+  "alt_text": "Festive animated sticker saying BEST GIFT EVER!",
+  "accessible_description": "The phrase BEST GIFT EVER! with an original gift burst festive motif",
+  "expression": "best-gift-ever",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "BEST GIFT EVER!",
+    "style": "best-gift-ever-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-best-gift-ever",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.04,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

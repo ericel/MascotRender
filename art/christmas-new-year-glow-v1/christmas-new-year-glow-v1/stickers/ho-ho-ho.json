@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-ho-ho-ho",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.ho-ho-ho",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.christmas.ho-ho-ho",
+  "alt_text": "Festive animated sticker saying HO HO HO!",
+  "accessible_description": "The phrase HO HO HO! with an original santa hat festive motif",
+  "expression": "ho-ho-ho",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "HO HO HO!",
+    "style": "ho-ho-ho-main",
+    "rotation_degrees": 2.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-ho-ho-ho",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

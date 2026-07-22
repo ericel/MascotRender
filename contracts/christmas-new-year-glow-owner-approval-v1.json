@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-22",
+  "gate": "christmas-new-year-glow-production-art-and-playback-v1",
+  "pack_id": "christmas-new-year-glow-v1",
+  "approved_scope": [
+    "exact-phrase-spelling-and-punctuation",
+    "christmas-new-year-category-separation",
+    "cross-pack-visual-coherence",
+    "nine-seasonal-pattern-families",
+    "large-integrated-hero-motifs",
+    "four-licensed-font-voices",
+    "six-composition-systems",
+    "pop-pulse-wobble-float-motion",
+    "visible-midpoint-animation",
+    "exact-loop-closure",
+    "reduced-motion-equivalents",
+    "single-read-typography",
+    "minimum-19px-animation-clearance",
+    "160px-readability",
+    "100px-readability-recommended-default",
+    "80px-readability-compact-stress-floor",
+    "deterministic-regeneration"
+  ],
+  "reviewed_artifacts": {
+    "contact-sheet.png": "a602157e96aa161b73fac7d38f826324061d432abd3f009f628229327c13ad6e",
+    "small-display-80-100-160.png": "3e7be9f31c060d9fe3b4703f0017e404860ec53b741a8c9fa0b726bab67b4425",
+    "motion-sample-sheet.png": "0a5694624513aff44ebbec2ff01309a8d5acdccf8720eb0556325d24a01faf6a",
+    "animation-review.html": "cf599b87d946eac1f694689f86ba786441a4a1a11f213b29e8a35a444780d363"
+  },
+  "display_guidance": {
+    "recommended_default_px": 100,
+    "stress_test_floor_px": 80,
+    "showcase_px": 160
+  },
+  "production_use": "approved-for-public-production"
+}

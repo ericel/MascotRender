@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-cheers",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.cheers",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.christmas.cheers",
+  "alt_text": "Festive animated sticker saying CHEERS!",
+  "accessible_description": "The phrase CHEERS! with an original festive toast festive motif",
+  "expression": "cheers",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "CHEERS!",
+    "style": "cheers-main",
+    "rotation_degrees": 2.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-cheers",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

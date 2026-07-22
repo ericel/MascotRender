@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-merry-christmas",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.merry-christmas",
+  "recipe_id": "seasonal-glow.pop",
+  "intent": "season.christmas.merry-christmas",
+  "alt_text": "Festive animated sticker saying MERRY CHRISTMAS!",
+  "accessible_description": "The phrase MERRY CHRISTMAS! with an original tree gifts festive motif",
+  "expression": "merry-christmas",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "MERRY CHRISTMAS!",
+    "style": "merry-christmas-main",
+    "rotation_degrees": -2.5
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pop"
+    ],
+    "tracks": [
+      {
+        "target": "motif-merry-christmas",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.04,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

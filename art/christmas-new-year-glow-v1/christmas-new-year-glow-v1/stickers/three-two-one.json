@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-three-two-one",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.three-two-one",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.new-year.three-two-one",
+  "alt_text": "Festive animated sticker saying 3... 2... 1...",
+  "accessible_description": "The phrase 3... 2... 1... with an original number burst festive motif",
+  "expression": "three-two-one",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "3... 2... 1...",
+    "style": "three-two-one-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-three-two-one",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-make-a-wish",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.make-a-wish",
+  "recipe_id": "seasonal-glow.float",
+  "intent": "season.new-year.make-a-wish",
+  "alt_text": "Festive animated sticker saying MAKE A WISH",
+  "accessible_description": "The phrase MAKE A WISH with an original wish star festive motif",
+  "expression": "make-a-wish",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "MAKE A WISH",
+    "style": "make-a-wish-main",
+    "rotation_degrees": 2.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-make-a-wish",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

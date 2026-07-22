@@ -7,7 +7,7 @@
 #include <mascotrender/mascotrender.hpp>
 
 int main(int argc, char **argv) {
-  if (std::string_view{mascotrender::version_string()} != "0.7.0") {
+  if (std::string_view{mascotrender::version_string()} != "0.8.0") {
     return 1;
   }
 

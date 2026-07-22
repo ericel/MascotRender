@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "pack_id": "christmas-new-year-glow-v1",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "season.christmas.merry-christmas",
+      "sticker_id": "christmas-new-year-glow-merry-christmas",
+      "triggers": [
+        {
+          "text": "merry christmas",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "merry xmas",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.happy-holidays",
+      "sticker_id": "christmas-new-year-glow-happy-holidays",
+      "triggers": [
+        {
+          "text": "happy holidays",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "season greetings",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.seasons-greetings",
+      "sticker_id": "christmas-new-year-glow-seasons-greetings",
+      "triggers": [
+        {
+          "text": "season's greetings",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "seasons greetings",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.ho-ho-ho",
+      "sticker_id": "christmas-new-year-glow-ho-ho-ho",
+      "triggers": [
+        {
+          "text": "ho ho ho",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "santa laugh",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.jingle-all-the-way",
+      "sticker_id": "christmas-new-year-glow-jingle-all-the-way",
+      "triggers": [
+        {
+          "text": "jingle all the way",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "jingle bells",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.let-it-snow",
+      "sticker_id": "christmas-new-year-glow-let-it-snow",
+      "triggers": [
+        {
+          "text": "let it snow",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "snow day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.sleigh-all-day",
+      "sticker_id": "christmas-new-year-glow-sleigh-all-day",
+      "triggers": [
+        {
+          "text": "sleigh all day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sleigh",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.santas-coming",
+      "sticker_id": "christmas-new-year-glow-santas-coming",
+      "triggers": [
+        {
+          "text": "santa's coming",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "santa is coming",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.nice-list",
+      "sticker_id": "christmas-new-year-glow-nice-list",
+      "triggers": [
+        {
+          "text": "nice list",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "made the nice list",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.cozy-christmas",
+      "sticker_id": "christmas-new-year-glow-cozy-christmas",
+      "triggers": [
+        {
+          "text": "cozy christmas",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "cosy christmas",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.warm-wishes",
+      "sticker_id": "christmas-new-year-glow-warm-wishes",
+      "triggers": [
+        {
+          "text": "warm wishes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "holiday wishes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.christmas-cheer",
+      "sticker_id": "christmas-new-year-glow-christmas-cheer",
+      "triggers": [
+        {
+          "text": "christmas cheer",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "holiday cheer",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.joy-to-the-world",
+      "sticker_id": "christmas-new-year-glow-joy-to-the-world",
+      "triggers": [
+        {
+          "text": "joy to the world",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "joy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.peace-and-joy",
+      "sticker_id": "christmas-new-year-glow-peace-and-joy",
+      "triggers": [
+        {
+          "text": "peace and joy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "peace & joy",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.best-gift-ever",
+      "sticker_id": "christmas-new-year-glow-best-gift-ever",
+      "triggers": [
+        {
+          "text": "best gift ever",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "best present ever",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.deck-the-halls",
+      "sticker_id": "christmas-new-year-glow-deck-the-halls",
+      "triggers": [
+        {
+          "text": "deck the halls",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "decorate",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.christmas-magic",
+      "sticker_id": "christmas-new-year-glow-christmas-magic",
+      "triggers": [
+        {
+          "text": "christmas magic",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "holiday magic",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.christmas.cheers",
+      "sticker_id": "christmas-new-year-glow-cheers",
+      "triggers": [
+        {
+          "text": "cheers",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "toast",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.happy-new-year",
+      "sticker_id": "christmas-new-year-glow-happy-new-year",
+      "triggers": [
+        {
+          "text": "happy new year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "hny",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.new-year-new-beginnings",
+      "sticker_id": "christmas-new-year-glow-new-year-new-beginnings",
+      "triggers": [
+        {
+          "text": "new year new beginnings",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "new beginnings",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.midnight-magic",
+      "sticker_id": "christmas-new-year-glow-midnight-magic",
+      "triggers": [
+        {
+          "text": "midnight magic",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "midnight",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.countdown-time",
+      "sticker_id": "christmas-new-year-glow-countdown-time",
+      "triggers": [
+        {
+          "text": "countdown time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "countdown",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.three-two-one",
+      "sticker_id": "christmas-new-year-glow-three-two-one",
+      "triggers": [
+        {
+          "text": "3 2 1",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "three two one",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.pop-the-bubbly",
+      "sticker_id": "christmas-new-year-glow-pop-the-bubbly",
+      "triggers": [
+        {
+          "text": "pop the bubbly",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "champagne",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.make-a-wish",
+      "sticker_id": "christmas-new-year-glow-make-a-wish",
+      "triggers": [
+        {
+          "text": "make a wish",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "new year wish",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.fresh-start",
+      "sticker_id": "christmas-new-year-glow-fresh-start",
+      "triggers": [
+        {
+          "text": "fresh start",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "start fresh",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.hello-new-year",
+      "sticker_id": "christmas-new-year-glow-hello-new-year",
+      "triggers": [
+        {
+          "text": "hello new year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        },
+        {
+          "text": "welcome new year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.new-year-vibes",
+      "sticker_id": "christmas-new-year-glow-new-year-vibes",
+      "triggers": [
+        {
+          "text": "new year vibes",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "new year mood",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.sparkle-into-the-new-year",
+      "sticker_id": "christmas-new-year-glow-sparkle-into-the-new-year",
+      "triggers": [
+        {
+          "text": "sparkle into the new year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "sparkle",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "phrase_id": "season.new-year.see-you-next-year",
+      "sticker_id": "christmas-new-year-glow-see-you-next-year",
+      "triggers": [
+        {
+          "text": "see you next year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "next year",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.85
+        }
+      ]
+    }
+  ]
+}

@@ -178,6 +178,24 @@ if(MASCOTRENDER_BUILD_CLI)
     )
     set_tests_properties(workday_reactions_pack_contract PROPERTIES TIMEOUT 1500)
     add_test(
+        NAME christmas_new_year_glow_pack_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_christmas_new_year_glow.py"
+            --python "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            --generator "${PROJECT_SOURCE_DIR}/tools/generate_christmas_new_year_glow_pack.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/christmas-new-year-glow-pack-v1.json"
+            --matrix "${PROJECT_SOURCE_DIR}/content/christmas-new-year-glow-matrix-v1.json"
+            --owner-approval "${PROJECT_SOURCE_DIR}/contracts/christmas-new-year-glow-owner-approval-v1.json"
+            --canonical-source "${PROJECT_SOURCE_DIR}/art/christmas-new-year-glow-v1"
+            --determinism-runs "${MASCOTRENDER_CALENDAR_DETERMINISM_RUNS}"
+    )
+    set_tests_properties(
+        christmas_new_year_glow_pack_contract
+        PROPERTIES TIMEOUT 900
+    )
+    add_test(
         NAME micro_reactions_pack_contract
         COMMAND
             "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"

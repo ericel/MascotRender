@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-fresh-start",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.new-year.fresh-start",
+  "recipe_id": "seasonal-glow.pulse",
+  "intent": "season.new-year.fresh-start",
+  "alt_text": "Festive animated sticker saying FRESH START",
+  "accessible_description": "The phrase FRESH START with an original first page festive motif",
+  "expression": "fresh-start",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "FRESH START",
+    "style": "fresh-start-main",
+    "rotation_degrees": -1.8
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "motif-fresh-start",
+        "property": "scale_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.035,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-deck-the-halls",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.deck-the-halls",
+  "recipe_id": "seasonal-glow.wobble",
+  "intent": "season.christmas.deck-the-halls",
+  "alt_text": "Festive animated sticker saying DECK THE HALLS!",
+  "accessible_description": "The phrase DECK THE HALLS! with an original garland lights festive motif",
+  "expression": "deck-the-halls",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "DECK THE HALLS!",
+    "style": "deck-the-halls-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "motif-deck-the-halls",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

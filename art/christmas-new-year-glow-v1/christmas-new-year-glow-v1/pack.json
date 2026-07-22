@@ -1,0 +1,1662 @@
+{
+  "schema_version": 1,
+  "pack_id": "christmas-new-year-glow-v1",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "motif-merry-christmas",
+      "source": "layers/00-motif-merry-christmas.svg",
+      "z": 10,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-happy-holidays",
+      "source": "layers/01-motif-happy-holidays.svg",
+      "z": 11,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-seasons-greetings",
+      "source": "layers/02-motif-seasons-greetings.svg",
+      "z": 12,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-ho-ho-ho",
+      "source": "layers/03-motif-ho-ho-ho.svg",
+      "z": 13,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-jingle-all-the-way",
+      "source": "layers/04-motif-jingle-all-the-way.svg",
+      "z": 14,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-let-it-snow",
+      "source": "layers/05-motif-let-it-snow.svg",
+      "z": 15,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-sleigh-all-day",
+      "source": "layers/06-motif-sleigh-all-day.svg",
+      "z": 16,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-santas-coming",
+      "source": "layers/07-motif-santas-coming.svg",
+      "z": 17,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-nice-list",
+      "source": "layers/08-motif-nice-list.svg",
+      "z": 18,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-cozy-christmas",
+      "source": "layers/09-motif-cozy-christmas.svg",
+      "z": 19,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-warm-wishes",
+      "source": "layers/10-motif-warm-wishes.svg",
+      "z": 20,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-christmas-cheer",
+      "source": "layers/11-motif-christmas-cheer.svg",
+      "z": 21,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-joy-to-the-world",
+      "source": "layers/12-motif-joy-to-the-world.svg",
+      "z": 22,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-peace-and-joy",
+      "source": "layers/13-motif-peace-and-joy.svg",
+      "z": 23,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-best-gift-ever",
+      "source": "layers/14-motif-best-gift-ever.svg",
+      "z": 24,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-deck-the-halls",
+      "source": "layers/15-motif-deck-the-halls.svg",
+      "z": 25,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-christmas-magic",
+      "source": "layers/16-motif-christmas-magic.svg",
+      "z": 26,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-cheers",
+      "source": "layers/17-motif-cheers.svg",
+      "z": 27,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-happy-new-year",
+      "source": "layers/18-motif-happy-new-year.svg",
+      "z": 28,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-new-year-new-beginnings",
+      "source": "layers/19-motif-new-year-new-beginnings.svg",
+      "z": 29,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-midnight-magic",
+      "source": "layers/20-motif-midnight-magic.svg",
+      "z": 30,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-countdown-time",
+      "source": "layers/21-motif-countdown-time.svg",
+      "z": 31,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-three-two-one",
+      "source": "layers/22-motif-three-two-one.svg",
+      "z": 32,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-pop-the-bubbly",
+      "source": "layers/23-motif-pop-the-bubbly.svg",
+      "z": 33,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-make-a-wish",
+      "source": "layers/24-motif-make-a-wish.svg",
+      "z": 34,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-fresh-start",
+      "source": "layers/25-motif-fresh-start.svg",
+      "z": 35,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-hello-new-year",
+      "source": "layers/26-motif-hello-new-year.svg",
+      "z": 36,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-new-year-vibes",
+      "source": "layers/27-motif-new-year-vibes.svg",
+      "z": 37,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-sparkle-into-the-new-year",
+      "source": "layers/28-motif-sparkle-into-the-new-year.svg",
+      "z": 38,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "motif-see-you-next-year",
+      "source": "layers/29-motif-see-you-next-year.svg",
+      "z": 39,
+      "pivot": "composition",
+      "depth": 0.0
+    }
+  ],
+  "base_layers": [],
+  "expressions": {
+    "merry-christmas": [
+      "motif-merry-christmas"
+    ],
+    "happy-holidays": [
+      "motif-happy-holidays"
+    ],
+    "seasons-greetings": [
+      "motif-seasons-greetings"
+    ],
+    "ho-ho-ho": [
+      "motif-ho-ho-ho"
+    ],
+    "jingle-all-the-way": [
+      "motif-jingle-all-the-way"
+    ],
+    "let-it-snow": [
+      "motif-let-it-snow"
+    ],
+    "sleigh-all-day": [
+      "motif-sleigh-all-day"
+    ],
+    "santas-coming": [
+      "motif-santas-coming"
+    ],
+    "nice-list": [
+      "motif-nice-list"
+    ],
+    "cozy-christmas": [
+      "motif-cozy-christmas"
+    ],
+    "warm-wishes": [
+      "motif-warm-wishes"
+    ],
+    "christmas-cheer": [
+      "motif-christmas-cheer"
+    ],
+    "joy-to-the-world": [
+      "motif-joy-to-the-world"
+    ],
+    "peace-and-joy": [
+      "motif-peace-and-joy"
+    ],
+    "best-gift-ever": [
+      "motif-best-gift-ever"
+    ],
+    "deck-the-halls": [
+      "motif-deck-the-halls"
+    ],
+    "christmas-magic": [
+      "motif-christmas-magic"
+    ],
+    "cheers": [
+      "motif-cheers"
+    ],
+    "happy-new-year": [
+      "motif-happy-new-year"
+    ],
+    "new-year-new-beginnings": [
+      "motif-new-year-new-beginnings"
+    ],
+    "midnight-magic": [
+      "motif-midnight-magic"
+    ],
+    "countdown-time": [
+      "motif-countdown-time"
+    ],
+    "three-two-one": [
+      "motif-three-two-one"
+    ],
+    "pop-the-bubbly": [
+      "motif-pop-the-bubbly"
+    ],
+    "make-a-wish": [
+      "motif-make-a-wish"
+    ],
+    "fresh-start": [
+      "motif-fresh-start"
+    ],
+    "hello-new-year": [
+      "motif-hello-new-year"
+    ],
+    "new-year-vibes": [
+      "motif-new-year-vibes"
+    ],
+    "sparkle-into-the-new-year": [
+      "motif-sparkle-into-the-new-year"
+    ],
+    "see-you-next-year": [
+      "motif-see-you-next-year"
+    ]
+  },
+  "poses": {
+    "festive": []
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT; bundled fonts separately SIL OFL 1.1",
+    "source": "generate_christmas_new_year_glow_pack.py v3; original procedural compositions"
+  },
+  "anchors": {
+    "composition_center": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "pivots": {
+    "composition": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 0,
+  "caption_validation": {
+    "minimum_canvas_margin_px": 16,
+    "maximum_lines": 3,
+    "must_remain_inside_canvas_for_every_frame": true,
+    "may_overlap_character": false,
+    "may_overlap_assistive_device": false,
+    "must_pass_sizes_px": [
+      80,
+      100,
+      160
+    ],
+    "collision_bounds": "per-frame-alpha-bounds"
+  },
+  "fonts": [
+    {
+      "id": "punch",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    },
+    {
+      "id": "comic-slant",
+      "source": "fonts/bangers/Bangers-Regular.ttf",
+      "license": "fonts/bangers/OFL.txt"
+    },
+    {
+      "id": "rounded",
+      "source": "fonts/lilita-one/LilitaOne-Regular.ttf",
+      "license": "fonts/lilita-one/OFL.txt"
+    },
+    {
+      "id": "handwritten",
+      "source": "fonts/kalam/Kalam-Bold.ttf",
+      "license": "fonts/kalam/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "merry-christmas-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 60,
+        "y": 248,
+        "width": 392,
+        "height": 174
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 230,
+        "g": 57,
+        "b": 88
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 8,
+          "g": 127,
+          "b": 91
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "happy-holidays-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 202,
+        "y": 104,
+        "width": 270,
+        "height": 306
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 11,
+        "g": 170,
+        "b": 131
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 217,
+          "g": 50,
+          "b": 86
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 226,
+          "b": 168
+        }
+      }
+    },
+    "seasons-greetings-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 45,
+        "y": 66,
+        "width": 422,
+        "height": 246
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 239,
+        "g": 71,
+        "b": 111
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 10,
+          "g": 124,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 245,
+          "g": 196,
+          "b": 81
+        }
+      }
+    },
+    "ho-ho-ho-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 46,
+        "y": 154,
+        "width": 330,
+        "height": 260
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 226,
+        "g": 68,
+        "b": 68
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 26,
+          "g": 109,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 241,
+          "b": 201
+        }
+      }
+    },
+    "jingle-all-the-way-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 72,
+        "y": 224,
+        "width": 368,
+        "height": 198
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 217,
+        "g": 47,
+        "b": 79
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 11,
+          "g": 143,
+          "b": 114
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 203,
+          "b": 92
+        }
+      }
+    },
+    "let-it-snow-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 44,
+        "y": 76,
+        "width": 338,
+        "height": 288
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 105,
+        "g": 201,
+        "b": 245
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 46,
+          "g": 95,
+          "b": 167
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 249,
+          "g": 253,
+          "b": 255
+        }
+      }
+    },
+    "sleigh-all-day-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 202,
+        "y": 104,
+        "width": 270,
+        "height": 306
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 232,
+        "g": 77,
+        "b": 98
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 14,
+          "g": 118,
+          "b": 93
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 200,
+          "b": 87
+        }
+      }
+    },
+    "santas-coming-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 61,
+        "y": 76,
+        "width": 390,
+        "height": 226
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 217,
+        "g": 60,
+        "b": 85
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 35,
+          "g": 107,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 213
+        }
+      }
+    },
+    "nice-list-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 46,
+        "y": 154,
+        "width": 330,
+        "height": 260
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 229,
+        "g": 80,
+        "b": 80
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 11,
+          "g": 122,
+          "b": 98
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 247,
+          "g": 201,
+          "b": 75
+        }
+      }
+    },
+    "cozy-christmas-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 44,
+        "y": 76,
+        "width": 338,
+        "height": 288
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 190,
+        "g": 53,
+        "b": 77
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 107,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 225,
+          "b": 163
+        }
+      }
+    },
+    "warm-wishes-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 44,
+        "y": 238,
+        "width": 424,
+        "height": 194
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 232,
+        "g": 74,
+        "b": 95
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 22,
+          "g": 131,
+          "b": 107
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 213,
+          "b": 106
+        }
+      }
+    },
+    "christmas-cheer-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 88,
+        "y": 234,
+        "width": 336,
+        "height": 178
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 220,
+        "g": 54,
+        "b": 82
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 8,
+          "g": 124,
+          "b": 101
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 200
+        }
+      }
+    },
+    "joy-to-the-world-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 45,
+        "y": 66,
+        "width": 422,
+        "height": 246
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 47,
+        "g": 128,
+        "b": 237
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 112,
+          "g": 87,
+          "b": 217
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "peace-and-joy-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 202,
+        "y": 104,
+        "width": 270,
+        "height": 306
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 89,
+        "g": 101,
+        "b": 216
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 155,
+          "g": 81,
+          "b": 224
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 114,
+          "g": 225,
+          "b": 242
+        }
+      }
+    },
+    "best-gift-ever-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 60,
+        "y": 248,
+        "width": 392,
+        "height": 174
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 108,
+        "g": 92,
+        "b": 231
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 154
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 215,
+          "b": 106
+        }
+      }
+    },
+    "deck-the-halls-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 72,
+        "y": 224,
+        "width": 368,
+        "height": 198
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 61,
+        "g": 122,
+        "b": 230
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 129,
+          "g": 77,
+          "b": 214
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 248,
+          "g": 225,
+          "b": 108
+        }
+      }
+    },
+    "christmas-magic-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 46,
+        "y": 154,
+        "width": 330,
+        "height": 260
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 141,
+        "g": 92,
+        "b": 246
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 37,
+          "g": 78,
+          "b": 155
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 111,
+          "g": 231,
+          "b": 231
+        }
+      }
+    },
+    "cheers-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 44,
+        "y": 76,
+        "width": 338,
+        "height": 288
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 47,
+        "g": 118,
+        "b": 220
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 113,
+          "g": 73,
+          "b": 198
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 224,
+          "b": 138
+        }
+      }
+    },
+    "happy-new-year-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 88,
+        "y": 234,
+        "width": 336,
+        "height": 178
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 230,
+        "g": 57,
+        "b": 88
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 8,
+          "g": 127,
+          "b": 91
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 209,
+          "b": 102
+        }
+      }
+    },
+    "new-year-new-beginnings-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 45,
+        "y": 66,
+        "width": 422,
+        "height": 246
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 11,
+        "g": 170,
+        "b": 131
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 217,
+          "g": 50,
+          "b": 86
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 226,
+          "b": 168
+        }
+      }
+    },
+    "midnight-magic-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 46,
+        "y": 154,
+        "width": 330,
+        "height": 260
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 239,
+        "g": 71,
+        "b": 111
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 10,
+          "g": 124,
+          "b": 102
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 245,
+          "g": 196,
+          "b": 81
+        }
+      }
+    },
+    "countdown-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 202,
+        "y": 104,
+        "width": 270,
+        "height": 306
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 226,
+        "g": 68,
+        "b": 68
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 26,
+          "g": 109,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 241,
+          "b": 201
+        }
+      }
+    },
+    "three-two-one-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 72,
+        "y": 224,
+        "width": 368,
+        "height": 198
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 217,
+        "g": 47,
+        "b": 79
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 11,
+          "g": 143,
+          "b": 114
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 203,
+          "b": 92
+        }
+      }
+    },
+    "pop-the-bubbly-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 60,
+        "y": 86,
+        "width": 306,
+        "height": 268
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 105,
+        "g": 201,
+        "b": 245
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 46,
+          "g": 95,
+          "b": 167
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 249,
+          "g": 253,
+          "b": 255
+        }
+      }
+    },
+    "make-a-wish-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 44,
+        "y": 238,
+        "width": 424,
+        "height": 194
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 232,
+        "g": 77,
+        "b": 98
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 14,
+          "g": 118,
+          "b": 93
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 200,
+          "b": 87
+        }
+      }
+    },
+    "fresh-start-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 202,
+        "y": 104,
+        "width": 270,
+        "height": 306
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 217,
+        "g": 60,
+        "b": 85
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 35,
+          "g": 107,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 240,
+          "b": 213
+        }
+      }
+    },
+    "hello-new-year-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 61,
+        "y": 76,
+        "width": 390,
+        "height": 226
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 229,
+        "g": 80,
+        "b": 80
+      },
+      "outline": {
+        "width": 8,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 11,
+          "g": 122,
+          "b": 98
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 247,
+          "g": 201,
+          "b": 75
+        }
+      }
+    },
+    "new-year-vibes-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 46,
+        "y": 154,
+        "width": 330,
+        "height": 260
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 190,
+        "g": 53,
+        "b": 77
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 107,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 225,
+          "b": 163
+        }
+      }
+    },
+    "sparkle-into-the-new-year-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 44,
+        "y": 238,
+        "width": 424,
+        "height": 194
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 232,
+        "g": 74,
+        "b": 95
+      },
+      "outline": {
+        "width": 6,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 8,
+        "offset_y": 9,
+        "color": {
+          "r": 22,
+          "g": 131,
+          "b": 107
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 213,
+          "b": 106
+        }
+      }
+    },
+    "see-you-next-year-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 44,
+        "y": 76,
+        "width": 338,
+        "height": 288
+      },
+      "min_font_size": 24,
+      "max_font_size": 184,
+      "max_lines": 3,
+      "fill": {
+        "r": 220,
+        "g": 54,
+        "b": 82
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 43,
+          "b": 70
+        }
+      },
+      "depth_shell": {
+        "offset_x": 9,
+        "offset_y": 10,
+        "color": {
+          "r": 8,
+          "g": 124,
+          "b": 101
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -3,
+        "offset_y": -3,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 200
+        }
+      }
+    }
+  }
+}

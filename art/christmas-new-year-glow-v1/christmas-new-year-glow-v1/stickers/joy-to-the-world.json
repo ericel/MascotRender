@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "sticker_id": "christmas-new-year-glow-joy-to-the-world",
+  "pack_id": "christmas-new-year-glow-v1",
+  "phrase_id": "season.christmas.joy-to-the-world",
+  "recipe_id": "seasonal-glow.float",
+  "intent": "season.christmas.joy-to-the-world",
+  "alt_text": "Festive animated sticker saying JOY TO THE WORLD",
+  "accessible_description": "The phrase JOY TO THE WORLD with an original globe star festive motif",
+  "expression": "joy-to-the-world",
+  "pose": "festive",
+  "seed": 1,
+  "text": {
+    "content": "JOY TO THE WORLD",
+    "style": "joy-to-the-world-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "motif-joy-to-the-world",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
