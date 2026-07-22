@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-happy-heart",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.creativity.happy-heart",
+  "recipe_id": "education-wise-owl-illustrated.stamp",
+  "intent": "education.creativity.happy-heart",
+  "alt_text": "Illustrated Sage owl learning scene saying HAPPY HEART",
+  "accessible_description": "Sage interacts with a heart spark learning scene and the phrase HAPPY HEART",
+  "expression": "happy-heart",
+  "pose": "study",
+  "seed": 1,
+  "text": {
+    "content": "HAPPY HEART",
+    "style": "happy-heart-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-happy-heart",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-happy-heart",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-happy-heart",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

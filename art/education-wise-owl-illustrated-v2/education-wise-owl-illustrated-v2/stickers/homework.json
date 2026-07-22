@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-homework",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.study.homework",
+  "recipe_id": "education-wise-owl-illustrated.wobble",
+  "intent": "education.study.homework",
+  "alt_text": "Illustrated Sage owl learning scene saying HOMEWORK",
+  "accessible_description": "Sage interacts with a book stack learning scene and the phrase HOMEWORK",
+  "expression": "homework",
+  "pose": "think",
+  "seed": 1,
+  "text": {
+    "content": "HOMEWORK",
+    "style": "homework-main",
+    "rotation_degrees": 1.25
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-homework",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-homework",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-homework",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

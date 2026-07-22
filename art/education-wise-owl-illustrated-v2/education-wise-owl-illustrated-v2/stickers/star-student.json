@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-star-student",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.achievement.star-student",
+  "recipe_id": "education-wise-owl-illustrated.wobble",
+  "intent": "education.achievement.star-student",
+  "alt_text": "Illustrated Sage owl learning scene saying STAR STUDENT",
+  "accessible_description": "Sage interacts with a student star learning scene and the phrase STAR STUDENT",
+  "expression": "star-student",
+  "pose": "think",
+  "seed": 1,
+  "text": {
+    "content": "STAR STUDENT",
+    "style": "star-student-main",
+    "rotation_degrees": 1.25
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-star-student",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-star-student",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-star-student",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

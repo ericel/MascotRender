@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-book-lover",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.literacy.book-lover",
+  "recipe_id": "education-wise-owl-illustrated.pulse",
+  "intent": "education.literacy.book-lover",
+  "alt_text": "Illustrated Sage owl learning scene saying BOOK LOVER",
+  "accessible_description": "Sage interacts with a book heart learning scene and the phrase BOOK LOVER",
+  "expression": "book-lover",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "BOOK LOVER",
+    "style": "book-lover-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-book-lover",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-book-lover",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-book-lover",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

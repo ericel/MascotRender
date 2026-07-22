@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-back-to-school",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.study.back-to-school",
+  "recipe_id": "education-wise-owl-illustrated.stamp",
+  "intent": "education.study.back-to-school",
+  "alt_text": "Illustrated Sage owl learning scene saying BACK TO SCHOOL",
+  "accessible_description": "Sage interacts with a school house learning scene and the phrase BACK TO SCHOOL",
+  "expression": "back-to-school",
+  "pose": "study",
+  "seed": 1,
+  "text": {
+    "content": "BACK TO SCHOOL",
+    "style": "back-to-school-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-back-to-school",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-back-to-school",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-back-to-school",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

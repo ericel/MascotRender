@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-ace-it",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.assessment.ace-it",
+  "recipe_id": "education-wise-owl-illustrated.pulse",
+  "intent": "education.assessment.ace-it",
+  "alt_text": "Illustrated Sage owl learning scene saying ACE IT!",
+  "accessible_description": "Sage interacts with a ace paper learning scene and the phrase ACE IT!",
+  "expression": "ace-it",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "ACE IT!",
+    "style": "ace-it-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-ace-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-ace-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-ace-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

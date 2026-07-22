@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-good-thinking",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.stem.good-thinking",
+  "recipe_id": "education-wise-owl-illustrated.slide",
+  "intent": "education.stem.good-thinking",
+  "alt_text": "Illustrated Sage owl learning scene saying GOOD THINKING!",
+  "accessible_description": "Sage interacts with a brain spark learning scene and the phrase GOOD THINKING!",
+  "expression": "good-thinking",
+  "pose": "listen",
+  "seed": 1,
+  "text": {
+    "content": "GOOD THINKING!",
+    "style": "good-thinking-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-good-thinking",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-good-thinking",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-good-thinking",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

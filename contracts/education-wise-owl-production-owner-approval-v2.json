@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-22",
+  "gate": "education-wise-owl-complete-illustrated-production-pack-v2",
+  "allowed_decisions": [
+    "approved",
+    "changes-required",
+    "failed"
+  ],
+  "reviewed_artifacts": {
+    "full-100-contact-sheet.png": "25449e7add4eac999507f92e90866b5b440cb96106fec21cfa975e127f2f2640",
+    "small-display-all-100-at-100px.png": "75fc8728a2e67b6a26350f94bd9ef8ccac3c4560f13d7ca35b9f651c517016fc",
+    "long-copy-80-100-160.png": "0ffd036be7b3b4756c1be4167e16ff5d0761558fc91fef0a033cfa1cd8226b43",
+    "motion-all-100-start-mid-closure.png": "3c733617c045d06e8d498965b4a8823eed9feab2986942b6c2f8ac8a0efabc37",
+    "animation-review.html": "2dce673ff57b47c519701ff3094310e5e38166f29235e341e99e7e0a397b0ea1",
+    "category-sheets/study.png": "ac88162d131c342278f8a647fc521f5e026f81be1884182d6eda3434c6e7373c",
+    "category-sheets/motivation.png": "522353a3c9709f119f3b71d0a1d7c48fadf76c37a57756cf3fe184f110b34f74",
+    "category-sheets/stem.png": "07fbc6e1678bc6b2dcdfc5f79a2199ab35a0a444675c38b70e25d6b3df4c414b",
+    "category-sheets/literacy.png": "26e04732825a8c75a4deb7c68ee0bca0be09b7f00fea5398a7bb747bc8bbf10c",
+    "category-sheets/creativity.png": "1ad0e521a5410448ff9318c50e935b43ec89a602689a0216e0d941fc5784f1fc",
+    "category-sheets/community.png": "8bff17bc628b893727400f1aabefbcfd7899284fca336fca086495699e8bba5b",
+    "category-sheets/habits.png": "d6c4d4f3c329dc831e500a554906ec7c24f281bd5796295cb70fa8df3094b087",
+    "category-sheets/assessment.png": "ae1405d6b91972b2c9f6cf29bbba02c767ff333d660f7399d7d8100e2fc26a88",
+    "category-sheets/achievement.png": "5a4f5648d989cf44eb059d99b19083323ffe4ef038d1599c4354f94aeb2c5cf1",
+    "category-sheets/future.png": "df3a19a712fe2976ce74697c0ef140a4c3e492d10b398fd116864f596817352a"
+  },
+  "production_use_if_approved": "approved-for-production-packaging-and-public-release"
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-good-friend",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.community.good-friend",
+  "recipe_id": "education-wise-owl-illustrated.glow",
+  "intent": "education.community.good-friend",
+  "alt_text": "Illustrated Sage owl learning scene saying GOOD FRIEND",
+  "accessible_description": "Sage interacts with a friend hearts learning scene and the phrase GOOD FRIEND",
+  "expression": "good-friend",
+  "pose": "write",
+  "seed": 1,
+  "text": {
+    "content": "GOOD FRIEND",
+    "style": "good-friend-main",
+    "rotation_degrees": 1.25
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-good-friend",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-good-friend",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-good-friend",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

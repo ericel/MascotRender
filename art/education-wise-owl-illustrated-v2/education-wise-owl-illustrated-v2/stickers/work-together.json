@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-illustrated-work-together",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "phrase_id": "education.community.work-together",
+  "recipe_id": "education-wise-owl-illustrated.pulse",
+  "intent": "education.community.work-together",
+  "alt_text": "Illustrated Sage owl learning scene saying WORK TOGETHER",
+  "accessible_description": "Sage interacts with a partner puzzle learning scene and the phrase WORK TOGETHER",
+  "expression": "work-together",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "WORK TOGETHER",
+    "style": "work-together-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-work-together",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-work-together",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-work-together",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}
