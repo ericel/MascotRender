@@ -7,7 +7,7 @@
 #include <mascotrender/mascotrender.hpp>
 
 int main(int argc, char **argv) {
-  if (std::string_view{mascotrender::version_string()} != "0.8.0") {
+  if (std::string_view{mascotrender::version_string()} != "0.9.0") {
     return 1;
   }
 
@@ -89,12 +89,12 @@ int main(int argc, char **argv) {
     return 9;
   }
 
-  const auto congratulations = resources / "art" /
-                               "congratulations-pop-v1" /
-                               "congratulations-pop-v1";
+  const auto congratulations =
+      resources / "art" / "congratulations-pop-v1" / "congratulations-pop-v1";
   const mascotrender::RenderRequest congratulations_request{
       congratulations / "pack.json",
-      congratulations / "stickers" / "congrats.json", {}};
+      congratulations / "stickers" / "congrats.json",
+      {}};
   auto congratulations_result = engine.render(congratulations_request);
   if (!congratulations_result || congratulations_result.value().width != 512 ||
       congratulations_result.value().height != 512) {
@@ -105,8 +105,8 @@ int main(int argc, char **argv) {
     return 11;
   }
 
-  const auto workday = resources / "art" / "workday-reactions-v1" /
-                       "workday-reactions-v1";
+  const auto workday =
+      resources / "art" / "workday-reactions-v1" / "workday-reactions-v1";
   const mascotrender::RenderRequest workday_request{
       workday / "pack.json", workday / "stickers" / "on-it.json", {}};
   auto workday_result = engine.render(workday_request);
@@ -119,13 +119,28 @@ int main(int argc, char **argv) {
     return 13;
   }
 
+  const auto education = resources / "art" /
+                         "education-wise-owl-illustrated-v2" /
+                         "education-wise-owl-illustrated-v2";
+  const mascotrender::RenderRequest education_request{
+      education / "pack.json", education / "stickers" / "study-time.json", {}};
+  auto education_result = engine.render(education_request);
+  if (!education_result || education_result.value().width != 512 ||
+      education_result.value().height != 512) {
+    return 14;
+  }
+  if (!contains_chunk(education_result.value().bytes, "ANIM") ||
+      !contains_chunk(education_result.value().bytes, "ANMF")) {
+    return 15;
+  }
+
   if (!contains_chunk(animated.value().bytes, "ANIM") ||
       !contains_chunk(animated.value().bytes, "ANMF")) {
-    return 14;
+    return 16;
   }
 
   std::ofstream output{"mascotrender-package-test.webp", std::ios::binary};
   output.write(reinterpret_cast<const char *>(image.bytes.data()),
                static_cast<std::streamsize>(image.bytes.size()));
-  return output ? 0 : 15;
+  return output ? 0 : 17;
 }

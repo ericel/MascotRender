@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 project(
     MascotRender
-    VERSION 0.8.0
+    VERSION 0.9.0
     DESCRIPTION "Deterministic procedural character rendering engine"
     LANGUAGES CXX
 )
@@ -190,6 +190,7 @@ install(
         art/congratulations-pop-v1
         art/workday-reactions-v1
         art/christmas-new-year-glow-v1
+        art/education-wise-owl-illustrated-v2
         art/human-pack-v1
         art/human-pack-wave2
         art/micro-reactions-v1
@@ -218,6 +219,7 @@ install(
         docs/RELEASE_0.6.0.md
         docs/RELEASE_0.7.0.md
         docs/RELEASE_0.8.0.md
+        docs/RELEASE_0.9.0.md
         docs/ROADMAP_3D_ANIMATION.md
         docs/THIRD_PARTY_NOTICES.md
     DESTINATION "${CMAKE_INSTALL_DATADIR}/mascotrender"
@@ -242,6 +244,9 @@ install(
         tools/generate_congratulations_pack.py
         tools/generate_workday_reactions_pack.py
         tools/generate_christmas_new_year_glow_pack.py
+        tools/generate_education_wise_owl_pack.py
+        tools/generate_education_wise_owl_golden.py
+        tools/generate_education_wise_owl_production.py
         tools/build_micro_reactions_bundle.py
         tools/build_canonical_human_review.py
         tools/build_canonical_human_production_review.py

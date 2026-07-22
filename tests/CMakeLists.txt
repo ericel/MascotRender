@@ -196,6 +196,20 @@ if(MASCOTRENDER_BUILD_CLI)
         PROPERTIES TIMEOUT 900
     )
     add_test(
+        NAME education_wise_owl_production_contract
+        COMMAND
+            "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"
+            "${PROJECT_SOURCE_DIR}/tests/test_education_wise_owl_production.py"
+            --cli "$<TARGET_FILE:mascotrender_cli>"
+            --contract "${PROJECT_SOURCE_DIR}/contracts/education-wise-owl-production-v2.json"
+            --owner-approval "${PROJECT_SOURCE_DIR}/contracts/education-wise-owl-production-owner-approval-v2.json"
+            --canonical-source "${PROJECT_SOURCE_DIR}/art/education-wise-owl-illustrated-v2"
+    )
+    set_tests_properties(
+        education_wise_owl_production_contract
+        PROPERTIES TIMEOUT 300
+    )
+    add_test(
         NAME micro_reactions_pack_contract
         COMMAND
             "${MASCOTRENDER_SMALL_DISPLAY_PYTHON}"

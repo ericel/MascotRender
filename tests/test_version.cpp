@@ -6,7 +6,7 @@
 
 TEST_CASE("library reports its package version") {
     STATIC_REQUIRE(mascotrender::library_version.major == 0);
-    STATIC_REQUIRE(mascotrender::library_version.minor == 8);
+    STATIC_REQUIRE(mascotrender::library_version.minor == 9);
     STATIC_REQUIRE(mascotrender::library_version.patch == 0);
-    REQUIRE(std::string_view{mascotrender::version_string()} == "0.8.0");
+    REQUIRE(std::string_view{mascotrender::version_string()} == "0.9.0");
 }
