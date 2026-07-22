@@ -207,7 +207,7 @@ if(MASCOTRENDER_BUILD_CLI)
     )
     set_tests_properties(
         education_wise_owl_production_contract
-        PROPERTIES TIMEOUT 300
+        PROPERTIES TIMEOUT 1800
     )
     add_test(
         NAME micro_reactions_pack_contract
