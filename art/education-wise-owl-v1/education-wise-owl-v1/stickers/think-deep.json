@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-think-deep",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.stem.think-deep",
+  "recipe_id": "education-owl-scene.nod",
+  "intent": "education.stem.think-deep",
+  "alt_text": "Sage the owl in a learning scene saying THINK DEEP",
+  "accessible_description": "Sage uses a thinking globe learning cue with the phrase THINK DEEP",
+  "expression": "think-deep",
+  "pose": "wave",
+  "seed": 1,
+  "text": {
+    "content": "THINK DEEP",
+    "style": "think-deep-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-think-deep",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-think-deep",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

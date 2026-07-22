@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-ace-it",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.assessment.ace-it",
+  "recipe_id": "education-owl-scene.pulse",
+  "intent": "education.assessment.ace-it",
+  "alt_text": "Sage the owl in a learning scene saying ACE IT!",
+  "accessible_description": "Sage uses a ace paper learning cue with the phrase ACE IT!",
+  "expression": "ace-it",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "ACE IT!",
+    "style": "ace-it-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-ace-it",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-ace-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

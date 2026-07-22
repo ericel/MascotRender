@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-a-effort",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.motivation.a-effort",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.motivation.a-effort",
+  "alt_text": "Sage the owl in a learning scene saying A+ EFFORT",
+  "accessible_description": "Sage uses a grade medal learning cue with the phrase A+ EFFORT",
+  "expression": "a-effort",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "A+ EFFORT",
+    "style": "a-effort-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-a-effort",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-a-effort",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

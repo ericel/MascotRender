@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "contract_id": "education-wise-owl-production-v2",
+  "status": "owner-production-approved",
+  "product_name": "Wise Owl Academy",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "canonical_art_direction": "education-wise-owl-golden-v2",
+  "owner_baseline_decision": "contracts/education-wise-owl-golden-owner-decision-v2.json",
+  "owner_final_decision": "contracts/education-wise-owl-production-owner-approval-v2.json",
+  "scope": {
+    "sticker_count": 100,
+    "golden_anchor_count": 10,
+    "expanded_sticker_count": 90,
+    "category_count": 10,
+    "animated_sticker_count": 100,
+    "reduced_motion_sticker_count": 100
+  },
+  "identity_lock": {
+    "required_features": [
+      "fixed-cream-heart-face-discs",
+      "fixed-navy-round-glasses",
+      "fixed-three-part-feather-crest",
+      "fixed-gold-diamond-chest-mark",
+      "fixed-brown-cream-navy-gold-core-palette"
+    ],
+    "eye-spacing-drift-forbidden": true,
+    "beak-height-drift-forbidden": true,
+    "glasses-scale-drift-forbidden": true,
+    "crest-shape-drift-forbidden": true,
+    "chest-marking-drift-forbidden": true
+  },
+  "caption_lock": {
+    "composition_system_count": 6,
+    "top-or-bottom-required-for-long-copy": true,
+    "maximum_rotation_degrees": 2,
+    "outline_width_px": 12,
+    "depth_shell_offset_px": [5, 6],
+    "highlight_shell_offset_px": [-2, -2],
+    "single-read-required": true,
+    "visible-sequence-number-forbidden": true
+  },
+  "sticker_finish": {
+    "authored_vector_layer_count_per_sticker": 11,
+    "screen_space_caption_layer_count_per_sticker": 1,
+    "composited_layer_count_per_sticker": 12,
+    "union-cutline-required": true,
+    "outer-cutline-px": [10, 16],
+    "soft-composite-shadow-required": true,
+    "hard-frame-margin-px": 16,
+    "hard-frame-margin-is-immutable-lower-bound": true,
+    "automatic-cropping-may-tighten-below-bound": false,
+    "store-platform-effects-may-exceed-union-bounds": false,
+    "transparent-production-background": true
+  },
+  "presentation_profiles": {
+    "80px": "compact-stress-floor",
+    "100px": "production-default",
+    "160px": "showcase"
+  },
+  "review_gates": [
+    "100-way-semantic-completeness",
+    "exact-spelling-and-punctuation",
+    "golden-anchor-preservation",
+    "sage-identity-consistency",
+    "scene-and-prop-authorship",
+    "six-caption-system-coherence",
+    "cutline-and-shadow-consistency",
+    "long-copy-80px-stress-review",
+    "all-100-at-100px-review",
+    "animation-midpoint-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "deterministic-generation",
+    "final-owner-production-activation"
+  ],
+  "approved_gate_state": {
+    "golden_anchor_preservation": "pass",
+    "full_100_sticker_art_direction": "pass",
+    "small_display_readability": "pass",
+    "animation_midpoint_and_loop_closure": "pass",
+    "reduced_motion": "pass",
+    "trie_trigger_completeness": "pass",
+    "deterministic_generation": "pass",
+    "minimum_frame_margin_px_greater_than_or_equal_to_16": "pass",
+    "owner_production_activation": "approved"
+  },
+  "production_use": "approved-for-production-packaging-and-public-release"
+}

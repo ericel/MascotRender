@@ -1,0 +1,6181 @@
+{
+  "schema_version": 1,
+  "pack_id": "education-wise-owl-v1",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "scene-study-time",
+      "source": "layers/000-scene-study-time.svg",
+      "z": 10,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-study-time",
+      "source": "layers/000-accent-study-time.svg",
+      "z": 11,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-great-job",
+      "source": "layers/001-scene-great-job.svg",
+      "z": 12,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-great-job",
+      "source": "layers/001-accent-great-job.svg",
+      "z": 13,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-homework",
+      "source": "layers/002-scene-homework.svg",
+      "z": 14,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-homework",
+      "source": "layers/002-accent-homework.svg",
+      "z": 15,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-exam-mode",
+      "source": "layers/003-scene-exam-mode.svg",
+      "z": 16,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-exam-mode",
+      "source": "layers/003-accent-exam-mode.svg",
+      "z": 17,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-question",
+      "source": "layers/004-scene-question.svg",
+      "z": 18,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-question",
+      "source": "layers/004-accent-question.svg",
+      "z": 19,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-read-more",
+      "source": "layers/005-scene-read-more.svg",
+      "z": 20,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-read-more",
+      "source": "layers/005-accent-read-more.svg",
+      "z": 21,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-break-time",
+      "source": "layers/006-scene-break-time.svg",
+      "z": 22,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-break-time",
+      "source": "layers/006-accent-break-time.svg",
+      "z": 23,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-well-done",
+      "source": "layers/007-scene-well-done.svg",
+      "z": 24,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-well-done",
+      "source": "layers/007-accent-well-done.svg",
+      "z": 25,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-back-to-school",
+      "source": "layers/008-scene-back-to-school.svg",
+      "z": 26,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-back-to-school",
+      "source": "layers/008-accent-back-to-school.svg",
+      "z": 27,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-lets-learn",
+      "source": "layers/009-scene-lets-learn.svg",
+      "z": 28,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-lets-learn",
+      "source": "layers/009-accent-lets-learn.svg",
+      "z": 29,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-be-curious",
+      "source": "layers/010-scene-be-curious.svg",
+      "z": 30,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-be-curious",
+      "source": "layers/010-accent-be-curious.svg",
+      "z": 31,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-keep-going",
+      "source": "layers/011-scene-keep-going.svg",
+      "z": 32,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-keep-going",
+      "source": "layers/011-accent-keep-going.svg",
+      "z": 33,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-you-can-do-it",
+      "source": "layers/012-scene-you-can-do-it.svg",
+      "z": 34,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-you-can-do-it",
+      "source": "layers/012-accent-you-can-do-it.svg",
+      "z": 35,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-a-effort",
+      "source": "layers/013-scene-a-effort.svg",
+      "z": 36,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-a-effort",
+      "source": "layers/013-accent-a-effort.svg",
+      "z": 37,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-brain-power",
+      "source": "layers/014-scene-brain-power.svg",
+      "z": 38,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-brain-power",
+      "source": "layers/014-accent-brain-power.svg",
+      "z": 39,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-smart-owl",
+      "source": "layers/015-scene-smart-owl.svg",
+      "z": 40,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-smart-owl",
+      "source": "layers/015-accent-smart-owl.svg",
+      "z": 41,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-time-to-learn",
+      "source": "layers/016-scene-time-to-learn.svg",
+      "z": 42,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-time-to-learn",
+      "source": "layers/016-accent-time-to-learn.svg",
+      "z": 43,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-stay-focused",
+      "source": "layers/017-scene-stay-focused.svg",
+      "z": 44,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-stay-focused",
+      "source": "layers/017-accent-stay-focused.svg",
+      "z": 45,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-dream-big",
+      "source": "layers/018-scene-dream-big.svg",
+      "z": 46,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-dream-big",
+      "source": "layers/018-accent-dream-big.svg",
+      "z": 47,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-plan-ahead",
+      "source": "layers/019-scene-plan-ahead.svg",
+      "z": 48,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-plan-ahead",
+      "source": "layers/019-accent-plan-ahead.svg",
+      "z": 49,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-math-wiz",
+      "source": "layers/020-scene-math-wiz.svg",
+      "z": 50,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-math-wiz",
+      "source": "layers/020-accent-math-wiz.svg",
+      "z": 51,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-problem-solver",
+      "source": "layers/021-scene-problem-solver.svg",
+      "z": 52,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-problem-solver",
+      "source": "layers/021-accent-problem-solver.svg",
+      "z": 53,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-science-fun",
+      "source": "layers/022-scene-science-fun.svg",
+      "z": 54,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-science-fun",
+      "source": "layers/022-accent-science-fun.svg",
+      "z": 55,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-experiment",
+      "source": "layers/023-scene-experiment.svg",
+      "z": 56,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-experiment",
+      "source": "layers/023-accent-experiment.svg",
+      "z": 57,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-discover",
+      "source": "layers/024-scene-discover.svg",
+      "z": 58,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-discover",
+      "source": "layers/024-accent-discover.svg",
+      "z": 59,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-little-scientist",
+      "source": "layers/025-scene-little-scientist.svg",
+      "z": 60,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-little-scientist",
+      "source": "layers/025-accent-little-scientist.svg",
+      "z": 61,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-think-deep",
+      "source": "layers/026-scene-think-deep.svg",
+      "z": 62,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-think-deep",
+      "source": "layers/026-accent-think-deep.svg",
+      "z": 63,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-good-thinking",
+      "source": "layers/027-scene-good-thinking.svg",
+      "z": 64,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-good-thinking",
+      "source": "layers/027-accent-good-thinking.svg",
+      "z": 65,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-idea-time",
+      "source": "layers/028-scene-idea-time.svg",
+      "z": 66,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-idea-time",
+      "source": "layers/028-accent-idea-time.svg",
+      "z": 67,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-lightbulb",
+      "source": "layers/029-scene-lightbulb.svg",
+      "z": 68,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-lightbulb",
+      "source": "layers/029-accent-lightbulb.svg",
+      "z": 69,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-read-it",
+      "source": "layers/030-scene-read-it.svg",
+      "z": 70,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-read-it",
+      "source": "layers/030-accent-read-it.svg",
+      "z": 71,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-book-lover",
+      "source": "layers/031-scene-book-lover.svg",
+      "z": 72,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-book-lover",
+      "source": "layers/031-accent-book-lover.svg",
+      "z": 73,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-library-time",
+      "source": "layers/032-scene-library-time.svg",
+      "z": 74,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-library-time",
+      "source": "layers/032-accent-library-time.svg",
+      "z": 75,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-story-time",
+      "source": "layers/033-scene-story-time.svg",
+      "z": 76,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-story-time",
+      "source": "layers/033-accent-story-time.svg",
+      "z": 77,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-word-power",
+      "source": "layers/034-scene-word-power.svg",
+      "z": 78,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-word-power",
+      "source": "layers/034-accent-word-power.svg",
+      "z": 79,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-spelling-star",
+      "source": "layers/035-scene-spelling-star.svg",
+      "z": 80,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-spelling-star",
+      "source": "layers/035-accent-spelling-star.svg",
+      "z": 81,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-write-on",
+      "source": "layers/036-scene-write-on.svg",
+      "z": 82,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-write-on",
+      "source": "layers/036-accent-write-on.svg",
+      "z": 83,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-pen-to-paper",
+      "source": "layers/037-scene-pen-to-paper.svg",
+      "z": 84,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-pen-to-paper",
+      "source": "layers/037-accent-pen-to-paper.svg",
+      "z": 85,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-creative-mind",
+      "source": "layers/038-scene-creative-mind.svg",
+      "z": 86,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-creative-mind",
+      "source": "layers/038-accent-creative-mind.svg",
+      "z": 87,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-letter-time",
+      "source": "layers/039-scene-letter-time.svg",
+      "z": 88,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-letter-time",
+      "source": "layers/039-accent-letter-time.svg",
+      "z": 89,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-paint-more",
+      "source": "layers/040-scene-paint-more.svg",
+      "z": 90,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-paint-more",
+      "source": "layers/040-accent-paint-more.svg",
+      "z": 91,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-color-magic",
+      "source": "layers/041-scene-color-magic.svg",
+      "z": 92,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-color-magic",
+      "source": "layers/041-accent-color-magic.svg",
+      "z": 93,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-music-time",
+      "source": "layers/042-scene-music-time.svg",
+      "z": 94,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-music-time",
+      "source": "layers/042-accent-music-time.svg",
+      "z": 95,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-sing-loud",
+      "source": "layers/043-scene-sing-loud.svg",
+      "z": 96,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-sing-loud",
+      "source": "layers/043-accent-sing-loud.svg",
+      "z": 97,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-play-on",
+      "source": "layers/044-scene-play-on.svg",
+      "z": 98,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-play-on",
+      "source": "layers/044-accent-play-on.svg",
+      "z": 99,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-rock-star",
+      "source": "layers/045-scene-rock-star.svg",
+      "z": 100,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-rock-star",
+      "source": "layers/045-accent-rock-star.svg",
+      "z": 101,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-dance-break",
+      "source": "layers/046-scene-dance-break.svg",
+      "z": 102,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-dance-break",
+      "source": "layers/046-accent-dance-break.svg",
+      "z": 103,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-move-and-learn",
+      "source": "layers/047-scene-move-and-learn.svg",
+      "z": 104,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-move-and-learn",
+      "source": "layers/047-accent-move-and-learn.svg",
+      "z": 105,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-happy-heart",
+      "source": "layers/048-scene-happy-heart.svg",
+      "z": 106,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-happy-heart",
+      "source": "layers/048-accent-happy-heart.svg",
+      "z": 107,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-kindness",
+      "source": "layers/049-scene-kindness.svg",
+      "z": 108,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-kindness",
+      "source": "layers/049-accent-kindness.svg",
+      "z": 109,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-teamwork",
+      "source": "layers/050-scene-teamwork.svg",
+      "z": 110,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-teamwork",
+      "source": "layers/050-accent-teamwork.svg",
+      "z": 111,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-work-together",
+      "source": "layers/051-scene-work-together.svg",
+      "z": 112,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-work-together",
+      "source": "layers/051-accent-work-together.svg",
+      "z": 113,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-help-others",
+      "source": "layers/052-scene-help-others.svg",
+      "z": 114,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-help-others",
+      "source": "layers/052-accent-help-others.svg",
+      "z": 115,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-share-ideas",
+      "source": "layers/053-scene-share-ideas.svg",
+      "z": 116,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-share-ideas",
+      "source": "layers/053-accent-share-ideas.svg",
+      "z": 117,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-good-friend",
+      "source": "layers/054-scene-good-friend.svg",
+      "z": 118,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-good-friend",
+      "source": "layers/054-accent-good-friend.svg",
+      "z": 119,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-be-respectful",
+      "source": "layers/055-scene-be-respectful.svg",
+      "z": 120,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-be-respectful",
+      "source": "layers/055-accent-be-respectful.svg",
+      "z": 121,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-listen-up",
+      "source": "layers/056-scene-listen-up.svg",
+      "z": 122,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-listen-up",
+      "source": "layers/056-accent-listen-up.svg",
+      "z": 123,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-hands-up",
+      "source": "layers/057-scene-hands-up.svg",
+      "z": 124,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-hands-up",
+      "source": "layers/057-accent-hands-up.svg",
+      "z": 125,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-class-leader",
+      "source": "layers/058-scene-class-leader.svg",
+      "z": 126,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-class-leader",
+      "source": "layers/058-accent-class-leader.svg",
+      "z": 127,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-role-model",
+      "source": "layers/059-scene-role-model.svg",
+      "z": 128,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-role-model",
+      "source": "layers/059-accent-role-model.svg",
+      "z": 129,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-on-time",
+      "source": "layers/060-scene-on-time.svg",
+      "z": 130,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-on-time",
+      "source": "layers/060-accent-on-time.svg",
+      "z": 131,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-time-manager",
+      "source": "layers/061-scene-time-manager.svg",
+      "z": 132,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-time-manager",
+      "source": "layers/061-accent-time-manager.svg",
+      "z": 133,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-stay-organized",
+      "source": "layers/062-scene-stay-organized.svg",
+      "z": 134,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-stay-organized",
+      "source": "layers/062-accent-stay-organized.svg",
+      "z": 135,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-checklist",
+      "source": "layers/063-scene-checklist.svg",
+      "z": 136,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-checklist",
+      "source": "layers/063-accent-checklist.svg",
+      "z": 137,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-all-set",
+      "source": "layers/064-scene-all-set.svg",
+      "z": 138,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-all-set",
+      "source": "layers/064-accent-all-set.svg",
+      "z": 139,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-no-excuses",
+      "source": "layers/065-scene-no-excuses.svg",
+      "z": 140,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-no-excuses",
+      "source": "layers/065-accent-no-excuses.svg",
+      "z": 141,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-keep-trying",
+      "source": "layers/066-scene-keep-trying.svg",
+      "z": 142,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-keep-trying",
+      "source": "layers/066-accent-keep-trying.svg",
+      "z": 143,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-dont-quit",
+      "source": "layers/067-scene-dont-quit.svg",
+      "z": 144,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-dont-quit",
+      "source": "layers/067-accent-dont-quit.svg",
+      "z": 145,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-small-steps",
+      "source": "layers/068-scene-small-steps.svg",
+      "z": 146,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-small-steps",
+      "source": "layers/068-accent-small-steps.svg",
+      "z": 147,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-big-progress",
+      "source": "layers/069-scene-big-progress.svg",
+      "z": 148,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-big-progress",
+      "source": "layers/069-accent-big-progress.svg",
+      "z": 149,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-test-day",
+      "source": "layers/070-scene-test-day.svg",
+      "z": 150,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-test-day",
+      "source": "layers/070-accent-test-day.svg",
+      "z": 151,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-ace-it",
+      "source": "layers/071-scene-ace-it.svg",
+      "z": 152,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-ace-it",
+      "source": "layers/071-accent-ace-it.svg",
+      "z": 153,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-review-time",
+      "source": "layers/072-scene-review-time.svg",
+      "z": 154,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-review-time",
+      "source": "layers/072-accent-review-time.svg",
+      "z": 155,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-study-hard",
+      "source": "layers/073-scene-study-hard.svg",
+      "z": 156,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-study-hard",
+      "source": "layers/073-accent-study-hard.svg",
+      "z": 157,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-quiz-master",
+      "source": "layers/074-scene-quiz-master.svg",
+      "z": 158,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-quiz-master",
+      "source": "layers/074-accent-quiz-master.svg",
+      "z": 159,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-recall-it",
+      "source": "layers/075-scene-recall-it.svg",
+      "z": 160,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-recall-it",
+      "source": "layers/075-accent-recall-it.svg",
+      "z": 161,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-memory-mode",
+      "source": "layers/076-scene-memory-mode.svg",
+      "z": 162,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-memory-mode",
+      "source": "layers/076-accent-memory-mode.svg",
+      "z": 163,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-learn-daily",
+      "source": "layers/077-scene-learn-daily.svg",
+      "z": 164,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-learn-daily",
+      "source": "layers/077-accent-learn-daily.svg",
+      "z": 165,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-never-stop",
+      "source": "layers/078-scene-never-stop.svg",
+      "z": 166,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-never-stop",
+      "source": "layers/078-accent-never-stop.svg",
+      "z": 167,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-every-day-counts",
+      "source": "layers/079-scene-every-day-counts.svg",
+      "z": 168,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-every-day-counts",
+      "source": "layers/079-accent-every-day-counts.svg",
+      "z": 169,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-paper-star",
+      "source": "layers/080-scene-paper-star.svg",
+      "z": 170,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-paper-star",
+      "source": "layers/080-accent-paper-star.svg",
+      "z": 171,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-good-work",
+      "source": "layers/081-scene-good-work.svg",
+      "z": 172,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-good-work",
+      "source": "layers/081-accent-good-work.svg",
+      "z": 173,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-star-student",
+      "source": "layers/082-scene-star-student.svg",
+      "z": 174,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-star-student",
+      "source": "layers/082-accent-star-student.svg",
+      "z": 175,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-top-notch",
+      "source": "layers/083-scene-top-notch.svg",
+      "z": 176,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-top-notch",
+      "source": "layers/083-accent-top-notch.svg",
+      "z": 177,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-high-five",
+      "source": "layers/084-scene-high-five.svg",
+      "z": 178,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-high-five",
+      "source": "layers/084-accent-high-five.svg",
+      "z": 179,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-you-rock",
+      "source": "layers/085-scene-you-rock.svg",
+      "z": 180,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-you-rock",
+      "source": "layers/085-accent-you-rock.svg",
+      "z": 181,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-super-star",
+      "source": "layers/086-scene-super-star.svg",
+      "z": 182,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-super-star",
+      "source": "layers/086-accent-super-star.svg",
+      "z": 183,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-gold-star",
+      "source": "layers/087-scene-gold-star.svg",
+      "z": 184,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-gold-star",
+      "source": "layers/087-accent-gold-star.svg",
+      "z": 185,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-trophy-time",
+      "source": "layers/088-scene-trophy-time.svg",
+      "z": 186,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-trophy-time",
+      "source": "layers/088-accent-trophy-time.svg",
+      "z": 187,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-champion",
+      "source": "layers/089-scene-champion.svg",
+      "z": 188,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-champion",
+      "source": "layers/089-accent-champion.svg",
+      "z": 189,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-graduation-day",
+      "source": "layers/090-scene-graduation-day.svg",
+      "z": 190,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-graduation-day",
+      "source": "layers/090-accent-graduation-day.svg",
+      "z": 191,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-future-leader",
+      "source": "layers/091-scene-future-leader.svg",
+      "z": 192,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-future-leader",
+      "source": "layers/091-accent-future-leader.svg",
+      "z": 193,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-aim-high",
+      "source": "layers/092-scene-aim-high.svg",
+      "z": 194,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-aim-high",
+      "source": "layers/092-accent-aim-high.svg",
+      "z": 195,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-reach-goals",
+      "source": "layers/093-scene-reach-goals.svg",
+      "z": 196,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-reach-goals",
+      "source": "layers/093-accent-reach-goals.svg",
+      "z": 197,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-bright-future",
+      "source": "layers/094-scene-bright-future.svg",
+      "z": 198,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-bright-future",
+      "source": "layers/094-accent-bright-future.svg",
+      "z": 199,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-believe-in-you",
+      "source": "layers/095-scene-believe-in-you.svg",
+      "z": 200,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-believe-in-you",
+      "source": "layers/095-accent-believe-in-you.svg",
+      "z": 201,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-proud-moment",
+      "source": "layers/096-scene-proud-moment.svg",
+      "z": 202,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-proud-moment",
+      "source": "layers/096-accent-proud-moment.svg",
+      "z": 203,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-success-path",
+      "source": "layers/097-scene-success-path.svg",
+      "z": 204,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-success-path",
+      "source": "layers/097-accent-success-path.svg",
+      "z": 205,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-one-step-up",
+      "source": "layers/098-scene-one-step-up.svg",
+      "z": 206,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-one-step-up",
+      "source": "layers/098-accent-one-step-up.svg",
+      "z": 207,
+      "pivot": "composition",
+      "depth": 0.1
+    },
+    {
+      "id": "scene-keep-shining",
+      "source": "layers/099-scene-keep-shining.svg",
+      "z": 208,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "accent-keep-shining",
+      "source": "layers/099-accent-keep-shining.svg",
+      "z": 209,
+      "pivot": "composition",
+      "depth": 0.1
+    }
+  ],
+  "base_layers": [],
+  "expressions": {
+    "study-time": [
+      "scene-study-time",
+      "accent-study-time"
+    ],
+    "great-job": [
+      "scene-great-job",
+      "accent-great-job"
+    ],
+    "homework": [
+      "scene-homework",
+      "accent-homework"
+    ],
+    "exam-mode": [
+      "scene-exam-mode",
+      "accent-exam-mode"
+    ],
+    "question": [
+      "scene-question",
+      "accent-question"
+    ],
+    "read-more": [
+      "scene-read-more",
+      "accent-read-more"
+    ],
+    "break-time": [
+      "scene-break-time",
+      "accent-break-time"
+    ],
+    "well-done": [
+      "scene-well-done",
+      "accent-well-done"
+    ],
+    "back-to-school": [
+      "scene-back-to-school",
+      "accent-back-to-school"
+    ],
+    "lets-learn": [
+      "scene-lets-learn",
+      "accent-lets-learn"
+    ],
+    "be-curious": [
+      "scene-be-curious",
+      "accent-be-curious"
+    ],
+    "keep-going": [
+      "scene-keep-going",
+      "accent-keep-going"
+    ],
+    "you-can-do-it": [
+      "scene-you-can-do-it",
+      "accent-you-can-do-it"
+    ],
+    "a-effort": [
+      "scene-a-effort",
+      "accent-a-effort"
+    ],
+    "brain-power": [
+      "scene-brain-power",
+      "accent-brain-power"
+    ],
+    "smart-owl": [
+      "scene-smart-owl",
+      "accent-smart-owl"
+    ],
+    "time-to-learn": [
+      "scene-time-to-learn",
+      "accent-time-to-learn"
+    ],
+    "stay-focused": [
+      "scene-stay-focused",
+      "accent-stay-focused"
+    ],
+    "dream-big": [
+      "scene-dream-big",
+      "accent-dream-big"
+    ],
+    "plan-ahead": [
+      "scene-plan-ahead",
+      "accent-plan-ahead"
+    ],
+    "math-wiz": [
+      "scene-math-wiz",
+      "accent-math-wiz"
+    ],
+    "problem-solver": [
+      "scene-problem-solver",
+      "accent-problem-solver"
+    ],
+    "science-fun": [
+      "scene-science-fun",
+      "accent-science-fun"
+    ],
+    "experiment": [
+      "scene-experiment",
+      "accent-experiment"
+    ],
+    "discover": [
+      "scene-discover",
+      "accent-discover"
+    ],
+    "little-scientist": [
+      "scene-little-scientist",
+      "accent-little-scientist"
+    ],
+    "think-deep": [
+      "scene-think-deep",
+      "accent-think-deep"
+    ],
+    "good-thinking": [
+      "scene-good-thinking",
+      "accent-good-thinking"
+    ],
+    "idea-time": [
+      "scene-idea-time",
+      "accent-idea-time"
+    ],
+    "lightbulb": [
+      "scene-lightbulb",
+      "accent-lightbulb"
+    ],
+    "read-it": [
+      "scene-read-it",
+      "accent-read-it"
+    ],
+    "book-lover": [
+      "scene-book-lover",
+      "accent-book-lover"
+    ],
+    "library-time": [
+      "scene-library-time",
+      "accent-library-time"
+    ],
+    "story-time": [
+      "scene-story-time",
+      "accent-story-time"
+    ],
+    "word-power": [
+      "scene-word-power",
+      "accent-word-power"
+    ],
+    "spelling-star": [
+      "scene-spelling-star",
+      "accent-spelling-star"
+    ],
+    "write-on": [
+      "scene-write-on",
+      "accent-write-on"
+    ],
+    "pen-to-paper": [
+      "scene-pen-to-paper",
+      "accent-pen-to-paper"
+    ],
+    "creative-mind": [
+      "scene-creative-mind",
+      "accent-creative-mind"
+    ],
+    "letter-time": [
+      "scene-letter-time",
+      "accent-letter-time"
+    ],
+    "paint-more": [
+      "scene-paint-more",
+      "accent-paint-more"
+    ],
+    "color-magic": [
+      "scene-color-magic",
+      "accent-color-magic"
+    ],
+    "music-time": [
+      "scene-music-time",
+      "accent-music-time"
+    ],
+    "sing-loud": [
+      "scene-sing-loud",
+      "accent-sing-loud"
+    ],
+    "play-on": [
+      "scene-play-on",
+      "accent-play-on"
+    ],
+    "rock-star": [
+      "scene-rock-star",
+      "accent-rock-star"
+    ],
+    "dance-break": [
+      "scene-dance-break",
+      "accent-dance-break"
+    ],
+    "move-and-learn": [
+      "scene-move-and-learn",
+      "accent-move-and-learn"
+    ],
+    "happy-heart": [
+      "scene-happy-heart",
+      "accent-happy-heart"
+    ],
+    "kindness": [
+      "scene-kindness",
+      "accent-kindness"
+    ],
+    "teamwork": [
+      "scene-teamwork",
+      "accent-teamwork"
+    ],
+    "work-together": [
+      "scene-work-together",
+      "accent-work-together"
+    ],
+    "help-others": [
+      "scene-help-others",
+      "accent-help-others"
+    ],
+    "share-ideas": [
+      "scene-share-ideas",
+      "accent-share-ideas"
+    ],
+    "good-friend": [
+      "scene-good-friend",
+      "accent-good-friend"
+    ],
+    "be-respectful": [
+      "scene-be-respectful",
+      "accent-be-respectful"
+    ],
+    "listen-up": [
+      "scene-listen-up",
+      "accent-listen-up"
+    ],
+    "hands-up": [
+      "scene-hands-up",
+      "accent-hands-up"
+    ],
+    "class-leader": [
+      "scene-class-leader",
+      "accent-class-leader"
+    ],
+    "role-model": [
+      "scene-role-model",
+      "accent-role-model"
+    ],
+    "on-time": [
+      "scene-on-time",
+      "accent-on-time"
+    ],
+    "time-manager": [
+      "scene-time-manager",
+      "accent-time-manager"
+    ],
+    "stay-organized": [
+      "scene-stay-organized",
+      "accent-stay-organized"
+    ],
+    "checklist": [
+      "scene-checklist",
+      "accent-checklist"
+    ],
+    "all-set": [
+      "scene-all-set",
+      "accent-all-set"
+    ],
+    "no-excuses": [
+      "scene-no-excuses",
+      "accent-no-excuses"
+    ],
+    "keep-trying": [
+      "scene-keep-trying",
+      "accent-keep-trying"
+    ],
+    "dont-quit": [
+      "scene-dont-quit",
+      "accent-dont-quit"
+    ],
+    "small-steps": [
+      "scene-small-steps",
+      "accent-small-steps"
+    ],
+    "big-progress": [
+      "scene-big-progress",
+      "accent-big-progress"
+    ],
+    "test-day": [
+      "scene-test-day",
+      "accent-test-day"
+    ],
+    "ace-it": [
+      "scene-ace-it",
+      "accent-ace-it"
+    ],
+    "review-time": [
+      "scene-review-time",
+      "accent-review-time"
+    ],
+    "study-hard": [
+      "scene-study-hard",
+      "accent-study-hard"
+    ],
+    "quiz-master": [
+      "scene-quiz-master",
+      "accent-quiz-master"
+    ],
+    "recall-it": [
+      "scene-recall-it",
+      "accent-recall-it"
+    ],
+    "memory-mode": [
+      "scene-memory-mode",
+      "accent-memory-mode"
+    ],
+    "learn-daily": [
+      "scene-learn-daily",
+      "accent-learn-daily"
+    ],
+    "never-stop": [
+      "scene-never-stop",
+      "accent-never-stop"
+    ],
+    "every-day-counts": [
+      "scene-every-day-counts",
+      "accent-every-day-counts"
+    ],
+    "paper-star": [
+      "scene-paper-star",
+      "accent-paper-star"
+    ],
+    "good-work": [
+      "scene-good-work",
+      "accent-good-work"
+    ],
+    "star-student": [
+      "scene-star-student",
+      "accent-star-student"
+    ],
+    "top-notch": [
+      "scene-top-notch",
+      "accent-top-notch"
+    ],
+    "high-five": [
+      "scene-high-five",
+      "accent-high-five"
+    ],
+    "you-rock": [
+      "scene-you-rock",
+      "accent-you-rock"
+    ],
+    "super-star": [
+      "scene-super-star",
+      "accent-super-star"
+    ],
+    "gold-star": [
+      "scene-gold-star",
+      "accent-gold-star"
+    ],
+    "trophy-time": [
+      "scene-trophy-time",
+      "accent-trophy-time"
+    ],
+    "champion": [
+      "scene-champion",
+      "accent-champion"
+    ],
+    "graduation-day": [
+      "scene-graduation-day",
+      "accent-graduation-day"
+    ],
+    "future-leader": [
+      "scene-future-leader",
+      "accent-future-leader"
+    ],
+    "aim-high": [
+      "scene-aim-high",
+      "accent-aim-high"
+    ],
+    "reach-goals": [
+      "scene-reach-goals",
+      "accent-reach-goals"
+    ],
+    "bright-future": [
+      "scene-bright-future",
+      "accent-bright-future"
+    ],
+    "believe-in-you": [
+      "scene-believe-in-you",
+      "accent-believe-in-you"
+    ],
+    "proud-moment": [
+      "scene-proud-moment",
+      "accent-proud-moment"
+    ],
+    "success-path": [
+      "scene-success-path",
+      "accent-success-path"
+    ],
+    "one-step-up": [
+      "scene-one-step-up",
+      "accent-one-step-up"
+    ],
+    "keep-shining": [
+      "scene-keep-shining",
+      "accent-keep-shining"
+    ]
+  },
+  "poses": {
+    "cheer": [],
+    "listen": [],
+    "point": [],
+    "present": [],
+    "proud": [],
+    "read": [],
+    "study": [],
+    "think": [],
+    "wave": [],
+    "write": []
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT; bundled fonts separately SIL OFL 1.1",
+    "source": "generate_education_wise_owl_pack.py v1; original procedural owl compositions"
+  },
+  "anchors": {
+    "composition_center": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "pivots": {
+    "composition": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 0,
+  "caption_validation": {
+    "minimum_canvas_margin_px": 16,
+    "maximum_lines": 2,
+    "must_remain_inside_canvas_for_every_frame": true,
+    "may_overlap_character": false,
+    "may_overlap_assistive_device": false,
+    "must_pass_sizes_px": [
+      80,
+      100,
+      160
+    ],
+    "collision_bounds": "layout-specific-authored-safe-areas"
+  },
+  "fonts": [
+    {
+      "id": "punch",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    },
+    {
+      "id": "comic-slant",
+      "source": "fonts/bangers/Bangers-Regular.ttf",
+      "license": "fonts/bangers/OFL.txt"
+    },
+    {
+      "id": "rounded",
+      "source": "fonts/lilita-one/LilitaOne-Regular.ttf",
+      "license": "fonts/lilita-one/OFL.txt"
+    },
+    {
+      "id": "handwritten",
+      "source": "fonts/kalam/Kalam-Bold.ttf",
+      "license": "fonts/kalam/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "study-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "great-job-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "homework-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "exam-mode-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "question-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "read-more-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "break-time-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "well-done-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "back-to-school-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "lets-learn-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "be-curious-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "keep-going-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "you-can-do-it-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "a-effort-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "brain-power-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "smart-owl-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "time-to-learn-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "stay-focused-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "dream-big-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "plan-ahead-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 146,
+          "g": 47,
+          "b": 49
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "math-wiz-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "problem-solver-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "science-fun-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "experiment-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "discover-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "little-scientist-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "think-deep-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "good-thinking-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "idea-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "lightbulb-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 21,
+          "g": 95,
+          "b": 84
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "read-it-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "book-lover-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "library-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "story-time-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "word-power-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "spelling-star-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "write-on-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "pen-to-paper-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "creative-mind-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "letter-time-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 243,
+          "b": 211
+        }
+      }
+    },
+    "paint-more-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "color-magic-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "music-time-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "sing-loud-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "play-on-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "rock-star-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "dance-break-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "move-and-learn-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "happy-heart-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "kindness-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 138,
+        "g": 91,
+        "b": 215
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 86,
+          "g": 54,
+          "b": 156
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 243,
+          "g": 154,
+          "b": 35
+        }
+      }
+    },
+    "teamwork-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "work-together-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "help-others-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "share-ideas-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "good-friend-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "be-respectful-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "listen-up-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "hands-up-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "class-leader-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "role-model-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 23,
+          "g": 104,
+          "b": 72
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "on-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "time-manager-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "stay-organized-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "checklist-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "all-set-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "no-excuses-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "keep-trying-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "dont-quit-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "small-steps-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "big-progress-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 56,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 37,
+          "g": 113,
+          "b": 111
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 247,
+          "g": 191,
+          "b": 50
+        }
+      }
+    },
+    "test-day-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "ace-it-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "review-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "study-hard-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "quiz-master-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "recall-it-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "memory-mode-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "learn-daily-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "never-stop-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "every-day-counts-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 227,
+        "g": 74,
+        "b": 59
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 143,
+          "g": 52,
+          "b": 58
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "paper-star-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "good-work-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "star-student-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "top-notch-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "high-five-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "you-rock-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "super-star-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "gold-star-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "trophy-time-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "champion-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 247,
+        "g": 191,
+        "b": 50
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 178,
+          "g": 107,
+          "b": 19
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 227,
+          "g": 74,
+          "b": 59
+        }
+      }
+    },
+    "graduation-day-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "future-leader-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "aim-high-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 268,
+        "y": 58,
+        "width": 208,
+        "height": 190
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "reach-goals-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 54,
+        "y": 344,
+        "width": 404,
+        "height": 138
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "bright-future-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 72,
+        "y": 38,
+        "width": 368,
+        "height": 148
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "believe-in-you-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 264,
+        "y": 126,
+        "width": 214,
+        "height": 236
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "proud-moment-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 48,
+        "y": 34,
+        "width": 416,
+        "height": 142
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "success-path-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 48,
+        "y": 350,
+        "width": 416,
+        "height": 132
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "one-step-up-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 32,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 6,
+        "offset_y": 7,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    },
+    "keep-shining-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 254,
+        "y": 130,
+        "width": 226,
+        "height": 224
+      },
+      "min_font_size": 24,
+      "max_font_size": 128,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 7,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "depth_shell": {
+        "offset_x": 7,
+        "offset_y": 8,
+        "color": {
+          "r": 36,
+          "g": 76,
+          "b": 148
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    }
+  }
+}

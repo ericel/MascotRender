@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-graduation-day",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.future.graduation-day",
+  "recipe_id": "education-owl-scene.pop",
+  "intent": "education.future.graduation-day",
+  "alt_text": "Sage the owl in a learning scene saying GRADUATION DAY",
+  "accessible_description": "Sage uses a graduation cap learning cue with the phrase GRADUATION DAY",
+  "expression": "graduation-day",
+  "pose": "read",
+  "seed": 1,
+  "text": {
+    "content": "GRADUATION DAY",
+    "style": "graduation-day-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-graduation-day",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-graduation-day",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

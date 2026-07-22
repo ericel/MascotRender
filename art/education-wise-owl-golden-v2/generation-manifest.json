@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "generator": "generate_education_wise_owl_golden.py",
+  "pack_id": "education-wise-owl-golden-v2",
+  "contract": "contracts/education-wise-owl-golden-v2.json",
+  "sticker_count": 10,
+  "layer_count_per_sticker": 12,
+  "layer_names": [
+    "shadow",
+    "cutline",
+    "prop-back",
+    "back-feathers",
+    "body-base",
+    "body-depth",
+    "wings",
+    "head",
+    "face",
+    "prop-front",
+    "effects",
+    "caption"
+  ],
+  "visible_sequence_numbers": 0,
+  "remaining_pack_stickers_blocked": 90,
+  "production_use": "forbidden-until-owner-golden-set-approval"
+}

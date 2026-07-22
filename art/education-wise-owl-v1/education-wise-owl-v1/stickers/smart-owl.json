@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-smart-owl",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.motivation.smart-owl",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.motivation.smart-owl",
+  "alt_text": "Sage the owl in a learning scene saying SMART OWL",
+  "accessible_description": "Sage uses a glasses book learning cue with the phrase SMART OWL",
+  "expression": "smart-owl",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "SMART OWL",
+    "style": "smart-owl-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-smart-owl",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-smart-owl",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-sing-loud",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.creativity.sing-loud",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.creativity.sing-loud",
+  "alt_text": "Sage the owl in a learning scene saying SING LOUD!",
+  "accessible_description": "Sage uses a microphone learning cue with the phrase SING LOUD!",
+  "expression": "sing-loud",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "SING LOUD!",
+    "style": "sing-loud-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-sing-loud",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-sing-loud",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

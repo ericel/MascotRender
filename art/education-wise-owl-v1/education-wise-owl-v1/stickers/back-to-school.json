@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-back-to-school",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.study.back-to-school",
+  "recipe_id": "education-owl-scene.stamp",
+  "intent": "education.study.back-to-school",
+  "alt_text": "Sage the owl in a learning scene saying BACK TO SCHOOL",
+  "accessible_description": "Sage uses a school house learning cue with the phrase BACK TO SCHOOL",
+  "expression": "back-to-school",
+  "pose": "study",
+  "seed": 1,
+  "text": {
+    "content": "BACK TO SCHOOL",
+    "style": "back-to-school-main",
+    "rotation_degrees": 1.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-back-to-school",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-back-to-school",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

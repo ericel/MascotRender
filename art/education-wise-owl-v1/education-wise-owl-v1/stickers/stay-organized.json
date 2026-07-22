@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-stay-organized",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.habits.stay-organized",
+  "recipe_id": "education-owl-scene.wobble",
+  "intent": "education.habits.stay-organized",
+  "alt_text": "Sage the owl in a learning scene saying STAY ORGANIZED",
+  "accessible_description": "Sage uses a organized desk learning cue with the phrase STAY ORGANIZED",
+  "expression": "stay-organized",
+  "pose": "think",
+  "seed": 1,
+  "text": {
+    "content": "STAY ORGANIZED",
+    "style": "stay-organized-main",
+    "rotation_degrees": 1.2
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-stay-organized",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-stay-organized",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

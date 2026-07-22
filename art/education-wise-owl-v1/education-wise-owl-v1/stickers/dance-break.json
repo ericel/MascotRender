@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-dance-break",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.creativity.dance-break",
+  "recipe_id": "education-owl-scene.nod",
+  "intent": "education.creativity.dance-break",
+  "alt_text": "Sage the owl in a learning scene saying DANCE BREAK",
+  "accessible_description": "Sage uses a dance notes learning cue with the phrase DANCE BREAK",
+  "expression": "dance-break",
+  "pose": "wave",
+  "seed": 1,
+  "text": {
+    "content": "DANCE BREAK",
+    "style": "dance-break-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-dance-break",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-dance-break",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

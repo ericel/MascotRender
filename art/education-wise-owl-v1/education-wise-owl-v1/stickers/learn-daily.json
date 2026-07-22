@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-learn-daily",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.assessment.learn-daily",
+  "recipe_id": "education-owl-scene.slide",
+  "intent": "education.assessment.learn-daily",
+  "alt_text": "Sage the owl in a learning scene saying LEARN DAILY",
+  "accessible_description": "Sage uses a daily book learning cue with the phrase LEARN DAILY",
+  "expression": "learn-daily",
+  "pose": "listen",
+  "seed": 1,
+  "text": {
+    "content": "LEARN DAILY",
+    "style": "learn-daily-main",
+    "rotation_degrees": -1.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-learn-daily",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-learn-daily",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

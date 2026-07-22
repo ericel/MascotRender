@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-move-and-learn",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.creativity.move-and-learn",
+  "recipe_id": "education-owl-scene.slide",
+  "intent": "education.creativity.move-and-learn",
+  "alt_text": "Sage the owl in a learning scene saying MOVE & LEARN",
+  "accessible_description": "Sage uses a motion book learning cue with the phrase MOVE & LEARN",
+  "expression": "move-and-learn",
+  "pose": "listen",
+  "seed": 1,
+  "text": {
+    "content": "MOVE & LEARN",
+    "style": "move-and-learn-main",
+    "rotation_degrees": -1.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-move-and-learn",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-move-and-learn",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

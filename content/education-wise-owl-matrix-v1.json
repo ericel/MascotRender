@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "matrix_id": "education-wise-owl-matrix-v1",
+  "pack_id": "education-wise-owl-v1",
+  "locale": "en",
+  "groups": [
+    {
+      "category": "study",
+      "phrases": [
+        ["STUDY TIME", "open-book"],
+        ["GREAT JOB!", "grade-paper"],
+        ["HOMEWORK", "book-stack"],
+        ["EXAM MODE", "exam-paper"],
+        ["QUESTION?", "question-bubble"],
+        ["READ MORE", "reading-book"],
+        ["BREAK TIME", "music-cushion"],
+        ["WELL DONE!", "gold-star"],
+        ["BACK TO SCHOOL", "school-house"],
+        ["LET'S LEARN!", "books-clock"]
+      ]
+    },
+    {
+      "category": "motivation",
+      "phrases": [
+        ["BE CURIOUS", "magnifier"],
+        ["KEEP GOING!", "pencil-rocket"],
+        ["YOU CAN DO IT!", "megaphone"],
+        ["A+ EFFORT", "grade-medal"],
+        ["BRAIN POWER", "brain-bulb"],
+        ["SMART OWL", "glasses-book"],
+        ["TIME TO LEARN", "clock-book"],
+        ["STAY FOCUSED", "focus-target"],
+        ["DREAM BIG", "cloud-star"],
+        ["PLAN AHEAD", "planner-pencil"]
+      ]
+    },
+    {
+      "category": "stem",
+      "phrases": [
+        ["MATH WIZ", "math-board"],
+        ["PROBLEM SOLVER", "puzzle"],
+        ["SCIENCE FUN", "flasks"],
+        ["EXPERIMENT", "lab-beakers"],
+        ["DISCOVER", "globe-magnifier"],
+        ["LITTLE SCIENTIST", "microscope"],
+        ["THINK DEEP", "thinking-globe"],
+        ["GOOD THINKING!", "brain-spark"],
+        ["IDEA TIME", "lightbulb"],
+        ["LIGHTBULB!", "bright-bulb"]
+      ]
+    },
+    {
+      "category": "literacy",
+      "phrases": [
+        ["READ IT!", "open-book"],
+        ["BOOK LOVER", "book-heart"],
+        ["LIBRARY TIME", "bookshelf"],
+        ["STORY TIME", "story-book"],
+        ["WORD POWER", "word-cards"],
+        ["SPELLING STAR", "letter-star"],
+        ["WRITE ON!", "pencil-paper"],
+        ["PEN TO PAPER", "pen-page"],
+        ["CREATIVE MIND", "idea-notebook"],
+        ["LETTER TIME!", "alphabet-blocks"]
+      ]
+    },
+    {
+      "category": "creativity",
+      "phrases": [
+        ["PAINT MORE", "paint-palette"],
+        ["COLOR MAGIC", "paint-rainbow"],
+        ["MUSIC TIME", "music-notes"],
+        ["SING LOUD!", "microphone"],
+        ["PLAY ON!", "music-play"],
+        ["ROCK STAR", "guitar-star"],
+        ["DANCE BREAK", "dance-notes"],
+        ["MOVE & LEARN", "motion-book"],
+        ["HAPPY HEART", "heart-spark"],
+        ["KINDNESS", "kind-heart"]
+      ]
+    },
+    {
+      "category": "community",
+      "phrases": [
+        ["TEAMWORK", "team-books"],
+        ["WORK TOGETHER", "partner-puzzle"],
+        ["HELP OTHERS", "helping-hand"],
+        ["SHARE IDEAS", "idea-share"],
+        ["GOOD FRIEND", "friend-hearts"],
+        ["BE RESPECTFUL", "respect-heart"],
+        ["LISTEN UP!", "listening-ear"],
+        ["HANDS UP!", "raised-wing"],
+        ["CLASS LEADER", "leader-badge"],
+        ["ROLE MODEL", "model-book"]
+      ]
+    },
+    {
+      "category": "habits",
+      "phrases": [
+        ["ON TIME", "alarm-clock"],
+        ["TIME MANAGER", "clock-planner"],
+        ["STAY ORGANIZED", "organized-desk"],
+        ["CHECKLIST", "checklist"],
+        ["ALL SET!", "ready-check"],
+        ["NO EXCUSES", "clock-focus"],
+        ["KEEP TRYING", "small-steps"],
+        ["DON'T QUIT", "finish-flag"],
+        ["SMALL STEPS", "step-stones"],
+        ["BIG PROGRESS", "progress-chart"]
+      ]
+    },
+    {
+      "category": "assessment",
+      "phrases": [
+        ["TEST DAY", "test-paper"],
+        ["ACE IT!", "ace-paper"],
+        ["REVIEW TIME", "review-books"],
+        ["STUDY HARD", "study-stack"],
+        ["QUIZ MASTER", "quiz-card"],
+        ["RECALL IT", "memory-book"],
+        ["MEMORY MODE", "brain-cards"],
+        ["LEARN DAILY", "daily-book"],
+        ["NEVER STOP", "infinity-pencil"],
+        ["EVERY DAY COUNTS", "calendar-star"]
+      ]
+    },
+    {
+      "category": "achievement",
+      "phrases": [
+        ["PAPER STAR", "paper-star"],
+        ["GOOD WORK", "good-work"],
+        ["STAR STUDENT", "student-star"],
+        ["TOP NOTCH", "top-star"],
+        ["HIGH FIVE!", "high-five"],
+        ["YOU ROCK!", "rock-star"],
+        ["SUPER STAR", "super-star"],
+        ["GOLD STAR", "gold-star"],
+        ["TROPHY TIME", "trophy"],
+        ["CHAMPION", "champion-cup"]
+      ]
+    },
+    {
+      "category": "future",
+      "phrases": [
+        ["GRADUATION DAY", "graduation-cap"],
+        ["FUTURE LEADER", "leader-cap"],
+        ["AIM HIGH", "target-arrow"],
+        ["REACH GOALS", "goal-mountain"],
+        ["BRIGHT FUTURE", "future-sun"],
+        ["BELIEVE IN YOU", "believe-heart"],
+        ["PROUD MOMENT", "proud-medal"],
+        ["SUCCESS PATH", "success-path"],
+        ["ONE STEP UP", "step-up"],
+        ["KEEP SHINING!", "shine-stars"]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-letter-time",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.literacy.letter-time",
+  "recipe_id": "education-owl-scene.breathe",
+  "intent": "education.literacy.letter-time",
+  "alt_text": "Sage the owl in a learning scene saying LETTER TIME!",
+  "accessible_description": "Sage uses a alphabet blocks learning cue with the phrase LETTER TIME!",
+  "expression": "letter-time",
+  "pose": "proud",
+  "seed": 1,
+  "text": {
+    "content": "LETTER TIME!",
+    "style": "letter-time-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-letter-time",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-letter-time",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

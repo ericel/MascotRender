@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-no-excuses",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.habits.no-excuses",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.habits.no-excuses",
+  "alt_text": "Sage the owl in a learning scene saying NO EXCUSES",
+  "accessible_description": "Sage uses a clock focus learning cue with the phrase NO EXCUSES",
+  "expression": "no-excuses",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "NO EXCUSES",
+    "style": "no-excuses-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-no-excuses",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-no-excuses",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

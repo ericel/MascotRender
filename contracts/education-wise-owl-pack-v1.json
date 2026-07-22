@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "contract_id": "education-wise-owl-pack-v1",
+  "status": "technical-pilot-preserved",
+  "product_name": "Wise Owl Academy",
+  "product_type": "character-led-education-sticker-pack",
+  "production_use": "forbidden-superseded-by-layered-golden-art-direction",
+  "scope": {
+    "category_count": 10,
+    "stickers_per_category": 10,
+    "sticker_count": 100,
+    "animated_sticker_count": 100,
+    "reduced_motion_sticker_count": 100
+  },
+  "character_identity": {
+    "character_id": "sage-owl-001",
+    "name": "Sage",
+    "species": "stylized-warm-brown-owl",
+    "required_features": [
+      "warm-brown-feather-silhouette",
+      "cream-heart-shaped-face-discs",
+      "large-navy-round-glasses",
+      "orange-diamond-beak",
+      "striped-wing-feathers",
+      "golden-feet",
+      "thick-cream-die-cut-border"
+    ]
+  },
+  "art_direction": {
+    "reference_policy": "owner reference establishes the visual system and educational semantic breadth",
+    "originality_requirement": "original Sage owl construction and original procedural compositions; no traced sticker artwork",
+    "required_visual_system": [
+      "one consistent canonical scholarly owl",
+      "warm cream brown navy orange palette",
+      "thick cream die-cut silhouette with soft grounding shadow",
+      "compact integrated learning prop",
+      "one exact phrase layout with no visible catalogue numbering",
+      "navy green red and blue caption accents",
+      "transparent background"
+    ],
+    "family_variety": {
+      "minimum_prop_archetypes": 16,
+      "minimum_motion_families": 8,
+      "minimum_composition_systems": 8,
+      "minimum_font_voices": 4,
+      "single_global_text_position_forbidden": true,
+      "generic-recolor-only-variants-forbidden": true
+    },
+    "typography": {
+      "single_read_requirement": true,
+      "visible_sequence_number_forbidden": true,
+      "independently_typeset_duplicate_word_forbidden": true,
+      "maximum_lines": 2,
+      "punctuation_is_semantic": true
+    }
+  },
+  "composition": {
+    "canonical_canvas": {"width": 512, "height": 512},
+    "hard_margin_px": 16,
+    "small_display_review_px": [80, 100, 160],
+    "recommended_default_px": 100
+  },
+  "search_and_localization": {
+    "trie_ready_semantic_ids": true,
+    "exact_phrase_trigger_required": true,
+    "catalogue_sequence_is_review-metadata-only": true,
+    "locale": "en"
+  },
+  "delivery": {
+    "flat_2d": "required",
+    "animated_webp": "required",
+    "reduced_motion": "required",
+    "thumbnail_256": "required",
+    "source_art": "original-procedural-svg-plus-pack-local-ofl-ttf",
+    "license": "MIT-with-fonts-separately-SIL-OFL-1.1"
+  },
+  "review_gates": [
+    "100-way-semantic-completeness",
+    "exact-spelling-and-punctuation",
+    "sage-owl-identity-coherence",
+    "reference-style-parity",
+    "pose-prop-caption-composition-variety",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "trie-trigger-completeness",
+    "deterministic-generation",
+    "owner-production-art-and-playback-activation"
+  ]
+}

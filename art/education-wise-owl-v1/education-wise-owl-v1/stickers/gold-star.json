@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-gold-star",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.achievement.gold-star",
+  "recipe_id": "education-owl-scene.slide",
+  "intent": "education.achievement.gold-star",
+  "alt_text": "Sage the owl in a learning scene saying GOLD STAR",
+  "accessible_description": "Sage uses a gold star learning cue with the phrase GOLD STAR",
+  "expression": "gold-star",
+  "pose": "listen",
+  "seed": 1,
+  "text": {
+    "content": "GOLD STAR",
+    "style": "gold-star-main",
+    "rotation_degrees": -1.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-gold-star",
+        "property": "translate_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-gold-star",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

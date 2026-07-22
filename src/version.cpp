@@ -3,7 +3,7 @@
 namespace mascotrender {
 
 const char* version_string() noexcept {
-    return "0.8.0";
+    return "0.9.0";
 }
 
 }  // namespace mascotrender

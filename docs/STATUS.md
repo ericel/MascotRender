@@ -8,9 +8,10 @@ E4 — optional Filament/GLB proof is complete. MR-110 through MR-116 are done,
 including cross-platform wrapper validation and publication. M0-M6 and E1-E4
 are complete. The owner-approved, hash-bound canonical family, Wave 2 Human
 Pack, six-identity Micro Reactions pipeline, 23-sticker Calendar Pop pack, and
-36-sticker Congratulations Pop pack, 96-sticker Workday Reactions pack, and
-30-sticker Christmas & New Year Glow pack ship in `v0.8.0`; anonymous
-consumers install `mascotrender/0.8.0` from the public JFrog Conan remote. The
+36-sticker Congratulations Pop pack, 96-sticker Workday Reactions pack,
+30-sticker Christmas & New Year Glow pack, and 100-sticker Wise Owl Academy
+pack ship in `v0.9.0`; anonymous consumers install `mascotrender/0.9.0` from
+the public JFrog Conan remote. The
 content-addressed Micro Reactions bundle remains published as a provider-neutral
 GitHub Release asset.
 Product/Design approved the generator-v6 50-sticker bundle on 2026-07-14 and
@@ -28,6 +29,11 @@ nine seasonal pattern families, 30 distinct motif families, four display-font
 voices, six composition systems, four motion families, and reduced-motion
 equivalents. The project owner approved the complete production-art and
 playback gate on 2026-07-22 and bound the exact review artifacts by SHA-256.
+
+Wise Owl Academy contains 100 illustrated Sage scenes across ten education
+categories. The project owner approved the complete production pack on
+2026-07-22, binding the exact review artifacts by SHA-256 and freezing a
+16-pixel minimum frame margin as an immutable regression boundary.
 
 ## Completed locally
 
@@ -99,6 +105,10 @@ playback gate on 2026-07-22 and bound the exact review artifacts by SHA-256.
 - Owner-approved Christmas & New Year Glow pack with 30 phrases, nine seasonal
   pattern families, 30 integrated hero motifs, four OFL font voices, exact
   spelling, animated WebP output, and reduced-motion equivalents.
+- Owner-approved Wise Owl Academy pack with 100 mascot-first illustrated
+  scenes, exact semantics, semantic Trie triggers, 12-layer compositions,
+  animated WebP output, reduced-motion equivalents, and a locked 16-pixel
+  minimum frame margin.
 
 ## Verified locally
 
@@ -178,14 +188,14 @@ remote so external 3D consumers can resolve `with_filament=True`.
 
 ## Distribution
 
-Release `v0.8.0` supersedes `v0.7.0` as the current production package. Anonymous
+Release `v0.9.0` supersedes `v0.8.0` as the current production package. Anonymous
 consumers add
 `https://ericel.jfrog.io/artifactory/api/conan/conan-local` as a Conan remote;
 publication credentials remain confined to repository secrets. Every release
 job must pass a logged-out exact-package re-download with `--build=never` on
 macOS arm64, Linux x86-64, and Windows x86-64. Fresh caches use
 `--build=missing` for public dependencies without matching ConanCenter
-binaries. The successful `v0.8.0` publication run will be linked from its
+binaries. The successful `v0.9.0` publication run will be linked from its
 GitHub release when the tag-driven matrix completes.
 
 ## Product direction baseline

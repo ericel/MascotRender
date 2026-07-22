@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<g transform="translate(258 235) scale(1.03)"><ellipse cx="0" cy="40" rx="98" ry="118" fill="#FFFFFF"/><circle cx="-68" cy="-50" r="48" fill="#FFFFFF"/><circle cx="68" cy="-50" r="48" fill="#FFFFFF"/><path d="M-111 57 Q-133 7 -111 -72 Q-88 -105 -61 -97 Q-34 -117 0 -128 Q34 -117 61 -97 Q88 -105 111 -72 Q133 7 111 57 Q119 126 64 165 Q31 181 0 174 Q-31 181 -64 165 Q-119 126 -111 57 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/></g><g transform="translate(258 235) scale(1.03)"><rect x="-102" y="12" width="204" height="167" rx="28" fill="#FFFFFF"/><path d="M-133 143 L-37 24" stroke="#FFFFFF" stroke-width="38" stroke-linecap="round"/></g>
+</svg>

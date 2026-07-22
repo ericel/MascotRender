@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-reach-goals",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.future.reach-goals",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.future.reach-goals",
+  "alt_text": "Sage the owl in a learning scene saying REACH GOALS",
+  "accessible_description": "Sage uses a goal mountain learning cue with the phrase REACH GOALS",
+  "expression": "reach-goals",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "REACH GOALS",
+    "style": "reach-goals-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-reach-goals",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-reach-goals",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

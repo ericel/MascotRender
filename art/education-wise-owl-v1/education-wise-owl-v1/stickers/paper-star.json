@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-paper-star",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.achievement.paper-star",
+  "recipe_id": "education-owl-scene.pop",
+  "intent": "education.achievement.paper-star",
+  "alt_text": "Sage the owl in a learning scene saying PAPER STAR",
+  "accessible_description": "Sage uses a paper star learning cue with the phrase PAPER STAR",
+  "expression": "paper-star",
+  "pose": "read",
+  "seed": 1,
+  "text": {
+    "content": "PAPER STAR",
+    "style": "paper-star-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-paper-star",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-paper-star",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

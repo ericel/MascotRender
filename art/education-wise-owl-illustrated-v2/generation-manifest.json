@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "generator": "generate_education_wise_owl_production.py",
+  "pack_id": "education-wise-owl-illustrated-v2",
+  "golden_contract": "contracts/education-wise-owl-golden-v2.json",
+  "golden_owner_decision": "contracts/education-wise-owl-golden-owner-decision-v2.json",
+  "owner_final_decision": "contracts/education-wise-owl-production-owner-approval-v2.json",
+  "sticker_count": 100,
+  "golden_sticker_count": 10,
+  "expanded_sticker_count": 90,
+  "authored_vector_layer_count_per_sticker": 11,
+  "screen_space_caption_layer_count_per_sticker": 1,
+  "composited_layer_count_per_sticker": 12,
+  "visible_sequence_numbers": 0,
+  "production_use": "approved-for-production-packaging-and-public-release"
+}
