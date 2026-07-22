@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generator": "generate_education_wise_owl_pack.py",
+  "generator_version": 1,
+  "pack_id": "education-wise-owl-v1",
+  "pack_contract": "contracts/education-wise-owl-pack-v1.json",
+  "content_matrix": "content/education-wise-owl-matrix-v1.json",
+  "sticker_count": 100,
+  "category_counts": {
+    "achievement": 10,
+    "assessment": 10,
+    "community": 10,
+    "creativity": 10,
+    "future": 10,
+    "habits": 10,
+    "literacy": 10,
+    "motivation": 10,
+    "stem": 10,
+    "study": 10
+  },
+  "font_voice_count": 4,
+  "motion_family_count": 10,
+  "composition_system_count": 8,
+  "effect_family_count": 98,
+  "visual_prop_archetype_count": 19,
+  "visible_sequence_numbers": 0,
+  "single_fitted_text_layout_per_sticker": true,
+  "independently_typeset_duplicate_text_blocks": 0,
+  "production_use": "forbidden-until-owner-production-approval"
+}

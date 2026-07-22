@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "pack_id": "education-wise-owl-golden-v2",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "education.study.study-time",
+      "sticker_id": "education-wise-owl-golden-study-time",
+      "triggers": [
+        {
+          "text": "study time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.you-can-do-it",
+      "sticker_id": "education-wise-owl-golden-you-can-do-it",
+      "triggers": [
+        {
+          "text": "you can do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.science-fun",
+      "sticker_id": "education-wise-owl-golden-science-fun",
+      "triggers": [
+        {
+          "text": "science fun",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.library-time",
+      "sticker_id": "education-wise-owl-golden-library-time",
+      "triggers": [
+        {
+          "text": "library time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.color-magic",
+      "sticker_id": "education-wise-owl-golden-color-magic",
+      "triggers": [
+        {
+          "text": "color magic",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.teamwork",
+      "sticker_id": "education-wise-owl-golden-teamwork",
+      "triggers": [
+        {
+          "text": "teamwork",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.stay-organized",
+      "sticker_id": "education-wise-owl-golden-stay-organized",
+      "triggers": [
+        {
+          "text": "stay organized",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.test-day",
+      "sticker_id": "education-wise-owl-golden-test-day",
+      "triggers": [
+        {
+          "text": "test day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.high-five",
+      "sticker_id": "education-wise-owl-golden-high-five",
+      "triggers": [
+        {
+          "text": "high five",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.graduation-day",
+      "sticker_id": "education-wise-owl-golden-graduation-day",
+      "triggers": [
+        {
+          "text": "graduation day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

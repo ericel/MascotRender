@@ -1,0 +1,1231 @@
+{
+  "schema_version": 1,
+  "pack_id": "education-wise-owl-v1",
+  "selection_structure": "unicode-normalized-casefolded-trie",
+  "entries": [
+    {
+      "phrase_id": "education.study.study-time",
+      "sticker_id": "education-wise-owl-study-time",
+      "triggers": [
+        {
+          "text": "study time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.great-job",
+      "sticker_id": "education-wise-owl-great-job",
+      "triggers": [
+        {
+          "text": "great job",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.homework",
+      "sticker_id": "education-wise-owl-homework",
+      "triggers": [
+        {
+          "text": "homework",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.exam-mode",
+      "sticker_id": "education-wise-owl-exam-mode",
+      "triggers": [
+        {
+          "text": "exam mode",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.question",
+      "sticker_id": "education-wise-owl-question",
+      "triggers": [
+        {
+          "text": "question",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.read-more",
+      "sticker_id": "education-wise-owl-read-more",
+      "triggers": [
+        {
+          "text": "read more",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.break-time",
+      "sticker_id": "education-wise-owl-break-time",
+      "triggers": [
+        {
+          "text": "break time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.well-done",
+      "sticker_id": "education-wise-owl-well-done",
+      "triggers": [
+        {
+          "text": "well done",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.back-to-school",
+      "sticker_id": "education-wise-owl-back-to-school",
+      "triggers": [
+        {
+          "text": "back to school",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.study.lets-learn",
+      "sticker_id": "education-wise-owl-lets-learn",
+      "triggers": [
+        {
+          "text": "let's learn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "lets learn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.be-curious",
+      "sticker_id": "education-wise-owl-be-curious",
+      "triggers": [
+        {
+          "text": "be curious",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.keep-going",
+      "sticker_id": "education-wise-owl-keep-going",
+      "triggers": [
+        {
+          "text": "keep going",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.you-can-do-it",
+      "sticker_id": "education-wise-owl-you-can-do-it",
+      "triggers": [
+        {
+          "text": "you can do it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.a-effort",
+      "sticker_id": "education-wise-owl-a-effort",
+      "triggers": [
+        {
+          "text": "a+ effort",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "a effort",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.brain-power",
+      "sticker_id": "education-wise-owl-brain-power",
+      "triggers": [
+        {
+          "text": "brain power",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.smart-owl",
+      "sticker_id": "education-wise-owl-smart-owl",
+      "triggers": [
+        {
+          "text": "smart owl",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.time-to-learn",
+      "sticker_id": "education-wise-owl-time-to-learn",
+      "triggers": [
+        {
+          "text": "time to learn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.stay-focused",
+      "sticker_id": "education-wise-owl-stay-focused",
+      "triggers": [
+        {
+          "text": "stay focused",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.dream-big",
+      "sticker_id": "education-wise-owl-dream-big",
+      "triggers": [
+        {
+          "text": "dream big",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.motivation.plan-ahead",
+      "sticker_id": "education-wise-owl-plan-ahead",
+      "triggers": [
+        {
+          "text": "plan ahead",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.math-wiz",
+      "sticker_id": "education-wise-owl-math-wiz",
+      "triggers": [
+        {
+          "text": "math wiz",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.problem-solver",
+      "sticker_id": "education-wise-owl-problem-solver",
+      "triggers": [
+        {
+          "text": "problem solver",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.science-fun",
+      "sticker_id": "education-wise-owl-science-fun",
+      "triggers": [
+        {
+          "text": "science fun",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.experiment",
+      "sticker_id": "education-wise-owl-experiment",
+      "triggers": [
+        {
+          "text": "experiment",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.discover",
+      "sticker_id": "education-wise-owl-discover",
+      "triggers": [
+        {
+          "text": "discover",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.little-scientist",
+      "sticker_id": "education-wise-owl-little-scientist",
+      "triggers": [
+        {
+          "text": "little scientist",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.think-deep",
+      "sticker_id": "education-wise-owl-think-deep",
+      "triggers": [
+        {
+          "text": "think deep",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.good-thinking",
+      "sticker_id": "education-wise-owl-good-thinking",
+      "triggers": [
+        {
+          "text": "good thinking",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.idea-time",
+      "sticker_id": "education-wise-owl-idea-time",
+      "triggers": [
+        {
+          "text": "idea time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.stem.lightbulb",
+      "sticker_id": "education-wise-owl-lightbulb",
+      "triggers": [
+        {
+          "text": "lightbulb",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.read-it",
+      "sticker_id": "education-wise-owl-read-it",
+      "triggers": [
+        {
+          "text": "read it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.book-lover",
+      "sticker_id": "education-wise-owl-book-lover",
+      "triggers": [
+        {
+          "text": "book lover",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.library-time",
+      "sticker_id": "education-wise-owl-library-time",
+      "triggers": [
+        {
+          "text": "library time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.story-time",
+      "sticker_id": "education-wise-owl-story-time",
+      "triggers": [
+        {
+          "text": "story time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.word-power",
+      "sticker_id": "education-wise-owl-word-power",
+      "triggers": [
+        {
+          "text": "word power",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.spelling-star",
+      "sticker_id": "education-wise-owl-spelling-star",
+      "triggers": [
+        {
+          "text": "spelling star",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.write-on",
+      "sticker_id": "education-wise-owl-write-on",
+      "triggers": [
+        {
+          "text": "write on",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.pen-to-paper",
+      "sticker_id": "education-wise-owl-pen-to-paper",
+      "triggers": [
+        {
+          "text": "pen to paper",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.creative-mind",
+      "sticker_id": "education-wise-owl-creative-mind",
+      "triggers": [
+        {
+          "text": "creative mind",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.literacy.letter-time",
+      "sticker_id": "education-wise-owl-letter-time",
+      "triggers": [
+        {
+          "text": "letter time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.paint-more",
+      "sticker_id": "education-wise-owl-paint-more",
+      "triggers": [
+        {
+          "text": "paint more",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.color-magic",
+      "sticker_id": "education-wise-owl-color-magic",
+      "triggers": [
+        {
+          "text": "color magic",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.music-time",
+      "sticker_id": "education-wise-owl-music-time",
+      "triggers": [
+        {
+          "text": "music time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.sing-loud",
+      "sticker_id": "education-wise-owl-sing-loud",
+      "triggers": [
+        {
+          "text": "sing loud",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.play-on",
+      "sticker_id": "education-wise-owl-play-on",
+      "triggers": [
+        {
+          "text": "play on",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.rock-star",
+      "sticker_id": "education-wise-owl-rock-star",
+      "triggers": [
+        {
+          "text": "rock star",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.dance-break",
+      "sticker_id": "education-wise-owl-dance-break",
+      "triggers": [
+        {
+          "text": "dance break",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.move-and-learn",
+      "sticker_id": "education-wise-owl-move-and-learn",
+      "triggers": [
+        {
+          "text": "move & learn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "move and learn",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.happy-heart",
+      "sticker_id": "education-wise-owl-happy-heart",
+      "triggers": [
+        {
+          "text": "happy heart",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.creativity.kindness",
+      "sticker_id": "education-wise-owl-kindness",
+      "triggers": [
+        {
+          "text": "kindness",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.teamwork",
+      "sticker_id": "education-wise-owl-teamwork",
+      "triggers": [
+        {
+          "text": "teamwork",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.work-together",
+      "sticker_id": "education-wise-owl-work-together",
+      "triggers": [
+        {
+          "text": "work together",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.help-others",
+      "sticker_id": "education-wise-owl-help-others",
+      "triggers": [
+        {
+          "text": "help others",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.share-ideas",
+      "sticker_id": "education-wise-owl-share-ideas",
+      "triggers": [
+        {
+          "text": "share ideas",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.good-friend",
+      "sticker_id": "education-wise-owl-good-friend",
+      "triggers": [
+        {
+          "text": "good friend",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.be-respectful",
+      "sticker_id": "education-wise-owl-be-respectful",
+      "triggers": [
+        {
+          "text": "be respectful",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.listen-up",
+      "sticker_id": "education-wise-owl-listen-up",
+      "triggers": [
+        {
+          "text": "listen up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.hands-up",
+      "sticker_id": "education-wise-owl-hands-up",
+      "triggers": [
+        {
+          "text": "hands up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.class-leader",
+      "sticker_id": "education-wise-owl-class-leader",
+      "triggers": [
+        {
+          "text": "class leader",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.community.role-model",
+      "sticker_id": "education-wise-owl-role-model",
+      "triggers": [
+        {
+          "text": "role model",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.on-time",
+      "sticker_id": "education-wise-owl-on-time",
+      "triggers": [
+        {
+          "text": "on time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.time-manager",
+      "sticker_id": "education-wise-owl-time-manager",
+      "triggers": [
+        {
+          "text": "time manager",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.stay-organized",
+      "sticker_id": "education-wise-owl-stay-organized",
+      "triggers": [
+        {
+          "text": "stay organized",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.checklist",
+      "sticker_id": "education-wise-owl-checklist",
+      "triggers": [
+        {
+          "text": "checklist",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.all-set",
+      "sticker_id": "education-wise-owl-all-set",
+      "triggers": [
+        {
+          "text": "all set",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.no-excuses",
+      "sticker_id": "education-wise-owl-no-excuses",
+      "triggers": [
+        {
+          "text": "no excuses",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.keep-trying",
+      "sticker_id": "education-wise-owl-keep-trying",
+      "triggers": [
+        {
+          "text": "keep trying",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.dont-quit",
+      "sticker_id": "education-wise-owl-dont-quit",
+      "triggers": [
+        {
+          "text": "don't quit",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        },
+        {
+          "text": "dont quit",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 0.84
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.small-steps",
+      "sticker_id": "education-wise-owl-small-steps",
+      "triggers": [
+        {
+          "text": "small steps",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.habits.big-progress",
+      "sticker_id": "education-wise-owl-big-progress",
+      "triggers": [
+        {
+          "text": "big progress",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.test-day",
+      "sticker_id": "education-wise-owl-test-day",
+      "triggers": [
+        {
+          "text": "test day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.ace-it",
+      "sticker_id": "education-wise-owl-ace-it",
+      "triggers": [
+        {
+          "text": "ace it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.review-time",
+      "sticker_id": "education-wise-owl-review-time",
+      "triggers": [
+        {
+          "text": "review time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.study-hard",
+      "sticker_id": "education-wise-owl-study-hard",
+      "triggers": [
+        {
+          "text": "study hard",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.quiz-master",
+      "sticker_id": "education-wise-owl-quiz-master",
+      "triggers": [
+        {
+          "text": "quiz master",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.recall-it",
+      "sticker_id": "education-wise-owl-recall-it",
+      "triggers": [
+        {
+          "text": "recall it",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.memory-mode",
+      "sticker_id": "education-wise-owl-memory-mode",
+      "triggers": [
+        {
+          "text": "memory mode",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.learn-daily",
+      "sticker_id": "education-wise-owl-learn-daily",
+      "triggers": [
+        {
+          "text": "learn daily",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.never-stop",
+      "sticker_id": "education-wise-owl-never-stop",
+      "triggers": [
+        {
+          "text": "never stop",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.assessment.every-day-counts",
+      "sticker_id": "education-wise-owl-every-day-counts",
+      "triggers": [
+        {
+          "text": "every day counts",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.paper-star",
+      "sticker_id": "education-wise-owl-paper-star",
+      "triggers": [
+        {
+          "text": "paper star",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.good-work",
+      "sticker_id": "education-wise-owl-good-work",
+      "triggers": [
+        {
+          "text": "good work",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.star-student",
+      "sticker_id": "education-wise-owl-star-student",
+      "triggers": [
+        {
+          "text": "star student",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.top-notch",
+      "sticker_id": "education-wise-owl-top-notch",
+      "triggers": [
+        {
+          "text": "top notch",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.high-five",
+      "sticker_id": "education-wise-owl-high-five",
+      "triggers": [
+        {
+          "text": "high five",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.you-rock",
+      "sticker_id": "education-wise-owl-you-rock",
+      "triggers": [
+        {
+          "text": "you rock",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.super-star",
+      "sticker_id": "education-wise-owl-super-star",
+      "triggers": [
+        {
+          "text": "super star",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.gold-star",
+      "sticker_id": "education-wise-owl-gold-star",
+      "triggers": [
+        {
+          "text": "gold star",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.trophy-time",
+      "sticker_id": "education-wise-owl-trophy-time",
+      "triggers": [
+        {
+          "text": "trophy time",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.achievement.champion",
+      "sticker_id": "education-wise-owl-champion",
+      "triggers": [
+        {
+          "text": "champion",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.graduation-day",
+      "sticker_id": "education-wise-owl-graduation-day",
+      "triggers": [
+        {
+          "text": "graduation day",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.future-leader",
+      "sticker_id": "education-wise-owl-future-leader",
+      "triggers": [
+        {
+          "text": "future leader",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.aim-high",
+      "sticker_id": "education-wise-owl-aim-high",
+      "triggers": [
+        {
+          "text": "aim high",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.reach-goals",
+      "sticker_id": "education-wise-owl-reach-goals",
+      "triggers": [
+        {
+          "text": "reach goals",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.bright-future",
+      "sticker_id": "education-wise-owl-bright-future",
+      "triggers": [
+        {
+          "text": "bright future",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.believe-in-you",
+      "sticker_id": "education-wise-owl-believe-in-you",
+      "triggers": [
+        {
+          "text": "believe in you",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.proud-moment",
+      "sticker_id": "education-wise-owl-proud-moment",
+      "triggers": [
+        {
+          "text": "proud moment",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.success-path",
+      "sticker_id": "education-wise-owl-success-path",
+      "triggers": [
+        {
+          "text": "success path",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.one-step-up",
+      "sticker_id": "education-wise-owl-one-step-up",
+      "triggers": [
+        {
+          "text": "one step up",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    },
+    {
+      "phrase_id": "education.future.keep-shining",
+      "sticker_id": "education-wise-owl-keep-shining",
+      "triggers": [
+        {
+          "text": "keep shining",
+          "locale": "en",
+          "match": "exact-phrase",
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

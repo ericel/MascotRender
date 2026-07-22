@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-read-it",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.literacy.read-it",
+  "recipe_id": "education-owl-scene.pop",
+  "intent": "education.literacy.read-it",
+  "alt_text": "Sage the owl in a learning scene saying READ IT!",
+  "accessible_description": "Sage uses a open book learning cue with the phrase READ IT!",
+  "expression": "read-it",
+  "pose": "read",
+  "seed": 1,
+  "text": {
+    "content": "READ IT!",
+    "style": "read-it-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-read-it",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-read-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

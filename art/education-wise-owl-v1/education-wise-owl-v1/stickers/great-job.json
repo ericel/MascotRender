@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-great-job",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.study.great-job",
+  "recipe_id": "education-owl-scene.pulse",
+  "intent": "education.study.great-job",
+  "alt_text": "Sage the owl in a learning scene saying GREAT JOB!",
+  "accessible_description": "Sage uses a grade paper learning cue with the phrase GREAT JOB!",
+  "expression": "great-job",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "GREAT JOB!",
+    "style": "great-job-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-great-job",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-great-job",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-golden-you-can-do-it",
+  "pack_id": "education-wise-owl-golden-v2",
+  "phrase_id": "education.motivation.you-can-do-it",
+  "recipe_id": "education-owl-golden.pop",
+  "intent": "education.motivation.you-can-do-it",
+  "alt_text": "Layered illustrated Sage owl scene saying YOU CAN DO IT!",
+  "accessible_description": "Sage interacts with a rocket scene and the phrase YOU CAN DO IT!",
+  "expression": "you-can-do-it",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "YOU CAN DO IT!",
+    "style": "you-can-do-it-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "body-base-you-can-do-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -6.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "wings-you-can-do-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "prop-front-you-can-do-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

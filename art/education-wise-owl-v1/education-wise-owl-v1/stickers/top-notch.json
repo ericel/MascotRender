@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-top-notch",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.achievement.top-notch",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.achievement.top-notch",
+  "alt_text": "Sage the owl in a learning scene saying TOP NOTCH",
+  "accessible_description": "Sage uses a top star learning cue with the phrase TOP NOTCH",
+  "expression": "top-notch",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "TOP NOTCH",
+    "style": "top-notch-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-top-notch",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-top-notch",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

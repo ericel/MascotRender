@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-time-to-learn",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.motivation.time-to-learn",
+  "recipe_id": "education-owl-scene.nod",
+  "intent": "education.motivation.time-to-learn",
+  "alt_text": "Sage the owl in a learning scene saying TIME TO LEARN",
+  "accessible_description": "Sage uses a clock book learning cue with the phrase TIME TO LEARN",
+  "expression": "time-to-learn",
+  "pose": "wave",
+  "seed": 1,
+  "text": {
+    "content": "TIME TO LEARN",
+    "style": "time-to-learn-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-time-to-learn",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-time-to-learn",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

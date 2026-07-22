@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-future-leader",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.future.future-leader",
+  "recipe_id": "education-owl-scene.pulse",
+  "intent": "education.future.future-leader",
+  "alt_text": "Sage the owl in a learning scene saying FUTURE LEADER",
+  "accessible_description": "Sage uses a leader cap learning cue with the phrase FUTURE LEADER",
+  "expression": "future-leader",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "FUTURE LEADER",
+    "style": "future-leader-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-future-leader",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-future-leader",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

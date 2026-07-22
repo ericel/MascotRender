@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-break-time",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.study.break-time",
+  "recipe_id": "education-owl-scene.nod",
+  "intent": "education.study.break-time",
+  "alt_text": "Sage the owl in a learning scene saying BREAK TIME",
+  "accessible_description": "Sage uses a music cushion learning cue with the phrase BREAK TIME",
+  "expression": "break-time",
+  "pose": "wave",
+  "seed": 1,
+  "text": {
+    "content": "BREAK TIME",
+    "style": "break-time-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-break-time",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-break-time",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

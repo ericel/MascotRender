@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-study-time",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.study.study-time",
+  "recipe_id": "education-owl-scene.pop",
+  "intent": "education.study.study-time",
+  "alt_text": "Sage the owl in a learning scene saying STUDY TIME",
+  "accessible_description": "Sage uses a open book learning cue with the phrase STUDY TIME",
+  "expression": "study-time",
+  "pose": "read",
+  "seed": 1,
+  "text": {
+    "content": "STUDY TIME",
+    "style": "study-time-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-study-time",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-study-time",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

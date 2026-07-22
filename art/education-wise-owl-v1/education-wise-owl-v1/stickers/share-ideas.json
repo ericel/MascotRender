@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-share-ideas",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.community.share-ideas",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.community.share-ideas",
+  "alt_text": "Sage the owl in a learning scene saying SHARE IDEAS",
+  "accessible_description": "Sage uses a idea share learning cue with the phrase SHARE IDEAS",
+  "expression": "share-ideas",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "SHARE IDEAS",
+    "style": "share-ideas-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-share-ideas",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-share-ideas",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

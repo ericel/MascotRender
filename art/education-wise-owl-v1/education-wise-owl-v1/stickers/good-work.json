@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-good-work",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.achievement.good-work",
+  "recipe_id": "education-owl-scene.pulse",
+  "intent": "education.achievement.good-work",
+  "alt_text": "Sage the owl in a learning scene saying GOOD WORK",
+  "accessible_description": "Sage uses a good work learning cue with the phrase GOOD WORK",
+  "expression": "good-work",
+  "pose": "present",
+  "seed": 1,
+  "text": {
+    "content": "GOOD WORK",
+    "style": "good-work-main",
+    "rotation_degrees": -1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-good-work",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-good-work",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

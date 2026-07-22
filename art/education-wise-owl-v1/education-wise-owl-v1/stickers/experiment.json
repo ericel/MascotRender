@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-experiment",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.stem.experiment",
+  "recipe_id": "education-owl-scene.float",
+  "intent": "education.stem.experiment",
+  "alt_text": "Sage the owl in a learning scene saying EXPERIMENT",
+  "accessible_description": "Sage uses a lab beakers learning cue with the phrase EXPERIMENT",
+  "expression": "experiment",
+  "pose": "cheer",
+  "seed": 1,
+  "text": {
+    "content": "EXPERIMENT",
+    "style": "experiment-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_float"
+    ],
+    "tracks": [
+      {
+        "target": "scene-experiment",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -7.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-experiment",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

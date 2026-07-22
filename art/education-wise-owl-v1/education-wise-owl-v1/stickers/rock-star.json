@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-rock-star",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.creativity.rock-star",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.creativity.rock-star",
+  "alt_text": "Sage the owl in a learning scene saying ROCK STAR",
+  "accessible_description": "Sage uses a guitar star learning cue with the phrase ROCK STAR",
+  "expression": "rock-star",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "ROCK STAR",
+    "style": "rock-star-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-rock-star",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-rock-star",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

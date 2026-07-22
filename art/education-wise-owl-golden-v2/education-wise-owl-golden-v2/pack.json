@@ -1,0 +1,1407 @@
+{
+  "schema_version": 1,
+  "pack_id": "education-wise-owl-golden-v2",
+  "canvas": {
+    "width": 512,
+    "height": 512
+  },
+  "layers": [
+    {
+      "id": "shadow-study-time",
+      "source": "layers/00-shadow-study-time.svg",
+      "z": 0,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-study-time",
+      "source": "layers/00-cutline-study-time.svg",
+      "z": 1,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-study-time",
+      "source": "layers/00-prop-back-study-time.svg",
+      "z": 2,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-study-time",
+      "source": "layers/00-back-feathers-study-time.svg",
+      "z": 3,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-study-time",
+      "source": "layers/00-body-base-study-time.svg",
+      "z": 4,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-study-time",
+      "source": "layers/00-body-depth-study-time.svg",
+      "z": 5,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-study-time",
+      "source": "layers/00-wings-study-time.svg",
+      "z": 6,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-study-time",
+      "source": "layers/00-head-study-time.svg",
+      "z": 7,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-study-time",
+      "source": "layers/00-face-study-time.svg",
+      "z": 8,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-study-time",
+      "source": "layers/00-prop-front-study-time.svg",
+      "z": 9,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-study-time",
+      "source": "layers/00-effects-study-time.svg",
+      "z": 10,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-you-can-do-it",
+      "source": "layers/01-shadow-you-can-do-it.svg",
+      "z": 20,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-you-can-do-it",
+      "source": "layers/01-cutline-you-can-do-it.svg",
+      "z": 21,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-you-can-do-it",
+      "source": "layers/01-prop-back-you-can-do-it.svg",
+      "z": 22,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-you-can-do-it",
+      "source": "layers/01-back-feathers-you-can-do-it.svg",
+      "z": 23,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-you-can-do-it",
+      "source": "layers/01-body-base-you-can-do-it.svg",
+      "z": 24,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-you-can-do-it",
+      "source": "layers/01-body-depth-you-can-do-it.svg",
+      "z": 25,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-you-can-do-it",
+      "source": "layers/01-wings-you-can-do-it.svg",
+      "z": 26,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-you-can-do-it",
+      "source": "layers/01-head-you-can-do-it.svg",
+      "z": 27,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-you-can-do-it",
+      "source": "layers/01-face-you-can-do-it.svg",
+      "z": 28,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-you-can-do-it",
+      "source": "layers/01-prop-front-you-can-do-it.svg",
+      "z": 29,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-you-can-do-it",
+      "source": "layers/01-effects-you-can-do-it.svg",
+      "z": 30,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-science-fun",
+      "source": "layers/02-shadow-science-fun.svg",
+      "z": 40,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-science-fun",
+      "source": "layers/02-cutline-science-fun.svg",
+      "z": 41,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-science-fun",
+      "source": "layers/02-prop-back-science-fun.svg",
+      "z": 42,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-science-fun",
+      "source": "layers/02-back-feathers-science-fun.svg",
+      "z": 43,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-science-fun",
+      "source": "layers/02-body-base-science-fun.svg",
+      "z": 44,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-science-fun",
+      "source": "layers/02-body-depth-science-fun.svg",
+      "z": 45,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-science-fun",
+      "source": "layers/02-wings-science-fun.svg",
+      "z": 46,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-science-fun",
+      "source": "layers/02-head-science-fun.svg",
+      "z": 47,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-science-fun",
+      "source": "layers/02-face-science-fun.svg",
+      "z": 48,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-science-fun",
+      "source": "layers/02-prop-front-science-fun.svg",
+      "z": 49,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-science-fun",
+      "source": "layers/02-effects-science-fun.svg",
+      "z": 50,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-library-time",
+      "source": "layers/03-shadow-library-time.svg",
+      "z": 60,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-library-time",
+      "source": "layers/03-cutline-library-time.svg",
+      "z": 61,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-library-time",
+      "source": "layers/03-prop-back-library-time.svg",
+      "z": 62,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-library-time",
+      "source": "layers/03-back-feathers-library-time.svg",
+      "z": 63,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-library-time",
+      "source": "layers/03-body-base-library-time.svg",
+      "z": 64,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-library-time",
+      "source": "layers/03-body-depth-library-time.svg",
+      "z": 65,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-library-time",
+      "source": "layers/03-wings-library-time.svg",
+      "z": 66,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-library-time",
+      "source": "layers/03-head-library-time.svg",
+      "z": 67,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-library-time",
+      "source": "layers/03-face-library-time.svg",
+      "z": 68,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-library-time",
+      "source": "layers/03-prop-front-library-time.svg",
+      "z": 69,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-library-time",
+      "source": "layers/03-effects-library-time.svg",
+      "z": 70,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-color-magic",
+      "source": "layers/04-shadow-color-magic.svg",
+      "z": 80,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-color-magic",
+      "source": "layers/04-cutline-color-magic.svg",
+      "z": 81,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-color-magic",
+      "source": "layers/04-prop-back-color-magic.svg",
+      "z": 82,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-color-magic",
+      "source": "layers/04-back-feathers-color-magic.svg",
+      "z": 83,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-color-magic",
+      "source": "layers/04-body-base-color-magic.svg",
+      "z": 84,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-color-magic",
+      "source": "layers/04-body-depth-color-magic.svg",
+      "z": 85,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-color-magic",
+      "source": "layers/04-wings-color-magic.svg",
+      "z": 86,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-color-magic",
+      "source": "layers/04-head-color-magic.svg",
+      "z": 87,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-color-magic",
+      "source": "layers/04-face-color-magic.svg",
+      "z": 88,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-color-magic",
+      "source": "layers/04-prop-front-color-magic.svg",
+      "z": 89,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-color-magic",
+      "source": "layers/04-effects-color-magic.svg",
+      "z": 90,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-teamwork",
+      "source": "layers/05-shadow-teamwork.svg",
+      "z": 100,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-teamwork",
+      "source": "layers/05-cutline-teamwork.svg",
+      "z": 101,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-teamwork",
+      "source": "layers/05-prop-back-teamwork.svg",
+      "z": 102,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-teamwork",
+      "source": "layers/05-back-feathers-teamwork.svg",
+      "z": 103,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-teamwork",
+      "source": "layers/05-body-base-teamwork.svg",
+      "z": 104,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-teamwork",
+      "source": "layers/05-body-depth-teamwork.svg",
+      "z": 105,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-teamwork",
+      "source": "layers/05-wings-teamwork.svg",
+      "z": 106,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-teamwork",
+      "source": "layers/05-head-teamwork.svg",
+      "z": 107,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-teamwork",
+      "source": "layers/05-face-teamwork.svg",
+      "z": 108,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-teamwork",
+      "source": "layers/05-prop-front-teamwork.svg",
+      "z": 109,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-teamwork",
+      "source": "layers/05-effects-teamwork.svg",
+      "z": 110,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-stay-organized",
+      "source": "layers/06-shadow-stay-organized.svg",
+      "z": 120,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-stay-organized",
+      "source": "layers/06-cutline-stay-organized.svg",
+      "z": 121,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-stay-organized",
+      "source": "layers/06-prop-back-stay-organized.svg",
+      "z": 122,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-stay-organized",
+      "source": "layers/06-back-feathers-stay-organized.svg",
+      "z": 123,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-stay-organized",
+      "source": "layers/06-body-base-stay-organized.svg",
+      "z": 124,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-stay-organized",
+      "source": "layers/06-body-depth-stay-organized.svg",
+      "z": 125,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-stay-organized",
+      "source": "layers/06-wings-stay-organized.svg",
+      "z": 126,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-stay-organized",
+      "source": "layers/06-head-stay-organized.svg",
+      "z": 127,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-stay-organized",
+      "source": "layers/06-face-stay-organized.svg",
+      "z": 128,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-stay-organized",
+      "source": "layers/06-prop-front-stay-organized.svg",
+      "z": 129,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-stay-organized",
+      "source": "layers/06-effects-stay-organized.svg",
+      "z": 130,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-test-day",
+      "source": "layers/07-shadow-test-day.svg",
+      "z": 140,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-test-day",
+      "source": "layers/07-cutline-test-day.svg",
+      "z": 141,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-test-day",
+      "source": "layers/07-prop-back-test-day.svg",
+      "z": 142,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-test-day",
+      "source": "layers/07-back-feathers-test-day.svg",
+      "z": 143,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-test-day",
+      "source": "layers/07-body-base-test-day.svg",
+      "z": 144,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-test-day",
+      "source": "layers/07-body-depth-test-day.svg",
+      "z": 145,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-test-day",
+      "source": "layers/07-wings-test-day.svg",
+      "z": 146,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-test-day",
+      "source": "layers/07-head-test-day.svg",
+      "z": 147,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-test-day",
+      "source": "layers/07-face-test-day.svg",
+      "z": 148,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-test-day",
+      "source": "layers/07-prop-front-test-day.svg",
+      "z": 149,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-test-day",
+      "source": "layers/07-effects-test-day.svg",
+      "z": 150,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-high-five",
+      "source": "layers/08-shadow-high-five.svg",
+      "z": 160,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-high-five",
+      "source": "layers/08-cutline-high-five.svg",
+      "z": 161,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-high-five",
+      "source": "layers/08-prop-back-high-five.svg",
+      "z": 162,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-high-five",
+      "source": "layers/08-back-feathers-high-five.svg",
+      "z": 163,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-high-five",
+      "source": "layers/08-body-base-high-five.svg",
+      "z": 164,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-high-five",
+      "source": "layers/08-body-depth-high-five.svg",
+      "z": 165,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-high-five",
+      "source": "layers/08-wings-high-five.svg",
+      "z": 166,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-high-five",
+      "source": "layers/08-head-high-five.svg",
+      "z": 167,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-high-five",
+      "source": "layers/08-face-high-five.svg",
+      "z": 168,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-high-five",
+      "source": "layers/08-prop-front-high-five.svg",
+      "z": 169,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-high-five",
+      "source": "layers/08-effects-high-five.svg",
+      "z": 170,
+      "pivot": "composition",
+      "depth": 0.8
+    },
+    {
+      "id": "shadow-graduation-day",
+      "source": "layers/09-shadow-graduation-day.svg",
+      "z": 180,
+      "pivot": "composition",
+      "depth": 0.0
+    },
+    {
+      "id": "cutline-graduation-day",
+      "source": "layers/09-cutline-graduation-day.svg",
+      "z": 181,
+      "pivot": "composition",
+      "depth": 0.08
+    },
+    {
+      "id": "prop-back-graduation-day",
+      "source": "layers/09-prop-back-graduation-day.svg",
+      "z": 182,
+      "pivot": "composition",
+      "depth": 0.16
+    },
+    {
+      "id": "back-feathers-graduation-day",
+      "source": "layers/09-back-feathers-graduation-day.svg",
+      "z": 183,
+      "pivot": "composition",
+      "depth": 0.24
+    },
+    {
+      "id": "body-base-graduation-day",
+      "source": "layers/09-body-base-graduation-day.svg",
+      "z": 184,
+      "pivot": "composition",
+      "depth": 0.32
+    },
+    {
+      "id": "body-depth-graduation-day",
+      "source": "layers/09-body-depth-graduation-day.svg",
+      "z": 185,
+      "pivot": "composition",
+      "depth": 0.4
+    },
+    {
+      "id": "wings-graduation-day",
+      "source": "layers/09-wings-graduation-day.svg",
+      "z": 186,
+      "pivot": "composition",
+      "depth": 0.48
+    },
+    {
+      "id": "head-graduation-day",
+      "source": "layers/09-head-graduation-day.svg",
+      "z": 187,
+      "pivot": "composition",
+      "depth": 0.56
+    },
+    {
+      "id": "face-graduation-day",
+      "source": "layers/09-face-graduation-day.svg",
+      "z": 188,
+      "pivot": "composition",
+      "depth": 0.64
+    },
+    {
+      "id": "prop-front-graduation-day",
+      "source": "layers/09-prop-front-graduation-day.svg",
+      "z": 189,
+      "pivot": "composition",
+      "depth": 0.72
+    },
+    {
+      "id": "effects-graduation-day",
+      "source": "layers/09-effects-graduation-day.svg",
+      "z": 190,
+      "pivot": "composition",
+      "depth": 0.8
+    }
+  ],
+  "base_layers": [],
+  "expressions": {
+    "study-time": [
+      "shadow-study-time",
+      "cutline-study-time",
+      "prop-back-study-time",
+      "back-feathers-study-time",
+      "body-base-study-time",
+      "body-depth-study-time",
+      "wings-study-time",
+      "head-study-time",
+      "face-study-time",
+      "prop-front-study-time",
+      "effects-study-time"
+    ],
+    "you-can-do-it": [
+      "shadow-you-can-do-it",
+      "cutline-you-can-do-it",
+      "prop-back-you-can-do-it",
+      "back-feathers-you-can-do-it",
+      "body-base-you-can-do-it",
+      "body-depth-you-can-do-it",
+      "wings-you-can-do-it",
+      "head-you-can-do-it",
+      "face-you-can-do-it",
+      "prop-front-you-can-do-it",
+      "effects-you-can-do-it"
+    ],
+    "science-fun": [
+      "shadow-science-fun",
+      "cutline-science-fun",
+      "prop-back-science-fun",
+      "back-feathers-science-fun",
+      "body-base-science-fun",
+      "body-depth-science-fun",
+      "wings-science-fun",
+      "head-science-fun",
+      "face-science-fun",
+      "prop-front-science-fun",
+      "effects-science-fun"
+    ],
+    "library-time": [
+      "shadow-library-time",
+      "cutline-library-time",
+      "prop-back-library-time",
+      "back-feathers-library-time",
+      "body-base-library-time",
+      "body-depth-library-time",
+      "wings-library-time",
+      "head-library-time",
+      "face-library-time",
+      "prop-front-library-time",
+      "effects-library-time"
+    ],
+    "color-magic": [
+      "shadow-color-magic",
+      "cutline-color-magic",
+      "prop-back-color-magic",
+      "back-feathers-color-magic",
+      "body-base-color-magic",
+      "body-depth-color-magic",
+      "wings-color-magic",
+      "head-color-magic",
+      "face-color-magic",
+      "prop-front-color-magic",
+      "effects-color-magic"
+    ],
+    "teamwork": [
+      "shadow-teamwork",
+      "cutline-teamwork",
+      "prop-back-teamwork",
+      "back-feathers-teamwork",
+      "body-base-teamwork",
+      "body-depth-teamwork",
+      "wings-teamwork",
+      "head-teamwork",
+      "face-teamwork",
+      "prop-front-teamwork",
+      "effects-teamwork"
+    ],
+    "stay-organized": [
+      "shadow-stay-organized",
+      "cutline-stay-organized",
+      "prop-back-stay-organized",
+      "back-feathers-stay-organized",
+      "body-base-stay-organized",
+      "body-depth-stay-organized",
+      "wings-stay-organized",
+      "head-stay-organized",
+      "face-stay-organized",
+      "prop-front-stay-organized",
+      "effects-stay-organized"
+    ],
+    "test-day": [
+      "shadow-test-day",
+      "cutline-test-day",
+      "prop-back-test-day",
+      "back-feathers-test-day",
+      "body-base-test-day",
+      "body-depth-test-day",
+      "wings-test-day",
+      "head-test-day",
+      "face-test-day",
+      "prop-front-test-day",
+      "effects-test-day"
+    ],
+    "high-five": [
+      "shadow-high-five",
+      "cutline-high-five",
+      "prop-back-high-five",
+      "back-feathers-high-five",
+      "body-base-high-five",
+      "body-depth-high-five",
+      "wings-high-five",
+      "head-high-five",
+      "face-high-five",
+      "prop-front-high-five",
+      "effects-high-five"
+    ],
+    "graduation-day": [
+      "shadow-graduation-day",
+      "cutline-graduation-day",
+      "prop-back-graduation-day",
+      "back-feathers-graduation-day",
+      "body-base-graduation-day",
+      "body-depth-graduation-day",
+      "wings-graduation-day",
+      "head-graduation-day",
+      "face-graduation-day",
+      "prop-front-graduation-day",
+      "effects-graduation-day"
+    ]
+  },
+  "poses": {
+    "read": [],
+    "cheer": [],
+    "present": [],
+    "together": [],
+    "write": [],
+    "proud": []
+  },
+  "provenance": {
+    "creator": "MascotRender project",
+    "license": "MIT; fonts SIL OFL 1.1",
+    "source": "original procedural layered 2.5D Sage golden-set art"
+  },
+  "anchors": {
+    "composition_center": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "pivots": {
+    "composition": {
+      "x": 256,
+      "y": 256
+    }
+  },
+  "avoid_regions": [],
+  "text_clearance": 0,
+  "caption_validation": {
+    "minimum_canvas_margin_px": 16,
+    "maximum_lines": 2,
+    "must_remain_inside_canvas_for_every_frame": true,
+    "may_overlap_character": false,
+    "may_overlap_assistive_device": false,
+    "must_pass_sizes_px": [
+      80,
+      100,
+      160
+    ],
+    "collision_bounds": "golden-scene-specific-safe-areas"
+  },
+  "fonts": [
+    {
+      "id": "punch",
+      "source": "fonts/changa-one/ChangaOne-Regular.ttf",
+      "license": "fonts/changa-one/OFL.txt"
+    },
+    {
+      "id": "comic-slant",
+      "source": "fonts/bangers/Bangers-Regular.ttf",
+      "license": "fonts/bangers/OFL.txt"
+    },
+    {
+      "id": "rounded",
+      "source": "fonts/lilita-one/LilitaOne-Regular.ttf",
+      "license": "fonts/lilita-one/OFL.txt"
+    },
+    {
+      "id": "handwritten",
+      "source": "fonts/kalam/Kalam-Bold.ttf",
+      "license": "fonts/kalam/OFL.txt"
+    }
+  ],
+  "text_styles": {
+    "study-time-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 56,
+        "y": 382,
+        "width": 400,
+        "height": 102
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 245,
+          "g": 185,
+          "b": 44
+        }
+      }
+    },
+    "you-can-do-it-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 56,
+        "y": 24,
+        "width": 400,
+        "height": 112
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 228,
+        "g": 74,
+        "b": 61
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 245,
+          "g": 185,
+          "b": 44
+        }
+      }
+    },
+    "science-fun-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 57,
+        "y": 28,
+        "width": 398,
+        "height": 104
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 238,
+          "g": 139,
+          "b": 32
+        }
+      }
+    },
+    "library-time-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 52,
+        "y": 382,
+        "width": 408,
+        "height": 100
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 255,
+          "g": 241,
+          "b": 204
+        }
+      }
+    },
+    "color-magic-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 55,
+        "y": 24,
+        "width": 402,
+        "height": 108
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 128,
+        "g": 90,
+        "b": 201
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 238,
+          "g": 139,
+          "b": 32
+        }
+      }
+    },
+    "teamwork-main": {
+      "font": "rounded",
+      "safe_area": {
+        "x": 58,
+        "y": 386,
+        "width": 396,
+        "height": 96
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 22,
+        "g": 138,
+        "b": 98
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 228,
+          "g": 74,
+          "b": 61
+        }
+      }
+    },
+    "stay-organized-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 42,
+        "y": 24,
+        "width": 428,
+        "height": 106
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 53,
+        "g": 175,
+        "b": 165
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 245,
+          "g": 185,
+          "b": 44
+        }
+      }
+    },
+    "test-day-main": {
+      "font": "punch",
+      "safe_area": {
+        "x": 58,
+        "y": 386,
+        "width": 396,
+        "height": 96
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 228,
+        "g": 74,
+        "b": 61
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 40,
+          "g": 123,
+          "b": 209
+        }
+      }
+    },
+    "high-five-main": {
+      "font": "comic-slant",
+      "safe_area": {
+        "x": 55,
+        "y": 24,
+        "width": 402,
+        "height": 108
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 245,
+        "g": 185,
+        "b": 44
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 228,
+          "g": 74,
+          "b": 61
+        }
+      }
+    },
+    "graduation-day-main": {
+      "font": "handwritten",
+      "safe_area": {
+        "x": 45,
+        "y": 382,
+        "width": 422,
+        "height": 100
+      },
+      "min_font_size": 28,
+      "max_font_size": 112,
+      "max_lines": 2,
+      "fill": {
+        "r": 40,
+        "g": 123,
+        "b": 209
+      },
+      "outline": {
+        "width": 12,
+        "color": {
+          "r": 255,
+          "g": 255,
+          "b": 255
+        }
+      },
+      "depth_shell": {
+        "offset_x": 5,
+        "offset_y": 6,
+        "color": {
+          "r": 23,
+          "g": 50,
+          "b": 87
+        }
+      },
+      "highlight_shell": {
+        "offset_x": -2,
+        "offset_y": -2,
+        "color": {
+          "r": 22,
+          "g": 138,
+          "b": 98
+        }
+      }
+    }
+  }
+}

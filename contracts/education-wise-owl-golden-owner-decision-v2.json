@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "authority": "project-owner",
+  "decision": "approved",
+  "decision_date": "2026-07-22",
+  "gate": "education-wise-owl-layered-golden-art-direction-v2",
+  "review_manifest": {
+    "path": "generated/education-wise-owl-golden-v2-review/review.json",
+    "sha256": "9525163910935f448a649c53014b521daa3c97c2b8505ae883ab1ab1f9d1a6d7"
+  },
+  "reviewed_artifacts": {
+    "golden-contact-sheet.png": "b7ccd0894f0cbba9269b89e56db9c8b8f7c3615233c638c8eeb7191a03b136ed",
+    "small-display-80-100-160.png": "911e8c248039d9800799569ee3f0b4be115eb62e5efd3ea763b5fe04a5eadd4f",
+    "motion-sample-sheet.png": "a9a6f3e35f22b091649ce8bca23910403283652b8ec9158c3ffd46dbe82f0d44",
+    "layer-decomposition.png": "5245f9414fac1d201abe3ef3c7ad4bb1cc505e7ba06515df52897f1c336f0f23",
+    "animation-review.html": "68821e0e4a220938be1ed169221e3d37dd952926ce5a8b7eb1fb23bc2b41e13c"
+  },
+  "approved_scope": [
+    "canonical-sage-identity",
+    "mascot-first-scene-composition",
+    "layered-2.5d-art-direction",
+    "scene-specific-prop-interaction",
+    "integrated-caption-system",
+    "union-die-cut-contour",
+    "soft-composite-shadow",
+    "multi-character-teamwork-benchmark",
+    "80-100-160px-presentation-profiles",
+    "animation-loop-closure",
+    "reduced-motion-equivalents",
+    "deterministic-generation"
+  ],
+  "production_expansion": {
+    "remaining_stickers_authorized": 90,
+    "identity_drift_forbidden": true,
+    "caption_rules_must_be_locked": true,
+    "cutline_and_shadow_consistency_required": true,
+    "long-copy-80px-review_required": true,
+    "multi-character_reference": "TEAMWORK"
+  },
+  "original_flat_pack": "preserved-as-engineering-pilot-only",
+  "golden_set_use": "approved-canonical-style-baseline",
+  "full_pack_production_use": "forbidden-until-full-100-sticker-owner-review"
+}

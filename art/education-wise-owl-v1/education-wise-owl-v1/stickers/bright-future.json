@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-bright-future",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.future.bright-future",
+  "recipe_id": "education-owl-scene.glow",
+  "intent": "education.future.bright-future",
+  "alt_text": "Sage the owl in a learning scene saying BRIGHT FUTURE",
+  "accessible_description": "Sage uses a future sun learning cue with the phrase BRIGHT FUTURE",
+  "expression": "bright-future",
+  "pose": "write",
+  "seed": 1,
+  "text": {
+    "content": "BRIGHT FUTURE",
+    "style": "bright-future-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-bright-future",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-bright-future",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

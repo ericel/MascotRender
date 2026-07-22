@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-play-on",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.creativity.play-on",
+  "recipe_id": "education-owl-scene.glow",
+  "intent": "education.creativity.play-on",
+  "alt_text": "Sage the owl in a learning scene saying PLAY ON!",
+  "accessible_description": "Sage uses a music play learning cue with the phrase PLAY ON!",
+  "expression": "play-on",
+  "pose": "write",
+  "seed": 1,
+  "text": {
+    "content": "PLAY ON!",
+    "style": "play-on-main",
+    "rotation_degrees": -2.0
+  },
+  "animation": {
+    "duration_ms": 900,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-play-on",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": 1.045,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-play-on",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 450,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 900,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

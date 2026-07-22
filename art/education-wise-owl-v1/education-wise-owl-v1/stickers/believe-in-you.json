@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-believe-in-you",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.future.believe-in-you",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.future.believe-in-you",
+  "alt_text": "Sage the owl in a learning scene saying BELIEVE IN YOU",
+  "accessible_description": "Sage uses a believe heart learning cue with the phrase BELIEVE IN YOU",
+  "expression": "believe-in-you",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "BELIEVE IN YOU",
+    "style": "believe-in-you-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-believe-in-you",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-believe-in-you",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

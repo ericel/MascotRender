@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-be-respectful",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.community.be-respectful",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.community.be-respectful",
+  "alt_text": "Sage the owl in a learning scene saying BE RESPECTFUL",
+  "accessible_description": "Sage uses a respect heart learning cue with the phrase BE RESPECTFUL",
+  "expression": "be-respectful",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "BE RESPECTFUL",
+    "style": "be-respectful-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-be-respectful",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-be-respectful",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

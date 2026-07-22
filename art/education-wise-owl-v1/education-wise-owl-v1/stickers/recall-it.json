@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-recall-it",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.assessment.recall-it",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.assessment.recall-it",
+  "alt_text": "Sage the owl in a learning scene saying RECALL IT",
+  "accessible_description": "Sage uses a memory book learning cue with the phrase RECALL IT",
+  "expression": "recall-it",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "RECALL IT",
+    "style": "recall-it-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1200,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-recall-it",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-recall-it",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 600,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1200,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

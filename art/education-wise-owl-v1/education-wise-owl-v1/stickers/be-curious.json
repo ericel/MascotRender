@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-be-curious",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.motivation.be-curious",
+  "recipe_id": "education-owl-scene.pop",
+  "intent": "education.motivation.be-curious",
+  "alt_text": "Sage the owl in a learning scene saying BE CURIOUS",
+  "accessible_description": "Sage uses a magnifier learning cue with the phrase BE CURIOUS",
+  "expression": "be-curious",
+  "pose": "read",
+  "seed": 1,
+  "text": {
+    "content": "BE CURIOUS",
+    "style": "be-curious-main",
+    "rotation_degrees": 0.0
+  },
+  "animation": {
+    "duration_ms": 1100,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_pulse"
+    ],
+    "tracks": [
+      {
+        "target": "scene-be-curious",
+        "property": "scale_x",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": 1.075,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 1.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-be-curious",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 550,
+            "value": -4.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1100,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

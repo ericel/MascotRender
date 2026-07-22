@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "sticker_id": "education-wise-owl-read-more",
+  "pack_id": "education-wise-owl-v1",
+  "phrase_id": "education.study.read-more",
+  "recipe_id": "education-owl-scene.write",
+  "intent": "education.study.read-more",
+  "alt_text": "Sage the owl in a learning scene saying READ MORE",
+  "accessible_description": "Sage uses a reading book learning cue with the phrase READ MORE",
+  "expression": "read-more",
+  "pose": "point",
+  "seed": 1,
+  "text": {
+    "content": "READ MORE",
+    "style": "read-more-main",
+    "rotation_degrees": 1.5
+  },
+  "animation": {
+    "duration_ms": 1000,
+    "fps": 12,
+    "loop": "loop",
+    "overlays": [
+      "text_wobble"
+    ],
+    "tracks": [
+      {
+        "target": "scene-read-more",
+        "property": "rotation_degrees",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": 3.5,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      },
+      {
+        "target": "accent-read-more",
+        "property": "translate_y",
+        "keyframes": [
+          {
+            "at_ms": 0,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 500,
+            "value": -5.0,
+            "easing": "ease_in_out"
+          },
+          {
+            "at_ms": 1000,
+            "value": 0.0,
+            "easing": "ease_in_out"
+          }
+        ]
+      }
+    ]
+  }
+}

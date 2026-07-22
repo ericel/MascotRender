@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "contract_id": "education-wise-owl-golden-v2",
+  "status": "owner-approved-canonical-art-direction-baseline",
+  "product_name": "Wise Owl Academy",
+  "product_type": "layered-2.5d-illustrated-education-sticker-golden-set",
+  "production_use": "approved-as-style-baseline-and-for-remaining-90-authoring",
+  "scope": {
+    "sticker_count": 10,
+    "category_count": 10,
+    "animated_sticker_count": 10,
+    "reduced_motion_sticker_count": 10,
+    "remaining_pack_stickers_blocked": 90
+  },
+  "golden_phrases": [
+    "STUDY TIME",
+    "YOU CAN DO IT!",
+    "SCIENCE FUN",
+    "LIBRARY TIME",
+    "COLOR MAGIC",
+    "TEAMWORK",
+    "STAY ORGANIZED",
+    "TEST DAY",
+    "HIGH FIVE!",
+    "GRADUATION DAY"
+  ],
+  "sage_identity_anchors": [
+    "fixed-cream-heart-face-discs",
+    "fixed-navy-round-glasses",
+    "fixed-three-part-feather-crest",
+    "fixed-gold-diamond-chest-mark",
+    "fixed-brown-cream-navy-gold-core-palette"
+  ],
+  "layer_contract": [
+    "scene.shadow",
+    "scene.cutline",
+    "owl.back-feathers",
+    "owl.body.base",
+    "owl.body.shadow-highlight",
+    "owl.wings",
+    "owl.head",
+    "owl.face-and-glasses",
+    "prop.back",
+    "prop.front",
+    "effect.foreground",
+    "caption"
+  ],
+  "art_direction": {
+    "canonical_backend": "layered-2.5d",
+    "reference_goal": "soft rounded illustrated chibi owl with authored prop interactions and collectible die-cut finish",
+    "character_primary": true,
+    "character_and_primary_prop_occupancy_ratio": [0.55, 0.70],
+    "caption_occupancy_ratio": [0.15, 0.25],
+    "outer_cutline_px": [10, 16],
+    "internal_keyline_px": [3, 6],
+    "maximum_meaningful_props": 3,
+    "transparent_production_background": true,
+    "catalogue_background_only": "warm-cream",
+    "visible_sequence_number_forbidden": true,
+    "union_cutline_required": true,
+    "soft-composite-shadow-required": true,
+    "80px_profile": "authored-simplified-profile",
+    "100px_profile": "production-default",
+    "160px_profile": "showcase"
+  },
+  "copy_correction": {
+    "required_label": "EVERY DAY COUNTS",
+    "required_semantic_id": "education.assessment.every-day-counts",
+    "forbidden_label": "EVERYDAY COUNTS"
+  },
+  "review_gates": [
+    "reference-level-illustrated-richness",
+    "sage-identity-consistency",
+    "ten-scene-specific-compositions",
+    "layer-and-depth-evidence",
+    "prop-character-interaction",
+    "union-cutline-and-composite-shadow",
+    "exact-spelling-and-punctuation",
+    "absence-of-visible-numbering",
+    "80-100-160px-readability",
+    "animation-playback-and-loop-closure",
+    "reduced-motion-equivalence",
+    "owner-golden-set-approval"
+  ]
+}
